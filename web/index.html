@@ -473,14 +473,14 @@
       <span class="badge"><span class="dot"></span>npm v0.1.0</span>
       <span class="badge"><span class="dot amber"></span>MIT license</span>
       <span class="badge"><span class="dot green"></span>MCP-native</span>
-      <span class="badge"><span class="dot"></span>Claude Code · Cursor · Codex · Gemini CLI</span>
+      <span class="badge"><span class="dot"></span>Claude Code · Cursor · Codex · Gemini CLI · Copilot</span>
     </div>
 
     <div class="ctas">
       <a href="#install" class="btn btn-primary">
         <i class="fa-solid fa-download"></i> Install
       </a>
-      <a href="https://github.com/timur-isachenko/presentation-skill-pack" class="btn btn-secondary" target="_blank" rel="noopener">
+      <a href="https://github.com/isatimur/presentation-skill-pack" class="btn btn-secondary" target="_blank" rel="noopener">
         <i class="fa-brands fa-github"></i> GitHub
       </a>
     </div>
@@ -722,15 +722,17 @@
     <h2>One command per agent.</h2>
     <p class="section-lead">
       The <span class="inline-code">@presentation-skill-pack/install</span> CLI copies the skill files
-      to the right place for each agent and (in full mode) registers the MCP server so the five
+      to the right place for each agent. Full mode also registers the MCP server so five
       tools — <span class="inline-code">render_deck</span>, <span class="inline-code">list_themes</span>,
       <span class="inline-code">get_theme</span>, <span class="inline-code">validate_deck</span>,
-      <span class="inline-code">create_deck</span> — are available in-context.
+      <span class="inline-code">create_deck</span> — are available in-context. Copilot writes to
+      <span class="inline-code">.github/copilot-instructions.md</span> in your project root.
     </p>
 
     <div class="install-tabs">
       <button class="tab-btn active" data-tab="claude-code">claude-code</button>
       <button class="tab-btn" data-tab="cursor">cursor</button>
+      <button class="tab-btn" data-tab="copilot">copilot</button>
       <button class="tab-btn" data-tab="codex">codex</button>
       <button class="tab-btn" data-tab="gemini-cli">gemini-cli</button>
       <button class="tab-btn" data-tab="cli">cli</button>
@@ -744,6 +746,18 @@
 <span class="cmd">npx @presentation-skill-pack/install claude-code lite</span>
 
 <span class="comment"># after install: restart Claude Code, then ask —</span>
+<span class="comment"># "Build a 10-slide pitch deck from these notes: ..."</span></pre>
+    </div>
+
+    <div id="tab-copilot" class="tab-panel">
+<pre><span class="comment"># run from the root of your project (writes .github/copilot-instructions.md)</span>
+<span class="cmd">npx @presentation-skill-pack/install copilot</span>
+
+<span class="comment"># lite — skill only, no .vscode/mcp.json</span>
+<span class="cmd">npx @presentation-skill-pack/install copilot lite</span>
+
+<span class="comment"># full mode also writes .vscode/mcp.json for Copilot MCP tool calls</span>
+<span class="comment"># after install: reload VS Code window, then ask Copilot Chat —</span>
 <span class="comment"># "Build a 10-slide pitch deck from these notes: ..."</span></pre>
     </div>
 
@@ -810,7 +824,7 @@
       <span>presentation-skill-pack v0.1.0</span>
     </div>
     <div class="footer-right">
-      <a href="https://github.com/timur-isachenko/presentation-skill-pack" target="_blank" rel="noopener">
+      <a href="https://github.com/isatimur/presentation-skill-pack" target="_blank" rel="noopener">
         <i class="fa-brands fa-github"></i> GitHub
       </a>
       <a href="https://www.npmjs.com/search?q=%40presentation-skill-pack" target="_blank" rel="noopener">

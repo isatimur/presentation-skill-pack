@@ -14,6 +14,7 @@ export const VALID_ADAPTERS = [
   "cursor",
   "codex",
   "gemini-cli",
+  "copilot",
   "cli",
 ] as const;
 

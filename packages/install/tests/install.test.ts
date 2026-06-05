@@ -61,6 +61,7 @@ describe("resolveAdapterScript", () => {
   it("VALID_ADAPTERS contains all expected entries", () => {
     expect(VALID_ADAPTERS).toContain("claude-code");
     expect(VALID_ADAPTERS).toContain("cursor");
+    expect(VALID_ADAPTERS).toContain("copilot");
     expect(VALID_ADAPTERS).toContain("codex");
     expect(VALID_ADAPTERS).toContain("gemini-cli");
     expect(VALID_ADAPTERS).toContain("cli");
