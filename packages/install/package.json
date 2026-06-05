@@ -1,6 +1,6 @@
 {
   "name": "@presentation-skill-pack/install",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "One-command installer for presentation-skill-pack adapters.",
   "license": "MIT",
   "type": "module",

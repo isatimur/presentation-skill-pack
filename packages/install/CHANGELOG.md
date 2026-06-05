@@ -1,5 +1,11 @@
 # @presentation-skill-pack/install
 
+## 0.1.2
+
+### Patch Changes
+
+- Copilot adapter now uses sentinel sections (`<!-- BEGIN presentation-skill-pack -->`) so multiple skill packs can coexist in the same `.github/copilot-instructions.md` without overwriting each other.
+
 ## 0.1.1
 
 ### Patch Changes
