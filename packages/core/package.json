@@ -1,6 +1,6 @@
 {
   "name": "@presentation-skill-pack/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Core methodology, deck + theme schemas, theme loader, and bundled default theme for presentation-skill-pack.",
   "license": "MIT",
   "type": "module",

@@ -1,11 +1,15 @@
 {
   "name": "@presentation-skill-pack/install",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "One-command installer for presentation-skill-pack adapters.",
   "license": "MIT",
   "type": "module",
-  "bin": { "presentation-skill-pack-install": "./dist/index.js" },
-  "files": ["dist"],
+  "bin": {
+    "presentation-skill-pack-install": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json && mkdir -p dist/adapters && cp -R ../../adapters/. dist/adapters/",
     "test": "vitest run",
@@ -21,6 +25,10 @@
     "typescript": "^5.4.0",
     "vitest": "^1.5.0"
   },
-  "engines": { "node": ">=20.0.0" },
-  "publishConfig": { "access": "public" }
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

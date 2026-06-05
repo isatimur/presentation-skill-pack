@@ -1,11 +1,21 @@
 {
   "name": "@presentation-skill-pack/theme-corporate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Formal corporate presentation theme — crisp white, navy text, restrained blue accent.",
   "license": "MIT",
   "type": "module",
   "main": "./theme.json",
-  "files": ["theme.json", "README.md"],
-  "keywords": ["presentation-skill-pack", "theme", "ai-agent", "slides"],
-  "publishConfig": { "access": "public" }
+  "files": [
+    "theme.json",
+    "README.md"
+  ],
+  "keywords": [
+    "presentation-skill-pack",
+    "theme",
+    "ai-agent",
+    "slides"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

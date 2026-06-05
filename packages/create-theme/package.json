@@ -1,12 +1,17 @@
 {
   "name": "@presentation-skill-pack/create-theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Scaffold a new presentation-skill-pack theme package.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
-  "bin": { "create-presentation-theme": "./dist/index.js" },
-  "files": ["dist", "src/template"],
+  "bin": {
+    "create-presentation-theme": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "src/template"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json && cp -R src/template dist/template",
     "test": "vitest run",
@@ -23,6 +28,10 @@
     "typescript": "^5.4.0",
     "vitest": "^1.5.0"
   },
-  "engines": { "node": ">=20.0.0" },
-  "publishConfig": { "access": "public" }
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

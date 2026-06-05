@@ -1,19 +1,35 @@
 {
   "name": "@presentation-skill-pack/mcp-server",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MCP server exposing presentation-skill-pack tools to any MCP-compatible AI agent.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/server.js",
-  "bin": { "presentation-skill-pack-mcp": "./dist/server.js" },
-  "files": ["dist"],
-  "scripts": { "build": "tsc -p tsconfig.json", "test": "vitest run", "lint": "eslint src", "typecheck": "tsc --noEmit", "start": "node dist/server.js" },
+  "bin": {
+    "presentation-skill-pack-mcp": "./dist/server.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/server.js"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "@presentation-skill-pack/core": "workspace:*",
     "@presentation-skill-pack/render": "workspace:*",
     "zod": "^3.23.0"
   },
-  "devDependencies": { "@types/node": "^20.0.0", "typescript": "^5.4.0", "vitest": "^1.5.0" },
-  "publishConfig": { "access": "public" }
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,11 +1,21 @@
 {
   "name": "@presentation-skill-pack/theme-luxury-minimalist",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Luxury minimalist presentation theme — warm off-white canvas, charcoal text, hairline borders, no gradients.",
   "license": "MIT",
   "type": "module",
   "main": "./theme.json",
-  "files": ["theme.json", "README.md"],
-  "keywords": ["presentation-skill-pack", "theme", "ai-agent", "slides"],
-  "publishConfig": { "access": "public" }
+  "files": [
+    "theme.json",
+    "README.md"
+  ],
+  "keywords": [
+    "presentation-skill-pack",
+    "theme",
+    "ai-agent",
+    "slides"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
