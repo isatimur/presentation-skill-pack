@@ -10,7 +10,7 @@ export const listThemesTool: ToolDefinition = {
     type: "object",
     properties: {}
   },
-  handler: async (_input: Record<string, unknown>) => {
+  handler: async (_: Record<string, unknown>) => {
     const discovered = await discoverInstalledThemes({
       bundledThemesDir: getBundledThemesDir(),
       nodeModulesRoot: process.cwd()
