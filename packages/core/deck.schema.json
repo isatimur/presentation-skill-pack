@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://presentation-skill-pack.dev/deck.schema.json",
+  "title": "Presentation Skill Pack Deck",
+  "type": "object",
+  "required": ["type", "slides"],
+  "additionalProperties": false,
+  "properties": {
+    "type": { "const": "deck" },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "title": { "type": "string" },
+        "company": { "type": "string" },
+        "description": { "type": "string" },
+        "theme": { "type": "string", "description": "Theme name (default: default-tech)" }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/slide" }
+    }
+  },
+  "$defs": {
+    "slide": {
+      "type": "object",
+      "required": ["layout"],
+      "properties": {
+        "layout": {
+          "type": "string",
+          "enum": [
+            "title",
+            "two-column",
+            "feature-grid",
+            "quote",
+            "data-table",
+            "stat-row",
+            "timeline",
+            "section",
+            "closing"
+          ]
+        },
+        "eyebrow": { "type": "string" },
+        "heading": { "type": "string" },
+        "lead": { "type": "string" },
+        "body": { "type": "string" },
+        "image": { "type": "string" },
+        "imageAlt": { "type": "string" },
+        "quote": { "type": "string" },
+        "by": { "type": "string" },
+        "number": { "type": "string" },
+        "columns": {
+          "oneOf": [
+            { "type": "integer", "minimum": 2, "maximum": 4 },
+            { "type": "array", "items": { "type": "string" } }
+          ],
+          "description": "feature-grid: column count (2-4). data-table: header labels."
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["title"],
+            "properties": {
+              "icon": { "type": "string", "description": "FontAwesome class, e.g. fa-solid fa-bolt" },
+              "title": { "type": "string" },
+              "body": { "type": "string" }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "description": "data-table: array of row arrays.",
+          "items": { "type": "array", "items": { "type": "string" } }
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["value", "label"],
+            "properties": {
+              "value": { "type": "string" },
+              "label": { "type": "string" }
+            }
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["title"],
+            "properties": {
+              "title": { "type": "string" },
+              "body": { "type": "string" }
+            }
+          }
+        },
+        "cta": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string" },
+            "href": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

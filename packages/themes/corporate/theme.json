@@ -1,0 +1,29 @@
+{
+  "name": "corporate",
+  "version": "0.1.0",
+  "extends": "default-tech",
+  "description": "Formal corporate presentation theme with crisp white background and restrained navy/blue palette.",
+  "vibe": "Formal corporate — crisp white, navy text, single restrained blue accent, clean sans-serif, thin rules, minimal shadow.",
+  "license": "MIT",
+  "author": "Timur Isachenko",
+  "roles": {
+    "bg": "#ffffff",
+    "bg2": "#f8f9fc",
+    "text": "#1a2035",
+    "muted": "#6b7280",
+    "accent": "#1d4ed8",
+    "accent2": "#0369a1",
+    "cardBg": "#f1f5f9",
+    "border": "rgba(0,0,0,0.08)"
+  },
+  "typography": {
+    "headingFont": "'Inter', system-ui, sans-serif",
+    "bodyFont": "'Source Sans 3', system-ui, sans-serif",
+    "headingWeight": 700,
+    "googleFonts": ["Inter:wght@400;700", "Source+Sans+3:wght@400;600"]
+  },
+  "geometry": {
+    "radius": "8px",
+    "slideWidth": "1280px"
+  }
+}

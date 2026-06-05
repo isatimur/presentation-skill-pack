@@ -1,0 +1,23 @@
+[project]
+name = "presentation-skill-pack-render"
+version = "0.1.0"
+description = "Render a deck JSON spec to a self-contained HTML slide deck. Python binding for presentation-skill-pack."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "Timur Isachenko" }]
+keywords = ["presentation-skill-pack", "slides", "ai-agent", "html", "deck"]
+dependencies = ["jinja2>=3.1.0", "requests>=2.31.0"]
+
+[project.scripts]
+presentation-skill-pack-render = "presentation_skill_pack_render.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/presentation_skill_pack_render"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/presentation_skill_pack_render/templates" = "presentation_skill_pack_render/templates"

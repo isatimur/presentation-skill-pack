@@ -1,0 +1,29 @@
+{
+  "name": "playful",
+  "version": "0.1.0",
+  "extends": "default-tech",
+  "description": "Playful creative-agency theme with bold coral and lime accents, rounded corners, and sticker-style energy.",
+  "vibe": "Playful creative agency — bright warm white, bold coral + lime accent pair, rounded everything, big type, sticker-style shadows.",
+  "license": "MIT",
+  "author": "Timur Isachenko",
+  "roles": {
+    "bg": "#fffbf0",
+    "bg2": "#fff9e6",
+    "text": "#1a1a2e",
+    "muted": "#6b6b8a",
+    "accent": "#ff4757",
+    "accent2": "#2ed573",
+    "cardBg": "rgba(255,71,87,0.06)",
+    "border": "rgba(255,71,87,0.15)"
+  },
+  "typography": {
+    "headingFont": "'Nunito', system-ui, sans-serif",
+    "bodyFont": "'Nunito', system-ui, sans-serif",
+    "headingWeight": 800,
+    "googleFonts": ["Nunito:wght@400;700;800"]
+  },
+  "geometry": {
+    "radius": "24px",
+    "slideWidth": "1280px"
+  }
+}

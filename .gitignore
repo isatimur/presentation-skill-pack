@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.ruff_cache/
+__pycache__/
+*.pyc
+.venv/
+build/
+*.egg-info/
+web/.vercel/
+out/

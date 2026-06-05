@@ -1,0 +1,25 @@
+name: Adapter install scripts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "adapters/**"
+      - "packages/install/**"
+
+jobs:
+  syntax-check:
+    name: Syntax-check install scripts (bash)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check bash syntax
+        run: |
+          bash -n adapters/claude-code/install.sh
+          bash -n adapters/cursor/install.sh
+          bash -n adapters/codex/install.sh
+          bash -n adapters/gemini-cli/install.sh
+          echo "All install scripts are syntactically valid."

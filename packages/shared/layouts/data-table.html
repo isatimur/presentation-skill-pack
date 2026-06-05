@@ -1,0 +1,14 @@
+<section class="slide">
+  {{#eyebrow}}<span class="eyebrow">{{eyebrow}}</span>{{/eyebrow}}
+  {{#heading}}<h2>{{heading}}</h2>{{/heading}}
+  <table>
+    <thead>
+      <tr>{{#columns}}<th>{{.}}</th>{{/columns}}</tr>
+    </thead>
+    <tbody>
+      {{#rows}}
+      <tr>{{#cells}}<td>{{.}}</td>{{/cells}}</tr>
+      {{/rows}}
+    </tbody>
+  </table>
+</section>

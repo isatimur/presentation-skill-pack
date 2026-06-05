@@ -1,0 +1,29 @@
+{
+  "name": "retro-arcade",
+  "version": "0.1.0",
+  "extends": "default-tech",
+  "description": "Retro 80s arcade theme with deep purple-black background, magenta and cyan neon accents, and pixel display fonts.",
+  "vibe": "Retro 80s arcade — deep purple-black bg, magenta + electric cyan neon, glow text-shadow, pixel display font, scanline feel.",
+  "license": "MIT",
+  "author": "Timur Isachenko",
+  "roles": {
+    "bg": "#0d0015",
+    "bg2": "#150025",
+    "text": "#e0e0ff",
+    "muted": "#9090cc",
+    "accent": "#ff00ff",
+    "accent2": "#00ffff",
+    "cardBg": "rgba(255,0,255,0.08)",
+    "border": "rgba(0,255,255,0.20)"
+  },
+  "typography": {
+    "headingFont": "'Orbitron', system-ui, sans-serif",
+    "bodyFont": "'Share Tech Mono', monospace",
+    "headingWeight": 700,
+    "googleFonts": ["Orbitron:wght@400;700", "Share+Tech+Mono"]
+  },
+  "geometry": {
+    "radius": "0px",
+    "slideWidth": "1280px"
+  }
+}

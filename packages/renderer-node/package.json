@@ -1,0 +1,30 @@
+{
+  "name": "@presentation-skill-pack/render",
+  "version": "0.1.0",
+  "description": "Render a deck JSON spec to a self-contained HTML slide deck.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": "./dist/index.js" },
+  "files": ["dist"],
+  "bin": { "presentation-skill-pack-render": "./dist/cli.js" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint src",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@presentation-skill-pack/core": "workspace:*",
+    "commander": "^12.0.0",
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/mustache": "^4.2.5",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.5.0"
+  },
+  "publishConfig": { "access": "public" }
+}

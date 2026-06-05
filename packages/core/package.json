@@ -1,0 +1,42 @@
+{
+  "name": "@presentation-skill-pack/core",
+  "version": "0.1.0",
+  "description": "Core methodology, deck + theme schemas, theme loader, and bundled default theme for presentation-skill-pack.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./skill": "./SKILL.md",
+    "./deck-schema": "./deck.schema.json",
+    "./theme-schema": "./theme.schema.json",
+    "./themes/default-tech": "./themes/default-tech/theme.json"
+  },
+  "files": [
+    "dist",
+    "SKILL.md",
+    "references",
+    "deck.schema.json",
+    "theme.schema.json",
+    "themes/default-tech"
+  ],
+  "bin": {
+    "validate-theme": "./dist/validate-theme-cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint src",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0"
+  },
+  "devDependencies": {
+    "vitest": "^1.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

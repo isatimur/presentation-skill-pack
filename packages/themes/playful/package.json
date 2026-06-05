@@ -1,0 +1,11 @@
+{
+  "name": "@presentation-skill-pack/theme-playful",
+  "version": "0.1.0",
+  "description": "Playful creative-agency presentation theme — warm white, coral + lime accents, rounded, big type.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./theme.json",
+  "files": ["theme.json", "README.md"],
+  "keywords": ["presentation-skill-pack", "theme", "ai-agent", "slides"],
+  "publishConfig": { "access": "public" }
+}

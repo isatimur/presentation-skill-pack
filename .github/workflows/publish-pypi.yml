@@ -1,0 +1,57 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "presentation-skill-pack-render@*"
+      - "presentation-skill-pack-theme-*@*"
+
+jobs:
+  publish:
+    name: Build and publish Python package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve package directory from tag
+        id: resolve
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [[ "$TAG" == presentation-skill-pack-render@* ]]; then
+            PKG_DIR="packages/renderer-python"
+          elif [[ "$TAG" == presentation-skill-pack-theme-*@* ]]; then
+            # e.g. presentation-skill-pack-theme-corporate@0.2.0 -> packages/themes/corporate
+            THEME_SLUG="${TAG%%@*}"                 # strip version suffix
+            THEME_SLUG="${THEME_SLUG#presentation-skill-pack-theme-}"  # strip prefix
+            PKG_DIR="packages/themes/${THEME_SLUG}"
+          else
+            echo "Unrecognised tag format: $TAG" >&2
+            exit 1
+          fi
+          if [ ! -d "$PKG_DIR" ]; then
+            echo "Resolved directory '$PKG_DIR' does not exist" >&2
+            exit 1
+          fi
+          echo "pkg_dir=$PKG_DIR" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Build
+        run: uv build
+        working-directory: ${{ steps.resolve.outputs.pkg_dir }}
+
+      - name: Publish
+        run: uv publish
+        working-directory: ${{ steps.resolve.outputs.pkg_dir }}
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}

@@ -1,0 +1,72 @@
+# {{name}} — presentation-skill-pack theme
+
+> **Vibe:** {{vibe}}
+
+{{description}}
+
+## Install
+
+```bash
+# npm / pnpm / yarn
+npm install @presentation-skill-pack/theme-{{name}}
+
+# pip (Python renderer)
+pip install presentation-skill-pack-theme-{{name}}
+```
+
+## Usage
+
+Add the theme name to your deck JSON:
+
+```json
+{
+  "type": "deck",
+  "meta": {
+    "title": "My Presentation",
+    "theme": "{{name}}"
+  },
+  "slides": []
+}
+```
+
+Then render:
+
+```bash
+presentation-skill-pack-render deck.json -o deck.html
+```
+
+## Palette
+
+| Role | Value |
+|------|-------|
+| `bg` | `{{bg}}` |
+| `bg2` | `{{bg2}}` |
+| `text` | `{{text}}` |
+| `muted` | `{{muted}}` |
+| `accent` | `{{accent}}` |
+| `accent2` | `{{accent2}}` |
+| `cardBg` | `{{cardBg}}` |
+| `border` | `{{border}}` |
+
+## Typography
+
+| Property | Value |
+|----------|-------|
+| Heading font | {{{headingFont}}} |
+| Body font | {{{bodyFont}}} |
+| Heading weight | {{headingWeight}} |
+
+## Geometry
+
+| Property | Value |
+|----------|-------|
+| Border radius | `{{radius}}` |
+| Slide width | `1280px` |
+
+## Author
+
+{{author}}
+
+## License
+
+{{license}}

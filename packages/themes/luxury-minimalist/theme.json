@@ -1,0 +1,29 @@
+{
+  "name": "luxury-minimalist",
+  "version": "0.1.0",
+  "extends": "default-tech",
+  "description": "Luxury minimalist theme with warm off-white canvas, dark charcoal, hairline borders, and no gradients.",
+  "vibe": "Luxury minimalist — warm off-white canvas, dark charcoal text, near-zero decoration, generous whitespace, thin serif display, hairline borders, no gradients.",
+  "license": "MIT",
+  "author": "Timur Isachenko",
+  "roles": {
+    "bg": "#faf8f5",
+    "bg2": "#f5f2ee",
+    "text": "#1c1917",
+    "muted": "#78716c",
+    "accent": "#92400e",
+    "accent2": "#b45309",
+    "cardBg": "rgba(28,25,23,0.03)",
+    "border": "rgba(28,25,23,0.10)"
+  },
+  "typography": {
+    "headingFont": "'Cormorant Garamond', Georgia, serif",
+    "bodyFont": "'DM Sans', system-ui, sans-serif",
+    "headingWeight": 600,
+    "googleFonts": ["Cormorant+Garamond:wght@400;600", "DM+Sans:wght@400;500"]
+  },
+  "geometry": {
+    "radius": "4px",
+    "slideWidth": "1280px"
+  }
+}

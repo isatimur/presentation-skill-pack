@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "presentation-skill-pack-theme-{{name}}"
+version = "0.1.0"
+description = "{{description}}"
+license = { text = "{{license}}" }
+authors = [{ name = "{{author}}" }]
+keywords = ["presentation-skill-pack", "theme", "{{vibe}}"]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/presentation-skill-pack/theme-{{name}}"
+
+[tool.hatch.build.targets.wheel]
+packages = ["presentation_skill_pack_theme_{{underscored}}"]
+
+[tool.hatch.build.targets.sdist]
+include = ["theme.json", "README.md", "pyproject.toml"]
