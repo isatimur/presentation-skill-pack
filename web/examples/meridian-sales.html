@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meridian Analytics — Sales Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #f8f9fb;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #1e3a8a;
+      --accent2: #3b82f6;
+      --accent-light: #eff6ff;
+      --rule: #e2e8f0;
+      --card: #ffffff;
+      --radius: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; }
+
+    .slide {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-inner { width: 100%; max-width: 1100px; position: relative; z-index: 1; }
+    .slide-num {
+      position: absolute;
+      bottom: 32px;
+      right: 40px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+    .nav-hint {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      z-index: 100;
+    }
+    h1, h2, h3 { line-height: 1.15; }
+    h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
+
+    .eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent2); margin-bottom: 12px; font-weight: 600; }
+    .tag { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; background: var(--accent-light); color: var(--accent); border-radius: 4px; padding: 3px 10px; font-weight: 600; }
+
+    /* ── Slide 1: Title ─────────────────────────────── */
+    .s1 { background: var(--accent); color: #fff; }
+    .s1-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 80px; }
+    .s1-logo { display: flex; align-items: center; gap: 10px; }
+    .s1-logo-mark { width: 36px; height: 36px; border-radius: 8px; background: #3b82f6; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+    .s1-logo-name { font-weight: 700; font-size: 16px; color: #fff; letter-spacing: -0.3px; }
+    .s1-date { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .s1 h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; margin-bottom: 20px; max-width: 640px; }
+    .s1-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 60px; line-height: 1.6; }
+    .s1-pills { display: flex; gap: 12px; flex-wrap: wrap; }
+    .s1-pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 6px 16px; font-size: 13px; color: rgba(255,255,255,0.85); }
+
+    /* ── Slide 2: Agenda ─────────────────────────────── */
+    .s2 { background: var(--bg2); }
+    .s2 h2 { font-size: 2.4rem; margin-bottom: 40px; }
+    .agenda-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .agenda-item { display: flex; gap: 20px; align-items: flex-start; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px 24px; }
+    .agenda-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--rule); font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .agenda-item h3 { font-size: 0.95rem; margin-bottom: 4px; font-family: 'Inter', sans-serif; }
+    .agenda-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── Slide 3: Company snapshot ───────────────────── */
+    .s3 { background: var(--bg); }
+    .s3 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .s3 h2 { font-size: 2.2rem; margin-bottom: 20px; }
+    .s3-lead { font-size: 1rem; color: var(--muted); line-height: 1.65; margin-bottom: 32px; }
+    .s3-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .s3-stat { background: var(--accent-light); border-radius: var(--radius); padding: 20px; }
+    .s3-stat-val { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+    .s3-stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .s3-img {
+      background: linear-gradient(135deg, var(--accent) 0%, #2563eb 100%);
+      border-radius: 20px;
+      height: 360px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px;
+      color: rgba(255,255,255,0.6);
+    }
+    .s3-img i { font-size: 3rem; color: rgba(255,255,255,0.5); }
+    .s3-img p { font-size: 0.85rem; }
+
+    /* ── Slide 4: Pain points ─────────────────────────── */
+    .s4 { background: var(--bg2); }
+    .s4 h2 { font-size: 2.2rem; margin-bottom: 40px; }
+    .pain-list { display: flex; flex-direction: column; gap: 16px; }
+    .pain-item { display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px 24px; }
+    .pain-icon { width: 48px; height: 48px; border-radius: 10px; background: #fef2f2; display: flex; align-items: center; justify-content: center; }
+    .pain-icon i { color: #dc2626; font-size: 1.1rem; }
+    .pain-item h3 { font-size: 0.95rem; margin-bottom: 4px; }
+    .pain-item p { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── Slide 5: Solution fit ────────────────────────── */
+    .s5 { background: var(--accent); color: #fff; }
+    .s5 h2 { font-size: 2.2rem; color: #fff; margin-bottom: 40px; }
+    .fit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .fit-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); padding: 28px; }
+    .fit-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .fit-icon i { color: #93c5fd; font-size: 1.1rem; }
+    .fit-card h3 { font-size: 1rem; color: #fff; margin-bottom: 8px; }
+    .fit-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+
+    /* ── Slide 6: ROI ─────────────────────────────────── */
+    .s6 { background: var(--bg); }
+    .s6 h2 { font-size: 2.2rem; margin-bottom: 40px; }
+    .roi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .roi-card { background: var(--accent-light); border-radius: var(--radius); padding: 24px; text-align: center; }
+    .roi-val { font-size: 2.2rem; font-weight: 700; color: var(--accent); }
+    .roi-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+    blockquote { background: var(--bg2); border-left: 4px solid var(--accent2); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px 24px; font-size: 1rem; color: var(--text); line-height: 1.6; font-style: italic; }
+    blockquote cite { display: block; margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-style: normal; }
+
+    /* ── Slide 7: Demo ────────────────────────────────── */
+    .s7 { background: var(--bg2); }
+    .s7 h2 { font-size: 2.2rem; margin-bottom: 40px; }
+    .demo-frame {
+      background: var(--accent);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+    }
+    .demo-bar { background: rgba(0,0,0,0.3); padding: 12px 20px; display: flex; gap: 8px; align-items: center; }
+    .demo-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .demo-body { padding: 32px; display: grid; grid-template-columns: 240px 1fr; gap: 24px; min-height: 320px; }
+    .demo-nav { display: flex; flex-direction: column; gap: 4px; }
+    .demo-nav-item { padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.5); cursor: pointer; }
+    .demo-nav-item.active { background: rgba(255,255,255,0.1); color: #fff; }
+    .demo-content { background: rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 0.9rem; }
+
+    /* ── Slide 8: Pricing ────────────────────────────── */
+    .s8 { background: var(--bg); }
+    .s8 h2 { font-size: 2.2rem; margin-bottom: 40px; }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .price-table th { text-align: left; padding: 12px 16px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--rule); }
+    .price-table td { padding: 14px 16px; border-bottom: 1px solid var(--rule); }
+    .price-table td:first-child { font-weight: 600; }
+    .check { color: #16a34a; } .dash { color: var(--rule); }
+    .price-table tr.highlight td { background: var(--accent-light); }
+    .price-table tr.highlight td:first-child { color: var(--accent); }
+
+    /* ── Slide 9: Implementation ─────────────────────── */
+    .s9 { background: var(--bg2); }
+    .s9 h2 { font-size: 2.2rem; margin-bottom: 40px; }
+    .impl-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .impl-step { position: relative; padding: 0 20px; }
+    .impl-step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 28px; color: var(--muted); font-size: 1.2rem; }
+    .impl-num { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 16px; }
+    .impl-step h3 { font-size: 0.9rem; margin-bottom: 6px; }
+    .impl-step p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .impl-step .impl-time { font-size: 0.75rem; color: var(--accent2); margin-top: 8px; font-weight: 600; }
+
+    /* ── Slide 10: Next steps ────────────────────────── */
+    .s10 { background: var(--accent); color: #fff; }
+    .s10-inner { text-align: center; }
+    .s10 h2 { font-size: 2.6rem; color: #fff; margin-bottom: 16px; }
+    .s10-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 48px; }
+    .next-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 800px; margin: 0 auto 48px; }
+    .next-step { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); padding: 24px; }
+    .next-step .step-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: rgba(255,255,255,0.2); font-weight: 700; margin-bottom: 8px; }
+    .next-step h3 { font-size: 0.95rem; color: #fff; margin-bottom: 6px; }
+    .next-step p { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+    .s10-contact { font-size: 1rem; color: rgba(255,255,255,0.8); }
+    .s10-contact a { color: #93c5fd; text-decoration: none; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-inner { animation: fadeUp 0.4s ease both; }
+
+    @media print {
+      html { scroll-snap-type: none; overflow: visible; }
+      .slide { page-break-after: always; min-height: auto; height: 100vh; }
+      .nav-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title -->
+  <section class="slide s1">
+    <div class="slide-inner">
+      <div class="s1-top">
+        <div class="s1-logo">
+          <div class="s1-logo-mark">M</div>
+          <div class="s1-logo-name">Meridian Analytics</div>
+        </div>
+        <span class="s1-date">Prepared for Apex Financial Group · June 2025</span>
+      </div>
+      <h1>Turning your data into decisions — at scale.</h1>
+      <p class="s1-sub">A 30-minute walk-through of how Meridian's platform fits your operational analytics challenges.</p>
+      <div class="s1-pills">
+        <span class="s1-pill"><i class="fa-solid fa-building-columns"></i> Financial Services</span>
+        <span class="s1-pill"><i class="fa-solid fa-users"></i> 1,200 users · 4 regions</span>
+        <span class="s1-pill"><i class="fa-solid fa-calendar-check"></i> Enterprise tier</span>
+      </div>
+    </div>
+    <span class="slide-num">01 / 10</span>
+  </section>
+
+  <!-- Slide 2: Agenda -->
+  <section class="slide s2">
+    <div class="slide-inner">
+      <div class="eyebrow">Today's agenda</div>
+      <h2>What we'll cover in 30 minutes.</h2>
+      <div class="agenda-list">
+        <div class="agenda-item"><span class="agenda-num">01</span><div><h3>Your situation</h3><p>What we heard in discovery — the operational analytics gaps costing Apex today.</p></div></div>
+        <div class="agenda-item"><span class="agenda-num">02</span><div><h3>Solution fit</h3><p>How Meridian's three modules map to your specific workflows.</p></div></div>
+        <div class="agenda-item"><span class="agenda-num">03</span><div><h3>Live demo</h3><p>Real data, real-time. We'll use an Apex-anonymised dataset prepared this week.</p></div></div>
+        <div class="agenda-item"><span class="agenda-num">04</span><div><h3>ROI + pricing</h3><p>Numbers tailored to your volume, plus implementation timeline and next steps.</p></div></div>
+      </div>
+    </div>
+    <span class="slide-num">02 / 10</span>
+  </section>
+
+  <!-- Slide 3: About Meridian -->
+  <section class="slide s3">
+    <div class="slide-inner two-col">
+      <div>
+        <div class="eyebrow">About Meridian</div>
+        <h2>Trusted by 280 financial institutions.</h2>
+        <p class="s3-lead">Since 2018, Meridian has helped banks, asset managers, and insurance firms move from reactive reporting to proactive, real-time operational intelligence — without replacing existing infrastructure.</p>
+        <div class="s3-stats">
+          <div class="s3-stat"><div class="s3-stat-val">280+</div><div class="s3-stat-label">financial institutions</div></div>
+          <div class="s3-stat"><div class="s3-stat-val">$4.2B</div><div class="s3-stat-label">assets under management tracked daily</div></div>
+          <div class="s3-stat"><div class="s3-stat-val">99.98%</div><div class="s3-stat-label">platform uptime (36-month avg.)</div></div>
+          <div class="s3-stat"><div class="s3-stat-val">SOC 2</div><div class="s3-stat-label">Type II · ISO 27001 · GDPR</div></div>
+        </div>
+      </div>
+      <div class="s3-img">
+        <i class="fa-solid fa-chart-network"></i>
+        <p>Real-time operational dashboard</p>
+      </div>
+    </div>
+    <span class="slide-num">03 / 10</span>
+  </section>
+
+  <!-- Slide 4: Pain points -->
+  <section class="slide s4">
+    <div class="slide-inner">
+      <div class="eyebrow">What we heard from you</div>
+      <h2>Three challenges, one root cause.</h2>
+      <div class="pain-list">
+        <div class="pain-item">
+          <div class="pain-icon"><i class="fa-solid fa-clock"></i></div>
+          <div><h3>T+1 reporting delay creates blind spots</h3><p>Risk and treasury decisions depend on yesterday's data. By the time the morning report lands, market conditions have shifted — costing an estimated $8–12M annually in missed position adjustments.</p></div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon"><i class="fa-solid fa-code-branch"></i></div>
+          <div><h3>Siloed data across 6 core systems</h3><p>Loan origination, risk, compliance, and treasury each run separate reporting stacks. Cross-system analysis requires a 3-day manual reconciliation process — your words, from discovery.</p></div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <div><h3>Analyst dependency creates single points of failure</h3><p>Your senior analysts — Sarah and Mark — are the only people who can produce the cross-system views leadership needs. Vacation, attrition, or scale = decision paralysis.</p></div>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">04 / 10</span>
+  </section>
+
+  <!-- Slide 5: Solution fit -->
+  <section class="slide s5">
+    <div class="slide-inner">
+      <div class="eyebrow" style="color:rgba(255,255,255,0.5)">Solution fit</div>
+      <h2>Three modules, directly mapped to your challenges.</h2>
+      <div class="fit-grid">
+        <div class="fit-card">
+          <div class="fit-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Real-Time Feeds</h3>
+          <p>Stream ingestion from your CBS, risk platform, and trading systems. Sub-60s latency, no ETL, no schema migration. Solves the T+1 delay.</p>
+        </div>
+        <div class="fit-card">
+          <div class="fit-icon"><i class="fa-solid fa-link"></i></div>
+          <h3>Cross-System Join Layer</h3>
+          <p>Semantic data model that maps entities across your 6 systems without replication. Compliance, treasury, and risk share a single source of truth.</p>
+        </div>
+        <div class="fit-card">
+          <div class="fit-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>Analyst Workbench</h3>
+          <p>Natural language query interface trained on your domain. Any business user can run the cross-system views Sarah and Mark currently own manually.</p>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">05 / 10</span>
+  </section>
+
+  <!-- Slide 6: ROI -->
+  <section class="slide s6">
+    <div class="slide-inner">
+      <div class="eyebrow">Return on investment</div>
+      <h2>Conservative 12-month ROI model for Apex.</h2>
+      <div class="roi-row">
+        <div class="roi-card"><div class="roi-val">$14.2M</div><div class="roi-label">Estimated annual value created</div></div>
+        <div class="roi-card"><div class="roi-val">4.8×</div><div class="roi-label">ROI on Meridian investment</div></div>
+        <div class="roi-card"><div class="roi-val">63 days</div><div class="roi-label">Average time to first measurable value</div></div>
+        <div class="roi-card"><div class="roi-val">340 hrs</div><div class="roi-label">Analyst hours recovered per quarter</div></div>
+      </div>
+      <blockquote>
+        "Within 60 days of Meridian going live, our treasury team had identified three position optimizations that paid for the first year of the contract. The real-time cross-system view was something we'd wanted for four years."
+        <cite>— CIO, Regional Bank (1,800 employees, similar profile to Apex)</cite>
+      </blockquote>
+    </div>
+    <span class="slide-num">06 / 10</span>
+  </section>
+
+  <!-- Slide 7: Demo preview -->
+  <section class="slide s7">
+    <div class="slide-inner">
+      <div class="eyebrow">Live demo</div>
+      <h2>What you'll see in the demo.</h2>
+      <div class="demo-frame">
+        <div class="demo-bar">
+          <div class="demo-dot" style="background:#ef4444"></div>
+          <div class="demo-dot" style="background:#f59e0b"></div>
+          <div class="demo-dot" style="background:#22c55e"></div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-nav">
+            <div class="demo-nav-item active"><i class="fa-solid fa-gauge"></i> &nbsp;Live dashboard</div>
+            <div class="demo-nav-item"><i class="fa-solid fa-code-merge"></i> &nbsp;Cross-system join</div>
+            <div class="demo-nav-item"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;NL query</div>
+            <div class="demo-nav-item"><i class="fa-solid fa-bell"></i> &nbsp;Alert rules</div>
+            <div class="demo-nav-item"><i class="fa-solid fa-file-export"></i> &nbsp;Reports</div>
+          </div>
+          <div class="demo-content">
+            <div style="text-align:center">
+              <i class="fa-solid fa-play-circle" style="font-size:2rem;margin-bottom:12px;color:#3b82f6"></i>
+              <p>Live demo with Apex-anonymised data</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">07 / 10</span>
+  </section>
+
+  <!-- Slide 8: Pricing -->
+  <section class="slide s8">
+    <div class="slide-inner">
+      <div class="eyebrow">Pricing for Apex Financial Group</div>
+      <h2>Enterprise tier — tailored to your volume.</h2>
+      <table class="price-table">
+        <thead><tr><th>Module</th><th>Included</th><th>Configuration</th><th>Annual investment</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td>Real-Time Feeds</td><td class="check"><i class="fa-solid fa-check"></i></td><td>6 source systems · sub-60s SLA</td><td>$180K</td></tr>
+          <tr class="highlight"><td>Cross-System Join Layer</td><td class="check"><i class="fa-solid fa-check"></i></td><td>Full data model for all 6 systems</td><td>$120K</td></tr>
+          <tr class="highlight"><td>Analyst Workbench</td><td class="check"><i class="fa-solid fa-check"></i></td><td>1,200 users · SSO + SAML</td><td>$96K</td></tr>
+          <tr><td>Onboarding & integration</td><td class="check"><i class="fa-solid fa-check"></i></td><td>Dedicated team · 63-day guarantee</td><td>Included</td></tr>
+          <tr><td>Dedicated CSM + SLA</td><td class="check"><i class="fa-solid fa-check"></i></td><td>99.99% uptime · 1-hr response</td><td>Included</td></tr>
+          <tr style="font-weight:700"><td>Total Year 1</td><td></td><td></td><td style="color:var(--accent)">$396K</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:16px;font-size:0.85rem;color:var(--muted)">Multi-year discounts available. Volume pricing for users beyond 1,200. All pricing USD.</p>
+    </div>
+    <span class="slide-num">08 / 10</span>
+  </section>
+
+  <!-- Slide 9: Implementation -->
+  <section class="slide s9">
+    <div class="slide-inner">
+      <div class="eyebrow">Implementation</div>
+      <h2>Live in 63 days. Guaranteed.</h2>
+      <div class="impl-steps">
+        <div class="impl-step">
+          <div class="impl-num">1</div>
+          <h3>Discovery & mapping</h3>
+          <p>Schema mapping across all 6 systems. No data moved, no migration.</p>
+          <div class="impl-time">Days 1–14</div>
+        </div>
+        <div class="impl-step">
+          <div class="impl-num">2</div>
+          <h3>Feed configuration</h3>
+          <p>Real-time connectors deployed in your VPC. Security review completed.</p>
+          <div class="impl-time">Days 15–35</div>
+        </div>
+        <div class="impl-step">
+          <div class="impl-num">3</div>
+          <h3>UAT & training</h3>
+          <p>Pilot with 20 power users. NL query tuned to your domain vocabulary.</p>
+          <div class="impl-time">Days 36–56</div>
+        </div>
+        <div class="impl-step">
+          <div class="impl-num">4</div>
+          <h3>Go live</h3>
+          <p>Org-wide rollout. Hypercare support for first 30 days post-launch.</p>
+          <div class="impl-time">Day 63</div>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">09 / 10</span>
+  </section>
+
+  <!-- Slide 10: Next steps -->
+  <section class="slide s10">
+    <div class="slide-inner s10-inner">
+      <div class="eyebrow" style="color:rgba(255,255,255,0.5)">Let's move forward</div>
+      <h2>Three steps to getting started.</h2>
+      <p class="s10-sub">We can have a scoping call, pilot agreement, and implementation start within 10 business days.</p>
+      <div class="next-steps">
+        <div class="next-step"><div class="step-num">01</div><h3>Technical scoping call</h3><p>30-min with your IT team to confirm API access and data residency requirements.</p></div>
+        <div class="next-step"><div class="step-num">02</div><h3>Pilot agreement</h3><p>60-day proof of concept — Real-Time Feeds + one system join, at no risk.</p></div>
+        <div class="next-step"><div class="step-num">03</div><h3>Kick off</h3><p>Dedicated implementation team on-site in Week 1. Day 63 go-live guaranteed.</p></div>
+      </div>
+      <p class="s10-contact">james.meridian@meridiananalytics.com · <a href="#">meridiananalytics.com/apex</a></p>
+    </div>
+    <span class="slide-num">10 / 10</span>
+  </section>
+
+  <div class="nav-hint">↑ ↓ arrow keys or scroll to navigate</div>
+
+  <script>
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

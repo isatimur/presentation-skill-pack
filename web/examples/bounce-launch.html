@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bounce — Product Launch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --coral: #ff5a36;
+      --lime: #a8e63d;
+      --sky: #38bdf8;
+      --ink: #1a1a2e;
+      --light: #fafafa;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --radius: 24px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; }
+    body { background: var(--light); color: var(--ink); font-family: 'Nunito Sans', system-ui, sans-serif; }
+
+    .slide {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-inner { width: 100%; max-width: 1100px; position: relative; z-index: 1; }
+    .slide-num {
+      position: absolute;
+      bottom: 32px;
+      right: 40px;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+    }
+    .nav-hint {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--coral);
+      color: #fff;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      z-index: 100;
+    }
+    h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 900; line-height: 1.1; }
+    .tag { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border-radius: 20px; padding: 4px 12px; font-weight: 800; font-family: 'Nunito', sans-serif; }
+    .tag-coral { background: #fff0ed; color: var(--coral); }
+    .tag-lime { background: #f0fbdc; color: #4d7a00; }
+
+    /* ── Slide 1: Title ─────────────────────────────── */
+    .s1 { background: var(--coral); }
+    .s1-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 60px; }
+    .s1-mark { width: 44px; height: 44px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .s1-mark i { color: var(--coral); font-size: 1.2rem; }
+    .s1-name { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 22px; color: #fff; }
+    .s1 h1 { font-size: clamp(3rem, 7vw, 5.5rem); color: #fff; margin-bottom: 24px; }
+    .s1 h1 em { font-style: normal; color: var(--lime); }
+    .s1-sub { font-size: 1.2rem; color: rgba(255,255,255,0.8); max-width: 500px; margin-bottom: 48px; line-height: 1.6; }
+    .s1-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+    .s1-badge { background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 8px 20px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; color: #fff; }
+    /* decorative circles */
+    .s1::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; border: 80px solid rgba(255,255,255,0.06); right: -200px; top: -200px; }
+    .s1::after { content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; background: var(--lime); opacity: 0.15; right: 100px; bottom: -80px; }
+
+    /* ── Slide 2: What is Bounce ─────────────────────── */
+    .s2 { background: var(--ink); }
+    .s2 h2 { font-size: 2.8rem; color: #fff; margin-bottom: 40px; }
+    .s2 h2 span { color: var(--lime); }
+    .s2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .s2-left p { font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 24px; }
+    .s2-pill-row { display: flex; flex-direction: column; gap: 12px; }
+    .s2-pill { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px 20px; }
+    .s2-pill i { font-size: 1.2rem; color: var(--lime); }
+    .s2-pill span { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: #fff; }
+    .s2-phone {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 40px;
+      padding: 20px;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      gap: 12px; min-height: 360px;
+    }
+    .s2-phone i { font-size: 3rem; color: var(--coral); }
+    .s2-phone p { font-size: 0.85rem; color: rgba(255,255,255,0.4); }
+
+    /* ── Slide 3: Problem ───────────────────────────── */
+    .s3 { background: var(--light); }
+    .s3 h2 { font-size: 2.6rem; margin-bottom: 40px; }
+    .s3 h2 span { color: var(--coral); }
+    .s3-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .s3-card {
+      background: var(--card);
+      border: 2px solid #f0f0f0;
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .s3-card::before { content: ''; position: absolute; width: 80px; height: 80px; border-radius: 50%; background: var(--coral); opacity: 0.06; top: -20px; right: -20px; }
+    .s3-card .s3-emoji { font-size: 2rem; margin-bottom: 16px; }
+    .s3-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .s3-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── Slide 4: Solution ──────────────────────────── */
+    .s4 { background: var(--lime); }
+    .s4 h2 { font-size: 2.8rem; color: var(--ink); margin-bottom: 40px; }
+    .s4-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .s4-features { display: flex; flex-direction: column; gap: 16px; }
+    .s4-feature { background: rgba(255,255,255,0.5); border: 2px solid rgba(255,255,255,0.8); border-radius: 16px; padding: 20px 24px; }
+    .s4-feature h3 { font-size: 1rem; margin-bottom: 6px; color: var(--ink); }
+    .s4-feature p { font-size: 0.85rem; color: #3d4d1a; line-height: 1.5; }
+    .s4-how { background: var(--ink); border-radius: var(--radius); padding: 32px; }
+    .s4-how-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem; color: var(--lime); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+    .s4-step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+    .s4-step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--coral); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .s4-step p { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+
+    /* ── Slide 5: Stats ─────────────────────────────── */
+    .s5 { background: var(--card); }
+    .s5 h2 { font-size: 2.6rem; margin-bottom: 12px; }
+    .s5 .sub { font-size: 1rem; color: var(--muted); margin-bottom: 48px; }
+    .big-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .big-stat { text-align: center; }
+    .big-stat-val { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 3.5rem; line-height: 1; }
+    .big-stat-val.coral { color: var(--coral); }
+    .big-stat-val.lime { color: #4d7a00; }
+    .big-stat-val.sky { color: #0369a1; }
+    .big-stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+    .s5-note { margin-top: 40px; background: #f9fafb; border: 2px dashed #e5e7eb; border-radius: var(--radius); padding: 20px 24px; font-size: 0.9rem; color: var(--muted); text-align: center; }
+
+    /* ── Slide 6: Testimonials ──────────────────────── */
+    .s6 { background: var(--coral); }
+    .s6 h2 { font-size: 2.4rem; color: #fff; margin-bottom: 40px; }
+    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .testi-card { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 28px; }
+    .testi-stars { color: var(--lime); font-size: 0.9rem; margin-bottom: 12px; }
+    .testi-text { font-size: 0.95rem; color: #fff; line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .testi-user { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900; color: #fff; font-size: 0.9rem; }
+    .testi-name { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; color: #fff; }
+    .testi-handle { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+
+    /* ── Slide 7: Pricing ───────────────────────────── */
+    .s7 { background: var(--ink); }
+    .s7 h2 { font-size: 2.6rem; color: #fff; margin-bottom: 40px; }
+    .price-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .price-card { background: rgba(255,255,255,0.04); border: 2px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 28px; }
+    .price-card.popular { border-color: var(--lime); background: rgba(168,230,61,0.06); }
+    .price-card-label { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .price-card.popular .price-card-label { color: var(--lime); }
+    .price-card:not(.popular) .price-card-label { color: rgba(255,255,255,0.4); }
+    .price-amt { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 2.6rem; color: #fff; margin-bottom: 4px; }
+    .price-amt span { font-size: 1rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+    .price-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .price-features li { font-size: 0.85rem; color: rgba(255,255,255,0.75); display: flex; gap: 8px; align-items: flex-start; }
+    .price-features li i { color: var(--lime); margin-top: 2px; font-size: 0.75rem; }
+
+    /* ── Slide 8: CTA ───────────────────────────────── */
+    .s8 { background: var(--lime); }
+    .s8-inner { text-align: center; }
+    .s8 h2 { font-size: clamp(2.5rem, 6vw, 5rem); color: var(--ink); margin-bottom: 24px; }
+    .s8 h2 em { font-style: normal; color: var(--coral); }
+    .s8-sub { font-size: 1.2rem; color: #3d4d1a; max-width: 480px; margin: 0 auto 48px; line-height: 1.6; }
+    .s8-app-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .s8-app-btn {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--ink); color: #fff;
+      border-radius: 16px; padding: 14px 24px;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+    }
+    .s8-app-btn i { font-size: 1.4rem; }
+    .s8-url { margin-top: 32px; font-size: 1rem; color: #3d4d1a; font-weight: 700; }
+    .s8::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: var(--coral); opacity: 0.1; left: -150px; bottom: -150px; }
+    .s8::after { content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; background: var(--ink); opacity: 0.06; right: -80px; top: -80px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-inner { animation: fadeUp 0.4s ease both; }
+
+    @media print {
+      html { scroll-snap-type: none; overflow: visible; }
+      .slide { page-break-after: always; min-height: auto; height: 100vh; }
+      .nav-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title -->
+  <section class="slide s1">
+    <div class="slide-inner">
+      <div class="s1-logo">
+        <div class="s1-mark"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <span class="s1-name">bounce.</span>
+      </div>
+      <h1>Move more.<br><em>Enjoy it.</em></h1>
+      <p class="s1-sub">The fitness app for people who hate fitness apps. Real workouts, real community, zero guilt-trips.</p>
+      <div class="s1-badges">
+        <span class="s1-badge">🚀 Launching June 2025</span>
+        <span class="s1-badge">📱 iOS + Android</span>
+        <span class="s1-badge">🎉 Free forever tier</span>
+      </div>
+    </div>
+    <span class="slide-num">01 / 08</span>
+  </section>
+
+  <!-- Slide 2: What is Bounce -->
+  <section class="slide s2">
+    <div class="slide-inner">
+      <h2 style="color:#fff;margin-bottom:40px">The movement app that <span>actually sticks.</span></h2>
+      <div class="s2-grid">
+        <div class="s2-left">
+          <p>Bounce turns everyday movement into a game — outdoor challenges, neighbourhood leaderboards, friend streaks, and celebration rituals that make you want to come back.</p>
+          <p>No body-shaming. No calorie obsession. No 5am boot-camp vibes. Just movement, momentum, and your people.</p>
+          <div class="s2-pill-row">
+            <div class="s2-pill"><i class="fa-solid fa-map-location-dot"></i><span>Location-based outdoor challenges</span></div>
+            <div class="s2-pill"><i class="fa-solid fa-users"></i><span>Squad goals & neighbourhood crews</span></div>
+            <div class="s2-pill"><i class="fa-solid fa-trophy"></i><span>Weekly leaderboards & rewards</span></div>
+          </div>
+        </div>
+        <div class="s2-phone">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <p>App screenshot</p>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">02 / 08</span>
+  </section>
+
+  <!-- Slide 3: Problem -->
+  <section class="slide s3">
+    <div class="slide-inner">
+      <h2>Fitness apps have a <span>quit problem.</span></h2>
+      <div class="s3-cards">
+        <div class="s3-card">
+          <div class="s3-emoji">😩</div>
+          <h3>80% quit by month 2</h3>
+          <p>Industry-wide: 4 in 5 users abandon fitness apps within 8 weeks. The content loop burns out fast.</p>
+        </div>
+        <div class="s3-card">
+          <div class="s3-emoji">📉</div>
+          <h3>Solo = lonely</h3>
+          <p>Most apps optimise for individual streaks. When you miss a day, there's no one to pull you back. Social debt kills habits.</p>
+        </div>
+        <div class="s3-card">
+          <div class="s3-emoji">🤕</div>
+          <h3>Guilt-based design</h3>
+          <p>"You failed your streak." "You're 200 calories over." Shame-driven notifications actively decrease long-term engagement by 34%.</p>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">03 / 08</span>
+  </section>
+
+  <!-- Slide 4: Solution -->
+  <section class="slide s4">
+    <div class="slide-inner">
+      <h2>Bounce is the fix.</h2>
+      <div class="s4-row">
+        <div class="s4-features">
+          <div class="s4-feature">
+            <h3>🗺️ Neighbourhood Quests</h3>
+            <p>Weekly outdoor challenges tied to your actual neighbourhood — parks, stairs, hidden trails. New quest every Monday.</p>
+          </div>
+          <div class="s4-feature">
+            <h3>👯 Squad Mode</h3>
+            <p>5-person crews. Group challenge completions unlock shared rewards. No one gets left behind.</p>
+          </div>
+          <div class="s4-feature">
+            <h3>🎊 Celebration Rituals</h3>
+            <p>Custom confetti, squad GIFs, and "Bounce Moments" when you crush something. Winning feels like winning.</p>
+          </div>
+        </div>
+        <div class="s4-how">
+          <div class="s4-how-title">How it works</div>
+          <div class="s4-step"><div class="s4-step-num">1</div><p>Open Bounce. See your neighbourhood's weekly quest and your squad's progress.</p></div>
+          <div class="s4-step"><div class="s4-step-num">2</div><p>Head out. GPS tracks your quest progress automatically — no manual logging.</p></div>
+          <div class="s4-step"><div class="s4-step-num">3</div><p>Unlock rewards together. Earn Bounce Coins for local partner discounts.</p></div>
+          <div class="s4-step"><div class="s4-step-num">4</div><p>Celebrate. Share your Bounce Moment. Repeat next week.</p></div>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">04 / 08</span>
+  </section>
+
+  <!-- Slide 5: Traction stats -->
+  <section class="slide s5">
+    <div class="slide-inner">
+      <h2>Beta results that surprised us.</h2>
+      <p class="sub">3-month closed beta · 2,400 users across Austin, Portland, and London.</p>
+      <div class="big-stats">
+        <div class="big-stat"><div class="big-stat-val coral">73%</div><div class="big-stat-label">Day 60 retention (industry avg: 20%)</div></div>
+        <div class="big-stat"><div class="big-stat-val lime">4.8★</div><div class="big-stat-label">TestFlight rating (2,400 reviews)</div></div>
+        <div class="big-stat"><div class="big-stat-val sky">3.2×</div><div class="big-stat-label">More moves vs. solo app users</div></div>
+        <div class="big-stat"><div class="big-stat-val coral">91%</div><div class="big-stat-label">Would recommend to a friend</div></div>
+      </div>
+      <div class="s5-note">Beta data collected March–May 2025. Retention = weekly active at day 60 / original install cohort.</div>
+    </div>
+    <span class="slide-num">05 / 08</span>
+  </section>
+
+  <!-- Slide 6: Testimonials -->
+  <section class="slide s6">
+    <div class="slide-inner">
+      <h2>What beta users are saying.</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I've tried every fitness app and always quit. Bounce is the first one where I'm actually sad when the week ends. My squad keeps me accountable without being annoying about it."</p>
+          <div class="testi-user"><div class="testi-avatar">JR</div><div><div class="testi-name">Jamie R.</div><div class="testi-handle">Portland, beta user</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The neighbourhood quests made me discover places in my own city I'd never been. I went from 2,000 steps/day to 11,000 — and I didn't even notice because it was so fun."</p>
+          <div class="testi-user"><div class="testi-avatar">MC</div><div><div class="testi-name">Marcus C.</div><div class="testi-handle">Austin, beta user</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"As someone who hates gyms, this is the first fitness thing that feels like it was built for me. No shame, no complicated macros — just go outside and vibe with your people."</p>
+          <div class="testi-user"><div class="testi-avatar">PK</div><div><div class="testi-name">Priya K.</div><div class="testi-handle">London, beta user</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"My squad has done 47 quests together in 3 months. We went from colleagues who barely talked to actual friends. Bounce unlocked something social that Strava never could."</p>
+          <div class="testi-user"><div class="testi-avatar">TL</div><div><div class="testi-name">Tomás L.</div><div class="testi-handle">Austin, beta user</div></div></div>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">06 / 08</span>
+  </section>
+
+  <!-- Slide 7: Pricing -->
+  <section class="slide s7">
+    <div class="slide-inner">
+      <h2 style="color:#fff;margin-bottom:40px">Simple pricing. Free to start.</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <div class="price-card-label">Free forever</div>
+          <div class="price-amt">$0</div>
+          <div class="price-desc">For individuals getting started</div>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> Neighbourhood quests</li>
+            <li><i class="fa-solid fa-check"></i> Solo leaderboard</li>
+            <li><i class="fa-solid fa-check"></i> 1 squad</li>
+            <li><i class="fa-solid fa-check"></i> Basic rewards</li>
+          </ul>
+        </div>
+        <div class="price-card popular">
+          <div class="price-card-label">Bounce+ — Most popular</div>
+          <div class="price-amt">$6 <span>/mo</span></div>
+          <div class="price-desc">For serious squads</div>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> Everything in Free</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited squads</li>
+            <li><i class="fa-solid fa-check"></i> City-wide leaderboards</li>
+            <li><i class="fa-solid fa-check"></i> Premium rewards + exclusive drops</li>
+            <li><i class="fa-solid fa-check"></i> Squad analytics dashboard</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-card-label">Bounce for Work</div>
+          <div class="price-amt">$4 <span>/user/mo</span></div>
+          <div class="price-desc">For teams building culture</div>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> Everything in Bounce+</li>
+            <li><i class="fa-solid fa-check"></i> Company leaderboards</li>
+            <li><i class="fa-solid fa-check"></i> HR wellness integration</li>
+            <li><i class="fa-solid fa-check"></i> Admin dashboard + reporting</li>
+            <li><i class="fa-solid fa-check"></i> Custom branding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">07 / 08</span>
+  </section>
+
+  <!-- Slide 8: CTA -->
+  <section class="slide s8">
+    <div class="slide-inner s8-inner">
+      <h2>Ready to <em>Bounce?</em></h2>
+      <p class="s8-sub">Join 50,000+ people on the early access waitlist. Launch week — special founding member pricing.</p>
+      <div class="s8-app-links">
+        <div class="s8-app-btn"><i class="fa-brands fa-apple"></i> App Store</div>
+        <div class="s8-app-btn"><i class="fa-brands fa-google-play"></i> Google Play</div>
+      </div>
+      <div class="s8-url">getbounce.app · @bounceapp</div>
+    </div>
+    <span class="slide-num">08 / 08</span>
+  </section>
+
+  <div class="nav-hint">↑ ↓ arrow keys or scroll to navigate</div>
+
+  <script>
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

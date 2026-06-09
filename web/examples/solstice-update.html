@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solstice Capital — Investor Update Q1 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --cream: #f9f6ef;
+      --paper: #f2ede3;
+      --ink: #1c1917;
+      --ink2: #292524;
+      --muted: #78716c;
+      --light-muted: #a8a29e;
+      --accent: #c9a84c;
+      --rule: #e7e0d6;
+      --card: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-weight: 300; }
+
+    .slide {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-inner { width: 100%; max-width: 1000px; }
+    .slide-num {
+      position: absolute;
+      bottom: 40px;
+      right: 60px;
+      font-size: 11px;
+      color: var(--light-muted);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .nav-hint {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      z-index: 100;
+    }
+
+    h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; line-height: 1.15; }
+    .eyebrow { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--light-muted); margin-bottom: 16px; font-weight: 400; }
+    .rule { width: 40px; height: 1px; background: var(--accent); margin: 20px 0; }
+
+    /* ── Slide 1: Cover ─────────────────────────────── */
+    .s1 { background: var(--ink2); }
+    .s1-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 120px; }
+    .s1-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--cream); letter-spacing: 2px; text-transform: uppercase; }
+    .s1-logo span { color: var(--accent); }
+    .s1-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--light-muted); }
+    .s1 h1 { font-size: clamp(3rem, 5vw, 4.5rem); color: var(--cream); margin-bottom: 20px; }
+    .s1-sub { font-size: 1rem; color: rgba(249,246,239,0.5); letter-spacing: 0.5px; }
+    .s1-rule { width: 60px; height: 1px; background: var(--accent); margin: 32px 0; }
+    .s1-meta { display: flex; gap: 48px; }
+    .s1-meta-item .label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(249,246,239,0.3); margin-bottom: 6px; }
+    .s1-meta-item .value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--cream); }
+    /* background texture */
+    .s1::before { content: 'SC'; position: absolute; right: 80px; bottom: 80px; font-family: 'Cormorant Garamond', serif; font-size: 280px; font-weight: 600; color: rgba(255,255,255,0.02); line-height: 1; pointer-events: none; }
+
+    /* ── Slide 2: Quarter in brief ───────────────────── */
+    .s2 { background: var(--cream); }
+    .s2 h2 { font-size: 2.8rem; margin-bottom: 48px; }
+    .brief-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .brief-cell { background: var(--cream); padding: 32px; }
+    .brief-cell .kpi { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600; line-height: 1; margin-bottom: 8px; }
+    .brief-cell .kpi.up { color: #16a34a; }
+    .brief-cell .kpi.neutral { color: var(--ink); }
+    .brief-cell .kpi.accent { color: var(--accent); }
+    .brief-cell .kpi-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .brief-cell .kpi-note { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── Slide 3: Portfolio performance ──────────────── */
+    .s3 { background: var(--paper); }
+    .s3 h2 { font-size: 2.6rem; margin-bottom: 48px; }
+    .portfolio-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .portfolio-table th { text-align: left; padding: 10px 16px; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--light-muted); border-bottom: 1px solid var(--rule); font-weight: 500; }
+    .portfolio-table td { padding: 16px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+    .portfolio-table td:first-child { font-weight: 500; }
+    .port-badge { display: inline-block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; border-radius: 3px; padding: 2px 8px; font-weight: 500; }
+    .port-badge.growth { background: #f0fdf4; color: #16a34a; }
+    .port-badge.watch { background: #fffbeb; color: #d97706; }
+    .port-badge.stable { background: #f0f9ff; color: #0369a1; }
+    .perf-pos { color: #16a34a; font-weight: 500; }
+    .perf-neg { color: #dc2626; font-weight: 500; }
+
+    /* ── Slide 4: Key investment ────────────────────── */
+    .s4 { background: var(--cream); }
+    .s4-two { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .s4 h2 { font-size: 2.4rem; margin-bottom: 16px; }
+    .s4-lead { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 32px; }
+    .s4-data { display: flex; flex-direction: column; gap: 20px; }
+    .s4-row { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+    .s4-row .label { font-size: 0.85rem; color: var(--muted); }
+    .s4-row .val { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; }
+    .s4-quote { padding: 32px; background: var(--ink2); border-radius: 4px; }
+    .s4-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--cream); line-height: 1.6; font-style: italic; margin-bottom: 16px; }
+    .s4-quote cite { font-size: 0.8rem; color: var(--light-muted); font-style: normal; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ── Slide 5: Capital allocation ─────────────────── */
+    .s5 { background: var(--paper); }
+    .s5 h2 { font-size: 2.6rem; margin-bottom: 48px; }
+    .alloc-bars { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
+    .alloc-row { display: grid; grid-template-columns: 180px 1fr 80px; gap: 16px; align-items: center; }
+    .alloc-label { font-size: 0.85rem; color: var(--muted); }
+    .alloc-track { background: var(--rule); border-radius: 2px; height: 6px; overflow: hidden; }
+    .alloc-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+    .alloc-val { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; text-align: right; }
+    .alloc-note { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 620px; padding-top: 20px; border-top: 1px solid var(--rule); }
+
+    /* ── Slide 6: Market outlook ─────────────────────── */
+    .s6 { background: var(--cream); }
+    .s6 h2 { font-size: 2.6rem; margin-bottom: 48px; }
+    .outlook-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .outlook-col h3 { font-size: 1.3rem; margin-bottom: 20px; }
+    .outlook-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+    .outlook-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+    .outlook-dot.gold { background: var(--accent); }
+    .outlook-dot.ink { background: var(--ink); }
+    .outlook-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── Slide 7: Forward guidance ───────────────────── */
+    .s7 { background: var(--paper); }
+    .s7 h2 { font-size: 2.6rem; margin-bottom: 48px; }
+    .guidance-list { display: flex; flex-direction: column; gap: 24px; }
+    .guidance-item { display: grid; grid-template-columns: 40px 1fr; gap: 20px; align-items: flex-start; }
+    .g-num { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--accent); line-height: 1; }
+    .g-content h3 { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 500; margin-bottom: 4px; }
+    .g-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .g-timeline { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-top: 6px; }
+
+    /* ── Slide 8: Closing ────────────────────────────── */
+    .s8 { background: var(--ink2); }
+    .s8 h2 { font-size: 3rem; color: var(--cream); margin-bottom: 24px; }
+    .s8-rule { width: 60px; height: 1px; background: var(--accent); margin: 24px 0; }
+    .s8-tagline { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: rgba(249,246,239,0.6); max-width: 520px; line-height: 1.6; font-style: italic; margin-bottom: 64px; }
+    .s8-contacts { display: flex; gap: 48px; }
+    .s8-contact .s8-contact-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(249,246,239,0.3); margin-bottom: 6px; }
+    .s8-contact .s8-contact-val { font-size: 0.9rem; color: rgba(249,246,239,0.8); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-inner { animation: fadeUp 0.5s ease both; }
+
+    @media print {
+      html { scroll-snap-type: none; overflow: visible; }
+      .slide { page-break-after: always; min-height: auto; height: 100vh; }
+      .nav-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Cover -->
+  <section class="slide s1">
+    <div class="slide-inner">
+      <div class="s1-top">
+        <div class="s1-logo">Solstice <span>Capital</span></div>
+        <div class="s1-label">Confidential — for limited partners only</div>
+      </div>
+      <h1>Q1 2025<br>Investor Update</h1>
+      <div class="s1-rule"></div>
+      <p class="s1-sub">Fund IV · January — March 2025</p>
+      <div class="s1-meta">
+        <div class="s1-meta-item"><div class="label">AUM</div><div class="value">$2.4B</div></div>
+        <div class="s1-meta-item"><div class="label">Vintage</div><div class="value">2021</div></div>
+        <div class="s1-meta-item"><div class="label">Strategy</div><div class="value">Growth equity</div></div>
+      </div>
+    </div>
+    <span class="slide-num">01 / 10</span>
+  </section>
+
+  <!-- Slide 2: Quarter in brief -->
+  <section class="slide s2">
+    <div class="slide-inner">
+      <div class="eyebrow">Q1 2025 at a glance</div>
+      <h2>A strong quarter across all key metrics.</h2>
+      <div class="brief-grid">
+        <div class="brief-cell"><div class="kpi up">+18.4%</div><div class="kpi-label">Net IRR (gross 22.1%)</div><div class="kpi-note">Portfolio weighted. Outperforms our 2021 vintage cohort benchmark by 410 bps.</div></div>
+        <div class="brief-cell"><div class="kpi accent">$340M</div><div class="kpi-label">Dry powder deployed</div><div class="kpi-note">3 follow-on rounds, 1 new position. Average entry multiple: 8.2× revenue.</div></div>
+        <div class="brief-cell"><div class="kpi neutral">12 / 15</div><div class="kpi-label">Portfolio companies on plan</div><div class="kpi-note">2 require operational support; 1 in active sale process targeting close Q3 2025.</div></div>
+        <div class="brief-cell"><div class="kpi up">94%</div><div class="kpi-label">Weighted revenue retention</div><div class="kpi-note">Across all SaaS positions. Up from 91% in Q4 2024.</div></div>
+        <div class="brief-cell"><div class="kpi accent">2</div><div class="kpi-label">New positions initiated</div><div class="kpi-note">Infrastructure AI and vertical SaaS for regulated industries. Details on slide 4.</div></div>
+        <div class="brief-cell"><div class="kpi neutral">$1</div><div class="kpi-label">Realised distributions</div><div class="kpi-note">Secondary sale of 40% stake in Meridian Analytics at 3.4× MoIC. Proceeds distributed April 2.</div></div>
+      </div>
+    </div>
+    <span class="slide-num">02 / 10</span>
+  </section>
+
+  <!-- Slide 3: Portfolio performance -->
+  <section class="slide s3">
+    <div class="slide-inner">
+      <div class="eyebrow">Portfolio</div>
+      <h2>Company-by-company performance.</h2>
+      <table class="portfolio-table">
+        <thead><tr><th>Company</th><th>Sector</th><th>Status</th><th>Revenue growth (YoY)</th><th>NRR</th><th>MoIC</th></tr></thead>
+        <tbody>
+          <tr><td>Helix Systems</td><td>Infrastructure AI</td><td><span class="port-badge growth">On plan</span></td><td class="perf-pos">+140%</td><td>128%</td><td>2.1×</td></tr>
+          <tr><td>Meridian Analytics</td><td>B2B SaaS</td><td><span class="port-badge stable">Partial exit</span></td><td class="perf-pos">+87%</td><td>118%</td><td>3.4×</td></tr>
+          <tr><td>Cascade Health</td><td>Health-tech</td><td><span class="port-badge growth">On plan</span></td><td class="perf-pos">+62%</td><td>107%</td><td>1.7×</td></tr>
+          <tr><td>NovaSpark AI</td><td>Enterprise AI</td><td><span class="port-badge growth">Ahead</span></td><td class="perf-pos">+210%</td><td>136%</td><td>1.4×</td></tr>
+          <tr><td>Verdant Logistics</td><td>Supply chain</td><td><span class="port-badge watch">Watch</span></td><td class="perf-neg">−4%</td><td>89%</td><td>0.9×</td></tr>
+          <tr><td>Apex Education</td><td>Ed-tech</td><td><span class="port-badge stable">On plan</span></td><td class="perf-pos">+28%</td><td>101%</td><td>1.2×</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <span class="slide-num">03 / 10</span>
+  </section>
+
+  <!-- Slide 4: Key investment -->
+  <section class="slide s4">
+    <div class="slide-inner">
+      <div class="s4-two">
+        <div>
+          <div class="eyebrow">New position · Q1 2025</div>
+          <h2>Helix Systems — Series B lead.</h2>
+          <p class="s4-lead">Helix builds the data-plane infrastructure that makes real-time AI inference economically viable at enterprise scale. We led their $60M Series B at an 8× ARR entry multiple.</p>
+          <div class="s4-data">
+            <div class="s4-row"><span class="label">Solstice investment</span><span class="val">$32M</span></div>
+            <div class="s4-row"><span class="label">Entry valuation</span><span class="val">$480M</span></div>
+            <div class="s4-row"><span class="label">ARR at entry</span><span class="val">$60M</span></div>
+            <div class="s4-row"><span class="label">Ownership post-B</span><span class="val">6.7%</span></div>
+            <div class="s4-row"><span class="label">Board seat</span><span class="val">1 observer</span></div>
+          </div>
+        </div>
+        <div class="s4-quote">
+          <p>"The Solstice team understood our infrastructure thesis before we had to explain it. They brought three operational introductions in the first week — two became design partners."</p>
+          <cite>— CEO, Helix Systems</cite>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">04 / 10</span>
+  </section>
+
+  <!-- Slide 5: Capital allocation -->
+  <section class="slide s5">
+    <div class="slide-inner">
+      <div class="eyebrow">Fund IV</div>
+      <h2>Capital allocation — cumulative.</h2>
+      <div class="alloc-bars">
+        <div class="alloc-row"><span class="alloc-label">Deployed — active</span><div class="alloc-track"><div class="alloc-fill" style="width:72%"></div></div><span class="alloc-val">$1.73B</span></div>
+        <div class="alloc-row"><span class="alloc-label">Realised distributions</span><div class="alloc-track"><div class="alloc-fill" style="width:12%"></div></div><span class="alloc-val">$290M</span></div>
+        <div class="alloc-row"><span class="alloc-label">Dry powder remaining</span><div class="alloc-track"><div class="alloc-fill" style="width:16%"></div></div><span class="alloc-val">$380M</span></div>
+      </div>
+      <p class="alloc-note">Dry powder earmarked: $200M for follow-on reserves across existing portfolio; $180M for 2–3 new positions targeting close before Q4 2025. Investment pace aligns with 6-year deployment target from vintage.</p>
+    </div>
+    <span class="slide-num">05 / 10</span>
+  </section>
+
+  <!-- Slide 6: Market outlook -->
+  <section class="slide s6">
+    <div class="slide-inner">
+      <div class="eyebrow">Macro context</div>
+      <h2>Market outlook: selective optimism.</h2>
+      <div class="outlook-grid">
+        <div class="outlook-col">
+          <h3>Tailwinds</h3>
+          <div class="outlook-item"><div class="outlook-dot gold"></div><p>Enterprise AI adoption is moving from POC to production budgets. Average enterprise AI spend grew 3.4× YoY — our infrastructure and vertical SaaS positions benefit directly.</p></div>
+          <div class="outlook-item"><div class="outlook-dot gold"></div><p>Rate environment stabilising. Growth equity multiples recovering toward 2022 levels for companies with strong NRR and visible paths to profitability.</p></div>
+          <div class="outlook-item"><div class="outlook-dot gold"></div><p>Secondary market liquidity improving — GP-led secondaries pricing at 88 cents on NAV vs. 72 cents in Q4 2023. Creates tactical partial-exit opportunities.</p></div>
+        </div>
+        <div class="outlook-col">
+          <h3>Headwinds</h3>
+          <div class="outlook-item"><div class="outlook-dot ink"></div><p>Regulatory uncertainty in EU AI Act implementation creates compliance overhead for our two regulated-industry positions. Monitoring closely.</p></div>
+          <div class="outlook-item"><div class="outlook-dot ink"></div><p>Talent compression in AI engineering continues. Average time-to-hire for ML roles extended from 6 to 11 weeks across portfolio — friction on hiring plans.</p></div>
+          <div class="outlook-item"><div class="outlook-dot ink"></div><p>Customer procurement cycles lengthening in financial services. Verdant Logistics impacted by supply-chain consolidation among top-3 customers (see slide 3).</p></div>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">06 / 10</span>
+  </section>
+
+  <!-- Slide 7: Forward guidance -->
+  <section class="slide s7">
+    <div class="slide-inner">
+      <div class="eyebrow">Q2–Q4 2025 priorities</div>
+      <h2>Four initiatives for the remainder of the year.</h2>
+      <div class="guidance-list">
+        <div class="guidance-item">
+          <div class="g-num">01</div>
+          <div class="g-content">
+            <h3>Verdant Logistics operational review</h3>
+            <p>Working capital bridge and go-to-market pivot to mid-market supply chain. New CRO to be named by May 15. Revenue trajectory review at Q2 board meeting.</p>
+            <span class="g-timeline">Q2 2025 — April target</span>
+          </div>
+        </div>
+        <div class="guidance-item">
+          <div class="g-num">02</div>
+          <div class="g-content">
+            <h3>Cascade Health — Series C preparation</h3>
+            <p>Supporting management in Series C process targeting Q3 close. Solstice pro-rata $18M earmarked from dry powder. Target post-money $280M.</p>
+            <span class="g-timeline">Q3 2025 — July target close</span>
+          </div>
+        </div>
+        <div class="guidance-item">
+          <div class="g-num">03</div>
+          <div class="g-content">
+            <h3>One new position — regulated industries vertical SaaS</h3>
+            <p>Two term sheets in final negotiation. Both targets: $30–50M ARR, 110%+ NRR, healthcare or financial services focus. Decision by May board meeting.</p>
+            <span class="g-timeline">Q2 2025 — May decision</span>
+          </div>
+        </div>
+        <div class="guidance-item">
+          <div class="g-num">04</div>
+          <div class="g-content">
+            <h3>LP advisory committee — fee structure review</h3>
+            <p>Initiating conversation on Fund V fee terms ahead of formal raise in Q1 2026. Expect one advisory call in Q3 and written proposal in Q4.</p>
+            <span class="g-timeline">Q3–Q4 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="slide-num">07 / 10</span>
+  </section>
+
+  <!-- Slides 8–9 compressed into distinct layout variants -->
+  <!-- Slide 8: Risk register -->
+  <section class="slide s3" style="background:var(--cream)">
+    <div class="slide-inner">
+      <div class="eyebrow">Risk register</div>
+      <h2>Known risks and mitigations.</h2>
+      <table class="portfolio-table">
+        <thead><tr><th>Risk</th><th>Category</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>Verdant customer concentration</td><td>Portfolio</td><td><span class="port-badge watch">High</span></td><td>Medium</td><td>Operational review + bridge capital</td></tr>
+          <tr><td>AI winter / model capability plateau</td><td>Market</td><td><span class="port-badge stable">Low</span></td><td>High</td><td>Infrastructure positions hedge against platform risk</td></tr>
+          <tr><td>LP liquidity demand</td><td>Fund</td><td><span class="port-badge stable">Low</span></td><td>High</td><td>GP-led secondary contingency — Meridian stake as first candidate</td></tr>
+          <tr><td>EU AI Act compliance cost</td><td>Regulatory</td><td><span class="port-badge watch">Medium</span></td><td>Low</td><td>Portfolio-wide compliance audit underway (completion Q2)</td></tr>
+          <tr><td>Key-man: Helix CEO transition risk</td><td>Portfolio</td><td><span class="port-badge stable">Low</span></td><td>High</td><td>Succession plan approved at April board meeting</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <span class="slide-num">08 / 10</span>
+  </section>
+
+  <!-- Slide 9: ESG highlights -->
+  <section class="slide s5">
+    <div class="slide-inner">
+      <div class="eyebrow">ESG & Impact</div>
+      <h2>Highlights — Q1 2025.</h2>
+      <div class="alloc-bars">
+        <div class="alloc-row"><span class="alloc-label">Portfolio Scope 1+2 intensity</span><div class="alloc-track"><div class="alloc-fill" style="width:40%"></div></div><span class="alloc-val">−18% YoY</span></div>
+        <div class="alloc-row"><span class="alloc-label">Gender diversity — C-suite</span><div class="alloc-track"><div class="alloc-fill" style="width:44%"></div></div><span class="alloc-val">44%</span></div>
+        <div class="alloc-row"><span class="alloc-label">Board diversity target (≥40%)</span><div class="alloc-track"><div class="alloc-fill" style="width:53%"></div></div><span class="alloc-val">53%</span></div>
+      </div>
+      <p class="alloc-note">Full ESG data report available in the data room. Solstice is a signatory to the UN PRI and reports annually under TCFD. Fund IV ESG framework reviewed by advisory committee October 2024.</p>
+    </div>
+    <span class="slide-num">09 / 10</span>
+  </section>
+
+  <!-- Slide 10: Closing -->
+  <section class="slide s8">
+    <div class="slide-inner">
+      <div class="eyebrow" style="color:rgba(249,246,239,0.3)">Q1 2025</div>
+      <h2>Thank you for your continued partnership.</h2>
+      <div class="s8-rule"></div>
+      <p class="s8-tagline">"Patient capital, concentrated positions, operational partnership. The Solstice approach has not changed — and it will not."</p>
+      <div class="s8-contacts">
+        <div class="s8-contact"><div class="s8-contact-label">GP Contact</div><div class="s8-contact-val">Sarah Okafor · Managing Partner</div></div>
+        <div class="s8-contact"><div class="s8-contact-label">IR</div><div class="s8-contact-val">ir@solsticecapital.com</div></div>
+        <div class="s8-contact"><div class="s8-contact-label">Data room</div><div class="s8-contact-val">lp.solsticecapital.com</div></div>
+      </div>
+    </div>
+    <span class="slide-num">10 / 10</span>
+  </section>
+
+  <div class="nav-hint">↑ ↓ arrow keys or scroll to navigate</div>
+
+  <script>
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
