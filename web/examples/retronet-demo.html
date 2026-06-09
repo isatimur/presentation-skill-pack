@@ -3,439 +3,360 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RetroNet — Product Demo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <title>RetroNet — Manifesto & Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --void: #08040f;
-      --deep: #110a1f;
-      --surface: #1a1030;
-      --magenta: #ff2d78;
-      --cyan: #00f5ff;
-      --yellow: #ffe600;
-      --muted: #6b5d7e;
-      --text: #e8deff;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --void:#06040a;--paper:#f5f0e8;--ink:#1a1a1a;
+      --mag:#ff2d78;--cyn:#00f5ff;--yel:#ffe600;--grn:#39ff14;
+      --red:#ff3333;--dim:rgba(255,255,255,0.12);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; }
-    body { background: var(--void); color: var(--text); font-family: 'Share Tech Mono', monospace; }
+    html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth}
+    body{background:var(--void);color:var(--paper);font-family:'Share Tech Mono',monospace}
+    .s{min-height:100vh;width:100%;scroll-snap-align:start;position:relative;overflow:hidden}
+    .nh{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:2px;z-index:100;font-family:'Share Tech Mono',monospace}
 
-    /* CRT scanlines overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 2px);
-      pointer-events: none;
-      z-index: 999;
-    }
+    /* glitch text utility */
+    .glitch{position:relative;display:inline-block}
+    .glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}
+    .glitch::before{color:var(--cyn);clip:rect(0,900px,0,0);animation:glitch-a 2.5s infinite linear alternate-reverse}
+    .glitch::after{color:var(--mag);clip:rect(0,900px,0,0);animation:glitch-b 2.5s infinite linear alternate-reverse;left:2px}
+    @keyframes glitch-a{0%{clip:rect(42px,9999px,44px,0)}5%{clip:rect(12px,9999px,59px,0)}10%{clip:rect(80px,9999px,83px,0)}15%{clip:rect(63px,9999px,68px,0)}20%{clip:rect(14px,9999px,28px,0)}25%{clip:rect(74px,9999px,91px,0)}30%{clip:rect(20px,9999px,38px,0)}35%{clip:rect(0px,9999px,0px,0)}40%{clip:rect(35px,9999px,47px,0)}100%{clip:rect(0,0,0,0)}}
+    @keyframes glitch-b{0%{clip:rect(65px,9999px,72px,0)}5%{clip:rect(31px,9999px,33px,0)}10%{clip:rect(55px,9999px,67px,0)}15%{clip:rect(26px,9999px,30px,0)}20%{clip:rect(88px,9999px,95px,0)}25%{clip:rect(3px,9999px,18px,0)}30%{clip:rect(47px,9999px,54px,0)}35%{clip:rect(0,9999px,0,0)}40%{clip:rect(76px,9999px,81px,0)}100%{clip:rect(0,0,0,0)}}
 
-    .slide {
-      min-height: 100vh;
-      width: 100%;
-      scroll-snap-align: start;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .slide-inner { width: 100%; max-width: 1100px; position: relative; z-index: 1; }
-    .slide-num {
-      position: absolute;
-      bottom: 32px;
-      right: 40px;
-      font-family: 'Press Start 2P', monospace;
-      font-size: 9px;
-      color: var(--muted);
-    }
-    .nav-hint {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--magenta);
-      color: #fff;
-      border-radius: 0;
-      padding: 6px 16px;
-      font-family: 'Press Start 2P', monospace;
-      font-size: 8px;
-      letter-spacing: 1px;
-      z-index: 100;
-      box-shadow: 0 0 20px rgba(255,45,120,0.5);
-    }
+    /* scanline overlay */
+    body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);pointer-events:none;z-index:9999;animation:scanshift 8s linear infinite}
+    @keyframes scanshift{0%{background-position:0 0}100%{background-position:0 400px}}
 
-    /* Glow helpers */
-    .glow-m { text-shadow: 0 0 20px rgba(255,45,120,0.8), 0 0 40px rgba(255,45,120,0.4); }
-    .glow-c { text-shadow: 0 0 20px rgba(0,245,255,0.8), 0 0 40px rgba(0,245,255,0.4); }
-    .glow-y { text-shadow: 0 0 20px rgba(255,230,0,0.8), 0 0 40px rgba(255,230,0,0.4); }
+    /* stamp label utility */
+    .stamp{display:inline-block;border:3px solid currentColor;padding:4px 12px;font-size:11px;letter-spacing:3px;text-transform:uppercase;transform:rotate(-2deg);font-family:'Share Tech Mono',monospace;font-weight:bold}
+    .stamp.red{color:var(--red);border-color:var(--red)}
+    .stamp.grn{color:var(--grn);border-color:var(--grn)}
+    .stamp.yel{color:var(--yel);border-color:var(--yel)}
+    .stamp.mag{color:var(--mag);border-color:var(--mag)}
+    .stamp.cyn{color:var(--cyn);border-color:var(--cyn)}
 
-    /* Grid overlay */
-    .grid-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,245,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,245,255,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
+    /* overprint halftone effect */
+    .halftone{background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:8px 8px}
 
-    /* Pixel border */
-    .px-border { border: 2px solid; outline: 1px solid rgba(255,255,255,0.05); }
-    .px-border-m { border-color: var(--magenta); box-shadow: 0 0 12px rgba(255,45,120,0.3), inset 0 0 12px rgba(255,45,120,0.05); }
-    .px-border-c { border-color: var(--cyan); box-shadow: 0 0 12px rgba(0,245,255,0.3), inset 0 0 12px rgba(0,245,255,0.05); }
-    .px-border-y { border-color: var(--yellow); box-shadow: 0 0 12px rgba(255,230,0,0.3); }
+    /* ── S1 COVER ── */
+    .s1{background:var(--void);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:60px}
+    .s1-issue{font-size:10px;letter-spacing:4px;color:rgba(255,255,255,0.2);margin-bottom:32px}
+    .s1 h1{font-family:'VT323',monospace;font-size:clamp(5rem,14vw,13rem);line-height:0.9;letter-spacing:-4px;color:var(--paper);position:relative;z-index:2}
+    .s1-sub{font-family:'Share Tech Mono',monospace;font-size:1rem;color:rgba(255,255,255,0.4);max-width:500px;line-height:1.7;margin:28px auto;letter-spacing:1px}
+    .s1-bar{width:100%;max-width:600px;border-top:1px solid var(--dim);border-bottom:1px solid var(--dim);padding:12px 0;margin:0 auto;display:flex;justify-content:space-around;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.2)}
+    .s1-scan{position:absolute;width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--cyn),transparent);opacity:0.3;animation:scan 4s ease-in-out infinite}
+    @keyframes scan{0%,100%{top:0;opacity:0}50%{opacity:0.3}0%{top:0}100%{top:100%}}
+    .s1-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,245,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
 
-    h1, h2, h3 { font-family: 'Press Start 2P', monospace; line-height: 1.5; letter-spacing: -0.5px; }
+    /* ── S2 WHAT ── */
+    .s2{background:var(--paper);color:var(--ink);display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+    .s2-left{padding:60px;border-right:3px solid var(--ink);display:flex;flex-direction:column;gap:24px}
+    .s2-right{padding:60px;display:flex;flex-direction:column;justify-content:space-between}
+    .s2 h2{font-family:'VT323',monospace;font-size:clamp(3rem,6vw,5rem);line-height:0.95;color:var(--ink);letter-spacing:-2px}
+    .s2-body{font-family:'Courier Prime',monospace;font-size:0.88rem;line-height:1.8;color:var(--ink);flex:1}
+    .s2-body strong{font-weight:700}
+    .s2-aside{background:var(--ink);color:var(--paper);padding:24px;font-size:0.8rem;line-height:1.7}
+    .s2-aside .title{font-family:'VT323',monospace;font-size:1.8rem;margin-bottom:8px;color:var(--yel)}
+    .s2-rule{border:none;border-top:3px solid var(--ink);margin:20px 0}
+    .s2-caps{font-family:'VT323',monospace;font-size:2rem;color:var(--ink);line-height:1}
+    .s2-caps span{color:var(--red)}
 
-    /* ── Slide 1: Title ─────────────────────────────── */
-    .s1 { background: var(--void); }
-    .s1-logo { font-family: 'Press Start 2P', monospace; font-size: 14px; color: var(--cyan); margin-bottom: 60px; display: flex; align-items: center; gap: 12px; }
-    .s1-logo-dot { width: 10px; height: 10px; background: var(--magenta); box-shadow: 0 0 10px var(--magenta); }
-    .s1 h1 { font-size: clamp(1.6rem, 4vw, 3rem); color: var(--magenta); margin-bottom: 16px; }
-    .s1 h1.line2 { color: var(--cyan); margin-bottom: 40px; }
-    .s1-sub { font-size: 0.85rem; color: var(--muted); line-height: 2; max-width: 560px; margin-bottom: 48px; }
-    .s1-badges { display: flex; gap: 16px; flex-wrap: wrap; }
-    .s1-badge { font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 8px 14px; letter-spacing: 1px; }
-    /* animated scanline on title */
-    .s1::after { content: ''; position: absolute; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); top: 0; left: 0; animation: scan 3s linear infinite; opacity: 0.4; }
-    @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+    /* ── S3 MANIFESTO ── */
+    .s3{background:var(--mag);display:flex;align-items:center;padding:80px}
+    .s3-inner{max-width:900px}
+    .s3-pre{font-size:10px;letter-spacing:4px;color:rgba(255,255,255,0.5);margin-bottom:24px;display:block}
+    .s3 h2{font-family:'VT323',monospace;font-size:clamp(2.5rem,6vw,6rem);line-height:0.95;color:#fff;letter-spacing:-2px;margin-bottom:32px}
+    .s3-list{display:flex;flex-direction:column;gap:0;border-top:2px solid rgba(255,255,255,0.3)}
+    .s3-item{border-bottom:2px solid rgba(255,255,255,0.3);padding:16px 0;display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;font-family:'Courier Prime',monospace;font-size:0.88rem;color:rgba(255,255,255,0.85)}
+    .s3-item .n{font-family:'VT323',monospace;font-size:1.8rem;color:rgba(255,255,255,0.3);line-height:1}
 
-    /* ── Slide 2: What is RetroNet ───────────────────── */
-    .s2 { background: var(--deep); }
-    .s2 h2 { font-size: 1.2rem; color: var(--cyan); margin-bottom: 40px; }
-    .s2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .terminal {
-      background: #000;
-      border: 2px solid var(--cyan);
-      box-shadow: 0 0 20px rgba(0,245,255,0.2);
-      padding: 24px;
-      font-size: 0.8rem;
-      line-height: 2;
-    }
-    .terminal .t-line { color: var(--cyan); }
-    .terminal .t-comment { color: var(--muted); }
-    .terminal .t-val { color: var(--yellow); }
-    .terminal .t-cursor::after { content: '█'; animation: blink 1s step-end infinite; }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    .s2-points { display: flex; flex-direction: column; gap: 20px; }
-    .s2-point { display: flex; gap: 16px; align-items: flex-start; }
-    .s2-point-bullet { color: var(--magenta); font-size: 0.9rem; flex-shrink: 0; margin-top: 2px; }
-    .s2-point p { font-size: 0.85rem; color: var(--text); line-height: 1.8; }
+    /* ── S4 FEATURES ── */
+    .s4{background:var(--void);display:flex;flex-direction:column;align-items:flex-start;padding:80px;justify-content:center}
+    .s4 h2{font-family:'VT323',monospace;font-size:clamp(2.5rem,6vw,5rem);color:var(--cyn);letter-spacing:-2px;margin-bottom:8px;line-height:0.95}
+    .s4-sub{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.2);margin-bottom:40px}
+    .feat-rows{display:flex;flex-direction:column;gap:0;width:100%;max-width:900px;border-top:1px solid var(--dim)}
+    .feat-r{display:grid;grid-template-columns:48px 280px 1fr 80px;gap:0;border-bottom:1px solid var(--dim);align-items:center}
+    .feat-r .fn{font-family:'VT323',monospace;font-size:2rem;color:rgba(255,255,255,0.1);padding:16px 0;text-align:center}
+    .feat-r .ft{font-family:'VT323',monospace;font-size:1.5rem;color:var(--yel);padding:16px 24px}
+    .feat-r .fd{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.6;padding:16px 0}
+    .feat-r .fs{text-align:right;padding-right:4px}
+    .bar-live{color:var(--grn);font-size:10px;letter-spacing:1px;animation:blink 1.2s step-start infinite}
+    @keyframes blink{50%{opacity:0}}
+    .bar-new{color:var(--mag);font-size:10px;letter-spacing:1px}
+    .bar-soon{color:rgba(255,255,255,0.2);font-size:10px;letter-spacing:1px}
 
-    /* ── Slide 3: Features ──────────────────────────── */
-    .s3 { background: var(--void); }
-    .s3 h2 { font-size: 1.1rem; color: var(--magenta); margin-bottom: 40px; }
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .feat-card { background: var(--surface); padding: 24px; border-top: 3px solid var(--cyan); }
-    .feat-icon { font-size: 1.4rem; color: var(--cyan); margin-bottom: 12px; }
-    .feat-card h3 { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; color: var(--cyan); margin-bottom: 10px; line-height: 1.8; }
-    .feat-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+    /* ── S5 DEMO ── */
+    .s5{background:var(--ink);display:flex;align-items:center;padding:80px;gap:60px}
+    .s5-term{flex:1;border:1px solid var(--dim);background:rgba(0,0,0,0.5);padding:24px;font-size:0.78rem;line-height:2;max-height:70vh;overflow:hidden}
+    .s5-term .prompt{color:var(--grn)}
+    .s5-term .cmd{color:var(--paper)}
+    .s5-term .out{color:rgba(255,255,255,0.4)}
+    .s5-term .hi{color:var(--cyn)}
+    .s5-term .warn{color:var(--yel)}
+    .s5-term .err{color:var(--red)}
+    .s5-term .cursor{display:inline-block;width:8px;height:16px;background:var(--grn);animation:blink 1s step-start infinite;vertical-align:middle}
+    .s5-info{flex:0 0 300px;display:flex;flex-direction:column;gap:24px}
+    .s5-info h2{font-family:'VT323',monospace;font-size:3rem;color:var(--paper);line-height:0.95;letter-spacing:-1px}
+    .s5-info p{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.7}
+    .s5-kv{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--dim)}
+    .s5-row{display:grid;grid-template-columns:1fr 1fr;padding:12px 0;border-bottom:1px solid var(--dim)}
+    .s5-row .k{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.2)}
+    .s5-row .v{font-size:0.8rem;text-align:right;color:var(--cyn)}
 
-    /* ── Slide 4: Demo walkthrough ───────────────────── */
-    .s4 { background: var(--deep); }
-    .s4 h2 { font-size: 1.1rem; color: var(--yellow); margin-bottom: 40px; }
-    .demo-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .demo-step { background: #000; border: 1px solid var(--muted); padding: 20px; position: relative; }
-    .demo-step::before { content: attr(data-num); position: absolute; top: -1px; left: -1px; background: var(--magenta); color: #fff; font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 4px 8px; }
-    .demo-step h3 { font-family: 'Press Start 2P', monospace; font-size: 0.55rem; color: var(--cyan); margin-top: 20px; margin-bottom: 10px; line-height: 2; }
-    .demo-step p { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
-    .demo-step .cmd { background: var(--surface); padding: 8px 12px; margin-top: 10px; font-size: 0.75rem; color: var(--yellow); border-left: 2px solid var(--magenta); }
+    /* ── S6 INTEGRATIONS ── */
+    .s6{background:var(--yel);color:var(--ink);display:flex;flex-direction:column;padding:80px;justify-content:center}
+    .s6 h2{font-family:'VT323',monospace;font-size:clamp(3rem,6vw,5rem);color:var(--ink);letter-spacing:-2px;line-height:0.95;margin-bottom:8px}
+    .s6-sub{font-size:10px;letter-spacing:3px;color:rgba(0,0,0,0.35);margin-bottom:40px}
+    .int-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid var(--ink)}
+    .int-cell{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:24px;display:flex;flex-direction:column;gap:8px}
+    .int-cell:nth-child(3n){border-right:none}
+    .int-cell:nth-last-child(-n+3){border-bottom:none}
+    .int-cell .icon{font-size:1.8rem;line-height:1}
+    .int-cell h3{font-family:'VT323',monospace;font-size:1.6rem;color:var(--ink);line-height:1}
+    .int-cell p{font-family:'Courier Prime',monospace;font-size:0.78rem;color:rgba(0,0,0,0.5);line-height:1.6}
+    .int-cell .badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;border:2px solid rgba(0,0,0,0.3);padding:2px 6px;display:inline-block;margin-top:4px;align-self:flex-start}
 
-    /* ── Slide 5: Integrations ──────────────────────── */
-    .s5 { background: var(--void); }
-    .s5 h2 { font-size: 1.1rem; color: var(--cyan); margin-bottom: 40px; }
-    .int-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .int-card { background: var(--surface); border: 1px solid rgba(0,245,255,0.15); padding: 20px; text-align: center; }
-    .int-card i { font-size: 1.8rem; color: var(--cyan); margin-bottom: 12px; }
-    .int-card .int-name { font-family: 'Press Start 2P', monospace; font-size: 0.55rem; color: var(--text); line-height: 1.8; }
-    .int-card .int-status { font-size: 0.7rem; color: var(--muted); margin-top: 6px; }
-    .int-card.live .int-status { color: #22c55e; }
+    /* ── S7 PRICING ── */
+    .s7{background:var(--void);display:flex;flex-direction:column;padding:80px;justify-content:center}
+    .s7-pre{font-size:10px;letter-spacing:4px;color:rgba(255,255,255,0.2);margin-bottom:8px}
+    .s7 h2{font-family:'VT323',monospace;font-size:clamp(3rem,6vw,5rem);color:var(--mag);letter-spacing:-2px;line-height:0.95;margin-bottom:40px}
+    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--dim)}
+    .price-cell{background:var(--void);padding:32px;display:flex;flex-direction:column}
+    .price-cell.hot{background:rgba(255,45,120,0.08);outline:1px solid var(--mag)}
+    .price-nm{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:8px}
+    .price-amt{font-family:'VT323',monospace;font-size:3.5rem;color:var(--paper);line-height:1;margin-bottom:4px}
+    .price-amt span{font-family:'Share Tech Mono',monospace;font-size:1rem;color:rgba(255,255,255,0.3)}
+    .price-d{font-size:0.78rem;color:rgba(255,255,255,0.3);margin-bottom:20px;line-height:1.5}
+    .price-feats{list-style:none;flex:1;display:flex;flex-direction:column;gap:8px}
+    .price-feats li{font-size:0.78rem;color:rgba(255,255,255,0.4);display:grid;grid-template-columns:14px 1fr;gap:8px}
+    .price-feats li::before{content:'>_';color:var(--grn)}
+    .price-cell.hot .price-feats li{color:rgba(255,255,255,0.7)}
+    .price-cell.hot .price-feats li::before{color:var(--mag)}
+    .price-cta{margin-top:24px;border:1px solid rgba(255,255,255,0.15);padding:10px;text-align:center;font-size:0.8rem;letter-spacing:2px;cursor:pointer;color:rgba(255,255,255,0.4)}
+    .price-cell.hot .price-cta{border-color:var(--mag);color:var(--mag)}
 
-    /* ── Slide 6: Pricing ───────────────────────────── */
-    .s6 { background: var(--deep); }
-    .s6 h2 { font-size: 1.1rem; color: var(--magenta); margin-bottom: 40px; }
-    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .price-card { background: #000; border: 2px solid var(--muted); padding: 24px; position: relative; }
-    .price-card.hot { border-color: var(--magenta); box-shadow: 0 0 20px rgba(255,45,120,0.3); }
-    .price-card.hot::before { content: '▶ BEST VALUE'; position: absolute; top: -13px; left: 16px; background: var(--magenta); color: #fff; font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 3px 8px; }
-    .price-tier { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; color: var(--muted); margin-bottom: 8px; letter-spacing: 2px; }
-    .price-amount { font-family: 'Press Start 2P', monospace; font-size: 1.3rem; color: var(--cyan); margin-bottom: 4px; }
-    .price-amount.hot-price { color: var(--magenta); }
-    .price-period { font-size: 0.75rem; color: var(--muted); margin-bottom: 16px; }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .price-features li { font-size: 0.75rem; color: var(--text); display: flex; gap: 8px; line-height: 1.6; }
-    .price-features li::before { content: '>'; color: var(--cyan); flex-shrink: 0; }
+    /* ── S8 TESTIMONIALS ── */
+    .s8{background:var(--paper);color:var(--ink);display:flex;flex-direction:column;padding:80px;justify-content:center}
+    .s8 h2{font-family:'VT323',monospace;font-size:clamp(2.5rem,5vw,4rem);color:var(--ink);letter-spacing:-2px;line-height:0.95;margin-bottom:40px}
+    .t-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--ink)}
+    .t-card{background:var(--paper);padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+    .t-card blockquote{font-family:'Courier Prime',monospace;font-size:0.9rem;line-height:1.7;color:var(--ink);flex:1;margin-bottom:16px}
+    .t-card .attr{display:flex;justify-content:space-between;align-items:flex-end}
+    .t-card .who{font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:rgba(0,0,0,0.4);line-height:1.4}
+    .t-card .who strong{color:var(--ink);display:block}
+    .t-card .handle{font-family:'VT323',monospace;font-size:1.2rem;color:var(--mag)}
+    .t-big{background:var(--ink);color:var(--paper);padding:28px;display:flex;flex-direction:column;justify-content:flex-end}
+    .t-big .num{font-family:'VT323',monospace;font-size:5rem;line-height:0.9;color:var(--cyn);margin-bottom:12px}
+    .t-big .lbl{font-family:'Share Tech Mono',monospace;font-size:0.78rem;color:rgba(255,255,255,0.4);line-height:1.5}
 
-    /* ── Slide 7: Testimonials ──────────────────────── */
-    .s7 { background: var(--void); }
-    .s7 h2 { font-size: 1.1rem; color: var(--yellow); margin-bottom: 40px; }
-    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .testi-card { background: var(--surface); border-left: 3px solid var(--cyan); padding: 24px; }
-    .testi-text { font-size: 0.82rem; color: var(--text); line-height: 1.9; margin-bottom: 16px; }
-    .testi-user { display: flex; align-items: center; gap: 12px; }
-    .testi-avatar { width: 36px; height: 36px; background: var(--magenta); display: flex; align-items: center; justify-content: center; font-family: 'Press Start 2P', monospace; font-size: 0.55rem; color: #fff; flex-shrink: 0; }
-    .testi-name { font-family: 'Press Start 2P', monospace; font-size: 0.55rem; color: var(--cyan); margin-bottom: 4px; line-height: 1.8; }
-    .testi-role { font-size: 0.75rem; color: var(--muted); }
+    /* ── S9 CTA ── (ASCII art + call to action) */
+    .s9{background:var(--void);display:flex;align-items:center;padding:80px;gap:80px}
+    .s9-ascii{flex:0 0 auto;font-family:'Share Tech Mono',monospace;font-size:0.55rem;line-height:1.2;color:var(--grn);white-space:pre;opacity:0.6}
+    .s9-text{flex:1}
+    .s9-text h2{font-family:'VT323',monospace;font-size:clamp(3rem,6vw,5.5rem);color:var(--cyn);letter-spacing:-2px;line-height:0.95;margin-bottom:24px}
+    .s9-text p{font-size:0.88rem;color:rgba(255,255,255,0.4);line-height:1.8;max-width:500px;margin-bottom:32px}
+    .s9-links{display:flex;flex-direction:column;gap:12px}
+    .s9-link{display:flex;align-items:center;gap:12px;font-family:'Share Tech Mono',monospace;font-size:0.85rem}
+    .s9-link .arrow{color:var(--grn)}
+    .s9-link a{color:var(--cyn);letter-spacing:1px}
+    .s9-link .tag2{font-size:9px;letter-spacing:2px;border:1px solid rgba(255,255,255,0.1);padding:2px 6px;color:rgba(255,255,255,0.2)}
 
-    /* ── Slide 8: CTA ───────────────────────────────── */
-    .s8 { background: var(--void); }
-    .s8-inner { text-align: center; }
-    .s8 h2 { font-size: clamp(1rem, 3vw, 2rem); color: var(--magenta); margin-bottom: 16px; }
-    .s8-sub { font-size: 0.85rem; color: var(--muted); line-height: 2; max-width: 560px; margin: 0 auto 48px; }
-    .s8-cta-box { display: inline-block; background: var(--magenta); color: #fff; font-family: 'Press Start 2P', monospace; font-size: 0.7rem; padding: 16px 32px; margin-bottom: 24px; box-shadow: 4px 4px 0 var(--void), 0 0 30px rgba(255,45,120,0.6); cursor: pointer; letter-spacing: 2px; }
-    .s8-url { font-size: 0.8rem; color: var(--cyan); margin-bottom: 40px; }
-    .s8-ascii { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--muted); line-height: 2; }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    .slide-inner { animation: fadeUp 0.4s ease both; }
-
-    @media print {
-      html { scroll-snap-type: none; overflow: visible; }
-      .slide { page-break-after: always; min-height: auto; height: 100vh; }
-      .nav-hint { display: none; }
-      body::after { display: none; }
-    }
+    @media print{html{scroll-snap-type:none}.s{page-break-after:always;min-height:auto;height:100vh}.nh{display:none}body::after{display:none}.glitch::before,.glitch::after{display:none}}
   </style>
 </head>
 <body>
 
-  <!-- Slide 1: Title -->
-  <section class="slide s1 grid-bg">
-    <div class="slide-inner">
-      <div class="s1-logo"><div class="s1-logo-dot"></div>RETRONET.SYS</div>
-      <h1 class="glow-m">RETRO MEETS</h1>
-      <h1 class="line2 glow-c">REAL-TIME.</h1>
-      <p class="s1-sub">RetroNet is the fastest developer platform for building and shipping retro-aesthetic web apps — pixel-perfect 80s styling on modern infrastructure. Demo loading... please wait.</p>
-      <div class="s1-badges">
-        <span class="s1-badge px-border px-border-m" style="color:var(--magenta)">BETA ACCESS OPEN</span>
-        <span class="s1-badge px-border px-border-c" style="color:var(--cyan)">BUILT FOR DEV TEAMS</span>
-        <span class="s1-badge px-border px-border-y" style="color:var(--yellow)">NO VENDOR LOCK-IN</span>
+<!-- S1: COVER -->
+<section class="s s1">
+  <div class="s1-grid"></div>
+  <div class="s1-scan"></div>
+  <div style="position:relative;z-index:2;text-align:center">
+    <div class="s1-issue">ISSUE 001 · JUNE 2026 · PUBLIC BETA</div>
+    <h1 class="glitch" data-text="RETRONET">RETRONET</h1>
+    <p class="s1-sub">The developer network that remembers why the internet was built in the first place. Open protocols. Persistent identity. Zero surveillance capitalism.</p>
+    <div style="display:flex;gap:12px;justify-content:center;margin-bottom:28px">
+      <span class="stamp cyn">open source</span>
+      <span class="stamp grn">self-hosted</span>
+      <span class="stamp yel">no tracking</span>
+    </div>
+    <div class="s1-bar">
+      <span>v0.9.4-beta</span>
+      <span>//</span>
+      <span>12,400 nodes</span>
+      <span>//</span>
+      <span>retronet.dev</span>
+      <span>//</span>
+      <span>MIT license</span>
+    </div>
+  </div>
+</section>
+
+<!-- S2: WHAT IS RETRONET -->
+<section class="s s2">
+  <div class="s2-left">
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <span class="stamp red" style="transform:rotate(-3deg)">not a startup</span>
+      <span class="stamp grn" style="transform:rotate(2deg)">a movement</span>
+    </div>
+    <h2 style="font-family:'VT323',monospace;font-size:3rem;line-height:0.95;letter-spacing:-2px">What is<br>RetroNet?</h2>
+    <p class="s2-body">RetroNet is a <strong>federated developer community platform</strong>. You run your own node. Your data lives on your server. You connect to other nodes on the RetroNet mesh. <strong>Nobody owns the network.</strong> Nobody can sell your data. Nobody can deplatform you without your consent.<br><br>It's not nostalgia. It's a <strong>correct architectural choice</strong> that centralised platforms abandoned for profit reasons — and we're building it back.</p>
+    <div style="display:flex;gap:16px">
+      <div style="font-family:'VT323',monospace;font-size:2.5rem;color:var(--red);line-height:1">DECENTRALISED<br><span style="color:var(--ink);font-size:1.5rem">NOT ANARCHIC</span></div>
+    </div>
+  </div>
+  <div class="s2-right">
+    <div class="s2-aside">
+      <div class="title">THE DIFFERENCE</div>
+      <div style="font-family:'Courier Prime',monospace;font-size:0.8rem;line-height:1.8">
+        <div style="color:rgba(255,255,255,0.3)">CENTRALISED:</div>
+        <div>— Your posts belong to the platform</div>
+        <div>— Leave = lose everything</div>
+        <div>— Algorithms decide who sees you</div>
+        <div>— Banned = erased</div>
+        <br>
+        <div style="color:var(--grn)">RETRONET:</div>
+        <div>— Your posts live on your server</div>
+        <div>— Leave = take your data with you</div>
+        <div>— Chronological. You decide.</div>
+        <div>— Moderation = community-governed</div>
       </div>
     </div>
-    <span class="slide-num">01 / 08</span>
-  </section>
-
-  <!-- Slide 2: What is RetroNet -->
-  <section class="slide s2 grid-bg">
-    <div class="slide-inner">
-      <h2>// WHAT IS RETRONET?</h2>
-      <div class="s2-grid">
-        <div class="terminal">
-          <div class="t-comment">// system initializing...</div>
-          <div class="t-line">$ retronet init my-app</div>
-          <div class="t-comment">&gt; scaffolding pixel engine...</div>
-          <div class="t-comment">&gt; loading 80s theme pack...</div>
-          <div class="t-comment">&gt; wiring real-time layer...</div>
-          <div class="t-line">✓ ready in <span class="t-val">0.8s</span></div>
-          <div class="t-line">$ retronet deploy</div>
-          <div class="t-comment">&gt; building for edge...</div>
-          <div class="t-line">✓ live at <span class="t-val">app.retronet.io</span> <span class="t-cursor"></span></div>
-        </div>
-        <div class="s2-points">
-          <div class="s2-point"><span class="s2-point-bullet">▶</span><p>A component library + hosting platform purpose-built for the retro-aesthetic movement. Covers everything from pixel fonts to CRT scanlines to chiptune sound effects.</p></div>
-          <div class="s2-point"><span class="s2-point-bullet">▶</span><p>Real-time collaboration built in — multiplayer editing, live cursors, and conflict-free sync without extra infrastructure. Just npm install and go.</p></div>
-          <div class="s2-point"><span class="s2-point-bullet">▶</span><p>Edge deployment to 280 PoPs worldwide. Your 8-bit app loads in under 100ms anywhere on the planet.</p></div>
-          <div class="s2-point"><span class="s2-point-bullet">▶</span><p>Free tier includes 50,000 monthly active users. No credit card required. No vendor lock-in — export your data any time.</p></div>
-        </div>
-      </div>
+    <div style="border-top:3px solid var(--ink);padding-top:24px">
+      <div class="s2-caps">12,400<br><span>nodes</span><br>live<br>today</div>
     </div>
-    <span class="slide-num">02 / 08</span>
-  </section>
+    <div style="font-family:'Courier Prime',monospace;font-size:0.75rem;color:rgba(0,0,0,0.35)">01 / 09 — retronet.dev</div>
+  </div>
+</section>
 
-  <!-- Slide 3: Features -->
-  <section class="slide s3 grid-bg">
-    <div class="slide-inner">
-      <h2>// FEATURE SET v2.4</h2>
-      <div class="feature-grid">
-        <div class="feat-card">
-          <div class="feat-icon"><i class="fa-solid fa-palette"></i></div>
-          <h3>PIXEL THEME ENGINE</h3>
-          <p>24 built-in retro palettes. Custom CSS var overrides. Dark mode auto-detection. CRT scanline and glow effects as opt-in mixins.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3>REAL-TIME COLLAB</h3>
-          <p>CRDTs under the hood. Live cursors, presence indicators, and conflict-free multi-user state — one API call to enable.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i class="fa-solid fa-globe"></i></div>
-          <h3>EDGE DEPLOYMENT</h3>
-          <p>Auto-deploys to 280 edge PoPs on push. Sub-100ms TTFB anywhere. Instant rollback with one command.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i class="fa-solid fa-gamepad"></i></div>
-          <h3>8-BIT SOUND SDK</h3>
-          <p>Chiptune audio effects tied to user interactions. Web Audio API abstraction — play procedural SFX in 2 lines of code.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i class="fa-solid fa-code"></i></div>
-          <h3>COMPONENT LIBRARY</h3>
-          <p>120+ pre-built components: pixel buttons, progress bars, dialogue boxes, sprite animations — all accessible and keyboard-navigable.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i class="fa-solid fa-shield"></i></div>
-          <h3>AUTH + STORAGE</h3>
-          <p>Built-in auth (OAuth, magic link, passkey). Key-value store and relational DB — all retro-themed dashboards included.</p>
-        </div>
-      </div>
+<!-- S3: MANIFESTO -->
+<section class="s s3">
+  <div class="s3-inner">
+    <span class="s3-pre">retronet manifesto · draft 7 · ratified 2026-03-14 · 847 signatories</span>
+    <h2>The internet<br>we lost.<br>The internet<br>we're building.</h2>
+    <div class="s3-list">
+      <div class="s3-item"><span class="n">I.</span><span>The network should serve the people on it. Not the people who own it.</span></div>
+      <div class="s3-item"><span class="n">II.</span><span>Identity should be portable. A platform ban should not erase a person from the internet.</span></div>
+      <div class="s3-item"><span class="n">III.</span><span>Surveillance is not a feature. Personalization at the cost of privacy is a bad trade.</span></div>
+      <div class="s3-item"><span class="n">IV.</span><span>Open protocols beat closed platforms. Every time. Over every timescale.</span></div>
+      <div class="s3-item"><span class="n">V.</span><span>The algorithm should be yours to see, modify, and disable. Not a black box optimized for engagement.</span></div>
     </div>
-    <span class="slide-num">03 / 08</span>
-  </section>
+  </div>
+</section>
 
-  <!-- Slide 4: Demo walkthrough -->
-  <section class="slide s4 grid-bg">
-    <div class="slide-inner">
-      <h2>// DEMO WALKTHROUGH</h2>
-      <div class="demo-steps">
-        <div class="demo-step" data-num="01">
-          <h3>INSTALL + SCAFFOLD</h3>
-          <p>One command spins up a full app with routing, auth, and DB. No config files to touch.</p>
-          <div class="cmd">$ npx create-retronet@latest</div>
-        </div>
-        <div class="demo-step" data-num="02">
-          <h3>PICK YOUR PALETTE</h3>
-          <p>Choose from 24 themes in the visual picker. Every colour, glow, and scanline effect applies instantly.</p>
-          <div class="cmd">$ retronet theme --set crt-neon</div>
-        </div>
-        <div class="demo-step" data-num="03">
-          <h3>ADD REAL-TIME</h3>
-          <p>One function call enables collaborative state, live cursors, and presence indicators across all connected sessions.</p>
-          <div class="cmd">const room = retronet.room('demo')</div>
-        </div>
-        <div class="demo-step" data-num="04">
-          <h3>SHIP TO EDGE</h3>
-          <p>Git push triggers auto-deploy. Preview URL in 8 seconds. Promote to production with one command or PR merge.</p>
-          <div class="cmd">$ retronet deploy --prod</div>
-        </div>
-      </div>
+<!-- S4: FEATURES -->
+<section class="s s4">
+  <h2>WHAT IT<br>DOES.</h2>
+  <div class="s4-sub">core feature set · v0.9.4</div>
+  <div class="feat-rows">
+    <div class="feat-r"><span class="fn">01</span><span class="ft">Node Mesh</span><div class="fd">Peer-to-peer federation across all RetroNet nodes. No central server. Content propagates on the mesh with cryptographic signatures.</div><div class="fs"><span class="bar-live">● LIVE</span></div></div>
+    <div class="feat-r"><span class="fn">02</span><span class="ft">Portable Identity</span><div class="fd">Your identity is a keypair. Move between nodes without losing followers, history, or reputation. Your identity is yours — permanently.</div><div class="fs"><span class="bar-live">● LIVE</span></div></div>
+    <div class="feat-r"><span class="fn">03</span><span class="ft">Open Moderation</span><div class="fd">Community-governed moderation layers. Every rule is public. Every decision is auditable. No shadow banning. No invisible strikes.</div><div class="fs"><span class="bar-live">● LIVE</span></div></div>
+    <div class="feat-r"><span class="fn">04</span><span class="ft">Algorithm Marketplace</span><div class="fd">Write your own feed algorithm or install one from the community. Audit any algorithm. Switch instantly. Delete and revert.</div><div class="fs"><span class="bar-new">▶ NEW</span></div></div>
+    <div class="feat-r"><span class="fn">05</span><span class="ft">Encrypted DMs</span><div class="fd">End-to-end encryption by default. No key escrow. Node operators cannot read messages. Metadata minimized.</div><div class="fs"><span class="bar-soon">○ SOON</span></div></div>
+  </div>
+</section>
+
+<!-- S5: DEMO WALKTHROUGH -->
+<section class="s s5">
+  <div class="s5-term">
+    <div><span class="prompt">$ </span><span class="cmd">retronet node init --name my-node.retronet.dev</span></div>
+    <div><span class="out">→ Generating identity keypair...</span></div>
+    <div><span class="out">→ Keypair written to ~/.retronet/identity.key (chmod 600)</span></div>
+    <div><span class="out">→ <span class="hi">Public key:</span> rn1qpz8k4x9v2m7...</span></div>
+    <div>&nbsp;</div>
+    <div><span class="prompt">$ </span><span class="cmd">retronet connect --bootstrap mainnet</span></div>
+    <div><span class="out">→ Discovering peers via DHT...</span></div>
+    <div><span class="out">→ <span class="hi">Connected to 847 peers</span> (12,400 total)</span></div>
+    <div><span class="out">→ Mesh sync: blocks 1 → 498,241 ......... <span class="hi">DONE</span></span></div>
+    <div>&nbsp;</div>
+    <div><span class="prompt">$ </span><span class="cmd">retronet post "First post from my node 🎉" --visibility mesh</span></div>
+    <div><span class="out">→ Signed with your keypair</span></div>
+    <div><span class="out">→ Propagated to 847 connected nodes</span></div>
+    <div><span class="out">→ <span class="hi">Post hash: 0xf4a3c8e2...</span></span></div>
+    <div>&nbsp;</div>
+    <div><span class="prompt">$ </span><span class="cmd">retronet algo install community/chronological-v3</span></div>
+    <div><span class="out">→ <span class="warn">Algorithm source: open. 3,200 LOC. Audit before installing? [y/n]</span></span></div>
+    <div><span class="out">→ y</span></div>
+    <div><span class="out">→ Opening source in editor...</span></div>
+    <div><span class="out">→ <span class="hi">Algorithm installed. Feed reloading.</span></span></div>
+    <div>&nbsp;</div>
+    <div><span class="prompt">$ </span><span class="cursor"></span></div>
+  </div>
+  <div class="s5-info">
+    <h2>Live demo.<br>Real node.</h2>
+    <p>Every command you just saw runs on a $6/month VPS. This is the entire deployment. No Kubernetes. No cloud account. No vendor lock-in.</p>
+    <div class="s5-kv">
+      <div class="s5-row"><span class="k">Node setup time</span><span class="v">8 minutes</span></div>
+      <div class="s5-row"><span class="k">VPS requirement</span><span class="v">1 vCPU / 512MB</span></div>
+      <div class="s5-row"><span class="k">Data ownership</span><span class="v">100% yours</span></div>
+      <div class="s5-row"><span class="k">Vendor lock-in</span><span class="v">zero</span></div>
+      <div class="s5-row"><span class="k">Monthly cost (operator)</span><span class="v">$6–20</span></div>
     </div>
-    <span class="slide-num">04 / 08</span>
-  </section>
+    <div><span class="stamp cyn">demo.retronet.dev</span></div>
+  </div>
+</section>
 
-  <!-- Slide 5: Integrations -->
-  <section class="slide s5 grid-bg">
-    <div class="slide-inner">
-      <h2>// INTEGRATIONS</h2>
-      <div class="int-grid">
-        <div class="int-card live"><i class="fa-brands fa-github"></i><div class="int-name">GITHUB</div><div class="int-status">✓ LIVE</div></div>
-        <div class="int-card live"><i class="fa-brands fa-figma"></i><div class="int-name">FIGMA</div><div class="int-status">✓ LIVE</div></div>
-        <div class="int-card live"><i class="fa-brands fa-stripe"></i><div class="int-name">STRIPE</div><div class="int-status">✓ LIVE</div></div>
-        <div class="int-card live"><i class="fa-solid fa-envelope"></i><div class="int-name">RESEND</div><div class="int-status">✓ LIVE</div></div>
-        <div class="int-card live"><i class="fa-brands fa-slack"></i><div class="int-name">SLACK</div><div class="int-status">✓ LIVE</div></div>
-        <div class="int-card"><i class="fa-solid fa-robot"></i><div class="int-name">OPENAI</div><div class="int-status">Q3 2025</div></div>
-        <div class="int-card"><i class="fa-brands fa-shopify"></i><div class="int-name">SHOPIFY</div><div class="int-status">Q3 2025</div></div>
-        <div class="int-card"><i class="fa-brands fa-discord"></i><div class="int-name">DISCORD</div><div class="int-status">Q4 2025</div></div>
-      </div>
+<!-- S6: INTEGRATIONS -->
+<section class="s s6">
+  <h2 style="font-family:'VT323',monospace;font-size:clamp(3rem,6vw,5rem);letter-spacing:-2px;line-height:0.95">WORKS<br>WITH<br>EVERYTHING.</h2>
+  <div class="s6-sub">because open protocols make that possible</div>
+  <div class="int-grid">
+    <div class="int-cell"><div class="icon">🐘</div><h3>ActivityPub</h3><p>Full Mastodon / Fediverse compatibility. Your RetroNet profile is also a Mastodon profile.</p><span class="badge">built-in</span></div>
+    <div class="int-cell"><div class="icon">📡</div><h3>RSS / Atom</h3><p>Every profile, every tag, every node generates valid RSS. Subscribe anywhere.</p><span class="badge">built-in</span></div>
+    <div class="int-cell"><div class="icon">🔌</div><h3>Zapier / n8n</h3><p>Webhook-first architecture. Connect to any automation platform via standard webhooks.</p><span class="badge">community</span></div>
+    <div class="int-cell"><div class="icon">🤖</div><h3>Bot API</h3><p>Full REST API for building bots, bridges, and integrations. Same API used by the official clients.</p><span class="badge">stable v2</span></div>
+    <div class="int-cell"><div class="icon">🔒</div><h3>Keybase / PGP</h3><p>Link your RetroNet identity to your PGP key or Keybase profile for external verification.</p><span class="badge">beta</span></div>
+    <div class="int-cell"><div class="icon">🌐</div><h3>IPFS Storage</h3><p>Optionally store media on IPFS instead of your local disk. Content-addressed and permanent.</p><span class="badge">experimental</span></div>
+  </div>
+</section>
+
+<!-- S7: PRICING -->
+<section class="s s7">
+  <div class="s7-pre">pricing model · open source + sustainable</div>
+  <h2>Run it free.<br>Support it<br>if you can.</h2>
+  <div class="price-grid">
+    <div class="price-cell"><div class="price-nm">Self-hosted</div><div class="price-amt">$0<span>/forever</span></div><p class="price-d">The full platform. Your hardware. Your rules. MIT license. No strings.</p><ul class="price-feats"><li>All core features</li><li>All future updates</li><li>Community support</li><li>Full source code</li></ul><div class="price-cta">GET THE CODE</div></div>
+    <div class="price-cell hot"><div class="price-nm">RetroNet Cloud ★</div><div class="price-amt">$8<span>/mo</span></div><p class="price-d">We host your node. You still own your data. Cancel and export anytime.</p><ul class="price-feats"><li>Managed hosting · EU/US regions</li><li>Daily encrypted backups</li><li>Custom domain</li><li>Priority support</li><li>Funds open source development</li></ul><div class="price-cta">JOIN BETA →</div></div>
+    <div class="price-cell"><div class="price-nm">Enterprise</div><div class="price-amt">$49<span>/mo</span></div><p class="price-d">For orgs running private or semi-public nodes with SLA requirements.</p><ul class="price-feats"><li>Multi-node setup</li><li>99.9% uptime SLA</li><li>SSO / LDAP integration</li><li>Dedicated support engineer</li></ul><div class="price-cta">CONTACT US</div></div>
+  </div>
+</section>
+
+<!-- S8: TESTIMONIALS -->
+<section class="s s8">
+  <h2 style="font-family:'VT323',monospace;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-2px;line-height:0.95">WHAT THE<br>MESH IS<br>SAYING.</h2>
+  <div class="t-grid">
+    <div class="t-card"><blockquote>"I set up my RetroNet node on a Friday afternoon. By Saturday morning I had found 40 people who actually work on the same problems I do. Twitter never did that for me."</blockquote><div class="attr"><div class="who"><strong>@hex_pascal</strong>Compiler engineer · Node: pasca.lnet</div><div class="handle">RNET</div></div></div>
+    <div class="t-big"><div class="num">847</div><div class="lbl">nodes added in the 30 days after v0.9 shipped. Zero marketing spend. All word of mouth on the mesh.</div></div>
+    <div class="t-big" style="background:var(--mag)"><div class="num" style="color:#fff">0</div><div class="lbl" style="color:rgba(255,255,255,0.6)">times a node operator has been able to read your encrypted DMs. That's the design. That's not a promise — it's math.</div></div>
+    <div class="t-card"><blockquote>"I exported my entire 6-year posting history from Twitter, imported it to my RetroNet node, and it just worked. My data is mine again."</blockquote><div class="attr"><div class="who"><strong>@solveigl</strong>Systems programmer · Node: sol.heimdall.cc</div><div class="handle">RNET</div></div></div>
+  </div>
+</section>
+
+<!-- S9: CTA -->
+<section class="s s9">
+  <pre class="s9-ascii">
+ ██████╗ ███████╗████████╗██████╗  ██████╗ ███╗   ██╗███████╗████████╗
+ ██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗████╗  ██║██╔════╝╚══██╔══╝
+ ██████╔╝█████╗     ██║   ██████╔╝██║   ██║██╔██╗ ██║█████╗     ██║
+ ██╔══██╗██╔══╝     ██║   ██╔══██╗██║   ██║██║╚██╗██║██╔══╝     ██║
+ ██║  ██║███████╗   ██║   ██║  ██║╚██████╔╝██║ ╚████║███████╗   ██║
+ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝
+  </pre>
+  <div class="s9-text">
+    <h2>Your node.<br>Your rules.<br>Your internet.</h2>
+    <p>We're opening the beta to the next 5,000 self-hosted nodes. After that, waitlist. The mesh grows strongest when everyone who joins brings something to contribute.</p>
+    <div class="s9-links">
+      <div class="s9-link"><span class="arrow">&gt;</span><a>retronet.dev/install</a><span class="tag2">self-hosted</span></div>
+      <div class="s9-link"><span class="arrow">&gt;</span><a>cloud.retronet.dev</a><span class="tag2">managed</span></div>
+      <div class="s9-link"><span class="arrow">&gt;</span><a>github.com/retronet/core</a><span class="tag2">MIT</span></div>
+      <div class="s9-link"><span class="arrow">&gt;</span><a>docs.retronet.dev</a><span class="tag2">rtfm</span></div>
     </div>
-    <span class="slide-num">05 / 08</span>
-  </section>
+  </div>
+</section>
 
-  <!-- Slide 6: Pricing -->
-  <section class="slide s6 grid-bg">
-    <div class="slide-inner">
-      <h2>// PRICING.TXT</h2>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-tier">FREE TIER</div>
-          <div class="price-amount">$0</div>
-          <div class="price-period">forever, seriously</div>
-          <ul class="price-features">
-            <li>50k MAU</li>
-            <li>3 projects</li>
-            <li>Pixel theme engine</li>
-            <li>Community support</li>
-            <li>Edge deployment</li>
-          </ul>
-        </div>
-        <div class="price-card hot">
-          <div class="price-tier">PRO</div>
-          <div class="price-amount hot-price">$29</div>
-          <div class="price-period">/mo per team</div>
-          <ul class="price-features">
-            <li>Unlimited MAU</li>
-            <li>Unlimited projects</li>
-            <li>Real-time collab</li>
-            <li>8-bit sound SDK</li>
-            <li>Priority support 24/7</li>
-            <li>Custom domains</li>
-            <li>Analytics dashboard</li>
-          </ul>
-        </div>
-        <div class="price-card">
-          <div class="price-tier">ENTERPRISE</div>
-          <div class="price-amount">CUSTOM</div>
-          <div class="price-period">talk to us</div>
-          <ul class="price-features">
-            <li>Everything in Pro</li>
-            <li>SSO + SAML</li>
-            <li>SLA 99.99%</li>
-            <li>Dedicated infra</li>
-            <li>Audit logs</li>
-            <li>White-label option</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <span class="slide-num">06 / 08</span>
-  </section>
-
-  <!-- Slide 7: Testimonials -->
-  <section class="slide s7 grid-bg">
-    <div class="slide-inner">
-      <h2>// USER.LOG</h2>
-      <div class="testi-grid">
-        <div class="testi-card">
-          <p class="testi-text">"Built our entire game-score leaderboard in a weekend. Real-time updates, the retro pixel aesthetic, deployed on Friday — users thought we'd spent months on it. RetroNet is unreal."</p>
-          <div class="testi-user"><div class="testi-avatar">AK</div><div><div class="testi-name">ALEX KOWALSKI</div><div class="testi-role">Indie game dev, Pixel Dungeon Co.</div></div></div>
-        </div>
-        <div class="testi-card">
-          <p class="testi-text">"Our community management tool has 400+ concurrent editors at peak. RetroNet's collab layer handled it without a single dropped update. No other platform offers this at this price point."</p>
-          <div class="testi-user"><div class="testi-avatar">SR</div><div><div class="testi-name">SAM RODRIGUEZ</div><div class="testi-role">CTO, NeonCommunity</div></div></div>
-        </div>
-        <div class="testi-card">
-          <p class="testi-text">"The CRT scanline effect and chiptune SFX made our 80s-themed quiz app go viral on X. 50k installs in a week. All from RetroNet components — zero custom CSS from scratch."</p>
-          <div class="testi-user"><div class="testi-avatar">PJ</div><div><div class="testi-name">PRIYA JOSHI</div><div class="testi-role">Solo founder, QuizMaster8</div></div></div>
-        </div>
-        <div class="testi-card">
-          <p class="testi-text">"We migrated from a custom stack to RetroNet in 3 sprints. Kept all our retro aesthetic, got real-time collaboration we never had, and cut infrastructure costs by 60%."</p>
-          <div class="testi-user"><div class="testi-avatar">TN</div><div><div class="testi-name">THEO NAKAMURA</div><div class="testi-role">Lead engineer, RetroGames Studio</div></div></div>
-        </div>
-      </div>
-    </div>
-    <span class="slide-num">07 / 08</span>
-  </section>
-
-  <!-- Slide 8: CTA -->
-  <section class="slide s8 grid-bg">
-    <div class="slide-inner s8-inner">
-      <h2 class="glow-m">PLAYER ONE,</h2>
-      <h2 class="glow-m" style="margin-bottom:32px">INSERT COIN TO BEGIN.</h2>
-      <p class="s8-sub">Free tier. No credit card. Ship your first retro app in under 10 minutes — or your time-coins back.</p>
-      <div class="s8-cta-box">▶ START FOR FREE ◀</div>
-      <div class="s8-url">retronet.io</div>
-      <div class="s8-ascii">
-        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
-        ░  PRESS START TO CONTINUE   ░<br>
-        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      </div>
-    </div>
-    <span class="slide-num">08 / 08</span>
-  </section>
-
-  <div class="nav-hint">↑ ↓ KEYS TO NAVIGATE</div>
-
-  <script>
-    document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-    });
-  </script>
+<div class="nh">↑ ↓ keys or scroll</div>
+<script>document.addEventListener('keydown',e=>{const d=e.key==='ArrowDown'||e.key==='ArrowRight';const u=e.key==='ArrowUp'||e.key==='ArrowLeft';if(d)window.scrollBy({top:window.innerHeight,behavior:'smooth'});if(u)window.scrollBy({top:-window.innerHeight,behavior:'smooth'})});</script>
 </body>
 </html>

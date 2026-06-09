@@ -3,627 +3,349 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NovaSpark AI — Pitch Deck</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <title>NovaSpark AI — Series A</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #0e0e12;
-      --bg2: #16161d;
-      --text: #f4f4f5;
-      --muted: #a1a1aa;
-      --accent: #7c3aed;
-      --accent2: #22d3ee;
-      --card: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.08);
-      --radius: 18px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Open Sans', system-ui, sans-serif; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--void:#000;--text:#fff;--muted:rgba(255,255,255,0.4);--acc:#a78bfa;--acc2:#67e8f9;--r:rgba(255,255,255,0.06)}
+    html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth}
+    body{background:var(--void);color:var(--text);font-family:'Inter',sans-serif;font-weight:300}
+    .s{min-height:100vh;width:100%;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:80px 120px;position:relative;overflow:hidden}
+    .inner{width:100%;max-width:1100px;position:relative;z-index:2}
+    .sn{position:absolute;bottom:40px;right:60px;font-size:11px;color:var(--muted);letter-spacing:3px}
+    .nh{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(12px);border-radius:20px;padding:7px 18px;font-size:11px;color:var(--muted);letter-spacing:1px;z-index:100}
+    h1,h2,h3{font-family:'Syne',sans-serif;line-height:1.05}
 
-    .slide {
-      min-height: 100vh;
-      width: 100%;
-      scroll-snap-align: start;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .slide::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.15) 0%, transparent 60%),
-                  radial-gradient(ellipse at 20% 80%, rgba(34,211,238,0.08) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .slide-inner { width: 100%; max-width: 1120px; position: relative; z-index: 1; }
+    /* decoration helpers */
+    .orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:1}
 
-    h1, h2, h3 { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 800; line-height: 1.1; }
+    /* ── S1 COVER ── */
+    .s1{background:#000;text-align:left}
+    .s1-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(167,139,250,0.3);border-radius:20px;padding:6px 14px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);margin-bottom:48px}
+    .s1-tag span{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+    .s1 h1{font-size:clamp(4rem,8vw,8rem);font-weight:800;letter-spacing:-3px;margin-bottom:0;line-height:0.95}
+    .s1 h1 .g{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .s1-sub{font-size:1.1rem;color:var(--muted);max-width:520px;margin:32px 0 56px;line-height:1.7}
+    .s1-row{display:flex;gap:48px}
+    .s1-kv .k{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:6px}
+    .s1-kv .v{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem}
+    .orb1{width:600px;height:600px;background:var(--acc);opacity:0.08;right:-200px;top:-200px}
+    .orb2{width:400px;height:400px;background:var(--acc2);opacity:0.06;left:-100px;bottom:-150px}
 
-    /* Slide number */
-    .slide-num {
-      position: absolute;
-      bottom: 32px;
-      right: 40px;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 2px;
-    }
+    /* ── S2 MANIFESTO ── */
+    .s2{background:#05030a}
+    .s2 h2{font-size:clamp(2.5rem,5vw,5rem);font-weight:800;letter-spacing:-2px;max-width:900px;line-height:1.05}
+    .s2 h2 em{font-style:normal;color:var(--acc)}
+    .s2-attr{margin-top:40px;font-size:0.85rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
 
-    /* Nav hint */
-    .nav-hint {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(22,22,29,0.9);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 1px;
-      backdrop-filter: blur(8px);
-      z-index: 100;
-    }
+    /* ── S3 PROBLEM ── */
+    .s3{background:#000}
+    .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--acc2);margin-bottom:20px;display:block}
+    .s3 h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--r)}
+    .p-cell{background:#000;padding:36px 28px}
+    .p-num{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;color:rgba(255,255,255,0.06);margin-bottom:12px;line-height:1}
+    .p-cell h3{font-size:1rem;font-family:'Syne',sans-serif;margin-bottom:10px}
+    .p-cell p{font-size:0.85rem;color:var(--muted);line-height:1.7}
 
-    /* ── Slide 1: Title ─────────────────────────────── */
-    .s1 { background: var(--bg); }
-    .s1-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; }
-    .s1-logo-mark {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px;
-    }
-    .s1-logo-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; }
-    .s1-logo-name span { color: var(--accent2); }
-    .s1 h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 24px; }
-    .s1 h1 .hi { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .s1-sub { font-size: 1.3rem; color: var(--muted); max-width: 540px; margin-bottom: 48px; }
-    .s1-meta { display: flex; gap: 32px; }
-    .s1-meta-item { display: flex; flex-direction: column; gap: 4px; }
-    .s1-meta-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
-    .s1-meta-value { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; }
+    /* ── S4 SOLUTION ── */
+    .s4{background:#05030a}
+    .s4 h2{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .sol-stack{display:flex;flex-direction:column;gap:2px}
+    .sol-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:2px}
+    .sol-cell{background:var(--r);padding:20px 24px;font-size:0.85rem}
+    .sol-cell.label{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;display:flex;align-items:center}
+    .sol-cell.pain{color:rgba(255,100,100,0.7)}
+    .sol-cell.fix{color:var(--acc2)}
+    .sol-head{display:grid;grid-template-columns:200px 1fr 1fr;gap:2px;margin-bottom:2px}
+    .sol-head div{padding:8px 24px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
 
-    /* ── Slide 2: Problem ───────────────────────────── */
-    .s2 { background: var(--bg2); }
-    .eyebrow { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent2); margin-bottom: 16px; }
-    .s2 h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 40px; }
-    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .problem-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    .problem-card i { font-size: 1.6rem; color: var(--accent); margin-bottom: 16px; }
-    .problem-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-    .problem-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    /* ── S5 PRODUCT ── */
+    .s5{background:#000}
+    .s5 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .feat-list{display:flex;flex-direction:column;gap:0}
+    .feat-item{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--r)}
+    .feat-item:last-child{border-bottom:none}
+    .feat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:rgba(255,255,255,0.06)}
+    .feat-item h3{font-size:1rem;font-family:'Syne',sans-serif;margin-bottom:4px}
+    .feat-item p{font-size:0.83rem;color:var(--muted);line-height:1.6}
+    .feat-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:4px 10px;color:var(--muted);white-space:nowrap}
 
-    /* ── Slide 3: Solution ──────────────────────────── */
-    .s3 { background: var(--bg); }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .s3-visual {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .s3-layer {
-      background: linear-gradient(90deg, rgba(124,58,237,0.15), rgba(34,211,238,0.08));
-      border: 1px solid rgba(124,58,237,0.3);
-      border-radius: 10px;
-      padding: 14px 20px;
-      display: flex; align-items: center; gap: 12px;
-      font-size: 0.9rem;
-    }
-    .s3-layer i { color: var(--accent2); }
-    .s3-arrow { text-align: center; color: var(--muted); font-size: 0.8rem; }
-    .s3 h2 { font-size: 2.4rem; margin-bottom: 20px; }
-    .s3-points { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
-    .s3-points li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; }
-    .s3-points li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); margin-top: 8px; flex-shrink: 0; }
+    /* ── S6 TRACTION ── */
+    .s6{background:#05030a}
+    .s6 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:56px;letter-spacing:-1px}
+    .t-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--r)}
+    .t-cell{background:#05030a;padding:32px 24px}
+    .t-val{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px}
+    .t-label{font-size:0.8rem;color:var(--muted);line-height:1.5}
+    .t-note{margin-top:40px;padding:20px 24px;border:1px solid var(--r);border-radius:4px;font-size:0.85rem;color:var(--muted);line-height:1.6}
 
-    /* ── Slide 4: Traction ──────────────────────────── */
-    .s4 { background: var(--bg2); }
-    .s4 h2 { font-size: 2.6rem; margin-bottom: 48px; }
-    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-    }
-    .stat-value { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.8rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
-    .traction-note { margin-top: 32px; font-size: 0.9rem; color: var(--muted); text-align: center; }
+    /* ── S7 MARKET ── */
+    .s7{background:#000}
+    .s7 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .mkt-bars{display:flex;flex-direction:column;gap:24px;margin-bottom:40px}
+    .mkt-row{display:grid;grid-template-columns:180px 1fr 100px;gap:16px;align-items:center}
+    .mkt-lbl{font-size:0.8rem;color:var(--muted)}
+    .mkt-track{height:2px;background:var(--r);border-radius:1px;overflow:hidden}
+    .mkt-fill{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:1px}
+    .mkt-v{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;text-align:right}
+    .mkt-insight{font-size:1rem;color:var(--muted);max-width:680px;line-height:1.7;border-top:1px solid var(--r);padding-top:32px}
 
-    /* ── Slide 5: Product ───────────────────────────── */
-    .s5 { background: var(--bg); }
-    .s5 h2 { font-size: 2.4rem; margin-bottom: 40px; }
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .feature-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      transition: border-color 0.2s;
-    }
-    .feature-card:hover { border-color: rgba(124,58,237,0.5); }
-    .feature-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(34,211,238,0.15));
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-    }
-    .feature-icon i { color: var(--accent2); font-size: 1.1rem; }
-    .feature-card h3 { font-size: 1rem; margin-bottom: 8px; }
-    .feature-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+    /* ── S8 TEAM ── */
+    .s8{background:#05030a}
+    .s8 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .tm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--r)}
+    .tm-cell{background:#05030a;padding:28px 24px}
+    .tm-init{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px}
+    .tm-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:4px}
+    .tm-role{font-size:0.75rem;color:var(--acc2);margin-bottom:12px;letter-spacing:1px}
+    .tm-bio{font-size:0.8rem;color:var(--muted);line-height:1.6}
 
-    /* ── Slide 6: Market ───────────────────────────── */
-    .s6 { background: var(--bg2); }
-    .s6 h2 { font-size: 2.4rem; margin-bottom: 40px; }
-    .market-visual { display: flex; align-items: flex-end; gap: 24px; margin-bottom: 32px; }
-    .market-bar-wrap { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-    .market-label { font-size: 0.85rem; color: var(--muted); }
-    .market-bar {
-      height: 14px; border-radius: 7px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-    }
-    .market-val { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.4rem; }
-    .market-desc { font-size: 0.9rem; color: var(--muted); max-width: 600px; line-height: 1.6; }
+    /* ── S9 COMPETITION ── */
+    .s9{background:#000}
+    .s9 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .cmp-tbl{width:100%;border-collapse:collapse;font-size:0.85rem}
+    .cmp-tbl th{padding:12px 16px;text-align:left;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--r)}
+    .cmp-tbl td{padding:14px 16px;border-bottom:1px solid var(--r)}
+    .cmp-tbl tr.us td{background:rgba(167,139,250,0.05)}
+    .cmp-tbl tr.us td:first-child{color:var(--acc);font-family:'Syne',sans-serif;font-weight:700}
+    .yes{color:#4ade80}.no{color:rgba(255,255,255,0.15)}.part{color:#fbbf24}
 
-    /* ── Slide 7: Go-to-Market ──────────────────────── */
-    .s7 { background: var(--bg); }
-    .s7 h2 { font-size: 2.4rem; margin-bottom: 40px; }
-    .timeline { display: flex; flex-direction: column; gap: 0; }
-    .tl-item { display: grid; grid-template-columns: 120px 40px 1fr; gap: 0 16px; align-items: stretch; }
-    .tl-quarter { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--accent2); padding-top: 4px; text-align: right; }
-    .tl-line { display: flex; flex-direction: column; align-items: center; }
-    .tl-dot { width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); flex-shrink: 0; margin-top: 4px; }
-    .tl-pipe { flex: 1; width: 2px; background: var(--border); margin: 4px 0; }
-    .tl-item:last-child .tl-pipe { display: none; }
-    .tl-content { padding-bottom: 28px; }
-    .tl-content h3 { font-size: 1rem; margin-bottom: 4px; }
-    .tl-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+    /* ── S10 MODEL ── */
+    .s10{background:#05030a}
+    .s10 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--r)}
+    .tier{background:#05030a;padding:32px}
+    .tier-name{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    .tier-price{font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;margin-bottom:4px}
+    .tier-price span{font-size:1rem;font-weight:300;color:var(--muted)}
+    .tier-desc{font-size:0.8rem;color:var(--muted);margin-bottom:20px}
+    .tier-feats{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .tier-feats li{font-size:0.82rem;color:rgba(255,255,255,0.6);display:flex;gap:8px}
+    .tier-feats li::before{content:'—';color:var(--acc2);flex-shrink:0}
+    .tier.hot{background:rgba(167,139,250,0.04);outline:1px solid rgba(167,139,250,0.25)}
 
-    /* ── Slide 8: Business Model ────────────────────── */
-    .s8 { background: var(--bg2); }
-    .s8 h2 { font-size: 2.4rem; margin-bottom: 40px; }
-    .bm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .bm-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    .bm-tier { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; }
-    .bm-price { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; margin-bottom: 4px; }
-    .bm-price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
-    .bm-card h3 { font-size: 1rem; margin-bottom: 12px; }
-    .bm-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .bm-features li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px; }
-    .bm-features li i { color: var(--accent2); font-size: 0.75rem; margin-top: 3px; }
+    /* ── S11 FINANCIALS ── */
+    .s11{background:#000}
+    .s11 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
+    .fin-rows{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+    .fin-row{display:grid;grid-template-columns:120px 1fr 90px;gap:16px;align-items:center}
+    .fin-yr{font-size:0.8rem;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700}
+    .fin-track{height:28px;background:var(--r);border-radius:2px;overflow:hidden}
+    .fin-bar{height:100%;background:linear-gradient(90deg,rgba(167,139,250,0.6),rgba(103,232,249,0.8));display:flex;align-items:center;padding-left:12px;font-size:0.78rem;font-weight:500}
+    .fin-v{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;text-align:right}
+    .fin-note{font-size:0.83rem;color:var(--muted);line-height:1.7;border-top:1px solid var(--r);padding-top:24px}
 
-    /* ── Slide 9: Team ──────────────────────────────── */
-    .s9 { background: var(--bg); }
-    .s9 h2 { font-size: 2.4rem; margin-bottom: 40px; }
-    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .team-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      text-align: center;
-    }
-    .team-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      margin: 0 auto 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.4rem;
-    }
-    .team-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
-    .team-card .team-role { font-size: 0.8rem; color: var(--accent2); margin-bottom: 8px; }
-    .team-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    /* ── S12 CLOSE ── */
+    .s12{background:#000;text-align:center}
+    .s12 h2{font-size:clamp(2rem,5vw,5rem);font-weight:800;letter-spacing:-2px;margin-bottom:16px}
+    .s12 h2 .g{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .s12-amt{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(4rem,10vw,9rem);letter-spacing:-4px;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin:24px 0}
+    .s12-sub{font-size:1rem;color:var(--muted);max-width:480px;margin:0 auto 56px;line-height:1.7}
+    .s12-use{display:flex;gap:0;justify-content:center;border:1px solid var(--r);border-radius:4px;overflow:hidden;max-width:600px;margin:0 auto 48px}
+    .s12-pct{flex:1;padding:20px;border-right:1px solid var(--r);text-align:center}
+    .s12-pct:last-child{border-right:none}
+    .s12-pct .p{font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--acc2)}
+    .s12-pct .l{font-size:0.75rem;color:var(--muted);margin-top:4px}
+    .s12-email{font-size:0.85rem;color:var(--muted)}
+    .s12-email a{color:var(--acc2)}
 
-    /* ── Slide 10: Competition ──────────────────────── */
-    .s10 { background: var(--bg2); }
-    .s10 h2 { font-size: 2.4rem; margin-bottom: 40px; }
-    .comp-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    .comp-table th { text-align: left; padding: 12px 16px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
-    .comp-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
-    .comp-table tr.us td { background: rgba(124,58,237,0.08); }
-    .comp-table tr.us td:first-child { color: var(--accent2); font-weight: 700; }
-    .check { color: #22c55e; } .cross { color: #ef4444; } .partial { color: #eab308; }
-
-    /* ── Slide 11: Financials ───────────────────────── */
-    .s11 { background: var(--bg); }
-    .s11 h2 { font-size: 2.4rem; margin-bottom: 40px; }
-    .fin-row { display: grid; grid-template-columns: 120px 1fr 80px; gap: 12px 24px; align-items: center; margin-bottom: 12px; }
-    .fin-year { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--muted); }
-    .fin-bar-wrap { background: var(--card); border-radius: 6px; height: 32px; overflow: hidden; }
-    .fin-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 6px; display: flex; align-items: center; padding-left: 12px; font-size: 0.8rem; font-weight: 600; }
-    .fin-val { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; text-align: right; }
-    .fin-note { margin-top: 24px; font-size: 0.85rem; color: var(--muted); }
-
-    /* ── Slide 12: Ask ──────────────────────────────── */
-    .s12 { background: linear-gradient(135deg, #0e0e12 0%, #1a0e2e 100%); }
-    .s12-inner { text-align: center; }
-    .s12 h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 24px; }
-    .s12 h2 .hi { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .s12-amount {
-      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(3rem, 8vw, 6rem);
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 16px;
-    }
-    .s12-desc { font-size: 1.1rem; color: var(--muted); max-width: 560px; margin: 0 auto 48px; }
-    .s12-use { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 700px; margin: 0 auto; }
-    .s12-use-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-    .s12-use-pct { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--accent2); }
-    .s12-use-label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
-    .s12-contact { margin-top: 48px; font-size: 0.9rem; color: var(--muted); }
-    .s12-contact a { color: var(--accent2); text-decoration: none; }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    .slide-inner { animation: fadeUp 0.5s ease both; }
-
-    @media print {
-      html { scroll-snap-type: none; overflow: visible; }
-      .slide { page-break-after: always; min-height: auto; height: 100vh; }
-      .nav-hint { display: none; }
-    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .inner{animation:fadeUp .5s ease both}
+    @media print{html{scroll-snap-type:none;overflow:visible}.s{page-break-after:always;min-height:auto;height:100vh}.nh{display:none}}
   </style>
 </head>
 <body>
 
-  <!-- Slide 1: Title -->
-  <section class="slide s1">
-    <div class="slide-inner">
-      <div class="s1-logo">
-        <div class="s1-logo-mark">N</div>
-        <div class="s1-logo-name">Nova<span>Spark</span> AI</div>
-      </div>
-      <h1>Decisions That<br><span class="hi">Actually Work.</span></h1>
-      <p class="s1-sub">Real-time AI intelligence for enterprise teams — from data overload to decision-grade insight in seconds.</p>
-      <div class="s1-meta">
-        <div class="s1-meta-item"><span class="s1-meta-label">Round</span><span class="s1-meta-value">Series A</span></div>
-        <div class="s1-meta-item"><span class="s1-meta-label">Raising</span><span class="s1-meta-value">$12M</span></div>
-        <div class="s1-meta-item"><span class="s1-meta-label">Stage</span><span class="s1-meta-value">Revenue-generating</span></div>
-      </div>
+<section class="s s1">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="inner">
+    <div class="s1-tag"><span></span>Series A · Confidential</div>
+    <h1>Nova<br><span class="g">Spark</span></h1>
+    <p class="s1-sub">Real-time AI intelligence for enterprise teams. From raw data to decision-grade insight in seconds — not days.</p>
+    <div class="s1-row">
+      <div class="s1-kv"><div class="k">Raising</div><div class="v">$12M</div></div>
+      <div class="s1-kv"><div class="k">ARR</div><div class="v">$2.1M</div></div>
+      <div class="s1-kv"><div class="k">Growth</div><div class="v">340% YoY</div></div>
+      <div class="s1-kv"><div class="k">NRR</div><div class="v">94%</div></div>
     </div>
-    <span class="slide-num">01 / 12</span>
-  </section>
+  </div>
+  <span class="sn">01 / 12</span>
+</section>
 
-  <!-- Slide 2: Problem -->
-  <section class="slide s2">
-    <div class="slide-inner">
-      <div class="eyebrow">The Problem</div>
-      <h2>Enterprise teams drown in data,<br>starve for insight.</h2>
-      <div class="problem-grid">
-        <div class="problem-card">
-          <i class="fa-solid fa-chart-mixed"></i>
-          <h3>9 tools, no signal</h3>
-          <p>The average enterprise analyst toggles between 9 dashboards before making a single decision — and still isn't sure it's right.</p>
-        </div>
-        <div class="problem-card">
-          <i class="fa-solid fa-clock-rotate-left"></i>
-          <h3>3-day lag</h3>
-          <p>By the time data is cleaned, joined, and summarized, the market has moved. Decisions based on stale data cost an average of $3.1M per quarter.</p>
-        </div>
-        <div class="problem-card">
-          <i class="fa-solid fa-brain"></i>
-          <h3>Expertise bottleneck</h3>
-          <p>Tribal knowledge lives in two senior analysts' heads. Vacation = decision paralysis. Scale = impossible.</p>
-        </div>
-      </div>
+<section class="s s2">
+  <div class="inner">
+    <h2>The bottleneck in every enterprise isn't data.<br>It's the <em>distance</em> between data and decision.</h2>
+    <p class="s2-attr">NovaSpark closes that gap.</p>
+  </div>
+  <span class="sn">02 / 12</span>
+</section>
+
+<section class="s s3">
+  <div class="inner">
+    <span class="eyebrow">The Problem</span>
+    <h2>Three forces creating the gap.</h2>
+    <div class="p-grid">
+      <div class="p-cell"><div class="p-num">01</div><h3>9-tool sprawl</h3><p>The average analyst switches between 9 dashboards before making one decision. Signal is buried in the switching.</p></div>
+      <div class="p-cell"><div class="p-num">02</div><h3>T+1 blindness</h3><p>By the time morning reports land, conditions have shifted. Late data isn't data — it's history. Costs enterprises $3.1M/quarter.</p></div>
+      <div class="p-cell"><div class="p-num">03</div><h3>Expertise as bottleneck</h3><p>Two senior analysts hold all institutional knowledge. Vacation = paralysis. Scale = impossible. Succession = crisis.</p></div>
     </div>
-    <span class="slide-num">02 / 12</span>
-  </section>
+  </div>
+  <span class="sn">03 / 12</span>
+</section>
 
-  <!-- Slide 3: Solution -->
-  <section class="slide s3">
-    <div class="slide-inner two-col">
-      <div>
-        <div class="eyebrow">The Solution</div>
-        <h2>One intelligent layer across all your data.</h2>
-        <ul class="s3-points">
-          <li>NovaSpark connects to every existing data source in under 30 minutes — no ETL, no migration.</li>
-          <li>A reasoning layer turns raw signals into plain-English decision briefs, cited and auditable.</li>
-          <li>Role-aware context: your CFO sees different cuts than your growth team, automatically.</li>
-        </ul>
-      </div>
-      <div class="s3-visual">
-        <div class="s3-layer"><i class="fa-solid fa-database"></i> Salesforce · Snowflake · Mixpanel</div>
-        <div class="s3-arrow">↓ real-time ingestion</div>
-        <div class="s3-layer"><i class="fa-solid fa-bolt"></i> NovaSpark Reasoning Layer</div>
-        <div class="s3-arrow">↓ decision brief</div>
-        <div class="s3-layer"><i class="fa-solid fa-user-check"></i> Decision-grade insight — your inbox</div>
-      </div>
+<section class="s s4">
+  <div class="inner">
+    <span class="eyebrow">The Solution</span>
+    <h2>One reasoning layer across every data source.</h2>
+    <div class="sol-head">
+      <div></div><div>Without NovaSpark</div><div>With NovaSpark</div>
     </div>
-    <span class="slide-num">03 / 12</span>
-  </section>
-
-  <!-- Slide 4: Traction -->
-  <section class="slide s4">
-    <div class="slide-inner">
-      <div class="eyebrow">Traction</div>
-      <h2>Growing faster than we planned.</h2>
-      <div class="stat-row">
-        <div class="stat-card"><div class="stat-value">$2.1M</div><div class="stat-label">ARR (T-12 mo growth)</div></div>
-        <div class="stat-card"><div class="stat-value">47</div><div class="stat-label">Enterprise customers</div></div>
-        <div class="stat-card"><div class="stat-value">94%</div><div class="stat-label">Net revenue retention</div></div>
-        <div class="stat-card"><div class="stat-value">18 days</div><div class="stat-label">Avg. time to first value</div></div>
+    <div class="sol-stack">
+      <div class="sol-row">
+        <div class="sol-cell label">Data access</div>
+        <div class="sol-cell pain">9 disconnected dashboards · manual export</div>
+        <div class="sol-cell fix">One semantic layer · 140+ connectors · sub-60s latency</div>
       </div>
-      <p class="traction-note">Customers include 3 Fortune 500 enterprises in retail, financial services, and logistics.</p>
-    </div>
-    <span class="slide-num">04 / 12</span>
-  </section>
-
-  <!-- Slide 5: Product -->
-  <section class="slide s5">
-    <div class="slide-inner">
-      <div class="eyebrow">Product</div>
-      <h2>Three capabilities. One platform.</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-plug"></i></div>
-          <h3>Universal Connectors</h3>
-          <p>140+ pre-built integrations. Connect Snowflake, BigQuery, Salesforce, or a custom REST endpoint in under 10 minutes.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-          <h3>Reasoning Engine</h3>
-          <p>Domain-tuned LLM that synthesizes cross-source signals into cited, auditable briefs — no hallucinations, no guesswork.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
-          <h3>Decision Alerts</h3>
-          <p>Role-aware push briefs to Slack, email, or MS Teams when a metric crosses a threshold you care about — with the why.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-shield-check"></i></div>
-          <h3>Audit Trail</h3>
-          <p>Every insight is traceable back to source rows. SOC 2 Type II certified. GDPR-compliant data residency controls.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-users-gear"></i></div>
-          <h3>Role-Aware Context</h3>
-          <p>CFO, CMO, and ops lead get different signal cuts from the same data — configured in onboarding, refined continuously.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>Forecast Mode</h3>
-          <p>Time-series forecasting on any connected metric. Scenario modeling with one-sentence natural language input.</p>
-        </div>
+      <div class="sol-row">
+        <div class="sol-cell label">Insight format</div>
+        <div class="sol-cell pain">Raw charts requiring analyst interpretation</div>
+        <div class="sol-cell fix">Plain-English decision briefs · fully cited</div>
+      </div>
+      <div class="sol-row">
+        <div class="sol-cell label">Delivery</div>
+        <div class="sol-cell pain">Morning report · static · T+1</div>
+        <div class="sol-cell fix">Real-time push to Slack / email / Teams</div>
+      </div>
+      <div class="sol-row">
+        <div class="sol-cell label">Expertise</div>
+        <div class="sol-cell pain">2 analysts · human bottleneck</div>
+        <div class="sol-cell fix">Role-aware AI · any user · any question</div>
       </div>
     </div>
-    <span class="slide-num">05 / 12</span>
-  </section>
+  </div>
+  <span class="sn">04 / 12</span>
+</section>
 
-  <!-- Slide 6: Market -->
-  <section class="slide s6">
-    <div class="slide-inner">
-      <div class="eyebrow">Market</div>
-      <h2>A massive market at an inflection point.</h2>
-      <div class="market-visual">
-        <div style="flex:1">
-          <div class="market-bar-wrap">
-            <div class="market-label">TAM — Business Intelligence & Analytics</div>
-            <div class="market-bar" style="width:100%"></div>
-            <div class="market-val">$29.4B</div>
-          </div>
-        </div>
-        <div style="flex:0.65">
-          <div class="market-bar-wrap">
-            <div class="market-label">SAM — Enterprise AI Decision Tools</div>
-            <div class="market-bar" style="width:100%"></div>
-            <div class="market-val">$7.1B</div>
-          </div>
-        </div>
-        <div style="flex:0.3">
-          <div class="market-bar-wrap">
-            <div class="market-label">SOM — 3-year target</div>
-            <div class="market-bar" style="width:100%"></div>
-            <div class="market-val">$420M</div>
-          </div>
-        </div>
-      </div>
-      <p class="market-desc">Gartner projects AI-augmented decision-making to be the #1 enterprise software category by 2027. We are positioned at the intersection of real-time analytics, LLM reasoning, and enterprise workflow — the three converging forces driving this transition.</p>
+<section class="s s5">
+  <div class="inner">
+    <span class="eyebrow">Product</span>
+    <h2>Three capabilities. Infinite leverage.</h2>
+    <div class="feat-list">
+      <div class="feat-item"><div class="feat-n">01</div><div><h3>Universal Connectors</h3><p>Connect Snowflake, Salesforce, BigQuery, or any REST endpoint in under 10 minutes. No ETL, no migration, no downtime.</p></div><span class="feat-tag">Live</span></div>
+      <div class="feat-item"><div class="feat-n">02</div><div><h3>Reasoning Engine</h3><p>Domain-tuned LLM synthesises cross-source signals into cited, auditable briefs. Zero hallucinations by design — every claim links to a source row.</p></div><span class="feat-tag">Live</span></div>
+      <div class="feat-item"><div class="feat-n">03</div><div><h3>Decision Alerts</h3><p>Role-aware push briefs the moment a metric crosses a threshold — with the why, the context, and the suggested action.</p></div><span class="feat-tag">Live</span></div>
+      <div class="feat-item"><div class="feat-n">04</div><div><h3>Forecast Mode</h3><p>Time-series forecasting on any connected metric. Scenario modeling via natural language: "What if CAC rises 20%?"</p></div><span class="feat-tag">Beta</span></div>
     </div>
-    <span class="slide-num">06 / 12</span>
-  </section>
+  </div>
+  <span class="sn">05 / 12</span>
+</section>
 
-  <!-- Slide 7: GTM -->
-  <section class="slide s7">
-    <div class="slide-inner">
-      <div class="eyebrow">Go-to-Market</div>
-      <h2>Land enterprise. Expand by role.</h2>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-quarter">Q1–Q2 2025</div>
-          <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
-          <div class="tl-content">
-            <h3>Financial Services vertical</h3>
-            <p>Partner with 2 regional banks as design partners. Co-market with Snowflake marketplace. Target: 15 enterprise logos.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-quarter">Q3 2025</div>
-          <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
-          <div class="tl-content">
-            <h3>Retail + logistics expansion</h3>
-            <p>Launch pre-built connector bundles for SAP and Oracle ERP. Self-serve tier for mid-market. Target: $5M ARR.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-quarter">Q4 2025</div>
-          <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
-          <div class="tl-content">
-            <h3>Channel partnerships</h3>
-            <p>Reseller agreements with 3 regional SIs. EU data-residency launch (Frankfurt). Target: $12M ARR run rate.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-quarter">2026</div>
-          <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
-          <div class="tl-content">
-            <h3>Platform layer — NovaSpark for Builders</h3>
-            <p>API + SDK for ISVs to embed NovaSpark reasoning in their products. Marketplace royalty model. Series B milestone.</p>
-          </div>
-        </div>
-      </div>
+<section class="s s6">
+  <div class="inner">
+    <span class="eyebrow">Traction</span>
+    <h2>Growing faster than the plan.</h2>
+    <div class="t-grid">
+      <div class="t-cell"><div class="t-val">$2.1M</div><div class="t-label">ARR · 340% YoY growth</div></div>
+      <div class="t-cell"><div class="t-val">47</div><div class="t-label">Enterprise customers across 6 verticals</div></div>
+      <div class="t-cell"><div class="t-val">94%</div><div class="t-label">Net revenue retention</div></div>
+      <div class="t-cell"><div class="t-val">18d</div><div class="t-label">Average time to first measurable value</div></div>
     </div>
-    <span class="slide-num">07 / 12</span>
-  </section>
+    <div class="t-note">Customer base includes 3 Fortune 500 companies in financial services, retail, and logistics. No customer accounts for more than 11% of ARR. Pipeline: $4.8M in late-stage negotiations.</div>
+  </div>
+  <span class="sn">06 / 12</span>
+</section>
 
-  <!-- Slide 8: Business Model -->
-  <section class="slide s8">
-    <div class="slide-inner">
-      <div class="eyebrow">Business Model</div>
-      <h2>SaaS with expansion built in.</h2>
-      <div class="bm-grid">
-        <div class="bm-card">
-          <div class="bm-tier">Starter</div>
-          <div class="bm-price">$2K <span>/mo</span></div>
-          <h3>Mid-market teams</h3>
-          <ul class="bm-features">
-            <li><i class="fa-solid fa-check"></i> Up to 5 data sources</li>
-            <li><i class="fa-solid fa-check"></i> 20 users</li>
-            <li><i class="fa-solid fa-check"></i> Weekly briefings</li>
-            <li><i class="fa-solid fa-check"></i> Email support</li>
-          </ul>
-        </div>
-        <div class="bm-card" style="border-color: rgba(124,58,237,0.4)">
-          <div class="bm-tier">Enterprise</div>
-          <div class="bm-price">$12K <span>/mo</span></div>
-          <h3>Large organizations</h3>
-          <ul class="bm-features">
-            <li><i class="fa-solid fa-check"></i> Unlimited sources</li>
-            <li><i class="fa-solid fa-check"></i> Unlimited users</li>
-            <li><i class="fa-solid fa-check"></i> Real-time alerting</li>
-            <li><i class="fa-solid fa-check"></i> SSO + SAML + audit logs</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated CSM</li>
-          </ul>
-        </div>
-        <div class="bm-card">
-          <div class="bm-tier">Platform API</div>
-          <div class="bm-price">Usage <span>based</span></div>
-          <h3>ISV partners</h3>
-          <ul class="bm-features">
-            <li><i class="fa-solid fa-check"></i> Per-call pricing</li>
-            <li><i class="fa-solid fa-check"></i> White-label option</li>
-            <li><i class="fa-solid fa-check"></i> Revenue share on marketplace</li>
-            <li><i class="fa-solid fa-check"></i> SLA guarantees</li>
-          </ul>
-        </div>
-      </div>
+<section class="s s7">
+  <div class="inner">
+    <span class="eyebrow">Market</span>
+    <h2>A massive market at a rare inflection point.</h2>
+    <div class="mkt-bars">
+      <div class="mkt-row"><span class="mkt-lbl">TAM — Business Intelligence</span><div class="mkt-track"><div class="mkt-fill" style="width:100%"></div></div><span class="mkt-v">$29.4B</span></div>
+      <div class="mkt-row"><span class="mkt-lbl">SAM — Enterprise AI Decisions</span><div class="mkt-track"><div class="mkt-fill" style="width:65%"></div></div><span class="mkt-v">$7.1B</span></div>
+      <div class="mkt-row"><span class="mkt-lbl">SOM — 3-year target</span><div class="mkt-track"><div class="mkt-fill" style="width:15%"></div></div><span class="mkt-v">$420M</span></div>
     </div>
-    <span class="slide-num">08 / 12</span>
-  </section>
+    <p class="mkt-insight">Gartner projects AI-augmented decision-making becomes the #1 enterprise software category by 2027. Three forces converge simultaneously: real-time data infrastructure, LLM reasoning quality, and enterprise AI budget maturity. NovaSpark sits at the exact intersection.</p>
+  </div>
+  <span class="sn">07 / 12</span>
+</section>
 
-  <!-- Slide 9: Team -->
-  <section class="slide s9">
-    <div class="slide-inner">
-      <div class="eyebrow">Team</div>
-      <h2>Built by people who've done this before.</h2>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-avatar">SA</div>
-          <h3>Sofia Andrade</h3>
-          <div class="team-role">CEO & Co-founder</div>
-          <p>Former VP Product at Looker (acq. Google). Built analytics infra used by 4,000 companies.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">JK</div>
-          <h3>James Kim</h3>
-          <div class="team-role">CTO & Co-founder</div>
-          <p>PhD ML (Stanford). Ex-research lead at Databricks. 12 patents in stream processing.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">ML</div>
-          <h3>Maya Lopez</h3>
-          <div class="team-role">VP Sales</div>
-          <p>Grew Sigma Computing from $0 to $40M ARR. Former enterprise AE at Tableau.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">DR</div>
-          <h3>David Reeves</h3>
-          <div class="team-role">Head of Engineering</div>
-          <p>Ex-staff engineer at Stripe. Built the data pipeline serving 3B events/day.</p>
-        </div>
-      </div>
+<section class="s s8">
+  <div class="inner">
+    <span class="eyebrow">Team</span>
+    <h2>Built by people who've done this before.</h2>
+    <div class="tm-grid">
+      <div class="tm-cell"><div class="tm-init">SA</div><div class="tm-name">Sofia Andrade</div><div class="tm-role">CEO & Co-founder</div><p class="tm-bio">VP Product at Looker (acq. Google $2.6B). Built analytics infrastructure for 4,000 companies. 12 years B2B SaaS.</p></div>
+      <div class="tm-cell"><div class="tm-init">JK</div><div class="tm-name">James Kim</div><div class="tm-role">CTO & Co-founder</div><p class="tm-bio">PhD ML Stanford. Research lead at Databricks. 12 patents in stream processing and distributed inference.</p></div>
+      <div class="tm-cell"><div class="tm-init">ML</div><div class="tm-name">Maya Lopez</div><div class="tm-role">VP Sales</div><p class="tm-bio">Grew Sigma Computing $0→$40M ARR. Former AE at Tableau. Holds the company record for largest single-year ACV.</p></div>
+      <div class="tm-cell"><div class="tm-init">DR</div><div class="tm-name">David Reeves</div><div class="tm-role">Head of Eng.</div><p class="tm-bio">Staff engineer at Stripe. Architected the data pipeline serving 3 billion events per day at peak.</p></div>
     </div>
-    <span class="slide-num">09 / 12</span>
-  </section>
+  </div>
+  <span class="sn">08 / 12</span>
+</section>
 
-  <!-- Slide 10: Competition -->
-  <section class="slide s10">
-    <div class="slide-inner">
-      <div class="eyebrow">Competitive Landscape</div>
-      <h2>We sit in a gap the incumbents can't fill.</h2>
-      <table class="comp-table">
-        <thead><tr><th>Company</th><th>Real-time</th><th>LLM reasoning</th><th>Role-aware</th><th>Cited briefs</th><th>Time to value</th></tr></thead>
-        <tbody>
-          <tr class="us"><td>NovaSpark AI</td><td class="check"><i class="fa-solid fa-check"></i></td><td class="check"><i class="fa-solid fa-check"></i></td><td class="check"><i class="fa-solid fa-check"></i></td><td class="check"><i class="fa-solid fa-check"></i></td><td>18 days</td></tr>
-          <tr><td>Tableau + Einstein</td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td class="partial"><i class="fa-solid fa-minus"></i></td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td>3–6 mo</td></tr>
-          <tr><td>Power BI + Copilot</td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td class="partial"><i class="fa-solid fa-minus"></i></td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td>2–4 mo</td></tr>
-          <tr><td>Glean</td><td class="check"><i class="fa-solid fa-check"></i></td><td class="check"><i class="fa-solid fa-check"></i></td><td class="partial"><i class="fa-solid fa-minus"></i></td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td>45 days</td></tr>
-          <tr><td>ThoughtSpot</td><td class="partial"><i class="fa-solid fa-minus"></i></td><td class="partial"><i class="fa-solid fa-minus"></i></td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td class="cross"><i class="fa-solid fa-xmark"></i></td><td>60 days</td></tr>
-        </tbody>
-      </table>
+<section class="s s9">
+  <div class="inner">
+    <span class="eyebrow">Competition</span>
+    <h2>We occupy the gap incumbents can't fill.</h2>
+    <table class="cmp-tbl">
+      <thead><tr><th>Vendor</th><th>Real-time</th><th>LLM reasoning</th><th>Role-aware</th><th>Cited briefs</th><th>Time-to-value</th></tr></thead>
+      <tbody>
+        <tr class="us"><td>NovaSpark AI</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td>18 days</td></tr>
+        <tr><td>Tableau + Einstein</td><td class="no">✗</td><td class="part">~</td><td class="no">✗</td><td class="no">✗</td><td>3–6 mo</td></tr>
+        <tr><td>Power BI + Copilot</td><td class="no">✗</td><td class="part">~</td><td class="no">✗</td><td class="no">✗</td><td>2–4 mo</td></tr>
+        <tr><td>Glean</td><td class="yes">✓</td><td class="yes">✓</td><td class="part">~</td><td class="no">✗</td><td>45 days</td></tr>
+        <tr><td>ThoughtSpot</td><td class="part">~</td><td class="part">~</td><td class="no">✗</td><td class="no">✗</td><td>60 days</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <span class="sn">09 / 12</span>
+</section>
+
+<section class="s s10">
+  <div class="inner">
+    <span class="eyebrow">Business Model</span>
+    <h2>SaaS with expansion built in.</h2>
+    <div class="tiers">
+      <div class="tier"><div class="tier-name">Starter</div><div class="tier-price">$2K<span>/mo</span></div><div class="tier-desc">Mid-market teams up to 20 users</div><ul class="tier-feats"><li>5 data sources</li><li>Weekly briefings</li><li>Email support</li></ul></div>
+      <div class="tier hot"><div class="tier-name">Enterprise — avg. deal</div><div class="tier-price">$12K<span>/mo</span></div><div class="tier-desc">Large orgs, unlimited users + SSO</div><ul class="tier-feats"><li>Unlimited sources & users</li><li>Real-time alerting</li><li>SAML + audit logs</li><li>Dedicated CSM</li></ul></div>
+      <div class="tier"><div class="tier-name">Platform API</div><div class="tier-price">Usage<span> based</span></div><div class="tier-desc">ISVs embedding NovaSpark</div><ul class="tier-feats"><li>Per-call pricing</li><li>White-label option</li><li>Marketplace royalty share</li></ul></div>
     </div>
-    <span class="slide-num">10 / 12</span>
-  </section>
+  </div>
+  <span class="sn">10 / 12</span>
+</section>
 
-  <!-- Slide 11: Financials -->
-  <section class="slide s11">
-    <div class="slide-inner">
-      <div class="eyebrow">Financials</div>
-      <h2>Path to $20M ARR by end of 2026.</h2>
-      <div class="fin-row"><div class="fin-year">2024 (actual)</div><div class="fin-bar-wrap"><div class="fin-bar" style="width:17%">$2.1M</div></div><div class="fin-val">$2.1M ARR</div></div>
-      <div class="fin-row"><div class="fin-year">2025 (proj.)</div><div class="fin-bar-wrap"><div class="fin-bar" style="width:50%">$6.5M</div></div><div class="fin-val">$6.5M ARR</div></div>
-      <div class="fin-row"><div class="fin-year">2026 (proj.)</div><div class="fin-bar-wrap"><div class="fin-bar" style="width:100%">$20M</div></div><div class="fin-val">$20M ARR</div></div>
-      <p class="fin-note">Unit economics: CAC $18K · ACV $87K · LTV:CAC 4.8× · Gross margin 78% · Current runway 14 months.</p>
+<section class="s s11">
+  <div class="inner">
+    <span class="eyebrow">Financials</span>
+    <h2>Path to $20M ARR by end of 2026.</h2>
+    <div class="fin-rows">
+      <div class="fin-row"><span class="fin-yr">2024 actual</span><div class="fin-track"><div class="fin-bar" style="width:17%">$2.1M</div></div><span class="fin-v">$2.1M</span></div>
+      <div class="fin-row"><span class="fin-yr">2025 projection</span><div class="fin-track"><div class="fin-bar" style="width:50%">$6.5M</div></div><span class="fin-v">$6.5M</span></div>
+      <div class="fin-row"><span class="fin-yr">2026 projection</span><div class="fin-track"><div class="fin-bar" style="width:100%">$20M+</div></div><span class="fin-v">$20M+</span></div>
     </div>
-    <span class="slide-num">11 / 12</span>
-  </section>
+    <p class="fin-note">Unit economics: CAC $18K · ACV $87K · LTV:CAC 4.8× · Gross margin 78% · Current runway 14 months. $12M at planned burn extends to 32 months and funds path to Series B profitability gate.</p>
+  </div>
+  <span class="sn">11 / 12</span>
+</section>
 
-  <!-- Slide 12: Ask -->
-  <section class="slide s12">
-    <div class="slide-inner s12-inner">
-      <div class="eyebrow">The Ask</div>
-      <h2>Join us in making <span class="hi">better decisions</span><br>the default.</h2>
-      <div class="s12-amount">$12M</div>
-      <p class="s12-desc">Series A — 18-month runway to $12M ARR and Series B readiness.</p>
-      <div class="s12-use">
-        <div class="s12-use-item"><div class="s12-use-pct">50%</div><div class="s12-use-label">Sales & marketing</div></div>
-        <div class="s12-use-item"><div class="s12-use-pct">30%</div><div class="s12-use-label">R&D — Forecast Mode & API</div></div>
-        <div class="s12-use-item"><div class="s12-use-pct">20%</div><div class="s12-use-label">EU expansion & infra</div></div>
-      </div>
-      <p class="s12-contact">sofia@novaspark.ai · <a href="#">deck.novaspark.ai</a></p>
+<section class="s s12">
+  <div class="inner">
+    <h2>Join us in making <span class="g">better decisions</span> the default.</h2>
+    <div class="s12-amt">$12M</div>
+    <p class="s12-sub">Series A. 18 months to $12M ARR and Series B readiness. Leading the round now.</p>
+    <div class="s12-use">
+      <div class="s12-pct"><div class="p">50%</div><div class="l">Sales & marketing</div></div>
+      <div class="s12-pct"><div class="p">30%</div><div class="l">R&D — Forecast Mode + API</div></div>
+      <div class="s12-pct"><div class="p">20%</div><div class="l">EU expansion + compliance</div></div>
     </div>
-    <span class="slide-num">12 / 12</span>
-  </section>
+    <p class="s12-email">sofia@novaspark.ai · <a href="#">deck.novaspark.ai</a></p>
+  </div>
+  <span class="sn">12 / 12</span>
+</section>
 
-  <div class="nav-hint">↑ ↓ arrow keys or scroll to navigate</div>
-
-  <script>
-    document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-    });
-  </script>
+<div class="nh">↑ ↓ keys or scroll</div>
+<script>document.addEventListener('keydown',e=>{const d=e.key==='ArrowDown'||e.key==='ArrowRight';const u=e.key==='ArrowUp'||e.key==='ArrowLeft';if(d)window.scrollBy({top:window.innerHeight,behavior:'smooth'});if(u)window.scrollBy({top:-window.innerHeight,behavior:'smooth'})});</script>
 </body>
 </html>
