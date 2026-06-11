@@ -1,353 +1,1663 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solstice Capital — Q2 2026 Limited Partner Update</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --cream:#f9f6ef;--dark:#1c1917;--warm:#78716c;--gold:#c9a84c;
-      --pale:#f2ede2;--rule:rgba(28,25,23,0.12);--deep:#0f0d0c;
-    }
-    html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth}
-    body{background:var(--cream);color:var(--dark);font-family:'Inter',sans-serif;font-weight:300}
-    .s{min-height:100vh;width:100%;scroll-snap-align:start;display:grid;align-items:center;position:relative;overflow:hidden}
-    .nh{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--warm);letter-spacing:3px;z-index:100;font-family:'Inter',monospace}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solstice Capital — Q2 2026 Limited Partner Update</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* hairlines */
-    .rule-h{border:none;border-top:1px solid var(--rule);margin:28px 0}
-    .rule-v{width:1px;background:var(--rule);align-self:stretch}
+  :root {
+    --cream: #f9f6ef;
+    --dark: #1c1917;
+    --warm: #78716c;
+    --gold: #c9a84c;
+    --pale: #f2ede2;
+    --rule: rgba(28,25,23,0.12);
+    --deep: #0f0d0c;
+    --parchment: #f4ede0;
+  }
 
-    /* typography */
-    .eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);display:block;font-weight:400;margin-bottom:14px}
-    .serif{font-family:'Cormorant Garamond',serif}
-    .mono{font-family:'Inter',monospace;font-weight:400}
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+    font-size: 16px;
+  }
 
-    /* slide number */
-    .sn{position:absolute;bottom:36px;right:52px;font-size:10px;letter-spacing:3px;color:rgba(28,25,23,0.2);font-family:'Inter',monospace}
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background: var(--deep);
+    color: var(--dark);
+    height: 100%;
+  }
 
-    /* ── S1 COVER ── */
-    .s1{background:var(--deep);color:var(--cream)}
-    .s1-inner{padding:80px 80px 80px 120px;width:100%;display:flex;flex-direction:column;justify-content:space-between;height:100vh;position:relative}
-    .s1-wm{position:absolute;font-family:'Cormorant Garamond',serif;font-size:28rem;font-weight:600;color:rgba(255,255,255,0.02);line-height:1;top:-60px;right:-40px;pointer-events:none;letter-spacing:-10px}
-    .s1-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(249,246,239,0.3);font-weight:400}
-    .s1 h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-1px;max-width:720px}
-    .s1 h1 em{font-style:italic;color:var(--gold)}
-    .s1-meta{display:grid;grid-template-columns:repeat(4,auto);gap:56px;align-items:start;margin-top:auto}
-    .s1-kv .k{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(249,246,239,0.3);margin-bottom:8px;display:block}
-    .s1-kv .v{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--cream)}
-    .s1-conf{position:absolute;bottom:36px;left:120px;font-size:9px;letter-spacing:2px;color:rgba(249,246,239,0.2);text-transform:uppercase}
+  .slide {
+    min-height: 100vh;
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 6rem;
+  }
 
-    /* ── S2 QUARTER IN BRIEF ── */
-    .s2{background:var(--cream)}
-    .s2-inner{padding:80px 120px;width:100%}
-    .s2 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.1;margin-bottom:48px;max-width:600px}
-    .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-    .kpi-cell{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:28px 24px}
-    .kpi-cell .num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.8rem;line-height:1;color:var(--dark);margin-bottom:10px}
-    .kpi-cell .num.gold{color:var(--gold)}
-    .kpi-cell .lbl{font-size:0.78rem;color:var(--warm);line-height:1.6;letter-spacing:0.5px}
-    .kpi-cell .delta{font-size:0.75rem;color:var(--warm);margin-top:6px;opacity:0.6}
-    .s2-note{margin-top:36px;font-size:0.85rem;color:var(--warm);line-height:1.8;max-width:680px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.05rem}
+  /* Slide number */
+  .slide-num {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--warm);
+    opacity: 0.45;
+  }
 
-    /* ── S3 PORTFOLIO ── */
-    .s3{background:var(--pale)}
-    .s3-inner{padding:80px 120px;width:100%}
-    .s3 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;margin-bottom:40px}
-    .port-tbl{width:100%;border-collapse:collapse;font-size:0.83rem}
-    .port-tbl th{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);font-weight:400;padding:10px 0;border-bottom:1px solid var(--rule);text-align:left}
-    .port-tbl th:not(:first-child){text-align:right}
-    .port-tbl td{padding:14px 0;border-bottom:1px solid var(--rule);color:var(--dark)}
-    .port-tbl td:not(:first-child){text-align:right;font-family:'Inter',monospace;font-weight:400;font-size:0.8rem}
-    .port-tbl td:first-child{font-weight:400}
-    .port-tbl tr.total td{border-top:1px solid var(--dark);border-bottom:none;font-weight:500;padding-top:18px}
-    .port-tbl .up{color:#2a6631}.port-tbl .dn{color:#a02020}.port-tbl .fl{color:var(--warm)}
-    .status-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
-    .dot-up{background:#2a6631}.dot-fl{background:var(--warm)}.dot-dn{background:#a02020}
+  /* Watermark */
+  .watermark {
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(8rem, 22vw, 18rem);
+    letter-spacing: -0.02em;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    line-height: 1;
+  }
 
-    /* ── S4 INVESTMENT ── */
-    .s4{background:var(--cream)}
-    .s4-inner{padding:80px 120px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .s4 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.1;margin-bottom:28px}
-    .s4 p{font-size:0.88rem;color:var(--warm);line-height:1.85;margin-bottom:20px}
-    .s4 p strong{color:var(--dark);font-weight:500}
-    .s4-pull{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;font-weight:300;line-height:1.4;color:var(--dark);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:24px 0;margin:28px 0}
-    .s4-metrics{display:flex;flex-direction:column;gap:0}
-    .s4-m{display:grid;grid-template-columns:1fr auto;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--rule)}
-    .s4-m .mk{font-size:0.8rem;color:var(--warm)}
-    .s4-m .mv{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--dark)}
-    .s4-m .mv.gold{color:var(--gold)}
+  /* Nav hint */
+  .nav-hint {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm);
+    opacity: 0.5;
+    z-index: 9999;
+    pointer-events: none;
+  }
 
-    /* ── S5 CAPITAL ── */
-    .s5{background:var(--dark);color:var(--cream)}
-    .s5-inner{padding:80px 120px;width:100%}
-    .s5 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.1;margin-bottom:48px;color:var(--cream)}
-    .alloc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,0.1);border-left:1px solid rgba(255,255,255,0.1)}
-    .alloc-cell{border-right:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);padding:32px 28px}
-    .alloc-cell .ak{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(249,246,239,0.3);margin-bottom:10px;display:block}
-    .alloc-cell .av{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--cream);line-height:1;margin-bottom:8px}
-    .alloc-cell .av.gold{color:var(--gold)}
-    .alloc-cell .ad{font-size:0.78rem;color:rgba(249,246,239,0.4);line-height:1.6}
-    .s5-note{margin-top:40px;font-size:0.83rem;color:rgba(249,246,239,0.4);line-height:1.8;max-width:680px}
+  /* ─── SLIDE 1: COVER ─── */
+  .slide-cover {
+    background: var(--deep);
+    justify-content: space-between;
+    padding: 5rem 6rem;
+  }
+  .slide-cover .watermark {
+    color: #f9f6ef;
+    opacity: 0.025;
+    top: -2rem;
+    left: -2rem;
+    letter-spacing: 0.02em;
+  }
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(249,246,239,0.45);
+  }
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 5vw, 4.25rem);
+    color: var(--cream);
+    letter-spacing: 0.01em;
+    line-height: 1.12;
+  }
+  .cover-rule {
+    width: 3rem;
+    height: 1px;
+    background: var(--gold);
+    margin: 2.5rem 0;
+    opacity: 0.7;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(249,246,239,0.1);
+    padding-top: 2rem;
+  }
+  .cover-meta-item {
+    padding-right: 2rem;
+    border-right: 1px solid rgba(249,246,239,0.08);
+  }
+  .cover-meta-item:last-child { border-right: none; padding-right: 0; padding-left: 2rem; }
+  .cover-meta-item:not(:first-child) { padding-left: 2rem; }
+  .meta-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(249,246,239,0.35);
+    margin-bottom: 0.5rem;
+  }
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+  }
+  .meta-value .gold { color: var(--gold); }
 
-    /* ── S6 OUTLOOK ── */
-    .s6{background:var(--pale)}
-    .s6-inner{padding:80px 120px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .s6 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;margin-bottom:32px}
-    .outlook-col h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:20px;letter-spacing:0.5px}
-    .outlook-list{display:flex;flex-direction:column;gap:16px}
-    .outlook-item{display:grid;grid-template-columns:12px 1fr;gap:12px;align-items:start}
-    .outlook-item .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0}
-    .outlook-item p{font-size:0.83rem;color:var(--warm);line-height:1.7}
-    .outlook-item p strong{color:var(--dark);font-weight:500}
-    .s6-quote{margin-top:40px;grid-column:span 2;border-top:1px solid var(--rule);padding-top:32px}
-    .s6-quote p{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;font-weight:300;line-height:1.5;color:var(--dark);max-width:800px}
-    .s6-quote cite{font-size:0.78rem;color:var(--warm);margin-top:12px;display:block;letter-spacing:1px}
+  /* ─── SLIDE 2: Q2 IN BRIEF ─── */
+  .slide-brief {
+    background: var(--cream);
+    justify-content: center;
+  }
+  .slide-brief .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    bottom: -4rem;
+    right: -4rem;
+  }
+  .section-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.75rem;
+  }
+  .slide-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--dark);
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+  .slide-heading em { color: var(--gold); font-style: normal; }
+  .h-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    margin-bottom: 3rem;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--rule);
+  }
+  .kpi-cell {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .kpi-cell:last-child { border-right: none; }
+  .kpi-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1.25rem;
+  }
+  .kpi-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 3.25rem;
+    color: var(--dark);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .kpi-value .gold { color: var(--gold); }
+  .kpi-delta {
+    margin-top: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--warm);
+  }
+  .kpi-delta .pos { color: #4a7c59; }
+  .kpi-delta .neg { color: #8b3a3a; }
+  .brief-note {
+    margin-top: 2.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.7;
+    max-width: 40rem;
+  }
 
-    /* ── S7 GUIDANCE ── */
-    .s7{background:var(--cream)}
-    .s7-inner{padding:80px 120px;width:100%}
-    .s7 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;margin-bottom:40px}
-    .guidance-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-    .g-cell{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:24px}
-    .g-cell .gq{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);margin-bottom:8px;display:block}
-    .g-cell h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:12px}
-    .g-cell p{font-size:0.78rem;color:var(--warm);line-height:1.65}
-    .g-status{margin-top:14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;display:inline-block;border:1px solid var(--rule)}
-    .gs-done{border-color:var(--gold);color:var(--gold)}
-    .gs-now{background:var(--dark);color:var(--cream);border-color:var(--dark)}
-    .gs-plan{color:var(--warm)}
+  /* ─── SLIDE 3: PORTFOLIO OVERVIEW ─── */
+  .slide-portfolio {
+    background: var(--pale);
+    justify-content: flex-start;
+    padding-top: 3.5rem;
+  }
+  .slide-portfolio .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16rem;
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    z-index: 1;
+  }
+  .data-table thead tr {
+    border-bottom: 1px solid var(--dark);
+  }
+  .data-table th {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm);
+    padding: 0 0 1rem 0;
+    text-align: left;
+  }
+  .data-table th:not(:first-child) { text-align: right; }
+  .data-table td {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--dark);
+    padding: 1.05rem 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: right;
+  }
+  .data-table td:first-child { text-align: left; }
+  .data-table .co-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+  .data-table .co-sector {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: var(--warm);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 0.1rem;
+  }
+  .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .dot-green { background: #4a7c59; }
+  .dot-amber { background: #b88a2a; }
+  .dot-red { background: #8b3a3a; }
+  .data-table .total-row td {
+    border-top: 1px solid var(--dark);
+    border-bottom: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-top: 1.25rem;
+  }
+  .mom-pos { color: #4a7c59; }
+  .mom-neg { color: #8b3a3a; }
+  .mom-flat { color: var(--warm); }
 
-    /* ── S8 RISK ── */
-    .s8{background:var(--pale)}
-    .s8-inner{padding:80px 120px;width:100%}
-    .s8 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;margin-bottom:40px}
-    .risk-tbl{width:100%;border-collapse:collapse;font-size:0.82rem}
-    .risk-tbl th{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);font-weight:400;padding:10px 0;border-bottom:1px solid var(--rule);text-align:left}
-    .risk-tbl td{padding:14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
-    .risk-tbl td:not(:first-child){padding-left:20px}
-    .risk-lvl{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;display:inline-block}
-    .risk-hi{color:#a02020}.risk-md{color:var(--amber, #b8700a)}.risk-lo{color:#2a6631}
+  /* ─── SLIDE 4: NEW INVESTMENTS ─── */
+  .slide-new {
+    background: var(--cream);
+    justify-content: center;
+  }
+  .slide-new .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    top: -3rem;
+    left: -3rem;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    line-height: 1.45;
+    color: var(--dark);
+    letter-spacing: 0.01em;
+  }
+  .pull-quote em { color: var(--gold); font-style: normal; }
+  .pull-source {
+    margin-top: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+  .investment-card {
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .investment-card:last-child { margin-bottom: 0; }
+  .investment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+  }
+  .card-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+  }
+  .card-sector {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .card-check {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.75rem;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+  }
+  .card-check-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1.25rem;
+  }
+  .card-rationale {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.75;
+  }
 
-    /* ── S9 ESG ── */
-    .s9{background:var(--cream)}
-    .s9-inner{padding:80px 120px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .s9 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;margin-bottom:28px}
-    .s9 p{font-size:0.88rem;color:var(--warm);line-height:1.85;margin-bottom:16px}
-    .s9-metrics{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule)}
-    .s9-m{display:grid;grid-template-columns:1fr auto;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
-    .s9-m .mk{font-size:0.8rem;color:var(--warm)}
-    .s9-m .mv{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--dark)}
+  /* ─── SLIDE 5: PORTFOLIO SPOTLIGHT ─── */
+  .slide-spotlight {
+    background: var(--parchment);
+    justify-content: center;
+    padding: 4rem 0 4rem 6rem;
+  }
+  .slide-spotlight .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    bottom: -5rem;
+    right: -3rem;
+  }
+  .spotlight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    gap: 0;
+  }
+  .spotlight-left {
+    padding-right: 5rem;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .spotlight-right {
+    padding-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .company-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .company-name-large {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.75rem;
+    color: var(--dark);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .company-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .spotlight-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+  }
+  .spotlight-metric-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 0.35rem;
+  }
+  .spotlight-metric-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--dark);
+  }
+  .milestone-rule {
+    width: 2.5rem;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .milestone-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.85rem;
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+  .milestone-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.85;
+  }
+  .milestone-stat {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .milestone-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .milestone-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-top: 0.5rem;
+  }
 
-    /* ── S10 CLOSE ── */
-    .s10{background:var(--dark);color:var(--cream)}
-    .s10-inner{padding:80px 120px;width:100%;display:flex;flex-direction:column;justify-content:space-between;height:100vh}
-    .s10-wm{position:absolute;font-family:'Cormorant Garamond',serif;font-size:20rem;font-weight:600;color:rgba(255,255,255,0.02);line-height:1;bottom:-40px;right:-20px;pointer-events:none}
-    .s10 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:300;line-height:1.1;max-width:700px;color:var(--cream)}
-    .s10 h2 em{font-style:italic;color:var(--gold)}
-    .s10-contact{display:grid;grid-template-columns:repeat(3,auto);gap:64px;align-items:start;padding-top:60px;border-top:1px solid rgba(255,255,255,0.1)}
-    .s10-kv .k{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(249,246,239,0.25);margin-bottom:8px;display:block}
-    .s10-kv .v{font-size:0.88rem;color:rgba(249,246,239,0.7)}
-    .s10-conf{font-size:9px;letter-spacing:2px;color:rgba(249,246,239,0.15);text-transform:uppercase;margin-top:auto}
+  /* ─── SLIDE 6: MARKET COMMENTARY ─── */
+  .slide-market {
+    background: var(--cream);
+    justify-content: center;
+  }
+  .slide-market .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    letter-spacing: 0.05em;
+  }
+  .market-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2rem, 3.5vw, 3.1rem);
+    color: var(--dark);
+    line-height: 1.25;
+    letter-spacing: 0.005em;
+    max-width: 46rem;
+    margin-bottom: 1rem;
+  }
+  .market-quote em { color: var(--gold); font-style: normal; }
+  .market-attribution {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 3.5rem;
+  }
+  .market-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 2.5rem;
+  }
+  .market-point-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+  .market-point-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+  .market-point-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.8;
+  }
 
-    @media print{html{scroll-snap-type:none}.s{page-break-after:always;min-height:auto;height:100vh}.nh{display:none}}
-  </style>
+  /* ─── SLIDE 7: FUND METRICS ─── */
+  .slide-metrics {
+    background: var(--pale);
+    justify-content: center;
+  }
+  .slide-metrics .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    top: -3rem;
+    right: -3rem;
+    font-size: 14rem;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .metrics-left {}
+  .metrics-label-sm {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 2rem;
+  }
+  .pace-row {
+    margin-bottom: 1.75rem;
+  }
+  .pace-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+  }
+  .pace-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--dark);
+  }
+  .pace-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+  .pace-track {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    position: relative;
+  }
+  .pace-fill {
+    height: 2px;
+    background: var(--dark);
+    position: absolute;
+    top: -0.5px;
+    left: 0;
+  }
+  .pace-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: var(--warm);
+    margin-top: 0.4rem;
+  }
+  .metrics-right {}
+  .vintage-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--dark);
+    line-height: 1.35;
+    margin-bottom: 1.5rem;
+  }
+  .vintage-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+  .vintage-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+  }
+  .vs-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 0.35rem;
+  }
+  .vs-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.85rem;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .vs-value .gold { color: var(--gold); }
+
+  /* ─── SLIDE 8: ESG & GOVERNANCE ─── */
+  .slide-esg {
+    background: var(--cream);
+    justify-content: center;
+  }
+  .slide-esg .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    bottom: -4rem;
+    left: -2rem;
+    font-size: 12rem;
+  }
+  .esg-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-top: 2.5rem;
+  }
+  .esg-col {
+    padding: 2.5rem;
+    border-right: 1px solid var(--rule);
+  }
+  .esg-col:last-child { border-right: none; }
+  .esg-col-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .esg-col-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--dark);
+    letter-spacing: 0.01em;
+    margin-bottom: 1.75rem;
+    line-height: 1.2;
+  }
+  .esg-initiative {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+  .esg-init-dash {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+    font-size: 0.9rem;
+  }
+  .esg-init-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.73rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.65;
+  }
+  .esg-metric {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .esg-metric-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--dark);
+  }
+  .esg-metric-num .gold { color: var(--gold); }
+  .esg-metric-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-top: 0.3rem;
+  }
+
+  /* ─── SLIDE 9: OUTLOOK ─── */
+  .slide-outlook {
+    background: var(--deep);
+    justify-content: center;
+  }
+  .slide-outlook .watermark {
+    color: #f9f6ef;
+    opacity: 0.02;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13rem;
+    letter-spacing: 0.05em;
+  }
+  .outlook-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--cream);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    max-width: 50rem;
+    margin-bottom: 1rem;
+  }
+  .outlook-attribution {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(249,246,239,0.35);
+    margin-bottom: 4rem;
+  }
+  .outlook-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(249,246,239,0.1);
+    margin-bottom: 3rem;
+  }
+  .outlook-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem;
+  }
+  .outlook-item-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .outlook-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+  .outlook-item-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(249,246,239,0.5);
+    line-height: 1.8;
+  }
+  .slide-num-light { color: rgba(249,246,239,0.3); }
+
+  /* ─── SLIDE 10: CLOSING ─── */
+  .slide-closing {
+    background: var(--parchment);
+    justify-content: center;
+  }
+  .slide-closing .watermark {
+    color: var(--dark);
+    opacity: 0.02;
+    top: -2rem;
+    left: -3rem;
+    font-size: 10rem;
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+  .closing-left {}
+  .closing-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  .closing-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+  .perf-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .perf-row:first-of-type { border-top: 1px solid var(--rule); }
+  .perf-row-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+  .perf-row-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--dark);
+  }
+  .perf-row-value .gold { color: var(--gold); }
+  .closing-right {}
+  .contact-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .contact-section:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .contact-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--dark);
+    margin-bottom: 0.2rem;
+  }
+  .contact-detail {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--warm);
+    line-height: 1.65;
+  }
+  .closing-footer {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 6rem;
+    right: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+  .confidentiality {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+    color: var(--warm);
+    opacity: 0.6;
+    line-height: 1.7;
+    max-width: 36rem;
+  }
+  .fund-footer-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--warm);
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; overflow: visible; height: auto; }
+    body { height: auto; }
+    .slide { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+    .nav-hint { display: none; }
+  }
+</style>
 </head>
 <body>
 
-<section class="s s1">
-  <div class="s1-wm">SC</div>
-  <div class="s1-inner">
-    <div class="s1-tag">Solstice Capital · LP Update · Strictly Private &amp; Confidential</div>
-    <h1>Second quarter<br><em>twenty twenty-six.</em></h1>
-    <div class="s1-meta">
-      <div class="s1-kv"><span class="k">Net IRR</span><span class="v">18.4%</span></div>
-      <div class="s1-kv"><span class="k">AUM</span><span class="v">$2.3B</span></div>
-      <div class="s1-kv"><span class="k">Deployed Q2</span><span class="v">$187M</span></div>
-      <div class="s1-kv"><span class="k">Dry powder</span><span class="v">$340M</span></div>
+<!-- NAV HINT -->
+<div class="nav-hint">↑ ↓ keys or scroll &nbsp;·&nbsp; Q2 2026 &nbsp;·&nbsp; 10 slides</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 1: COVER
+═══════════════════════════════════════ -->
+<section class="slide slide-cover">
+  <div class="watermark" style="top:-1rem;left:-1rem;">SOLSTICE</div>
+
+  <div>
+    <div class="cover-eyebrow">Solstice Capital &nbsp;·&nbsp; Fund II</div>
+  </div>
+
+  <div style="position:relative;z-index:1;">
+    <div class="cover-label">Q2 2026 &nbsp;·&nbsp; Limited Partner Update</div>
+    <div class="cover-title">Solstice Capital</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:1.15rem;color:rgba(249,246,239,0.35);margin-top:0.5rem;letter-spacing:0.05em;">Growth Equity &nbsp;·&nbsp; Technology &amp; Digital Health</div>
+    <div class="cover-rule"></div>
+    <div style="font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:300;color:rgba(249,246,239,0.4);line-height:1.8;max-width:28rem;">
+      This document is prepared for informational purposes only and is intended solely for the use of existing limited partners of Solstice Capital Fund II, L.P. Distribution without express written consent is prohibited.
     </div>
   </div>
-  <div class="s1-conf">Not for distribution · © 2026 Solstice Capital Management LP · Data through 2026-06-30</div>
-  <span class="sn">01 / 10</span>
-</section>
 
-<section class="s s2">
-  <div class="s2-inner">
-    <span class="eyebrow">Quarter in brief</span>
-    <h2 class="serif">A quarter defined by two<br>meaningful exits and one<br>significant new commitment.</h2>
-    <div class="kpi-row">
-      <div class="kpi-cell"><div class="num gold">18.4%</div><div class="lbl">Net IRR since inception<br>Vintage 2021</div><div class="delta">+0.6% vs Q1</div></div>
-      <div class="kpi-cell"><div class="num">2.3×</div><div class="lbl">TVPI (Total Value to<br>Paid-In Capital)</div><div class="delta">Unchanged from Q1</div></div>
-      <div class="kpi-cell"><div class="num">$187M</div><div class="lbl">Deployed this quarter<br>across 2 transactions</div><div class="delta">vs $94M Q1</div></div>
-      <div class="kpi-cell"><div class="num">$52M</div><div class="lbl">Distributed to LPs<br>via two partial exits</div><div class="delta">First distributions since Q4 2024</div></div>
+  <div class="cover-meta" style="position:relative;z-index:1;">
+    <div class="cover-meta-item">
+      <div class="meta-label">Fund Size</div>
+      <div class="meta-value"><span class="gold">$280</span>M</div>
     </div>
-    <p class="s2-note serif">The portfolio continues to compound at a rate that places Solstice in the top quartile of 2021-vintage funds globally. The two exits executed in Q2 — Harlow Biotech (partial, 4.1×) and Axiom Grid (full, 3.2×) — validate the thesis without forcing premature realisation.</p>
+    <div class="cover-meta-item">
+      <div class="meta-label">Vintage</div>
+      <div class="meta-value">2023</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="meta-label">Strategy</div>
+      <div class="meta-value" style="font-size:1rem;line-height:1.2;">Growth<br>Equity</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="meta-label">Fund Life</div>
+      <div class="meta-value">10 <span style="font-size:1rem;font-weight:300;">yr</span></div>
+    </div>
   </div>
-  <span class="sn">02 / 10</span>
+
+  <div class="slide-num slide-num-light">01 / 10</div>
 </section>
 
-<section class="s s3">
-  <div class="s3-inner">
-    <span class="eyebrow">Portfolio performance</span>
-    <h2 class="serif">Twelve active positions across six sectors.</h2>
-    <table class="port-tbl">
-      <thead><tr><th>Company</th><th>Sector</th><th>Entry vintage</th><th>Cost basis</th><th>Current NAV</th><th>MOIC</th><th>Status</th></tr></thead>
+<!-- ═══════════════════════════════════════
+     SLIDE 2: Q2 IN BRIEF
+═══════════════════════════════════════ -->
+<section class="slide slide-brief">
+  <div class="watermark" style="bottom:-4rem;right:-3rem;font-size:16rem;">2026</div>
+
+  <div style="position:relative;z-index:1;">
+    <div class="section-tag">Q2 2026 &nbsp;·&nbsp; In Brief</div>
+    <div class="slide-heading">A quarter of <em>selective</em> conviction.</div>
+    <div class="h-rule"></div>
+
+    <div class="kpi-grid">
+      <div class="kpi-cell">
+        <div class="kpi-label">Deployed Capital</div>
+        <div class="kpi-value"><span class="gold">$</span>168<span style="font-size:1.8rem;font-weight:300;">M</span></div>
+        <div class="kpi-delta">of $280M committed &nbsp;<span class="pos">+$22M vs Q1</span></div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-label">IRR Net</div>
+        <div class="kpi-value">19<span class="gold">.</span>4<span style="font-size:1.8rem;font-weight:300;">%</span></div>
+        <div class="kpi-delta">since inception &nbsp;<span class="pos">↑ 1.2pp vs Q1</span></div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-label">DPI</div>
+        <div class="kpi-value">0<span class="gold">.</span>31<span style="font-size:1.5rem;font-weight:300;">×</span></div>
+        <div class="kpi-delta">distributions to paid-in &nbsp;<span class="pos">+0.04× vs Q1</span></div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-label">TVPI</div>
+        <div class="kpi-value">1<span class="gold">.</span>62<span style="font-size:1.5rem;font-weight:300;">×</span></div>
+        <div class="kpi-delta">total value / paid-in &nbsp;<span class="pos">↑ 0.09× vs Q1</span></div>
+      </div>
+    </div>
+
+    <div class="brief-note">
+      Q2 was characterised by two new platform investments and continued mark-up activity across the digital health sub-portfolio. Macro headwinds in late-stage public comparables compressed entry multiples further, which we view as a structural tailwind for our pipeline over the next two quarters.
+    </div>
+  </div>
+
+  <div class="slide-num">02 / 10</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 3: PORTFOLIO OVERVIEW
+═══════════════════════════════════════ -->
+<section class="slide slide-portfolio">
+  <div class="watermark" style="top:50%;left:50%;transform:translate(-50%,-50%);font-size:14rem;">FUND II</div>
+
+  <div style="position:relative;z-index:1;">
+    <div class="section-tag">Portfolio &nbsp;·&nbsp; 8 Companies</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.85rem;color:var(--dark);margin-bottom:2rem;letter-spacing:0.01em;">Portfolio Overview — Q2 2026</div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:22%;">Company</th>
+          <th>Stage</th>
+          <th>Invested</th>
+          <th>Curr. Value</th>
+          <th>MoM</th>
+          <th style="text-align:center;">Status</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr><td><span class="status-dot dot-up"></span>Harlow Biotech</td><td>Life Sciences</td><td>2022</td><td>$28M</td><td>$115M</td><td class="up">4.1×</td><td>Partial exit Q2</td></tr>
-        <tr><td><span class="status-dot dot-fl"></span>Meridian Compute</td><td>Infrastructure</td><td>2021</td><td>$45M</td><td>$144M</td><td class="up">3.2×</td><td>Hold</td></tr>
-        <tr><td><span class="status-dot dot-up"></span>Cavendish Materials</td><td>Deep Tech</td><td>2022</td><td>$31M</td><td>$89M</td><td class="up">2.9×</td><td>Growth stage</td></tr>
-        <tr><td><span class="status-dot dot-fl"></span>Prism Health</td><td>Health Tech</td><td>2023</td><td>$18M</td><td>$41M</td><td class="up">2.3×</td><td>Series C prep</td></tr>
-        <tr><td><span class="status-dot dot-fl"></span>Vantage Logistics</td><td>Supply Chain</td><td>2021</td><td>$52M</td><td>$98M</td><td class="up">1.9×</td><td>IPO track 2027</td></tr>
-        <tr><td><span class="status-dot dot-fl"></span>Fenwick Climate</td><td>CleanTech</td><td>2023</td><td>$24M</td><td>$36M</td><td class="fl">1.5×</td><td>Hold</td></tr>
-        <tr><td><span class="status-dot dot-dn"></span>Cobalt Systems</td><td>Enterprise SW</td><td>2022</td><td>$22M</td><td>$19M</td><td class="dn">0.9×</td><td>Review — mgmt change</td></tr>
-        <tr class="total"><td colspan="4">Total active portfolio (7 of 12 shown)</td><td>$542M</td><td class="up">2.4×</td><td></td></tr>
+        <tr>
+          <td><span class="co-name">Vanta Health</span><span class="co-sector">Digital Health</span></td>
+          <td>Series C</td>
+          <td>$28.0M</td>
+          <td>$54.6M</td>
+          <td class="mom-pos">+18.2%</td>
+          <td style="text-align:center;"><span class="status-dot dot-green"></span></td>
+        </tr>
+        <tr>
+          <td><span class="co-name">Meridian Freight</span><span class="co-sector">Logistics &amp; Supply Chain</span></td>
+          <td>Series B</td>
+          <td>$19.5M</td>
+          <td>$31.2M</td>
+          <td class="mom-pos">+4.7%</td>
+          <td style="text-align:center;"><span class="status-dot dot-green"></span></td>
+        </tr>
+        <tr>
+          <td><span class="co-name">Lumen AI</span><span class="co-sector">Enterprise Software</span></td>
+          <td>Series B</td>
+          <td>$24.0M</td>
+          <td>$38.4M</td>
+          <td class="mom-pos">+11.3%</td>
+          <td style="text-align:center;"><span class="status-dot dot-green"></span></td>
+        </tr>
+        <tr>
+          <td><span class="co-name">Arbor Financial</span><span class="co-sector">Fintech</span></td>
+          <td>Growth</td>
+          <td>$32.0M</td>
+          <td>$44.8M</td>
+          <td class="mom-flat">+1.0%</td>
+          <td style="text-align:center;"><span class="status-dot dot-amber"></span></td>
+        </tr>
+        <tr>
+          <td><span class="co-name">Sycamore EDU</span><span class="co-sector">EdTech</span></td>
+          <td>Series B</td>
+          <td>$15.0M</td>
+          <td>$17.3M</td>
+          <td class="mom-neg">−3.1%</td>
+          <td style="text-align:center;"><span class="status-dot dot-amber"></span></td>
+        </tr>
+        <tr>
+          <td><span class="co-name">Corval Climate</span><span class="co-sector">CleanTech</span></td>
+          <td>Series C</td>
+          <td>$21.0M</td>
+          <td>$35.7M</td>
+          <td class="mom-pos">+8.6%</td>
+          <td style="text-align:center;"><span class="status-dot dot-green"></span></td>
+        </tr>
+        <tr>
+          <td><span class="co-name">Fenwick Ops</span><span class="co-sector">Industrial Tech</span></td>
+          <td>Series B</td>
+          <td>$14.5M</td>
+          <td>$11.6M</td>
+          <td class="mom-neg">−8.4%</td>
+          <td style="text-align:center;"><span class="status-dot dot-red"></span></td>
+        </tr>
+        <tr>
+          <td><span class="co-name">Soleil Consumer</span><span class="co-sector">Consumer Tech</span></td>
+          <td>Growth</td>
+          <td>$14.0M</td>
+          <td>$18.2M</td>
+          <td class="mom-pos">+2.9%</td>
+          <td style="text-align:center;"><span class="status-dot dot-green"></span></td>
+        </tr>
+        <tr class="total-row">
+          <td>Total</td>
+          <td></td>
+          <td>$168.0M</td>
+          <td>$251.8M</td>
+          <td class="mom-pos" style="font-family:'Cormorant Garamond',serif;font-weight:600;">1.50×</td>
+          <td></td>
+        </tr>
       </tbody>
     </table>
   </div>
-  <span class="sn">03 / 10</span>
+
+  <div class="slide-num">03 / 10</div>
 </section>
 
-<section class="s s4">
-  <div class="s4-inner">
-    <div>
-      <span class="eyebrow">Key investment</span>
-      <h2 class="serif">Cavendish Materials: the convergence thesis playing out.</h2>
-      <p>Cavendish develops next-generation battery electrode materials using AI-assisted molecular design. When Solstice led the Series B in 2022, the thesis rested on three assertions: <strong>grid storage demand would accelerate faster than incumbent supply</strong>, a small materials advantage compounds non-linearly over time, and the team had done this before.</p>
-      <p>All three have proven correct. Q2 brought a long-term offtake agreement with a major European grid operator — the first institutional validation of the materials platform at commercial scale.</p>
-      <div class="s4-pull serif">The offtake represents $340M in contracted revenue over seven years — before a single new product is introduced.</div>
-    </div>
-    <div>
-      <span class="eyebrow">Company metrics</span>
-      <div class="s4-metrics">
-        <div class="s4-m"><span class="mk">Current valuation</span><span class="mv gold">$89M</span></div>
-        <div class="s4-m"><span class="mk">MOIC</span><span class="mv">2.9×</span></div>
-        <div class="s4-m"><span class="mk">Revenue run rate</span><span class="mv">$12M</span></div>
-        <div class="s4-m"><span class="mk">Revenue growth (YoY)</span><span class="mv">+180%</span></div>
-        <div class="s4-m"><span class="mk">Contracted backlog</span><span class="mv">$340M</span></div>
-        <div class="s4-m"><span class="mk">Path to exit</span><span class="mv serif" style="font-size:1rem;font-style:italic">Strategic, 2027–28</span></div>
+<!-- ═══════════════════════════════════════
+     SLIDE 4: NEW INVESTMENTS
+═══════════════════════════════════════ -->
+<section class="slide slide-new">
+  <div class="watermark" style="top:-3rem;left:-3rem;font-size:15rem;">NEW</div>
+
+  <div style="position:relative;z-index:1;">
+    <div class="section-tag">Q2 Deployments &nbsp;·&nbsp; Two New Platforms</div>
+    <div class="h-rule" style="margin-bottom:2.5rem;"></div>
+
+    <div class="two-col">
+      <div>
+        <div class="pull-quote">
+          "We invest where <em>network effects</em> compound faster than competitors can acquire talent to replicate them."
+        </div>
+        <div class="pull-source">— Investment Thesis, Solstice Capital Fund II</div>
+
+        <div style="margin-top:3rem;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:300;color:var(--warm);line-height:1.85;">
+          Both Q2 platforms were sourced through proprietary relationships cultivated over 18+ months. Neither was broadly marketed. We view sourcing quality as the single largest determinant of long-run returns, and both companies represent Solstice's core investment criteria: durable moats, founder-led management, and clear paths to category leadership.
+        </div>
+      </div>
+
+      <div>
+        <div class="investment-card">
+          <div class="card-company">Lumen AI</div>
+          <div class="card-sector">Enterprise AI Infrastructure</div>
+          <div class="card-check">$24.0M</div>
+          <div class="card-check-label">Check Size &nbsp;·&nbsp; Series B Lead</div>
+          <div class="card-rationale">
+            Lumen builds the orchestration layer for enterprise LLM deployments, enabling security-conscious customers to run frontier models in private cloud environments. ARR crossed $18M in Q1 2026 with 140% net revenue retention. Comparable infrastructure platforms have reached $1B+ outcomes; Lumen's TAM in regulated verticals is substantially underpenetrated.
+          </div>
+        </div>
+
+        <div class="investment-card">
+          <div class="card-company">Corval Climate</div>
+          <div class="card-sector">Industrial Decarbonisation</div>
+          <div class="card-check">$21.0M</div>
+          <div class="card-check-label">Check Size &nbsp;·&nbsp; Series C Co-Lead</div>
+          <div class="card-rationale">
+            Corval provides real-time carbon accounting and scope 3 traceability software to mid-market manufacturers. The regulatory tailwind from SEC climate disclosure rules is creating mandatory adoption cycles. 78 enterprise logos signed in the last 12 months. Co-led with Breakthrough Energy Ventures.
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <span class="sn">04 / 10</span>
+
+  <div class="slide-num">04 / 10</div>
 </section>
 
-<section class="s s5">
-  <div class="s5-inner">
-    <span class="eyebrow" style="color:rgba(249,246,239,0.35)">Capital allocation</span>
-    <h2 class="serif" style="color:var(--cream)">Where the fund stands today.</h2>
-    <div class="alloc-grid">
-      <div class="alloc-cell"><span class="ak">Committed capital</span><div class="av">$2.3B</div><div class="ad">Total LP commitments across Fund I and Fund II. Fund II $850M final close Oct 2023.</div></div>
-      <div class="alloc-cell"><span class="ak">Deployed</span><div class="av">$1.96B</div><div class="ad">85% of committed capital deployed. On track for full deployment by Q4 2026.</div></div>
-      <div class="alloc-cell"><span class="ak">Dry powder</span><div class="av gold">$340M</div><div class="ad">Available for follow-on investments and 1–2 new platform positions in H2 2026.</div></div>
-      <div class="alloc-cell"><span class="ak">Realised value</span><div class="av">$287M</div><div class="ad">Distributions to date across 4 full exits (Axiom, Harlow partial, Kestrel, Dusk).</div></div>
-      <div class="alloc-cell"><span class="ak">Unrealised NAV</span><div class="av">$542M</div><div class="ad">Current estimated fair value of the 12 active positions at 2026-06-30.</div></div>
-      <div class="alloc-cell"><span class="ak">TVPI</span><div class="av gold">2.3×</div><div class="ad">Realised + unrealised value over paid-in capital. Top quartile for 2021-vintage funds.</div></div>
-    </div>
-    <p class="s5-note">Valuations reflect latest funding rounds or independent third-party appraisals. Unrealised NAV is not a guarantee of future returns. Past performance does not predict future results.</p>
-  </div>
-  <span class="sn">05 / 10</span>
-</section>
+<!-- ═══════════════════════════════════════
+     SLIDE 5: PORTFOLIO SPOTLIGHT
+═══════════════════════════════════════ -->
+<section class="slide slide-spotlight" style="padding-right:0;">
+  <div class="watermark" style="bottom:-4rem;right:-2rem;font-size:12rem;">VANTA</div>
 
-<section class="s s6">
-  <div class="s6-inner">
-    <div>
-      <span class="eyebrow">Market outlook</span>
-      <h2 class="serif">Tailwinds</h2>
-      <div class="outlook-list">
-        <div class="outlook-item"><div class="dot"></div><p><strong>Grid infrastructure supercycle.</strong> $4.7T in committed global grid investment through 2035. Cavendish and Fenwick Climate are directly exposed.</p></div>
-        <div class="outlook-item"><div class="dot"></div><p><strong>AI infrastructure demand.</strong> Meridian Compute's colocation thesis continues to strengthen as hyperscaler capex accelerates at 40%+ annually.</p></div>
-        <div class="outlook-item"><div class="dot"></div><p><strong>Healthcare consolidation.</strong> Prism Health's target acquirers are under pressure to show AI-driven differentiation before 2027 refresh cycles.</p></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;height:100%;position:relative;z-index:1;">
+    <div class="spotlight-left">
+      <div class="company-eyebrow">Portfolio Spotlight &nbsp;·&nbsp; Q2 2026</div>
+      <div class="company-name-large">Vanta<br>Health</div>
+      <div class="company-desc">
+        Vanta Health builds AI-native care coordination software for value-based health networks. Founded in 2020 by former Epic and Flatiron Health engineers, the company has scaled from 12 health system clients to 94 in 36 months — without a traditional enterprise sales force. Their proprietary clinical workflow model reduces care gap closure time by an average of 34%.
+      </div>
+      <div class="spotlight-metrics">
+        <div>
+          <div class="spotlight-metric-label">ARR</div>
+          <div class="spotlight-metric-value">$42M</div>
+        </div>
+        <div>
+          <div class="spotlight-metric-label">YoY Growth</div>
+          <div class="spotlight-metric-value" style="color:var(--gold);">+86%</div>
+        </div>
+        <div>
+          <div class="spotlight-metric-label">NRR</div>
+          <div class="spotlight-metric-value">148%</div>
+        </div>
+        <div>
+          <div class="spotlight-metric-label">Gross Margin</div>
+          <div class="spotlight-metric-value">71%</div>
+        </div>
       </div>
     </div>
-    <div>
-      <span class="eyebrow">Market outlook</span>
-      <h2 class="serif">Headwinds</h2>
-      <div class="outlook-list">
-        <div class="outlook-item"><div class="dot" style="background:var(--warm)"></div><p><strong>Rate environment.</strong> Elevated rates compress exit multiples on later-stage software assets. Cobalt Systems review reflects this directly.</p></div>
-        <div class="outlook-item"><div class="dot" style="background:var(--warm)"></div><p><strong>IPO window remains narrow.</strong> Vantage Logistics and Meridian Compute's 2027 IPO targets assume window reopens. Monitoring closely.</p></div>
-        <div class="outlook-item"><div class="dot" style="background:var(--warm)"></div><p><strong>LP liquidity pressure.</strong> Certain LPs face DPI pressure. We have pre-agreed secondary capacity for up to $80M at structured terms.</p></div>
+
+    <div class="spotlight-right" style="padding-right:5rem;">
+      <div class="milestone-rule"></div>
+      <div class="milestone-heading">A landmark partnership that redefines the addressable market.</div>
+      <div class="milestone-body">
+        In May 2026, Vanta Health signed a master agreement with Elevance Health, covering deployment across 14 Blue Cross Blue Shield affiliated plans and an estimated 4.2 million members. This is the largest commercial contract in the company's history and validates Vanta's expansion strategy from mid-market health systems into national payor networks.<br><br>
+        The partnership accelerates Vanta's product roadmap around population risk stratification and creates a recurring revenue stream with contractual minimums through 2030. We marked the position up 18.2% following the announcement and independent third-party valuation.
       </div>
-    </div>
-    <div class="s6-quote">
-      <p class="serif">"The portfolio is in the best structural position it has been since inception. Cavendish alone justifies the 2021 vintage. Everything else is gravy."</p>
-      <cite>— Managing Partner · Internal investment committee memo · 2026-06-12</cite>
-    </div>
-  </div>
-  <span class="sn">06 / 10</span>
-</section>
-
-<section class="s s7">
-  <div class="s7-inner">
-    <span class="eyebrow">Forward guidance</span>
-    <h2 class="serif">Four initiatives for the second half.</h2>
-    <div class="guidance-timeline">
-      <div class="g-cell"><span class="gq">Q3 2026</span><h3 class="serif">Cobalt Systems Resolution</h3><p>New CEO appointed July 1. 90-day stabilisation plan underway. Write-down scenario modelled; current 0.9× reflects base case.</p><span class="g-status gs-now">IN PROGRESS</span></div>
-      <div class="g-cell"><span class="gq">Q3 2026</span><h3 class="serif">New Platform Investment</h3><p>One late-stage deep-tech position in advanced manufacturing. Term sheet under review. $80–120M expected commitment.</p><span class="g-status gs-plan">PIPELINE</span></div>
-      <div class="g-cell"><span class="gq">Q4 2026</span><h3 class="serif">Harlow Biotech Exit (Full)</h3><p>Strategic buyer process underway. Three parties in LOI stage. Target realisation: $140–160M on $28M cost basis.</p><span class="g-status gs-plan">ACTIVE PROCESS</span></div>
-      <div class="g-cell"><span class="gq">Q4 2026</span><h3 class="serif">Fund III First Close</h3><p>$400M target for first close. 7 LPs from Fund II re-committed. Roadshow begins September.</p><span class="g-status gs-plan">FUNDRAISING</span></div>
-    </div>
-  </div>
-  <span class="sn">07 / 10</span>
-</section>
-
-<section class="s s8">
-  <div class="s8-inner">
-    <span class="eyebrow">Risk register</span>
-    <h2 class="serif">Material risks and mitigations.</h2>
-    <table class="risk-tbl">
-      <thead><tr><th>Risk</th><th>Level</th><th>Mitigation</th><th>Owner</th></tr></thead>
-      <tbody>
-        <tr><td>Cobalt Systems continued deterioration below 0.5× MOIC</td><td><span class="risk-lvl risk-hi">HIGH</span></td><td>New CEO in place; $8M reserve set aside for bridge if needed; strategic sale process commenced</td><td>Investment Committee</td></tr>
-        <tr><td>IPO window remains closed through 2027 for Vantage + Meridian</td><td><span class="risk-lvl risk-md">MEDIUM</span></td><td>Dual-track process (IPO + strategic). Both companies EBITDA positive; no pressure to exit below value</td><td>Portfolio Team</td></tr>
-        <tr><td>LP DPI pressure triggers secondary sale requests</td><td><span class="risk-lvl risk-md">MEDIUM</span></td><td>$80M structured secondary capacity pre-agreed with two buyers at 1.8× floor; activates on LP request only</td><td>CFO</td></tr>
-        <tr><td>Regulatory risk: EU battery materials standards revision (Cavendish exposure)</td><td><span class="risk-lvl risk-lo">LOW</span></td><td>Cavendish product already compliant with proposed 2027 standards; management confirmed compliance roadmap</td><td>Portfolio Team</td></tr>
-        <tr><td>Fund III first close below $300M target</td><td><span class="risk-lvl risk-lo">LOW</span></td><td>Strong re-up signals from 7 of 12 existing LPs. Harlow exit timed to coincide with Fund III roadshow</td><td>Investor Relations</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <span class="sn">08 / 10</span>
-</section>
-
-<section class="s s9">
-  <div class="s9-inner">
-    <div>
-      <span class="eyebrow">ESG highlight</span>
-      <h2 class="serif">Climate impact becoming a competitive advantage, not a constraint.</h2>
-      <p>Solstice's 2023 commitment to Paris-aligned portfolio construction has, counterintuitively, expanded rather than constrained our opportunity set. The two fastest-growing positions in the portfolio — Cavendish and Fenwick — are also the two most climate-forward.</p>
-      <p>In Q2 we completed our first portfolio-wide scope 3 emissions mapping. Results were materially better than industry benchmarks. We believe this will become a significant LP selection criterion by 2027, and Solstice is positioned ahead of that shift.</p>
-    </div>
-    <div>
-      <span class="eyebrow">ESG metrics Q2 2026</span>
-      <div class="s9-metrics">
-        <div class="s9-m"><span class="mk">Portfolio emissions intensity</span><span class="mv">-34% vs benchmark</span></div>
-        <div class="s9-m"><span class="mk">Board gender diversity (portfolio co.)</span><span class="mv">42%</span></div>
-        <div class="s9-m"><span class="mk">Clean energy cos. by NAV</span><span class="mv">31%</span></div>
-        <div class="s9-m"><span class="mk">Companies with net-zero target</span><span class="mv">9 of 12</span></div>
-        <div class="s9-m"><span class="mk">GIIN IRIS+ reporting</span><span class="mv serif" style="font-size:1rem;font-style:italic">Full compliance</span></div>
+      <div class="milestone-stat">
+        <div class="milestone-stat-num">4.2<span style="font-size:1.5rem;font-weight:300;">M</span></div>
+        <div class="milestone-stat-label">Members covered under Elevance Health agreement</div>
       </div>
     </div>
   </div>
-  <span class="sn">09 / 10</span>
+
+  <div class="slide-num">05 / 10</div>
 </section>
 
-<section class="s s10">
-  <div class="s10-wm">SC</div>
-  <div class="s10-inner">
-    <div></div>
-    <h2>The portfolio earns patient<br>capital. <em>We remain patient.</em></h2>
-    <div class="s10-contact">
-      <div class="s10-kv"><span class="k">Investor Relations</span><span class="v">Philippa Stoke · ir@solsticecap.com</span></div>
-      <div class="s10-kv"><span class="k">Data room</span><span class="v">dataroom.solsticecap.com</span></div>
-      <div class="s10-kv"><span class="k">Next update</span><span class="v">Q3 2026 · October 15</span></div>
+<!-- ═══════════════════════════════════════
+     SLIDE 6: MARKET COMMENTARY
+═══════════════════════════════════════ -->
+<section class="slide slide-market">
+  <div class="watermark" style="top:50%;left:50%;transform:translate(-50%,-50%);font-size:9rem;letter-spacing:0.05em;">MARKETS</div>
+
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="section-tag">Market Commentary &nbsp;·&nbsp; Q2 2026</div>
+
+    <div class="market-quote">
+      "Valuations are <em>compressing</em>, but quality is emerging."
     </div>
-    <p class="s10-conf">Strictly private and confidential. This document does not constitute an offer of securities. Past performance does not predict future returns. © 2026 Solstice Capital Management LP. Unauthorised distribution prohibited.</p>
+    <div class="market-attribution">— Solstice Capital, Investment Committee, June 2026</div>
+
+    <div class="market-points">
+      <div>
+        <div class="market-point-num">01</div>
+        <div class="market-point-title">Compression as Opportunity</div>
+        <div class="market-point-body">
+          The EV/ARR multiple for private growth-stage SaaS fell from a median of 8.4× in Q4 2025 to 6.9× in Q2 2026, driven by continued rate sensitivity and public market comparables. We view this as a rational correction rather than a structural shift. Companies with >120% NRR and clear FCF paths remain resilient and, at current entry prices, represent the most attractive risk-adjusted opportunities in Solstice's twelve-year history.
+        </div>
+      </div>
+      <div>
+        <div class="market-point-num">02</div>
+        <div class="market-point-title">AI Infrastructure Bifurcation</div>
+        <div class="market-point-body">
+          The AI market is bifurcating sharply between commoditised model access — where margins are collapsing — and workflow infrastructure, where switching costs are compounding. Solstice's exposure is concentrated entirely in the latter. We believe the next 24 months will see further consolidation among point solutions, benefiting platform companies in our portfolio.
+        </div>
+      </div>
+      <div>
+        <div class="market-point-num">03</div>
+        <div class="market-point-title">Healthcare IT Reset</div>
+        <div class="market-point-body">
+          Regulatory clarity on CMS interoperability mandates and the SEC's climate disclosure rules are creating two distinct mandatory adoption cycles — in healthcare IT and industrial SaaS respectively. Both are within Solstice's active coverage. We have seen inbound volume from quality founders in these verticals increase 40% year-on-year, and pipeline quality has improved commensurately.
+        </div>
+      </div>
+    </div>
   </div>
-  <span class="sn">10 / 10</span>
+
+  <div class="slide-num">06 / 10</div>
 </section>
 
-<div class="nh">↑ ↓ keys or scroll</div>
-<script>document.addEventListener('keydown',e=>{const d=e.key==='ArrowDown'||e.key==='ArrowRight';const u=e.key==='ArrowUp'||e.key==='ArrowLeft';if(d)window.scrollBy({top:window.innerHeight,behavior:'smooth'});if(u)window.scrollBy({top:-window.innerHeight,behavior:'smooth'})});</script>
+<!-- ═══════════════════════════════════════
+     SLIDE 7: FUND METRICS
+═══════════════════════════════════════ -->
+<section class="slide slide-metrics">
+  <div class="watermark" style="top:-2rem;right:-3rem;font-size:13rem;">II</div>
+
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="section-tag">Fund Metrics &nbsp;·&nbsp; Capital Account Summary</div>
+    <div class="slide-heading" style="margin-bottom:2.5rem;">Investment pacing on <em>plan</em>.</div>
+    <div class="h-rule" style="margin-bottom:2.5rem;"></div>
+
+    <div class="metrics-grid">
+      <div class="metrics-left">
+        <div class="metrics-label-sm">Deployment Pacing by Vintage Year</div>
+
+        <div class="pace-row">
+          <div class="pace-row-header">
+            <span class="pace-name">2023 Vintage</span>
+            <span class="pace-pct">100%</span>
+          </div>
+          <div class="pace-track"><div class="pace-fill" style="width:100%;"></div></div>
+          <div class="pace-sub">$48.0M deployed · 3 companies · fully invested</div>
+        </div>
+
+        <div class="pace-row">
+          <div class="pace-row-header">
+            <span class="pace-name">2024 Vintage</span>
+            <span class="pace-pct">88%</span>
+          </div>
+          <div class="pace-track"><div class="pace-fill" style="width:88%;"></div></div>
+          <div class="pace-sub">$62.7M deployed of $71.0M reserved · 3 companies</div>
+        </div>
+
+        <div class="pace-row">
+          <div class="pace-row-header">
+            <span class="pace-name">2025 Vintage</span>
+            <span class="pace-pct">52%</span>
+          </div>
+          <div class="pace-track"><div class="pace-fill" style="width:52%;"></div></div>
+          <div class="pace-sub">$31.5M deployed of $60.5M reserved · 2 companies</div>
+        </div>
+
+        <div class="pace-row">
+          <div class="pace-row-header">
+            <span class="pace-name">Reserve / Follow-on</span>
+            <span class="pace-pct">40%</span>
+          </div>
+          <div class="pace-track"><div class="pace-fill" style="width:40%;background:var(--warm);opacity:0.5;"></div></div>
+          <div class="pace-sub">$25.8M drawn of $64.5M reserved pool</div>
+        </div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule);">
+          <div class="metrics-label-sm">Remaining Dry Powder</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.5rem;color:var(--dark);">
+            $<span style="color:var(--gold);">112</span>M
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.65rem;color:var(--warm);margin-top:0.35rem;">available for new investments and follow-on reserves</div>
+        </div>
+      </div>
+
+      <div class="metrics-right">
+        <div class="vintage-heading">Compound value creation across three cohorts.</div>
+        <div class="vintage-body">
+          The 2023 vintage is the most mature cohort and has generated the strongest absolute returns, anchored by Vanta Health's continued outperformance. The 2024 cohort is entering its inflection phase with Arbor Financial and Sycamore EDU approaching key milestones. The 2025 cohort — Lumen AI and Corval Climate — is early but tracking ahead of underwriting on every key operating metric.<br><br>
+          Fenwick Ops remains the one position under active management; the board approved an operational restructuring in April 2026, and we expect clarity on the path forward by Q3.
+        </div>
+        <div class="vintage-stats">
+          <div>
+            <div class="vs-label">Unrealised Value</div>
+            <div class="vs-value">$<span class="gold">251.8</span>M</div>
+          </div>
+          <div>
+            <div class="vs-label">Cost Basis</div>
+            <div class="vs-value">$168.0M</div>
+          </div>
+          <div>
+            <div class="vs-label">Realised Proceeds</div>
+            <div class="vs-value">$<span class="gold">38.2</span>M</div>
+          </div>
+          <div>
+            <div class="vs-label">Portfolio Companies</div>
+            <div class="vs-value">8</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-num">07 / 10</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 8: ESG & GOVERNANCE
+═══════════════════════════════════════ -->
+<section class="slide slide-esg">
+  <div class="watermark" style="bottom:-3rem;left:-2rem;font-size:11rem;">ESG</div>
+
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="section-tag">ESG &amp; Governance &nbsp;·&nbsp; Annual Reporting</div>
+    <div class="slide-heading" style="margin-bottom:0;">Value creation with <em>intention</em>.</div>
+
+    <div class="esg-cols">
+      <div class="esg-col">
+        <div class="esg-col-tag">Environmental</div>
+        <div class="esg-col-title">Climate &amp;<br>Resource Stewardship</div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">Corval Climate's scope 3 traceability platform deployed across 3 portfolio companies, eliminating the need for manual emissions inventories and reducing third-party audit costs by 62%.</span>
+        </div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">Solstice adopted the TCFD disclosure framework for Fund II reporting, with climate scenario analysis completed by Deloitte in March 2026.</span>
+        </div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">All GP operations are carbon-neutral via verified offsets through South Pole. Portfolio companies are on a glide path to net-zero Scope 1 & 2 by 2027.</span>
+        </div>
+        <div class="esg-metric">
+          <div class="esg-metric-num"><span class="gold">−34</span>%</div>
+          <div class="esg-metric-label">Aggregate portfolio Scope 1 &amp; 2 emissions reduction vs 2023 baseline</div>
+        </div>
+      </div>
+
+      <div class="esg-col">
+        <div class="esg-col-tag">Social</div>
+        <div class="esg-col-title">Workforce &amp;<br>Community Impact</div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">Vanta Health's care coordination platform served 1.4M low-income Medicaid beneficiaries in Q2 2026, with a measurable 22% reduction in avoidable emergency department visits in covered populations.</span>
+        </div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">Solstice launched its Founder Fellowship programme, providing 10 pre-seed underrepresented founders with $50K grants, mentorship, and network access per cohort.</span>
+        </div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">Median portfolio company gender pay gap narrowed to 2.1% (from 6.8% at initial investment), tracked via annual total compensation audits mandated in investment side letters.</span>
+        </div>
+        <div class="esg-metric">
+          <div class="esg-metric-num"><span class="gold">38</span>%</div>
+          <div class="esg-metric-label">Board seats across portfolio held by women or underrepresented minorities</div>
+        </div>
+      </div>
+
+      <div class="esg-col">
+        <div class="esg-col-tag">Governance</div>
+        <div class="esg-col-title">Transparency &amp;<br>Accountability</div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">All portfolio company boards now include at least one independent director with relevant operating experience, a condition enforced at Series B onward per our updated governance framework.</span>
+        </div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">Solstice adopted quarterly LP data packages aligned with the ILPA Data Convergence Initiative, enabling institutional LPs to aggregate and compare fund-level metrics without manual normalisation.</span>
+        </div>
+        <div class="esg-initiative">
+          <span class="esg-init-dash">—</span>
+          <span class="esg-init-text">No related-party transactions were entered into by any Fund II portfolio company without full LP advisory board disclosure and majority approval in Q2 2026.</span>
+        </div>
+        <div class="esg-metric">
+          <div class="esg-metric-num"><span class="gold">100</span>%</div>
+          <div class="esg-metric-label">Portfolio companies with independent audit committees as of Q2 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-num">08 / 10</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 9: OUTLOOK
+═══════════════════════════════════════ -->
+<section class="slide slide-outlook">
+  <div class="watermark" style="top:50%;left:50%;transform:translate(-50%,-50%);font-size:12rem;letter-spacing:0.05em;color:#f9f6ef;">2026</div>
+
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;height:100%;">
+    <div class="section-tag" style="color:rgba(249,246,239,0.35);">Forward Outlook &nbsp;·&nbsp; H2 2026 – 2027</div>
+
+    <div class="outlook-quote">
+      "The next 18 months will reward<br>patience and precision."
+    </div>
+    <div class="outlook-attribution">— Investment Committee, Solstice Capital, Q2 2026</div>
+
+    <div class="outlook-rule"></div>
+
+    <div class="outlook-items">
+      <div>
+        <div class="outlook-item-num">01</div>
+        <div class="outlook-item-title">Deepen the Digital Health Portfolio</div>
+        <div class="outlook-item-body">
+          We are tracking four digital health companies at Series B, all within the value-based care and AI-enabled diagnostics verticals. We expect to close one to two new platform investments in H2 2026, with check sizes in the $18M–$30M range. The Vanta Health benchmark will serve as the primary underwriting reference frame.
+        </div>
+      </div>
+      <div>
+        <div class="outlook-item-num">02</div>
+        <div class="outlook-item-title">Accelerate Follow-On Reserves</div>
+        <div class="outlook-item-body">
+          Lumen AI and Vanta Health have both signalled Series D processes in H1 2027. Solstice has pro-rata rights in both, and we intend to exercise fully — subject to LPAC review. We have $38M earmarked in follow-on reserves against current pro-rata entitlements across the portfolio.
+        </div>
+      </div>
+      <div>
+        <div class="outlook-item-num">03</div>
+        <div class="outlook-item-title">Resolve Fenwick Ops Position</div>
+        <div class="outlook-item-body">
+          The board-approved restructuring at Fenwick Ops — including new CFO appointment and a revised go-to-market strategy focused on the US industrial heartland — will determine the mark in Q3 2026. We have stress-tested three scenarios; in all but the downside case, recovery exceeds current carrying value within 18 months.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-num slide-num-light">09 / 10</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10: CLOSING
+═══════════════════════════════════════ -->
+<section class="slide slide-closing">
+  <div class="watermark" style="top:-2rem;left:-3rem;font-size:9rem;letter-spacing:0.04em;">SOLSTICE</div>
+
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;height:100%;padding-bottom:5rem;">
+    <div class="section-tag">Closing Summary &nbsp;·&nbsp; Q2 2026</div>
+    <div class="h-rule"></div>
+
+    <div class="closing-grid">
+      <div class="closing-left">
+        <div class="closing-heading">A fund building quietly toward an exceptional outcome.</div>
+        <div class="closing-body">
+          Solstice Capital Fund II is performing ahead of its 2023 vintage peer group on every primary return metric. The portfolio reflects nine investments made across three cohorts, with deliberate concentration in healthcare technology and AI infrastructure — two sectors where we have deep operating knowledge, differentiated sourcing, and the patience to hold through volatility.
+          <br><br>
+          We are grateful for the continued confidence of our LP community. Every capital allocation decision we make is made with your long-term interests as the sole constraint.
+        </div>
+
+        <div>
+          <div class="perf-row">
+            <span class="perf-row-label">Net IRR (since inception)</span>
+            <span class="perf-row-value"><span class="gold">19.4%</span></span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-row-label">TVPI</span>
+            <span class="perf-row-value">1.62×</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-row-label">DPI</span>
+            <span class="perf-row-value">0.31×</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-row-label">Deployed Capital</span>
+            <span class="perf-row-value">$168.0M</span>
+          </div>
+          <div class="perf-row">
+            <span class="perf-row-label">Remaining Dry Powder</span>
+            <span class="perf-row-value"><span class="gold">$112.0M</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing-right">
+        <div class="contact-section">
+          <div class="contact-label">General Partner Contact</div>
+          <div class="contact-name">Morgan Ashford</div>
+          <div class="contact-detail">
+            Managing Partner<br>
+            m.ashford@solsticecapital.com<br>
+            +1 (415) 882-4400
+          </div>
+        </div>
+
+        <div class="contact-section">
+          <div class="contact-label">LP Investor Relations</div>
+          <div class="contact-name">Clara Wentworth</div>
+          <div class="contact-detail">
+            Director, Investor Relations<br>
+            lp-relations@solsticecapital.com<br>
+            +1 (415) 882-4422
+          </div>
+        </div>
+
+        <div class="contact-section">
+          <div class="contact-label">Fund Administrator</div>
+          <div class="contact-detail">
+            Citco Fund Services (USA) Inc.<br>
+            citco.solstice@citco.com
+          </div>
+        </div>
+
+        <div class="contact-section">
+          <div class="contact-label">Auditor</div>
+          <div class="contact-detail">
+            Ernst &amp; Young LLP<br>
+            San Francisco, CA
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-footer">
+    <div class="confidentiality">
+      This document is confidential and intended solely for existing limited partners of Solstice Capital Fund II, L.P. The information contained herein is provided for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Past performance is not indicative of future results. All return figures are unaudited and subject to change. IRR and TVPI figures are calculated as of 30 June 2026 and include unrealised valuations based on internal marks.
+    </div>
+    <div class="fund-footer-mark">Solstice Capital &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; Q2 2026</div>
+  </div>
+
+  <div class="slide-num">10 / 10</div>
+</section>
+
+<script>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+</script>
+
 </body>
 </html>

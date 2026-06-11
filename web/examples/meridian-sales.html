@@ -1,357 +1,1788 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meridian Analytics — Proposal for Hargrove Partners</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--ink:#0a0a0a;--paper:#f7f5f0;--mid:#e8e4dd;--rule:#c8c2b8;--blue:#1a4fd8;--red:#c0392b;--green:#1a6635;--amber:#b8700a;--muted:#6b6560;--aside:#f2efe8}
-    html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth}
-    body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:400}
-    .s{min-height:100vh;width:100%;scroll-snap-align:start;position:relative;overflow:hidden}
-    .nh{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted);letter-spacing:2px;z-index:100;font-family:'IBM Plex Mono',monospace}
-    .hdr{position:absolute;top:0;left:0;right:0;height:36px;border-bottom:2px solid var(--ink);display:flex;align-items:center;padding:0 48px;justify-content:space-between;background:var(--paper);z-index:10}
-    .hdr-l{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-    .hdr-r{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted)}
-    .hdr-mark{color:var(--blue);font-weight:600}
-    .body{padding:72px 48px 40px;display:flex;flex-direction:column;height:100vh}
-    .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;display:block}
-    .section-label{font-family:'Libre Baskerville',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:700;line-height:1.2;margin-bottom:32px}
-    .rule{border:none;border-top:2px solid var(--ink);margin:24px 0}
-    .rule-thin{border:none;border-top:1px solid var(--rule);margin:20px 0}
-    .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-    .cols-65{display:grid;grid-template-columns:2fr 1fr;gap:48px}
-    .caption{font-size:0.75rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;letter-spacing:1px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Analytics — Proposal for Hargrove Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f7f5f0;
+    --mid: #e8e4dd;
+    --rule: #c8c2b8;
+    --blue: #1a4fd8;
+    --red: #c0392b;
+    --green: #1a6635;
+    --amber: #b8700a;
+    --muted: #6b6560;
+    --aside: #f2efe8;
+    --header-h: 36px;
+  }
 
-    /* S1 COVER */
-    .s1{background:var(--paper)}
-    .s1 .body{padding:0}
-    .s1-split{display:grid;grid-template-columns:1fr 1fr;height:100vh}
-    .s1-left{background:var(--ink);color:var(--paper);padding:72px 52px;display:flex;flex-direction:column;justify-content:space-between}
-    .s1-right{padding:72px 52px;display:flex;flex-direction:column;justify-content:space-between}
-    .s1-logo{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;opacity:0.5}
-    .s1 h1{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;line-height:1.1;margin:auto 0}
-    .s1 h1 em{font-style:italic;font-weight:400}
-    .s1-meta{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;opacity:0.5}
-    .s1-right h2{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:400;font-style:italic;color:var(--muted);margin-bottom:32px;line-height:1.6}
-    .s1-facts{display:flex;flex-direction:column;gap:0}
-    .s1-fact{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);padding:16px 0}
-    .s1-fact .k{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;color:var(--muted)}
-    .s1-fact .v{font-size:0.9rem;font-weight:600;text-align:right}
-    .s1-conf{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* S2 AGENDA */
-    .agenda-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px;border-top:2px solid var(--ink);border-left:2px solid var(--ink)}
-    .ag-cell{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:24px 20px}
-    .ag-n{font-family:'IBM Plex Mono',monospace;font-size:2rem;font-weight:500;color:var(--rule);line-height:1;margin-bottom:12px}
-    .ag-t{font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:8px}
-    .ag-d{font-size:0.8rem;color:var(--muted);line-height:1.6}
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+  }
 
-    /* S3 COST */
-    .cost-row{display:grid;grid-template-columns:3fr 1fr 1fr;gap:24px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:start}
-    .cost-head{display:grid;grid-template-columns:3fr 1fr 1fr;gap:24px;padding:8px 0;border-bottom:2px solid var(--ink)}
-    .cost-head div{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-    .cost-name{font-size:0.88rem;font-weight:500}
-    .cost-curr{font-size:0.88rem;color:var(--red);font-weight:600;text-align:right;font-family:'IBM Plex Mono',monospace}
-    .cost-post{font-size:0.88rem;color:var(--green);font-weight:600;text-align:right;font-family:'IBM Plex Mono',monospace}
-    .cost-total{display:grid;grid-template-columns:3fr 1fr 1fr;gap:24px;padding:14px 0;border-top:2px solid var(--ink)}
-    .cost-total .cost-name{font-weight:700;font-family:'Libre Baskerville',serif}
-    .footnote{font-size:0.75rem;color:var(--muted);margin-top:12px;font-style:italic}
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--ink);
+    color: var(--ink);
+    height: 100%;
+  }
 
-    /* S4 PROCESS */
-    .proc-step{display:grid;grid-template-columns:56px 1fr 180px;gap:24px;align-items:start;padding:20px 0;border-bottom:1px solid var(--rule)}
-    .proc-step:last-child{border-bottom:2px solid var(--ink)}
-    .proc-n{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:1.2rem;color:var(--rule);padding-top:2px}
-    .proc-content h3{font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:6px}
-    .proc-content p{font-size:0.83rem;color:var(--muted);line-height:1.65}
-    .proc-timing{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--blue);padding-top:2px}
+  /* ─── FIXED HEADER ─── */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 1000;
+    border-bottom: 2px solid #333;
+  }
+  .site-header .brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--paper);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .site-header .meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 0.08em;
+  }
 
-    /* S5 MAPPING */
-    .map-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:2px solid var(--ink);border-left:2px solid var(--ink);margin-top:8px}
-    .map-cell{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:20px 18px}
-    .map-cell.head{background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase}
-    .map-cell.pain h3{font-size:0.85rem;font-weight:600;margin-bottom:6px;color:var(--red)}
-    .map-cell.module h3{font-size:0.85rem;font-weight:600;margin-bottom:6px;color:var(--blue)}
-    .map-cell p{font-size:0.78rem;color:var(--muted);line-height:1.6}
-    .map-cell.outcome h3{font-size:0.85rem;font-weight:600;margin-bottom:6px;color:var(--green)}
+  /* ─── FIXED NAV HINT ─── */
+  .nav-hint {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #999;
+    background: rgba(10,10,10,0.85);
+    padding: 6px 14px;
+    border: 1px solid #333;
+    letter-spacing: 0.06em;
+    z-index: 1000;
+    white-space: nowrap;
+  }
 
-    /* S6 ROI */
-    .roi-main{display:grid;grid-template-columns:2fr 1fr;gap:40px;margin-top:8px}
-    .roi-table{width:100%}
-    .roi-table th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:8px 0;border-bottom:2px solid var(--ink);text-align:left}
-    .roi-table th:last-child{text-align:right}
-    .roi-table td{padding:12px 0;border-bottom:1px solid var(--rule);font-size:0.85rem;vertical-align:top}
-    .roi-table td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600}
-    .roi-table tr.total td{border-top:2px solid var(--ink);border-bottom:none;font-weight:700;font-family:'Libre Baskerville',serif}
-    .roi-sidebar{background:var(--aside);border:1px solid var(--rule);padding:24px}
-    .roi-sidebar .big{font-family:'Libre Baskerville',serif;font-size:3rem;font-weight:700;color:var(--green);line-height:1;margin:12px 0}
-    .roi-sidebar .label{font-size:0.8rem;color:var(--muted);line-height:1.6}
-    .roi-sidebar .cite{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--muted);margin-top:16px;padding-top:12px;border-top:1px solid var(--rule)}
-    .blockquote{margin-top:20px;padding:20px 24px;border-left:4px solid var(--blue);background:var(--aside)}
-    .blockquote p{font-family:'Libre Baskerville',serif;font-style:italic;font-size:0.95rem;line-height:1.6;margin-bottom:8px}
-    .blockquote cite{font-size:0.78rem;font-family:'IBM Plex Mono',monospace;color:var(--muted)}
+  /* ─── SLIDES ─── */
+  .slide {
+    scroll-snap-align: start;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    padding-top: var(--header-h);
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
 
-    /* S7 PROOF */
-    .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:2px solid var(--ink);border-left:2px solid var(--ink);margin-top:8px}
-    .proof-card{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between}
-    .proof-card blockquote{font-family:'Libre Baskerville',serif;font-style:italic;font-size:1rem;line-height:1.6;margin-bottom:16px;flex:1}
-    .proof-card .attr{display:flex;align-items:center;gap:12px}
-    .proof-card .init{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;font-family:'IBM Plex Mono',monospace;flex-shrink:0}
-    .proof-card .who{font-size:0.8rem;font-weight:600}
-    .proof-card .role{font-size:0.75rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
-    .proof-stat{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:28px 24px;background:var(--ink);color:var(--paper)}
-    .proof-stat .big{font-family:'Libre Baskerville',serif;font-size:3.5rem;font-weight:700;line-height:1;margin:8px 0}
-    .proof-stat .lbl{font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.5}
+  .slide-inner {
+    width: 100%;
+    height: calc(100vh - var(--header-h));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
 
-    /* S8 PRICING */
-    .price-tbl{width:100%;border-collapse:collapse;margin-top:8px;font-size:0.85rem}
-    .price-tbl thead tr{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
-    .price-tbl th{padding:12px 16px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:400}
-    .price-tbl th.val{text-align:right}
-    .price-tbl td{padding:13px 16px;border-bottom:1px solid var(--rule)}
-    .price-tbl td.val{text-align:right;font-weight:600;font-family:'IBM Plex Mono',monospace}
-    .price-tbl tr.highlight td{background:rgba(26,79,216,0.06)}
-    .price-tbl tr.highlight td:first-child{border-left:3px solid var(--blue)}
-    .price-tbl tr.total td{border-top:2px solid var(--ink);border-bottom:none;font-weight:700;font-family:'Libre Baskerville',serif}
-    .price-note{font-size:0.8rem;color:var(--muted);margin-top:16px;line-height:1.7;font-style:italic}
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3 { font-family: 'Libre Baskerville', serif; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .serif { font-family: 'Libre Baskerville', serif; }
 
-    /* S9 IMPL */
-    .impl-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);border-left:2px solid var(--ink);margin-top:8px}
-    .impl-phase{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:20px 18px;display:flex;flex-direction:column}
-    .impl-phase .ph{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-    .impl-phase .week{font-size:0.78rem;color:var(--blue);font-weight:600;font-family:'IBM Plex Mono',monospace;margin-bottom:12px}
-    .impl-phase h3{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;margin-bottom:10px}
-    .impl-phase ul{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1}
-    .impl-phase ul li{font-size:0.78rem;color:var(--muted);line-height:1.5;padding-left:12px;position:relative}
-    .impl-phase ul li::before{content:'—';position:absolute;left:0;color:var(--rule)}
-    .impl-phase .status{margin-top:16px;font-size:0.75rem;font-family:'IBM Plex Mono',monospace;padding:4px 8px;display:inline-block}
-    .status-done{background:var(--green);color:#fff}
-    .status-next{background:var(--blue);color:#fff}
-    .status-plan{background:var(--mid);color:var(--ink)}
+  /* ─── RULES ─── */
+  .rule-2 { border-top: 2px solid var(--ink); }
+  .rule-1 { border-top: 1px solid var(--rule); }
+  .rule-b { border-bottom: 2px solid var(--ink); }
+  .rule-b1 { border-bottom: 1px solid var(--rule); }
 
-    /* S10 CLOSE */
-    .s10{background:var(--ink);color:var(--paper)}
-    .s10 .hdr{background:var(--ink);border-bottom-color:rgba(255,255,255,0.15)}
-    .s10 .hdr-l,.s10 .hdr-r{color:rgba(255,255,255,0.3)}
-    .s10 h1{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;max-width:800px;line-height:1.15;margin-bottom:32px}
-    .s10 h1 em{font-style:italic;font-weight:400;color:rgba(255,255,255,0.6)}
-    .next-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,0.15);border-left:1px solid rgba(255,255,255,0.15);margin:40px 0}
-    .ns-cell{border-right:1px solid rgba(255,255,255,0.15);border-bottom:1px solid rgba(255,255,255,0.15);padding:24px}
-    .ns-n{font-family:'IBM Plex Mono',monospace;font-size:1.8rem;color:rgba(255,255,255,0.1);margin-bottom:10px;line-height:1}
-    .ns-cell h3{font-size:0.95rem;font-family:'Libre Baskerville',serif;font-weight:700;margin-bottom:6px}
-    .ns-cell p{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.6}
-    .s10-contact{display:flex;gap:48px;align-items:flex-end;margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,0.15)}
-    .contact-block .k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px}
-    .contact-block .v{font-size:0.88rem;color:var(--paper)}
+  /* ─── TABLE BASE ─── */
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: 8px 12px; }
 
-    @media print{html{scroll-snap-type:none}.s{page-break-after:always;min-height:auto;height:100vh}.nh{display:none}}
-  </style>
+  /* ────────────────────────────────────────
+     SLIDE 1 — COVER
+  ──────────────────────────────────────── */
+  #s1 { padding-top: var(--header-h); }
+  #s1 .slide-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: unset;
+  }
+  .cover-left {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px 44px 52px;
+    border-right: 2px solid var(--ink);
+  }
+  .cover-left .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .cover-left h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(32px, 3.8vw, 58px);
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.12;
+    margin-bottom: 36px;
+  }
+  .cover-left .logo-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    letter-spacing: 0.22em;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+  }
+  .cover-right {
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px 44px 52px;
+  }
+  .cover-right .client-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .cover-right h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(22px, 2.8vw, 40px);
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 1.15;
+  }
+  .proposal-table {
+    border-top: 2px solid var(--ink);
+  }
+  .proposal-table tr {
+    border-bottom: 1px solid var(--rule);
+  }
+  .proposal-table td:first-child {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    width: 38%;
+    padding: 12px 12px 12px 0;
+  }
+  .proposal-table td:last-child {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    padding: 12px 0;
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 2 — AGENDA
+  ──────────────────────────────────────── */
+  #s2 .slide-inner { padding: 36px 44px; }
+  .agenda-header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .agenda-header h2 {
+    font-size: clamp(18px, 2.2vw, 28px);
+    font-weight: 700;
+  }
+  .agenda-header .sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+  }
+  .agenda-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    flex: 1;
+    border-top: 2px solid var(--ink);
+    border-left: 2px solid var(--ink);
+  }
+  .agenda-col {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 24px 22px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .agenda-col .big-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 700;
+    color: var(--mid);
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .agenda-col h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(13px, 1.4vw, 17px);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .agenda-col p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .agenda-col .timing {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 3 — COST ANALYSIS
+  ──────────────────────────────────────── */
+  #s3 .slide-inner { padding: 36px 44px; }
+  .section-header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .section-header h2 { font-size: clamp(16px, 1.9vw, 24px); font-weight: 700; }
+  .section-header .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .cost-table { margin-top: 0; }
+  .cost-table thead tr {
+    background: var(--ink);
+  }
+  .cost-table thead th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--paper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-right: 1px solid #333;
+  }
+  .cost-table thead th:last-child { border-right: none; }
+  .cost-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .cost-table tbody tr:nth-child(even) { background: var(--aside); }
+  .cost-table tbody td {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    padding: 11px 16px;
+    border-right: 1px solid var(--rule);
+  }
+  .cost-table tbody td:last-child { border-right: none; }
+  .cost-table tbody td:first-child { font-weight: 500; }
+  .cost-table tbody td.current {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--red);
+    font-weight: 400;
+  }
+  .cost-table tbody td.projected {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 400;
+  }
+  .cost-table tfoot tr {
+    background: var(--ink);
+  }
+  .cost-table tfoot td {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--paper);
+    padding: 13px 16px;
+    border-right: 1px solid #333;
+  }
+  .cost-table tfoot td:last-child { border-right: none; }
+  .savings-callout {
+    margin-top: 20px;
+    background: var(--aside);
+    border-left: 4px solid var(--green);
+    padding: 14px 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .savings-callout .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .savings-callout .amount {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .savings-callout .note {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 4 — MODULES
+  ──────────────────────────────────────── */
+  #s4 .slide-inner { padding: 36px 44px; }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 24px;
+    border-top: 2px solid var(--ink);
+    border-left: 2px solid var(--ink);
+    flex: 1;
+  }
+  .module-col {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+  }
+  .module-header {
+    border-top: 4px solid var(--blue);
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .module-header .mod-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--blue);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .module-header h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(14px, 1.6vw, 18px);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .module-header .mod-sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .module-body {
+    padding: 18px 22px;
+    flex: 1;
+  }
+  .module-body ul { list-style: none; }
+  .module-body ul li {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+  .module-body ul li:last-child { border-bottom: none; }
+  .module-body ul li::before {
+    content: '—';
+    color: var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .module-footer {
+    padding: 14px 22px;
+    background: var(--aside);
+    border-top: 1px solid var(--rule);
+  }
+  .module-footer .impl-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .module-footer .impl-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--amber);
+    margin-top: 3px;
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 5 — IMPLEMENTATION
+  ──────────────────────────────────────── */
+  #s5 .slide-inner { padding: 36px 44px; }
+  .impl-table { margin-top: 24px; }
+  .impl-table thead tr { background: var(--ink); }
+  .impl-table thead th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--paper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 11px 16px;
+    border-right: 1px solid #333;
+  }
+  .impl-table thead th:last-child { border-right: none; }
+  .impl-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .impl-table tbody tr:nth-child(even) { background: var(--aside); }
+  .impl-table tbody td {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    padding: 14px 16px;
+    border-right: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .impl-table tbody td:last-child { border-right: none; }
+  .impl-table .step-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--mid);
+    width: 60px;
+  }
+  .impl-table .phase-name {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 15px;
+    width: 140px;
+  }
+  .impl-table .desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .impl-table .timeline-col {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    width: 110px;
+  }
+  .impl-table .deliverables {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  .status-chip {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+  }
+  .chip-weeks { color: var(--amber); }
+  .chip-days { color: var(--blue); }
+  .chip-live { color: var(--green); }
+  .impl-footnote {
+    margin-top: 20px;
+    padding: 12px 16px;
+    border-left: 3px solid var(--rule);
+    background: var(--aside);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 6 — PAIN MAPPING
+  ──────────────────────────────────────── */
+  #s6 .slide-inner { padding: 36px 44px; }
+  .pain-table { margin-top: 24px; }
+  .pain-table thead tr { background: var(--ink); }
+  .pain-table thead th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--paper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-right: 1px solid #333;
+  }
+  .pain-table thead th:last-child { border-right: none; }
+  .pain-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .pain-table tbody tr:nth-child(even) { background: var(--aside); }
+  .pain-table tbody td {
+    padding: 13px 16px;
+    font-size: 13px;
+    border-right: 1px solid var(--rule);
+    vertical-align: middle;
+    line-height: 1.45;
+  }
+  .pain-table tbody td:last-child { border-right: none; }
+  .pain-table td.pain {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    color: var(--red);
+  }
+  .pain-table td.module {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+  }
+  .pain-table td.outcome {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 500;
+  }
+  .pain-table td.pain-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--rule);
+    width: 44px;
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 7 — ROI MODEL
+  ──────────────────────────────────────── */
+  #s7 .slide-inner { padding: 36px 44px; }
+  .roi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 24px;
+    border-top: 2px solid var(--ink);
+    border-left: 2px solid var(--ink);
+    flex: 1;
+  }
+  .roi-left {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 28px 30px;
+  }
+  .roi-right {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 28px 30px;
+  }
+  .roi-section-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .roi-calc-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .roi-calc-row:last-child { border-bottom: none; }
+  .roi-calc-row .label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 55%;
+    line-height: 1.4;
+  }
+  .roi-calc-row .val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .roi-calc-row.total-row {
+    background: var(--ink);
+    margin: 12px -30px -28px;
+    padding: 14px 30px;
+  }
+  .roi-calc-row.total-row .label {
+    color: var(--paper);
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  .roi-calc-row.total-row .val {
+    color: #7de8a0;
+    font-size: 16px;
+  }
+  .roi-math-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    padding: 10px 0;
+    border-top: 1px solid var(--rule);
+    margin-top: 16px;
+    line-height: 1.7;
+  }
+  .kpi-block {
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .kpi-block:last-child { border-bottom: none; }
+  .kpi-block .kpi-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    min-width: 130px;
+  }
+  .kpi-block .kpi-val {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(22px, 2.6vw, 34px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .kpi-block .kpi-note {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 8 — CASE STUDY
+  ──────────────────────────────────────── */
+  #s8 .slide-inner { padding: 36px 44px; }
+  .case-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 24px;
+    flex: 1;
+    border-top: 2px solid var(--ink);
+    border-left: 2px solid var(--ink);
+  }
+  .case-left {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 30px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .case-right {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 30px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .case-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+  }
+  blockquote.pull {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.6vw, 19px);
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0;
+    border-left: 4px solid var(--ink);
+    padding-left: 22px;
+    flex: 1;
+  }
+  .quote-attr {
+    margin-top: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .metrics-row {
+    display: flex;
+    gap: 0;
+    margin-top: 20px;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+  .metric-item {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid var(--rule);
+    margin-right: 20px;
+  }
+  .metric-item:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .metric-item .m-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .metric-item .m-label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .sidebar-note {
+    background: var(--aside);
+    border-left: 3px solid var(--rule);
+    padding: 14px 16px;
+    margin-top: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .sidebar-note strong {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .client-profile {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .client-profile p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .client-profile .cf-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 9 — PRICING
+  ──────────────────────────────────────── */
+  #s9 .slide-inner { padding: 36px 44px; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 24px;
+    border-top: 2px solid var(--ink);
+    border-left: 2px solid var(--ink);
+    flex: 1;
+  }
+  .pricing-col {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .pricing-col.highlighted {
+    border-right: 3px solid var(--blue);
+    border-left: 1px solid var(--blue);
+    background: #f0f4ff;
+    margin-left: -1px;
+  }
+  .pricing-tier-header {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pricing-col.highlighted .pricing-tier-header {
+    background: var(--blue);
+    border-bottom-color: #1440b0;
+  }
+  .tier-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    color: var(--muted);
+  }
+  .pricing-col.highlighted .tier-badge { color: rgba(255,255,255,0.7); }
+  .tier-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .pricing-col.highlighted .tier-name { color: var(--paper); }
+  .tier-desc {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .pricing-col.highlighted .tier-desc { color: rgba(255,255,255,0.65); }
+  .tier-price {
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pricing-col.highlighted .tier-price { border-bottom-color: rgba(26,79,216,0.3); }
+  .price-annual {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .price-big {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(24px, 2.8vw, 36px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .pricing-col.highlighted .price-big { color: var(--blue); }
+  .price-mo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .tier-features {
+    padding: 14px 22px;
+    flex: 1;
+  }
+  .tier-features ul { list-style: none; }
+  .tier-features ul li {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    gap: 9px;
+    line-height: 1.4;
+  }
+  .tier-features ul li:last-child { border-bottom: none; }
+  .tier-features ul li::before { content: '—'; color: var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 10px; flex-shrink: 0; margin-top: 1px; }
+  .pricing-col.highlighted .tier-features ul li { border-bottom-color: rgba(26,79,216,0.15); }
+  .recommended-banner {
+    position: absolute;
+    top: -2px; right: 0;
+    background: var(--blue);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+  .pricing-footer {
+    margin-top: 16px;
+    padding: 12px 0 0;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ────────────────────────────────────────
+     SLIDE 10 — NEXT STEPS
+  ──────────────────────────────────────── */
+  #s10 .slide-inner { padding: 36px 44px; }
+  .next-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 24px;
+    flex: 1;
+    border-top: 2px solid var(--ink);
+    border-left: 2px solid var(--ink);
+  }
+  .next-left {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 28px 32px;
+  }
+  .next-right {
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .next-steps-list { list-style: none; }
+  .next-steps-list li {
+    display: grid;
+    grid-template-columns: 40px 1fr 110px 110px;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .next-steps-list li:last-child { border-bottom: none; }
+  .next-step-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--mid);
+    line-height: 1;
+  }
+  .next-step-body {}
+  .next-step-body .step-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .next-step-body .step-desc {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .next-step-owner {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding-top: 3px;
+  }
+  .next-step-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink);
+    font-weight: 500;
+    padding-top: 3px;
+  }
+  .steps-col-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 110px 110px;
+    gap: 12px;
+    margin-bottom: 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .steps-col-header span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .sig-block {
+    border-top: 2px solid var(--ink);
+    padding-top: 22px;
+  }
+  .sig-line {
+    border-top: 1px solid var(--ink);
+    margin-bottom: 6px;
+    width: 80%;
+  }
+  .sig-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .sig-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .sig-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .sig-contact {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+  }
+  .proposal-legal {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+  }
+
+  /* ────────────────────────────────────────
+     PRINT
+  ──────────────────────────────────────── */
+  @media print {
+    html { scroll-snap-type: none; }
+    .nav-hint, .site-header { display: none; }
+    .slide {
+      height: auto;
+      min-height: 100vh;
+      page-break-after: always;
+      padding-top: 0;
+    }
+    .slide-inner { height: auto; overflow: visible; }
+    .modules-grid, .pricing-grid, .case-layout,
+    .agenda-grid, .roi-grid, .next-layout { flex: none; }
+  }
+</style>
 </head>
 <body>
 
-<section class="s s1">
-  <div class="s1-split">
-    <div class="s1-left">
-      <div class="s1-logo">Meridian Analytics</div>
-      <h1>Turning <em>raw data</em> into decisions your competitors can't replicate.</h1>
-      <div class="s1-meta">Confidential · June 2026</div>
+<!-- ─── FIXED SITE HEADER ─── -->
+<header class="site-header">
+  <span class="brand">Meridian Analytics</span>
+  <span class="meta">Proposal · Hargrove Partners · June 2026 · 10 Slides</span>
+</header>
+
+<!-- ─── FIXED NAV HINT ─── -->
+<div class="nav-hint">↑ ↓ keys or scroll · Meridian Analytics · 10 slides</div>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 1 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="s1">
+  <div class="slide-inner">
+    <div class="cover-left">
+      <div class="eyebrow">Confidential Proposal · June 2026</div>
+      <h1>Data That Moves<br>the Needle</h1>
+      <div class="logo-mono">MERIDIAN / ANALYTICS</div>
     </div>
-    <div class="s1-right">
-      <div></div>
-      <div>
-        <h2>Prepared exclusively for the Hargrove Partners leadership team.</h2>
-        <div class="s1-facts">
-          <div class="s1-fact"><span class="k">Prepared for</span><span class="v">Hargrove Partners LP</span></div>
-          <div class="s1-fact"><span class="k">Account lead</span><span class="v">Claire Fontaine</span></div>
-          <div class="s1-fact"><span class="k">Engagement type</span><span class="v">Enterprise Analytics Platform</span></div>
-          <div class="s1-fact"><span class="k">Proposed start</span><span class="v">01 Aug 2026</span></div>
-        </div>
-      </div>
-      <p class="s1-conf">For discussion purposes only. Not for distribution. © 2026 Meridian Analytics Inc.</p>
+    <div class="cover-right">
+      <div class="client-label">Prepared for</div>
+      <h2>Hargrove<br>Partners</h2>
+      <table class="proposal-table">
+        <tbody>
+          <tr>
+            <td>Date</td>
+            <td>9 June 2026</td>
+          </tr>
+          <tr>
+            <td>Scope</td>
+            <td>Enterprise Analytics Platform — Full Deployment</td>
+          </tr>
+          <tr>
+            <td>Contact</td>
+            <td>James Whitfield, VP Client Operations</td>
+          </tr>
+          <tr>
+            <td>Project Ref</td>
+            <td>MRD-2026-HP-004</td>
+          </tr>
+          <tr>
+            <td>Validity</td>
+            <td>30 days from date of issue</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">02 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Today's agenda</span>
-    <div class="section-label">Four conversations in forty minutes.</div>
+<!-- ═══════════════════════════════════════
+  SLIDE 2 — AGENDA
+═══════════════════════════════════════ -->
+<section class="slide" id="s2">
+  <div class="slide-inner">
+    <div class="agenda-header">
+      <h2>Agenda</h2>
+      <span class="sub">Four sections · Est. 45 minutes</span>
+    </div>
     <div class="agenda-grid">
-      <div class="ag-cell"><div class="ag-n">01</div><div class="ag-t">The Cost of the Status Quo</div><p class="ag-d">Quantifying what fragmented analytics costs Hargrove Partners today — in time, errors, and missed opportunity.</p></div>
-      <div class="ag-cell"><div class="ag-n">02</div><div class="ag-t">How Meridian Works</div><p class="ag-d">The platform in plain language: connectors, the reasoning engine, and how briefs reach the people who need them.</p></div>
-      <div class="ag-cell"><div class="ag-n">03</div><div class="ag-t">Evidence &amp; Outcomes</div><p class="ag-d">Three customers in financial services who look like you. Their numbers, in their words.</p></div>
-      <div class="ag-cell"><div class="ag-n">04</div><div class="ag-t">The Path Forward</div><p class="ag-d">A pricing proposal, an implementation timeline, and a clear next step for both teams.</p></div>
+      <div class="agenda-col">
+        <div class="big-num">01</div>
+        <h3>Current State &amp; Cost of Inaction</h3>
+        <p>An honest accounting of what manual reporting and fragmented tooling cost Hargrove today — in time, in headcount, and in delayed decisions.</p>
+        <div class="timing">10 minutes · Slides 3–4</div>
+      </div>
+      <div class="agenda-col">
+        <div class="big-num">02</div>
+        <h3>Recommended Platform Modules</h3>
+        <p>Three purpose-built modules addressing Hargrove's specific workflow pain points. Each scoped to your data environment and team structure.</p>
+        <div class="timing">12 minutes · Slides 4–6</div>
+      </div>
+      <div class="agenda-col">
+        <div class="big-num">03</div>
+        <h3>Return on Investment</h3>
+        <p>A transparent, line-by-line ROI model built on Hargrove's own estimates. Payback period, 3-year NPV, and validated benchmarks from similar firms.</p>
+        <div class="timing">12 minutes · Slides 7–8</div>
+      </div>
+      <div class="agenda-col">
+        <div class="big-num">04</div>
+        <h3>Pricing, Terms &amp; Next Steps</h3>
+        <p>Straightforward pricing tiers, implementation timeline, payment terms, and the five concrete actions required to get to contract signature by end of June.</p>
+        <div class="timing">11 minutes · Slides 9–10</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">03 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Part 01 — The cost of the status quo</span>
-    <div class="section-label">Based on your team's inputs: $3.8M in annual friction.</div>
-    <div class="cost-head"><div>Cost category</div><div style="text-align:right">Current (annual)</div><div style="text-align:right">With Meridian</div></div>
-    <div class="cost-row"><span class="cost-name">Analyst time: manual data extraction and formatting (est. 14 hrs/analyst/week × 6 analysts)</span><span class="cost-curr">$840K</span><span class="cost-post">$190K</span></div>
-    <div class="cost-row"><span class="cost-name">Decision latency: cost of T+1 reporting (3 documented missed rebalancing windows Q3–Q4 2025)</span><span class="cost-curr">$1.4M</span><span class="cost-post">$120K</span></div>
-    <div class="cost-row"><span class="cost-name">Error remediation: reconciliation between Tableau, Excel, and Bloomberg feeds</span><span class="cost-curr">$620K</span><span class="cost-post">$55K</span></div>
-    <div class="cost-row"><span class="cost-name">Attrition risk: 2 senior analysts flagged data fragmentation as primary dissatisfier in exit interviews</span><span class="cost-curr">$940K</span><span class="cost-post">$940K</span></div>
-    <div class="cost-total"><span class="cost-name">Total identified friction</span><span class="cost-curr">$3.8M</span><span class="cost-post">$1.31M</span></div>
-    <p class="footnote">* Calculations based on inputs provided in discovery call (2026-05-14). Full methodology available on request.</p>
-  </div>
-</section>
-
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">04 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Part 02 — How Meridian works</span>
-    <div class="section-label">A five-step process. Transparent at every stage.</div>
-    <div class="proc-step"><span class="proc-n">01</span><div class="proc-content"><h3>Connect your sources</h3><p>Connectors for Bloomberg, Salesforce, Snowflake, SQL databases, and 130 others. Read-only. No migration, no downtime. Average connection time: 7 minutes per source.</p></div><span class="proc-timing">Day 1</span></div>
-    <div class="proc-step"><span class="proc-n">02</span><div class="proc-content"><h3>Build your semantic model</h3><p>Your analysts map business concepts ("AUM", "net flow", "portfolio stress") onto the connected data. Meridian learns the language of Hargrove — not generic financial jargon.</p></div><span class="proc-timing">Week 1–2</span></div>
-    <div class="proc-step"><span class="proc-n">03</span><div class="proc-content"><h3>Configure alert thresholds</h3><p>Set conditions that trigger a brief: drawdown exceeds 4%, sector concentration above 18%, macro event detected. Threshold editor is self-serve.</p></div><span class="proc-timing">Week 2</span></div>
-    <div class="proc-step"><span class="proc-n">04</span><div class="proc-content"><h3>Receive decision briefs</h3><p>Plain-English summaries, fully cited to source rows, pushed to Slack or email the moment a threshold is crossed. Every brief includes a "why this matters" context section.</p></div><span class="proc-timing">Week 3+</span></div>
-    <div class="proc-step"><span class="proc-n">05</span><div class="proc-content"><h3>Interrogate with questions</h3><p>Any team member asks natural-language questions. System responds with a cited brief in under 90 seconds, 24/7.</p></div><span class="proc-timing">Continuous</span></div>
-  </div>
-</section>
-
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">05 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Part 02 — Platform fit</span>
-    <div class="section-label">Every pain point you named. One module each.</div>
-    <div class="map-grid">
-      <div class="map-cell head">Your challenge</div><div class="map-cell head">Meridian module</div><div class="map-cell head">Expected outcome</div>
-      <div class="map-cell pain"><h3>14 hours/week per analyst on data formatting</h3><p>Tableau + Bloomberg + Excel reconciliation is manual and error-prone.</p></div>
-      <div class="map-cell module"><h3>Universal Connectors + Live Semantic Layer</h3><p>All sources reconciled automatically. Analysts query one model, not three systems.</p></div>
-      <div class="map-cell outcome"><h3>Reclaim 680 analyst-hours/quarter</h3><p>Based on Meridian benchmark across 8 similar firms. Achieved by end of month 1.</p></div>
-      <div class="map-cell pain"><h3>T+1 reporting during volatile markets</h3><p>Morning briefings miss intraday events. Three missed rebalancing windows in 2025.</p></div>
-      <div class="map-cell module"><h3>Real-time Alert Engine</h3><p>Continuous monitoring against defined thresholds. Sub-30-second detection latency.</p></div>
-      <div class="map-cell outcome"><h3>Zero missed threshold events</h3><p>Alert coverage is 24/7. Hargrove's specific macro triggers pre-configured during onboarding.</p></div>
-      <div class="map-cell pain"><h3>Knowledge locked in two senior analysts</h3><p>Vacation or departure creates a decision vacuum. Institutional knowledge undocumented.</p></div>
-      <div class="map-cell module"><h3>Semantic Model — "Hargrove Brain"</h3><p>Encodes the analytical logic of your team. Every query draws on it regardless of who's online.</p></div>
-      <div class="map-cell outcome"><h3>Full analytical continuity</h3><p>Any authorized team member asks any question. Junior analysts operate at senior quality.</p></div>
+<!-- ═══════════════════════════════════════
+  SLIDE 3 — COST ANALYSIS
+═══════════════════════════════════════ -->
+<section class="slide" id="s3">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>Current Cost Analysis</h2>
+      <span class="tag">Slide 03 of 10</span>
+    </div>
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th style="width:38%">Cost Item</th>
+          <th style="width:26%">Current Annual Cost</th>
+          <th style="width:26%">With Meridian</th>
+          <th style="width:10%">Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Manual reporting — analyst hours (est. 280 hrs/yr × $95/hr)</td>
+          <td class="current">$26,600</td>
+          <td class="projected">$4,100</td>
+          <td class="projected">−85%</td>
+        </tr>
+        <tr>
+          <td>Legacy BI tooling (Tableau server license + maintenance)</td>
+          <td class="current">$41,200</td>
+          <td class="projected">$0</td>
+          <td class="projected">−100%</td>
+        </tr>
+        <tr>
+          <td>Data cleaning &amp; normalisation (outsourced, quarterly)</td>
+          <td class="current">$18,400</td>
+          <td class="projected">$2,200</td>
+          <td class="projected">−88%</td>
+        </tr>
+        <tr>
+          <td>Senior analyst headcount — reporting overhead (1.2 FTE)</td>
+          <td class="current">$98,000</td>
+          <td class="projected">$49,000</td>
+          <td class="projected">−50%</td>
+        </tr>
+        <tr>
+          <td>Ad hoc data consultancy (4 engagements × avg. $8,500)</td>
+          <td class="current">$34,000</td>
+          <td class="projected">$8,500</td>
+          <td class="projected">−75%</td>
+        </tr>
+        <tr>
+          <td>Compliance reporting rework (errors, re-runs, delays)</td>
+          <td class="current">$12,800</td>
+          <td class="projected">$1,200</td>
+          <td class="projected">−91%</td>
+        </tr>
+        <tr>
+          <td>Meridian Analytics platform licence (annual)</td>
+          <td class="current">$0</td>
+          <td class="projected">$48,000</td>
+          <td style="color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:13px">New</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total Annual Cost</td>
+          <td style="color:#f08080;">$231,000</td>
+          <td style="color:#7de8a0;">$113,000</td>
+          <td style="color:#7de8a0;">−51%</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="savings-callout">
+      <span class="label">Projected Annual Saving</span>
+      <span class="amount">$118,000</span>
+      <span class="note">Based on figures provided by Hargrove Partners during discovery. Analyst hours at blended $95/hr loaded rate.</span>
     </div>
   </div>
 </section>
 
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">06 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Part 03 — Return on investment</span>
-    <div class="section-label">Conservative 12-month model using your numbers.</div>
-    <div class="roi-main">
-      <div>
-        <table class="roi-table">
-          <thead><tr><th>Value driver</th><th class="val">Annual benefit</th></tr></thead>
-          <tbody>
-            <tr><td>Analyst time recaptured (680 hrs × $620/hr blended)</td><td class="val">$421K</td></tr>
-            <tr><td>Decision latency improvement (conservative 50% recovery)</td><td class="val">$700K</td></tr>
-            <tr><td>Error remediation eliminated</td><td class="val">$565K</td></tr>
-            <tr><td>Platform investment</td><td class="val" style="color:var(--red)">-$204K</td></tr>
-            <tr class="total"><td>Net first-year benefit</td><td class="val" style="color:var(--green)">$1.48M</td></tr>
-          </tbody>
-        </table>
-        <div class="blockquote">
-          <p>"We were skeptical of the ROI projections in the proposal. Eighteen months in, actuals beat the model by 31%."</p>
-          <cite>— Head of Data, Albright Capital Management · AUM $4.2B</cite>
+<!-- ═══════════════════════════════════════
+  SLIDE 4 — MODULES
+═══════════════════════════════════════ -->
+<section class="slide" id="s4">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>Recommended Modules</h2>
+      <span class="tag">Slide 04 of 10</span>
+    </div>
+    <div class="modules-grid">
+      <div class="module-col">
+        <div class="module-header">
+          <div class="mod-tag">Module A</div>
+          <h3>Automated Reporting Engine</h3>
+          <div class="mod-sub">Replaces manual weekly and monthly pack assembly with scheduled, templated, audit-ready PDF and Excel exports.</div>
+        </div>
+        <div class="module-body">
+          <ul>
+            <li>Drag-and-drop report builder with 40+ pre-built templates</li>
+            <li>Scheduled delivery via email, Slack, or shared drive</li>
+            <li>Version control and approval workflow</li>
+            <li>Data lineage audit trail for each report run</li>
+            <li>Hargrove brand assets embedded natively</li>
+            <li>Multi-entity consolidation (practice groups)</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <div class="impl-label">Implementation estimate</div>
+          <div class="impl-val">3–4 weeks</div>
         </div>
       </div>
-      <div class="roi-sidebar">
-        <span class="eyebrow">Payback period</span>
-        <div class="big">7.2x</div>
-        <p class="label">Conservative return on Year 1 investment. Based on Hargrove-specific inputs and Meridian median delivery outcomes (n=47 enterprise clients).</p>
-        <div class="cite">Methodology available on request. Assumptions document sent separately.</div>
+      <div class="module-col">
+        <div class="module-header">
+          <div class="mod-tag">Module B</div>
+          <h3>Client Intelligence Dashboard</h3>
+          <div class="mod-sub">Live, role-based dashboards giving partners and practice leads a single pane of glass across billing, utilisation, and client health.</div>
+        </div>
+        <div class="module-body">
+          <ul>
+            <li>Real-time sync with Hargrove's practice management system</li>
+            <li>Partner, practice, and client-level drill-down</li>
+            <li>Utilisation and realization rate tracking</li>
+            <li>Client health score (payment, engagement, tenure)</li>
+            <li>Alert system for at-risk accounts and overdue WIP</li>
+            <li>Mobile-responsive, secure partner portal access</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <div class="impl-label">Implementation estimate</div>
+          <div class="impl-val">5–6 weeks</div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">07 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Part 03 — Evidence</span>
-    <div class="section-label">Three firms that look like you. Their words.</div>
-    <div class="proof-grid">
-      <div class="proof-card">
-        <blockquote>"Before Meridian, our morning meeting was 40 minutes of reconciling why Bloomberg said one thing and Tableau said another. Now it's 10 minutes of actual decisions."</blockquote>
-        <div class="attr"><div class="init">PK</div><div><div class="who">Peter Kwan</div><div class="role">CIO · Stonebridge Asset Mgmt · AUM $2.1B</div></div></div>
-      </div>
-      <div class="proof-stat"><span class="eyebrow" style="color:rgba(255,255,255,0.4)">Outcome</span><div class="big">94%</div><p class="lbl">reduction in data reconciliation time · Stonebridge · achieved week 3</p></div>
-      <div class="proof-stat" style="background:var(--blue)"><span class="eyebrow" style="color:rgba(255,255,255,0.4)">Outcome</span><div class="big">$2.3M</div><p class="lbl">identified opportunity from real-time monitoring · Albright Capital · Q4 2025</p></div>
-      <div class="proof-card">
-        <blockquote>"Our junior analysts now produce work that used to require a director-level review. The quality bar didn't drop — it rose, because the model holds the institutional knowledge."</blockquote>
-        <div class="attr"><div class="init">RH</div><div><div class="who">Rebecca Haas</div><div class="role">Head of Analytics · Meridian Fund · AUM $890M</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">08 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Part 04 — Commercial proposal</span>
-    <div class="section-label">What's included and what it costs.</div>
-    <div class="cols-65">
-      <div>
-        <table class="price-tbl">
-          <thead><tr><th>Line item</th><th class="val">Annual</th></tr></thead>
-          <tbody>
-            <tr class="highlight"><td><strong>Meridian Enterprise Platform</strong><br><span style="font-size:0.78rem;color:var(--muted)">Unlimited users · real-time alerting · SAML SSO</span></td><td class="val">$144,000</td></tr>
-            <tr><td>Bloomberg data connector (pass-through)<br><span style="font-size:0.78rem;color:var(--muted)">Via your existing Bloomberg API entitlement</span></td><td class="val">Included</td></tr>
-            <tr><td>Onboarding &amp; semantic model build (weeks 1–3)<br><span style="font-size:0.78rem;color:var(--muted)">Dedicated solutions engineer · 3-day on-site bootcamp</span></td><td class="val">Included</td></tr>
-            <tr><td>Dedicated CSM Year 1<br><span style="font-size:0.78rem;color:var(--muted)">Monthly business review · quarterly optimisation sprint</span></td><td class="val">Included</td></tr>
-            <tr><td>Compliance Package (SEC/FINRA export-ready logs)<br><span style="font-size:0.78rem;color:var(--muted)">Full query provenance · audit trail</span></td><td class="val">$60,000</td></tr>
-            <tr class="total"><td>Total Year 1 investment</td><td class="val">$204,000</td></tr>
-          </tbody>
-        </table>
-        <p class="price-note">Annual billing. Net 30. Multi-year discounts: 12% (2-yr), 20% (3-yr). Valid through 30 June 2026.</p>
-      </div>
-      <div>
-        <div class="roi-sidebar" style="height:calc(100% - 40px)">
-          <span class="eyebrow">Why now</span>
-          <p style="font-family:'Libre Baskerville',serif;font-style:italic;font-size:0.95rem;line-height:1.6;margin:16px 0">Q3 begins August 1. Firms that complete onboarding before Q3 open capture full benefit of real-time monitoring during the most active volatility window of the year.</p>
-          <hr style="border:none;border-top:1px solid var(--rule);margin:16px 0"/>
-          <p style="font-size:0.8rem;color:var(--muted);line-height:1.6">Implementation: 3 weeks. Contract signed July 1 → live August 1.</p>
+      <div class="module-col">
+        <div class="module-header">
+          <div class="mod-tag">Module C</div>
+          <h3>Pipeline &amp; Revenue Forecasting</h3>
+          <div class="mod-sub">Predictive revenue model built on your historical billing data, matter pipeline, and seasonal engagement patterns.</div>
+        </div>
+        <div class="module-body">
+          <ul>
+            <li>12-month rolling revenue forecast with confidence intervals</li>
+            <li>Matter pipeline stage weighting and conversion tracking</li>
+            <li>Scenario modelling (headcount, fee rate, mix change)</li>
+            <li>Comparison vs budget with variance commentary</li>
+            <li>Quarterly board pack auto-generation</li>
+            <li>Integration with Hargrove's existing ERP system</li>
+          </ul>
+        </div>
+        <div class="module-footer">
+          <div class="impl-label">Implementation estimate</div>
+          <div class="impl-val">6–8 weeks</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="s">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">09 / 10</span></div>
-  <div class="body">
-    <span class="eyebrow">Part 04 — Implementation plan</span>
-    <div class="section-label">Live in three weeks. Measurable in four.</div>
-    <div class="impl-timeline">
-      <div class="impl-phase"><span class="ph">Phase</span><span class="week">Week 1</span><h3>Connect &amp; Configure</h3><ul><li>Bloomberg, Snowflake, Salesforce connectors live</li><li>Read-only credentials provisioned</li><li>Data quality audit report delivered</li><li>On-site bootcamp (Day 2–3)</li></ul><span class="status status-next">NEXT</span></div>
-      <div class="impl-phase"><span class="ph">Phase</span><span class="week">Week 2</span><h3>Semantic Model Build</h3><ul><li>Hargrove concept library: AUM, net flow, portfolio stress</li><li>Alert thresholds configured with your team</li><li>Role-based access provisioned (8 users)</li></ul><span class="status status-plan">PLANNED</span></div>
-      <div class="impl-phase"><span class="ph">Phase</span><span class="week">Week 3</span><h3>Pilot &amp; Validate</h3><ul><li>Live briefings on real Hargrove data</li><li>Parallel run against existing workflow</li><li>Feedback sprint: adjust thresholds + model</li><li>Compliance package activated</li></ul><span class="status status-plan">PLANNED</span></div>
-      <div class="impl-phase"><span class="ph">Phase</span><span class="week">Week 4+</span><h3>Full Production</h3><ul><li>All 8 users on platform</li><li>Morning briefing replaces manual report</li><li>Month-1 outcomes review with CSM</li><li>Q3 monitoring fully operational</li></ul><span class="status status-plan">PLANNED</span></div>
+<!-- ═══════════════════════════════════════
+  SLIDE 5 — IMPLEMENTATION
+═══════════════════════════════════════ -->
+<section class="slide" id="s5">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>Implementation Process</h2>
+      <span class="tag">Slide 05 of 10</span>
+    </div>
+    <table class="impl-table">
+      <thead>
+        <tr>
+          <th style="width:52px">#</th>
+          <th style="width:130px">Phase</th>
+          <th>Description</th>
+          <th style="width:110px">Timeline</th>
+          <th style="width:220px">Deliverables</th>
+          <th style="width:80px">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="step-num">01</td>
+          <td class="phase-name">Discovery</td>
+          <td class="desc">Structured interviews with Hargrove finance, IT, and partner leads. Data source audit covering practice management, ERP, and billing systems. Definition of reporting requirements and KPI taxonomy.</td>
+          <td class="timeline-col">Weeks 1–2</td>
+          <td class="deliverables">Requirements document, data source map, stakeholder sign-off, technical access credentials</td>
+          <td><span class="status-chip chip-weeks">2 Weeks</span></td>
+        </tr>
+        <tr>
+          <td class="step-num">02</td>
+          <td class="phase-name">Setup &amp; Build</td>
+          <td class="desc">Secure cloud environment provisioning. Data connectors configured and validated. Report templates built to Hargrove specifications. Dashboard layouts reviewed by practice leads before UAT.</td>
+          <td class="timeline-col">Weeks 3–7</td>
+          <td class="deliverables">Live staging environment, 3 modules deployed, test data loaded, security review complete</td>
+          <td><span class="status-chip chip-weeks">5 Weeks</span></td>
+        </tr>
+        <tr>
+          <td class="step-num">03</td>
+          <td class="phase-name">Training</td>
+          <td class="desc">Role-based training sessions: partner users (2 hrs), analyst power users (4 hrs), IT admin (2 hrs). Video library and written documentation provided. Dedicated Slack channel with Meridian support team.</td>
+          <td class="timeline-col">Weeks 8–9</td>
+          <td class="deliverables">Training completion records, admin guide, user handbook, support channel live</td>
+          <td><span class="status-chip chip-days">10 Days</span></td>
+        </tr>
+        <tr>
+          <td class="step-num">04</td>
+          <td class="phase-name">Go-Live</td>
+          <td class="desc">Parallel run against legacy systems for first two weeks post-launch. Dedicated Meridian contact monitoring data quality. First monthly report pack generated and validated with Hargrove CFO. Formal handover.</td>
+          <td class="timeline-col">Week 10</td>
+          <td class="deliverables">Go-live sign-off, first report pack, 30-day health check scheduled, SLA contract active</td>
+          <td><span class="status-chip chip-live">Go-Live</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="impl-footnote">
+      All timelines assume timely provision of data access and stakeholder availability for discovery sessions. &nbsp;·&nbsp; Meridian assigns a dedicated Implementation Lead for the full engagement. &nbsp;·&nbsp; Total elapsed time: <strong>10 weeks</strong> from contract signature to production go-live.
     </div>
   </div>
 </section>
 
-<section class="s s10">
-  <div class="hdr"><span class="hdr-l"><span class="hdr-mark">Meridian Analytics</span> — Hargrove Partners</span><span class="hdr-r">10 / 10</span></div>
-  <div class="body">
-    <h1>One decision. <em>Live before Q3 opens.</em></h1>
-    <div class="next-steps">
-      <div class="ns-cell"><div class="ns-n">01</div><h3>Sign by July 1</h3><p>We hold the implementation slot. Onboarding team pre-allocated to the Hargrove project.</p></div>
-      <div class="ns-cell"><div class="ns-n">02</div><h3>Credentials call (1 hr)</h3><p>IT + Meridian solutions engineer. Provision read-only access to Bloomberg, Snowflake, Salesforce.</p></div>
-      <div class="ns-cell"><div class="ns-n">03</div><h3>On-site bootcamp</h3><p>2-day session with your 6 analysts + 2 directors. Build the Hargrove semantic model together.</p></div>
+<!-- ═══════════════════════════════════════
+  SLIDE 6 — PAIN MAPPING
+═══════════════════════════════════════ -->
+<section class="slide" id="s6">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>Pain Point → Module Mapping</h2>
+      <span class="tag">Slide 06 of 10</span>
     </div>
-    <div class="s10-contact">
-      <div class="contact-block"><div class="k">Account lead</div><div class="v">Claire Fontaine · claire@meridian.ai</div></div>
-      <div class="contact-block"><div class="k">Solutions engineer</div><div class="v">Tom Ashby · tom@meridian.ai</div></div>
-      <div class="contact-block"><div class="k">Data room</div><div class="v">meridian.ai/hargrove-proposal</div></div>
+    <table class="pain-table">
+      <thead>
+        <tr>
+          <th style="width:36px">#</th>
+          <th style="width:34%">Pain Point</th>
+          <th style="width:22%">Module</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="pain-num">01</td>
+          <td class="pain">Partners wait 3–5 days for monthly billing summaries, leading to delayed decisions on matter resourcing and fee negotiations.</td>
+          <td class="module">Module B — Client Intelligence Dashboard</td>
+          <td class="outcome">Billing data available in real time. Partners self-serve within seconds; no analyst queue.</td>
+        </tr>
+        <tr>
+          <td class="pain-num">02</td>
+          <td class="pain">Quarterly board packs require two analysts working full-time for one week, displacing higher-value advisory work.</td>
+          <td class="module">Module A — Automated Reporting Engine</td>
+          <td class="outcome">Board pack auto-generated from live data in under 4 hours. Analyst time freed for analysis, not assembly.</td>
+        </tr>
+        <tr>
+          <td class="pain-num">03</td>
+          <td class="pain">Revenue forecasting is done in Excel with manual inputs, resulting in wide confidence bands and frequent reforecast cycles.</td>
+          <td class="module">Module C — Pipeline &amp; Revenue Forecasting</td>
+          <td class="outcome">ML-driven rolling 12-month forecast with ±8% accuracy; reforecast cycle reduced from 3 days to 2 hours.</td>
+        </tr>
+        <tr>
+          <td class="pain-num">04</td>
+          <td class="pain">No single view of client health — at-risk accounts are identified reactively, after billing has already deteriorated.</td>
+          <td class="module">Module B — Client Intelligence Dashboard</td>
+          <td class="outcome">Automated health scoring with configurable alert thresholds. At-risk accounts surfaced 6–8 weeks earlier.</td>
+        </tr>
+        <tr>
+          <td class="pain-num">05</td>
+          <td class="pain">Compliance reporting errors require rework averaging 3 cycles per quarter, each adding 2–3 days of delay and audit exposure.</td>
+          <td class="module">Module A — Automated Reporting Engine</td>
+          <td class="outcome">Validated data lineage and automated cross-checks reduce error rate by &gt;90%. Audit trail built in.</td>
+        </tr>
+        <tr>
+          <td class="pain-num">06</td>
+          <td class="pain">Utilisation and realization rates are calculated inconsistently across practice groups, preventing firm-wide comparison.</td>
+          <td class="module">Module B &amp; Module C</td>
+          <td class="outcome">Single calculation methodology applied firm-wide. Comparable metrics across all 6 practice groups from Day 1.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 7 — ROI MODEL
+═══════════════════════════════════════ -->
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>12-Month ROI Model</h2>
+      <span class="tag">Slide 07 of 10</span>
+    </div>
+    <div class="roi-grid">
+      <div class="roi-left">
+        <div class="roi-section-title">Benefit Calculation — Year 1</div>
+        <div class="roi-calc-row">
+          <span class="label">Analyst time saved — reporting (220 hrs × $95/hr)</span>
+          <span class="val">$20,900</span>
+        </div>
+        <div class="roi-calc-row">
+          <span class="label">Analyst time saved — data cleaning (180 hrs × $95/hr)</span>
+          <span class="val">$17,100</span>
+        </div>
+        <div class="roi-calc-row">
+          <span class="label">Legacy BI licence elimination (Tableau server)</span>
+          <span class="val">$41,200</span>
+        </div>
+        <div class="roi-calc-row">
+          <span class="label">Ad hoc consultancy reduction (3 of 4 engagements avoided)</span>
+          <span class="val">$25,500</span>
+        </div>
+        <div class="roi-calc-row">
+          <span class="label">Compliance rework eliminated (est. 6 cycles × $2,100)</span>
+          <span class="val">$12,600</span>
+        </div>
+        <div class="roi-calc-row">
+          <span class="label">At-risk client recovery (2 accounts × avg. $18,500 recovered)</span>
+          <span class="val">$37,000</span>
+        </div>
+        <div class="roi-calc-row">
+          <span class="label">Less: Meridian annual licence (Pro tier)</span>
+          <span class="val" style="color:var(--red)">−$48,000</span>
+        </div>
+        <div class="roi-calc-row total-row">
+          <span class="label">Net Year 1 Return</span>
+          <span class="val">$106,300</span>
+        </div>
+        <div class="roi-math-note">
+          Formula: (hrs_saved × blended_rate) + licence_eliminated + consultancy_reduction<br>
+          + compliance_rework_value + at_risk_recovery − platform_licence<br>
+          Analyst rate: $95/hr loaded · At-risk recovery: conservative 2-account assumption
+        </div>
+      </div>
+      <div class="roi-right">
+        <div class="roi-section-title">Key Metrics</div>
+        <div class="kpi-block">
+          <span class="kpi-label">Payback Period</span>
+          <div>
+            <div class="kpi-val">5.4 months</div>
+            <div class="kpi-note">From go-live date · based on monthly benefit run-rate of $8,858</div>
+          </div>
+        </div>
+        <div class="kpi-block">
+          <span class="kpi-label">3-Year NPV</span>
+          <div>
+            <div class="kpi-val">$284,000</div>
+            <div class="kpi-note">At 8% discount rate · assumes 5% annual benefit growth · conservative</div>
+          </div>
+        </div>
+        <div class="kpi-block">
+          <span class="kpi-label">3-Year IRR</span>
+          <div>
+            <div class="kpi-val">218%</div>
+            <div class="kpi-note">Internal rate of return · significantly above typical 15–25% hurdle for technology investment</div>
+          </div>
+        </div>
+        <div class="kpi-block">
+          <span class="kpi-label">Cost: Benefit Ratio</span>
+          <div>
+            <div class="kpi-val">1 : 3.2</div>
+            <div class="kpi-note">Year 1 only · rises to 1 : 6.8 over 3 years as licence cost amortises</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="nh">↑ ↓ keys or scroll</div>
-<script>document.addEventListener('keydown',e=>{const d=e.key==='ArrowDown'||e.key==='ArrowRight';const u=e.key==='ArrowUp'||e.key==='ArrowLeft';if(d)window.scrollBy({top:window.innerHeight,behavior:'smooth'});if(u)window.scrollBy({top:-window.innerHeight,behavior:'smooth'})});</script>
+<!-- ═══════════════════════════════════════
+  SLIDE 8 — CASE STUDY
+═══════════════════════════════════════ -->
+<section class="slide" id="s8">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>Reference Case — Similar Client Win</h2>
+      <span class="tag">Slide 08 of 10</span>
+    </div>
+    <div class="case-layout">
+      <div class="case-left">
+        <div class="case-tag">Client testimonial · Redacted for confidentiality · Available on request</div>
+        <blockquote class="pull">
+          "Before Meridian, our CFO was spending two days a week chasing numbers from four different systems. Within six weeks of go-live we had a single source of truth that partners actually trusted. The first quarterly board pack that ran automatically — without a single analyst touching it — was the moment the firm understood what it had bought."
+        </blockquote>
+        <div class="quote-attr">— Chief Financial Officer, UK Regional Professional Services Firm · 180 staff · 4 practice groups</div>
+        <div class="client-profile">
+          <div class="cf-label">Client Profile</div>
+          <p>Mid-size regional professional services firm. 180 fee earners across legal, financial advisory, and management consulting practices. Legacy Tableau implementation, manual Excel forecasting, and a 2.5-person reporting function. Deployed Modules A and B in Q3 2025.</p>
+        </div>
+      </div>
+      <div class="case-right">
+        <div class="case-tag">Outcome Metrics · 12 months post-deployment</div>
+        <div class="metrics-row">
+          <div class="metric-item">
+            <div class="m-num">40%</div>
+            <div class="m-label">reduction in analyst time spent on reporting tasks</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-num">$1.2M</div>
+            <div class="m-label">recovered WIP from at-risk accounts identified by health scoring</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-num">8 wks</div>
+            <div class="m-label">to full payback from go-live date</div>
+          </div>
+        </div>
+        <div class="sidebar-note">
+          <strong>Analyst note</strong>
+          The $1.2M WIP recovery figure is atypical and driven by a single large matter that surfaced via the health score alert. Hargrove Partners' projected at-risk recovery in the ROI model uses a conservative two-account, $37,000 assumption. Meridian does not guarantee WIP recovery outcomes.
+        </div>
+        <div class="sidebar-note" style="margin-top:12px">
+          <strong>Methodology note</strong>
+          All case study figures are self-reported by the client and verified against Meridian usage data. Time savings are measured against a baseline established during discovery. Full reference available under NDA.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 9 — PRICING
+═══════════════════════════════════════ -->
+<section class="slide" id="s9">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>Pricing &amp; Terms</h2>
+      <span class="tag">Slide 09 of 10</span>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-col">
+        <div class="pricing-tier-header">
+          <div class="tier-badge">Tier 1</div>
+          <div class="tier-name">Starter</div>
+          <div class="tier-desc">Single module. Up to 25 users. Ideal for teams trialling automated reporting before full deployment.</div>
+        </div>
+        <div class="tier-price">
+          <div class="price-annual">Annual (billed annually)</div>
+          <div class="price-big">$18,000</div>
+          <div class="price-mo">$1,500 / month · Monthly billing: $22,800/yr</div>
+        </div>
+        <div class="tier-features">
+          <ul>
+            <li>1 module (Reporting Engine)</li>
+            <li>Up to 25 named users</li>
+            <li>Standard data connectors (5)</li>
+            <li>Email support, 48hr SLA</li>
+            <li>Standard template library</li>
+            <li>Basic audit trail</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-col highlighted">
+        <div class="recommended-banner">Recommended</div>
+        <div class="pricing-tier-header">
+          <div class="tier-badge">Tier 2</div>
+          <div class="tier-name">Pro</div>
+          <div class="tier-desc">All three modules. Up to 75 users. Tailored to Hargrove's full deployment scope and team size.</div>
+        </div>
+        <div class="tier-price">
+          <div class="price-annual">Annual (billed annually)</div>
+          <div class="price-big">$48,000</div>
+          <div class="price-mo">$4,000 / month · Monthly billing: $57,600/yr</div>
+        </div>
+        <div class="tier-features">
+          <ul>
+            <li>All 3 modules (A, B &amp; C)</li>
+            <li>Up to 75 named users</li>
+            <li>Custom data connectors (unlimited)</li>
+            <li>Dedicated CSM + Slack support</li>
+            <li>Custom template builder</li>
+            <li>Full data lineage &amp; compliance audit</li>
+            <li>ERP and practice management integration</li>
+            <li>Mobile partner portal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-col">
+        <div class="pricing-tier-header">
+          <div class="tier-badge">Tier 3</div>
+          <div class="tier-name">Enterprise</div>
+          <div class="tier-desc">Unlimited users, white-label, custom SLAs, and dedicated infrastructure. For firms with 300+ staff.</div>
+        </div>
+        <div class="tier-price">
+          <div class="price-annual">Annual (negotiated)</div>
+          <div class="price-big">Custom</div>
+          <div class="price-mo">Contact James Whitfield for pricing</div>
+        </div>
+        <div class="tier-features">
+          <ul>
+            <li>All modules + custom development</li>
+            <li>Unlimited users</li>
+            <li>Dedicated cloud infrastructure</li>
+            <li>White-label client-facing portals</li>
+            <li>4hr SLA, 24/7 on-call support</li>
+            <li>Custom SLA and DPA negotiated</li>
+            <li>Annual methodology and data governance review</li>
+            <li>Multi-entity and multi-currency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pricing-footer">
+      Payment terms: Annual licences invoiced on contract signature; net 30. Monthly billing available at 20% premium. &nbsp;·&nbsp; Implementation fee: included in Pro tier for engagements signed before 31 July 2026. &nbsp;·&nbsp; Cancellation: annual contracts non-refundable after 30 days; monthly contracts cancellable with 60 days written notice. &nbsp;·&nbsp; All prices GBP exc. VAT. USD pricing available on request at day-of-signature rate.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 10 — NEXT STEPS
+═══════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="slide-inner">
+    <div class="section-header">
+      <h2>Next Steps</h2>
+      <span class="tag">Slide 10 of 10</span>
+    </div>
+    <div class="next-layout">
+      <div class="next-left">
+        <div class="steps-col-header">
+          <span></span>
+          <span>Action</span>
+          <span>Owner</span>
+          <span>By</span>
+        </div>
+        <ul class="next-steps-list">
+          <li>
+            <div class="next-step-num">1</div>
+            <div class="next-step-body">
+              <div class="step-title">Confirm stakeholder availability for Discovery kickoff</div>
+              <div class="step-desc">Finance, IT, and at least two partner leads to block two half-days in Week 1. Meridian will circulate a structured interview guide in advance.</div>
+            </div>
+            <div class="next-step-owner">Hargrove Partners</div>
+            <div class="next-step-date">16 Jun 2026</div>
+          </li>
+          <li>
+            <div class="next-step-num">2</div>
+            <div class="next-step-body">
+              <div class="step-title">Provide data access credentials for staging environment</div>
+              <div class="step-desc">Read-only API credentials for practice management system, ERP, and billing extract. Meridian's security team will review and sign DPA prior to connection.</div>
+            </div>
+            <div class="next-step-owner">Hargrove Partners IT</div>
+            <div class="next-step-date">19 Jun 2026</div>
+          </li>
+          <li>
+            <div class="next-step-num">3</div>
+            <div class="next-step-body">
+              <div class="step-title">Legal review and contract redline</div>
+              <div class="step-desc">Meridian will issue MSA and Order Form by 12 June. Hargrove legal to return redlines within 10 business days. DPA included in master agreement.</div>
+            </div>
+            <div class="next-step-owner">Both parties</div>
+            <div class="next-step-date">26 Jun 2026</div>
+          </li>
+          <li>
+            <div class="next-step-num">4</div>
+            <div class="next-step-body">
+              <div class="step-title">Contract signature and implementation fee invoice</div>
+              <div class="step-desc">DocuSign sent to Hargrove COO and CFO. Annual licence invoice raised on signature date. Net 30 payment terms.</div>
+            </div>
+            <div class="next-step-owner">Meridian → Hargrove</div>
+            <div class="next-step-date">30 Jun 2026</div>
+          </li>
+          <li>
+            <div class="next-step-num">5</div>
+            <div class="next-step-body">
+              <div class="step-title">Discovery Week 1 kickoff call</div>
+              <div class="step-desc">90-minute call with Meridian Implementation Lead, Hargrove project sponsor, and technical lead. Scope confirmed, timeline locked, communication cadence agreed.</div>
+            </div>
+            <div class="next-step-owner">Meridian (lead)</div>
+            <div class="next-step-date">7 Jul 2026</div>
+          </li>
+        </ul>
+      </div>
+      <div class="next-right">
+        <div>
+          <div class="roi-section-title" style="margin-bottom:24px">Authorised by</div>
+          <div class="sig-label">Signature of Meridian Authorised Representative</div>
+          <div class="sig-line"></div>
+          <div class="sig-name">James Whitfield</div>
+          <div class="sig-title">VP Client Operations, Meridian Analytics</div>
+          <div class="sig-contact">j.whitfield@meridiananalytics.com &nbsp;·&nbsp; +44 20 7946 0811</div>
+        </div>
+        <div class="proposal-legal">
+          Confidential proposal · Prepared exclusively for Hargrove Partners<br>
+          Valid for 30 days from date of issue: 9 June 2026<br>
+          Reference: MRD-2026-HP-004 · Version 1.0<br>
+          Meridian Analytics Ltd · Registered in England and Wales · Company No. 11823047<br>
+          This document contains commercially sensitive pricing and methodology information.<br>
+          Do not distribute without written consent from Meridian Analytics.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+</script>
 </body>
 </html>

@@ -1,351 +1,1608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NovaSpark AI — Series A</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--void:#000;--text:#fff;--muted:rgba(255,255,255,0.4);--acc:#a78bfa;--acc2:#67e8f9;--r:rgba(255,255,255,0.06)}
-    html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth}
-    body{background:var(--void);color:var(--text);font-family:'Inter',sans-serif;font-weight:300}
-    .s{min-height:100vh;width:100%;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:80px 120px;position:relative;overflow:hidden}
-    .inner{width:100%;max-width:1100px;position:relative;z-index:2}
-    .sn{position:absolute;bottom:40px;right:60px;font-size:11px;color:var(--muted);letter-spacing:3px}
-    .nh{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(12px);border-radius:20px;padding:7px 18px;font-size:11px;color:var(--muted);letter-spacing:1px;z-index:100}
-    h1,h2,h3{font-family:'Syne',sans-serif;line-height:1.05}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NovaSpark AI — Series A Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --void: #000;
+    --acc: #a78bfa;
+    --acc2: #67e8f9;
+    --grn: #34d399;
+    --text: #fff;
+    --muted: rgba(255,255,255,0.45);
+    --glass-bg: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.08);
+    --glass-blur: blur(20px);
+  }
 
-    /* decoration helpers */
-    .orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:1}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ── S1 COVER ── */
-    .s1{background:#000;text-align:left}
-    .s1-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(167,139,250,0.3);border-radius:20px;padding:6px 14px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);margin-bottom:48px}
-    .s1-tag span{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:pulse 2s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-    .s1 h1{font-size:clamp(4rem,8vw,8rem);font-weight:800;letter-spacing:-3px;margin-bottom:0;line-height:0.95}
-    .s1 h1 .g{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .s1-sub{font-size:1.1rem;color:var(--muted);max-width:520px;margin:32px 0 56px;line-height:1.7}
-    .s1-row{display:flex;gap:48px}
-    .s1-kv .k{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:6px}
-    .s1-kv .v{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem}
-    .orb1{width:600px;height:600px;background:var(--acc);opacity:0.08;right:-200px;top:-200px}
-    .orb2{width:400px;height:400px;background:var(--acc2);opacity:0.06;left:-100px;bottom:-150px}
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--void);
+    overflow-x: hidden;
+  }
 
-    /* ── S2 MANIFESTO ── */
-    .s2{background:#05030a}
-    .s2 h2{font-size:clamp(2.5rem,5vw,5rem);font-weight:800;letter-spacing:-2px;max-width:900px;line-height:1.05}
-    .s2 h2 em{font-style:normal;color:var(--acc)}
-    .s2-attr{margin-top:40px;font-size:0.85rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+  }
 
-    /* ── S3 PROBLEM ── */
-    .s3{background:#000}
-    .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--acc2);margin-bottom:20px;display:block}
-    .s3 h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--r)}
-    .p-cell{background:#000;padding:36px 28px}
-    .p-num{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;color:rgba(255,255,255,0.06);margin-bottom:12px;line-height:1}
-    .p-cell h3{font-size:1rem;font-family:'Syne',sans-serif;margin-bottom:10px}
-    .p-cell p{font-size:0.85rem;color:var(--muted);line-height:1.7}
+  /* ─── AURORA BACKGROUND ─── */
+  .aurora-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: var(--void);
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .aurora-bg::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg at 30% 40%,
+      rgba(109,40,217,0) 0deg,
+      rgba(109,40,217,0.35) 60deg,
+      rgba(8,145,178,0.25) 120deg,
+      rgba(5,150,105,0.2) 180deg,
+      rgba(109,40,217,0.15) 240deg,
+      rgba(8,145,178,0.3) 300deg,
+      rgba(109,40,217,0) 360deg
+    );
+    filter: blur(80px);
+    animation: aurora 18s ease-in-out infinite alternate;
+  }
+  .aurora-bg::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    width: 160%;
+    height: 160%;
+    background: conic-gradient(
+      from 180deg at 70% 60%,
+      rgba(5,150,105,0) 0deg,
+      rgba(5,150,105,0.2) 80deg,
+      rgba(8,145,178,0.3) 160deg,
+      rgba(109,40,217,0.25) 240deg,
+      rgba(5,150,105,0) 360deg
+    );
+    filter: blur(100px);
+    animation: aurora2 22s ease-in-out infinite alternate-reverse;
+  }
 
-    /* ── S4 SOLUTION ── */
-    .s4{background:#05030a}
-    .s4 h2{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .sol-stack{display:flex;flex-direction:column;gap:2px}
-    .sol-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:2px}
-    .sol-cell{background:var(--r);padding:20px 24px;font-size:0.85rem}
-    .sol-cell.label{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;display:flex;align-items:center}
-    .sol-cell.pain{color:rgba(255,100,100,0.7)}
-    .sol-cell.fix{color:var(--acc2)}
-    .sol-head{display:grid;grid-template-columns:200px 1fr 1fr;gap:2px;margin-bottom:2px}
-    .sol-head div{padding:8px 24px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+  @keyframes aurora {
+    0%   { transform: translate(0%, 0%) rotate(0deg) scale(1); }
+    33%  { transform: translate(5%, -8%) rotate(15deg) scale(1.05); }
+    66%  { transform: translate(-6%, 5%) rotate(-10deg) scale(0.95); }
+    100% { transform: translate(8%, 3%) rotate(20deg) scale(1.08); }
+  }
+  @keyframes aurora2 {
+    0%   { transform: translate(0%, 0%) rotate(0deg) scale(1); }
+    50%  { transform: translate(-8%, 6%) rotate(-18deg) scale(1.1); }
+    100% { transform: translate(4%, -5%) rotate(12deg) scale(0.92); }
+  }
 
-    /* ── S5 PRODUCT ── */
-    .s5{background:#000}
-    .s5 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .feat-list{display:flex;flex-direction:column;gap:0}
-    .feat-item{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--r)}
-    .feat-item:last-child{border-bottom:none}
-    .feat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:rgba(255,255,255,0.06)}
-    .feat-item h3{font-size:1rem;font-family:'Syne',sans-serif;margin-bottom:4px}
-    .feat-item p{font-size:0.83rem;color:var(--muted);line-height:1.6}
-    .feat-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:4px 10px;color:var(--muted);white-space:nowrap}
+  /* ─── SLIDES ─── */
+  .slide {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(40px, 6vw, 80px) clamp(32px, 8vw, 120px);
+    overflow: hidden;
+  }
 
-    /* ── S6 TRACTION ── */
-    .s6{background:#05030a}
-    .s6 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:56px;letter-spacing:-1px}
-    .t-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--r)}
-    .t-cell{background:#05030a;padding:32px 24px}
-    .t-val{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px}
-    .t-label{font-size:0.8rem;color:var(--muted);line-height:1.5}
-    .t-note{margin-top:40px;padding:20px 24px;border:1px solid var(--r);border-radius:4px;font-size:0.85rem;color:var(--muted);line-height:1.6}
+  /* ─── GLASS CARD ─── */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+  }
 
-    /* ── S7 MARKET ── */
-    .s7{background:#000}
-    .s7 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .mkt-bars{display:flex;flex-direction:column;gap:24px;margin-bottom:40px}
-    .mkt-row{display:grid;grid-template-columns:180px 1fr 100px;gap:16px;align-items:center}
-    .mkt-lbl{font-size:0.8rem;color:var(--muted)}
-    .mkt-track{height:2px;background:var(--r);border-radius:1px;overflow:hidden}
-    .mkt-fill{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:1px}
-    .mkt-v{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;text-align:right}
-    .mkt-insight{font-size:1rem;color:var(--muted);max-width:680px;line-height:1.7;border-top:1px solid var(--r);padding-top:32px}
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3, h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acc2);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .grad-text {
+    background: linear-gradient(90deg, var(--acc), var(--acc2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grad-text-grn {
+    background: linear-gradient(90deg, var(--acc2), var(--grn));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .muted { color: var(--muted); }
 
-    /* ── S8 TEAM ── */
-    .s8{background:#05030a}
-    .s8 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .tm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--r)}
-    .tm-cell{background:#05030a;padding:28px 24px}
-    .tm-init{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px}
-    .tm-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:4px}
-    .tm-role{font-size:0.75rem;color:var(--acc2);margin-bottom:12px;letter-spacing:1px}
-    .tm-bio{font-size:0.8rem;color:var(--muted);line-height:1.6}
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.6; transform: scale(1.4); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
 
-    /* ── S9 COMPETITION ── */
-    .s9{background:#000}
-    .s9 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .cmp-tbl{width:100%;border-collapse:collapse;font-size:0.85rem}
-    .cmp-tbl th{padding:12px 16px;text-align:left;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--r)}
-    .cmp-tbl td{padding:14px 16px;border-bottom:1px solid var(--r)}
-    .cmp-tbl tr.us td{background:rgba(167,139,250,0.05)}
-    .cmp-tbl tr.us td:first-child{color:var(--acc);font-family:'Syne',sans-serif;font-weight:700}
-    .yes{color:#4ade80}.no{color:rgba(255,255,255,0.15)}.part{color:#fbbf24}
+  .animate {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 0.68, 0, 1.2) both;
+  }
+  .animate-d1 { animation-delay: 0.1s; }
+  .animate-d2 { animation-delay: 0.2s; }
+  .animate-d3 { animation-delay: 0.3s; }
+  .animate-d4 { animation-delay: 0.4s; }
+  .animate-d5 { animation-delay: 0.5s; }
 
-    /* ── S10 MODEL ── */
-    .s10{background:#05030a}
-    .s10 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--r)}
-    .tier{background:#05030a;padding:32px}
-    .tier-name{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-    .tier-price{font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;margin-bottom:4px}
-    .tier-price span{font-size:1rem;font-weight:300;color:var(--muted)}
-    .tier-desc{font-size:0.8rem;color:var(--muted);margin-bottom:20px}
-    .tier-feats{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .tier-feats li{font-size:0.82rem;color:rgba(255,255,255,0.6);display:flex;gap:8px}
-    .tier-feats li::before{content:'—';color:var(--acc2);flex-shrink:0}
-    .tier.hot{background:rgba(167,139,250,0.04);outline:1px solid rgba(167,139,250,0.25)}
+  /* ─── FIXED NAV HINT ─── */
+  .nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+  }
 
-    /* ── S11 FINANCIALS ── */
-    .s11{background:#000}
-    .s11 h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:48px;letter-spacing:-1px}
-    .fin-rows{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
-    .fin-row{display:grid;grid-template-columns:120px 1fr 90px;gap:16px;align-items:center}
-    .fin-yr{font-size:0.8rem;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700}
-    .fin-track{height:28px;background:var(--r);border-radius:2px;overflow:hidden}
-    .fin-bar{height:100%;background:linear-gradient(90deg,rgba(167,139,250,0.6),rgba(103,232,249,0.8));display:flex;align-items:center;padding-left:12px;font-size:0.78rem;font-weight:500}
-    .fin-v{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;text-align:right}
-    .fin-note{font-size:0.83rem;color:var(--muted);line-height:1.7;border-top:1px solid var(--r);padding-top:24px}
+  /* ═══════════════════════════════════════
+     SLIDE 1 — COVER
+  ═══════════════════════════════════════ */
+  .cover-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(72px, 12vw, 160px);
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+    background: linear-gradient(135deg, var(--acc) 0%, var(--acc2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: clamp(14px, 1.5vw, 18px);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 16px;
+  }
+  .pulse-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 10px;
+    border-radius: 999px;
+    background: rgba(167,139,250,0.12);
+    border: 1px solid rgba(167,139,250,0.3);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-top: 24px;
+    width: fit-content;
+  }
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--acc);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  .cover-metrics {
+    display: flex;
+    gap: 16px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .metric-chip {
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .metric-chip .chip-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: linear-gradient(90deg, var(--acc), var(--acc2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .metric-chip .chip-label {
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
-    /* ── S12 CLOSE ── */
-    .s12{background:#000;text-align:center}
-    .s12 h2{font-size:clamp(2rem,5vw,5rem);font-weight:800;letter-spacing:-2px;margin-bottom:16px}
-    .s12 h2 .g{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .s12-amt{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(4rem,10vw,9rem);letter-spacing:-4px;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin:24px 0}
-    .s12-sub{font-size:1rem;color:var(--muted);max-width:480px;margin:0 auto 56px;line-height:1.7}
-    .s12-use{display:flex;gap:0;justify-content:center;border:1px solid var(--r);border-radius:4px;overflow:hidden;max-width:600px;margin:0 auto 48px}
-    .s12-pct{flex:1;padding:20px;border-right:1px solid var(--r);text-align:center}
-    .s12-pct:last-child{border-right:none}
-    .s12-pct .p{font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--acc2)}
-    .s12-pct .l{font-size:0.75rem;color:var(--muted);margin-top:4px}
-    .s12-email{font-size:0.85rem;color:var(--muted)}
-    .s12-email a{color:var(--acc2)}
+  /* ═══════════════════════════════════════
+     SLIDE 2 — MANIFESTO
+  ═══════════════════════════════════════ */
+  .manifesto-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 88px);
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    max-width: 20ch;
+    text-align: center;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(109,40,217,0.3), transparent 70%);
+    top: -100px; left: -100px;
+  }
+  .orb-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(8,145,178,0.25), transparent 70%);
+    bottom: -80px; right: -80px;
+  }
+  .orb-3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(5,150,105,0.2), transparent 70%);
+    top: 50%; right: 10%;
+    transform: translateY(-50%);
+  }
 
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    .inner{animation:fadeUp .5s ease both}
-    @media print{html{scroll-snap-type:none;overflow:visible}.s{page-break-after:always;min-height:auto;height:100vh}.nh{display:none}}
-  </style>
+  /* ═══════════════════════════════════════
+     SLIDE 3 — PROBLEM
+  ═══════════════════════════════════════ */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-top: 40px;
+  }
+  .problem-card {
+    padding: 36px 32px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-card-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(80px, 10vw, 120px);
+    letter-spacing: -0.06em;
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    pointer-events: none;
+  }
+  .problem-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(20px, 2vw, 28px);
+    letter-spacing: -0.03em;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  .problem-card-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .problem-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+  .accent-bar {
+    width: 40px;
+    height: 3px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 4 — SOLUTION (BENTO)
+  ═══════════════════════════════════════ */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "main side1"
+      "main side2";
+    gap: 20px;
+    width: 100%;
+    height: clamp(360px, 50vh, 520px);
+    margin-top: 32px;
+  }
+  .bento-main { grid-area: main; padding: 40px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .bento-side1 { grid-area: side1; padding: 28px; }
+  .bento-side2 { grid-area: side2; padding: 28px; }
+  .bento-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .bento-main .bento-icon { font-size: 3.5rem; }
+  .bento-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .bento-main .bento-title {
+    font-size: clamp(22px, 3vw, 36px);
+    margin-bottom: 10px;
+  }
+  .bento-side1 .bento-title,
+  .bento-side2 .bento-title {
+    font-size: clamp(16px, 1.8vw, 22px);
+    margin-bottom: 8px;
+  }
+  .bento-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .bento-main .bento-desc { font-size: 1rem; }
+
+  /* ═══════════════════════════════════════
+     SLIDE 5 — PRODUCT (TERMINAL)
+  ═══════════════════════════════════════ */
+  .terminal-wrap {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 60px rgba(103,232,249,0.06), 0 0 120px rgba(109,40,217,0.08);
+  }
+  .terminal-bar {
+    background: rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .terminal-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+  }
+  .td-red   { background: #ff5f57; }
+  .td-yel   { background: #ffbd2e; }
+  .td-grn   { background: #28ca41; }
+  .terminal-title {
+    font-family: 'Inter', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-left: 8px;
+    letter-spacing: 0.05em;
+  }
+  .terminal-body {
+    padding: 28px 32px;
+    font-family: 'Courier New', 'Menlo', monospace;
+    font-size: clamp(12px, 1.2vw, 14px);
+    line-height: 1.8;
+  }
+  .t-prompt { color: var(--grn); }
+  .t-cmd    { color: #fff; }
+  .t-comment{ color: rgba(255,255,255,0.3); }
+  .t-key    { color: var(--acc2); }
+  .t-val    { color: var(--acc); }
+  .t-str    { color: var(--grn); }
+  .t-num    { color: #fdba74; }
+  .t-cursor {
+    display: inline-block;
+    width: 9px; height: 14px;
+    background: var(--acc2);
+    vertical-align: text-bottom;
+    animation: blink 1.1s step-end infinite;
+  }
+  .terminal-caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 6 — TRACTION
+  ═══════════════════════════════════════ */
+  .traction-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 40px;
+  }
+  .traction-card {
+    padding: 32px 24px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .traction-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 3.5vw, 48px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .traction-delta {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--grn);
+    background: rgba(52,211,153,0.12);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .traction-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 7 — TEAM
+  ═══════════════════════════════════════ */
+  .team-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-top: 40px;
+  }
+  .team-card {
+    padding: 36px 28px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    position: relative;
+    border: 2px solid rgba(255,255,255,0.12);
+  }
+  .avatar-1 { background: linear-gradient(135deg, #6d28d9, #0891b2); }
+  .avatar-2 { background: linear-gradient(135deg, #0891b2, #059669); }
+  .avatar-3 { background: linear-gradient(135deg, #059669, #6d28d9); }
+  .avatar-initials {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  .team-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .team-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--acc2);
+    margin-bottom: 12px;
+  }
+  .team-bio {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .linkedin-link {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 8 — MARKET
+  ═══════════════════════════════════════ */
+  .market-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    width: 100%;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .market-number {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(80px, 12vw, 140px);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--acc), var(--acc2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .market-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  .bar-chart { display: flex; flex-direction: column; gap: 20px; }
+  .bar-row { display: flex; flex-direction: column; gap: 6px; }
+  .bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+  }
+  .bar-label { color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .bar-amount { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
+  .bar-track {
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 9 — COMPETITIVE MATRIX
+  ═══════════════════════════════════════ */
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(12px, 1.2vw, 15px);
+  }
+  .matrix-table th {
+    padding: 14px 20px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--muted);
+    text-align: center;
+  }
+  .matrix-table th:first-child { text-align: left; }
+  .matrix-table th.ns-col {
+    background: rgba(167,139,250,0.1);
+    color: var(--acc);
+    border-top: 1px solid rgba(167,139,250,0.35);
+    border-left: 1px solid rgba(167,139,250,0.35);
+    border-right: 1px solid rgba(167,139,250,0.35);
+  }
+  .matrix-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: var(--muted);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .matrix-table td:first-child {
+    text-align: left;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .matrix-table td.ns-col {
+    background: rgba(167,139,250,0.06);
+    color: var(--text);
+    border-left: 1px solid rgba(167,139,250,0.2);
+    border-right: 1px solid rgba(167,139,250,0.2);
+  }
+  .matrix-table tr:last-child td.ns-col {
+    border-bottom: 1px solid rgba(167,139,250,0.35);
+    border-radius: 0 0 0 0;
+  }
+  .check { color: var(--grn); font-size: 1.1rem; }
+  .cross { color: rgba(255,100,100,0.6); font-size: 1rem; }
+  .partial { color: #fbbf24; font-size: 0.8rem; }
+
+  /* ═══════════════════════════════════════
+     SLIDE 10 — THE ASK
+  ═══════════════════════════════════════ */
+  .ask-amount {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(56px, 9vw, 120px);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--acc), var(--acc2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+  }
+  .ask-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    width: 100%;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .ask-funds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .fund-tile {
+    padding: 22px 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .fund-pct {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -0.04em;
+  }
+  .fund-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .donut-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .donut {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--acc) 0deg 162deg,
+      var(--acc2) 162deg 270deg,
+      var(--grn) 270deg 324deg,
+      rgba(255,255,255,0.2) 324deg 360deg
+    );
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .donut::after {
+    content: '';
+    position: absolute;
+    inset: 32px;
+    border-radius: 50%;
+    background: #030307;
+  }
+  .donut-legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+  }
+  .legend-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 11 — ROADMAP
+  ═══════════════════════════════════════ */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-top: 40px;
+    position: relative;
+  }
+  .roadmap-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+  }
+  .roadmap-col::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: calc(100% - 20px);
+    background: linear-gradient(180deg, rgba(167,139,250,0.4), transparent);
+    z-index: 0;
+  }
+  .roadmap-quarter {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(16px, 1.8vw, 22px);
+    letter-spacing: -0.02em;
+    text-align: center;
+    padding-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .roadmap-milestone {
+    padding: 18px 20px;
+    border-radius: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .milestone-tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .milestone-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(13px, 1.4vw, 16px);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .milestone-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 12 — CLOSING
+  ═══════════════════════════════════════ */
+  .closing-headline {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 6vw, 80px);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    text-align: center;
+    max-width: 18ch;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--acc), #7c3aed);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-top: 40px;
+    box-shadow: 0 0 40px rgba(167,139,250,0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  .cta-btn:hover {
+    box-shadow: 0 0 60px rgba(167,139,250,0.5);
+  }
+  .contact-info {
+    display: flex;
+    gap: 40px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .contact-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .contact-item span {
+    color: var(--acc2);
+    font-weight: 500;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    .aurora-bg { display: none; }
+    .nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    body { background: #000; }
+  }
+</style>
 </head>
 <body>
 
-<section class="s s1">
-  <div class="orb orb1"></div><div class="orb orb2"></div>
-  <div class="inner">
-    <div class="s1-tag"><span></span>Series A · Confidential</div>
-    <h1>Nova<br><span class="g">Spark</span></h1>
-    <p class="s1-sub">Real-time AI intelligence for enterprise teams. From raw data to decision-grade insight in seconds — not days.</p>
-    <div class="s1-row">
-      <div class="s1-kv"><div class="k">Raising</div><div class="v">$12M</div></div>
-      <div class="s1-kv"><div class="k">ARR</div><div class="v">$2.1M</div></div>
-      <div class="s1-kv"><div class="k">Growth</div><div class="v">340% YoY</div></div>
-      <div class="s1-kv"><div class="k">NRR</div><div class="v">94%</div></div>
-    </div>
-  </div>
-  <span class="sn">01 / 12</span>
-</section>
+<!-- Fixed aurora background -->
+<div class="aurora-bg"></div>
 
-<section class="s s2">
-  <div class="inner">
-    <h2>The bottleneck in every enterprise isn't data.<br>It's the <em>distance</em> between data and decision.</h2>
-    <p class="s2-attr">NovaSpark closes that gap.</p>
-  </div>
-  <span class="sn">02 / 12</span>
-</section>
+<!-- Fixed nav hint -->
+<div class="nav-hint">↑ ↓ keys or scroll &nbsp;·&nbsp; NovaSpark AI &nbsp;·&nbsp; 12 slides</div>
 
-<section class="s s3">
-  <div class="inner">
-    <span class="eyebrow">The Problem</span>
-    <h2>Three forces creating the gap.</h2>
-    <div class="p-grid">
-      <div class="p-cell"><div class="p-num">01</div><h3>9-tool sprawl</h3><p>The average analyst switches between 9 dashboards before making one decision. Signal is buried in the switching.</p></div>
-      <div class="p-cell"><div class="p-num">02</div><h3>T+1 blindness</h3><p>By the time morning reports land, conditions have shifted. Late data isn't data — it's history. Costs enterprises $3.1M/quarter.</p></div>
-      <div class="p-cell"><div class="p-num">03</div><h3>Expertise as bottleneck</h3><p>Two senior analysts hold all institutional knowledge. Vacation = paralysis. Scale = impossible. Succession = crisis.</p></div>
+<!-- ═══════════════════════════════════════
+     SLIDE 1 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1">
+  <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:1100px;">
+    <div class="animate">
+      <div class="pulse-badge">
+        <div class="pulse-dot"></div>
+        AI Infrastructure
+      </div>
     </div>
-  </div>
-  <span class="sn">03 / 12</span>
-</section>
-
-<section class="s s4">
-  <div class="inner">
-    <span class="eyebrow">The Solution</span>
-    <h2>One reasoning layer across every data source.</h2>
-    <div class="sol-head">
-      <div></div><div>Without NovaSpark</div><div>With NovaSpark</div>
+    <div class="animate animate-d1" style="margin-top:20px;">
+      <div class="cover-title">NovaSpark</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,56px);letter-spacing:-0.04em;line-height:1;background:linear-gradient(90deg,rgba(167,139,250,0.6),rgba(103,232,249,0.6));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AI</div>
     </div>
-    <div class="sol-stack">
-      <div class="sol-row">
-        <div class="sol-cell label">Data access</div>
-        <div class="sol-cell pain">9 disconnected dashboards · manual export</div>
-        <div class="sol-cell fix">One semantic layer · 140+ connectors · sub-60s latency</div>
+    <div class="animate animate-d2">
+      <div class="cover-sub">Series A &nbsp;·&nbsp; $14M &nbsp;·&nbsp; Round B already oversubscribed</div>
+    </div>
+    <div class="cover-metrics animate animate-d3">
+      <div class="glass metric-chip">
+        <span class="chip-val">847ms</span>
+        <span class="chip-label">Avg Response</span>
       </div>
-      <div class="sol-row">
-        <div class="sol-cell label">Insight format</div>
-        <div class="sol-cell pain">Raw charts requiring analyst interpretation</div>
-        <div class="sol-cell fix">Plain-English decision briefs · fully cited</div>
+      <div class="glass metric-chip">
+        <span class="chip-val">99.97%</span>
+        <span class="chip-label">Uptime SLA</span>
       </div>
-      <div class="sol-row">
-        <div class="sol-cell label">Delivery</div>
-        <div class="sol-cell pain">Morning report · static · T+1</div>
-        <div class="sol-cell fix">Real-time push to Slack / email / Teams</div>
-      </div>
-      <div class="sol-row">
-        <div class="sol-cell label">Expertise</div>
-        <div class="sol-cell pain">2 analysts · human bottleneck</div>
-        <div class="sol-cell fix">Role-aware AI · any user · any question</div>
+      <div class="glass metric-chip">
+        <span class="chip-val">412</span>
+        <span class="chip-label">Enterprise Customers</span>
       </div>
     </div>
   </div>
-  <span class="sn">04 / 12</span>
+
+  <!-- Decorative orb -->
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(109,40,217,0.2),transparent 65%);top:-200px;right:-100px;pointer-events:none;filter:blur(40px);"></div>
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(8,145,178,0.15),transparent 65%);bottom:-100px;left:20%;pointer-events:none;filter:blur(60px);"></div>
 </section>
 
-<section class="s s5">
-  <div class="inner">
-    <span class="eyebrow">Product</span>
-    <h2>Three capabilities. Infinite leverage.</h2>
-    <div class="feat-list">
-      <div class="feat-item"><div class="feat-n">01</div><div><h3>Universal Connectors</h3><p>Connect Snowflake, Salesforce, BigQuery, or any REST endpoint in under 10 minutes. No ETL, no migration, no downtime.</p></div><span class="feat-tag">Live</span></div>
-      <div class="feat-item"><div class="feat-n">02</div><div><h3>Reasoning Engine</h3><p>Domain-tuned LLM synthesises cross-source signals into cited, auditable briefs. Zero hallucinations by design — every claim links to a source row.</p></div><span class="feat-tag">Live</span></div>
-      <div class="feat-item"><div class="feat-n">03</div><div><h3>Decision Alerts</h3><p>Role-aware push briefs the moment a metric crosses a threshold — with the why, the context, and the suggested action.</p></div><span class="feat-tag">Live</span></div>
-      <div class="feat-item"><div class="feat-n">04</div><div><h3>Forecast Mode</h3><p>Time-series forecasting on any connected metric. Scenario modeling via natural language: "What if CAC rises 20%?"</p></div><span class="feat-tag">Beta</span></div>
+<!-- ═══════════════════════════════════════
+     SLIDE 2 — MANIFESTO
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2" style="align-items:center;text-align:center;">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="animate" style="display:flex;flex-direction:column;align-items:center;max-width:1000px;">
+    <div class="manifesto-text">
+      <span class="grad-text">AI doesn't need more compute.</span>
+      <br style="display:block;margin:8px 0;" />
+      It needs better infrastructure.
+    </div>
+    <p style="font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(14px,1.4vw,18px);color:var(--muted);margin-top:32px;letter-spacing:0.05em;">
+      — Dr. Maya Reeves, Co-Founder &amp; CEO, NovaSpark AI
+    </p>
+    <p style="font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(13px,1.2vw,16px);color:rgba(255,255,255,0.25);margin-top:12px;max-width:60ch;line-height:1.7;">
+      Every frontier model today is bottlenecked not by algorithms, but by the infrastructure
+      that delivers them. We built the layer that makes AI blazing fast, radically affordable,
+      and enterprise-grade reliable.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 3 — PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3">
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">The Problem</span>
+      <h2 style="font-size:clamp(32px,4.5vw,56px);letter-spacing:-0.04em;">The 3 Bottlenecks</h2>
+      <p style="font-family:'Inter',sans-serif;font-weight:400;font-size:0.95rem;color:var(--muted);margin-top:8px;">
+        Every AI deployment hits the same walls — and pays dearly for it.
+      </p>
+    </div>
+
+    <div class="problem-grid animate animate-d2">
+      <div class="glass problem-card">
+        <div class="problem-card-num">01</div>
+        <div class="accent-bar" style="background:linear-gradient(90deg,var(--acc),transparent);"></div>
+        <div class="problem-icon">⚡</div>
+        <div class="problem-card-title">Latency</div>
+        <div class="problem-card-desc">
+          P99 inference latency averages 4.2 seconds in production.
+          Users abandon after 1.5s — that's 64% of potential value destroyed.
+        </div>
+      </div>
+
+      <div class="glass problem-card">
+        <div class="problem-card-num">02</div>
+        <div class="accent-bar" style="background:linear-gradient(90deg,var(--acc2),transparent);"></div>
+        <div class="problem-icon">💸</div>
+        <div class="problem-card-title">Cost</div>
+        <div class="problem-card-desc">
+          Enterprises overpay 3–8× for AI compute due to inefficient
+          batching, cold starts, and bloated token overhead.
+        </div>
+      </div>
+
+      <div class="glass problem-card">
+        <div class="problem-card-num">03</div>
+        <div class="accent-bar" style="background:linear-gradient(90deg,var(--grn),transparent);"></div>
+        <div class="problem-icon">🔴</div>
+        <div class="problem-card-title">Reliability</div>
+        <div class="problem-card-desc">
+          Current AI APIs offer 99.5% uptime SLAs — that's 44 hours
+          of downtime per year. Unacceptable for mission-critical workflows.
+        </div>
+      </div>
     </div>
   </div>
-  <span class="sn">05 / 12</span>
 </section>
 
-<section class="s s6">
-  <div class="inner">
-    <span class="eyebrow">Traction</span>
-    <h2>Growing faster than the plan.</h2>
-    <div class="t-grid">
-      <div class="t-cell"><div class="t-val">$2.1M</div><div class="t-label">ARR · 340% YoY growth</div></div>
-      <div class="t-cell"><div class="t-val">47</div><div class="t-label">Enterprise customers across 6 verticals</div></div>
-      <div class="t-cell"><div class="t-val">94%</div><div class="t-label">Net revenue retention</div></div>
-      <div class="t-cell"><div class="t-val">18d</div><div class="t-label">Average time to first measurable value</div></div>
+<!-- ═══════════════════════════════════════
+     SLIDE 4 — SOLUTION (BENTO)
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4">
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">The Solution</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);letter-spacing:-0.04em;">One unified infrastructure layer</h2>
     </div>
-    <div class="t-note">Customer base includes 3 Fortune 500 companies in financial services, retail, and logistics. No customer accounts for more than 11% of ARR. Pipeline: $4.8M in late-stage negotiations.</div>
-  </div>
-  <span class="sn">06 / 12</span>
-</section>
 
-<section class="s s7">
-  <div class="inner">
-    <span class="eyebrow">Market</span>
-    <h2>A massive market at a rare inflection point.</h2>
-    <div class="mkt-bars">
-      <div class="mkt-row"><span class="mkt-lbl">TAM — Business Intelligence</span><div class="mkt-track"><div class="mkt-fill" style="width:100%"></div></div><span class="mkt-v">$29.4B</span></div>
-      <div class="mkt-row"><span class="mkt-lbl">SAM — Enterprise AI Decisions</span><div class="mkt-track"><div class="mkt-fill" style="width:65%"></div></div><span class="mkt-v">$7.1B</span></div>
-      <div class="mkt-row"><span class="mkt-lbl">SOM — 3-year target</span><div class="mkt-track"><div class="mkt-fill" style="width:15%"></div></div><span class="mkt-v">$420M</span></div>
-    </div>
-    <p class="mkt-insight">Gartner projects AI-augmented decision-making becomes the #1 enterprise software category by 2027. Three forces converge simultaneously: real-time data infrastructure, LLM reasoning quality, and enterprise AI budget maturity. NovaSpark sits at the exact intersection.</p>
-  </div>
-  <span class="sn">07 / 12</span>
-</section>
+    <div class="bento-grid animate animate-d2">
+      <div class="glass bento-main">
+        <span class="bento-icon">🔮</span>
+        <div class="bento-title">NovaSpark Router</div>
+        <p class="bento-desc">
+          Intelligent request routing across 12 model providers in real time.
+          Automatically selects the fastest, cheapest path for every call —
+          with automatic failover, semantic caching, and zero-downtime fallback.
+          Drop-in OpenAI-compatible API. Zero config required.
+        </p>
+      </div>
 
-<section class="s s8">
-  <div class="inner">
-    <span class="eyebrow">Team</span>
-    <h2>Built by people who've done this before.</h2>
-    <div class="tm-grid">
-      <div class="tm-cell"><div class="tm-init">SA</div><div class="tm-name">Sofia Andrade</div><div class="tm-role">CEO & Co-founder</div><p class="tm-bio">VP Product at Looker (acq. Google $2.6B). Built analytics infrastructure for 4,000 companies. 12 years B2B SaaS.</p></div>
-      <div class="tm-cell"><div class="tm-init">JK</div><div class="tm-name">James Kim</div><div class="tm-role">CTO & Co-founder</div><p class="tm-bio">PhD ML Stanford. Research lead at Databricks. 12 patents in stream processing and distributed inference.</p></div>
-      <div class="tm-cell"><div class="tm-init">ML</div><div class="tm-name">Maya Lopez</div><div class="tm-role">VP Sales</div><p class="tm-bio">Grew Sigma Computing $0→$40M ARR. Former AE at Tableau. Holds the company record for largest single-year ACV.</p></div>
-      <div class="tm-cell"><div class="tm-init">DR</div><div class="tm-name">David Reeves</div><div class="tm-role">Head of Eng.</div><p class="tm-bio">Staff engineer at Stripe. Architected the data pipeline serving 3 billion events per day at peak.</p></div>
-    </div>
-  </div>
-  <span class="sn">08 / 12</span>
-</section>
+      <div class="glass bento-side1">
+        <span class="bento-icon" style="font-size:1.8rem;">⚙️</span>
+        <div class="bento-title">Edge Inference Network</div>
+        <p class="bento-desc" style="font-size:0.82rem;">
+          50+ edge nodes globally. Sub-200ms response for 95% of the world's population.
+          Colocated with AWS, GCP, and Azure availability zones.
+        </p>
+      </div>
 
-<section class="s s9">
-  <div class="inner">
-    <span class="eyebrow">Competition</span>
-    <h2>We occupy the gap incumbents can't fill.</h2>
-    <table class="cmp-tbl">
-      <thead><tr><th>Vendor</th><th>Real-time</th><th>LLM reasoning</th><th>Role-aware</th><th>Cited briefs</th><th>Time-to-value</th></tr></thead>
-      <tbody>
-        <tr class="us"><td>NovaSpark AI</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td>18 days</td></tr>
-        <tr><td>Tableau + Einstein</td><td class="no">✗</td><td class="part">~</td><td class="no">✗</td><td class="no">✗</td><td>3–6 mo</td></tr>
-        <tr><td>Power BI + Copilot</td><td class="no">✗</td><td class="part">~</td><td class="no">✗</td><td class="no">✗</td><td>2–4 mo</td></tr>
-        <tr><td>Glean</td><td class="yes">✓</td><td class="yes">✓</td><td class="part">~</td><td class="no">✗</td><td>45 days</td></tr>
-        <tr><td>ThoughtSpot</td><td class="part">~</td><td class="part">~</td><td class="no">✗</td><td class="no">✗</td><td>60 days</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <span class="sn">09 / 12</span>
-</section>
-
-<section class="s s10">
-  <div class="inner">
-    <span class="eyebrow">Business Model</span>
-    <h2>SaaS with expansion built in.</h2>
-    <div class="tiers">
-      <div class="tier"><div class="tier-name">Starter</div><div class="tier-price">$2K<span>/mo</span></div><div class="tier-desc">Mid-market teams up to 20 users</div><ul class="tier-feats"><li>5 data sources</li><li>Weekly briefings</li><li>Email support</li></ul></div>
-      <div class="tier hot"><div class="tier-name">Enterprise — avg. deal</div><div class="tier-price">$12K<span>/mo</span></div><div class="tier-desc">Large orgs, unlimited users + SSO</div><ul class="tier-feats"><li>Unlimited sources & users</li><li>Real-time alerting</li><li>SAML + audit logs</li><li>Dedicated CSM</li></ul></div>
-      <div class="tier"><div class="tier-name">Platform API</div><div class="tier-price">Usage<span> based</span></div><div class="tier-desc">ISVs embedding NovaSpark</div><ul class="tier-feats"><li>Per-call pricing</li><li>White-label option</li><li>Marketplace royalty share</li></ul></div>
+      <div class="glass bento-side2">
+        <span class="bento-icon" style="font-size:1.8rem;">📊</span>
+        <div class="bento-title">Observability Suite</div>
+        <p class="bento-desc" style="font-size:0.82rem;">
+          Real-time cost dashboards, latency histograms, and quality scoring.
+          Know exactly what you're spending and why — before the invoice arrives.
+        </p>
+      </div>
     </div>
   </div>
-  <span class="sn">10 / 12</span>
 </section>
 
-<section class="s s11">
-  <div class="inner">
-    <span class="eyebrow">Financials</span>
-    <h2>Path to $20M ARR by end of 2026.</h2>
-    <div class="fin-rows">
-      <div class="fin-row"><span class="fin-yr">2024 actual</span><div class="fin-track"><div class="fin-bar" style="width:17%">$2.1M</div></div><span class="fin-v">$2.1M</span></div>
-      <div class="fin-row"><span class="fin-yr">2025 projection</span><div class="fin-track"><div class="fin-bar" style="width:50%">$6.5M</div></div><span class="fin-v">$6.5M</span></div>
-      <div class="fin-row"><span class="fin-yr">2026 projection</span><div class="fin-track"><div class="fin-bar" style="width:100%">$20M+</div></div><span class="fin-v">$20M+</span></div>
+<!-- ═══════════════════════════════════════
+     SLIDE 5 — PRODUCT (TERMINAL)
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="align-items:center;">
+  <div style="width:100%;max-width:1100px;display:flex;flex-direction:column;align-items:center;">
+    <div class="animate" style="text-align:center;margin-bottom:24px;width:100%;">
+      <span class="eyebrow">The Product</span>
+      <h2 style="font-size:clamp(26px,3.5vw,44px);letter-spacing:-0.04em;">Drop in. Route smarter.</h2>
     </div>
-    <p class="fin-note">Unit economics: CAC $18K · ACV $87K · LTV:CAC 4.8× · Gross margin 78% · Current runway 14 months. $12M at planned burn extends to 32 months and funds path to Series B profitability gate.</p>
-  </div>
-  <span class="sn">11 / 12</span>
-</section>
 
-<section class="s s12">
-  <div class="inner">
-    <h2>Join us in making <span class="g">better decisions</span> the default.</h2>
-    <div class="s12-amt">$12M</div>
-    <p class="s12-sub">Series A. 18 months to $12M ARR and Series B readiness. Leading the round now.</p>
-    <div class="s12-use">
-      <div class="s12-pct"><div class="p">50%</div><div class="l">Sales & marketing</div></div>
-      <div class="s12-pct"><div class="p">30%</div><div class="l">R&D — Forecast Mode + API</div></div>
-      <div class="s12-pct"><div class="p">20%</div><div class="l">EU expansion + compliance</div></div>
+    <div class="terminal-wrap animate animate-d2" style="width:100%;">
+      <div class="terminal-bar">
+        <div class="terminal-dot td-red"></div>
+        <div class="terminal-dot td-yel"></div>
+        <div class="terminal-dot td-grn"></div>
+        <span class="terminal-title">novaspark-api &nbsp;—&nbsp; inference request</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-comment"># Standard OpenAI-compatible call — zero migration cost</span></div>
+        <div style="margin-top:8px;">
+          <span class="t-prompt">$</span>
+          <span class="t-cmd"> curl https://api.novaspark.ai/v1/chat/completions \</span>
+        </div>
+        <div style="padding-left:24px;">
+          <span class="t-cmd">  -H </span><span class="t-str">"Authorization: Bearer sk-nova_..."</span><span class="t-cmd"> \</span>
+        </div>
+        <div style="padding-left:24px;">
+          <span class="t-cmd">  -d </span><span class="t-str">'{"model":"auto","messages":[{"role":"user","content":"Explain quantum entanglement"}]}'</span>
+        </div>
+
+        <div style="margin-top:16px;color:rgba(255,255,255,0.2);">───────────────────────────────────────────────</div>
+
+        <div style="margin-top:12px;"><span class="t-comment"># Response</span></div>
+        <div><span class="t-key">{</span></div>
+        <div style="padding-left:20px;">
+          <span class="t-key">"id":</span> <span class="t-str">"nova_01JXMK9P3QR..."</span><span class="t-cmd">,</span>
+        </div>
+        <div style="padding-left:20px;">
+          <span class="t-key">"model_selected":</span> <span class="t-str">"gpt-4o-mini"</span><span class="t-cmd">,</span>
+        </div>
+        <div style="padding-left:20px;">
+          <span class="t-key">"routing_reason":</span> <span class="t-str">"lowest_latency_score"</span><span class="t-cmd">,</span>
+        </div>
+        <div style="padding-left:20px;">
+          <span class="t-key">"latency_ms":</span> <span class="t-num">211</span><span class="t-cmd">,</span>
+        </div>
+        <div style="padding-left:20px;">
+          <span class="t-key">"cost_usd":</span> <span class="t-num">0.000047</span><span class="t-cmd">,</span>
+        </div>
+        <div style="padding-left:20px;">
+          <span class="t-key">"cache_hit":</span> <span class="t-val">false</span><span class="t-cmd">,</span>
+        </div>
+        <div style="padding-left:20px;">
+          <span class="t-key">"choices":</span> <span class="t-cmd">[{ "message": { "content": </span><span class="t-str">"Quantum entanglement is..."</span> <span class="t-cmd">} }]</span>
+        </div>
+        <div><span class="t-key">}</span> <span class="t-cursor"></span></div>
+      </div>
     </div>
-    <p class="s12-email">sofia@novaspark.ai · <a href="#">deck.novaspark.ai</a></p>
+
+    <div class="terminal-caption animate animate-d3">
+      ↳ 211ms end-to-end &nbsp;·&nbsp; $0.000047 per call &nbsp;·&nbsp; auto-routed to cheapest viable model &nbsp;·&nbsp; cached on repeat
+    </div>
   </div>
-  <span class="sn">12 / 12</span>
 </section>
 
-<div class="nh">↑ ↓ keys or scroll</div>
-<script>document.addEventListener('keydown',e=>{const d=e.key==='ArrowDown'||e.key==='ArrowRight';const u=e.key==='ArrowUp'||e.key==='ArrowLeft';if(d)window.scrollBy({top:window.innerHeight,behavior:'smooth'});if(u)window.scrollBy({top:-window.innerHeight,behavior:'smooth'})});</script>
+<!-- ═══════════════════════════════════════
+     SLIDE 6 — TRACTION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6" style="align-items:center;text-align:center;">
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">Traction</span>
+      <h2 style="font-size:clamp(32px,4.5vw,56px);letter-spacing:-0.04em;">Numbers don't lie</h2>
+      <p style="font-family:'Inter',sans-serif;font-weight:400;font-size:0.9rem;color:var(--muted);margin-top:6px;">
+        18 months post-launch. Zero paid acquisition.
+      </p>
+    </div>
+
+    <div class="traction-row animate animate-d2">
+      <div class="glass traction-card">
+        <div class="traction-val grad-text">847ms</div>
+        <div class="traction-delta">−73% vs industry</div>
+        <div class="traction-label">Avg P99 Latency</div>
+      </div>
+      <div class="glass traction-card">
+        <div class="traction-val grad-text">$0.0004</div>
+        <div class="traction-delta">−68% vs OpenAI direct</div>
+        <div class="traction-label">Cost per Call</div>
+      </div>
+      <div class="glass traction-card">
+        <div class="traction-val grad-text-grn">99.97%</div>
+        <div class="traction-delta">+0.47pp vs SLA</div>
+        <div class="traction-label">Uptime (TTM)</div>
+      </div>
+      <div class="glass traction-card">
+        <div class="traction-val grad-text">412</div>
+        <div class="traction-delta">+280 in 6 months</div>
+        <div class="traction-label">Enterprise Customers</div>
+      </div>
+    </div>
+
+    <div class="animate animate-d3" style="margin-top:32px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
+      <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--muted);">
+        <span style="color:var(--acc);font-weight:600;">$2.1M ARR</span> &nbsp;·&nbsp; 140% net revenue retention &nbsp;·&nbsp; 4-month average payback
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 7 — TEAM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="align-items:center;">
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate" style="text-align:center;">
+      <span class="eyebrow">The Team</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);letter-spacing:-0.04em;">Built by infrastructure obsessives</h2>
+    </div>
+
+    <div class="team-row animate animate-d2">
+      <div class="glass team-card">
+        <div class="avatar avatar-1">
+          <div class="avatar-initials">MR</div>
+        </div>
+        <div class="team-name">Dr. Maya Reeves</div>
+        <div class="team-title">Co-Founder &amp; CEO</div>
+        <div class="team-bio">
+          Former VP Engineering at Cloudflare, built the global Workers runtime serving 25M req/s.
+          PhD in distributed systems, MIT. Led 3 infrastructure-layer acquisitions.
+        </div>
+        <a class="linkedin-link" href="#">ℹ LinkedIn Profile</a>
+      </div>
+
+      <div class="glass team-card">
+        <div class="avatar avatar-2">
+          <div class="avatar-initials">JK</div>
+        </div>
+        <div class="team-name">James Kowalski</div>
+        <div class="team-title">Co-Founder &amp; CTO</div>
+        <div class="team-bio">
+          Principal Engineer at Google (DeepMind infra), designed the serving stack for
+          Gemini 1.5. Open-source maintainer with 18k GitHub stars. 2 US patents in ML serving.
+        </div>
+        <a class="linkedin-link" href="#">ℹ LinkedIn Profile</a>
+      </div>
+
+      <div class="glass team-card">
+        <div class="avatar avatar-3">
+          <div class="avatar-initials">SN</div>
+        </div>
+        <div class="team-name">Sara Nguyen</div>
+        <div class="team-title">Co-Founder &amp; CRO</div>
+        <div class="team-bio">
+          Former Head of Enterprise Sales at Datadog ($0→$400M ARR). Closed
+          Stripe, Twilio, and GitHub as strategic partners. Built and scaled
+          a 60-person enterprise sales org from scratch.
+        </div>
+        <a class="linkedin-link" href="#">ℹ LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 8 — MARKET
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8">
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">Market Opportunity</span>
+      <h2 style="font-size:clamp(28px,4vw,50px);letter-spacing:-0.04em;">A category being created now</h2>
+    </div>
+
+    <div class="market-layout animate animate-d2">
+      <div>
+        <div class="market-number">$340B</div>
+        <div class="market-sub">
+          Total AI infrastructure market by 2030<br />
+          (Gartner, IDC, Goldman Sachs consensus estimate)<br />
+          Growing at 38% CAGR
+        </div>
+
+        <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="glass" style="padding:18px 20px;border-radius:14px;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-0.03em;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$340B</div>
+            <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">TAM</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;">Total AI Infra</div>
+          </div>
+          <div class="glass" style="padding:18px 20px;border-radius:14px;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-0.03em;color:var(--acc2);">$42B</div>
+            <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">SAM</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;">AI Routing &amp; Serving</div>
+          </div>
+          <div class="glass" style="padding:18px 20px;border-radius:14px;grid-column:1/-1;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-0.03em;color:var(--grn);">$3.8B</div>
+            <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">SOM (5 year)</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;">Realistic capture at current trajectory</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bar-chart">
+        <p style="font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--muted);letter-spacing:0.04em;margin-bottom:8px;text-transform:uppercase;">Market size by segment (2026E)</p>
+
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">AI API Orchestration</span>
+            <span class="bar-amount" style="color:var(--acc);">$18.2B</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--acc),transparent);"></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Edge AI Serving</span>
+            <span class="bar-amount" style="color:var(--acc2);">$12.7B</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:70%;background:linear-gradient(90deg,var(--acc2),transparent);"></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">LLM Cost Optimization</span>
+            <span class="bar-amount" style="color:var(--grn);">$7.4B</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:41%;background:linear-gradient(90deg,var(--grn),transparent);"></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">AI Observability</span>
+            <span class="bar-amount" style="color:#fbbf24;">$3.9B</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:21%;background:linear-gradient(90deg,#fbbf24,transparent);"></div>
+          </div>
+        </div>
+
+        <p style="font-family:'Inter',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.2);margin-top:16px;">
+          NovaSpark competes across all four — as the unified layer beneath them.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 9 — COMPETITIVE MATRIX
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9">
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">Competitive Landscape</span>
+      <h2 style="font-size:clamp(28px,4vw,50px);letter-spacing:-0.04em;">Why we win on every dimension</h2>
+    </div>
+
+    <div class="animate animate-d2">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Capability</th>
+            <th class="ns-col">NovaSpark AI</th>
+            <th>OpenRouter</th>
+            <th>BrainTrust</th>
+            <th>Portkey</th>
+            <th>DIY AWS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sub-300ms P99 globally</td>
+            <td class="ns-col"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="partial">partial</span></td>
+          </tr>
+          <tr>
+            <td>Semantic caching layer</td>
+            <td class="ns-col"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="partial">partial</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Multi-provider auto-failover</td>
+            <td class="ns-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>Real-time cost optimization</td>
+            <td class="ns-col"><span class="check">✓</span></td>
+            <td><span class="partial">partial</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="partial">partial</span></td>
+            <td><span class="cross">✗</span></td>
+          </tr>
+          <tr>
+            <td>SOC 2 Type II + HIPAA</td>
+            <td class="ns-col"><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="animate animate-d3" style="margin-top:24px;display:flex;gap:24px;flex-wrap:wrap;">
+      <div class="glass" style="padding:14px 20px;border-radius:12px;border-color:rgba(52,211,153,0.2);">
+        <span style="font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--muted);">
+          ✓ = fully supported &nbsp;·&nbsp; <span style="color:#fbbf24;">partial</span> = limited/add-on &nbsp;·&nbsp; ✗ = not available
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — THE ASK
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="align-items:center;text-align:center;">
+  <div style="width:100%;max-width:1100px;display:flex;flex-direction:column;align-items:center;">
+    <div class="animate">
+      <span class="eyebrow">The Ask</span>
+      <div class="ask-amount">$14M Series A</div>
+      <p style="font-family:'Inter',sans-serif;font-weight:300;font-size:1rem;color:var(--muted);margin-top:12px;max-width:55ch;margin-left:auto;margin-right:auto;line-height:1.6;">
+        18 months of runway to reach $8M ARR and Series B readiness.
+        Lead investor commitment: $8M. Co-investors filling $6M.
+      </p>
+    </div>
+
+    <div class="ask-layout animate animate-d2" style="text-align:left;">
+      <div>
+        <p style="font-family:'Inter',sans-serif;font-weight:500;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">Use of funds</p>
+        <div class="ask-funds">
+          <div class="glass fund-tile">
+            <div class="fund-pct" style="background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">45%</div>
+            <div class="fund-label">Engineering</div>
+          </div>
+          <div class="glass fund-tile">
+            <div class="fund-pct" style="color:var(--acc2);">30%</div>
+            <div class="fund-label">Go-to-Market</div>
+          </div>
+          <div class="glass fund-tile">
+            <div class="fund-pct" style="color:var(--grn);">15%</div>
+            <div class="fund-label">Infrastructure</div>
+          </div>
+          <div class="glass fund-tile">
+            <div class="fund-pct" style="color:rgba(255,255,255,0.5);">10%</div>
+            <div class="fund-label">Legal / G&amp;A</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="donut-wrap">
+        <div class="donut"></div>
+        <div class="donut-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--acc);"></div>Engineering 45%</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--acc2);"></div>GTM 30%</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--grn);"></div>Infra 15%</div>
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.2);"></div>Legal 10%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 11 — ROADMAP
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-11">
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">Roadmap</span>
+      <h2 style="font-size:clamp(28px,4vw,50px);letter-spacing:-0.04em;">18 months to Series B readiness</h2>
+    </div>
+
+    <div class="roadmap-grid animate animate-d2">
+      <!-- Q3 2026 -->
+      <div class="roadmap-col">
+        <div class="roadmap-quarter" style="color:var(--acc);">Q3 2026</div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--acc);">Core Platform</span>
+          <div class="milestone-title">Launch NovaSpark v2.0</div>
+          <div class="milestone-desc">New routing engine with real-time cost arbitrage. 40% latency improvement over v1.</div>
+        </div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--muted);">Partnerships</span>
+          <div class="milestone-title">AWS Marketplace listing</div>
+          <div class="milestone-desc">Native AWS integration. Activate 2,000+ prospects already in procurement pipeline.</div>
+        </div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--muted);">Team</span>
+          <div class="milestone-title">+8 engineers hired</div>
+          <div class="milestone-desc">Infra, ML serving, and platform teams. Target: $6M ARR exit Q3.</div>
+        </div>
+      </div>
+
+      <!-- Q4 2026 -->
+      <div class="roadmap-col">
+        <div class="roadmap-quarter" style="color:var(--acc2);">Q4 2026</div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--acc2);">Product</span>
+          <div class="milestone-title">On-premise + VPC deploy</div>
+          <div class="milestone-desc">Unlock regulated industries: healthcare, finance, government. $1M+ ACV deals.</div>
+        </div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--muted);">Go-to-Market</span>
+          <div class="milestone-title">Enterprise tier GA</div>
+          <div class="milestone-desc">SLA-backed contracts, dedicated support, HIPAA/FedRAMP compliance. Target: 50 enterprise logos.</div>
+        </div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--muted);">Milestone</span>
+          <div class="milestone-title">$6M ARR achieved</div>
+          <div class="milestone-desc">On-track for Series B raise in Q1 2027 at 8× revenue.</div>
+        </div>
+      </div>
+
+      <!-- Q1 2027 -->
+      <div class="roadmap-col">
+        <div class="roadmap-quarter" style="color:var(--grn);">Q1 2027</div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--grn);">Platform</span>
+          <div class="milestone-title">Fine-tune &amp; BYOM support</div>
+          <div class="milestone-desc">Bring-your-own-model routing. Unlocks $500M+ segment of enterprises running private models.</div>
+        </div>
+
+        <div class="glass roadmap-milestone">
+          <span class="milestone-tag" style="color:var(--muted);">Expansion</span>
+          <div class="milestone-title">APAC &amp; EU edge nodes</div>
+          <div class="milestone-desc">12 new PoPs. Sub-150ms guarantee expanded to 99% of global traffic.</div>
+        </div>
+
+        <div class="glass roadmap-milestone" style="border-color:rgba(52,211,153,0.25);">
+          <span class="milestone-tag" style="color:var(--grn);">Raise</span>
+          <div class="milestone-title">Series B — $40M target</div>
+          <div class="milestone-desc">$8M+ ARR, 650+ customers, positive unit economics. Ready for hyperscale.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 12 — CLOSING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-12" style="align-items:center;text-align:center;">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div style="display:flex;flex-direction:column;align-items:center;max-width:900px;">
+    <div class="animate">
+      <span class="eyebrow">The Opportunity</span>
+    </div>
+
+    <div class="closing-headline animate animate-d1">
+      Build the infrastructure
+      <span class="grad-text"> AI deserves.</span>
+    </div>
+
+    <p class="animate animate-d2" style="font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(15px,1.6vw,20px);color:var(--muted);margin-top:28px;max-width:55ch;line-height:1.7;">
+      The AI infrastructure layer is a once-in-a-decade platform shift.
+      We have the team, the traction, and the technology.
+      We're looking for partners who see what we see.
+    </p>
+
+    <a class="cta-btn animate animate-d3" href="mailto:founders@novaspark.ai">
+      → Request the data room
+    </a>
+
+    <div class="contact-info animate animate-d4">
+      <div class="contact-item"><span>investors@novaspark.ai</span></div>
+      <div class="contact-item"><span>novaspark.ai</span></div>
+      <div class="contact-item">San Francisco, CA</div>
+      <div class="contact-item">SOC 2 Type II · HIPAA · ISO 27001</div>
+    </div>
+
+    <div class="animate animate-d5" style="margin-top:40px;display:flex;gap:20px;flex-wrap:wrap;justify-content:center;">
+      <div class="glass" style="padding:10px 20px;border-radius:10px;">
+        <span style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--muted);">🏆 YC W24 &nbsp;·&nbsp; Sequoia Scout &nbsp;·&nbsp; a16z Infra portfolio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+</script>
 </body>
 </html>

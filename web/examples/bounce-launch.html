@@ -1,235 +1,1854 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bounce — It's Finally Here 🎉</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --coral:#ff5a36;--lime:#a8e63d;--sky:#38d9f5;--ink:#1a1a2e;
-      --soft:#fff8f5;--yellow:#ffe347;--purple:#c084fc;
-    }
-    html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth}
-    body{background:var(--soft);color:var(--ink);font-family:'Nunito Sans',sans-serif}
-    .s{min-height:100vh;width:100%;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:64px 80px;position:relative;overflow:hidden}
-    .inner{width:100%;max-width:960px;position:relative;z-index:2}
-    .nh{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--soft);border-radius:20px;padding:8px 20px;font-size:11px;letter-spacing:1px;z-index:100;font-family:'Nunito',sans-serif;font-weight:700}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bounce — Public Beta Launch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #ff4d2e;
+    --lime: #b6f542;
+    --sky: #2dd4bf;
+    --ink: #0f0f1a;
+    --soft: #fff9f5;
+    --yellow: #ffe14d;
+    --purple: #c084fc;
+    --hot-pink: #f43f8e;
+    --shadow: 5px 5px 0 var(--ink);
+    --shadow-sm: 3px 3px 0 var(--ink);
+    --radius-lg: 28px;
+    --radius-md: 20px;
+    --border: 3px solid var(--ink);
+  }
 
-    /* big emoji top */
-    .emoji{font-size:4rem;line-height:1;margin-bottom:16px;display:block}
-    .tag{display:inline-block;background:var(--ink);color:var(--soft);font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:20px}
-    .tag.lime{background:var(--lime);color:var(--ink)}
-    .tag.coral{background:var(--coral);color:#fff}
-    .tag.sky{background:var(--sky);color:var(--ink)}
-    h1,h2,h3{font-family:'Nunito',sans-serif;font-weight:900}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    /* squiggly underline utility */
-    .squig{text-decoration:underline;text-decoration-style:wavy;text-decoration-color:var(--coral);text-underline-offset:6px}
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
 
-    /* sticker badge */
-    .sticker{display:inline-block;background:var(--yellow);border:2px solid var(--ink);border-radius:50%;width:80px;height:80px;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:0.7rem;text-align:center;line-height:1.2;transform:rotate(12deg);flex-shrink:0}
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    background: var(--ink);
+    color: var(--ink);
+  }
 
-    /* ── S1 TITLE ── */
-    .s1{background:var(--coral)}
-    .s1::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:var(--yellow);opacity:0.4;right:-100px;top:-100px;z-index:1}
-    .s1::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:var(--ink);opacity:0.06;left:-80px;bottom:-80px;z-index:1}
-    .s1 h1{font-size:clamp(3rem,8vw,7rem);color:#fff;line-height:0.95;letter-spacing:-2px;margin-bottom:20px}
-    .s1 h1 em{font-style:normal;color:var(--yellow)}
-    .s1-sub{font-size:1.2rem;color:rgba(255,255,255,0.85);max-width:480px;line-height:1.6;margin-bottom:36px;font-family:'Nunito Sans',sans-serif;font-weight:600}
-    .s1-tag{background:#fff;color:var(--coral);font-family:'Nunito',sans-serif;font-weight:900;font-size:0.85rem;border-radius:24px;padding:10px 24px;display:inline-block}
+  h1, h2, h3, h4, h5 {
+    font-family: 'Nunito', sans-serif;
+  }
 
-    /* ── S2 WHAT IS BOUNCE ── */
-    .s2{background:var(--soft)}
-    .s2 h2{font-size:clamp(2rem,5vw,4rem);line-height:1.05;margin-bottom:32px;letter-spacing:-1px}
-    .s2 h2 .hi{background:var(--lime);padding:0 6px;border-radius:6px}
-    .big-def{font-size:1.15rem;line-height:1.75;max-width:680px;color:var(--ink)}
-    .big-def strong{font-family:'Nunito',sans-serif;font-weight:900}
-    .s2-cards{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
-    .s2-card{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:20px 24px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;display:flex;align-items:center;gap:10px;box-shadow:4px 4px 0 var(--ink)}
-    .s2-card .ic{font-size:1.6rem}
+  .slide {
+    width: 100vw;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
 
-    /* ── S3 PROBLEM ── */
-    .s3{background:var(--ink)}
-    .s3 h2{font-size:clamp(2rem,4vw,3.5rem);color:#fff;margin-bottom:40px;letter-spacing:-1px}
-    .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .pain-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:28px 24px}
-    .pain-card .pain-em{font-size:2.5rem;margin-bottom:16px;display:block}
-    .pain-card h3{font-size:1.1rem;color:#fff;margin-bottom:10px}
-    .pain-card p{font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.65}
+  .slide-inner {
+    width: 100%;
+    max-width: 1100px;
+  }
 
-    /* ── S4 SOLUTION ── */
-    .s4{background:var(--lime)}
-    .s4 h2{font-size:clamp(2rem,4vw,3.5rem);color:var(--ink);margin-bottom:40px;letter-spacing:-1px}
-    .sol-list{display:flex;flex-direction:column;gap:2px}
-    .sol-item{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:20px 28px;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;box-shadow:3px 3px 0 var(--ink)}
-    .sol-item .num{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.8rem;color:var(--coral)}
-    .sol-item h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;margin-bottom:4px}
-    .sol-item p{font-size:0.83rem;color:#555;line-height:1.5}
+  /* ── NAV HINT ── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--soft);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 2px solid var(--soft);
+    z-index: 9999;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    opacity: 0.9;
+  }
 
-    /* ── S5 STATS ── */
-    .s5{background:var(--soft)}
-    .s5 h2{font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:8px;letter-spacing:-1px}
-    .s5-sub{font-size:1rem;color:#777;margin-bottom:48px}
-    .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-    .stat-card{border:2px solid var(--ink);border-radius:24px;padding:32px;background:#fff;box-shadow:5px 5px 0 var(--ink)}
-    .stat-card .val{font-family:'Nunito',sans-serif;font-weight:900;font-size:3.5rem;line-height:1;margin-bottom:8px}
-    .stat-card .val.coral{color:var(--coral)}
-    .stat-card .val.sky{color:var(--sky)}
-    .stat-card .val.lime{color:#6db800}
-    .stat-card .val.purple{color:var(--purple)}
-    .stat-card .lbl{font-weight:600;font-size:0.9rem;color:#555;line-height:1.5}
-    .stat-card .delta{display:inline-flex;align-items:center;gap:4px;background:var(--lime);border-radius:20px;padding:3px 10px;font-family:'Nunito',sans-serif;font-weight:900;font-size:0.75rem;margin-top:8px;color:var(--ink)}
+  /* ── CARDS ── */
+  .card {
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    background: var(--soft);
+    position: relative;
+    overflow: hidden;
+  }
 
-    /* ── S6 TESTIMONIALS ── */
-    .s6{background:var(--sky)}
-    .s6 h2{font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:40px;letter-spacing:-1px}
-    .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-    .testi{background:#fff;border:2px solid var(--ink);border-radius:24px;padding:28px;box-shadow:5px 5px 0 var(--ink)}
-    .testi blockquote{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;line-height:1.5;margin-bottom:20px;color:var(--ink)}
-    .testi .who{display:flex;align-items:center;gap:12px}
-    .testi .av{width:40px;height:40px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;color:#fff;font-size:0.9rem;border:2px solid var(--ink);flex-shrink:0}
-    .testi .name{font-family:'Nunito',sans-serif;font-weight:800;font-size:0.88rem}
-    .testi .handle{font-size:0.78rem;color:#777}
+  .card-sm {
+    border-radius: var(--radius-md);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+    background: var(--soft);
+    position: relative;
+  }
 
-    /* ── S7 PRICING ── */
-    .s7{background:var(--ink)}
-    .s7 h2{font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:8px;letter-spacing:-1px}
-    .s7-sub{color:rgba(255,255,255,0.5);margin-bottom:40px;font-size:1rem}
-    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .plan{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.1);border-radius:24px;padding:28px}
-    .plan.hot{background:var(--coral);border-color:var(--coral)}
-    .plan-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px}
-    .plan.hot .plan-name{color:rgba(255,255,255,0.8)}
-    .plan-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:2.8rem;color:#fff;line-height:1;margin-bottom:4px}
-    .plan-price span{font-size:1rem;font-weight:400;opacity:0.6}
-    .plan-desc{font-size:0.83rem;color:rgba(255,255,255,0.5);margin-bottom:20px;line-height:1.5}
-    .plan-feats{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .plan-feats li{font-size:0.83rem;color:rgba(255,255,255,0.7);display:flex;gap:8px;align-items:flex-start}
-    .plan-feats li::before{content:'✓';flex-shrink:0;font-family:'Nunito',sans-serif;font-weight:900}
-    .plan-btn{display:block;margin-top:24px;background:#fff;color:var(--ink);font-family:'Nunito',sans-serif;font-weight:900;font-size:0.9rem;text-align:center;padding:12px;border-radius:12px;border:2px solid #fff}
-    .plan.hot .plan-btn{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-    /* ── S8 CTA ── */
-    .s8{background:var(--lime)}
-    .s8::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:var(--coral);opacity:0.15;right:-60px;bottom:-60px;z-index:1}
-    .s8::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:var(--sky);opacity:0.25;left:-40px;top:-40px;z-index:1}
-    .s8 .inner{text-align:center}
-    .s8 h2{font-size:clamp(2.5rem,6vw,5rem);color:var(--ink);margin-bottom:16px;letter-spacing:-2px;line-height:1}
-    .s8-sub{font-size:1.1rem;color:rgba(0,0,0,0.6);max-width:480px;margin:0 auto 40px;line-height:1.6}
-    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn-main{background:var(--ink);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;padding:16px 36px;border-radius:16px;border:none;cursor:pointer;box-shadow:4px 4px 0 rgba(0,0,0,0.3);display:inline-block}
-    .btn-sec{background:#fff;color:var(--ink);font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;padding:16px 36px;border-radius:16px;border:2px solid var(--ink);cursor:pointer;display:inline-block}
-    .s8-note{font-size:0.85rem;color:rgba(0,0,0,0.5);margin-top:24px}
+  @keyframes bounceIn {
+    0%   { opacity: 0; transform: scale(0.7) rotate(-4deg); }
+    60%  { transform: scale(1.08) rotate(2deg); }
+    80%  { transform: scale(0.97) rotate(-1deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
 
-    @media print{html{scroll-snap-type:none}.s{page-break-after:always;min-height:auto;height:100vh}.nh{display:none}}
-  </style>
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.06); }
+  }
+
+  @keyframes countdown {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: 126; }
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50%       { transform: rotate(3deg); }
+  }
+
+  @keyframes floatUp {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  .anim-fade { animation: fadeUp 0.7s ease forwards; }
+  .anim-bounce { animation: bounceIn 0.8s cubic-bezier(.36,.07,.19,.97) forwards; }
+  .anim-float { animation: floatUp 3s ease-in-out infinite; }
+  .anim-wiggle { animation: wiggle 2s ease-in-out infinite; }
+  .anim-pulse { animation: pulse 2s ease-in-out infinite; }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+  .delay-6 { animation-delay: 0.6s; }
+
+  /* ── SLIDE 1: COVER ── */
+  #slide-1 { background: var(--coral); }
+
+  .cover-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    grid-template-rows: 1fr;
+    gap: 20px;
+    width: 100%;
+    min-height: 70vh;
+  }
+
+  .cover-main {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-main::before {
+    content: '⚡';
+    position: absolute;
+    font-size: 12rem;
+    opacity: 0.05;
+    top: -20px;
+    right: -20px;
+    pointer-events: none;
+  }
+
+  .cover-app-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 6.5rem;
+    line-height: 1;
+    color: white;
+    letter-spacing: -3px;
+  }
+
+  .cover-app-name span {
+    color: var(--lime);
+  }
+
+  .cover-sub {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: rgba(255,255,255,0.75);
+    margin-top: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .cover-emoji-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .cover-emoji-row span {
+    font-size: 2.4rem;
+    animation: floatUp 3s ease-in-out infinite;
+  }
+
+  .cover-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cover-chip-top {
+    background: var(--lime);
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+    padding: 24px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-chip-top .chip-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .cover-chip-top .chip-badge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--lime);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-top: 8px;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .cover-chip-bottom {
+    background: var(--soft);
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+    padding: 24px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-chip-bottom .stat-line {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .cover-chip-bottom .stat-line::before {
+    content: '✦';
+    color: var(--coral);
+  }
+
+  .cover-circle {
+    position: absolute;
+    top: 30px;
+    right: -15px;
+    width: 100px;
+    height: 100px;
+    background: var(--yellow);
+    border: var(--border);
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-18deg);
+    animation: spin 12s linear infinite;
+  }
+
+  .cover-circle span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--ink);
+    transform: rotate(18deg);
+    animation: spin 12s linear infinite reverse;
+    letter-spacing: 1px;
+  }
+
+  /* ── SLIDE 2: WHAT IS BOUNCE ── */
+  #slide-2 { background: var(--soft); }
+
+  .slide-heading-lg {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 32px;
+    letter-spacing: -1.5px;
+  }
+
+  .feature-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .feature-chip {
+    background: var(--ink);
+    color: var(--soft);
+    border: var(--border);
+    border-radius: 100px;
+    padding: 12px 22px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-sm);
+    animation: bounceIn 0.6s cubic-bezier(.36,.07,.19,.97) forwards;
+  }
+
+  .feature-chip .chip-emoji {
+    font-size: 1.4rem;
+  }
+
+  .principles-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .principle-card {
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .principle-card .p-emoji {
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  .principle-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: -0.3px;
+  }
+
+  .principle-card p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  /* ── SLIDE 3: THE PROBLEM ── */
+  #slide-3 {
+    background: var(--ink);
+    color: white;
+  }
+
+  .slide-heading-lg.light {
+    color: white;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .pain-card {
+    background: rgba(255,255,255,0.07);
+    border: 2px solid rgba(255,255,255,0.18);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+
+  .pain-card .pain-num {
+    position: absolute;
+    top: -20px;
+    right: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 8rem;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .pain-card .pain-emoji {
+    font-size: 3.2rem;
+    display: block;
+    margin-bottom: 16px;
+    animation: floatUp 3.5s ease-in-out infinite;
+  }
+
+  .pain-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .pain-card p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  /* ── SLIDE 4: HOW BOUNCE FIXES IT ── */
+  #slide-4 { background: var(--lime); }
+
+  .fix-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .fix-main {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background: var(--ink);
+    color: white;
+    border-radius: var(--radius-lg);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fix-main::after {
+    content: '💥';
+    position: absolute;
+    font-size: 10rem;
+    opacity: 0.06;
+    bottom: -10px;
+    right: -10px;
+    pointer-events: none;
+  }
+
+  .fix-main h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    color: var(--lime);
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .fix-main p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+  }
+
+  .fix-tag {
+    display: inline-block;
+    background: var(--hot-pink);
+    color: white;
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+
+  .fix-cell-zero {
+    grid-column: 2;
+    grid-row: 1;
+    background: var(--soft);
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .fix-cell-zero .big-zero {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--coral);
+    letter-spacing: -4px;
+    text-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .fix-cell-zero h4 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: 8px;
+    color: var(--ink);
+  }
+
+  .fix-cell-24h {
+    grid-column: 2;
+    grid-row: 2;
+    background: var(--purple);
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .countdown-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .countdown-ring svg {
+    transform: rotate(-90deg);
+  }
+
+  .countdown-ring .ring-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.2);
+    stroke-width: 6;
+  }
+
+  .countdown-ring .ring-fill {
+    fill: none;
+    stroke: white;
+    stroke-width: 6;
+    stroke-dasharray: 126;
+    stroke-dashoffset: 42;
+    stroke-linecap: round;
+    animation: countdown 24s linear infinite;
+  }
+
+  .countdown-ring .ring-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .fix-cell-24h h4 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: white;
+  }
+
+  /* ── SLIDE 5: BETA TRACTION ── */
+  #slide-5 { background: var(--soft); }
+
+  .traction-heading {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -1px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .stat-card {
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card .stat-emoji {
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+
+  .stat-card .stat-number {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 3.6rem;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .stat-card .stat-label {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    line-height: 1.3;
+  }
+
+  .stat-card .delta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--lime);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+    width: fit-content;
+    margin-top: 4px;
+  }
+
+  /* ── SLIDE 6: SOCIAL PROOF ── */
+  #slide-6 { background: var(--sky); }
+
+  .proof-heading {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .testimonial-card {
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .testimonial-card blockquote {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--ink);
+    flex: 1;
+  }
+
+  .testimonial-card blockquote::before {
+    content: '"';
+    font-size: 2rem;
+    color: var(--coral);
+    line-height: 0.5;
+    vertical-align: -12px;
+    margin-right: 2px;
+  }
+
+  .testi-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .testi-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .testi-handle {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.82rem;
+    color: var(--ink);
+    opacity: 0.6;
+  }
+
+  /* ── SLIDE 7: HOW IT WORKS ── */
+  #slide-7 {
+    background: var(--ink);
+    color: white;
+  }
+
+  .hiw-heading {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    color: white;
+    margin-bottom: 32px;
+    letter-spacing: -1px;
+  }
+
+  .steps-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: center;
+  }
+
+  .step-card {
+    background: rgba(255,255,255,0.06);
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+
+  .step-card .step-emoji {
+    font-size: 3.2rem;
+    line-height: 1;
+    animation: floatUp 4s ease-in-out infinite;
+  }
+
+  .step-card .step-num {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .step-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.7rem;
+    color: white;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .step-card p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  .step-card-1 { border-top: 4px solid var(--coral); }
+  .step-card-2 { border-top: 4px solid var(--lime); }
+  .step-card-3 { border-top: 4px solid var(--sky); }
+
+  .step-arrow {
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.3);
+    padding: 0 16px;
+    text-align: center;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ── SLIDE 8: PRICING ── */
+  #slide-8 { background: var(--soft); }
+
+  .pricing-heading {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -1px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pricing-card.featured {
+    background: var(--ink);
+    color: white;
+    transform: scale(1.03);
+    border-width: 3px;
+    box-shadow: 8px 8px 0 var(--coral);
+  }
+
+  .plan-badge {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: fit-content;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+
+  .plan-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: -0.3px;
+  }
+
+  .plan-price {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .plan-price sup {
+    font-size: 1.8rem;
+    letter-spacing: 0;
+    vertical-align: super;
+  }
+
+  .plan-price .per-mo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    opacity: 0.6;
+  }
+
+  .plan-desc {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    opacity: 0.7;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 14px;
+  }
+
+  .pricing-card.featured .plan-desc {
+    border-top-color: rgba(255,255,255,0.15);
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .feature-list li {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+  }
+
+  .feature-list li::before {
+    content: '✓';
+    font-weight: 900;
+    color: var(--lime);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .pricing-card.featured .feature-list li {
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ── SLIDE 9: DOWNLOAD BENTO ── */
+  #slide-9 { background: var(--lime); }
+
+  .download-heading {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  .download-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  .dl-main {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background: var(--ink);
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .dl-app-emoji {
+    font-size: 4rem;
+    line-height: 1;
+    animation: bounceIn 1s ease forwards;
+  }
+
+  .dl-main h3 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--lime);
+    letter-spacing: -0.3px;
+  }
+
+  .store-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--soft);
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 24px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--ink);
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s;
+    text-decoration: none;
+  }
+
+  .store-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .store-btn .btn-icon {
+    font-size: 1.6rem;
+  }
+
+  .store-btn .btn-text small {
+    display: block;
+    font-weight: 600;
+    font-size: 0.75rem;
+    opacity: 0.6;
+  }
+
+  .dl-cell-ios {
+    background: var(--sky);
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dl-cell-ios .cell-emoji {
+    font-size: 2.8rem;
+  }
+
+  .dl-cell-ios h4 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .dl-cell-ios p {
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  .dl-mini-row {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dl-mini-cell {
+    background: var(--soft);
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  .dl-mini-cell .stars { color: var(--yellow); letter-spacing: -1px; }
+
+  /* ── SLIDE 10: CLOSING CTA ── */
+  #slide-10 {
+    background: var(--coral);
+    position: relative;
+  }
+
+  .confetti-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, var(--lime) 2px, transparent 2px),
+      radial-gradient(circle, var(--yellow) 2px, transparent 2px),
+      radial-gradient(circle, white 1.5px, transparent 1.5px),
+      radial-gradient(circle, var(--purple) 2px, transparent 2px);
+    background-size: 60px 60px, 80px 80px, 45px 45px, 70px 70px;
+    background-position: 0 0, 30px 30px, 15px 15px, 50px 10px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .cta-emoji-top {
+    font-size: 4rem;
+    animation: bounceIn 0.8s cubic-bezier(.36,.07,.19,.97) forwards;
+  }
+
+  .cta-headline {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: 1.05;
+    color: white;
+    letter-spacing: -3px;
+    text-shadow: 5px 5px 0 rgba(0,0,0,0.15);
+  }
+
+  .cta-sub {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.8);
+    max-width: 520px;
+    line-height: 1.5;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: white;
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+    padding: 18px 36px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: -0.3px;
+    transition: transform 0.1s, box-shadow 0.1s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--ink);
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+    padding: 18px 36px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: -0.3px;
+    transition: transform 0.1s, box-shadow 0.1s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .cta-footer-note {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+  }
+
+  /* ── PROGRESS DOTS ── */
+  #progress-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 9999;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    background: white;
+    transform: scale(1.4);
+    border-color: white;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    html { scroll-snap-type: none; }
+    .slide { page-break-after: always; min-height: auto; height: auto; }
+    #nav-hint, #progress-dots { display: none; }
+  }
+
+  /* ── RESPONSIVE HELPERS ── */
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px 70px; }
+    .cover-grid { grid-template-columns: 1fr; }
+    .cover-right { flex-direction: row; }
+    .principles-bento { grid-template-columns: 1fr 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: none; }
+    .steps-flow { grid-template-columns: 1fr; }
+    .step-arrow { transform: rotate(90deg); }
+    .cta-headline { font-size: 3.2rem; }
+  }
+</style>
 </head>
 <body>
 
-<section class="s s1">
-  <div class="inner">
-    <div class="tag lime">New App · Public Beta</div>
-    <h1>Bounce<br>is <em>here.</em></h1>
-    <p class="s1-sub">The social app where you share what you're actually feeling — not what you think people want to see.</p>
-    <span class="s1-tag">Download for free — no credit card 🎉</span>
-  </div>
-</section>
+<!-- NAV HINT -->
+<div id="nav-hint">↑ ↓ keys or scroll &nbsp;·&nbsp; Bounce &nbsp;·&nbsp; 10 slides</div>
 
-<section class="s s2">
-  <div class="inner">
-    <span class="emoji">🤔</span>
-    <h2>Wait, what <span class="hi">even is</span> Bounce?</h2>
-    <p class="big-def">Bounce is a <strong>reaction-first social network</strong>. You see content. You feel something. You share that feeling — not a polished caption. <strong>No likes. No follower counts. Just honest vibes.</strong></p>
-    <div class="s2-cards">
-      <div class="s2-card"><span class="ic">⚡</span>Post in 3 seconds</div>
-      <div class="s2-card"><span class="ic">🎭</span>React with your face</div>
-      <div class="s2-card"><span class="ic">🔒</span>No public metrics</div>
-      <div class="s2-card"><span class="ic">🌀</span>Disappears in 24h</div>
+<!-- PROGRESS DOTS -->
+<div id="progress-dots">
+  <div class="dot active" data-slide="0" onclick="goToSlide(0)"></div>
+  <div class="dot" data-slide="1" onclick="goToSlide(1)"></div>
+  <div class="dot" data-slide="2" onclick="goToSlide(2)"></div>
+  <div class="dot" data-slide="3" onclick="goToSlide(3)"></div>
+  <div class="dot" data-slide="4" onclick="goToSlide(4)"></div>
+  <div class="dot" data-slide="5" onclick="goToSlide(5)"></div>
+  <div class="dot" data-slide="6" onclick="goToSlide(6)"></div>
+  <div class="dot" data-slide="7" onclick="goToSlide(7)"></div>
+  <div class="dot" data-slide="8" onclick="goToSlide(8)"></div>
+  <div class="dot" data-slide="9" onclick="goToSlide(9)"></div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 1: COVER -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-1">
+  <div class="slide-inner">
+    <div class="cover-grid">
+
+      <!-- Left: main hero card -->
+      <div class="cover-main anim-fade">
+        <div class="cover-emoji-row">
+          <span style="animation-delay:0s">🏀</span>
+          <span style="animation-delay:0.4s">✨</span>
+          <span style="animation-delay:0.8s">💬</span>
+          <span style="animation-delay:1.2s">🔥</span>
+        </div>
+        <div class="cover-app-name" style="margin-top:24px;">
+          <span>Bo</span>unce
+        </div>
+        <div class="cover-sub">Honest reactions. Real friends.</div>
+        <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+          <span style="background:var(--hot-pink);color:white;border:2px solid rgba(255,255,255,0.3);border-radius:100px;padding:8px 18px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.9rem;">Gen-Z Only 🫵</span>
+          <span style="background:var(--sky);color:var(--ink);border:2px solid var(--ink);border-radius:100px;padding:8px 18px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.9rem;">Anti-Algorithm ✦</span>
+        </div>
+      </div>
+
+      <!-- Right: two stacked mini cells -->
+      <div class="cover-right anim-fade delay-3">
+
+        <!-- Top chip: Beta badge -->
+        <div class="cover-chip-top">
+          <div style="font-size:2.5rem; margin-bottom:8px;">🚀</div>
+          <div class="chip-label">Now in Beta</div>
+          <div class="chip-badge">✦ PUBLIC BETA OPEN ✦</div>
+          <div style="margin-top:12px; font-family:'Nunito Sans',sans-serif; font-size:0.85rem; font-weight:600; color:var(--ink); opacity:0.7;">Invite friends. No waitlist.</div>
+        </div>
+
+        <!-- Bottom chip: stats -->
+        <div class="cover-chip-bottom" style="position:relative;">
+          <div class="stat-line">12,400 early users</div>
+          <div class="stat-line">No ads. Ever.</div>
+          <div class="stat-line">End-to-end encrypted</div>
+          <div style="margin-top:8px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.82rem; color:var(--coral);">★★★★★ 4.9 on TestFlight</div>
+
+          <!-- Rotating circle -->
+          <div class="cover-circle anim-bounce">
+            <span>FREE</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
-<section class="s s3">
-  <div class="inner">
-    <span class="emoji">😮‍💨</span>
-    <h2 style="color:#fff">Other apps broke us. Here's how.</h2>
-    <div class="pain-grid">
-      <div class="pain-card"><span class="pain-em">🪟</span><h3>The Performance Trap</h3><p>You don't post how you feel. You post the version of you that will get the most likes. That's exhausting.</p></div>
-      <div class="pain-card"><span class="pain-em">📊</span><h3>The Metrics Spiral</h3><p>Checking like counts 40 times a day is not connection. It's a dopamine slot machine with your self-worth as the stakes.</p></div>
-      <div class="pain-card"><span class="pain-em">🗑️</span><h3>The Highlight Reel</h3><p>Everyone's life looks perfect online. This makes your real life feel wrong. It isn't. The feed is lying to you.</p></div>
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 2: WHAT IS BOUNCE -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-2">
+  <div class="slide-inner">
+    <h2 class="slide-heading-lg anim-fade">A social app that doesn't<br>make you feel bad. 🙏</h2>
+
+    <!-- Feature chips -->
+    <div class="feature-chips-row">
+      <div class="feature-chip delay-1">
+        <span class="chip-emoji">🚫</span> No like counts
+      </div>
+      <div class="feature-chip delay-2">
+        <span class="chip-emoji">💨</span> Posts vanish in 24h
+      </div>
+      <div class="feature-chip delay-3">
+        <span class="chip-emoji">🎯</span> Friend-only feeds
+      </div>
+      <div class="feature-chip delay-4">
+        <span class="chip-emoji">🧠</span> No doomscroll design
+      </div>
+    </div>
+
+    <!-- 3 principles mini bento -->
+    <div class="principles-bento">
+      <div class="principle-card anim-bounce delay-1" style="background:var(--yellow);">
+        <span class="p-emoji">🌿</span>
+        <h3 style="color:var(--ink);">Intentional Design</h3>
+        <p>Every feature is built to reduce anxiety, not engineer addiction.</p>
+      </div>
+      <div class="principle-card anim-bounce delay-2" style="background:var(--coral); color:white;">
+        <span class="p-emoji">🤝</span>
+        <h3 style="color:white;">Real Connections</h3>
+        <p>Your feed is only people you actually know. No algorithm, no strangers.</p>
+      </div>
+      <div class="principle-card anim-bounce delay-3" style="background:var(--purple); color:white;">
+        <span class="p-emoji">⚡</span>
+        <h3 style="color:white;">Radical Honesty</h3>
+        <p>Reactions over curated posts. Share how you actually feel, right now.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="s s4">
-  <div class="inner">
-    <span class="emoji">✨</span>
-    <h2>How Bounce fixes it.</h2>
-    <div class="sol-list">
-      <div class="sol-item"><span class="num">1</span><div><h3>Reactions, not posts</h3><p>You react to what you see. No drafting, no editing, no caption anxiety. Just an honest moment captured in 3 seconds.</p></div></div>
-      <div class="sol-item"><span class="num">2</span><div><h3>Zero public counts</h3><p>Nobody sees how many reactions you got. No follower numbers on your profile. No leaderboard. Nothing to optimize for.</p></div></div>
-      <div class="sol-item"><span class="num">3</span><div><h3>Everything expires</h3><p>All content disappears after 24 hours. No permanent record. No archive to manage. Just the present moment.</p></div></div>
-      <div class="sol-item"><span class="num">4</span><div><h3>Friends-only by default</h3><p>Your reactions go to your actual friends. Not your followers. Not the algorithm. Not strangers. Real people who know you.</p></div></div>
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 3: THE PROBLEM -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-3">
+  <div class="slide-inner">
+    <h2 class="slide-heading-lg light anim-fade">Social media is <span style="color:var(--hot-pink);">broken.</span></h2>
+
+    <div class="problem-grid">
+
+      <div class="pain-card anim-fade delay-1">
+        <div class="pain-num">01</div>
+        <span class="pain-emoji">📉</span>
+        <h3>The Comparison Trap</h3>
+        <p>73% of Gen-Z report feeling worse after 30 minutes on Instagram. Curated perfection is toxic by design.</p>
+      </div>
+
+      <div class="pain-card anim-fade delay-2">
+        <div class="pain-num">02</div>
+        <span class="pain-emoji" style="animation-delay:0.5s">🤖</span>
+        <h3>Algorithm Hijacking</h3>
+        <p>You don't see your friends anymore. You see what maximizes engagement — outrage, envy, fear.</p>
+      </div>
+
+      <div class="pain-card anim-fade delay-3">
+        <div class="pain-num">03</div>
+        <span class="pain-emoji" style="animation-delay:1s">🎭</span>
+        <h3>Performance Mode</h3>
+        <p>Posting is a job. Every photo is staged. Every caption is workshopped. Nobody's real online anymore.</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top:24px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:100px; padding:10px 20px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.9rem; color:rgba(255,255,255,0.7);">
+        📊 Source: APA Youth Mental Health Report 2024
+      </div>
+      <div style="background:rgba(255,77,46,0.2); border:1px solid rgba(255,77,46,0.4); border-radius:100px; padding:10px 20px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.9rem; color:var(--coral);">
+        🔴 $4B annual therapy spend linked to social media
+      </div>
     </div>
   </div>
 </section>
 
-<section class="s s5">
-  <div class="inner">
-    <span class="emoji">🚀</span>
-    <h2>Beta users <span class="squig">love</span> it already.</h2>
-    <p class="s5-sub">6 weeks of beta · 12,400 users · no paid acquisition</p>
-    <div class="stat-grid">
-      <div class="stat-card"><div class="val coral">87%</div><div class="lbl">of users still active after 30 days<br>(industry avg: 28%)</div><span class="delta">↑ 3× industry</span></div>
-      <div class="stat-card"><div class="val sky">4.1×</div><div class="lbl">daily opens vs Instagram<br>among the same users</div><span class="delta">↑ Measured via beta survey</span></div>
-      <div class="stat-card"><div class="val lime">94%</div><div class="lbl">say Bounce makes them feel<br>"less anxious" vs other apps</div><span class="delta">↑ User survey n=840</span></div>
-      <div class="stat-card"><div class="val purple">12.4K</div><div class="lbl">users in 6 weeks<br>100% word-of-mouth</div><span class="delta">↑ Zero paid ads</span></div>
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 4: HOW BOUNCE FIXES IT -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-4">
+  <div class="slide-inner">
+    <h2 class="slide-heading-lg anim-fade" style="font-size:2rem;">We didn't just remove the bad stuff. We rebuilt from zero. 🏗️</h2>
+
+    <div class="fix-grid">
+
+      <!-- Main cell -->
+      <div class="fix-main anim-fade delay-1">
+        <span class="fix-tag">✦ THE BOUNCE DIFFERENCE</span>
+        <h2>Built around reactions, not performance.</h2>
+        <p>
+          On Bounce, you share a moment — a photo, a voice note, a vibe — and your friends react instantly and honestly. No editing, no filters, no follower counts. The post disappears in 24 hours. What's left is the memory.
+        </p>
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span style="background:var(--hot-pink);color:white;border:2px solid rgba(255,255,255,0.3);border-radius:100px;padding:6px 14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.82rem;">No follower counts</span>
+          <span style="background:var(--sky);color:var(--ink);border:2px solid var(--ink);border-radius:100px;padding:6px 14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.82rem;">No public metrics</span>
+          <span style="background:var(--purple);color:white;border:2px solid rgba(255,255,255,0.3);border-radius:100px;padding:6px 14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.82rem;">No infinite scroll</span>
+        </div>
+      </div>
+
+      <!-- Zero counts -->
+      <div class="fix-cell-zero anim-bounce delay-2">
+        <div class="big-zero">0</div>
+        <h4>Zero Counts</h4>
+        <p style="font-size:0.82rem; color:var(--ink); opacity:0.6; margin-top:4px; font-family:'Nunito Sans',sans-serif;">No likes. No views.<br>No comparisons.</p>
+      </div>
+
+      <!-- 24h expiry -->
+      <div class="fix-cell-24h anim-bounce delay-3">
+        <div class="countdown-ring">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle class="ring-bg" cx="40" cy="40" r="32"/>
+            <circle class="ring-fill" cx="40" cy="40" r="32"/>
+          </svg>
+          <div class="ring-text">24h</div>
+        </div>
+        <h4>Auto Expiry</h4>
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.7); margin-top:4px; font-family:'Nunito Sans',sans-serif;">Posts delete themselves. No archives. No regrets.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="s s6">
-  <div class="inner">
-    <span class="emoji">💬</span>
-    <h2>What beta users say.</h2>
-    <div class="testi-grid">
-      <div class="testi"><blockquote>"I opened it this morning and didn't feel bad about myself afterward. That hasn't happened with a social app in 4 years."</blockquote><div class="who"><div class="av">MK</div><div><div class="name">Maya K., 22</div><div class="handle">Beta user · Los Angeles</div></div></div></div>
-      <div class="testi"><blockquote>"I posted a reaction of me ugly crying at a dog video and got 6 voice messages from friends. That's actual connection."</blockquote><div class="who"><div class="av" style="background:var(--purple)">JL</div><div><div class="name">Jordan L., 26</div><div class="handle">Beta user · Chicago</div></div></div></div>
-      <div class="testi"><blockquote>"No likes counter was terrifying for the first 10 minutes. Then it was the most relieving thing that's ever happened to me."</blockquote><div class="who"><div class="av" style="background:var(--sky);color:var(--ink)">SR</div><div><div class="name">Sam R., 19</div><div class="handle">Beta user · Austin</div></div></div></div>
-      <div class="testi"><blockquote>"My friends actually talk to each other here. I forgot what that felt like. This app is a time machine to 2012."</blockquote><div class="who"><div class="av" style="background:#6db800">TP</div><div><div class="name">Tara P., 24</div><div class="handle">Beta user · NYC</div></div></div></div>
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 5: BETA TRACTION -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-5">
+  <div class="slide-inner">
+    <h2 class="traction-heading anim-fade">Early signals are<br><span style="color:var(--coral);">off the charts.</span> 📈</h2>
+
+    <div class="stats-grid">
+
+      <div class="stat-card anim-bounce delay-1" style="background:var(--coral);">
+        <span class="stat-emoji">🔁</span>
+        <div class="stat-number" style="color:white; text-shadow:3px 3px 0 rgba(0,0,0,0.2);">87%</div>
+        <div class="stat-label" style="color:rgba(255,255,255,0.8);">Day-7 retention rate</div>
+        <div class="delta-chip" style="background:var(--lime);">↑ vs 45% industry avg</div>
+      </div>
+
+      <div class="stat-card anim-bounce delay-2" style="background:var(--sky);">
+        <span class="stat-emoji">📱</span>
+        <div class="stat-number" style="color:var(--ink); text-shadow:3px 3px 0 rgba(0,0,0,0.1);">4.1×</div>
+        <div class="stat-label" style="color:rgba(15,15,26,0.7);">Daily app opens per user</div>
+        <div class="delta-chip" style="background:var(--ink); color:var(--lime);">↑ 2× Instagram avg</div>
+      </div>
+
+      <div class="stat-card anim-bounce delay-3" style="background:var(--purple);">
+        <span class="stat-emoji">🧘</span>
+        <div class="stat-number" style="color:white; text-shadow:3px 3px 0 rgba(0,0,0,0.2);">94%</div>
+        <div class="stat-label" style="color:rgba(255,255,255,0.8);">Report less anxiety post-use</div>
+        <div class="delta-chip" style="background:var(--yellow);">↑ Our core mission</div>
+      </div>
+
+      <div class="stat-card anim-bounce delay-4" style="background:var(--lime);">
+        <span class="stat-emoji">🌱</span>
+        <div class="stat-number" style="color:var(--ink); text-shadow:3px 3px 0 rgba(0,0,0,0.1);">12.4K</div>
+        <div class="stat-label" style="color:rgba(15,15,26,0.7);">Beta users · 6 weeks</div>
+        <div class="delta-chip" style="background:var(--ink); color:var(--lime);">100% word of mouth</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:20px; background:var(--ink); border-radius:var(--radius-md); border:var(--border); padding:16px 24px; display:flex; align-items:center; gap:12px; box-shadow:var(--shadow-sm);">
+      <span style="font-size:1.6rem;">💡</span>
+      <p style="font-family:'Nunito',sans-serif; font-weight:700; font-size:0.95rem; color:white;">Zero paid acquisition — all growth from users sharing with friends. That's the product working.</p>
     </div>
   </div>
 </section>
 
-<section class="s s7">
-  <div class="inner">
-    <span class="emoji" style="font-size:3rem">💸</span>
-    <h2>Start free. Stay free forever.</h2>
-    <p class="s7-sub">We monetize through connection, not attention. No ads. Ever.</p>
-    <div class="plans">
-      <div class="plan"><div class="plan-name">Free forever</div><div class="plan-price">$0<span>/mo</span></div><p class="plan-desc">The full Bounce experience. Always.</p><ul class="plan-feats"><li>Unlimited reactions</li><li>Up to 50 friends</li><li>24h expiry</li><li>Core face reactions</li></ul></div>
-      <div class="plan hot"><div class="plan-name">Bounce+ ✨</div><div class="plan-price">$4<span>/mo</span></div><p class="plan-desc">For people who want to go deeper.</p><ul class="plan-feats"><li>Unlimited friends</li><li>Extended 72h expiry option</li><li>Reaction packs (custom + seasonal)</li><li>Group reaction rooms</li><li>Early access to new features</li></ul><a class="plan-btn">Get Bounce+</a></div>
-      <div class="plan"><div class="plan-name">Creator</div><div class="plan-price">$12<span>/mo</span></div><p class="plan-desc">For people building communities.</p><ul class="plan-feats"><li>Everything in Bounce+</li><li>Public reaction rooms</li><li>Reaction analytics (anonymized)</li><li>Priority support</li></ul></div>
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 6: SOCIAL PROOF -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-6">
+  <div class="slide-inner">
+    <h2 class="proof-heading anim-fade">What beta users say 💬</h2>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card anim-fade delay-1" style="background:var(--soft);">
+        <blockquote>I posted without thinking for the first time in years. No performance, just a vibe. Bounce hits different.</blockquote>
+        <div class="testi-footer">
+          <div class="avatar-circle" style="background:linear-gradient(135deg,var(--coral),var(--hot-pink));">
+            <span style="color:white;">ZK</span>
+          </div>
+          <div>
+            <div class="testi-name">Zara K.</div>
+            <div class="testi-handle">@zara.vibes · LA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card anim-fade delay-2" style="background:var(--yellow);">
+        <blockquote>My screen time went DOWN after downloading this app. That's never happened before. It's wild.</blockquote>
+        <div class="testi-footer">
+          <div class="avatar-circle" style="background:linear-gradient(135deg,var(--lime),var(--sky));">
+            <span style="color:var(--ink);">MR</span>
+          </div>
+          <div>
+            <div class="testi-name">Marcus R.</div>
+            <div class="testi-handle">@marcusr · NYC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card anim-fade delay-3" style="background:var(--purple);">
+        <blockquote style="color:white;">No like counter means I actually post. I deleted Instagram a week in. Bounce is the replacement.</blockquote>
+        <div class="testi-footer">
+          <div class="avatar-circle" style="background:linear-gradient(135deg,var(--hot-pink),var(--purple));">
+            <span style="color:white;">JL</span>
+          </div>
+          <div>
+            <div class="testi-name" style="color:white;">Jess L.</div>
+            <div class="testi-handle" style="color:rgba(255,255,255,0.6);">@jesslouise · Chicago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card anim-fade delay-4" style="background:var(--ink);">
+        <blockquote style="color:white;">My friend group uses this daily. It replaced our group chat. I haven't opened TikTok in two weeks.</blockquote>
+        <div class="testi-footer">
+          <div class="avatar-circle" style="background:linear-gradient(135deg,var(--yellow),var(--coral));">
+            <span style="color:var(--ink);">AP</span>
+          </div>
+          <div>
+            <div class="testi-name" style="color:white;">Alex P.</div>
+            <div class="testi-handle" style="color:rgba(255,255,255,0.5);">@alexpinto · Austin</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="s s8">
-  <div class="inner">
-    <span class="emoji">🎊</span>
-    <h2>Be one of the first.</h2>
-    <p class="s8-sub">We're opening early access to 50,000 people this week. After that, waitlist only.</p>
-    <div class="cta-row">
-      <span class="btn-main">Download for iOS →</span>
-      <span class="btn-sec">Get Android waitlist</span>
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 7: HOW IT WORKS -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-7">
+  <div class="slide-inner">
+    <h2 class="hiw-heading anim-fade">Three moves. That's it. ⚡</h2>
+
+    <div class="steps-flow">
+
+      <div class="step-card step-card-1 anim-bounce delay-1">
+        <span class="step-emoji">👁️</span>
+        <span class="step-num">Step 01</span>
+        <h3>See</h3>
+        <p>Open your Bounce feed — only your real friends, no algorithm, no strangers, no ads. Chronological. Pure.</p>
+        <div style="margin-top:12px; display:inline-block; background:var(--coral); color:white; border-radius:100px; padding:5px 14px; font-family:'Nunito',sans-serif; font-weight:800; font-size:0.8rem; border:2px solid rgba(255,255,255,0.2);">Only your crew</div>
+      </div>
+
+      <div class="step-arrow">→</div>
+
+      <div class="step-card step-card-2 anim-bounce delay-2">
+        <span class="step-emoji" style="animation-delay:0.5s">⚡</span>
+        <span class="step-num">Step 02</span>
+        <h3>React</h3>
+        <p>Tap a real-time reaction — not a like. An actual emotion. Laugh, cringe, hype, relate. In under 2 seconds.</p>
+        <div style="margin-top:12px; display:inline-block; background:var(--lime); color:var(--ink); border-radius:100px; padding:5px 14px; font-family:'Nunito',sans-serif; font-weight:800; font-size:0.8rem; border:2px solid var(--ink);">No performance required</div>
+      </div>
+
+      <div class="step-arrow">→</div>
+
+      <div class="step-card step-card-3 anim-bounce delay-3">
+        <span class="step-emoji" style="animation-delay:1s">🔗</span>
+        <span class="step-num">Step 03</span>
+        <h3>Share</h3>
+        <p>Drop a moment — a photo, voice note, or 10-second video. No editing tools. No captions required. Just send it.</p>
+        <div style="margin-top:12px; display:inline-block; background:var(--sky); color:var(--ink); border-radius:100px; padding:5px 14px; font-family:'Nunito',sans-serif; font-weight:800; font-size:0.8rem; border:2px solid var(--ink);">Gone in 24h</div>
+      </div>
+
     </div>
-    <p class="s8-note">No credit card. No ad account. Just honest reactions and real friends.</p>
+
+    <div style="margin-top:28px; text-align:center;">
+      <span style="font-family:'Nunito',sans-serif; font-weight:700; font-size:1rem; color:rgba(255,255,255,0.5);">Average session: <strong style="color:var(--lime);">4 minutes</strong> · Avg Instagram session: <strong style="color:rgba(255,77,46,0.8);">53 minutes</strong></span>
+    </div>
   </div>
 </section>
 
-<div class="nh">↑ ↓ keys or scroll</div>
-<script>document.addEventListener('keydown',e=>{const d=e.key==='ArrowDown'||e.key==='ArrowRight';const u=e.key==='ArrowUp'||e.key==='ArrowLeft';if(d)window.scrollBy({top:window.innerHeight,behavior:'smooth'});if(u)window.scrollBy({top:-window.innerHeight,behavior:'smooth'})});</script>
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 8: PRICING -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-8">
+  <div class="slide-inner">
+    <h2 class="pricing-heading anim-fade">Simple pricing. No dark patterns. 💳</h2>
+
+    <div class="pricing-grid">
+
+      <!-- FREE -->
+      <div class="pricing-card anim-fade delay-1" style="background:var(--soft);">
+        <div style="font-size:2.4rem; line-height:1; margin-bottom:4px;">🎁</div>
+        <div class="plan-name">Free</div>
+        <div class="plan-price">
+          <sup>$</sup>0<span class="per-mo">/mo</span>
+        </div>
+        <div class="plan-desc">Everything you need to bounce with friends. No hidden limits, no credit card.</div>
+        <ul class="feature-list">
+          <li>Unlimited posts (24h expiry)</li>
+          <li>Real-time reactions</li>
+          <li>Up to 50 friends</li>
+          <li>Voice notes</li>
+          <li>Private groups (up to 8)</li>
+        </ul>
+      </div>
+
+      <!-- BOUNCE+ -->
+      <div class="pricing-card featured anim-bounce delay-2" style="position:relative;">
+        <div class="plan-badge">⭐ MOST POPULAR</div>
+        <div style="font-size:2.4rem; line-height:1; margin-bottom:4px;">🏀</div>
+        <div class="plan-name" style="color:white;">Bounce+</div>
+        <div class="plan-price" style="color:var(--coral);">
+          <sup>$</sup>4<span class="per-mo" style="color:rgba(255,255,255,0.5);">/mo</span>
+        </div>
+        <div class="plan-desc" style="border-top-color:rgba(255,255,255,0.15);">For the ones who live on Bounce. Cancel anytime, no questions.</div>
+        <ul class="feature-list">
+          <li>Everything in Free</li>
+          <li>Unlimited friends</li>
+          <li>Extended posts: 72h</li>
+          <li>Custom reaction packs</li>
+          <li>Replay one post/week</li>
+          <li>Private vaults (saved moments)</li>
+        </ul>
+      </div>
+
+      <!-- CREATOR -->
+      <div class="pricing-card anim-fade delay-3" style="background:var(--sky);">
+        <div style="font-size:2.4rem; line-height:1; margin-bottom:4px;">🎨</div>
+        <div class="plan-name">Creator</div>
+        <div class="plan-price" style="color:var(--ink);">
+          <sup>$</sup>12<span class="per-mo">/mo</span>
+        </div>
+        <div class="plan-desc">For builders, artists, and people with a following who still want to keep it real.</div>
+        <ul class="feature-list">
+          <li>Everything in Bounce+</li>
+          <li>Up to 500 close friends</li>
+          <li>Creator analytics (private)</li>
+          <li>Custom link in bio</li>
+          <li>Collab posts with 1 friend</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 9: DOWNLOAD BENTO -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-9">
+  <div class="slide-inner">
+    <h2 class="download-heading anim-fade">Get Bounce. Get your feed back. 🏀</h2>
+
+    <div class="download-grid">
+
+      <!-- Main download cell -->
+      <div class="dl-main anim-fade delay-1">
+        <div class="dl-app-emoji">🏀</div>
+        <h3>Download free on iOS</h3>
+        <p style="font-family:'Nunito Sans',sans-serif; font-size:0.9rem; color:rgba(255,255,255,0.6); margin-top:-8px;">No ads. No algorithm. Just friends.</p>
+
+        <a class="store-btn" href="#">
+          <span class="btn-icon">🍎</span>
+          <span class="btn-text">
+            <small>Download on the</small>
+            App Store
+          </span>
+        </a>
+
+        <a class="store-btn" href="#">
+          <span class="btn-icon">🤖</span>
+          <span class="btn-text">
+            <small>Get it on</small>
+            Google Play
+          </span>
+        </a>
+      </div>
+
+      <!-- iOS requirement cell -->
+      <div class="dl-cell-ios anim-bounce delay-2">
+        <span class="cell-emoji">📱</span>
+        <h4>iOS 16+<br>Android 12+</h4>
+        <p>Works on iPhone, iPad, and all modern Android devices.</p>
+      </div>
+
+      <!-- Mini row: stars + count + date -->
+      <div class="dl-mini-row">
+        <div class="dl-mini-cell anim-bounce delay-3">
+          <span class="stars">★★★★★</span>
+          <span>4.9 TestFlight</span>
+        </div>
+        <div class="dl-mini-cell anim-bounce delay-4" style="background:var(--ink); color:white;">
+          <span style="font-size:1.4rem;">👥</span>
+          <span style="font-family:'Nunito',sans-serif; font-weight:800;">12,400 beta users</span>
+        </div>
+        <div class="dl-mini-cell anim-bounce delay-5" style="background:var(--hot-pink); color:white;">
+          <span style="font-size:1.4rem;">🗓️</span>
+          <span style="font-family:'Nunito',sans-serif; font-weight:800;">Live Now</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SLIDE 10: CLOSING CTA -->
+<!-- ══════════════════════════════════════ -->
+<section class="slide" id="slide-10">
+  <div class="confetti-bg"></div>
+  <div class="slide-inner">
+    <div class="cta-inner">
+      <div class="cta-emoji-top">🏀</div>
+      <h2 class="cta-headline anim-bounce">Be one<br>of the first.</h2>
+      <p class="cta-sub anim-fade delay-2">Bounce is live. It's free. And it's the only social app that was built to make you feel <em>better</em>, not worse.</p>
+
+      <div class="cta-buttons anim-fade delay-3">
+        <a class="btn-primary" href="#">
+          🍎 Download on iOS
+        </a>
+        <a class="btn-secondary" href="#">
+          📩 Get an invite link
+        </a>
+      </div>
+
+      <p class="cta-footer-note anim-fade delay-4">
+        Free forever · No credit card · No ads · No BS
+      </p>
+
+      <div style="margin-top:24px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;" class="anim-fade delay-5">
+        <span style="background:rgba(0,0,0,0.15); color:white; border:2px solid rgba(255,255,255,0.3); border-radius:100px; padding:8px 18px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem;">
+          🔒 End-to-end encrypted
+        </span>
+        <span style="background:rgba(0,0,0,0.15); color:white; border:2px solid rgba(255,255,255,0.3); border-radius:100px; padding:8px 18px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem;">
+          🗑️ No data selling. Ever.
+        </span>
+        <span style="background:rgba(0,0,0,0.15); color:white; border:2px solid rgba(255,255,255,0.3); border-radius:100px; padding:8px 18px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem;">
+          ✌️ Built by Gen-Z for Gen-Z
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── KEYBOARD NAV ──
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  // ── PROGRESS DOTS ──
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function goToSlide(index) {
+    slides[index].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const slideIndex = Array.from(slides).indexOf(entry.target);
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === slideIndex);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(slide => observer.observe(slide));
+
+  // ── FADE-IN ANIMATIONS ON SCROLL ──
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.anim-fade, .anim-bounce').forEach(el => {
+    el.style.opacity = '0';
+    animObserver.observe(el);
+  });
+
+  // ── TOUCH SWIPE NAV ──
+  let touchStartY = 0;
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    const delta = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(delta) > 50) {
+      window.scrollBy({ top: delta > 0 ? window.innerHeight : -window.innerHeight, behavior: 'smooth' });
+    }
+  }, { passive: true });
+</script>
 </body>
 </html>
