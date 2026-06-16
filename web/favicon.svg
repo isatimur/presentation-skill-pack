@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="presentation-skill-pack">
+  <rect width="512" height="512" rx="112" fill="#2A2622"/>
+  <!-- slide surface -->
+  <rect x="104" y="120" width="304" height="232" rx="20" fill="#F4EDE0"/>
+  <!-- headline bar (accent) -->
+  <rect x="140" y="160" width="160" height="26" rx="13" fill="#7C3AED"/>
+  <!-- body lines -->
+  <rect x="140" y="212" width="232" height="16" rx="8" fill="#2A2622" opacity="0.78"/>
+  <rect x="140" y="246" width="232" height="16" rx="8" fill="#2A2622" opacity="0.5"/>
+  <rect x="140" y="280" width="148" height="16" rx="8" fill="#2A2622" opacity="0.32"/>
+  <!-- accent dot -->
+  <circle cx="350" cy="300" r="18" fill="#D97706"/>
+  <!-- base / lectern -->
+  <rect x="232" y="352" width="48" height="34" fill="#F4EDE0"/>
+  <rect x="176" y="386" width="160" height="20" rx="10" fill="#F4EDE0"/>
+</svg>
