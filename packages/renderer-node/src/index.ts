@@ -69,7 +69,39 @@ function safeValidateDeckJson(json: string): ValidationResult {
 export interface RenderOptions {
   themesDir?: string;
   extraCss?: string;
+  /**
+   * Append a small, theme-aware "Made with presentation-skill-pack" footer to
+   * the rendered deck. Defaults to `true`. Set to `false` to omit it.
+   */
+  attribution?: boolean;
 }
+
+const ATTRIBUTION_URL = "https://presentation-skill-pack.vercel.app/?ref=deck";
+
+const ATTRIBUTION_HTML =
+  `<footer class="psp-attribution">Made with ` +
+  `<a href="${ATTRIBUTION_URL}" target="_blank" rel="noopener">presentation-skill-pack</a>` +
+  `</footer>`;
+
+const ATTRIBUTION_CSS = `
+/* presentation-skill-pack attribution footer */
+.psp-attribution {
+  font-family: var(--body-font);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  opacity: 0.6;
+  text-align: center;
+  padding: 4px 0 16px;
+}
+.psp-attribution a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.psp-attribution a:hover { color: var(--accent); border-color: var(--accent); }
+@media print { .psp-attribution { opacity: 0.5; } }`;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -188,6 +220,11 @@ export async function renderDeck(deckJson: string, opts?: RenderOptions): Promis
     ? `@import url('${googleFontsUrl}');\n\n${renderedCss}`
     : renderedCss;
 
+  const attributionEnabled = opts?.attribution !== false;
+  if (attributionEnabled) {
+    fullCss += `\n\n${ATTRIBUTION_CSS}`;
+  }
+
   if (opts?.extraCss) {
     fullCss += `\n\n${opts.extraCss}`;
   }
@@ -208,6 +245,7 @@ export async function renderDeck(deckJson: string, opts?: RenderOptions): Promis
     description,
     styles: fullCss,
     slides: slidesHtml,
+    attribution: attributionEnabled ? ATTRIBUTION_HTML : "",
   });
 
   return html;

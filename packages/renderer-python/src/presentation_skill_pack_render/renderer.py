@@ -10,7 +10,7 @@ from typing import Any
 from jinja2 import Environment, FileSystemLoader
 
 _HERE = Path(__file__).parent
-_SHARED = _HERE.parent.parent.parent.parent / "shared"  # monorepo layout
+_SHARED = _HERE.parent.parent.parent / "shared"  # monorepo layout (packages/shared)
 _BUNDLED_THEMES = _HERE.parent.parent.parent / "core" / "themes"  # monorepo layout
 
 # Installed layout: package data lives alongside this file
@@ -53,6 +53,37 @@ DEFAULT_GEOMETRY: dict[str, str] = {"radius": "18px", "slideWidth": "1280px"}
 class RenderOptions:
     themes_dir: Path | None = None
     extra_css: str = ""
+    attribution: bool = True
+    """Append a theme-aware "Made with presentation-skill-pack" footer. Default True."""
+
+
+_ATTRIBUTION_URL = "https://presentation-skill-pack.vercel.app/?ref=deck"
+
+_ATTRIBUTION_HTML = (
+    '<footer class="psp-attribution">Made with '
+    f'<a href="{_ATTRIBUTION_URL}" target="_blank" rel="noopener">presentation-skill-pack</a>'
+    "</footer>"
+)
+
+_ATTRIBUTION_CSS = """
+/* presentation-skill-pack attribution footer */
+.psp-attribution {
+  font-family: var(--body-font);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  opacity: 0.6;
+  text-align: center;
+  padding: 4px 0 16px;
+}
+.psp-attribution a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.psp-attribution a:hover { color: var(--accent); border-color: var(--accent); }
+@media print { .psp-attribution { opacity: 0.5; } }"""
 
 
 def _load_theme(name: str, themes_dir: Path) -> dict[str, Any]:
@@ -141,6 +172,8 @@ def render_deck(deck_json: str | dict[str, Any], opts: RenderOptions | None = No
         base_css = base_css.replace("{{" + k + "}}", v)
 
     full_css = (f"@import url('{fonts_url}');\n\n" if fonts_url else "") + base_css
+    if opts.attribution:
+        full_css += f"\n\n{_ATTRIBUTION_CSS}"
     if opts.extra_css:
         full_css += f"\n\n{opts.extra_css}"
 
@@ -164,6 +197,7 @@ def render_deck(deck_json: str | dict[str, Any], opts: RenderOptions | None = No
         "description": meta.get("description") or "",
         "styles": full_css,
         "slides": slides_html,
+        "attribution": _ATTRIBUTION_HTML if opts.attribution else "",
     })
     return html
 

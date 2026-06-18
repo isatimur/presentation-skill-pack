@@ -175,4 +175,25 @@ describe("renderDeck", () => {
     const html = await renderDeck(deck, { extraCss: ".custom-rule { color: red; }" });
     expect(html).toContain(".custom-rule");
   });
+
+  it("includes the attribution footer by default", async () => {
+    const deck = JSON.stringify({
+      type: "deck",
+      slides: [{ layout: "title", heading: "Attributed" }],
+    });
+    const html = await renderDeck(deck);
+    expect(html).toContain('class="psp-attribution"');
+    expect(html).toContain("presentation-skill-pack.vercel.app/?ref=deck");
+    expect(html).toContain("Made with");
+  });
+
+  it("omits the attribution footer when attribution is false", async () => {
+    const deck = JSON.stringify({
+      type: "deck",
+      slides: [{ layout: "title", heading: "Unattributed" }],
+    });
+    const html = await renderDeck(deck, { attribution: false });
+    expect(html).not.toContain("psp-attribution");
+    expect(html).not.toContain("?ref=deck");
+  });
 });
