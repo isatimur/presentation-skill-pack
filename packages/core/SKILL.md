@@ -343,10 +343,10 @@ Fill gaps with intelligent defaults. Never ask more than 3 clarifying questions.
 
 ---
 
-## Output Rules
+## Rendering Guidelines
 
 - **Direct to file** when inside a repo: write `<slug>/deck.html`
-- **Code block** when copy-paste is requested: output only the raw HTML, no commentary
+- **Code block** when copy-paste is requested: wrap the rendered HTML in a fenced code block, no surrounding explanation
 - **No framework imports** — all CSS is internal, no Tailwind/Bootstrap/React
 - **No lorem ipsum** — all copy must be plausible, specific, and consistent with the brand
 - **Always scroll-snapped** — each slide is `100vh`, `scroll-snap-align: start`
