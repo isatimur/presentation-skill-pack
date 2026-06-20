@@ -54,6 +54,45 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is presentation-skill-pack?",
+        "acceptedAnswer": { "@type": "Answer", "text": "presentation-skill-pack is a free, open-source skill for AI coding agents. It gives Claude Code, Cursor, OpenAI Codex, Gemini CLI, and GitHub Copilot a structured, schema-validated way to generate polished slide decks. The agent fills a Deck JSON spec; a renderer turns it into a single self-contained HTML file — no design skills, no build tool, no hosting required." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I install presentation-skill-pack?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Run: npx @presentation-skill-pack/install <agent> — replace <agent> with claude-code, cursor, copilot, codex, or gemini-cli. One command installs the skill files and optionally registers the MCP server. Restart your agent afterward and ask it to build a deck." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is presentation-skill-pack free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. presentation-skill-pack is completely free and MIT licensed. There is no paid plan, no account required, and no usage limits." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI agents does presentation-skill-pack support?",
+        "acceptedAnswer": { "@type": "Answer", "text": "presentation-skill-pack supports Claude Code, Cursor, GitHub Copilot, OpenAI Codex, and Gemini CLI. It also exposes an MCP server compatible with any MCP-enabled agent and is not locked to any single AI provider." }
+      },
+      {
+        "@type": "Question",
+        "name": "What format does presentation-skill-pack output?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each deck is a single self-contained HTML file. It opens in any browser with no hosting, no export, and no build step required. You own the file." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is presentation-skill-pack different from Gamma, Tome, or Beautiful.ai?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Gamma, Tome, and Beautiful.ai are web apps separate from your coding workflow with platform lock-in. presentation-skill-pack runs inside the AI agent you already use and produces a portable HTML file you own. There is no account, no subscription, and no platform dependency." }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -1453,6 +1492,59 @@
       structured tools for deterministic, re-renderable deck generation. Lite mode copies the skill
       definition only — the agent still works but falls back to the direct-HTML path (hand-written
       HTML with internal CSS). Both produce the same self-contained output file.
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="container">
+    <span class="eyebrow">FAQ</span>
+    <h2>Common questions.</h2>
+    <div style="margin-top:32px;display:grid;gap:24px;max-width:720px">
+
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name" style="font-size:1rem;font-weight:700;margin-bottom:6px">What is presentation-skill-pack?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">presentation-skill-pack is a free, open-source skill for AI coding agents. It gives Claude Code, Cursor, OpenAI Codex, Gemini CLI, and GitHub Copilot a structured, schema-validated way to generate polished slide decks. The agent fills a Deck JSON spec; a renderer turns it into a single self-contained HTML file — no design skills, no build tool, no hosting required.</p>
+        </div>
+      </div>
+
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name" style="font-size:1rem;font-weight:700;margin-bottom:6px">How do I install it?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Run <code>npx @presentation-skill-pack/install &lt;agent&gt;</code> — replace <code>&lt;agent&gt;</code> with <code>claude-code</code>, <code>cursor</code>, <code>copilot</code>, <code>codex</code>, or <code>gemini-cli</code>. One command installs the skill files and optionally registers the MCP server. Restart your agent afterward and ask it to build a deck.</p>
+        </div>
+      </div>
+
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name" style="font-size:1rem;font-weight:700;margin-bottom:6px">Is it free? Is there a paid plan?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Yes — presentation-skill-pack is completely free and MIT licensed. There is no paid plan, no account required, and no usage limits. You can use it commercially and modify it freely.</p>
+        </div>
+      </div>
+
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name" style="font-size:1rem;font-weight:700;margin-bottom:6px">What AI agents does it support?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">presentation-skill-pack supports Claude Code, Cursor, GitHub Copilot, OpenAI Codex, and Gemini CLI. It also works as a standalone CLI and exposes an MCP server compatible with any MCP-enabled agent. It is not locked to any single AI provider.</p>
+        </div>
+      </div>
+
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name" style="font-size:1rem;font-weight:700;margin-bottom:6px">What format is the output?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Each deck is a single self-contained HTML file. It opens in any browser, requires no hosting, no export, and no build step. You own the file and can share it as an email attachment, put it on a CDN, or open it locally. See the gallery of 25 showcase decks at presentation-skill-pack.vercel.app for live examples.</p>
+        </div>
+      </div>
+
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name" style="font-size:1rem;font-weight:700;margin-bottom:6px">How is this different from Gamma, Tome, or Beautiful.ai?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Gamma, Tome, and Beautiful.ai are web apps you open in a browser — separate from your coding workflow and locked to their platform. presentation-skill-pack runs inside the AI agent you already use (Claude Code, Cursor, Copilot, etc.) and produces a portable HTML file you own. There is no account, no platform lock-in, and no ongoing subscription.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

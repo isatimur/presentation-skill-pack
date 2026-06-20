@@ -1,0 +1,72 @@
+# presentation-skill-pack
+
+> A universal skill that lets AI coding agents generate polished, self-contained HTML slide decks from plain notes. One install. Works across Claude Code, Cursor, Codex, Gemini CLI, and GitHub Copilot.
+
+## What it does
+
+presentation-skill-pack gives AI agents a schema-validated workflow for creating slide decks:
+
+1. The agent fills a Deck JSON spec (title, slides, layout, theme)
+2. A renderer converts it to a single self-contained HTML file
+3. Output opens in any browser — no hosting, no build tool, no export
+
+## Key facts
+
+- **License:** MIT (free, open source)
+- **Install:** `npx @presentation-skill-pack/install <agent>` — one command
+- **Agents supported:** Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI
+- **Output format:** Single self-contained HTML file (no external dependencies)
+- **Themes:** Swappable, publishable npm packages
+- **MCP server:** Exposes 5 typed tools (`render_deck`, `list_themes`, `get_theme`, `validate_deck`, `create_deck`)
+- **npm package:** `@presentation-skill-pack/install`
+- **GitHub:** https://github.com/isatimur/presentation-skill-pack
+- **Author:** Timur Isachenko
+
+## Pricing
+
+Free. MIT licensed. No paid tier, no account required.
+
+## Gallery
+
+25 showcase decks demonstrating different visual identities — pitch decks, sales proposals, product launches, investor reports, keynotes, and more:
+https://presentation-skill-pack.vercel.app/#gallery
+
+## Install commands
+
+```
+# Claude Code
+npx @presentation-skill-pack/install claude-code
+
+# Cursor
+npx @presentation-skill-pack/install cursor
+
+# GitHub Copilot
+npx @presentation-skill-pack/install copilot
+
+# OpenAI Codex
+npx @presentation-skill-pack/install codex
+
+# Gemini CLI
+npx @presentation-skill-pack/install gemini-cli
+```
+
+## Use cases
+
+- Startup pitch decks and investor updates
+- Sales proposals and demos
+- Product launch presentations
+- Internal reviews and team updates
+- Conference talks and keynotes
+- Any presentation an AI agent needs to produce inside an existing workflow
+
+## How it differs from alternatives
+
+- **vs. Gamma/Tome/Beautiful.ai:** Runs inside the AI agent you already use; output is a portable HTML file you own, not locked to a platform
+- **vs. reveal.js/Slidev/Marp:** No manual authoring — the agent writes the spec; the renderer handles design
+- **vs. raw LLM output:** Schema-validated, consistent, themed — not freeform HTML
+
+## Key pages
+
+- Homepage + gallery: https://presentation-skill-pack.vercel.app/
+- Example decks: https://presentation-skill-pack.vercel.app/examples/
+- npm: https://www.npmjs.com/package/@presentation-skill-pack/install
