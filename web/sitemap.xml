@@ -157,6 +157,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://presentation-skill-pack.vercel.app/privacy</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://presentation-skill-pack.vercel.app/terms</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://presentation-skill-pack.vercel.app/for/claude-code</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
