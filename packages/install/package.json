@@ -30,5 +30,11 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isatimur/presentation-skill-pack.git"
+  },
+  "homepage": "https://presentation-skill-pack.vercel.app",
+  "bugs": "https://github.com/isatimur/presentation-skill-pack/issues"
 }

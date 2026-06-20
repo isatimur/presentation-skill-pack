@@ -1,11 +1,27 @@
 {
   "name": "@presentation-skill-pack/theme-luxury-minimalist",
   "version": "0.1.0",
-  "description": "Luxury minimalist presentation theme — warm off-white canvas, charcoal text, hairline borders, no gradients.",
+  "description": "Luxury minimalist presentation theme \u2014 warm off-white canvas, charcoal text, hairline borders, no gradients.",
   "license": "MIT",
   "type": "module",
   "main": "./theme.json",
-  "files": ["theme.json", "README.md"],
-  "keywords": ["presentation-skill-pack", "theme", "ai-agent", "slides"],
-  "publishConfig": { "access": "public" }
+  "files": [
+    "theme.json",
+    "README.md"
+  ],
+  "keywords": [
+    "presentation-skill-pack",
+    "theme",
+    "ai-agent",
+    "slides"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isatimur/presentation-skill-pack.git"
+  },
+  "homepage": "https://presentation-skill-pack.vercel.app",
+  "bugs": "https://github.com/isatimur/presentation-skill-pack/issues"
 }

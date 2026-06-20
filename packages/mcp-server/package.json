@@ -5,15 +5,37 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/server.js",
-  "bin": { "presentation-skill-pack-mcp": "./dist/server.js" },
-  "files": ["dist"],
-  "scripts": { "build": "tsc -p tsconfig.json", "test": "vitest run", "lint": "eslint src", "typecheck": "tsc --noEmit", "start": "node dist/server.js" },
+  "bin": {
+    "presentation-skill-pack-mcp": "./dist/server.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/server.js"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "@presentation-skill-pack/core": "workspace:*",
     "@presentation-skill-pack/render": "workspace:*",
     "zod": "^3.23.0"
   },
-  "devDependencies": { "@types/node": "^20.0.0", "typescript": "^5.4.0", "vitest": "^1.5.0" },
-  "publishConfig": { "access": "public" }
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isatimur/presentation-skill-pack.git"
+  },
+  "homepage": "https://presentation-skill-pack.vercel.app",
+  "bugs": "https://github.com/isatimur/presentation-skill-pack/issues"
 }

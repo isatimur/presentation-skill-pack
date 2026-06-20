@@ -1,11 +1,27 @@
 {
   "name": "@presentation-skill-pack/theme-corporate",
   "version": "0.1.0",
-  "description": "Formal corporate presentation theme — crisp white, navy text, restrained blue accent.",
+  "description": "Formal corporate presentation theme \u2014 crisp white, navy text, restrained blue accent.",
   "license": "MIT",
   "type": "module",
   "main": "./theme.json",
-  "files": ["theme.json", "README.md"],
-  "keywords": ["presentation-skill-pack", "theme", "ai-agent", "slides"],
-  "publishConfig": { "access": "public" }
+  "files": [
+    "theme.json",
+    "README.md"
+  ],
+  "keywords": [
+    "presentation-skill-pack",
+    "theme",
+    "ai-agent",
+    "slides"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isatimur/presentation-skill-pack.git"
+  },
+  "homepage": "https://presentation-skill-pack.vercel.app",
+  "bugs": "https://github.com/isatimur/presentation-skill-pack/issues"
 }
