@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier No. 9 — Brand Story</title>
+<meta name="description" content="Atelier No. 9 brand and growth story for retail and wholesale partners — a heritage leather-goods house built on craft, repeat loyalty, and four ateliers." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/atelier-brand" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#f4efe9" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/atelier-brand" />
+<meta property="og:title" content="Atelier No. 9 — Brand Story" />
+<meta property="og:description" content="Heritage leather-goods brand deck for retail and wholesale partners — generated with presentation-skill-pack." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Atelier No. 9 — Brand Story" />
+<meta name="twitter:description" content="A heritage leather-goods brand deck generated with presentation-skill-pack." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper:    #f4efe9;
+    --ink:      #16130f;
+    --blush:    #c98b7a;
+    --taupe:    #9c8b7e;
+    --pale:     #ede6dd;
+    --warm:     #7a6a60;
+    --rule:     rgba(22,19,15,0.10);
+    --rule-dk:  rgba(22,19,15,0.22);
+    --deep:     #0e0c09;
+    --ivory:    #faf7f3;
+    --charcoal: #2a2420;
+  }
+
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    background: var(--deep);
+    color: var(--ink);
+    height: 100%;
+  }
+
+  /* ─── SHARED SLIDE ─── */
+  .slide {
+    min-height: 100vh;
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 6rem;
+  }
+
+  /* Slide number */
+  .slide-num {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    color: var(--taupe);
+    opacity: 0.5;
+    font-weight: 400;
+  }
+  .slide-num-lt { color: rgba(250,247,243,0.35); }
+
+  /* Watermark */
+  .watermark {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(7rem, 20vw, 16rem);
+    letter-spacing: -0.03em;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* Fixed nav hint */
+  #nav-hint {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    opacity: 0.5;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  /* ─── SHARED TYPOGRAPHY UTILS ─── */
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.58rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 1.5rem;
+  }
+  .eyebrow-blush { color: var(--blush); }
+
+  .display-serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+  }
+  .display-serif-lt {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+  }
+  .cormorant {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .h-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+  }
+  .h-rule-dk { background: var(--rule-dk); }
+
+  .col-rule {
+    width: 1px;
+    background: var(--rule);
+    align-self: stretch;
+  }
+
+  .issue-marker {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blush);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .issue-marker::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--blush);
+    flex-shrink: 0;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 1 — COVER / MASTHEAD
+  ══════════════════════════════════════════ */
+  .slide-cover {
+    background: var(--ink);
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Left ink block + right paper column */
+  .cover-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+  }
+
+  .cover-left {
+    background: var(--ink);
+    padding: 4.5rem 4rem 4.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-left .watermark {
+    color: rgba(250,247,243,0.025);
+    bottom: -3rem;
+    left: -2rem;
+    font-size: 14rem;
+    letter-spacing: -0.04em;
+  }
+
+  .cover-masthead {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    color: var(--ivory);
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-issue-no {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(250,247,243,0.4);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+  }
+
+  .cover-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgba(250,247,243,0.45);
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+    max-width: 22rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta-row {
+    display: flex;
+    gap: 2.5rem;
+    border-top: 1px solid rgba(250,247,243,0.1);
+    padding-top: 1.75rem;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta-item {}
+  .cmi-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(250,247,243,0.3);
+    margin-bottom: 0.35rem;
+  }
+  .cmi-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--ivory);
+    letter-spacing: 0.01em;
+  }
+  .cmi-value .blush { color: var(--blush); }
+
+  .cover-right {
+    background: var(--paper);
+    padding: 4.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* CSS "image" — warm tan leather block with texture gradient */
+  .cover-image-block {
+    flex: 1;
+    border-radius: 2px;
+    background:
+      repeating-linear-gradient(
+        105deg,
+        transparent 0,
+        transparent 18px,
+        rgba(22,19,15,0.03) 18px,
+        rgba(22,19,15,0.03) 19px
+      ),
+      linear-gradient(160deg, #c9a882 0%, #a07854 40%, #7a5a3a 80%, #5a3c22 100%);
+    min-height: 300px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-image-block::before {
+    content: 'No. 9';
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.75rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(250,247,243,0.45);
+  }
+  .cover-image-block::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom right, rgba(250,247,243,0.12) 0%, transparent 60%);
+  }
+
+  .cover-right-footer {}
+  .cover-right-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .cover-right-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    color: var(--taupe);
+    line-height: 1.65;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 2 — FOUNDING STORY / DROP CAP
+  ══════════════════════════════════════════ */
+  .slide-founding {
+    background: var(--paper);
+    justify-content: center;
+  }
+  .slide-founding .watermark {
+    color: var(--ink);
+    opacity: 0.022;
+    bottom: -5rem;
+    right: -4rem;
+    font-size: 18rem;
+  }
+
+  .founding-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 0;
+    height: 100%;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+  }
+
+  .founding-left {
+    padding-right: 5rem;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .founding-right {
+    padding-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+
+  /* Drop cap */
+  .dropcap-para {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--warm);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+  .dropcap-para::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 4.2rem;
+    line-height: 0.8;
+    float: left;
+    margin: 0.05em 0.12em 0 0;
+    color: var(--ink);
+  }
+
+  .founding-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 3.5vw, 2.85rem);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+  .founding-heading em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .stat-block {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+  .stat-block-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-block-num .blush { color: var(--blush); }
+  .stat-block-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-top: 0.4rem;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 3 — PULL QUOTE / EDITORIAL SPREAD
+  ══════════════════════════════════════════ */
+  .slide-quote {
+    background: var(--ink);
+    justify-content: center;
+    align-items: center;
+  }
+  .slide-quote .watermark {
+    color: rgba(250,247,243,0.018);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15rem;
+    letter-spacing: -0.02em;
+  }
+
+  .quote-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 52rem;
+    width: 100%;
+  }
+
+  .big-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 8rem;
+    color: var(--blush);
+    line-height: 0.5;
+    opacity: 0.45;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .big-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    color: var(--ivory);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    margin-bottom: 2.5rem;
+  }
+  .big-quote-text strong {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--blush);
+  }
+
+  .big-quote-attr {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(250,247,243,0.35);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .big-quote-attr::before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--blush);
+    opacity: 0.6;
+  }
+
+  .quote-page-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(250,247,243,0.08);
+    margin: 3rem 0;
+  }
+
+  .quote-pull-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(250,247,243,0.08);
+  }
+  .qps-cell {
+    padding: 1.75rem 2rem;
+    border-right: 1px solid rgba(250,247,243,0.08);
+  }
+  .qps-cell:last-child { border-right: none; }
+  .qps-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250,247,243,0.3);
+    margin-bottom: 0.6rem;
+  }
+  .qps-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--ivory);
+    line-height: 1;
+  }
+  .qps-value .blush { color: var(--blush); }
+  .qps-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    color: rgba(250,247,243,0.3);
+    margin-top: 0.4rem;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 4 — THE CRAFT METHOD (STEPS)
+  ══════════════════════════════════════════ */
+  .slide-craft {
+    background: var(--pale);
+    justify-content: flex-start;
+    padding-top: 3.5rem;
+  }
+  .slide-craft .watermark {
+    color: var(--ink);
+    opacity: 0.02;
+    bottom: -5rem;
+    left: -2rem;
+    font-size: 12rem;
+  }
+
+  .craft-header {
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .craft-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+  }
+  .craft-heading em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .craft-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule-dk);
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  .craft-step {
+    padding: 2rem 1.75rem 2rem 1.75rem;
+    border-right: 1px solid var(--rule-dk);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .craft-step:last-child { border-right: none; }
+
+  /* Leather swatch — each step has a different tan */
+  .craft-step-swatch {
+    height: 5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  .swatch-1 { background: linear-gradient(145deg, #c9a882 0%, #9a7450 100%); }
+  .swatch-2 { background: linear-gradient(145deg, #b8916a 0%, #7a5535 100%); }
+  .swatch-3 { background: linear-gradient(145deg, #a07854 0%, #6a4025 100%); }
+  .swatch-4 { background: linear-gradient(145deg, #8c6645 0%, #5c3018 100%); }
+  .swatch-5 { background: linear-gradient(145deg, #7a5535 0%, #4a2010 100%); }
+
+  .craft-step-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--ink);
+    opacity: 0.12;
+    line-height: 1;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+  }
+
+  .craft-step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .craft-step-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    color: var(--warm);
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .craft-step-detail {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blush);
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 5 — 4 ATELIERS / COLUMN LAYOUT
+  ══════════════════════════════════════════ */
+  .slide-ateliers {
+    background: var(--paper);
+    justify-content: flex-start;
+    padding-top: 3.75rem;
+  }
+  .slide-ateliers .watermark {
+    color: var(--ink);
+    opacity: 0.018;
+    top: -2rem;
+    right: -3rem;
+    font-size: 10rem;
+  }
+
+  .ateliers-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .ateliers-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-top: 0.6rem;
+  }
+  .ateliers-heading em { font-style: italic; color: var(--blush); }
+
+  .ateliers-promise {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--taupe);
+    text-align: right;
+    max-width: 18rem;
+    line-height: 1.5;
+  }
+
+  .ateliers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule-dk);
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  .atelier-col {
+    padding: 2rem 1.75rem;
+    border-right: 1px solid var(--rule-dk);
+    display: flex;
+    flex-direction: column;
+  }
+  .atelier-col:last-child { border-right: none; }
+
+  /* Each city's colour block acts as "location imagery" */
+  .atelier-color-block {
+    height: 7rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .acb-paris    { background: linear-gradient(135deg, #c4b09a 0%, #8e7260 100%); }
+  .acb-milan    { background: linear-gradient(135deg, #b09a84 0%, #7a6050 100%); }
+  .acb-kyoto    { background: linear-gradient(135deg, #a08878 0%, #6a5040 100%); }
+  .acb-newyork  { background: linear-gradient(135deg, #907868 0%, #5a4030 100%); }
+
+  .atelier-city-label {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(250,247,243,0.7);
+  }
+
+  .atelier-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+
+  .atelier-opened {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 1rem;
+  }
+
+  .atelier-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.73rem;
+    color: var(--warm);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .atelier-spec {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+  .atelier-spec-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 0.25rem;
+  }
+  .atelier-spec-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 6 — PRODUCT LINES / ASYMMETRIC
+  ══════════════════════════════════════════ */
+  .slide-products {
+    background: var(--ivory);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .products-layout {
+    display: grid;
+    grid-template-columns: 0.45fr 0.55fr;
+    height: 100%;
+  }
+
+  /* Left: big color block "image" */
+  .products-image-col {
+    background:
+      repeating-linear-gradient(
+        -55deg,
+        transparent 0,
+        transparent 20px,
+        rgba(22,19,15,0.025) 20px,
+        rgba(22,19,15,0.025) 21px
+      ),
+      linear-gradient(170deg, #c9a882 0%, #9a6c42 50%, #6a3c18 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .products-image-col::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, rgba(250,247,243,0.15) 100%);
+  }
+
+  .products-image-label {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    z-index: 1;
+  }
+  .pil-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(250,247,243,0.45);
+    margin-bottom: 0.5rem;
+  }
+  .pil-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: rgba(250,247,243,0.85);
+    line-height: 1.1;
+  }
+
+  /* Right: product listing */
+  .products-content-col {
+    padding: 4.5rem 4rem 4.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+  }
+
+  .product-line {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0 1.5rem;
+    align-items: baseline;
+  }
+  .product-line:first-of-type { border-top: 1px solid var(--rule); }
+
+  .pl-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--blush);
+    min-width: 2.2rem;
+  }
+
+  .pl-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .pl-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.68rem;
+    color: var(--taupe);
+    line-height: 1.55;
+    margin-top: 0.2rem;
+    grid-column: 2 / 3;
+  }
+
+  .pl-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .products-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+  .products-subhead {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--taupe);
+    margin-bottom: 2rem;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 7 — LOYALTY & GROWTH METRICS
+  ══════════════════════════════════════════ */
+  .slide-metrics {
+    background: var(--paper);
+    justify-content: center;
+  }
+  .slide-metrics .watermark {
+    color: var(--ink);
+    opacity: 0.02;
+    top: 50%;
+    right: -5rem;
+    transform: translateY(-50%);
+    font-size: 15rem;
+    letter-spacing: -0.03em;
+  }
+
+  .metrics-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .metrics-left {}
+
+  .big-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .big-stat-cell {
+    padding: 2rem 1.75rem;
+    background: var(--pale);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bsc-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 0.75rem;
+  }
+  .bsc-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .bsc-value .blush { color: var(--blush); }
+  .bsc-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    color: var(--taupe);
+    margin-top: 0.4rem;
+  }
+  .bsc-pos {
+    color: #5a7a5a;
+  }
+
+  .metrics-timeline {
+    margin-top: 1.5rem;
+  }
+  .timeline-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 1.5rem;
+  }
+  .timeline-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .tr-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--taupe);
+    min-width: 3rem;
+  }
+  .tr-bar-wrap {
+    flex: 1;
+    height: 2px;
+    background: var(--rule-dk);
+    position: relative;
+    top: -0.15rem;
+  }
+  .tr-bar {
+    height: 2px;
+    background: var(--ink);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .tr-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--ink);
+    min-width: 3.5rem;
+    text-align: right;
+  }
+
+  .metrics-right {}
+
+  .metrics-pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--ink);
+    line-height: 1.45;
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+  }
+  .metrics-pull strong {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--blush);
+  }
+
+  .metrics-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.78rem;
+    color: var(--warm);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+
+  .loyalty-fact-list {}
+  .lfl-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .lfl-item:first-child { border-top: 1px solid var(--rule); }
+  .lfl-dash {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--blush);
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .lfl-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.73rem;
+    color: var(--warm);
+    line-height: 1.6;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 8 — EDITORIAL FULL-BLEED QUOTE
+  ══════════════════════════════════════════ */
+  .slide-editorial {
+    background: var(--blush);
+    justify-content: flex-end;
+    padding-bottom: 5rem;
+    overflow: hidden;
+  }
+
+  .editorial-bg-text {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(8rem, 20vw, 16rem);
+    letter-spacing: -0.04em;
+    color: rgba(22,19,15,0.08);
+    top: -1rem;
+    left: -1rem;
+    line-height: 0.9;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .editorial-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 50rem;
+  }
+
+  .editorial-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(22,19,15,0.5);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .editorial-quote {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+  }
+  .editorial-quote em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .editorial-rule {
+    width: 3rem;
+    height: 2px;
+    background: var(--ink);
+    opacity: 0.4;
+    margin-bottom: 1.5rem;
+  }
+
+  .editorial-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(22,19,15,0.55);
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 9 — DTC CHANNEL & WHOLESALE TERMS
+  ══════════════════════════════════════════ */
+  .slide-wholesale {
+    background: var(--pale);
+    justify-content: flex-start;
+    padding-top: 3.75rem;
+  }
+  .slide-wholesale .watermark {
+    color: var(--ink);
+    opacity: 0.02;
+    bottom: -4rem;
+    right: -3rem;
+    font-size: 11rem;
+    letter-spacing: -0.02em;
+  }
+
+  .wholesale-header {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+  .wholesale-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-top: 0.6rem;
+  }
+  .wholesale-heading em { font-style: italic; color: var(--blush); }
+  .wholesale-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--taupe);
+    max-width: 16rem;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* Split: DTC info left, table right */
+  .wholesale-body {
+    display: grid;
+    grid-template-columns: 0.42fr 0.58fr;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    align-items: start;
+  }
+
+  .dtc-col {}
+  .dtc-channels {
+    margin-top: 1.25rem;
+  }
+  .dtc-channel {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--rule-dk);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .dtc-channel:first-child { border-top: 1px solid var(--rule-dk); }
+  .dtc-ch-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .dtc-ch-pct {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--blush);
+    letter-spacing: -0.01em;
+  }
+  .dtc-ch-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.62rem;
+    color: var(--taupe);
+    margin-top: 0.15rem;
+  }
+
+  .dtc-insight {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--paper);
+    border-left: 2px solid var(--blush);
+  }
+  .dtc-insight-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--warm);
+    line-height: 1.6;
+  }
+
+  .terms-col {}
+  .terms-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .terms-table thead tr {
+    border-bottom: 1px solid var(--ink);
+  }
+  .terms-table th {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    padding: 0 0 0.85rem 0;
+    text-align: left;
+  }
+  .terms-table th:not(:first-child) { text-align: center; }
+  .terms-table td {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--ink);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+  }
+  .terms-table td:first-child {
+    text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+  }
+  .terms-table td.check {
+    color: var(--blush);
+    font-size: 0.85rem;
+  }
+  .terms-table td.dash {
+    color: var(--taupe);
+    opacity: 0.45;
+  }
+  .terms-table .highlight-row td {
+    background: rgba(201,139,122,0.08);
+    font-weight: 500;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 10 — THE PROMISE / TRANSFORMATION
+  ══════════════════════════════════════════ */
+  .slide-promise {
+    background: var(--paper);
+    justify-content: center;
+  }
+  .slide-promise .watermark {
+    color: var(--ink);
+    opacity: 0.018;
+    bottom: -4rem;
+    left: -3rem;
+    font-size: 14rem;
+    letter-spacing: -0.03em;
+  }
+
+  .promise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    height: 80vh;
+    position: relative;
+    z-index: 1;
+  }
+
+  .promise-left {
+    border-right: 1px solid var(--rule-dk);
+    padding-right: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .promise-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.55rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 1.25rem;
+  }
+
+  .promise-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+  }
+  .promise-heading em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--blush);
+  }
+
+  .promise-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: var(--warm);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+    max-width: 28rem;
+  }
+
+  .promise-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+  }
+  .pp-item {}
+  .pp-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 0.3rem;
+  }
+  .pp-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .promise-right {
+    padding-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .timeline-entry {
+    padding-left: 1.75rem;
+    position: relative;
+  }
+  .timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 1px;
+    height: calc(100% + 1.5rem);
+    background: var(--rule-dk);
+  }
+  .timeline-entry:last-child::before {
+    height: 100%;
+  }
+  .timeline-entry::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 0.35rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blush);
+  }
+
+  .te-year {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 0.2rem;
+  }
+  .te-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.3rem;
+  }
+  .te-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    color: var(--warm);
+    line-height: 1.6;
+  }
+
+
+  /* ══════════════════════════════════════════
+     SLIDE 11 — CLOSING / CARRY ATELIER
+  ══════════════════════════════════════════ */
+  .slide-closing {
+    background: var(--ink);
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .closing-layout {
+    display: grid;
+    grid-template-columns: 0.55fr 0.45fr;
+    height: 100%;
+  }
+
+  .closing-left {
+    padding: 5rem 5rem 5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing-wm {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 14rem;
+    color: rgba(250,247,243,0.02);
+    bottom: -3rem;
+    left: -2rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .closing-top {}
+  .closing-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    color: var(--ivory);
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .closing-cta {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    color: rgba(250,247,243,0.5);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    max-width: 26rem;
+  }
+  .closing-cta strong {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--blush);
+  }
+
+  .closing-contact-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(250,247,243,0.1);
+    padding-top: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .ccr-item {
+    padding-right: 1.5rem;
+    border-right: 1px solid rgba(250,247,243,0.08);
+  }
+  .ccr-item:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
+  .ccr-item:not(:first-child) { padding-left: 1.5rem; }
+  .ccr-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.5rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(250,247,243,0.3);
+    margin-bottom: 0.4rem;
+  }
+  .ccr-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: rgba(250,247,243,0.7);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  .closing-right {
+    background: var(--blush);
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        120deg,
+        transparent 0,
+        transparent 22px,
+        rgba(22,19,15,0.04) 22px,
+        rgba(22,19,15,0.04) 23px
+      );
+  }
+
+  .cr-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cr-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(22,19,15,0.45);
+    margin-bottom: 1rem;
+  }
+
+  .cr-invite {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .cr-body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.78rem;
+    color: rgba(22,19,15,0.6);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 22rem;
+  }
+
+  .cr-button {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border: 1.5px solid var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; overflow: visible; height: auto; }
+    body { height: auto; }
+    .slide { height: 100vh; min-height: 100vh; page-break-after: always; break-after: page; }
+    #nav-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV HINT -->
+<div id="nav-hint">↑ ↓ arrow keys or scroll &nbsp;·&nbsp; Atelier No. 9 &nbsp;·&nbsp; 11 slides</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 1 — COVER / MASTHEAD
+═══════════════════════════════════════════════ -->
+<section class="slide slide-cover">
+  <div class="cover-layout">
+
+    <div class="cover-left">
+      <div class="watermark">ATELIER</div>
+
+      <div style="position:relative;z-index:1;">
+        <div class="cover-issue-no">Issue No. Nine &nbsp;·&nbsp; Brand Story</div>
+        <div class="cover-masthead">Atelier<br>No. 9</div>
+      </div>
+
+      <div style="position:relative;z-index:1;">
+        <div class="cover-tagline">
+          Heritage leather goods, made<br>for lives that accumulate meaning.
+        </div>
+      </div>
+
+      <div class="cover-meta-row">
+        <div class="cover-meta-item">
+          <div class="cmi-label">Founded</div>
+          <div class="cmi-value">2019</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cmi-label">Ateliers</div>
+          <div class="cmi-value"><span class="blush">4</span></div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cmi-label">Repeat Rate</div>
+          <div class="cmi-value"><span class="blush">82</span>%</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cmi-label">Positioning</div>
+          <div class="cmi-value" style="font-size:0.85rem;line-height:1.2;">Heritage<br>DTC</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-right">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+        <div class="issue-marker">Retail &amp; Wholesale Partners</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:0.75rem;color:var(--taupe);letter-spacing:0.08em;font-style:italic;">2026 Collection</div>
+      </div>
+
+      <div class="cover-image-block"></div>
+
+      <div class="cover-right-footer">
+        <div class="cover-right-title">Atelier No. 9 &nbsp;—&nbsp; Brand Story</div>
+        <div class="cover-right-subtitle">
+          Prepared for wholesale and retail partners.<br>
+          Confidential &nbsp;·&nbsp; Not for distribution.
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="slide-num slide-num-lt">01 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 2 — FOUNDING STORY / DROP CAP
+═══════════════════════════════════════════════ -->
+<section class="slide slide-founding">
+  <div class="watermark" style="bottom:-5rem;right:-4rem;font-size:17rem;">IX</div>
+
+  <div class="founding-grid">
+
+    <div class="founding-left">
+      <div class="issue-marker" style="margin-bottom:1.5rem;">Founding Story &nbsp;·&nbsp; 2019</div>
+      <div class="founding-heading">
+        A workshop in Lyon.<br>
+        <em>One promise.</em><br>
+        Seven years of consequence.
+      </div>
+      <div style="height:1px;background:var(--rule);margin:2rem 0;"></div>
+      <p class="dropcap-para">
+        Atelier No. 9 was born in a rented workshop in Lyon's Croix-Rousse quarter, where silk-weavers once worked before the machines arrived. Founders Margot Sérier and Cédric Villette had each spent a decade in luxury goods manufacturing — she in bag construction for a Parisian maison, he in full-grain sourcing across the Córdoba tanneries — when they decided that heritage craft deserved a direct relationship with the people who carry it.
+      </p>
+      <p class="dropcap-para" style="font-size:0.82rem;margin-bottom:0;">
+        The studio opened with nine SKUs, a six-week waitlist, and no wholesale partners. By refusing wholesale entirely for the first three years, the brand built something rarer than distribution: loyalty. Today, 82% of customers purchase again. That number is not a metric — it is the architecture of everything that follows.
+      </p>
+    </div>
+
+    <div class="founding-right">
+      <div class="stat-block">
+        <div class="stat-block-num"><span class="blush">82</span>%</div>
+        <div class="stat-block-label">Repeat purchase rate — 2025 annual cohort</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-num">2019</div>
+        <div class="stat-block-label">Year founded &nbsp;·&nbsp; Lyon, France</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-num"><span class="blush">4</span></div>
+        <div class="stat-block-label">Ateliers across three continents, one promise</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-num">9</div>
+        <div class="stat-block-label">Original SKUs at launch — still the core line</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-num">02 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 3 — PULL QUOTE / EDITORIAL STATS
+═══════════════════════════════════════════════ -->
+<section class="slide slide-quote">
+  <div class="watermark" style="top:50%;left:50%;transform:translate(-50%,-50%);font-size:14rem;letter-spacing:-0.04em;">CARRY</div>
+
+  <div class="quote-inner">
+    <span class="big-quote-mark">"</span>
+    <div class="big-quote-text">
+      We do not make fashion.<br>
+      We make <strong>objects that outlive</strong><br>
+      the decade they were bought in.
+    </div>
+    <div class="big-quote-attr">Margot Sérier, Co-Founder &amp; Creative Director &nbsp;·&nbsp; Atelier No. 9</div>
+    <div class="quote-page-rule"></div>
+
+    <div class="quote-pull-stats">
+      <div class="qps-cell">
+        <div class="qps-label">Founded</div>
+        <div class="qps-value">2019</div>
+        <div class="qps-sub">Lyon, Croix-Rousse quarter</div>
+      </div>
+      <div class="qps-cell">
+        <div class="qps-label">Repeat Rate</div>
+        <div class="qps-value"><span class="blush">82</span>%</div>
+        <div class="qps-sub">Industry avg: 28–34%</div>
+      </div>
+      <div class="qps-cell">
+        <div class="qps-label">Average Order</div>
+        <div class="qps-value">€<span class="blush">620</span></div>
+        <div class="qps-sub">Across DTC channels, 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-num slide-num-lt">03 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 4 — THE CRAFT METHOD
+═══════════════════════════════════════════════ -->
+<section class="slide slide-craft">
+  <div class="watermark" style="bottom:-5rem;left:-2rem;font-size:11rem;letter-spacing:-0.03em;">CRAFT</div>
+
+  <div class="craft-header">
+    <div class="issue-marker">The Craft Method &nbsp;·&nbsp; Five Stages</div>
+    <div class="craft-heading">From raw hide<br>to <em>heirloom</em> — five stages,<br>no shortcuts.</div>
+  </div>
+
+  <div style="height:1px;background:var(--rule-dk);margin-bottom:2rem;position:relative;z-index:1;"></div>
+
+  <div class="craft-steps">
+
+    <div class="craft-step">
+      <div class="craft-step-swatch swatch-1"></div>
+      <div class="craft-step-num">01</div>
+      <div class="craft-step-name">Tannery Selection</div>
+      <div class="craft-step-body">
+        We source exclusively from three vegetable-tanneries in Córdoba, Spain and Ponte a Egola, Italy — each certified by the Leather Working Group. Hides are inspected in-person by Cédric Villette every season.
+      </div>
+      <div class="craft-step-detail">Córdoba &amp; Toscana</div>
+    </div>
+
+    <div class="craft-step">
+      <div class="craft-step-swatch swatch-2"></div>
+      <div class="craft-step-num">02</div>
+      <div class="craft-step-name">Hand-Splitting &amp; Sorting</div>
+      <div class="craft-step-body">
+        Each hide is split by hand to a precise 2.2 mm for primary surfaces, 1.4 mm for linings. Skins are graded into four categories; only Grade A and B enter production. Grade C is donated to apprenticeship schools.
+      </div>
+      <div class="craft-step-detail">2.2 mm — 1.4 mm</div>
+    </div>
+
+    <div class="craft-step">
+      <div class="craft-step-swatch swatch-3"></div>
+      <div class="craft-step-num">03</div>
+      <div class="craft-step-name">Saddle-Stitch Assembly</div>
+      <div class="craft-step-body">
+        All exterior seams are hand-stitched using the saddle-stitch method — two needles, linen thread, 8 stitches per centimetre. No machines touch load-bearing seams. Assembly time per piece: 4–11 hours depending on complexity.
+      </div>
+      <div class="craft-step-detail">8 spi · linen thread</div>
+    </div>
+
+    <div class="craft-step">
+      <div class="craft-step-swatch swatch-4"></div>
+      <div class="craft-step-num">04</div>
+      <div class="craft-step-name">Edge-Finishing</div>
+      <div class="craft-step-body">
+        Edges are burnished with beeswax and a heated bone folder through five successive passes. No painted edges are used. Each finished edge bears a micro-bevel that takes approximately 25 minutes to complete on a full-size tote.
+      </div>
+      <div class="craft-step-detail">5-pass beeswax burnish</div>
+    </div>
+
+    <div class="craft-step">
+      <div class="craft-step-swatch swatch-5"></div>
+      <div class="craft-step-num">05</div>
+      <div class="craft-step-name">QC &amp; Provenance Card</div>
+      <div class="craft-step-body">
+        Every finished piece undergoes a 48-point inspection protocol before shipment. A handwritten Provenance Card — naming the artisan, hide origin, and stitch count — ships with each order. Lifetime repair is offered at any atelier.
+      </div>
+      <div class="craft-step-detail">Lifetime repair promise</div>
+    </div>
+
+  </div>
+
+  <div class="slide-num">04 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 5 — FOUR ATELIERS, ONE PROMISE
+═══════════════════════════════════════════════ -->
+<section class="slide slide-ateliers">
+  <div class="watermark" style="top:-2rem;right:-3rem;font-size:9rem;letter-spacing:-0.01em;">ATELIERS</div>
+
+  <div class="ateliers-header">
+    <div>
+      <div class="issue-marker">Our Locations &nbsp;·&nbsp; Four Ateliers</div>
+      <div class="ateliers-heading">Four ateliers.<br><em>One promise.</em></div>
+    </div>
+    <div class="ateliers-promise">
+      Every location offers the same<br>48-point inspection, same lifetime<br>repair, same artisan card.
+    </div>
+  </div>
+
+  <div style="height:1px;background:var(--rule-dk);margin-bottom:2rem;position:relative;z-index:1;"></div>
+
+  <div class="ateliers-grid">
+
+    <div class="atelier-col">
+      <div class="atelier-color-block acb-paris">
+        <span class="atelier-city-label">Paris, FR</span>
+      </div>
+      <div class="atelier-name">Le Marais<br>Atelier</div>
+      <div class="atelier-opened">Opened 2019 &nbsp;·&nbsp; Flagship</div>
+      <div class="atelier-desc">
+        Our original workshop on Rue de Bretagne, still home to lead artisan Étienne Marchand and his team of six. The ground floor doubles as a retail space where customers can observe the craft in progress. Repair appointments are taken six weeks in advance.
+      </div>
+      <div class="atelier-spec">
+        <div class="atelier-spec-label">Artisans on staff</div>
+        <div class="atelier-spec-value">7</div>
+      </div>
+    </div>
+
+    <div class="atelier-col">
+      <div class="atelier-color-block acb-milan">
+        <span class="atelier-city-label">Milan, IT</span>
+      </div>
+      <div class="atelier-name">Brera<br>Studio</div>
+      <div class="atelier-opened">Opened 2021 &nbsp;·&nbsp; Europe</div>
+      <div class="atelier-desc">
+        The Italian studio sources its hardware exclusively from a family-run brass foundry in Lumezzane, Brescia. The Brera team specialises in the brand's structured briefcase and portfolio lines, which require the most complex internal architecture of any Atelier No. 9 design.
+      </div>
+      <div class="atelier-spec">
+        <div class="atelier-spec-label">Artisans on staff</div>
+        <div class="atelier-spec-value">5</div>
+      </div>
+    </div>
+
+    <div class="atelier-col">
+      <div class="atelier-color-block acb-kyoto">
+        <span class="atelier-city-label">Kyoto, JP</span>
+      </div>
+      <div class="atelier-name">Nakagyō<br>Workshop</div>
+      <div class="atelier-opened">Opened 2023 &nbsp;·&nbsp; Asia-Pacific</div>
+      <div class="atelier-desc">
+        Our youngest atelier, located in a converted machiya townhouse in central Kyoto. The Nakagyō team introduced a proprietary indigo-dyed interior lining — hand-dyed in-house using century-old techniques — that has become the signature of the Asia-Pacific collection. Wait time: 8 weeks.
+      </div>
+      <div class="atelier-spec">
+        <div class="atelier-spec-label">Artisans on staff</div>
+        <div class="atelier-spec-value">4</div>
+      </div>
+    </div>
+
+    <div class="atelier-col">
+      <div class="atelier-color-block acb-newyork">
+        <span class="atelier-city-label">New York, US</span>
+      </div>
+      <div class="atelier-name">Tribeca<br>Atelier</div>
+      <div class="atelier-opened">Opened 2024 &nbsp;·&nbsp; Americas</div>
+      <div class="atelier-desc">
+        Our newest and largest physical space, opened in a former printing house in Tribeca. The ground floor is reserved entirely for repair and customisation services; retail occupies the mezzanine. Weekend craft workshops — sold out through Q3 2026 — are held in the press room.
+      </div>
+      <div class="atelier-spec">
+        <div class="atelier-spec-label">Artisans on staff</div>
+        <div class="atelier-spec-value">6</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-num">05 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 6 — PRODUCT LINES
+═══════════════════════════════════════════════ -->
+<section class="slide slide-products">
+  <div class="products-layout">
+
+    <div class="products-image-col">
+      <div class="products-image-label">
+        <div class="pil-tag">The Permanent Collection</div>
+        <div class="pil-name">Nine<br>Objects</div>
+      </div>
+    </div>
+
+    <div class="products-content-col">
+      <div class="issue-marker" style="margin-bottom:1rem;">The Line &nbsp;·&nbsp; Core Collection</div>
+      <div class="products-heading">Nine objects.<br>Permanent collection.</div>
+      <div class="products-subhead">All prices shown at recommended retail in EUR, ex-VAT.</div>
+
+      <div class="product-line">
+        <div class="pl-num">I</div>
+        <div>
+          <div class="pl-name">The Tannery Tote</div>
+          <div class="pl-desc">Full-grain bridle leather, brass rings, open-top construction. Our bestseller since 2019.</div>
+        </div>
+        <div class="pl-price">€ 780</div>
+      </div>
+
+      <div class="product-line">
+        <div class="pl-num">II</div>
+        <div>
+          <div class="pl-name">The Mercer Briefcase</div>
+          <div class="pl-desc">Two-compartment structured case, brass combination locks, removable padded sleeve.</div>
+        </div>
+        <div class="pl-price">€ 1,240</div>
+      </div>
+
+      <div class="product-line">
+        <div class="pl-num">III</div>
+        <div>
+          <div class="pl-name">The Folio</div>
+          <div class="pl-desc">A4 document holder, eight card slots, magnetic closure bar, hand-burnished spine.</div>
+        </div>
+        <div class="pl-price">€ 390</div>
+      </div>
+
+      <div class="product-line">
+        <div class="pl-num">IV</div>
+        <div>
+          <div class="pl-name">The Weekend Duffel</div>
+          <div class="pl-desc">48-litre capacity, single-stitch straps, Japanese ring hardware, suede base panel.</div>
+        </div>
+        <div class="pl-price">€ 1,650</div>
+      </div>
+
+      <div class="product-line">
+        <div class="pl-num">V</div>
+        <div>
+          <div class="pl-name">The Slim Wallet</div>
+          <div class="pl-desc">Six-card capacity, single note fold, vegetable-tanned calf, no stitching on exterior.</div>
+        </div>
+        <div class="pl-price">€ 185</div>
+      </div>
+
+      <div class="product-line">
+        <div class="pl-num">VI–IX</div>
+        <div>
+          <div class="pl-name">Card Holder, Belt, Luggage Tag, Key Fob</div>
+          <div class="pl-desc">Entry-line accessories — frequent first purchases that convert to high-ticket repeat buyers.</div>
+        </div>
+        <div class="pl-price">€ 85–145</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-num">06 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 7 — LOYALTY & GROWTH METRICS
+═══════════════════════════════════════════════ -->
+<section class="slide slide-metrics">
+  <div class="watermark" style="top:50%;right:-5rem;transform:translateY(-50%);font-size:14rem;letter-spacing:-0.04em;">82%</div>
+
+  <div style="position:relative;z-index:1;">
+    <div class="issue-marker" style="margin-bottom:1.5rem;">Growth &amp; Loyalty &nbsp;·&nbsp; 2019–2025</div>
+    <div style="height:1px;background:var(--rule);margin-bottom:2.5rem;"></div>
+
+    <div class="metrics-layout">
+
+      <div class="metrics-left">
+        <div class="big-stat-row">
+          <div class="big-stat-cell">
+            <div class="bsc-label">Repeat Rate 2025</div>
+            <div class="bsc-value"><span class="blush">82</span>%</div>
+            <div class="bsc-sub"><span class="bsc-pos">↑ 12pp</span> vs 2022 cohort</div>
+          </div>
+          <div class="big-stat-cell">
+            <div class="bsc-label">Avg. Order Value</div>
+            <div class="bsc-value">€<span class="blush">620</span></div>
+            <div class="bsc-sub"><span class="bsc-pos">↑ 34%</span> since 2021</div>
+          </div>
+          <div class="big-stat-cell">
+            <div class="bsc-label">LTV (36-month)</div>
+            <div class="bsc-value">€<span class="blush">2.1</span>k</div>
+            <div class="bsc-sub">per retained customer</div>
+          </div>
+          <div class="big-stat-cell">
+            <div class="bsc-label">NPS Score</div>
+            <div class="bsc-value"><span class="blush">74</span></div>
+            <div class="bsc-sub">Category benchmark: 38</div>
+          </div>
+        </div>
+
+        <div class="metrics-timeline">
+          <div class="timeline-label">Net Revenue — Annual (€M)</div>
+          <div class="timeline-row">
+            <div class="tr-year">2019</div>
+            <div class="tr-bar-wrap"><div class="tr-bar" style="width:6%;"></div></div>
+            <div class="tr-val">€ 0.4M</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tr-year">2020</div>
+            <div class="tr-bar-wrap"><div class="tr-bar" style="width:10%;"></div></div>
+            <div class="tr-val">€ 0.7M</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tr-year">2021</div>
+            <div class="tr-bar-wrap"><div class="tr-bar" style="width:18%;"></div></div>
+            <div class="tr-val">€ 1.2M</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tr-year">2022</div>
+            <div class="tr-bar-wrap"><div class="tr-bar" style="width:32%;"></div></div>
+            <div class="tr-val">€ 2.1M</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tr-year">2023</div>
+            <div class="tr-bar-wrap"><div class="tr-bar" style="width:52%;"></div></div>
+            <div class="tr-val">€ 3.5M</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tr-year">2024</div>
+            <div class="tr-bar-wrap"><div class="tr-bar" style="width:75%;"></div></div>
+            <div class="tr-val">€ 5.0M</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tr-year">2025</div>
+            <div class="tr-bar-wrap"><div class="tr-bar" style="width:100%;"></div></div>
+            <div class="tr-val">€ 6.7M</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-right">
+        <div class="metrics-pull">
+          "When <strong>82%</strong> of people come back, you are not selling a product — you are tending a relationship."
+        </div>
+        <div class="metrics-body">
+          The repeat rate at Atelier No. 9 is not accounted for by discounts or loyalty points — we offer neither. It is driven by the tactile experience of owning something that improves with age, by the Provenance Card that ships with every piece, and by a repair service that has restored over 1,200 items since 2019 without charge.
+        </div>
+        <div class="loyalty-fact-list">
+          <div class="lfl-item">
+            <div class="lfl-dash">—</div>
+            <div class="lfl-text">Average time between first and second purchase: 4.2 months — driven primarily by gifting.</div>
+          </div>
+          <div class="lfl-item">
+            <div class="lfl-dash">—</div>
+            <div class="lfl-text">64% of new customers are referred by an existing customer, with zero paid referral incentive.</div>
+          </div>
+          <div class="lfl-item">
+            <div class="lfl-dash">—</div>
+            <div class="lfl-text">Our CAC via owned channels is 91% lower than the leather-goods category median on paid social.</div>
+          </div>
+          <div class="lfl-item">
+            <div class="lfl-dash">—</div>
+            <div class="lfl-text">1,200+ pieces repaired at no cost — each repair converts to a new-purchase event within 60 days at a 78% rate.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slide-num">07 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 8 — EDITORIAL FULL-BLEED QUOTE
+═══════════════════════════════════════════════ -->
+<section class="slide slide-editorial">
+  <div class="editorial-bg-text">CARRY<br>ATELIER</div>
+
+  <div class="editorial-inner">
+    <div class="editorial-num">Atelier No. 9 &nbsp;·&nbsp; On Craft</div>
+    <div class="editorial-quote">
+      The luxury industry made a quiet bargain:<br>
+      trade <em>permanence</em> for margin.<br>
+      We refused.
+    </div>
+    <div class="editorial-rule"></div>
+    <div class="editorial-caption">Cédric Villette, Co-Founder &amp; Head of Production &nbsp;·&nbsp; Atelier No. 9 &nbsp;·&nbsp; 2024</div>
+  </div>
+
+  <div class="slide-num" style="color:rgba(22,19,15,0.4);">08 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 9 — DTC CHANNEL & WHOLESALE TERMS
+═══════════════════════════════════════════════ -->
+<section class="slide slide-wholesale">
+  <div class="watermark" style="bottom:-4rem;right:-3rem;font-size:10rem;letter-spacing:-0.02em;">TERMS</div>
+
+  <div class="wholesale-header">
+    <div>
+      <div class="issue-marker">Channel Mix &amp; Terms &nbsp;·&nbsp; Wholesale Programme</div>
+      <div class="wholesale-heading">Where we sell.<br>How we <em>partner</em>.</div>
+    </div>
+    <div class="wholesale-note">
+      Selective wholesale opened 2023.<br>Eight approved partners globally.
+    </div>
+  </div>
+
+  <div style="height:1px;background:var(--rule-dk);margin-bottom:2rem;position:relative;z-index:1;"></div>
+
+  <div class="wholesale-body">
+
+    <div class="dtc-col">
+      <div style="font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.25rem;">Revenue by Channel — 2025</div>
+      <div class="dtc-channels">
+        <div class="dtc-channel">
+          <div>
+            <div class="dtc-ch-name">Atelier Direct (in-store)</div>
+            <div class="dtc-ch-sub">Paris, Milan, Kyoto, New York</div>
+          </div>
+          <div class="dtc-ch-pct">42%</div>
+        </div>
+        <div class="dtc-channel">
+          <div>
+            <div class="dtc-ch-name">atelierneuf.com</div>
+            <div class="dtc-ch-sub">Owned e-commerce, global shipping</div>
+          </div>
+          <div class="dtc-ch-pct">35%</div>
+        </div>
+        <div class="dtc-channel">
+          <div>
+            <div class="dtc-ch-name">Approved Wholesale</div>
+            <div class="dtc-ch-sub">8 retail partners, curated selection only</div>
+          </div>
+          <div class="dtc-ch-pct">23%</div>
+        </div>
+      </div>
+      <div class="dtc-insight">
+        <div class="dtc-insight-text">
+          "We will never distribute through a channel that cannot tell the story of the piece. Wholesale partners are chosen for alignment, not reach."
+        </div>
+      </div>
+    </div>
+
+    <div class="terms-col">
+      <div style="font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.25rem;">Wholesale Programme — Partner Tiers</div>
+      <table class="terms-table">
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Approved</th>
+            <th>Premier</th>
+            <th>Flagship</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Minimum Order Value</td>
+            <td>€ 8,000</td>
+            <td>€ 20,000</td>
+            <td>€ 50,000</td>
+          </tr>
+          <tr>
+            <td>Gross Margin (RRP)</td>
+            <td>42%</td>
+            <td>45%</td>
+            <td>48%</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Payment Terms</td>
+            <td>Net 30</td>
+            <td>Net 45</td>
+            <td>Net 60</td>
+          </tr>
+          <tr>
+            <td>Seasonal Lookbook</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Staff Training Session</td>
+            <td class="dash">—</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Co-branded Events</td>
+            <td class="dash">—</td>
+            <td class="dash">—</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Repair Service Integration</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Exclusive SKU Access</td>
+            <td class="dash">—</td>
+            <td class="dash">—</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Dedicated Account Lead</td>
+            <td class="dash">—</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="slide-num">09 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 10 — THE PROMISE / TRANSFORMATION TIMELINE
+═══════════════════════════════════════════════ -->
+<section class="slide slide-promise">
+  <div class="watermark" style="bottom:-4rem;left:-3rem;font-size:13rem;letter-spacing:-0.04em;">ATELIER</div>
+
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;height:100%;justify-content:center;">
+    <div class="issue-marker" style="margin-bottom:1.5rem;">Our Arc &nbsp;·&nbsp; 2019–2027</div>
+    <div style="height:1px;background:var(--rule);margin-bottom:2.5rem;"></div>
+
+    <div class="promise-grid">
+
+      <div class="promise-left">
+        <div>
+          <div class="promise-label">The Transformation Arc</div>
+          <div class="promise-heading">
+            From a<br>Lyon workshop<br>to <em>four continents.</em>
+          </div>
+          <div class="promise-body">
+            Every decision Atelier No. 9 has made since 2019 has been an answer to the same question: what does it mean to make something that earns its place in someone's life for thirty years? The brand does not pursue scale for its own sake. It pursues depth — with customers, with craft partners, with the handful of retail spaces that carry the work with the care it deserves.
+          </div>
+          <div class="promise-pillars">
+            <div class="pp-item">
+              <div class="pp-label">Founded</div>
+              <div class="pp-value">Lyon, 2019</div>
+            </div>
+            <div class="pp-item">
+              <div class="pp-label">Ateliers</div>
+              <div class="pp-value">4 cities</div>
+            </div>
+            <div class="pp-item">
+              <div class="pp-label">Artisans</div>
+              <div class="pp-value">22 globally</div>
+            </div>
+            <div class="pp-item">
+              <div class="pp-label">Revenue</div>
+              <div class="pp-value">€ 6.7M (2025)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="promise-right">
+        <div class="timeline-entry">
+          <div class="te-year">2019</div>
+          <div class="te-title">Founded — Lyon, Croix-Rousse</div>
+          <div class="te-body">Nine SKUs, one workshop, first Provenance Card written by hand. €0.4M first-year revenue entirely DTC.</div>
+        </div>
+        <div class="timeline-entry">
+          <div class="te-year">2021</div>
+          <div class="te-title">Milan Brera Studio opens</div>
+          <div class="te-body">The briefcase and folio lines introduced. Italian hardware partnerships established. Revenue crosses €1M for the first time.</div>
+        </div>
+        <div class="timeline-entry">
+          <div class="te-year">2023</div>
+          <div class="te-title">Kyoto Workshop &amp; Wholesale Launch</div>
+          <div class="te-body">Asia-Pacific atelier opens with indigo-dyed lining programme. Selective wholesale begins with eight approved partners globally.</div>
+        </div>
+        <div class="timeline-entry">
+          <div class="te-year">2024</div>
+          <div class="te-title">Tribeca Atelier — New York</div>
+          <div class="te-body">Americas flagship opens with dedicated repair floor. Craft workshops sell out through 2025. NPS reaches 74.</div>
+        </div>
+        <div class="timeline-entry">
+          <div class="te-year">2026–27</div>
+          <div class="te-title">Next Chapter</div>
+          <div class="te-body">Fifth atelier under consideration (Seoul or São Paulo). Premier wholesale programme expanding to 20 partners. Bespoke commission programme launching Q4 2026.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slide-num">10 / 11</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 11 — CLOSING / CARRY ATELIER
+═══════════════════════════════════════════════ -->
+<section class="slide slide-closing">
+  <div class="closing-layout">
+
+    <div class="closing-left">
+      <div class="closing-wm">ATELIER</div>
+
+      <div class="closing-top" style="position:relative;z-index:1;">
+        <div style="font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.55rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(250,247,243,0.3);margin-bottom:0.6rem;">Closing</div>
+        <div class="closing-brand">Carry<br>Atelier.</div>
+        <div class="closing-cta">
+          For buyers and partners who understand that the best things in a store are the ones customers will bring back — to be repaired, not returned. We are looking for <strong>fewer, better</strong> wholesale relationships in 2026.
+        </div>
+      </div>
+
+      <div class="closing-contact-row" style="position:relative;z-index:1;">
+        <div class="ccr-item">
+          <div class="ccr-label">Wholesale Enquiries</div>
+          <div class="ccr-value">partners@atelierneuf.com</div>
+        </div>
+        <div class="ccr-item">
+          <div class="ccr-label">Press &amp; Gifting</div>
+          <div class="ccr-value">press@atelierneuf.com</div>
+        </div>
+        <div class="ccr-item">
+          <div class="ccr-label">Website</div>
+          <div class="ccr-value">atelierneuf.com</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing-right">
+      <div class="cr-inner">
+        <div class="cr-label">Partner Invitation &nbsp;·&nbsp; 2026</div>
+        <div class="cr-invite">Begin<br>the<br>conversation.</div>
+        <div class="cr-body">
+          We select wholesale partners the same way we select leather: by hand, with time, and with the understanding that the relationship will outlast the season. If your store tells stories, we should talk.
+        </div>
+        <a href="mailto:partners@atelierneuf.com" class="cr-button">Request a Partner Catalogue</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-num slide-num-lt">11 / 11</div>
+</section>
+
+
+<script>
+  /* ── Arrow-key navigation ── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* ── IntersectionObserver slide counter ── */
+  (function() {
+    var hint = document.getElementById('nav-hint');
+    var slides = document.querySelectorAll('.slide');
+    var total = slides.length;
+    var current = 1;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+          current = idx;
+          hint.textContent = '↑ ↓ arrow keys or scroll · Atelier No. 9 · ' + current + ' / ' + total;
+        }
+      });
+    }, { threshold: 0.6 });
+
+    slides.forEach(function(s) { observer.observe(s); });
+  })();
+</script>
+
+</body>
+</html>

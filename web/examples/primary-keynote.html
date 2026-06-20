@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Primary — Design Systems with Craft</title>
+<meta name="description" content="Primary design conference keynote — building design systems with craft. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/primary-keynote" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#e63946" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/primary-keynote" />
+<meta property="og:title" content="Primary — Design Systems with Craft" />
+<meta property="og:description" content="A design-conference keynote on building systems with intention, precision, and Bauhaus constructivist discipline." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Primary — Design Systems with Craft" />
+<meta name="twitter:description" content="A design-conference keynote on building systems with intention, precision, and Bauhaus constructivist discipline." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --paper:   #f4f1ea;
+    --paper-2: #ede9e0;
+    --ink:     #0d0d0d;
+    --red:     #e63946;
+    --blue:    #1f4ae0;
+    --yellow:  #f4c20d;
+    --hairline: 2px solid #0d0d0d;
+    --hairline-thin: 1px solid #0d0d0d;
+    --font-disp: 'Archivo', 'Helvetica Neue', sans-serif;
+    --font-body: 'Space Grotesk', 'Helvetica', sans-serif;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--paper);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 5vw, 72px) clamp(32px, 7vw, 100px);
+    overflow: hidden;
+    border-bottom: var(--hairline);
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ─── GEOMETRY HELPERS ─── */
+  .geo-circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .geo-rect {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .geo-triangle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    width: 0;
+    height: 0;
+  }
+  .geo-diagonal {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    transform-origin: left center;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .disp {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  .label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.45;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .body-text {
+    font-family: var(--font-body);
+    font-size: clamp(13px, 1.1vw, 16px);
+    line-height: 1.75;
+    color: var(--ink);
+    opacity: 0.75;
+  }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-num {
+    position: absolute;
+    top: 28px;
+    right: 36px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+    opacity: 0.3;
+    z-index: 10;
+    text-transform: uppercase;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--paper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: var(--ink);
+    padding: 6px 16px;
+  }
+
+  /* ─── PRIMARY COLOR BLOCKS ─── */
+  .block-red   { background: var(--red);    color: var(--paper); }
+  .block-blue  { background: var(--blue);   color: var(--paper); }
+  .block-yellow{ background: var(--yellow); color: var(--ink);   }
+  .block-ink   { background: var(--ink);    color: var(--paper); }
+  .block-paper { background: var(--paper);  color: var(--ink);   }
+
+  /* ─── STAT BLOCKS ─── */
+  .stat-block {
+    padding: 28px 24px;
+    border: var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-num {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .stat-note {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    line-height: 1.55;
+    opacity: 0.65;
+    margin-top: 4px;
+  }
+
+  /* ─── DIVIDERS ─── */
+  .h-rule {
+    border: none;
+    border-top: var(--hairline);
+    margin: 24px 0;
+  }
+  .thick-bar {
+    height: 8px;
+    background: var(--ink);
+    width: 100%;
+    margin: 20px 0;
+  }
+  .color-bar {
+    height: 8px;
+    display: flex;
+  }
+  .color-bar .r { flex: 1; background: var(--red); }
+  .color-bar .b { flex: 1; background: var(--blue); }
+  .color-bar .y { flex: 1; background: var(--yellow); }
+
+  /* ─── MANIFESTO LIST ─── */
+  .manifesto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: var(--hairline-thin);
+  }
+  .manifesto-item:last-child { border-bottom: none; }
+  .manifesto-num {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+  .manifesto-text {
+    font-family: var(--font-disp);
+    font-weight: 700;
+    font-size: clamp(16px, 1.8vw, 22px);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+  .manifesto-sub {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.65;
+    opacity: 0.6;
+    margin-top: 6px;
+  }
+
+  /* ─── PROOF GRID ─── */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1080px;
+  }
+  .proof-cell {
+    border: var(--hairline);
+    border-right-width: 0;
+    padding: 32px 28px;
+  }
+  .proof-cell:last-child { border-right: var(--hairline); }
+
+  /* ─── PRINCIPLE LAYOUT ─── */
+  .principle-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1080px;
+    border: var(--hairline);
+    margin-top: 32px;
+  }
+  .principle-left {
+    padding: 44px 40px;
+    border-right: var(--hairline);
+  }
+  .principle-right {
+    padding: 44px 40px;
+  }
+
+  /* ─── CTA LAYOUT ─── */
+  .cta-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1080px;
+    border: var(--hairline);
+    margin-top: 32px;
+  }
+  .cta-left {
+    padding: 44px 40px;
+    border-right: var(--hairline);
+  }
+  .cta-right {
+    padding: 44px 32px;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* ─── PROBLEM PANELS ─── */
+  .problem-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1080px;
+    margin-top: 32px;
+  }
+  .problem-col {
+    border: var(--hairline);
+    border-right-width: 0;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-col:last-child { border-right: var(--hairline); }
+  .problem-col-num {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(80px, 12vw, 140px);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    position: absolute;
+    bottom: -16px;
+    right: -8px;
+    opacity: 0.06;
+  }
+  .problem-head {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(18px, 2vw, 26px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .problem-body {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.7;
+    opacity: 0.65;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; PRIMARY &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="background:var(--paper);min-height:100vh;padding:0;overflow:hidden;">
+  <div class="slide-num">01 / 10</div>
+
+  <!-- Full-bleed composition -->
+  <!-- Red block left strip -->
+  <div class="geo-rect" style="top:0;left:0;width:clamp(120px,14vw,200px);height:100%;background:var(--red);z-index:0;"></div>
+  <!-- Yellow block top-right corner -->
+  <div class="geo-rect" style="top:0;right:0;width:clamp(80px,10vw,140px);height:clamp(80px,10vw,140px);background:var(--yellow);z-index:0;"></div>
+  <!-- Blue large circle -->
+  <div class="geo-circle" style="width:clamp(300px,42vw,600px);height:clamp(300px,42vw,600px);background:var(--blue);top:50%;right:clamp(100px,12vw,180px);transform:translateY(-50%);z-index:0;"></div>
+  <!-- Black diagonal bar -->
+  <div class="geo-rect" style="top:0;left:clamp(120px,14vw,200px);width:8px;height:100%;background:var(--ink);z-index:1;"></div>
+
+  <!-- Content -->
+  <div style="position:relative;z-index:2;padding:clamp(40px,5vw,72px) clamp(32px,7vw,100px);padding-left:calc(clamp(120px,14vw,200px) + clamp(32px,7vw,100px));display:flex;flex-direction:column;justify-content:center;min-height:100vh;">
+    <span class="label">Berlin Design Week 2026 — Keynote Address</span>
+
+    <h1 class="disp" style="font-size:clamp(64px,11vw,148px);color:var(--ink);max-width:8ch;margin-bottom:0;">
+      PRI<span style="color:var(--paper);-webkit-text-stroke:3px var(--ink);">MA</span><br>RY
+    </h1>
+
+    <div style="margin:24px 0 32px;display:flex;gap:0;align-items:stretch;max-width:520px;">
+      <div style="width:8px;background:var(--red);flex-shrink:0;"></div>
+      <div style="padding:16px 20px;border:var(--hairline);border-left:none;">
+        <p style="font-family:var(--font-disp);font-weight:700;font-size:clamp(14px,1.4vw,18px);letter-spacing:-0.01em;line-height:1.35;text-transform:uppercase;">
+          Building Design Systems<br>with Craft
+        </p>
+      </div>
+    </div>
+
+    <p class="body-text" style="max-width:44ch;">
+      Most design systems are built to ship fast. Few are built to last.
+      This is about the difference — and why it matters now more than ever.
+    </p>
+
+    <div style="margin-top:44px;display:flex;gap:0;flex-wrap:wrap;">
+      <div style="padding:14px 22px;border:var(--hairline);border-right:none;">
+        <div style="font-family:var(--font-disp);font-weight:900;font-size:1.2rem;letter-spacing:-0.02em;">Marta Voss</div>
+        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;opacity:0.5;margin-top:2px;">Head of Design Systems, Construct Studio</div>
+      </div>
+      <div style="padding:14px 22px;border:var(--hairline);">
+        <div style="font-family:var(--font-disp);font-weight:900;font-size:1.2rem;letter-spacing:-0.02em;">2026.06.20</div>
+        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;opacity:0.5;margin-top:2px;">Berlin, Germany</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — THESIS / HOOK
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2" style="background:var(--ink);">
+  <div class="slide-num" style="color:var(--paper);opacity:0.3;">02 / 10</div>
+
+  <!-- Geometric accents -->
+  <div class="geo-circle" style="width:clamp(180px,24vw,320px);height:clamp(180px,24vw,320px);border:8px solid var(--red);top:-60px;right:-60px;z-index:0;"></div>
+  <div class="geo-rect" style="bottom:0;left:0;width:100%;height:8px;background:var(--yellow);z-index:0;"></div>
+
+  <div style="width:100%;max-width:1000px;">
+    <span class="label" style="color:var(--paper);opacity:0.35;">The Thesis</span>
+
+    <h2 class="disp" style="font-size:clamp(42px,7vw,96px);color:var(--paper);margin-bottom:0;max-width:14ch;">
+      Consistency is not<br>the <span style="color:var(--yellow);">goal.</span><br>
+      <span style="color:var(--red);">Coherence</span> is.
+    </h2>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:900px;">
+      <div style="padding:28px 32px 28px 0;border-right:1px solid rgba(255,255,255,0.15);">
+        <p style="font-family:var(--font-body);font-size:clamp(14px,1.2vw,17px);line-height:1.75;color:rgba(255,255,255,0.65);">
+          Consistency means every button looks the same.
+          Coherence means every interaction <em>feels</em> like it belongs to the same world.
+          One is a style guide. The other is a design system.
+        </p>
+      </div>
+      <div style="padding:28px 0 28px 32px;">
+        <p style="font-family:var(--font-body);font-size:clamp(14px,1.2vw,17px);line-height:1.75;color:rgba(255,255,255,0.65);">
+          After auditing 38 design systems across enterprise products in 2025,
+          we found a startling pattern: the ones teams were proud of had something
+          the others didn't. <span style="color:var(--yellow);font-weight:700;">Craft at the foundation.</span>
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;display:flex;align-items:center;gap:16px;">
+      <div style="width:40px;height:40px;background:var(--red);flex-shrink:0;"></div>
+      <div style="width:40px;height:40px;background:var(--blue);flex-shrink:0;border-radius:50%;"></div>
+      <div style="width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-bottom:40px solid var(--yellow);flex-shrink:0;"></div>
+      <p style="font-family:var(--font-body);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-left:8px;">
+        Form follows function — but function follows craft
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3" style="background:var(--paper-2);">
+  <div class="slide-num">03 / 10</div>
+
+  <!-- Diagonal accent -->
+  <div class="geo-rect" style="top:0;right:0;width:clamp(60px,8vw,100px);height:100%;background:var(--blue);opacity:0.08;z-index:0;"></div>
+
+  <div style="width:100%;max-width:1080px;">
+    <span class="label">The Problem With Today's Design</span>
+    <h2 class="disp" style="font-size:clamp(32px,5vw,64px);color:var(--ink);max-width:20ch;margin-bottom:0;">
+      We scaled the<br>wrong things <span style="color:var(--red);">first.</span>
+    </h2>
+
+    <div class="problem-cols">
+      <div class="problem-col">
+        <div class="problem-col-num">1</div>
+        <div style="width:40px;height:6px;background:var(--red);margin-bottom:20px;"></div>
+        <div class="problem-head">Quantity over<br>quality</div>
+        <p class="problem-body">
+          Teams ship component number 247 before they've made component number 3 truly right.
+          Velocity metrics reward output, not durability. The result: systems that crack under scale.
+        </p>
+      </div>
+      <div class="problem-col">
+        <div class="problem-col-num">2</div>
+        <div style="width:40px;height:6px;background:var(--blue);margin-bottom:20px;"></div>
+        <div class="problem-head">Tooling as<br>substitute for thinking</div>
+        <p class="problem-body">
+          Figma variables, design tokens, and automated style guides have made it easier
+          to codify decisions — but not to make better ones. The tool became the excuse.
+        </p>
+      </div>
+      <div class="problem-col">
+        <div class="problem-col-num">3</div>
+        <div style="width:40px;height:6px;background:var(--yellow);margin-bottom:20px;"></div>
+        <div class="problem-head">No contract<br>between design & eng</div>
+        <p class="problem-body">
+          Handoffs remain broken. Not because of tooling gaps — because design systems
+          rarely carry the <em>why</em> alongside the <em>what</em>. Intent evaporates at the boundary.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — THE PRINCIPLE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4" style="background:var(--blue);overflow:hidden;">
+  <div class="slide-num" style="color:var(--paper);opacity:0.3;">04 / 10</div>
+
+  <!-- Geometric composition -->
+  <div class="geo-circle" style="width:clamp(200px,28vw,400px);height:clamp(200px,28vw,400px);background:var(--paper);opacity:0.08;bottom:-80px;right:-80px;z-index:0;"></div>
+  <div class="geo-rect" style="top:0;right:0;width:8px;height:100%;background:var(--yellow);z-index:0;"></div>
+  <div class="geo-rect" style="bottom:0;left:0;width:100%;height:8px;background:var(--red);z-index:0;"></div>
+
+  <div style="width:100%;max-width:960px;">
+    <span class="label" style="color:rgba(255,255,255,0.4);">The Founding Principle</span>
+
+    <h2 class="disp" style="font-size:clamp(52px,9vw,120px);color:var(--paper);line-height:0.88;max-width:12ch;margin-bottom:0;">
+      Every token<br>is a<br><span style="color:var(--yellow);">decision.</span>
+    </h2>
+
+    <div style="margin-top:48px;max-width:600px;border-left:4px solid var(--yellow);padding-left:24px;">
+      <p style="font-family:var(--font-body);font-size:clamp(15px,1.4vw,20px);line-height:1.75;color:rgba(255,255,255,0.8);">
+        A spacing value isn't a number. It's an answer to a question your team has already agreed on.
+        A color isn't a hex code. It's a commitment — about hierarchy, emotion, and accessibility — made once,
+        honored everywhere.
+      </p>
+      <p style="font-family:var(--font-body);font-size:clamp(15px,1.4vw,20px);line-height:1.75;color:rgba(255,255,255,0.8);margin-top:20px;">
+        Craft begins when you stop treating your token library as a stylesheet
+        and start treating it as a <strong style="color:var(--yellow);">constitution.</strong>
+      </p>
+    </div>
+
+    <div style="margin-top:44px;display:flex;gap:0;flex-wrap:wrap;">
+      <div style="padding:18px 28px;background:var(--paper);color:var(--ink);">
+        <div style="font-family:var(--font-disp);font-weight:900;font-size:0.9rem;letter-spacing:-0.01em;text-transform:uppercase;">Bauhaus, 1923</div>
+        <div style="font-size:0.62rem;opacity:0.5;margin-top:2px;letter-spacing:0.12em;text-transform:uppercase;">Form and function are one</div>
+      </div>
+      <div style="padding:18px 28px;background:rgba(255,255,255,0.1);color:var(--paper);">
+        <div style="font-family:var(--font-disp);font-weight:900;font-size:0.9rem;letter-spacing:-0.01em;text-transform:uppercase;">Primary, 2026</div>
+        <div style="font-size:0.62rem;opacity:0.5;margin-top:2px;letter-spacing:0.12em;text-transform:uppercase;">Craft and system are one</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — PROOF: METRICS I
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="background:var(--paper);">
+  <div class="slide-num">05 / 10</div>
+
+  <!-- Yellow accent bar top -->
+  <div class="geo-rect" style="top:0;left:0;width:100%;height:8px;background:var(--yellow);z-index:0;"></div>
+
+  <div style="width:100%;max-width:1080px;">
+    <span class="label">Proof — Craft at Scale</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink);margin-bottom:32px;max-width:22ch;">
+      The numbers behind<br>deliberate systems.
+    </h2>
+
+    <div class="proof-grid">
+      <div class="proof-cell block-red">
+        <div class="stat-num" style="color:var(--paper);">3.4×</div>
+        <div class="stat-label" style="color:rgba(255,255,255,0.65);">Faster onboarding</div>
+        <p class="stat-note" style="color:rgba(255,255,255,0.7);">
+          New designers reach autonomous contribution in 3.4× less time when the system
+          carries documented intent — not just assets. Measured across 14 product teams
+          at Construct Studio clients, 2024–2025.
+        </p>
+      </div>
+      <div class="proof-cell" style="background:var(--paper);">
+        <div class="stat-num" style="color:var(--blue);">67%</div>
+        <div class="stat-label">Fewer design QA cycles</div>
+        <p class="stat-note">
+          Teams using craft-first foundations — defined token hierarchies, explicit motion contracts,
+          written decision rationale — resolved 67% fewer ambiguities in eng handoff.
+          N=22 squads over 18 months.
+        </p>
+      </div>
+      <div class="proof-cell block-ink">
+        <div class="stat-num" style="color:var(--yellow);">11yr</div>
+        <div class="stat-label" style="color:rgba(255,255,255,0.55);">Average lifespan</div>
+        <p class="stat-note" style="color:rgba(255,255,255,0.6);">
+          Systems audited as "craft-first" by our rubric averaged 11 years before requiring
+          a full overhaul. Systems scored "velocity-first" averaged 2.8 years.
+          That's a 4× durability multiplier.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:0;display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1080px;border:var(--hairline);border-top:none;">
+      <div style="padding:20px 28px;border-right:var(--hairline);">
+        <p style="font-family:var(--font-body);font-size:0.75rem;line-height:1.7;opacity:0.6;">
+          <strong style="opacity:1;">Source:</strong> Construct Studio internal audit, 38 design systems reviewed
+          across enterprise software, consumer fintech, and healthtech verticals. Full methodology available on request.
+        </p>
+      </div>
+      <div style="padding:20px 28px;">
+        <p style="font-family:var(--font-body);font-size:0.75rem;line-height:1.7;opacity:0.6;">
+          <strong style="opacity:1;">Selection criteria:</strong> Systems in active production use with
+          10+ contributing designers. All metrics validated against git commit history and design changelog.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — PROOF: METRICS II
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6" style="background:var(--paper-2);">
+  <div class="slide-num">06 / 10</div>
+
+  <!-- Blue circle accent -->
+  <div class="geo-circle" style="width:clamp(160px,22vw,300px);height:clamp(160px,22vw,300px);border:6px solid var(--blue);bottom:-60px;right:clamp(80px,10vw,140px);z-index:0;"></div>
+
+  <div style="width:100%;max-width:1080px;">
+    <span class="label">Proof — The Construct Studio Case</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink);margin-bottom:32px;">
+      What a rebuilt<br><span style="color:var(--red);">foundation</span> unlocked.
+    </h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1080px;border:var(--hairline);">
+      <div style="padding:40px 36px;border-right:var(--hairline);">
+        <span class="label">Vesper Financial — Before (2023)</span>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:var(--hairline-thin);">
+            <span style="font-size:0.8rem;opacity:0.6;">Design components</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;">347</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:var(--hairline-thin);">
+            <span style="font-size:0.8rem;opacity:0.6;">Documented decisions</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--red);">12</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:var(--hairline-thin);">
+            <span style="font-size:0.8rem;opacity:0.6;">Avg. PR review cycles</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--red);">5.8</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:var(--hairline-thin);">
+            <span style="font-size:0.8rem;opacity:0.6;">Engineer satisfaction</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--red);">3.1 / 10</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;">
+            <span style="font-size:0.8rem;opacity:0.6;">Time to new theme</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--red);">6 weeks</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:40px 36px;background:var(--ink);">
+        <span class="label" style="color:rgba(255,255,255,0.35);">Vesper Financial — After (2025)</span>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);">Design components</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--yellow);">89</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);">Documented decisions</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--yellow);">89</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);">Avg. PR review cycles</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--yellow);">1.4</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);">Engineer satisfaction</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--yellow);">8.6 / 10</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;">
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);">Time to new theme</span>
+            <span style="font-family:var(--font-disp);font-weight:700;font-size:1rem;color:var(--yellow);">4 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;font-size:0.68rem;opacity:0.4;letter-spacing:0.08em;text-transform:uppercase;">
+      Vesper Financial, Berlin. Craft-first redesign led by Construct Studio, Q1–Q4 2024.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — PROOF: METRICS III
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="background:var(--yellow);">
+  <div class="slide-num" style="color:var(--ink);opacity:0.35;">07 / 10</div>
+
+  <!-- Geometric shapes -->
+  <div class="geo-rect" style="top:0;right:0;width:8px;height:100%;background:var(--ink);z-index:0;"></div>
+  <div class="geo-circle" style="width:clamp(100px,14vw,200px);height:clamp(100px,14vw,200px);background:var(--red);top:clamp(40px,6vw,80px);right:clamp(60px,8vw,120px);z-index:0;"></div>
+
+  <div style="width:100%;max-width:1080px;">
+    <span class="label" style="opacity:0.45;">Proof — The Cost of Not Caring</span>
+    <h2 class="disp" style="font-size:clamp(36px,5.5vw,72px);color:var(--ink);margin-bottom:40px;max-width:16ch;">
+      Technical design debt<br>is real debt.
+    </h2>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:var(--hairline);">
+      <div class="stat-block" style="border:none;border-right:var(--hairline);">
+        <div class="stat-num" style="color:var(--ink);">$420K</div>
+        <div class="stat-label">avg remediation cost</div>
+        <p class="stat-note">
+          Average cost to refactor a velocity-first design system after 3 years of drift.
+          Includes eng hours + design rework.
+        </p>
+      </div>
+      <div class="stat-block" style="border:none;border-right:var(--hairline);">
+        <div class="stat-num" style="color:var(--red);">62%</div>
+        <div class="stat-label">of teams restart</div>
+        <p class="stat-note">
+          Of the 38 systems we audited, 62% had been fully restarted at least once.
+          The restart was always triggered by the same cause: no founding rationale.
+        </p>
+      </div>
+      <div class="stat-block" style="border:none;border-right:var(--hairline);">
+        <div class="stat-num" style="color:var(--blue);">18mo</div>
+        <div class="stat-label">to rebuild trust</div>
+        <p class="stat-note">
+          After a system collapse, it takes an average of 18 months for engineering
+          teams to re-trust design tooling enough to adopt the replacement system.
+        </p>
+      </div>
+      <div class="stat-block" style="border:none;">
+        <div class="stat-num" style="color:var(--ink);">0</div>
+        <div class="stat-label">craft-first restarts</div>
+        <p class="stat-note">
+          In our audit, <strong>zero</strong> systems rated "high craft" by our rubric
+          had ever required a full restart. Evolution yes. Demolition never.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:flex;align-items:center;gap:20px;">
+      <div style="width:48px;height:48px;background:var(--ink);flex-shrink:0;"></div>
+      <p style="font-family:var(--font-disp);font-weight:700;font-size:clamp(16px,1.6vw,22px);letter-spacing:-0.02em;text-transform:uppercase;line-height:1.2;">
+        The most expensive design decision is the one you'll have to unmake.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — THE MANIFESTO
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8" style="background:var(--paper);">
+  <div class="slide-num">08 / 10</div>
+
+  <!-- Red triangle accent top-right -->
+  <div class="geo-triangle" style="right:0;top:0;border-left:clamp(80px,12vw,160px) solid transparent;border-top:clamp(80px,12vw,160px) solid var(--red);z-index:0;"></div>
+  <!-- Blue bar bottom-left -->
+  <div class="geo-rect" style="bottom:0;left:0;width:clamp(80px,10vw,140px);height:8px;background:var(--blue);z-index:0;"></div>
+
+  <div style="width:100%;max-width:1000px;">
+    <span class="label">The Primary Manifesto</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink);margin-bottom:32px;">
+      Six principles.<br>One <span style="color:var(--blue);">constitution.</span>
+    </h2>
+
+    <div style="border:var(--hairline);">
+      <div class="manifesto-item" style="padding:20px 28px;">
+        <div class="manifesto-num" style="color:var(--red);">I</div>
+        <div>
+          <div class="manifesto-text">Every token carries a reason.</div>
+          <p class="manifesto-sub">If you cannot explain why a value exists, it should not exist. Document intent, not just output.</p>
+        </div>
+      </div>
+      <div class="manifesto-item" style="padding:20px 28px;">
+        <div class="manifesto-num" style="color:var(--blue);">II</div>
+        <div>
+          <div class="manifesto-text">Scale depth before breadth.</div>
+          <p class="manifesto-sub">Make your first ten components extraordinary. The next hundred will follow the standard you set.</p>
+        </div>
+      </div>
+      <div class="manifesto-item" style="padding:20px 28px;">
+        <div class="manifesto-num" style="color:var(--ink);">III</div>
+        <div>
+          <div class="manifesto-text">The handoff is the design.</div>
+          <p class="manifesto-sub">How your system communicates to engineers is as important as how it renders. Write for the implementer.</p>
+        </div>
+      </div>
+      <div class="manifesto-item" style="padding:20px 28px;">
+        <div class="manifesto-num" style="color:var(--red);">IV</div>
+        <div>
+          <div class="manifesto-text">Constraints are the medium.</div>
+          <p class="manifesto-sub">A good design system makes the wrong choice impossible. Use your tokens and primitives as guardrails, not suggestions.</p>
+        </div>
+      </div>
+      <div class="manifesto-item" style="padding:20px 28px;">
+        <div class="manifesto-num" style="color:var(--blue);">V</div>
+        <div>
+          <div class="manifesto-text">Coherence over completeness.</div>
+          <p class="manifesto-sub">Resist the urge to cover every case. A complete but incoherent system is worse than an incomplete but coherent one.</p>
+        </div>
+      </div>
+      <div class="manifesto-item" style="padding:20px 28px;border-bottom:none;">
+        <div class="manifesto-num" style="color:var(--ink);">VI</div>
+        <div>
+          <div class="manifesto-text">Ship the rationale, not just the assets.</div>
+          <p class="manifesto-sub">Your Figma library is not your design system. Your design system is the thinking that produced it. Make that thinking portable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — RECAP / SUMMARY
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="background:var(--ink);overflow:hidden;">
+  <div class="slide-num" style="color:var(--paper);opacity:0.3;">09 / 10</div>
+
+  <!-- Bauhaus geometric composition -->
+  <div class="geo-rect" style="top:0;left:0;width:clamp(60px,8vw,100px);height:100%;background:var(--red);z-index:0;"></div>
+  <div class="geo-circle" style="width:clamp(140px,20vw,280px);height:clamp(140px,20vw,280px);background:var(--yellow);top:50%;right:clamp(60px,8vw,120px);transform:translateY(-50%);z-index:0;"></div>
+  <div class="geo-rect" style="bottom:0;left:0;width:100%;height:8px;background:var(--blue);z-index:0;"></div>
+
+  <div style="position:relative;z-index:1;width:100%;max-width:1000px;padding-left:calc(clamp(60px,8vw,100px) + 32px);">
+    <span class="label" style="color:rgba(255,255,255,0.35);">The Recap</span>
+
+    <h2 class="disp" style="font-size:clamp(40px,7vw,88px);color:var(--paper);margin-bottom:0;max-width:12ch;line-height:0.88;">
+      Craft is not<br>optional.<br><span style="color:var(--yellow);">It's the work.</span>
+    </h2>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:800px;">
+      <div>
+        <div style="width:32px;height:4px;background:var(--red);margin-bottom:14px;"></div>
+        <p style="font-family:var(--font-body);font-size:clamp(13px,1.1vw,16px);line-height:1.75;color:rgba(255,255,255,0.65);">
+          Design systems built with deliberate craft last 4× longer,
+          require fewer rework cycles, and earn the trust of the engineers who build with them.
+        </p>
+      </div>
+      <div>
+        <div style="width:32px;height:4px;background:var(--yellow);margin-bottom:14px;"></div>
+        <p style="font-family:var(--font-body);font-size:clamp(13px,1.1vw,16px);line-height:1.75;color:rgba(255,255,255,0.65);">
+          The investment is front-loaded. The returns compound.
+          Every component you make right is a decision you never have to make again.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:44px;display:flex;gap:0;align-items:stretch;">
+      <div style="width:4px;background:var(--yellow);flex-shrink:0;"></div>
+      <div style="padding:20px 24px;border:1px solid rgba(255,255,255,0.12);border-left:none;">
+        <p style="font-family:var(--font-disp);font-weight:700;font-size:clamp(14px,1.3vw,18px);color:var(--paper);letter-spacing:-0.01em;line-height:1.35;font-style:italic;">
+          "A system is not a collection of things. It is a pattern of relationships."<br>
+          <span style="font-weight:400;opacity:0.5;font-style:normal;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;">— Primary Design Symposium, 2025</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CTA / CLOSING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="background:var(--paper);overflow:hidden;">
+  <div class="slide-num">10 / 10</div>
+
+  <!-- Decorative shapes -->
+  <div class="geo-rect" style="top:0;right:0;width:clamp(100px,14vw,180px);height:clamp(100px,14vw,180px);background:var(--red);z-index:0;"></div>
+  <div class="geo-circle" style="width:clamp(60px,8vw,100px);height:clamp(60px,8vw,100px);background:var(--blue);bottom:clamp(60px,8vw,100px);right:clamp(60px,8vw,100px);z-index:0;"></div>
+  <div class="geo-rect" style="bottom:0;left:0;width:100%;height:8px;background:var(--ink);z-index:0;"></div>
+
+  <div style="width:100%;max-width:1080px;">
+    <span class="label">What You Do Next</span>
+
+    <h2 class="disp" style="font-size:clamp(40px,6.5vw,82px);color:var(--ink);margin-bottom:40px;max-width:16ch;">
+      Build one thing<br><span style="color:var(--red);">completely</span><br>right.
+    </h2>
+
+    <div class="cta-layout">
+      <div class="cta-left">
+        <span class="label">The Primary Challenge</span>
+
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:var(--hairline-thin);">
+            <div style="width:28px;height:28px;background:var(--red);flex-shrink:0;margin-top:2px;"></div>
+            <div>
+              <div style="font-family:var(--font-disp);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:-0.01em;">Pick one component</div>
+              <p style="font-size:0.8rem;opacity:0.6;margin-top:4px;line-height:1.6;">Choose the most-used component in your system. Just one. Button, Input, Card.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:var(--hairline-thin);">
+            <div style="width:28px;height:28px;background:var(--blue);border-radius:50%;flex-shrink:0;margin-top:2px;"></div>
+            <div>
+              <div style="font-family:var(--font-disp);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:-0.01em;">Write down every decision</div>
+              <p style="font-size:0.8rem;opacity:0.6;margin-top:4px;line-height:1.6;">Not just what it looks like. Why it looks like that. Every value. Every variant.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:var(--hairline-thin);">
+            <div style="width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid var(--yellow);flex-shrink:0;margin-top:4px;"></div>
+            <div>
+              <div style="font-family:var(--font-disp);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:-0.01em;">Share the rationale</div>
+              <p style="font-size:0.8rem;opacity:0.6;margin-top:4px;line-height:1.6;">Ship the document alongside the component. Watch what happens to the review cycle.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:18px 0;">
+            <div style="width:28px;height:28px;border:3px solid var(--ink);flex-shrink:0;margin-top:2px;"></div>
+            <div>
+              <div style="font-family:var(--font-disp);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:-0.01em;">Let it set the standard</div>
+              <p style="font-size:0.8rem;opacity:0.6;margin-top:4px;line-height:1.6;">That one component becomes the proof of concept. The constitution for everything that follows.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-right">
+        <div>
+          <span style="display:block;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;opacity:0.4;margin-bottom:16px;">Primary Studio</span>
+          <div style="font-family:var(--font-disp);font-weight:900;font-size:clamp(28px,3.5vw,44px);letter-spacing:-0.03em;line-height:0.92;color:var(--paper);">
+            Construct<br>Studio
+          </div>
+          <div style="width:40px;height:4px;background:var(--yellow);margin:16px 0;"></div>
+          <p style="font-size:0.8rem;line-height:1.7;color:rgba(255,255,255,0.6);">
+            We help product teams build design systems that earn trust and last.
+            Workshops, audits, and embedded system design.
+          </p>
+        </div>
+
+        <div style="margin-top:32px;">
+          <div style="font-size:0.72rem;line-height:2;color:rgba(255,255,255,0.55);">
+            <div><i class="fa fa-envelope" style="width:18px;opacity:0.5;"></i>&nbsp; hello@construct.studio</div>
+            <div><i class="fa fa-globe" style="width:18px;opacity:0.5;"></i>&nbsp; construct.studio/primary</div>
+            <div><i class="fa fa-map-marker-alt" style="width:18px;opacity:0.5;"></i>&nbsp; Berlin &middot; Amsterdam &middot; Remote</div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <div style="width:12px;height:12px;background:var(--red);"></div>
+              <div style="width:12px;height:12px;background:var(--blue);border-radius:50%;"></div>
+              <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid var(--yellow);"></div>
+              <span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0.35;margin-left:6px;">Primary 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

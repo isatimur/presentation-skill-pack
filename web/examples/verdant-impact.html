@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verdant — 2026 Annual Impact Report</title>
+<meta name="description" content="Verdant 2026 Annual Impact Report — 1.4M tonnes CO₂ avoided, 98,000 tonnes of regenerative materials diverted. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/verdant-impact" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#1d3a2f" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/verdant-impact" />
+<meta property="og:title" content="Verdant — 2026 Annual Impact Report" />
+<meta property="og:description" content="1.4M tonnes CO₂ avoided. 98,000 tonnes regenerative materials diverted. The earth kept score." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Verdant — 2026 Annual Impact Report" />
+<meta name="twitter:description" content="1.4M tonnes CO₂ avoided. 98,000 tonnes regenerative materials diverted." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --forest:      #1d3a2f;
+    --forest-deep: #162d24;
+    --forest-mid:  #254a3c;
+    --sage:        #4a7c59;
+    --sage-light:  #6b9e7a;
+    --cream:       #f3efe4;
+    --cream-warm:  #ede8da;
+    --cream-dim:   #d8d1c0;
+    --gold:        #bfa55a;
+    --gold-light:  #d4bc78;
+    --gold-dim:    #8a7440;
+    --text-on-forest: rgba(243,239,228,0.88);
+    --text-muted-forest: rgba(243,239,228,0.52);
+    --text-dim-forest: rgba(243,239,228,0.32);
+    --text-on-cream: #1d3a2f;
+    --text-muted-cream: #4a7c59;
+    --font-disp: 'Cormorant Garamond', 'Georgia', serif;
+    --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--forest-deep);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--forest-deep);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(48px, 6vw, 88px) clamp(36px, 8vw, 112px);
+    overflow: hidden;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ─── BOTANICAL BACKGROUND MOTIFS ─── */
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Leaf SVG decoration layer */
+  .botanical-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.07;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .disp {
+    font-family: var(--font-disp);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+  .disp-light {
+    font-family: var(--font-disp);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.1;
+  }
+  .label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .body-text {
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  /* ─── GOLD RULE ─── */
+  .gold-rule {
+    border: none;
+    border-top: 1px solid var(--gold);
+    opacity: 0.4;
+    margin: 28px 0;
+  }
+  .gold-rule-thick {
+    border: none;
+    border-top: 2px solid var(--gold);
+    opacity: 0.6;
+    width: 48px;
+    margin: 20px 0;
+  }
+
+  /* ─── EYEBROW LABEL ─── */
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .eyebrow-sage {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* ─── SLIDE NUMBER ─── */
+  .slide-num {
+    position: absolute;
+    top: 28px;
+    right: 40px;
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-dim-forest);
+    z-index: 10;
+  }
+  .slide-num-dark {
+    position: absolute;
+    top: 28px;
+    right: 40px;
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(29,58,47,0.35);
+    z-index: 10;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    font-weight: 400;
+    color: var(--text-muted-forest);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: var(--forest-deep);
+    border: 1px solid rgba(191,165,90,0.25);
+    padding: 6px 18px;
+  }
+
+  /* ═══════════════════════════════════════
+     STAT BLOCK
+  ═══════════════════════════════════════ */
+  .stat-val {
+    font-family: var(--font-disp);
+    font-weight: 600;
+    font-size: clamp(48px, 7vw, 88px);
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    color: var(--gold);
+  }
+  .stat-unit {
+    font-family: var(--font-disp);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.45em;
+    color: var(--gold-light);
+    display: inline;
+  }
+  .stat-desc {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted-forest);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .stat-delta {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    color: var(--sage-light);
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── CSS DONUT CHART ─── */
+  .donut-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+  }
+  .donut-svg {
+    width: 140px;
+    height: 140px;
+    transform: rotate(-90deg);
+  }
+  .donut-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .donut-center-val {
+    font-family: var(--font-disp);
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .donut-center-lbl {
+    font-family: var(--font-body);
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted-forest);
+    margin-top: 2px;
+  }
+
+  /* ─── CSS BAR ─── */
+  .bar-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(191,165,90,0.15);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    border-radius: 3px;
+  }
+  .bar-fill-sage {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sage), var(--sage-light));
+    border-radius: 3px;
+  }
+
+  /* ─── PANELS ON CREAM ─── */
+  .cream-panel {
+    background: var(--cream);
+    color: var(--text-on-cream);
+    padding: clamp(36px, 4vw, 60px) clamp(32px, 4vw, 56px);
+  }
+
+  /* ─── CALLOUT BLOCK ─── */
+  .callout {
+    border-left: 3px solid var(--gold);
+    padding: 16px 24px;
+    background: rgba(191,165,90,0.07);
+  }
+  .callout-sage {
+    border-left: 3px solid var(--sage-light);
+    padding: 16px 24px;
+    background: rgba(74,124,89,0.12);
+  }
+
+  /* ─── PROGRAM CARD ─── */
+  .prog-card {
+    border: 1px solid rgba(191,165,90,0.22);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .prog-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    .botanical-bg { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; Verdant Impact Report &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="background: var(--forest-deep); min-height:100vh; justify-content:center;">
+  <div class="slide-num">01 / 10</div>
+
+  <!-- Botanical SVG background -->
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#bfa55a" stroke-width="1">
+      <!-- Large branch upper right -->
+      <path d="M 900 -20 C 880 80 820 140 760 200 C 720 240 680 260 640 300"/>
+      <path d="M 820 60 C 800 90 780 110 750 130"/>
+      <path d="M 870 100 C 855 125 835 140 810 155"/>
+      <!-- Leaf clusters upper right -->
+      <path d="M 760 200 C 780 185 800 178 815 190 C 800 205 780 210 760 200 Z"/>
+      <path d="M 780 218 C 800 202 820 196 835 208 C 820 222 800 226 780 218 Z"/>
+      <path d="M 750 235 C 768 220 788 215 800 228 C 786 242 766 244 750 235 Z"/>
+      <!-- Lower left branch -->
+      <path d="M -40 580 C 60 560 140 520 200 470 C 240 440 260 410 300 380"/>
+      <path d="M 100 540 C 120 520 145 508 168 515"/>
+      <path d="M 160 495 C 180 476 204 465 226 472"/>
+      <!-- Leaf clusters lower left -->
+      <path d="M 200 470 C 185 450 178 430 192 418 C 208 432 212 452 200 470 Z"/>
+      <path d="M 220 455 C 205 435 200 415 214 403 C 230 417 232 438 220 455 Z"/>
+      <path d="M 240 440 C 226 420 222 400 237 389 C 252 403 253 424 240 440 Z"/>
+      <!-- Centre decorative stems -->
+      <path d="M 580 680 C 590 640 598 600 610 560"/>
+      <path d="M 595 620 C 612 608 628 606 636 616"/>
+      <path d="M 600 600 C 616 588 631 586 640 596"/>
+      <!-- Lone branch right mid -->
+      <path d="M 1100 350 C 1070 370 1040 390 1010 410 C 985 428 965 450 940 465"/>
+      <path d="M 1050 380 C 1040 398 1025 408 1008 410"/>
+      <path d="M 940 465 C 958 450 975 448 985 460 C 970 472 954 472 940 465 Z"/>
+    </g>
+  </svg>
+
+  <div style="max-width: 960px; position: relative; z-index:1;">
+    <span class="eyebrow" style="margin-bottom:40px;">Annual Impact Report &nbsp;·&nbsp; 2026</span>
+
+    <div style="font-family: var(--font-disp); font-weight:300; font-style:italic; font-size: clamp(18px, 2.2vw, 28px); color: var(--gold-light); margin-bottom: 16px; letter-spacing: 0.02em;">
+      The earth kept score.
+    </div>
+
+    <h1 style="font-family: var(--font-disp); font-weight: 600; font-size: clamp(72px, 12vw, 156px); letter-spacing: -0.03em; line-height: 0.9; color: var(--cream); margin-bottom: 0;">
+      Verdant
+    </h1>
+
+    <div style="margin-top: 36px; padding-top: 36px; border-top: 1px solid rgba(191,165,90,0.3);">
+      <div style="font-family: var(--font-body); font-size: 0.82rem; font-weight: 300; color: var(--text-muted-forest); line-height: 1.9; max-width: 56ch; letter-spacing: 0.02em;">
+        Verdant engineers regenerative materials that displace petrochemical feedstocks across global supply chains. This report documents our measurable planetary and social impact in 2026 — numbers we are proud of, and numbers that hold us accountable.
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; display: flex; gap: 0; flex-wrap: wrap;">
+      <div style="padding: 20px 36px 20px 0; margin-right: 36px; border-right: 1px solid rgba(191,165,90,0.25);">
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(28px, 4vw, 44px); color: var(--gold); letter-spacing: -0.02em; line-height:1;">1.4M</div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--text-muted-forest); margin-top:6px;">Tonnes CO₂ Avoided</div>
+      </div>
+      <div style="padding: 20px 36px 20px 0; margin-right: 36px; border-right: 1px solid rgba(191,165,90,0.25);">
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(28px, 4vw, 44px); color: var(--gold); letter-spacing: -0.02em; line-height:1;">98K</div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--text-muted-forest); margin-top:6px;">Tonnes Material Diverted</div>
+      </div>
+      <div style="padding: 20px 36px 20px 0; margin-right: 36px; border-right: 1px solid rgba(191,165,90,0.25);">
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(28px, 4vw, 44px); color: var(--gold); letter-spacing: -0.02em; line-height:1;">47</div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--text-muted-forest); margin-top:6px;">Supply-Chain Partners</div>
+      </div>
+      <div style="padding: 20px 0;">
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(28px, 4vw, 44px); color: var(--gold); letter-spacing: -0.02em; line-height:1;">12</div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--text-muted-forest); margin-top:6px;">Countries Active</div>
+      </div>
+    </div>
+
+    <div style="position: absolute; bottom: -20px; right: 0; font-family: var(--font-body); font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color: var(--text-dim-forest); text-align:right; line-height:1.9;">
+      Verdant Materials PBC &nbsp;·&nbsp; Portland, Oregon &nbsp;·&nbsp; Registered Benefit Corporation
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — MISSION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2" style="background: var(--cream); color: var(--text-on-cream); min-height:100vh;">
+  <div class="slide-num-dark">02 / 10</div>
+
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="opacity:0.05;">
+    <g fill="none" stroke="#1d3a2f" stroke-width="1.2">
+      <path d="M 1100 -10 C 1060 100 980 180 900 240 C 840 290 780 310 720 360"/>
+      <path d="M 950 80 C 930 110 910 130 880 150"/>
+      <path d="M 900 240 C 925 220 948 218 960 232 C 944 248 922 250 900 240 Z"/>
+      <path d="M 920 258 C 946 237 970 236 982 250 C 965 266 942 267 920 258 Z"/>
+      <path d="M -20 680 C 80 640 160 580 220 520 C 270 470 290 430 330 390"/>
+      <path d="M 130 610 C 155 590 178 580 198 590"/>
+      <path d="M 220 520 C 208 498 206 476 220 465 C 236 478 236 502 220 520 Z"/>
+    </g>
+  </svg>
+
+  <div style="max-width:900px; position:relative; z-index:1;">
+    <span class="eyebrow-sage" style="color: var(--sage);">Our Mission</span>
+    <hr class="gold-rule-thick" style="border-color: var(--gold); opacity:0.5;" />
+
+    <h2 style="font-family: var(--font-disp); font-weight:300; font-style:italic; font-size: clamp(36px, 5.5vw, 72px); color: var(--forest); line-height:1.1; margin-bottom: 36px; max-width: 22ch;">
+      To make regenerative materials the default choice for every manufacturer on earth.
+    </h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 12px;">
+      <div>
+        <div style="font-family: var(--font-body); font-weight:300; font-size:0.95rem; color: rgba(29,58,47,0.75); line-height:1.85;">
+          We believe the plastic and synthetic materials that pervade modern manufacturing do not have to be petrochemical by nature. Verdant develops bio-derived feedstocks — grown, harvested, and processed through closed-loop regenerative agriculture — that match or exceed the performance of conventional plastics, foams, and resins.
+        </div>
+        <div style="margin-top:28px;" class="callout" style="border-color: var(--sage); background: rgba(74,124,89,0.08);">
+          <div style="font-family: var(--font-disp); font-style:italic; font-size:1.05rem; color: var(--forest); line-height:1.6;">
+            "We do not ask brands to compromise on performance or price. We make the sustainable choice the obvious one."
+          </div>
+          <div style="font-family: var(--font-body); font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color: var(--sage); margin-top:12px;">
+            — Dr. Amara Osei, Founder & CEO
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="padding: 20px 22px; background: rgba(29,58,47,0.05); border-top: 2px solid var(--gold);">
+          <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--sage); margin-bottom:8px;">Founded</div>
+          <div style="font-family: var(--font-disp); font-weight:600; font-size:1.6rem; color: var(--forest); line-height:1;">2019</div>
+          <div style="font-family: var(--font-body); font-size:0.78rem; color: rgba(29,58,47,0.6); margin-top:6px;">Portland, Oregon · Registered PBC</div>
+        </div>
+        <div style="padding: 20px 22px; background: rgba(29,58,47,0.05); border-top: 2px solid var(--sage);">
+          <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--sage); margin-bottom:8px;">Core Technology</div>
+          <div style="font-family: var(--font-disp); font-weight:600; font-size:1.1rem; color: var(--forest); line-height:1.2;">Mycelium &amp; Algae-Derived Polymer Systems</div>
+          <div style="font-family: var(--font-body); font-size:0.78rem; color: rgba(29,58,47,0.6); margin-top:6px;">12 active patents · 3 in review</div>
+        </div>
+        <div style="padding: 20px 22px; background: rgba(29,58,47,0.05); border-top: 2px solid var(--gold-dim);">
+          <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--sage); margin-bottom:8px;">Certifications</div>
+          <div style="font-family: var(--font-body); font-size:0.82rem; color: rgba(29,58,47,0.75); line-height:1.7;">
+            <i class="fa-solid fa-leaf" style="color: var(--sage); margin-right:8px;"></i>B Corp Certified (score: 147.3)<br/>
+            <i class="fa-solid fa-leaf" style="color: var(--sage); margin-right:8px;"></i>SBTi 1.5°C Aligned<br/>
+            <i class="fa-solid fa-leaf" style="color: var(--sage); margin-right:8px;"></i>ISO 14001:2015 Environmental Mgmt
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3" style="background: var(--forest); min-height:100vh;">
+  <div class="slide-num">03 / 10</div>
+
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="opacity:0.06;">
+    <g fill="none" stroke="#bfa55a" stroke-width="1">
+      <path d="M 600 720 C 620 640 640 560 670 480 C 695 415 730 360 770 300"/>
+      <path d="M 650 590 C 670 572 692 564 710 574"/>
+      <path d="M 660 548 C 680 530 703 522 722 532"/>
+      <path d="M 770 300 C 755 280 752 258 768 248 C 784 262 784 284 770 300 Z"/>
+      <path d="M 790 280 C 776 260 774 238 790 228 C 806 243 805 265 790 280 Z"/>
+    </g>
+  </svg>
+
+  <div style="max-width:1060px; position:relative; z-index:1;">
+    <span class="eyebrow">The Scale of the Problem</span>
+
+    <h2 class="disp" style="font-size: clamp(36px, 5vw, 62px); color: var(--cream); max-width: 24ch; margin-bottom: 48px;">
+      The materials economy is still built on petroleum.
+    </h2>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: rgba(191,165,90,0.15);">
+      <div style="background: var(--forest); padding: 36px 28px;">
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(44px,6vw,72px); color: var(--gold); letter-spacing:-0.03em; line-height:0.9;">450M</div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color: var(--text-muted-forest); margin-top:10px; margin-bottom:16px;">Tonnes of plastic<br/>produced annually</div>
+        <div style="font-family: var(--font-body); font-size:0.8rem; font-weight:300; color: var(--text-muted-forest); line-height:1.75;">
+          Less than 9% is recycled globally. The remainder is landfilled, incinerated, or leaks into ecosystems.
+        </div>
+        <div class="bar-track" style="margin-top:20px;">
+          <div class="bar-fill" style="width: 9%;"></div>
+        </div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; color: var(--text-dim-forest); margin-top:6px; letter-spacing:0.1em;">9% recycled rate — global average</div>
+      </div>
+
+      <div style="background: var(--forest-mid); padding: 36px 28px;">
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(44px,6vw,72px); color: var(--gold); letter-spacing:-0.03em; line-height:0.9;">8%</div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color: var(--text-muted-forest); margin-top:10px; margin-bottom:16px;">Global CO₂ emissions<br/>from materials</div>
+        <div style="font-family: var(--font-body); font-size:0.8rem; font-weight:300; color: var(--text-muted-forest); line-height:1.75;">
+          The materials sector is the third-largest source of industrial emissions, behind energy and transport — and the least regulated.
+        </div>
+        <div class="bar-track" style="margin-top:20px;">
+          <div class="bar-fill" style="width: 55%;"></div>
+        </div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; color: var(--text-dim-forest); margin-top:6px; letter-spacing:0.1em;">Projected to reach 12% by 2035</div>
+      </div>
+
+      <div style="background: var(--forest); padding: 36px 28px; border-left: 1px solid rgba(191,165,90,0.15);">
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(44px,6vw,72px); color: var(--gold); letter-spacing:-0.03em; line-height:0.9;">$22T</div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color: var(--text-muted-forest); margin-top:10px; margin-bottom:16px;">Value of global<br/>materials market by 2030</div>
+        <div style="font-family: var(--font-body); font-size:0.8rem; font-weight:300; color: var(--text-muted-forest); line-height:1.75;">
+          Of which less than 2% is currently served by bio-based or regenerative alternatives. The transition window is now.
+        </div>
+        <div class="bar-track" style="margin-top:20px;">
+          <div class="bar-fill-sage" style="width: 2%;"></div>
+        </div>
+        <div style="font-family: var(--font-body); font-size:0.6rem; color: var(--text-dim-forest); margin-top:6px; letter-spacing:0.1em;">2% bio-based penetration today</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;" class="callout-sage">
+      <div style="font-family: var(--font-body); font-size:0.82rem; font-weight:300; color: var(--text-on-forest); line-height:1.75;">
+        <i class="fa-solid fa-circle-exclamation" style="color: var(--gold); margin-right:10px;"></i>
+        The IPCC's 1.5°C scenario requires a 68% reduction in materials-related emissions by 2040. At current trajectory, the sector is on course for an increase. <strong style="color:var(--cream);">Verdant exists to reverse that trajectory.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — IMPACT HEADLINE 2026
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4" style="background: var(--forest-deep); min-height:100vh;">
+  <div class="slide-num">04 / 10</div>
+
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="opacity:0.08;">
+    <g fill="none" stroke="#bfa55a" stroke-width="1">
+      <path d="M 0 350 C 100 320 200 280 300 240 C 380 210 460 190 540 160"/>
+      <path d="M 160 300 C 180 280 205 268 228 275"/>
+      <path d="M 540 160 C 525 140 522 118 538 108 C 554 122 554 144 540 160 Z"/>
+      <path d="M 560 145 C 545 125 543 103 560 93 C 576 108 575 130 560 145 Z"/>
+      <path d="M 1200 500 C 1100 470 1000 440 910 400 C 840 368 780 335 720 300"/>
+      <path d="M 1060 450 C 1040 430 1018 420 998 428"/>
+      <path d="M 720 300 C 738 285 758 282 770 294 C 754 308 734 310 720 300 Z"/>
+    </g>
+  </svg>
+
+  <div style="max-width:1060px; position:relative; z-index:1;">
+    <span class="eyebrow">Our Impact — 2026</span>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 8px;">
+      <div>
+        <div style="font-family: var(--font-disp); font-weight:600; font-size: clamp(72px, 11vw, 136px); color: var(--gold); letter-spacing:-0.04em; line-height:0.88;">1.4M</div>
+        <div style="font-family: var(--font-disp); font-style:italic; font-weight:300; font-size: clamp(18px, 2.5vw, 28px); color: var(--gold-light); letter-spacing:0.01em; margin-top:4px;">tonnes of CO₂ avoided</div>
+        <div style="font-family: var(--font-body); font-size:0.78rem; font-weight:300; color: var(--text-muted-forest); margin-top:16px; line-height:1.8; max-width:44ch;">
+          Measured against the fossil-material baseline each Verdant product displaces — verified by DNV GL under ISO 14064-2. Equivalent to removing <strong style="color:var(--cream);">310,000 cars</strong> from the road for a full year.
+        </div>
+        <div style="margin-top:20px; font-family:var(--font-body); font-size:0.62rem; color: var(--sage-light); letter-spacing:0.06em;">
+          <i class="fa-solid fa-arrow-trend-up" style="margin-right:6px;"></i>↑ 84% year-over-year
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(191,165,90,0.12);">
+          <div style="background: var(--forest-deep); padding: 24px 20px;">
+            <div class="stat-val" style="font-size: clamp(30px,4vw,52px);">98K</div>
+            <div class="stat-desc">Tonnes material<br/>diverted from landfill</div>
+            <div class="stat-delta"><i class="fa-solid fa-arrow-trend-up" style="margin-right:4px;"></i>+112% YoY</div>
+          </div>
+          <div style="background: var(--forest-mid); padding: 24px 20px;">
+            <div class="stat-val" style="font-size: clamp(30px,4vw,52px);">47</div>
+            <div class="stat-desc">Supply-chain brand<br/>partners active</div>
+            <div class="stat-delta"><i class="fa-solid fa-arrow-trend-up" style="margin-right:4px;"></i>+19 new in 2026</div>
+          </div>
+          <div style="background: var(--forest-mid); padding: 24px 20px;">
+            <div class="stat-val" style="font-size: clamp(30px,4vw,52px);">2,840</div>
+            <div class="stat-desc">Smallholder farms<br/>in partner network</div>
+            <div class="stat-delta"><i class="fa-solid fa-arrow-trend-up" style="margin-right:4px;"></i>+640 new farms</div>
+          </div>
+          <div style="background: var(--forest-deep); padding: 24px 20px;">
+            <div class="stat-val" style="font-size: clamp(30px,4vw,52px);">12</div>
+            <div class="stat-desc">Countries with<br/>active programs</div>
+            <div class="stat-delta"><i class="fa-solid fa-arrow-trend-up" style="margin-right:4px;"></i>+4 new markets</div>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:4px;">
+          <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color: var(--text-on-forest); line-height:1.7;">
+            <i class="fa-solid fa-certificate" style="color:var(--gold); margin-right:8px;"></i>
+            All impact metrics independently verified by <strong style="color:var(--cream);">DNV GL</strong> and cross-referenced against GHG Protocol Product Standard.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — MATERIAL IMPACT DEEP DIVE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="background: var(--cream); color: var(--text-on-cream); min-height:100vh;">
+  <div class="slide-num-dark">05 / 10</div>
+
+  <div style="max-width:1060px; position:relative; z-index:1;">
+    <span class="eyebrow-sage" style="color: var(--sage);">Emissions Avoided by Material Category</span>
+    <hr class="gold-rule-thick" style="border-color: var(--gold); opacity:0.5;" />
+
+    <h2 style="font-family: var(--font-disp); font-weight:600; font-size: clamp(28px, 4vw, 52px); color: var(--forest); margin-bottom: 40px; max-width: 28ch; line-height:1.1;">
+      What we displaced — and how we measure it.
+    </h2>
+
+    <div style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items:start;">
+      <div>
+        <!-- Bar chart -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+              <div style="font-family:var(--font-body); font-size:0.78rem; color: var(--forest);">
+                <i class="fa-solid fa-seedling" style="color:var(--sage); margin-right:8px;"></i>Mycelium Packaging Composite
+              </div>
+              <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--forest);">614K t</div>
+            </div>
+            <div class="bar-track" style="background: rgba(29,58,47,0.08); height:8px;">
+              <div class="bar-fill" style="width:100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold));"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+              <div style="font-family:var(--font-body); font-size:0.78rem; color: var(--forest);">
+                <i class="fa-solid fa-seedling" style="color:var(--sage); margin-right:8px;"></i>Algae-Based Industrial Resins
+              </div>
+              <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--forest);">388K t</div>
+            </div>
+            <div class="bar-track" style="background: rgba(29,58,47,0.08); height:8px;">
+              <div class="bar-fill" style="width:63%; background: linear-gradient(90deg, var(--sage), var(--sage-light));"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+              <div style="font-family:var(--font-body); font-size:0.78rem; color: var(--forest);">
+                <i class="fa-solid fa-seedling" style="color:var(--sage); margin-right:8px;"></i>Hemp-Fibre Structural Panels
+              </div>
+              <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--forest);">218K t</div>
+            </div>
+            <div class="bar-track" style="background: rgba(29,58,47,0.08); height:8px;">
+              <div class="bar-fill" style="width:35%; background: linear-gradient(90deg, #8a7440, #bfa55a);"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+              <div style="font-family:var(--font-body); font-size:0.78rem; color: var(--forest);">
+                <i class="fa-solid fa-seedling" style="color:var(--sage); margin-right:8px;"></i>Agricultural Waste Foam
+              </div>
+              <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--forest);">180K t</div>
+            </div>
+            <div class="bar-track" style="background: rgba(29,58,47,0.08); height:8px;">
+              <div class="bar-fill-sage" style="width:29%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px; padding: 20px 22px; background: rgba(29,58,47,0.05); border-top: 2px solid var(--gold);">
+          <div style="font-family:var(--font-body); font-size:0.72rem; font-weight:300; color: rgba(29,58,47,0.7); line-height:1.75;">
+            <strong style="color:var(--forest); font-weight:500;">Methodology note:</strong> Avoided emissions are calculated as the difference between the lifecycle GHG intensity of each Verdant product and its nearest incumbent petroleum-derived substitute, multiplied by volume sold. Third-party verified annually.
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <!-- Donut chart for material split -->
+        <div style="padding: 28px 24px; background: var(--forest); border-radius:0;">
+          <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--gold); margin-bottom:20px;">Revenue by Material Type — 2026</div>
+          <div style="display:flex; align-items:center; gap:24px;">
+            <div class="donut-wrap">
+              <svg class="donut-svg" viewBox="0 0 140 140">
+                <!-- Background track -->
+                <circle cx="70" cy="70" r="54" fill="none" stroke="rgba(191,165,90,0.12)" stroke-width="16"/>
+                <!-- Mycelium 44% -->
+                <circle cx="70" cy="70" r="54" fill="none" stroke="#bfa55a" stroke-width="16"
+                  stroke-dasharray="149 339" stroke-dashoffset="0"/>
+                <!-- Algae 28% -->
+                <circle cx="70" cy="70" r="54" fill="none" stroke="#4a7c59" stroke-width="16"
+                  stroke-dasharray="95 393" stroke-dashoffset="-149"/>
+                <!-- Hemp 17% -->
+                <circle cx="70" cy="70" r="54" fill="none" stroke="#6b9e7a" stroke-width="16"
+                  stroke-dasharray="58 430" stroke-dashoffset="-244"/>
+                <!-- Foam 11% -->
+                <circle cx="70" cy="70" r="54" fill="none" stroke="#8a7440" stroke-width="16"
+                  stroke-dasharray="37 451" stroke-dashoffset="-302"/>
+              </svg>
+              <div class="donut-center">
+                <div class="donut-center-val">100%</div>
+                <div class="donut-center-lbl">Regenerative</div>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; font-family:var(--font-body); font-size:0.7rem; color: var(--text-muted-forest);">
+              <div><span style="display:inline-block; width:10px; height:10px; background:var(--gold); margin-right:8px; vertical-align:middle;"></span>Mycelium 44%</div>
+              <div><span style="display:inline-block; width:10px; height:10px; background:var(--sage); margin-right:8px; vertical-align:middle;"></span>Algae Resins 28%</div>
+              <div><span style="display:inline-block; width:10px; height:10px; background:var(--sage-light); margin-right:8px; vertical-align:middle;"></span>Hemp Fibre 17%</div>
+              <div><span style="display:inline-block; width:10px; height:10px; background:var(--gold-dim); margin-right:8px; vertical-align:middle;"></span>Ag-Foam 11%</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding: 24px 22px; border: 1px solid rgba(29,58,47,0.15);">
+          <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color: var(--sage); margin-bottom:14px;">Scope 3 reduction for partners</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(28px,4vw,44px); color:var(--forest); line-height:0.95;">avg 34%</div>
+          <div style="font-family:var(--font-body); font-size:0.72rem; font-weight:300; color: rgba(29,58,47,0.65); margin-top:8px; line-height:1.7;">
+            Brand partners using Verdant materials report an average 34% reduction in their Scope 3 materials procurement emissions — the largest single lever available to most consumer goods companies.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — REGENERATIVE AGRICULTURE PROGRAM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6" style="background: var(--forest-mid); min-height:100vh;">
+  <div class="slide-num">06 / 10</div>
+
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="opacity:0.09;">
+    <g fill="none" stroke="#f3efe4" stroke-width="0.9">
+      <path d="M 200 -20 C 240 80 260 180 280 280 C 296 360 300 440 310 520"/>
+      <path d="M 240 120 C 260 104 284 96 302 106"/>
+      <path d="M 248 200 C 268 184 292 177 310 188"/>
+      <path d="M 310 520 C 295 500 292 478 308 468 C 324 482 324 504 310 520 Z"/>
+      <path d="M 800 720 C 830 640 850 560 870 480 C 888 410 900 350 920 280"/>
+      <path d="M 840 590 C 860 572 882 564 900 574"/>
+      <path d="M 920 280 C 904 262 902 240 918 230 C 935 245 934 267 920 280 Z"/>
+    </g>
+  </svg>
+
+  <div style="max-width:1060px; position:relative; z-index:1;">
+    <span class="eyebrow">Regenerative Agriculture Program</span>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:48px; margin-top:8px;">
+      <div>
+        <h2 class="disp" style="font-size: clamp(30px, 4vw, 52px); color: var(--cream); margin-bottom:24px; line-height:1.05;">
+          Soil is our<br/><em style="font-style:italic; color:var(--gold-light);">most critical material.</em>
+        </h2>
+        <div style="font-family:var(--font-body); font-size:0.88rem; font-weight:300; color: var(--text-muted-forest); line-height:1.85; margin-bottom:28px;">
+          Every Verdant feedstock is cultivated through farming systems that rebuild soil organic carbon, reduce synthetic inputs, and restore watershed health. Our agricultural network spans 2,840 smallholder farms across 8 countries — each operating under the Verdant Regenerative Standard (VRS 2.0), co-developed with the Rodale Institute.
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="callout" style="border-color: var(--gold);">
+            <div style="font-family:var(--font-body); font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Soil Carbon Sequestered</div>
+            <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(24px,3.5vw,40px); color:var(--cream); line-height:0.95;">82,400 t CO₂e</div>
+            <div style="font-family:var(--font-body); font-size:0.72rem; color:var(--text-muted-forest); margin-top:6px;">Verified via Verra VCS Methodology VM0042</div>
+          </div>
+          <div class="callout-sage">
+            <div style="font-family:var(--font-body); font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage-light); margin-bottom:8px;">Water Savings</div>
+            <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(24px,3.5vw,40px); color:var(--cream); line-height:0.95;">4.2B litres</div>
+            <div style="font-family:var(--font-body); font-size:0.72rem; color:var(--text-muted-forest); margin-top:6px;">vs. conventional cotton and petroleum cultivation baselines</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;">Partner Farm Countries — 2026</div>
+
+        <div style="display:flex; flex-direction:column; gap:0; border: 1px solid rgba(191,165,90,0.18);">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid rgba(191,165,90,0.12);">
+            <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">
+              <i class="fa-solid fa-location-dot" style="color:var(--gold); margin-right:10px; width:14px;"></i>Ghana & Côte d'Ivoire
+            </div>
+            <div style="font-family:var(--font-disp); font-weight:600; font-size:1rem; color:var(--gold);">940 farms</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid rgba(191,165,90,0.12);">
+            <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">
+              <i class="fa-solid fa-location-dot" style="color:var(--gold); margin-right:10px; width:14px;"></i>Indonesia &amp; Philippines
+            </div>
+            <div style="font-family:var(--font-disp); font-weight:600; font-size:1rem; color:var(--gold);">720 farms</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid rgba(191,165,90,0.12);">
+            <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">
+              <i class="fa-solid fa-location-dot" style="color:var(--gold); margin-right:10px; width:14px;"></i>Mexico &amp; Colombia
+            </div>
+            <div style="font-family:var(--font-disp); font-weight:600; font-size:1rem; color:var(--gold);">680 farms</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid rgba(191,165,90,0.12);">
+            <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">
+              <i class="fa-solid fa-location-dot" style="color:var(--gold); margin-right:10px; width:14px;"></i>India (Rajasthan &amp; UP)
+            </div>
+            <div style="font-family:var(--font-disp); font-weight:600; font-size:1rem; color:var(--gold);">340 farms</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 18px;">
+            <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">
+              <i class="fa-solid fa-location-dot" style="color:var(--gold); margin-right:10px; width:14px;"></i>US Pacific Northwest
+            </div>
+            <div style="font-family:var(--font-disp); font-weight:600; font-size:1rem; color:var(--gold);">160 farms</div>
+          </div>
+        </div>
+
+        <div style="padding:18px 18px; background: rgba(191,165,90,0.08); border: 1px solid rgba(191,165,90,0.18);">
+          <div style="font-family:var(--font-body); font-size:0.72rem; font-weight:300; color:var(--text-muted-forest); line-height:1.7;">
+            <i class="fa-solid fa-hand-holding-heart" style="color:var(--gold); margin-right:8px;"></i>
+            Average farm income increase across network: <strong style="color:var(--cream);">+38%</strong> vs. prior 3-year average. Verdant pays a 22% above-market premium for regeneratively certified biomass.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — CIRCULAR ECONOMY PROGRAM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="background: var(--cream); color: var(--text-on-cream); min-height:100vh;">
+  <div class="slide-num-dark">07 / 10</div>
+
+  <div style="max-width:1060px; position:relative; z-index:1;">
+    <span class="eyebrow-sage" style="color:var(--sage);">Circular Economy &amp; End-of-Life</span>
+    <hr class="gold-rule-thick" style="border-color:var(--gold); opacity:0.5;" />
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:28px; margin-top:16px;">
+      <div class="prog-card" style="border-color: rgba(29,58,47,0.15);">
+        <div style="font-family:var(--font-body); font-size:1.8rem; color:var(--sage); margin-bottom:16px;">
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.15rem; color:var(--forest); margin-bottom:12px; line-height:1.1;">Take-Back &amp;<br/>Regrind Loop</div>
+        <div style="font-family:var(--font-body); font-size:0.8rem; font-weight:300; color: rgba(29,58,47,0.7); line-height:1.75; margin-bottom:16px;">
+          Post-use Verdant products are collected, shredded, and reprocessed into second-generation pellets at 85–92% material recovery rates — well above industry average of 63%.
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.8rem; color:var(--gold);">32,400 t</div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); margin-top:4px;">Returned &amp; reprocessed in 2026</div>
+      </div>
+
+      <div class="prog-card" style="border-color: rgba(29,58,47,0.15);">
+        <div style="font-family:var(--font-body); font-size:1.8rem; color:var(--sage); margin-bottom:16px;">
+          <i class="fa-solid fa-plant-wilt"></i>
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.15rem; color:var(--forest); margin-bottom:12px; line-height:1.1;">Compostable Product<br/>Programme</div>
+        <div style="font-family:var(--font-body); font-size:0.8rem; font-weight:300; color: rgba(29,58,47,0.7); line-height:1.75; margin-bottom:16px;">
+          48% of our packaging volume is certified home-compostable (TÜV Austria OK Compost HOME). These products return to soil within 26 weeks with no microplastic residue.
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.8rem; color:var(--gold);">48%</div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); margin-top:4px;">Of packaging volume compostable</div>
+      </div>
+
+      <div class="prog-card" style="border-color: rgba(29,58,47,0.15);">
+        <div style="font-family:var(--font-body); font-size:1.8rem; color:var(--sage); margin-bottom:16px;">
+          <i class="fa-solid fa-microscope"></i>
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.15rem; color:var(--forest); margin-bottom:12px; line-height:1.1;">No Microplastic<br/>Guarantee</div>
+        <div style="font-family:var(--font-body); font-size:0.8rem; font-weight:300; color: rgba(29,58,47,0.7); line-height:1.75; margin-bottom:16px;">
+          Independent testing confirms zero microplastic shedding from all Verdant product lines under standard use conditions. Petrochemical plastics shed an estimated 8.3g per item annually.
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.8rem; color:var(--gold);">0 g</div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); margin-top:4px;">Microplastic shedding — all products</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; display:grid; grid-template-columns: 2fr 1fr; gap:28px; align-items:center;">
+      <div style="padding: 28px 28px; background: rgba(29,58,47,0.05); border-top: 2px solid var(--gold);">
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin-bottom:12px;">2026 Circular Economy Progress</div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+              <div style="font-family:var(--font-body); font-size:0.78rem; color:var(--forest);">Products at end-of-life recovered</div>
+              <div style="font-family:var(--font-disp); font-weight:600; font-size:0.9rem; color:var(--forest);">61%</div>
+            </div>
+            <div class="bar-track" style="background: rgba(29,58,47,0.08); height:6px;">
+              <div class="bar-fill" style="width:61%;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+              <div style="font-family:var(--font-body); font-size:0.78rem; color:var(--forest);">Packaging by mass — bio-based</div>
+              <div style="font-family:var(--font-disp); font-weight:600; font-size:0.9rem; color:var(--forest);">88%</div>
+            </div>
+            <div class="bar-track" style="background: rgba(29,58,47,0.08); height:6px;">
+              <div class="bar-fill-sage" style="width:88%;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+              <div style="font-family:var(--font-body); font-size:0.78rem; color:var(--forest);">Operations powered by renewables</div>
+              <div style="font-family:var(--font-disp); font-weight:600; font-size:0.9rem; color:var(--forest);">94%</div>
+            </div>
+            <div class="bar-track" style="background: rgba(29,58,47,0.08); height:6px;">
+              <div class="bar-fill" style="width:94%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 24px 24px; background: var(--forest); text-align:center;">
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">2026 Target</div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(36px,5vw,58px); color:var(--cream); line-height:0.9;">70%</div>
+        <div style="font-family:var(--font-body); font-size:0.7rem; color: var(--text-muted-forest); margin-top:8px; line-height:1.6;">End-of-life recovery rate — on track for Q4 close</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — SOCIAL IMPACT
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8" style="background: var(--forest-deep); min-height:100vh;">
+  <div class="slide-num">08 / 10</div>
+
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="opacity:0.07;">
+    <g fill="none" stroke="#bfa55a" stroke-width="1">
+      <path d="M 50 0 C 100 100 130 200 150 310 C 165 400 168 490 180 580"/>
+      <path d="M 90 130 C 112 115 136 108 155 118"/>
+      <path d="M 100 210 C 122 195 146 188 165 198"/>
+      <path d="M 1150 700 C 1100 600 1070 500 1050 390 C 1034 300 1032 210 1020 120"/>
+      <path d="M 1110 570 C 1088 555 1064 548 1045 558"/>
+    </g>
+  </svg>
+
+  <div style="max-width:1060px; position:relative; z-index:1;">
+    <span class="eyebrow">Social &amp; Community Impact</span>
+
+    <h2 class="disp" style="font-size: clamp(30px, 4vw, 52px); color: var(--cream); margin-bottom:40px; max-width:26ch; line-height:1.1;">
+      People and planet — inseparable.
+    </h2>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1px; background: rgba(191,165,90,0.12);">
+      <div style="background:var(--forest-deep); padding:32px 28px; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(36px,5vw,64px); color:var(--gold); letter-spacing:-0.03em; line-height:0.9;">14,200</div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted-forest);">Smallholder Livelihoods Supported</div>
+        <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--text-muted-forest); line-height:1.75; margin-top:8px;">
+          Across 2,840 farm families. Average income lift of 38%, with fair-trade premiums paid directly to growers, not through intermediaries.
+        </div>
+        <div class="bar-track" style="margin-top:12px;">
+          <div class="bar-fill" style="width:78%;"></div>
+        </div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; color:var(--text-dim-forest); margin-top:4px; letter-spacing:0.1em;">78% of farms led by women or women cooperatives</div>
+      </div>
+
+      <div style="background:var(--forest-mid); padding:32px 28px; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(36px,5vw,64px); color:var(--gold); letter-spacing:-0.03em; line-height:0.9;">$18.4M</div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted-forest);">Fair-Trade Premium Paid — 2026</div>
+        <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--text-muted-forest); line-height:1.75; margin-top:8px;">
+          Above-market premium paid directly to regenerative growers. $4.2M of that reinvested into community infrastructure — water, schools, health clinics.
+        </div>
+        <div class="bar-track" style="margin-top:12px;">
+          <div class="bar-fill-sage" style="width:100%;"></div>
+        </div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; color:var(--text-dim-forest); margin-top:4px; letter-spacing:0.1em;">22% above market rate guaranteed minimum</div>
+      </div>
+
+      <div style="background:var(--forest-mid); padding:32px 28px; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(36px,5vw,64px); color:var(--gold); letter-spacing:-0.03em; line-height:0.9;">960</div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted-forest);">Farmers Trained in Regenerative Practices</div>
+        <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--text-muted-forest); line-height:1.75; margin-top:8px;">
+          Via our Verdant Field School programme, delivered in partnership with local agricultural universities across Ghana, Indonesia, and Mexico.
+        </div>
+      </div>
+
+      <div style="background:var(--forest-deep); padding:32px 28px; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-family:var(--font-disp); font-weight:600; font-size: clamp(36px,5vw,64px); color:var(--gold); letter-spacing:-0.03em; line-height:0.9;">312</div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted-forest);">Verdant Employees — 68% Women</div>
+        <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--text-muted-forest); line-height:1.75; margin-top:8px;">
+          Living wage policy across all geographies. 94% employee engagement score (Gallup Q12). 4.8/5 Glassdoor rating.
+        </div>
+        <div class="bar-track" style="margin-top:12px;">
+          <div class="bar-fill" style="width:68%;"></div>
+        </div>
+        <div style="font-family:var(--font-body); font-size:0.6rem; color:var(--text-dim-forest); margin-top:4px; letter-spacing:0.1em;">68% women across global workforce</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — 2027 GOALS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="background: var(--forest); min-height:100vh;">
+  <div class="slide-num">09 / 10</div>
+
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="opacity:0.07;">
+    <g fill="none" stroke="#bfa55a" stroke-width="1">
+      <path d="M 1050 -20 C 1020 80 980 160 940 240 C 908 310 875 370 840 440"/>
+      <path d="M 980 100 C 960 125 938 138 918 132"/>
+      <path d="M 840 440 C 858 422 880 418 895 432 C 878 448 856 450 840 440 Z"/>
+      <path d="M 100 720 C 130 620 160 530 190 440 C 215 360 240 290 270 210"/>
+      <path d="M 152 620 C 172 600 196 592 214 602"/>
+    </g>
+  </svg>
+
+  <div style="max-width:1060px; position:relative; z-index:1;">
+    <span class="eyebrow">2027 Commitments</span>
+
+    <div style="display:grid; grid-template-columns: 1fr 1.6fr; gap:52px; margin-top:8px; align-items:start;">
+      <div>
+        <h2 class="disp" style="font-size: clamp(30px, 4.5vw, 58px); color:var(--cream); line-height:1.05; margin-bottom:24px;">
+          Higher targets.<br/><em style="font-style:italic; color:var(--gold-light);">Same accountability.</em>
+        </h2>
+        <div style="font-family:var(--font-body); font-size:0.85rem; font-weight:300; color:var(--text-muted-forest); line-height:1.8; margin-bottom:28px;">
+          Our 2027 goals are set against verified 2026 baselines and reviewed by an independent Impact Advisory Board including members from WWF, the Ellen MacArthur Foundation, and the Rocky Mountain Institute.
+        </div>
+        <div class="callout" style="margin-top:0;">
+          <div style="font-family:var(--font-body); font-size:0.72rem; color:var(--text-on-forest); line-height:1.7;">
+            <i class="fa-solid fa-circle-check" style="color:var(--gold); margin-right:8px;"></i>
+            All targets publicly registered with the Science Based Targets initiative and filed with our SEC annual benefit report.
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:0; border: 1px solid rgba(191,165,90,0.2);">
+        <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; font-family:var(--font-body); font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-dim-forest); padding:12px 18px; border-bottom:1px solid rgba(191,165,90,0.15); background:rgba(191,165,90,0.05);">
+          <div>Commitment</div>
+          <div style="text-align:center;">2026 Actual</div>
+          <div style="text-align:center;">2027 Target</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; padding:16px 18px; border-bottom:1px solid rgba(191,165,90,0.1); align-items:center;">
+          <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">CO₂ avoided (million tonnes)</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold); text-align:center;">1.4M</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold-light); text-align:center;">2.5M</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; padding:16px 18px; border-bottom:1px solid rgba(191,165,90,0.1); align-items:center; background:rgba(191,165,90,0.03);">
+          <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">Materials diverted from landfill</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold); text-align:center;">98K t</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold-light); text-align:center;">180K t</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; padding:16px 18px; border-bottom:1px solid rgba(191,165,90,0.1); align-items:center;">
+          <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">Partner brand supply chains</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold); text-align:center;">47</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold-light); text-align:center;">80</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; padding:16px 18px; border-bottom:1px solid rgba(191,165,90,0.1); align-items:center; background:rgba(191,165,90,0.03);">
+          <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">Smallholder farm network</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold); text-align:center;">2,840</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold-light); text-align:center;">4,200</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; padding:16px 18px; border-bottom:1px solid rgba(191,165,90,0.1); align-items:center;">
+          <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">End-of-life product recovery</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold); text-align:center;">61%</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold-light); text-align:center;">80%</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; padding:16px 18px; align-items:center; background:rgba(191,165,90,0.03);">
+          <div style="font-family:var(--font-body); font-size:0.8rem; color:var(--cream);">Operations on renewable energy</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold); text-align:center;">94%</div>
+          <div style="font-family:var(--font-disp); font-weight:600; font-size:1.1rem; color:var(--gold-light); text-align:center;">100%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CTA / CLOSING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="background: var(--forest-deep); min-height:100vh;">
+  <div class="slide-num">10 / 10</div>
+
+  <svg class="botanical-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="opacity:0.1;">
+    <g fill="none" stroke="#bfa55a" stroke-width="1.1">
+      <!-- Central large branch -->
+      <path d="M 600 720 C 580 600 560 480 530 380 C 508 300 480 240 450 170 C 424 108 395 56 370 -10"/>
+      <path d="M 558 540 C 538 518 526 494 535 475"/>
+      <path d="M 542 462 C 562 448 585 444 598 456 C 580 470 558 472 542 462 Z"/>
+      <path d="M 520 420 C 540 406 563 403 576 415 C 558 429 536 430 520 420 Z"/>
+      <!-- Branch left -->
+      <path d="M 530 380 C 490 360 455 338 430 308"/>
+      <path d="M 476 352 C 468 330 468 308 482 296 C 498 310 496 334 476 352 Z"/>
+      <!-- Branch right -->
+      <path d="M 508 300 C 548 278 584 256 615 225"/>
+      <path d="M 558 272 C 567 250 580 237 597 237 C 596 260 582 272 558 272 Z"/>
+      <!-- Leaf motifs top right -->
+      <path d="M 900 100 C 870 140 835 165 800 175 C 820 195 860 188 900 160 C 930 140 940 115 900 100 Z"/>
+      <path d="M 940 60 C 910 100 875 125 840 135 C 860 155 900 148 940 120 C 970 100 980 75 940 60 Z"/>
+      <!-- Scattered leaf lower left -->
+      <path d="M 160 560 C 185 535 215 525 240 535 C 220 558 190 565 160 560 Z"/>
+      <path d="M 130 600 C 155 575 185 565 210 575 C 190 598 160 605 130 600 Z"/>
+    </g>
+  </svg>
+
+  <div style="max-width:960px; position:relative; z-index:1;">
+    <span class="eyebrow" style="margin-bottom:48px;">Join Us</span>
+
+    <div style="font-family: var(--font-disp); font-weight:300; font-style:italic; font-size: clamp(16px, 2vw, 22px); color: var(--gold-light); margin-bottom:16px; letter-spacing:0.02em;">
+      The regenerative economy is not a future ambition.
+    </div>
+    <h2 style="font-family:var(--font-disp); font-weight:600; font-size: clamp(44px, 8vw, 100px); color:var(--cream); letter-spacing:-0.03em; line-height:0.9; margin-bottom:48px;">
+      It starts here.
+    </h2>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:1px; background:rgba(191,165,90,0.12); margin-bottom:48px;">
+      <div style="background:var(--forest-deep); padding:28px 24px;">
+        <div style="font-family:var(--font-body); font-size:1.4rem; color:var(--gold); margin-bottom:14px;">
+          <i class="fa-solid fa-handshake"></i>
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.05rem; color:var(--cream); margin-bottom:10px; line-height:1.2;">Become a Supply Partner</div>
+        <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--text-muted-forest); line-height:1.75;">
+          Transition your materials procurement to regenerative sources. We handle qualification, logistics, and Scope 3 reporting.
+        </div>
+        <div style="margin-top:16px; font-family:var(--font-body); font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">
+          partners@verdant.earth →
+        </div>
+      </div>
+
+      <div style="background:var(--forest-mid); padding:28px 24px;">
+        <div style="font-family:var(--font-body); font-size:1.4rem; color:var(--gold); margin-bottom:14px;">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.05rem; color:var(--cream); margin-bottom:10px; line-height:1.2;">Join the Farm Network</div>
+        <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--text-muted-forest); line-height:1.75;">
+          Growers adopting regenerative practices receive Verdant certification, guaranteed offtake contracts, and above-market premiums.
+        </div>
+        <div style="margin-top:16px; font-family:var(--font-body); font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">
+          farmers@verdant.earth →
+        </div>
+      </div>
+
+      <div style="background:var(--forest-deep); padding:28px 24px;">
+        <div style="font-family:var(--font-body); font-size:1.4rem; color:var(--gold); margin-bottom:14px;">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:1.05rem; color:var(--cream); margin-bottom:10px; line-height:1.2;">Invest in Verdant</div>
+        <div style="font-family:var(--font-body); font-size:0.78rem; font-weight:300; color:var(--text-muted-forest); line-height:1.75;">
+          Series B currently open. Contact our investor relations team for the full data room, audited financials, and impact model.
+        </div>
+        <div style="margin-top:16px; font-family:var(--font-body); font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">
+          ir@verdant.earth →
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:center; padding-top:28px; border-top: 1px solid rgba(191,165,90,0.2);">
+      <div style="font-family:var(--font-body); font-size:0.72rem; font-weight:300; color:var(--text-muted-forest); line-height:1.8;">
+        <i class="fa-solid fa-globe" style="color:var(--gold); margin-right:8px;"></i>verdant.earth<br/>
+        <i class="fa-solid fa-envelope" style="color:var(--gold); margin-right:8px;"></i>hello@verdant.earth<br/>
+        <i class="fa-solid fa-map-marker-alt" style="color:var(--gold); margin-right:8px;"></i>Portland, Oregon &nbsp;·&nbsp; London &nbsp;·&nbsp; Accra
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <div style="font-family:var(--font-body); font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim-forest); line-height:2;">
+          All impact metrics independently verified by DNV GL · GHG Protocol compliant<br/>
+          Verdant Materials PBC · Registered Benefit Corporation · Oregon 2019<br/>
+          This report covers fiscal year January–December 2026
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:var(--font-disp); font-weight:600; font-size:2.4rem; color:rgba(191,165,90,0.25); letter-spacing:-0.02em; line-height:1;">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forge — Product Demo</title>
+<meta name="description" content="Forge CI/CD product demo — builds 9× faster with 96% remote cache hit rate. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/forge-demo" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0d1117" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/forge-demo" />
+<meta property="og:title" content="Forge — Product Demo" />
+<meta property="og:description" content="Forge CI/CD demo deck — builds 9× faster with 96% remote cache hits. A showcase deck generated with presentation-skill-pack." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Forge — Product Demo" />
+<meta name="twitter:description" content="Forge CI/CD demo deck — builds 9× faster, 96% remote cache hit rate." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --surface2: #1c2128;
+    --border:   #30363d;
+    --text:     #e6edf3;
+    --muted:    #8b949e;
+    --muted2:   #484f58;
+    --green:    #3fb950;
+    --blue:     #58a6ff;
+    --purple:   #bc8cff;
+    --amber:    #d29922;
+    --red:      #f85149;
+    --diff-add: rgba(63,185,80,0.12);
+    --diff-del: rgba(248,81,73,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--bg);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  /* ─── GRID BACKGROUND ─── */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(48,54,61,0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(48,54,61,0.35) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  /* ─── GLOW ORBS ─── */
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+    opacity: 0.18;
+  }
+  .glow-green { background: var(--green); width: 500px; height: 500px; top: -120px; right: 10%; }
+  .glow-blue  { background: var(--blue);  width: 400px; height: 400px; bottom: -100px; left: 5%; }
+  .glow-purple{ background: var(--purple);width: 300px; height: 300px; top: 50%; right: -80px; transform: translateY(-50%); }
+
+  /* ─── SLIDES ─── */
+  .slide {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(40px, 5vw, 72px) clamp(28px, 7vw, 110px);
+    overflow: hidden;
+  }
+
+  /* ─── SURFACE CARD ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .card-sm {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    display: block;
+    margin-bottom: 14px;
+  }
+  h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .muted { color: var(--muted); }
+
+  /* gradient text helpers */
+  .grad-green {
+    background: linear-gradient(90deg, var(--green), #56d364);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grad-blue {
+    background: linear-gradient(90deg, var(--blue), #79c0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grad-purple {
+    background: linear-gradient(90deg, var(--purple), #d2a8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── PILL BADGE ─── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .badge-green  { background: rgba(63,185,80,0.12);  border: 1px solid rgba(63,185,80,0.35);  color: var(--green);  }
+  .badge-blue   { background: rgba(88,166,255,0.12); border: 1px solid rgba(88,166,255,0.35); color: var(--blue);   }
+  .badge-purple { background: rgba(188,140,255,0.12);border: 1px solid rgba(188,140,255,0.35);color: var(--purple); }
+  .badge-amber  { background: rgba(210,153,34,0.12); border: 1px solid rgba(210,153,34,0.35); color: var(--amber);  }
+  .badge-red    { background: rgba(248,81,73,0.12);  border: 1px solid rgba(248,81,73,0.35);  color: var(--red);    }
+
+  .pulse-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: currentColor;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ─── TERMINAL ─── */
+  .terminal {
+    background: #010409;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset, 0 16px 48px rgba(0,0,0,0.5);
+  }
+  .terminal-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 9px 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .td { width: 11px; height: 11px; border-radius: 50%; }
+  .td-red  { background: #ff5f57; }
+  .td-yel  { background: #febc2e; }
+  .td-grn  { background: #28c840; }
+  .terminal-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-left: 6px;
+    letter-spacing: 0.05em;
+  }
+  .terminal-body {
+    padding: 22px 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(11px, 1.1vw, 13px);
+    line-height: 1.85;
+  }
+  .t-prompt { color: var(--green); user-select: none; }
+  .t-cmd    { color: var(--text); }
+  .t-flag   { color: var(--blue); }
+  .t-str    { color: var(--amber); }
+  .t-key    { color: var(--purple); }
+  .t-val    { color: var(--green); }
+  .t-num    { color: #79c0ff; }
+  .t-comment{ color: var(--muted2); }
+  .t-dim    { color: rgba(230,237,243,0.25); }
+  .t-err    { color: var(--red); }
+  .t-cursor {
+    display: inline-block;
+    width: 8px; height: 13px;
+    background: var(--blue);
+    vertical-align: text-bottom;
+    animation: blink 1.1s step-end infinite;
+    border-radius: 1px;
+  }
+
+  /* diff lines */
+  .diff-add { background: var(--diff-add); display: block; padding: 0 4px; margin: 0 -26px; padding-left: 30px; color: var(--green); }
+  .diff-del { background: var(--diff-del); display: block; padding: 0 4px; margin: 0 -26px; padding-left: 30px; color: var(--red); }
+
+  /* ─── FILE TREE ─── */
+  .filetree {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+  .filetree .dir  { color: var(--blue); }
+  .filetree .file { color: var(--text); }
+  .filetree .mod  { color: var(--amber); }
+  .filetree .add  { color: var(--green); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.6; transform: scale(1.35); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+  @keyframes slideRight {
+    from { width: 0; }
+    to   { width: var(--w); }
+  }
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .anim { animation: fadeUp 0.55s cubic-bezier(0.22, 0.68, 0, 1.15) both; }
+  .d1 { animation-delay: 0.08s; }
+  .d2 { animation-delay: 0.18s; }
+  .d3 { animation-delay: 0.28s; }
+  .d4 { animation-delay: 0.40s; }
+  .d5 { animation-delay: 0.52s; }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--muted2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 1 — COVER
+  ════════════════════════════════════ */
+  .cover-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(72px, 13vw, 160px);
+    letter-spacing: -0.055em;
+    line-height: 0.9;
+    background: linear-gradient(135deg, var(--text) 0%, var(--muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-top: 12px;
+  }
+  .stat-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px 20px;
+    border-radius: 10px;
+  }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+  }
+  .stat-lbl {
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 2 — PROBLEM
+  ════════════════════════════════════ */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 36px;
+  }
+  .problem-card {
+    padding: 32px 28px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(72px, 9vw, 108px);
+    line-height: 1;
+    letter-spacing: -0.06em;
+    color: rgba(230,237,243,0.05);
+    position: absolute;
+    top: 8px; right: 16px;
+    pointer-events: none;
+  }
+  .problem-icon {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    display: block;
+    color: var(--muted);
+  }
+  .problem-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: clamp(17px, 1.8vw, 22px);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .problem-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .accent-rule {
+    width: 36px; height: 2px; border-radius: 1px;
+    margin-bottom: 14px;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 3 — SOLUTION OVERVIEW
+  ════════════════════════════════════ */
+  .solution-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 48px;
+    width: 100%;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px;
+    border-radius: 10px;
+  }
+  .feature-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .fi-green  { background: rgba(63,185,80,0.12);  border: 1px solid rgba(63,185,80,0.2); }
+  .fi-blue   { background: rgba(88,166,255,0.12); border: 1px solid rgba(88,166,255,0.2); }
+  .fi-purple { background: rgba(188,140,255,0.12);border: 1px solid rgba(188,140,255,0.2); }
+  .feature-text h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 3px;
+  }
+  .feature-text p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 4 — CONFIG SNIPPET
+  ════════════════════════════════════ */
+  .config-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    width: 100%;
+    margin-top: 32px;
+    align-items: start;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 5 — BEFORE/AFTER
+  ════════════════════════════════════ */
+  .ba-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    width: 100%;
+    margin-top: 36px;
+  }
+  .ba-card {
+    padding: 32px 28px;
+    border-radius: 12px;
+  }
+  .ba-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .build-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+  .build-step:last-child { border-bottom: none; }
+  .step-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .step-bar {
+    height: 100%;
+    border-radius: 3px;
+    animation: slideRight 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+  }
+  .step-time {
+    font-size: 0.72rem;
+    color: var(--muted);
+    width: 44px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .ba-total {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ba-total-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .ba-total-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 6 — CACHE HIT DEMO
+  ════════════════════════════════════ */
+  .cache-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    width: 100%;
+    margin-top: 32px;
+    align-items: center;
+  }
+  .cache-ring-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .cache-ring {
+    position: relative;
+    width: 200px; height: 200px;
+  }
+  .cache-ring svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .cache-ring-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .cache-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 2.2rem;
+    letter-spacing: -0.04em;
+    color: var(--green);
+    line-height: 1;
+  }
+  .cache-sub-lbl {
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+  .cache-stat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .cache-stat {
+    padding: 16px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cs-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .cs-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 7 — FEATURE TRIO
+  ════════════════════════════════════ */
+  .trio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    width: 100%;
+    margin-top: 36px;
+  }
+  .trio-card {
+    padding: 36px 28px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+  .trio-icon {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  .trio-title {
+    font-weight: 600;
+    font-size: clamp(16px, 1.7vw, 20px);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .trio-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+  .trio-stat {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 8 — INSTALL & QUICKSTART
+  ════════════════════════════════════ */
+
+  /* ════════════════════════════════════
+     SLIDE 9 — METRICS
+  ════════════════════════════════════ */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    width: 100%;
+    margin-top: 36px;
+  }
+  .metric-card {
+    padding: 28px 22px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .metric-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(26px, 3.2vw, 42px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .metric-delta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(63,185,80,0.12);
+    border: 1px solid rgba(63,185,80,0.25);
+    color: var(--green);
+  }
+  .metric-lbl {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 10 — PRICING
+  ════════════════════════════════════ */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 36px;
+  }
+  .pricing-card {
+    padding: 36px 28px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-card.featured {
+    border-color: rgba(88,166,255,0.5);
+    background: linear-gradient(160deg, rgba(88,166,255,0.06) 0%, var(--surface) 60%);
+    box-shadow: 0 0 0 1px rgba(88,166,255,0.15);
+  }
+  .pricing-featured-badge {
+    position: absolute;
+    top: 0; right: 0;
+    background: var(--blue);
+    color: #000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 0 12px 0 8px;
+  }
+  .pricing-tier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pricing-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 42px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pricing-cadence {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .pricing-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 20px;
+  }
+  .pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .pricing-feature .check {
+    color: var(--green);
+    font-size: 0.75rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .pricing-cta {
+    margin-top: auto;
+    padding-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: auto;
+    padding-top: 20px;
+  }
+  .cta-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: transparent;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: border-color 0.2s;
+  }
+  .cta-outline:hover { border-color: var(--blue); }
+  .cta-solid {
+    background: var(--blue);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* ════════════════════════════════════
+     SLIDE 11 — CLOSING CTA
+  ════════════════════════════════════ */
+  .closing-headline {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(28px, 4.5vw, 64px);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    text-align: center;
+    max-width: 22ch;
+  }
+  .install-block {
+    margin-top: 36px;
+    background: #010409;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(14px, 1.6vw, 18px);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 40px rgba(63,185,80,0.06), 0 0 80px rgba(88,166,255,0.04);
+  }
+  .install-block .t-prompt { font-size: inherit; }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    .grid-bg, .glow-orb, #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    body { background: var(--bg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed dark grid background -->
+<div class="grid-bg"></div>
+
+<!-- Ambient glow orbs -->
+<div class="glow-orb glow-green"></div>
+<div class="glow-orb glow-blue"></div>
+<div class="glow-orb glow-purple"></div>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys or scroll &nbsp;·&nbsp; Forge &nbsp;·&nbsp; <span id="slide-counter">1</span> / 11</div>
+
+<!-- ════════════════════════════════════
+     SLIDE 1 — COVER
+════════════════════════════════════ -->
+<section class="slide" id="slide-1">
+  <div style="display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="badge badge-green">
+        <span class="pulse-dot"></span>
+        Product Launch · 2026
+      </span>
+    </div>
+
+    <div class="anim d1" style="margin-top:24px;">
+      <div class="cover-logo">forge</div>
+    </div>
+
+    <div class="anim d2">
+      <p class="cover-tagline">Remote build cache &amp; CI/CD acceleration for teams that ship fast.</p>
+    </div>
+
+    <div class="anim d3" style="display:flex;gap:14px;margin-top:44px;flex-wrap:wrap;">
+      <div class="card stat-chip">
+        <span class="stat-val grad-green">9×</span>
+        <span class="stat-lbl">Faster builds</span>
+      </div>
+      <div class="card stat-chip">
+        <span class="stat-val grad-blue">96%</span>
+        <span class="stat-lbl">Cache hit rate</span>
+      </div>
+      <div class="card stat-chip">
+        <span class="stat-val grad-purple">$0</span>
+        <span class="stat-lbl">Hobby tier</span>
+      </div>
+      <div class="card stat-chip">
+        <span class="stat-val" style="color:var(--amber);">npm i -g</span>
+        <span class="stat-lbl">@forge/cli</span>
+      </div>
+    </div>
+
+    <div class="anim d4" style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap;">
+      <span class="badge badge-blue"><i class="fa-brands fa-github" style="font-size:0.8em;"></i> GitHub Actions</span>
+      <span class="badge badge-purple"><i class="fa-solid fa-circle" style="font-size:0.5em;"></i> GitLab CI</span>
+      <span class="badge badge-amber"><i class="fa-solid fa-circle" style="font-size:0.5em;"></i> CircleCI</span>
+      <span class="badge badge-green"><i class="fa-solid fa-circle" style="font-size:0.5em;"></i> Bitbucket</span>
+      <span class="badge" style="background:rgba(230,237,243,0.06);border:1px solid var(--border);color:var(--muted);">+ any runner</span>
+    </div>
+  </div>
+
+  <!-- decorative terminal peek -->
+  <div class="anim d5" style="position:absolute;right:clamp(-40px,-2vw,0px);bottom:clamp(40px,6vh,80px);width:clamp(280px,34vw,420px);opacity:0.7;">
+    <div class="terminal" style="pointer-events:none;">
+      <div class="terminal-bar">
+        <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+        <span class="terminal-label">forge run</span>
+      </div>
+      <div class="terminal-body" style="padding:14px 18px;">
+        <div><span class="t-prompt">$</span><span class="t-cmd"> forge run --remote-cache</span></div>
+        <div style="margin-top:6px;"><span class="t-comment">⚡ Cache restored in 1.2s</span></div>
+        <div><span class="t-val">✓</span><span class="t-cmd"> lint        </span><span class="t-comment">0.8s (cached)</span></div>
+        <div><span class="t-val">✓</span><span class="t-cmd"> typecheck   </span><span class="t-comment">1.1s (cached)</span></div>
+        <div><span class="t-val">✓</span><span class="t-cmd"> test:unit   </span><span class="t-comment">3.2s (cached)</span></div>
+        <div><span class="t-val">✓</span><span class="t-cmd"> build       </span><span class="t-comment">4.4s (96% hit)</span></div>
+        <div style="margin-top:6px;"><span class="t-val">Done in 9.5s.</span><span class="t-comment"> Previously: 86s</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 2 — THE PROBLEM
+════════════════════════════════════ -->
+<section class="slide" id="slide-2">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="eyebrow">// the problem</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);">CI is the tax your team pays every day.</h2>
+      <p style="font-size:0.95rem;color:var(--muted);margin-top:8px;max-width:65ch;line-height:1.65;">
+        Every push spends minutes rebuilding identical artifacts. Multiply by 50 engineers
+        and you're burning entire engineer-weeks per month — waiting for green checkmarks.
+      </p>
+    </div>
+
+    <div class="problem-grid anim d2">
+      <div class="card problem-card">
+        <div class="problem-num">01</div>
+        <div class="accent-rule" style="background:var(--red);"></div>
+        <span class="problem-icon"><i class="fa-solid fa-hourglass-half"></i></span>
+        <div class="problem-title">Rebuilding from scratch</div>
+        <div class="problem-desc">
+          Every CI run re-compiles unchanged modules, re-runs passing tests, and re-bundles
+          untouched packages. A 90-second local build becomes an 8-minute CI job.
+        </div>
+      </div>
+
+      <div class="card problem-card">
+        <div class="problem-num">02</div>
+        <div class="accent-rule" style="background:var(--amber);"></div>
+        <span class="problem-icon"><i class="fa-solid fa-bolt-lightning"></i></span>
+        <div class="problem-title">Flaky parallelism</div>
+        <div class="problem-desc">
+          Hand-rolled matrix strategies drift, runner pools are over-provisioned 60% of the
+          time, and one flaky test poisons the entire pipeline. Reruns cost more time than
+          the original build.
+        </div>
+      </div>
+
+      <div class="card problem-card">
+        <div class="problem-num">03</div>
+        <div class="accent-rule" style="background:var(--blue);"></div>
+        <span class="problem-icon"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+        <div class="problem-title">Compute spend explodes</div>
+        <div class="problem-desc">
+          At GitHub Actions pricing, a 50-engineer team running 40 builds/day spends
+          $8k–$14k/month on CI compute alone — 70% of which is redundant work that
+          a proper cache would eliminate.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 3 — SOLUTION OVERVIEW
+════════════════════════════════════ -->
+<section class="slide" id="slide-3">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="eyebrow">// meet forge</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);">One layer. Every build pipeline. Zero wasted work.</h2>
+    </div>
+
+    <div class="solution-layout anim d2">
+      <div class="feature-list">
+        <div class="card feature-item">
+          <div class="feature-icon fi-green"><i class="fa-solid fa-database" style="color:var(--green);"></i></div>
+          <div class="feature-text">
+            <h4>Remote Build Cache</h4>
+            <p>Cryptographically hashed artifact store shared across every runner and developer machine. Build once, reuse everywhere.</p>
+          </div>
+        </div>
+        <div class="card feature-item">
+          <div class="feature-icon fi-blue"><i class="fa-solid fa-diagram-project" style="color:var(--blue);"></i></div>
+          <div class="feature-text">
+            <h4>Task Graph Executor</h4>
+            <p>Forge understands your repo's dependency graph and automatically parallelises tasks with zero config. Affected tasks only.</p>
+          </div>
+        </div>
+        <div class="card feature-item">
+          <div class="feature-icon fi-purple"><i class="fa-solid fa-chart-line" style="color:var(--purple);"></i></div>
+          <div class="feature-text">
+            <h4>Build Intelligence</h4>
+            <p>Per-task timing, cache hit analytics, flake detection, and PR-level diffs in a real-time dashboard.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+          <span class="terminal-label">forge analyse — dependency graph</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-comment"># Forge resolves your monorepo task graph</span></div>
+          <div style="margin-top:10px;"><span class="t-prompt">$</span><span class="t-cmd"> forge analyse --graph</span></div>
+          <div style="margin-top:8px;">
+            <span class="t-key">packages</span><span class="t-dim">:</span>
+          </div>
+          <div style="padding-left:16px;"><span class="t-val">@acme/core</span><span class="t-dim"> → [lint, typecheck, test, build]</span></div>
+          <div style="padding-left:16px;"><span class="t-val">@acme/ui</span><span class="t-dim">  → [lint, typecheck, test, build]</span></div>
+          <div style="padding-left:16px;"><span class="t-val">@acme/api</span><span class="t-dim"> → [lint, typecheck, test, build]</span></div>
+          <div style="padding-left:16px;"><span class="t-val">app</span><span class="t-dim">      → [build] depends on: @acme/*</span></div>
+          <div style="margin-top:12px;"><span class="t-comment"># Changed: @acme/ui (2 files)</span></div>
+          <div><span class="t-comment"># Affected: @acme/ui, app — 6 tasks</span></div>
+          <div><span class="t-comment"># Skipped:  @acme/core, @acme/api — 8 tasks (cache hit)</span></div>
+          <div style="margin-top:8px;"><span class="t-val">✓</span><span class="t-cmd"> Running 6 affected tasks (saving 14 tasks)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 4 — CONFIG SNIPPET
+════════════════════════════════════ -->
+<section class="slide" id="slide-4">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="eyebrow">// zero-to-forge in 60 seconds</span>
+      <h2 style="font-size:clamp(26px,3.5vw,46px);">Drop <code style="font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--blue);">forge.config.ts</code> into your repo. Done.</h2>
+      <p style="font-size:0.9rem;color:var(--muted);margin-top:8px;">No YAML sprawl, no CI plugin maze. One typed config file, every pipeline automatically accelerated.</p>
+    </div>
+
+    <div class="config-layout anim d2">
+      <!-- left: config file -->
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span class="badge badge-blue"><i class="fa-solid fa-file-code"></i> forge.config.ts</span>
+          <span class="badge badge-green">TypeScript</span>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+            <span class="terminal-label">forge.config.ts</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-key">import</span><span class="t-cmd"> { defineConfig } </span><span class="t-key">from</span><span class="t-str"> '@forge/cli'</span><span class="t-cmd">;</span></div>
+            <div style="margin-top:10px;"><span class="t-key">export default</span><span class="t-cmd"> defineConfig({</span></div>
+            <div style="padding-left:20px;margin-top:6px;">
+              <span class="t-key">remoteCache</span><span class="t-cmd">: {</span>
+            </div>
+            <div style="padding-left:40px;">
+              <span class="t-key">provider</span><span class="t-cmd">: </span><span class="t-str">'forge-cloud'</span><span class="t-cmd">,</span>
+            </div>
+            <div style="padding-left:40px;">
+              <span class="t-key">token</span><span class="t-cmd">:    </span><span class="t-str">process.env.FORGE_TOKEN</span><span class="t-cmd">,</span>
+            </div>
+            <div style="padding-left:40px;">
+              <span class="t-key">team</span><span class="t-cmd">:     </span><span class="t-str">'acme-corp'</span><span class="t-cmd">,</span>
+            </div>
+            <div style="padding-left:20px;"><span class="t-cmd">},</span></div>
+            <div style="padding-left:20px;margin-top:6px;">
+              <span class="t-key">pipeline</span><span class="t-cmd">: {</span>
+            </div>
+            <div style="padding-left:40px;">
+              <span class="t-str">'build'</span><span class="t-cmd">:     { </span><span class="t-key">dependsOn</span><span class="t-cmd">: [</span><span class="t-str">'^build'</span><span class="t-cmd">], </span><span class="t-key">outputs</span><span class="t-cmd">: [</span><span class="t-str">'dist/**'</span><span class="t-cmd">] },</span>
+            </div>
+            <div style="padding-left:40px;">
+              <span class="t-str">'test'</span><span class="t-cmd">:      { </span><span class="t-key">dependsOn</span><span class="t-cmd">: [</span><span class="t-str">'build'</span><span class="t-cmd">],   </span><span class="t-key">outputs</span><span class="t-cmd">: [</span><span class="t-str">'coverage/**'</span><span class="t-cmd">] },</span>
+            </div>
+            <div style="padding-left:40px;">
+              <span class="t-str">'lint'</span><span class="t-cmd">:      { </span><span class="t-key">dependsOn</span><span class="t-cmd">: [],           </span><span class="t-key">outputs</span><span class="t-cmd">: [] },</span>
+            </div>
+            <div style="padding-left:40px;">
+              <span class="t-str">'typecheck'</span><span class="t-cmd">: { </span><span class="t-key">dependsOn</span><span class="t-cmd">: [],           </span><span class="t-key">outputs</span><span class="t-cmd">: [] },</span>
+            </div>
+            <div style="padding-left:20px;"><span class="t-cmd">},</span></div>
+            <div><span class="t-cmd">});</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right: GitHub Actions snippet + file tree -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:2px;">
+          <span class="badge badge-purple"><i class="fa-brands fa-github"></i> .github/workflows/ci.yml</span>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+            <span class="terminal-label">.github/workflows/ci.yml — diff</span>
+          </div>
+          <div class="terminal-body" style="padding:14px 18px;">
+            <div class="t-dim">      - name: Build &amp; Test</div>
+            <div class="t-dim">        run: |</div>
+            <span class="diff-del">-         npm run build &amp;&amp; npm test</span>
+            <span class="diff-add">+         npx forge run build test lint typecheck</span>
+            <div class="t-dim">        env:</div>
+            <span class="diff-add">+           FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}</span>
+          </div>
+        </div>
+
+        <div class="card" style="padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Affected files</div>
+          <div class="filetree">
+            <div><span class="dir">packages/</span></div>
+            <div style="padding-left:16px;"><span class="dir">ui/</span></div>
+            <div style="padding-left:32px;"><span class="mod">Button.tsx</span> <span class="badge badge-amber" style="font-size:0.58rem;padding:1px 6px;">modified</span></div>
+            <div style="padding-left:32px;"><span class="mod">Input.tsx</span>  <span class="badge badge-amber" style="font-size:0.58rem;padding:1px 6px;">modified</span></div>
+            <div style="padding-left:16px;"><span class="dir">core/</span><span style="color:var(--green);font-size:0.72rem;margin-left:8px;">✓ cached</span></div>
+            <div style="padding-left:16px;"><span class="dir">api/</span><span style="color:var(--green);font-size:0.72rem;margin-left:8px;">✓ cached</span></div>
+            <div><span class="dir">apps/</span></div>
+            <div style="padding-left:16px;"><span class="mod">web/</span> <span class="badge badge-blue" style="font-size:0.58rem;padding:1px 6px;">rebuild</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 5 — BEFORE / AFTER BUILD TIMES
+════════════════════════════════════ -->
+<section class="slide" id="slide-5">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="eyebrow">// the numbers</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);">Same repo. 9× faster. No code changes.</h2>
+      <p style="font-size:0.9rem;color:var(--muted);margin-top:8px;">Measured on a 14-package TypeScript monorepo, 220k LOC, GitHub Actions ubuntu-latest.</p>
+    </div>
+
+    <div class="ba-layout anim d2">
+      <!-- BEFORE -->
+      <div class="card ba-card" style="border-color:rgba(248,81,73,0.25);">
+        <div class="ba-label" style="color:var(--red);">
+          <i class="fa-solid fa-xmark"></i> Before Forge
+        </div>
+
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">install</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:55%;width:var(--w);background:var(--red);opacity:0.7;"></div>
+          </div>
+          <span class="step-time">44s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">lint</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:18%;width:var(--w);background:var(--red);opacity:0.7;"></div>
+          </div>
+          <span class="step-time">14s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">typecheck</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:24%;width:var(--w);background:var(--red);opacity:0.7;"></div>
+          </div>
+          <span class="step-time">19s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">test:unit</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:100%;width:var(--w);background:var(--red);opacity:0.7;"></div>
+          </div>
+          <span class="step-time">81s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">build</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:93%;width:var(--w);background:var(--red);opacity:0.7;"></div>
+          </div>
+          <span class="step-time">75s</span>
+        </div>
+        <div class="ba-total">
+          <span class="ba-total-lbl">Total</span>
+          <span class="ba-total-val" style="color:var(--red);">4m 33s</span>
+        </div>
+      </div>
+
+      <!-- AFTER -->
+      <div class="card ba-card" style="border-color:rgba(63,185,80,0.3);background:linear-gradient(160deg,rgba(63,185,80,0.04) 0%,var(--surface) 60%);">
+        <div class="ba-label" style="color:var(--green);">
+          <i class="fa-solid fa-bolt"></i> With Forge
+          <span class="badge badge-green" style="margin-left:auto;">96% cache hit</span>
+        </div>
+
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">install</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:9%;width:var(--w);background:var(--green);"></div>
+          </div>
+          <span class="step-time" style="color:var(--green);">7s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">lint</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:1%;width:var(--w);background:var(--green);"></div>
+          </div>
+          <span class="step-time" style="color:var(--green);">0.8s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">typecheck</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:1.4%;width:var(--w);background:var(--green);"></div>
+          </div>
+          <span class="step-time" style="color:var(--green);">1.1s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">test:unit</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:4%;width:var(--w);background:var(--green);"></div>
+          </div>
+          <span class="step-time" style="color:var(--green);">3.2s</span>
+        </div>
+        <div class="build-step">
+          <span style="font-size:0.72rem;color:var(--muted);width:90px;flex-shrink:0;">build</span>
+          <div class="step-bar-track">
+            <div class="step-bar" style="--w:5.5%;width:var(--w);background:var(--green);"></div>
+          </div>
+          <span class="step-time" style="color:var(--green);">4.4s</span>
+        </div>
+        <div class="ba-total">
+          <span class="ba-total-lbl">Total</span>
+          <span class="ba-total-val grad-green">29s</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="anim d3" style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+      <div class="card" style="padding:12px 20px;border-radius:10px;display:inline-flex;align-items:center;gap:10px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--muted);">9.4× speedup</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--muted);">264 seconds saved per run</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--green);">−93% compute cost</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 6 — CACHE HIT DEEP DIVE
+════════════════════════════════════ -->
+<section class="slide" id="slide-6">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="eyebrow">// remote cache</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);">96% cache hit. Across every machine.</h2>
+      <p style="font-size:0.9rem;color:var(--muted);margin-top:8px;max-width:65ch;line-height:1.6;">
+        Forge's content-addressable store is keyed on inputs: source files, env variables,
+        tool versions, and lock files. If the hash matches — the output is served instantly from
+        the shared cache, whether you're on a laptop or a CI runner.
+      </p>
+    </div>
+
+    <div class="cache-layout anim d2">
+      <div>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+            <span class="terminal-label">forge run build — cache trace</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-prompt">$</span><span class="t-cmd"> forge run build </span><span class="t-flag">--verbose</span></div>
+            <div style="margin-top:8px;"><span class="t-comment"># Computing task hashes...</span></div>
+            <div style="margin-top:6px;">
+              <span class="t-key">@acme/core:build</span>
+            </div>
+            <div style="padding-left:20px;"><span class="t-comment">hash: </span><span class="t-num">a3f9c12d</span></div>
+            <div style="padding-left:20px;"><span class="t-val">✓ REMOTE HIT</span><span class="t-comment"> — restored in 340ms</span></div>
+            <div style="margin-top:6px;">
+              <span class="t-key">@acme/api:build</span>
+            </div>
+            <div style="padding-left:20px;"><span class="t-comment">hash: </span><span class="t-num">7b2e4a91</span></div>
+            <div style="padding-left:20px;"><span class="t-val">✓ REMOTE HIT</span><span class="t-comment"> — restored in 290ms</span></div>
+            <div style="margin-top:6px;">
+              <span class="t-key">@acme/ui:build</span>
+            </div>
+            <div style="padding-left:20px;"><span class="t-comment">hash: </span><span class="t-num">f1c8d5e3</span><span class="t-comment"> (new)</span></div>
+            <div style="padding-left:20px;"><span class="t-amber" style="color:var(--amber);">~ MISS</span><span class="t-comment"> — building... 4.4s</span></div>
+            <div style="padding-left:20px;"><span class="t-val">✓ STORED</span><span class="t-comment"> — uploaded 2.1 MB in 180ms</span></div>
+            <div style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px;">
+              <span class="t-val">Cache hits: 12/13 tasks</span><span class="t-dim"> (92.3% this run)</span>
+            </div>
+            <div><span class="t-val">Remote store: </span><span class="t-num">4.7 GB</span><span class="t-dim"> / 50 GB</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;align-items:center;">
+        <div class="cache-ring-wrap">
+          <div class="cache-ring">
+            <svg viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="80" fill="none" stroke="var(--surface2)" stroke-width="18"/>
+              <circle cx="100" cy="100" r="80" fill="none" stroke="var(--green)" stroke-width="18"
+                stroke-dasharray="480.66" stroke-dashoffset="19.23"
+                stroke-linecap="round" style="filter:drop-shadow(0 0 8px rgba(63,185,80,0.5))"/>
+            </svg>
+            <div class="cache-ring-center">
+              <div class="cache-pct">96%</div>
+              <div class="cache-sub-lbl">Hit rate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cache-stat-row" style="width:100%;">
+          <div class="card cache-stat">
+            <span class="cs-label">Artifacts cached</span>
+            <span class="cs-val grad-green">2.4M</span>
+          </div>
+          <div class="card cache-stat">
+            <span class="cs-label">Avg restore time</span>
+            <span class="cs-val" style="color:var(--blue);">310ms</span>
+          </div>
+          <div class="card cache-stat">
+            <span class="cs-label">Compute saved</span>
+            <span class="cs-val" style="color:var(--purple);">1,240 hrs/mo</span>
+          </div>
+          <div class="card cache-stat">
+            <span class="cs-label">Storage TTL</span>
+            <span class="cs-val" style="color:var(--amber);">30 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 7 — FEATURE TRIO
+════════════════════════════════════ -->
+<section class="slide" id="slide-7">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="eyebrow">// what ships with forge</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);">Built for every layer of your pipeline.</h2>
+    </div>
+
+    <div class="trio-grid anim d2">
+      <!-- Feature 1 -->
+      <div class="card trio-card">
+        <div class="trio-icon" style="background:rgba(63,185,80,0.1);border:1px solid rgba(63,185,80,0.2);">
+          <i class="fa-solid fa-layer-group" style="color:var(--green);"></i>
+        </div>
+        <div class="trio-title">Smart Affected Detection</div>
+        <div class="trio-desc">
+          Forge statically analyses your import graph and change set. Only tasks whose
+          inputs have actually changed are scheduled — everything else is served from cache.
+          Works with npm, pnpm, Yarn workspaces, and Lerna.
+        </div>
+        <div class="trio-stat">
+          <span style="color:var(--green);">↓ 87%</span><span style="color:var(--muted);"> avg tasks executed per PR</span>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="card trio-card" style="border-color:rgba(88,166,255,0.25);">
+        <div class="trio-icon" style="background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.2);">
+          <i class="fa-solid fa-rocket" style="color:var(--blue);"></i>
+        </div>
+        <div class="trio-title">Distributed Task Execution</div>
+        <div class="trio-desc">
+          Automatically fans tasks out across available runners using Forge's scheduler.
+          No manual matrix configuration needed — the graph dictates concurrency.
+          Integrates with GitHub Actions, GitLab, CircleCI, and Buildkite.
+        </div>
+        <div class="trio-stat">
+          <span style="color:var(--blue);">8× parallelism</span><span style="color:var(--muted);"> with zero runner config</span>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="card trio-card">
+        <div class="trio-icon" style="background:rgba(188,140,255,0.1);border:1px solid rgba(188,140,255,0.2);">
+          <i class="fa-solid fa-magnifying-glass-chart" style="color:var(--purple);"></i>
+        </div>
+        <div class="trio-title">Build Intelligence Dashboard</div>
+        <div class="trio-desc">
+          Real-time flame graphs, per-task P95 timing, flake rate trending, and cache hit
+          breakdown per branch. Identify which tasks are costing you the most compute
+          with one-click drill-down.
+        </div>
+        <div class="trio-stat">
+          <span style="color:var(--purple);">Live</span><span style="color:var(--muted);"> — data updates every 5 seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="anim d3" style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+      <span class="badge badge-green"><i class="fa-solid fa-lock"></i> SOC 2 Type II</span>
+      <span class="badge badge-blue"><i class="fa-solid fa-shield"></i> Artifact signing</span>
+      <span class="badge badge-purple"><i class="fa-solid fa-key"></i> BYOK encryption</span>
+      <span class="badge badge-amber"><i class="fa-solid fa-globe"></i> Self-hosted option</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 8 — INSTALL & QUICKSTART
+════════════════════════════════════ -->
+<section class="slide" id="slide-8" style="align-items:center;">
+  <div style="width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;">
+    <div class="anim" style="text-align:center;">
+      <span class="eyebrow">// quickstart</span>
+      <h2 style="font-size:clamp(26px,3.5vw,48px);text-align:center;">Up and running in 3 commands.</h2>
+    </div>
+
+    <div class="anim d2" style="width:100%;margin-top:36px;display:flex;flex-direction:column;gap:14px;">
+      <!-- Step 1 -->
+      <div style="display:flex;align-items:flex-start;gap:18px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(63,185,80,0.12);border:1px solid rgba(63,185,80,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;color:var(--green);margin-top:4px;">1</div>
+        <div class="terminal" style="flex:1;">
+          <div class="terminal-bar">
+            <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+            <span class="terminal-label">Install the CLI</span>
+          </div>
+          <div class="terminal-body" style="padding:12px 18px;">
+            <div><span class="t-prompt">$</span><span class="t-cmd"> npm install </span><span class="t-flag">--global</span><span class="t-cmd"> </span><span class="t-str">@forge/cli</span></div>
+            <div style="margin-top:4px;"><span class="t-comment">+ @forge/cli@2.4.1</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="display:flex;align-items:flex-start;gap:18px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(88,166,255,0.12);border:1px solid rgba(88,166,255,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;color:var(--blue);margin-top:4px;">2</div>
+        <div class="terminal" style="flex:1;">
+          <div class="terminal-bar">
+            <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+            <span class="terminal-label">Initialise in your repo</span>
+          </div>
+          <div class="terminal-body" style="padding:12px 18px;">
+            <div><span class="t-prompt">$</span><span class="t-cmd"> forge init</span></div>
+            <div style="margin-top:4px;"><span class="t-val">✓</span><span class="t-comment"> Detected: pnpm workspace (14 packages)</span></div>
+            <div><span class="t-val">✓</span><span class="t-comment"> Created: forge.config.ts</span></div>
+            <div><span class="t-val">✓</span><span class="t-comment"> Updated: .github/workflows/ci.yml</span></div>
+            <div><span class="t-val">✓</span><span class="t-comment"> Remote cache: forge-cloud (free tier)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="display:flex;align-items:flex-start;gap:18px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(188,140,255,0.12);border:1px solid rgba(188,140,255,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;color:var(--purple);margin-top:4px;">3</div>
+        <div class="terminal" style="flex:1;">
+          <div class="terminal-bar">
+            <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+            <span class="terminal-label">Run your pipeline</span>
+          </div>
+          <div class="terminal-body" style="padding:12px 18px;">
+            <div><span class="t-prompt">$</span><span class="t-cmd"> forge run build test lint typecheck</span></div>
+            <div style="margin-top:4px;"><span class="t-comment">⚡ Remote cache: 11/14 tasks restored (1.4s)</span></div>
+            <div><span class="t-val">✓</span><span class="t-cmd"> All tasks complete in </span><span class="t-val">29.1s</span><span class="t-comment">  (was 4m 33s)</span></div>
+            <div style="margin-top:2px;"><span class="t-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="anim d3" style="margin-top:28px;text-align:center;">
+      <p style="font-size:0.85rem;color:var(--muted);">No account required for local caching &nbsp;·&nbsp; Remote cache free up to 5GB &nbsp;·&nbsp; Works offline</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 9 — LIVE METRICS
+════════════════════════════════════ -->
+<section class="slide" id="slide-9">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim">
+      <span class="eyebrow">// real-world impact</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);">Trusted by teams shipping at scale.</h2>
+      <p style="font-size:0.9rem;color:var(--muted);margin-top:8px;">Aggregate metrics across Forge Cloud users. Updated daily.</p>
+    </div>
+
+    <div class="metrics-grid anim d2">
+      <div class="card metric-card">
+        <span class="metric-delta">↑ 96%</span>
+        <div class="metric-val grad-green">96%</div>
+        <div class="metric-lbl">Remote cache hit rate</div>
+      </div>
+      <div class="card metric-card">
+        <span class="metric-delta">↓ 89%</span>
+        <div class="metric-val grad-blue">9×</div>
+        <div class="metric-lbl">Average build speedup</div>
+      </div>
+      <div class="card metric-card">
+        <span class="metric-delta">↑ 3.2k orgs</span>
+        <div class="metric-val grad-purple">3.2k</div>
+        <div class="metric-lbl">Active teams</div>
+      </div>
+      <div class="card metric-card">
+        <span class="metric-delta" style="background:rgba(210,153,34,0.12);border-color:rgba(210,153,34,0.25);color:var(--amber);">saved</span>
+        <div class="metric-val" style="color:var(--amber);">41M</div>
+        <div class="metric-lbl">CPU minutes saved / mo</div>
+      </div>
+    </div>
+
+    <div class="anim d3" style="margin-top:32px;">
+      <div class="terminal" style="max-width:100%;">
+        <div class="terminal-bar">
+          <div class="td td-red"></div><div class="td td-yel"></div><div class="td td-grn"></div>
+          <span class="terminal-label">forge stats — team dashboard snapshot</span>
+        </div>
+        <div class="terminal-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0 40px;padding:20px 26px;">
+          <div>
+            <div><span class="t-comment">── last 30 days ───────────────</span></div>
+            <div style="margin-top:6px;"><span class="t-key">total_runs</span><span class="t-dim">:         </span><span class="t-num">48,291</span></div>
+            <div><span class="t-key">cache_hits</span><span class="t-dim">:         </span><span class="t-num">46,359</span><span class="t-val"> (96.0%)</span></div>
+            <div><span class="t-key">median_duration</span><span class="t-dim">:   </span><span class="t-num">28.4s</span></div>
+            <div><span class="t-key">p95_duration</span><span class="t-dim">:      </span><span class="t-num">61.2s</span></div>
+            <div><span class="t-key">compute_saved</span><span class="t-dim">:     </span><span class="t-val">$3,840</span></div>
+          </div>
+          <div>
+            <div><span class="t-comment">── top cached tasks ────────────</span></div>
+            <div style="margin-top:6px;"><span class="t-key">@acme/core:build</span><span class="t-dim">  </span><span class="t-val">99.1%</span></div>
+            <div><span class="t-key">@acme/api:test</span><span class="t-dim">    </span><span class="t-val">98.4%</span></div>
+            <div><span class="t-key">@acme/ui:lint</span><span class="t-dim">     </span><span class="t-val">97.2%</span></div>
+            <div><span class="t-key">app:typecheck</span><span class="t-dim">     </span><span class="t-val">96.0%</span></div>
+            <div><span class="t-key">app:build</span><span class="t-dim">         </span><span class="t-val">91.3%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 10 — PRICING
+════════════════════════════════════ -->
+<section class="slide" id="slide-10">
+  <div style="width:100%;max-width:1100px;">
+    <div class="anim" style="text-align:center;width:100%;">
+      <span class="eyebrow">// pricing</span>
+      <h2 style="font-size:clamp(28px,4vw,52px);">Start free. Scale without surprises.</h2>
+      <p style="font-size:0.9rem;color:var(--muted);margin-top:8px;">No per-minute compute billing. No hidden egress fees. Cache storage only.</p>
+    </div>
+
+    <div class="pricing-grid anim d2">
+      <!-- Hobby -->
+      <div class="card pricing-card">
+        <div class="pricing-tier" style="color:var(--muted);">Hobby</div>
+        <div class="pricing-price grad-green">$0</div>
+        <div class="pricing-cadence">Free forever</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>5 GB remote cache storage</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Unlimited local caching</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>1 user</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>GitHub Actions integration</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Community support</div>
+        <div style="margin-top:auto;padding-top:20px;">
+          <a class="cta-outline" href="#">
+            <i class="fa-solid fa-download"></i>
+            npm i -g @forge/cli
+          </a>
+        </div>
+      </div>
+
+      <!-- Team (featured) -->
+      <div class="card pricing-card featured">
+        <div class="pricing-featured-badge">MOST POPULAR</div>
+        <div class="pricing-tier" style="color:var(--blue);">Team</div>
+        <div class="pricing-price grad-blue">$49</div>
+        <div class="pricing-cadence">per month · up to 25 users</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>50 GB remote cache storage</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Distributed task execution</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Build Intelligence dashboard</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>All major CI providers</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Artifact signing &amp; BYOK</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Email &amp; Slack support</div>
+        <div style="margin-top:auto;padding-top:20px;">
+          <a class="cta-solid" href="#">
+            <i class="fa-solid fa-arrow-right"></i>
+            Start 14-day free trial
+          </a>
+        </div>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="card pricing-card">
+        <div class="pricing-tier" style="color:var(--purple);">Enterprise</div>
+        <div class="pricing-price grad-purple">Custom</div>
+        <div class="pricing-cadence">Annual contract · unlimited users</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Unlimited cache storage</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Self-hosted deployment</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>SSO / SAML / SCIM</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>SOC 2 Type II + SLA</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Dedicated Slack channel</div>
+        <div class="pricing-feature"><span class="check"><i class="fa-solid fa-check"></i></span>Priority roadmap input</div>
+        <div style="margin-top:auto;padding-top:20px;">
+          <a class="cta-outline" href="#">
+            <i class="fa-regular fa-envelope"></i>
+            Contact sales
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 11 — CLOSING CTA
+════════════════════════════════════ -->
+<section class="slide" id="slide-11" style="align-items:center;text-align:center;">
+  <!-- ambient decoration -->
+  <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(63,185,80,0.1),transparent 65%);top:-150px;left:-100px;pointer-events:none;filter:blur(50px);"></div>
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(88,166,255,0.08),transparent 65%);bottom:-100px;right:5%;pointer-events:none;filter:blur(60px);"></div>
+
+  <div style="display:flex;flex-direction:column;align-items:center;max-width:860px;position:relative;z-index:1;">
+    <div class="anim">
+      <span class="eyebrow">// ship it</span>
+    </div>
+
+    <div class="closing-headline anim d1">
+      Your CI pipeline is<br />
+      <span class="grad-green">9× faster</span><br />
+      from right now.
+    </div>
+
+    <p class="anim d2" style="font-size:clamp(14px,1.4vw,18px);color:var(--muted);margin-top:24px;max-width:50ch;line-height:1.7;">
+      Install Forge in 60 seconds. No credit card needed. Free tier includes
+      5 GB remote cache and unlimited local caching — forever.
+    </p>
+
+    <div class="install-block anim d3">
+      <span class="t-prompt">$</span>
+      <span style="color:var(--text);">npm i </span>
+      <span style="color:var(--blue);">-g</span>
+      <span style="color:var(--amber);"> @forge/cli</span>
+      <span class="t-cursor"></span>
+    </div>
+
+    <div class="anim d4" style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+      <a href="#" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:8px;background:var(--green);color:#000;font-family:'JetBrains Mono',monospace;font-size:0.82rem;font-weight:700;text-decoration:none;">
+        <i class="fa-solid fa-book"></i> Read the docs
+      </a>
+      <a href="#" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:8px;border:1px solid var(--border);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:0.82rem;font-weight:700;text-decoration:none;">
+        <i class="fa-brands fa-github"></i> Star on GitHub
+      </a>
+    </div>
+
+    <div class="anim d5" style="margin-top:44px;display:flex;gap:32px;flex-wrap:wrap;justify-content:center;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted2);">
+        <span style="color:var(--green);">forge.dev</span>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted2);">
+        <i class="fa-brands fa-twitter"></i> @forgedev
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted2);">
+        <i class="fa-brands fa-discord"></i> discord.gg/forgedev
+      </div>
+    </div>
+
+    <div class="anim d5" style="margin-top:28px;">
+      <div class="card" style="padding:10px 20px;border-radius:8px;display:inline-block;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted);">
+          <span style="color:var(--green);">✓</span> YC S25 &nbsp;·&nbsp;
+          <span style="color:var(--green);">✓</span> SOC 2 Type II &nbsp;·&nbsp;
+          <span style="color:var(--green);">✓</span> Artifact signing &nbsp;·&nbsp;
+          <span style="color:var(--green);">✓</span> Self-hosted available
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Arrow key / PageUp / PageDown navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  // IntersectionObserver slide counter
+  (function() {
+    var counter = document.getElementById('slide-counter');
+    var slides = document.querySelectorAll('.slide');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+          counter.textContent = idx;
+        }
+      });
+    }, { threshold: 0.5 });
+    slides.forEach(function(slide) { observer.observe(slide); });
+  })();
+</script>
+</body>
+</html>

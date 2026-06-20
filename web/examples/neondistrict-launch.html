@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEON DISTRICT — Next-Gen Game Streaming &amp; Creator Platform</title>
+<meta name="description" content="Neon District is the next-gen game-streaming and creator platform — low-latency streaming, built-in monetization, and an AI clip engine that makes every moment shareable. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/neondistrict-launch" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#050510" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/neondistrict-launch" />
+<meta property="og:title" content="NEON DISTRICT — Next-Gen Game Streaming &amp; Creator Platform" />
+<meta property="og:description" content="Low-latency streaming. Built-in monetization. AI clip engine. 2.4M waitlist. Launching Q3 2026." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NEON DISTRICT — Next-Gen Game Streaming &amp; Creator Platform" />
+<meta name="twitter:description" content="Low-latency streaming. Built-in monetization. AI clip engine. 2.4M waitlist." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --void:        #050510;
+    --void-2:      #080818;
+    --void-3:      #0d0d25;
+    --panel:       #0a0a1e;
+    --panel-2:     #0f0f2a;
+    --magenta:     #ff2e97;
+    --cyan:        #00e5ff;
+    --purple:      #b44fff;
+    --magenta-dim: rgba(255,46,151,0.18);
+    --cyan-dim:    rgba(0,229,255,0.12);
+    --purple-dim:  rgba(180,79,255,0.12);
+    --text-on:     #e8e4f0;
+    --text-mid:    #8884a8;
+    --text-dim:    #44405c;
+    --border-mag:  rgba(255,46,151,0.35);
+    --border-cyan: rgba(0,229,255,0.28);
+    --border-pur:  rgba(180,79,255,0.28);
+    --font-disp:   'Orbitron', 'Rajdhani', sans-serif;
+    --font-mono:   'Share Tech Mono', 'Courier New', monospace;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--void);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--void);
+    color: var(--text-on);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ─── GLOBAL SCANLINE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.18) 2px,
+      rgba(0,0,0,0.18) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: multiply;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 5vw, 72px) clamp(32px, 7vw, 100px);
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-mag);
+  }
+
+  /* ─── KATAKANA ACCENT WATERMARK ─── */
+  .slide::before {
+    content: 'ネオン・ディストリクト きろく ストリーム';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center center;
+    font-family: serif;
+    font-size: clamp(10px, 1.2vw, 14px);
+    color: rgba(255,46,151,0.06);
+    letter-spacing: 0.3em;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ─── NEON GRID FLOOR ─── */
+  .slide::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background-image:
+      linear-gradient(to right, rgba(0,229,255,0.06) 1px, transparent 1px),
+      linear-gradient(to top, rgba(0,229,255,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-num {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--text-dim);
+    letter-spacing: 0.16em;
+    z-index: 10;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 400;
+    color: var(--text-mid);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: rgba(5,5,16,0.88);
+    border: 1px solid var(--border-cyan);
+    padding: 5px 16px;
+    box-shadow: 0 0 12px rgba(0,229,255,0.15);
+  }
+
+  /* ─── TYPOGRAPHY UTILITIES ─── */
+  .orb {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    line-height: 0.92;
+  }
+  .mono { font-family: var(--font-mono); }
+  .mag  { color: var(--magenta); }
+  .cy   { color: var(--cyan); }
+  .pur  { color: var(--purple); }
+  .muted { color: var(--text-mid); }
+  .dim   { color: var(--text-dim); }
+
+  /* ─── NEON GLOW TEXT HELPERS ─── */
+  .glow-mag {
+    color: var(--magenta);
+    text-shadow:
+      0 0 8px var(--magenta),
+      0 0 24px rgba(255,46,151,0.55),
+      0 0 60px rgba(255,46,151,0.20);
+  }
+  .glow-cy {
+    color: var(--cyan);
+    text-shadow:
+      0 0 8px var(--cyan),
+      0 0 24px rgba(0,229,255,0.55),
+      0 0 60px rgba(0,229,255,0.20);
+  }
+  .glow-pur {
+    color: var(--purple);
+    text-shadow:
+      0 0 8px var(--purple),
+      0 0 24px rgba(180,79,255,0.55),
+      0 0 60px rgba(180,79,255,0.20);
+  }
+
+  /* ─── GLITCH HEADING ─── */
+  .glitch {
+    position: relative;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .glitch::before {
+    color: var(--cyan);
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    transform: translate(-3px, 0);
+    opacity: 0.6;
+    animation: glitch-top 4s infinite linear;
+  }
+  .glitch::after {
+    color: var(--magenta);
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    transform: translate(3px, 0);
+    opacity: 0.6;
+    animation: glitch-bot 3.7s infinite linear;
+  }
+  @keyframes glitch-top {
+    0%,90%,100%  { transform: translate(-3px,0); }
+    92%          { transform: translate(-6px,2px); }
+    94%          { transform: translate(3px,-1px); }
+    96%          { transform: translate(-3px,0); }
+  }
+  @keyframes glitch-bot {
+    0%,88%,100%  { transform: translate(3px,0); }
+    90%          { transform: translate(7px,-2px); }
+    93%          { transform: translate(-4px,1px); }
+    96%          { transform: translate(3px,0); }
+  }
+
+  /* ─── PANEL / CARD ─── */
+  .neon-panel {
+    background: var(--panel);
+    border: 1px solid var(--border-mag);
+    padding: 24px 28px;
+    position: relative;
+  }
+  .neon-panel-cy {
+    background: var(--panel);
+    border: 1px solid var(--border-cyan);
+    padding: 24px 28px;
+    position: relative;
+  }
+  .neon-panel-pur {
+    background: var(--panel);
+    border: 1px solid var(--border-pur);
+    padding: 24px 28px;
+    position: relative;
+  }
+  .neon-panel::before,
+  .neon-panel-cy::before,
+  .neon-panel-pur::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 0;
+    pointer-events: none;
+  }
+  .neon-panel::before {
+    box-shadow: inset 0 0 20px rgba(255,46,151,0.06);
+  }
+  .neon-panel-cy::before {
+    box-shadow: inset 0 0 20px rgba(0,229,255,0.06);
+  }
+  .neon-panel-pur::before {
+    box-shadow: inset 0 0 20px rgba(180,79,255,0.06);
+  }
+
+  /* ─── TAG BADGES ─── */
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    border: 1px solid var(--border-mag);
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 18px;
+    box-shadow: 0 0 8px rgba(255,46,151,0.2);
+  }
+  .tag-cy {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    border: 1px solid var(--border-cyan);
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 18px;
+    box-shadow: 0 0 8px rgba(0,229,255,0.2);
+  }
+  .tag-pur {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    border: 1px solid var(--border-pur);
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 18px;
+    box-shadow: 0 0 8px rgba(180,79,255,0.2);
+  }
+
+  /* ─── NEON STAT PANELS ─── */
+  .stat-panel {
+    background: var(--panel-2);
+    border: 1px solid var(--border-mag);
+    padding: 22px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .stat-panel-cy {
+    background: var(--panel-2);
+    border: 1px solid var(--border-cyan);
+    padding: 22px 24px;
+    text-align: center;
+  }
+  .stat-panel-pur {
+    background: var(--panel-2);
+    border: 1px solid var(--border-pur);
+    padding: 22px 24px;
+    text-align: center;
+  }
+  .stat-val {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 52px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 4px;
+  }
+  .stat-delta {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── NEON DIVIDER ─── */
+  .neon-rule-mag {
+    border: none;
+    border-top: 1px solid var(--border-mag);
+    box-shadow: 0 0 8px rgba(255,46,151,0.25);
+    margin: 24px 0;
+  }
+  .neon-rule-cy {
+    border: none;
+    border-top: 1px solid var(--border-cyan);
+    box-shadow: 0 0 8px rgba(0,229,255,0.25);
+    margin: 24px 0;
+  }
+
+  /* ─── NEON SIGNBOARD ─── */
+  .signboard {
+    border: 2px solid var(--magenta);
+    box-shadow:
+      0 0 16px rgba(255,46,151,0.4),
+      0 0 40px rgba(255,46,151,0.15),
+      inset 0 0 16px rgba(255,46,151,0.06);
+    padding: 16px 28px;
+    display: inline-block;
+    text-align: center;
+  }
+  .signboard-cy {
+    border: 2px solid var(--cyan);
+    box-shadow:
+      0 0 16px rgba(0,229,255,0.4),
+      0 0 40px rgba(0,229,255,0.15),
+      inset 0 0 16px rgba(0,229,255,0.06);
+    padding: 16px 28px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  /* ─── FEATURE ROW / ICON CARD ─── */
+  .feat-card {
+    background: var(--panel);
+    border: 1px solid var(--border-mag);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .feat-card-cy {
+    background: var(--panel);
+    border: 1px solid var(--border-cyan);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .feat-card-pur {
+    background: var(--panel);
+    border: 1px solid var(--border-pur);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .feat-icon {
+    font-size: 1.4rem;
+  }
+  .feat-head {
+    font-family: var(--font-disp);
+    font-weight: 700;
+    font-size: clamp(13px, 1.4vw, 17px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+  .feat-body {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ─── TRACTION BARS ─── */
+  .bar-track {
+    height: 6px;
+    background: var(--panel-2);
+    border: 1px solid var(--border-mag);
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--magenta), var(--purple));
+    box-shadow: 0 0 10px rgba(255,46,151,0.6);
+  }
+  .bar-fill-cy {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    box-shadow: 0 0 10px rgba(0,229,255,0.6);
+  }
+
+  /* ─── COMPARISON TABLE ─── */
+  .compare-table {
+    width: 100%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    margin-top: 28px;
+    font-family: var(--font-mono);
+    font-size: clamp(10px, 1.1vw, 13px);
+  }
+  .compare-table th {
+    padding: 12px 16px;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    background: var(--panel);
+    border: 1px solid var(--border-mag);
+    text-align: left;
+    font-weight: 700;
+  }
+  .compare-table th.hl {
+    color: var(--magenta);
+    border-color: var(--magenta);
+    box-shadow: 0 0 12px rgba(255,46,151,0.25);
+    text-shadow: 0 0 8px rgba(255,46,151,0.5);
+  }
+  .compare-table td {
+    padding: 11px 16px;
+    border: 1px solid rgba(255,46,151,0.12);
+    color: var(--text-mid);
+    vertical-align: middle;
+  }
+  .compare-table td:first-child {
+    color: var(--text-on);
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .compare-table td.hl {
+    background: rgba(255,46,151,0.06);
+    color: var(--magenta);
+    border-color: rgba(255,46,151,0.22);
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(255,46,151,0.4);
+  }
+  .check { color: var(--cyan); text-shadow: 0 0 6px rgba(0,229,255,0.5); font-weight: 700; }
+  .cross { color: var(--text-dim); }
+
+  /* ─── CTA BUTTON ─── */
+  .neon-btn {
+    display: inline-block;
+    font-family: var(--font-disp);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--void);
+    background: var(--magenta);
+    border: 2px solid var(--magenta);
+    padding: 14px 36px;
+    cursor: pointer;
+    box-shadow:
+      0 0 20px rgba(255,46,151,0.6),
+      0 0 50px rgba(255,46,151,0.2);
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .neon-btn:hover {
+    box-shadow:
+      0 0 30px rgba(255,46,151,0.9),
+      0 0 80px rgba(255,46,151,0.35);
+  }
+  .neon-btn-cy {
+    display: inline-block;
+    font-family: var(--font-disp);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--void);
+    background: var(--cyan);
+    border: 2px solid var(--cyan);
+    padding: 14px 36px;
+    cursor: pointer;
+    box-shadow:
+      0 0 20px rgba(0,229,255,0.6),
+      0 0 50px rgba(0,229,255,0.2);
+    text-decoration: none;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    body::before { display: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    .slide::before,
+    .slide::after { display: none; }
+    .glitch::before,
+    .glitch::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; NEON DISTRICT &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — NEON TITLE / COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,46,151,0.08) 0%, var(--void) 70%);">
+  <div class="slide-num">[ND//01]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag-cy">[PLATFORM_LAUNCH // BETA 2026]</span>
+
+    <!-- Glitch wordmark -->
+    <div class="orb glitch" data-text="NEON" style="font-size:clamp(80px,16vw,220px);letter-spacing:-0.04em;color:var(--text-on);text-transform:uppercase;line-height:0.85;">NEON</div>
+    <div class="orb" style="font-size:clamp(80px,16vw,220px);letter-spacing:-0.04em;line-height:0.85;text-transform:uppercase;" class="glow-mag">
+      <span class="glow-mag">DISTRICT</span>
+    </div>
+
+    <div style="margin-top:28px;font-family:var(--font-mono);font-size:clamp(11px,1.1vw,14px);color:var(--text-mid);letter-spacing:0.12em;text-transform:uppercase;max-width:56ch;line-height:1.8;">
+      The game-streaming &amp; creator platform built for the next generation of live culture.<br />
+      <span style="color:var(--text-on);">Low-latency. Monetization-first. AI-powered.</span>
+    </div>
+
+    <!-- Stat chips -->
+    <div style="display:flex;gap:0;margin-top:44px;flex-wrap:wrap;">
+      <div style="border:1px solid var(--border-mag);border-right:none;padding:16px 24px;">
+        <div class="orb glow-mag" style="font-size:clamp(22px,3vw,36px);">2.4M</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Waitlist Users</div>
+      </div>
+      <div style="border:1px solid var(--border-mag);border-right:none;padding:16px 24px;">
+        <div class="orb glow-cy" style="font-size:clamp(22px,3vw,36px);">9ms</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Glass-to-Glass Latency</div>
+      </div>
+      <div style="border:1px solid var(--border-mag);border-right:none;padding:16px 24px;">
+        <div class="orb glow-pur" style="font-size:clamp(22px,3vw,36px);">$38M</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Creator Payouts Year 1</div>
+      </div>
+      <div style="border:1px solid var(--border-mag);border-right:none;padding:16px 24px;">
+        <div class="orb glow-mag" style="font-size:clamp(22px,3vw,36px);">$22M</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Seed + Pre-A Raised</div>
+      </div>
+      <div style="border:1px solid var(--border-mag);padding:16px 24px;">
+        <div class="orb glow-cy" style="font-size:clamp(22px,3vw,36px);">Q3&nbsp;'26</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Public Launch</div>
+      </div>
+    </div>
+
+    <div style="position:absolute;bottom:36px;right:clamp(32px,7vw,100px);font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;text-align:right;line-height:1.9;">
+      NEON DISTRICT INC. &nbsp;·&nbsp; LOS ANGELES / TOKYO / AMSTERDAM<br />
+      SERIES A // JUNE 2026 &nbsp;·&nbsp; STRICTLY CONFIDENTIAL
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2" style="background: var(--void-2);">
+  <div class="slide-num">[ND//02]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[PROBLEM_STATEMENT]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);max-width:22ch;text-transform:uppercase;margin-bottom:8px;">
+      GAME STREAMING IS<br /><span class="glow-mag">BROKEN.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-mid);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:32px;">THREE STRUCTURAL FAILURES KILLING CREATOR CULTURE</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;width:100%;">
+      <!-- Problem 1 -->
+      <div class="neon-panel" style="border-right:none;padding:32px 28px;">
+        <div style="font-family:var(--font-disp);font-weight:900;font-size:clamp(48px,7vw,80px);line-height:1;letter-spacing:-0.04em;color:rgba(255,46,151,0.12);position:absolute;bottom:12px;right:16px;pointer-events:none;">01</div>
+        <div style="font-family:var(--font-disp);font-weight:700;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--magenta);margin-bottom:10px;">LATENCY HELL</div>
+        <div class="orb glow-mag" style="font-size:clamp(36px,5vw,60px);margin-bottom:10px;">6–8s</div>
+        <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-mid);line-height:1.7;max-width:30ch;">
+          Average stream delay on Twitch &amp; YouTube Live. Chat reactions arrive <em style="color:var(--text-on);">six seconds after the play happens</em>. Culture-defining moments evaporate. Viewers leave.
+        </div>
+      </div>
+      <!-- Problem 2 -->
+      <div class="neon-panel-cy" style="border-right:none;padding:32px 28px;">
+        <div style="font-family:var(--font-disp);font-weight:900;font-size:clamp(48px,7vw,80px);line-height:1;letter-spacing:-0.04em;color:rgba(0,229,255,0.08);position:absolute;bottom:12px;right:16px;pointer-events:none;">02</div>
+        <div style="font-family:var(--font-disp);font-weight:700;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;">CREATOR POVERTY</div>
+        <div class="orb glow-cy" style="font-size:clamp(36px,5vw,60px);margin-bottom:10px;">3%</div>
+        <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-mid);line-height:1.7;max-width:30ch;">
+          Platform revenue cut reaching creators on average. Ad splits and sub fees extract the majority. The top 1% of streamers earn 82% of all creator payouts. <em style="color:var(--text-on);">The long tail starves.</em>
+        </div>
+      </div>
+      <!-- Problem 3 -->
+      <div class="neon-panel-pur" style="padding:32px 28px;">
+        <div style="font-family:var(--font-disp);font-weight:900;font-size:clamp(48px,7vw,80px);line-height:1;letter-spacing:-0.04em;color:rgba(180,79,255,0.08);position:absolute;bottom:12px;right:16px;pointer-events:none;">03</div>
+        <div style="font-family:var(--font-disp);font-weight:700;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple);margin-bottom:10px;">CLIP GRAVEYARD</div>
+        <div class="orb glow-pur" style="font-size:clamp(36px,5vw,60px);margin-bottom:10px;">94%</div>
+        <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-mid);line-height:1.7;max-width:30ch;">
+          Of stream VODs are never clipped or shared. Viral moments die in 6-hour archives nobody watches. The content flywheel that would grow the audience never spins.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:0;border:1px solid var(--border-mag);border-top:none;padding:18px 28px;background:rgba(255,46,151,0.04);">
+      <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);line-height:1.8;">
+        <span style="color:var(--magenta);font-weight:700;">[THE GAP]</span> &nbsp; 920M people watch game content monthly. A $48B market. Yet the infrastructure underneath hasn't changed meaningfully since 2011. &nbsp;<span style="color:var(--text-on);font-weight:700;">Neon District rebuilds the stack for live culture.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE PLATFORM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3" style="background: radial-gradient(ellipse 70% 50% at 30% 50%, rgba(0,229,255,0.05) 0%, var(--void) 70%);">
+  <div class="slide-num">[ND//03]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag-cy">[THE_PLATFORM]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);max-width:26ch;text-transform:uppercase;margin-bottom:32px;">
+      ONE PLATFORM.<br /><span class="glow-cy">THREE UNFAIR EDGES.</span>
+    </h2>
+
+    <div style="display:grid;grid-template-columns:5fr 4fr;gap:0;width:100%;border:1px solid var(--border-cyan);">
+      <!-- Main description -->
+      <div style="padding:40px 36px;border-right:1px solid var(--border-cyan);">
+        <span class="tag-cy" style="margin-bottom:20px;">[CORE_PLATFORM]</span>
+        <div class="orb glow-cy" style="font-size:clamp(22px,3vw,38px);text-transform:uppercase;margin-bottom:14px;">NEON DISTRICT<br />STREAM ENGINE</div>
+        <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--text-mid);line-height:1.75;max-width:44ch;margin-bottom:24px;">
+          A proprietary edge-streaming stack delivering <span style="color:var(--cyan);">9ms glass-to-glass latency</span> — real-time interaction between streamer and viewer. No CDN middlemen. No re-encoding tax. Our globally distributed relay network covers 94 cities across 38 countries.
+        </div>
+        <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);line-height:1.9;">
+          <div style="margin-bottom:6px;"><span class="glow-mag" style="margin-right:10px;">▸</span>WebRTC WHIP/WHEP ingest — stream from OBS, mobile, browser</div>
+          <div style="margin-bottom:6px;"><span class="glow-cy" style="margin-right:10px;">▸</span>AV1 adaptive bitrate — 40% bandwidth savings vs. H.264 at same quality</div>
+          <div style="margin-bottom:6px;"><span class="glow-pur" style="margin-right:10px;">▸</span>Shared session state — viewer polls, predictions, and gifting sync in &lt;50ms</div>
+          <div><span class="glow-mag" style="margin-right:10px;">▸</span>Creator monetization SDK — subs, tips, drops, and virtual goods in one API</div>
+        </div>
+      </div>
+      <!-- Side stats -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="padding:28px 26px;border-bottom:1px solid var(--border-cyan);flex:1;">
+          <div style="font-family:var(--font-disp);font-weight:700;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;">[LATENCY]</div>
+          <div class="orb glow-cy" style="font-size:clamp(40px,6vw,72px);line-height:1;">9ms</div>
+          <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-mid);margin-top:6px;">Glass-to-glass · p99 · global avg</div>
+          <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);margin-top:4px;">vs. 6,000–8,000ms on legacy platforms</div>
+        </div>
+        <div style="padding:28px 26px;border-bottom:1px solid var(--border-cyan);flex:1;">
+          <div style="font-family:var(--font-disp);font-weight:700;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--magenta);margin-bottom:8px;">[REVENUE TO CREATORS]</div>
+          <div class="orb glow-mag" style="font-size:clamp(40px,6vw,72px);line-height:1;">70%</div>
+          <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-mid);margin-top:6px;">Of platform revenue to creators</div>
+          <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);margin-top:4px;">vs. industry avg ~3–5%</div>
+        </div>
+        <div style="padding:28px 26px;flex:1;">
+          <div style="font-family:var(--font-disp);font-weight:700;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;">[AI CLIP ENGINE]</div>
+          <div class="orb glow-pur" style="font-size:clamp(40px,6vw,72px);line-height:1;">&lt;4s</div>
+          <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-mid);margin-top:6px;">Auto-clip ready after peak moment</div>
+          <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);margin-top:4px;">Posted to TikTok / Shorts / Reels auto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — FEATURE: ULTRA-LOW LATENCY
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4" style="background: var(--void-2);">
+  <div class="slide-num">[ND//04]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag-cy">[FEATURE_01 // NEON_STREAM_ENGINE]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);text-transform:uppercase;max-width:24ch;margin-bottom:4px;">
+      REAL-TIME MEANS<br /><span class="glow-cy">ACTUALLY REAL-TIME.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);letter-spacing:0.1em;margin-bottom:32px;text-transform:uppercase;">NEON STREAM ENGINE — EDGE RELAY ARCHITECTURE</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;">
+      <div style="padding-right:48px;border-right:1px solid var(--border-cyan);">
+        <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--text-mid);line-height:1.8;margin-bottom:24px;">
+          We built a <span style="color:var(--cyan);">94-city edge relay network</span> using co-located PoPs within 30ms of 91% of internet-connected gamers. Unlike CDN-backed HLS, Neon Stream Engine uses a persistent WebRTC relay mesh — no segmenting, no chunking, no artificial latency floor.
+        </div>
+        <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-mid);line-height:1.8;">
+          When a streamer lands a clutch play, their chat sees it <em style="color:var(--cyan);">as it happens</em> — not six seconds later. Predictions resolve in real time. Gift reactions sync to the exact frame. The emotional loop between creator and viewer finally closes.
+        </div>
+        <hr class="neon-rule-cy" />
+        <div style="font-family:var(--font-mono);font-size:0.66rem;color:var(--text-mid);line-height:1.9;">
+          <div><span class="glow-cy" style="margin-right:8px;">◈</span> WebRTC WHIP ingest — native OBS / Streamlabs / mobile support</div>
+          <div><span class="glow-cy" style="margin-right:8px;">◈</span> AV1 codec — 40% bandwidth reduction vs H.264 at equivalent quality</div>
+          <div><span class="glow-cy" style="margin-right:8px;">◈</span> Sub-50ms shared session state for overlays, polls, predictions</div>
+          <div><span class="glow-cy" style="margin-right:8px;">◈</span> Adaptive fallback to HLS for regions where WebRTC is blocked</div>
+        </div>
+      </div>
+      <div style="padding-left:48px;display:flex;flex-direction:column;gap:16px;">
+        <div class="signboard-cy" style="width:100%;padding:24px;">
+          <div class="orb glow-cy" style="font-size:clamp(56px,9vw,110px);line-height:0.9;">9ms</div>
+          <div style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mid);margin-top:10px;">Glass-to-Glass · Global P99</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="stat-panel-cy" style="text-align:left;padding:16px 18px;">
+            <div class="stat-lbl">Twitch latency</div>
+            <div style="font-family:var(--font-disp);font-weight:900;font-size:1.6rem;color:rgba(255,80,80,0.8);">6,400ms</div>
+            <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">platform default</div>
+          </div>
+          <div class="stat-panel-cy" style="text-align:left;padding:16px 18px;">
+            <div class="stat-lbl">YouTube Live latency</div>
+            <div style="font-family:var(--font-disp);font-weight:900;font-size:1.6rem;color:rgba(255,80,80,0.8);">7,800ms</div>
+            <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">"ultra-low" mode</div>
+          </div>
+          <div class="stat-panel-cy" style="text-align:left;padding:16px 18px;">
+            <div class="stat-lbl">Neon District</div>
+            <div class="orb glow-cy" style="font-size:1.6rem;">9ms</div>
+            <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">no-compromise p99</div>
+          </div>
+          <div class="stat-panel-cy" style="text-align:left;padding:16px 18px;">
+            <div class="stat-lbl">94 PoP cities</div>
+            <div class="orb glow-cy" style="font-size:1.6rem;">38</div>
+            <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">countries covered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — FEATURE: CREATOR MONETIZATION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="background: radial-gradient(ellipse 80% 60% at 70% 60%, rgba(255,46,151,0.07) 0%, var(--void) 70%);">
+  <div class="slide-num">[ND//05]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[FEATURE_02 // CREATOR_ECONOMY_ENGINE]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);text-transform:uppercase;max-width:20ch;margin-bottom:4px;">
+      70% TO CREATORS.<br /><span class="glow-mag">EVERY STREAM.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);letter-spacing:0.1em;margin-bottom:32px;text-transform:uppercase;">NEON ECONOMY ENGINE — DIVERSIFIED CREATOR REVENUE STACK</div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;width:100%;border:1px solid var(--border-mag);">
+      <div style="padding:24px 20px;border-right:1px solid var(--border-mag);">
+        <div style="font-size:1.4rem;color:var(--magenta);margin-bottom:12px;"><i class="fa fa-ticket"></i></div>
+        <div style="font-family:var(--font-disp);font-weight:700;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--magenta);margin-bottom:8px;">NEON SUBS</div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);line-height:1.7;">Tiered subscriptions at $2.99 / $5.99 / $9.99. Creator keeps 70%. Sub gifting built-in. Emotes &amp; badges auto-generated from stream highlights.</div>
+        <div class="orb glow-mag" style="font-size:1.6rem;margin-top:14px;">70%</div>
+        <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">rev share to creator</div>
+      </div>
+      <div style="padding:24px 20px;border-right:1px solid var(--border-mag);background:rgba(255,46,151,0.04);">
+        <div style="font-size:1.4rem;color:var(--cyan);margin-bottom:12px;"><i class="fa fa-bolt"></i></div>
+        <div style="font-family:var(--font-disp);font-weight:700;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;">LIVE DROPS</div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);line-height:1.7;">Limited virtual items, skins, and access keys drop during streams. Scarcity mechanics drive urgency. Creator receives royalties on secondary sales via our NFT-free smart ledger.</div>
+        <div class="orb glow-cy" style="font-size:1.6rem;margin-top:14px;">$4.20</div>
+        <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">avg drop revenue / viewer</div>
+      </div>
+      <div style="padding:24px 20px;border-right:1px solid var(--border-mag);">
+        <div style="font-size:1.4rem;color:var(--purple);margin-bottom:12px;"><i class="fa fa-star"></i></div>
+        <div style="font-family:var(--font-disp);font-weight:700;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;">DISTRICT PASSES</div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);line-height:1.7;">Monthly fan passes unlock exclusive VODs, behind-the-scenes, and early beta access to unreleased titles. Bundled with merch fulfillment via our print-on-demand partner.</div>
+        <div class="orb glow-pur" style="font-size:1.6rem;margin-top:14px;">$14.99</div>
+        <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">avg pass price / month</div>
+      </div>
+      <div style="padding:24px 20px;">
+        <div style="font-size:1.4rem;color:var(--magenta);margin-bottom:12px;"><i class="fa fa-ad"></i></div>
+        <div style="font-family:var(--font-disp);font-weight:700;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--magenta);margin-bottom:8px;">BRAND SYNC</div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);line-height:1.7;">Contextual brand integrations triggered by in-game events — not pre-roll interruptions. Brands pay CPM 3× the display network average. Creator gets 50% of brand deal revenue.</div>
+        <div class="orb glow-mag" style="font-size:1.6rem;margin-top:14px;">3×</div>
+        <div style="font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);">CPM vs display avg</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);line-height:1.9;">
+      <span class="glow-mag" style="font-weight:700;">[CREATOR MATH]</span> &nbsp; A mid-tier creator with 4,000 concurrent viewers earns an estimated <span style="color:var(--text-on);font-weight:700;">$12,400/month</span> on Neon District vs. &lt;$1,800 on Twitch at equivalent viewership. We model this in our data room.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — FEATURE: AI CLIP ENGINE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6" style="background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(180,79,255,0.07) 0%, var(--void-2) 70%);">
+  <div class="slide-num">[ND//06]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag-pur">[FEATURE_03 // NEON_CLIP_AI]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);text-transform:uppercase;max-width:24ch;margin-bottom:4px;">
+      EVERY MOMENT<br /><span class="glow-pur">BECOMES CONTENT.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);letter-spacing:0.1em;margin-bottom:32px;text-transform:uppercase;">NEON CLIP AI — REAL-TIME MOMENT DETECTION &amp; MULTI-PLATFORM PUBLISHING</div>
+
+    <div style="display:grid;grid-template-columns:2fr 3fr;gap:0;width:100%;border:1px solid var(--border-pur);">
+      <div style="padding:36px 32px;border-right:1px solid var(--border-pur);display:flex;flex-direction:column;gap:20px;justify-content:center;">
+        <div class="signboard" style="border-color:var(--purple);box-shadow:0 0 16px rgba(180,79,255,0.4),0 0 40px rgba(180,79,255,0.15);width:100%;padding:20px;">
+          <div class="orb glow-pur" style="font-size:clamp(48px,8vw,96px);line-height:0.9;">&lt;4s</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-mid);margin-top:10px;">Auto-clip ready after peak moment</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div class="stat-panel-pur" style="padding:14px 16px;text-align:left;">
+            <div class="stat-lbl">Clips / day</div>
+            <div class="orb glow-pur" style="font-size:1.4rem;">840K</div>
+          </div>
+          <div class="stat-panel-pur" style="padding:14px 16px;text-align:left;">
+            <div class="stat-lbl">Avg views / clip</div>
+            <div class="orb glow-pur" style="font-size:1.4rem;">2,200</div>
+          </div>
+          <div class="stat-panel-pur" style="padding:14px 16px;text-align:left;">
+            <div class="stat-lbl">Share rate</div>
+            <div class="orb glow-pur" style="font-size:1.4rem;">34%</div>
+          </div>
+          <div class="stat-panel-pur" style="padding:14px 16px;text-align:left;">
+            <div class="stat-lbl">New user source</div>
+            <div class="orb glow-pur" style="font-size:1.4rem;">61%</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:36px 32px;">
+        <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-mid);line-height:1.8;margin-bottom:20px;">
+          Neon Clip AI runs alongside every live stream, analyzing audio spikes, chat velocity, viewer count surges, and in-game event webhooks to detect highlight moments within 400ms of occurrence. A 15–60s clip is auto-trimmed, captioned, and queued for publishing — all before the streamer's heart rate returns to baseline.
+        </div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);line-height:1.9;margin-bottom:20px;">
+          <div style="margin-bottom:8px;"><span class="glow-pur" style="margin-right:10px;">▸</span><span style="color:var(--text-on);">Multi-platform auto-publish</span> — TikTok, YouTube Shorts, Instagram Reels, X in parallel</div>
+          <div style="margin-bottom:8px;"><span class="glow-pur" style="margin-right:10px;">▸</span><span style="color:var(--text-on);">AI captions</span> — 32 languages, tuned for gamer slang and game title vocabulary</div>
+          <div style="margin-bottom:8px;"><span class="glow-pur" style="margin-right:10px;">▸</span><span style="color:var(--text-on);">Creator approval flow</span> — one-tap approve in Neon mobile, or full auto-mode</div>
+          <div style="margin-bottom:8px;"><span class="glow-pur" style="margin-right:10px;">▸</span><span style="color:var(--text-on);">Monetization threading</span> — clips carry affiliate links and sub CTAs to the parent channel</div>
+          <div><span class="glow-pur" style="margin-right:10px;">▸</span><span style="color:var(--text-on);">Virality score</span> — proprietary model predicts clip performance before publish</div>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--border-pur);margin:20px 0;" />
+        <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);line-height:1.8;">
+          <span style="color:var(--purple);">[RESULT]</span> &nbsp; Beta creators running Neon Clip AI grew their social following <span style="color:var(--text-on);font-weight:700;">3.8× faster</span> than their control period on Twitch. Clips sourced from Neon District represent <span style="color:var(--purple);font-weight:700;">61% of new user sign-ups</span> in beta — organic acquisition at $0 CAC.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — TRACTION METRICS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="background: var(--void-2);">
+  <div class="slide-num">[ND//07]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[TRACTION // BETA 2026]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);text-transform:uppercase;max-width:22ch;margin-bottom:4px;">
+      THE NUMBERS<br /><span class="glow-mag">GLOW IN THE DARK.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px;">CLOSED BETA — 18,000 CREATORS — MARCH–JUNE 2026</div>
+
+    <!-- Big stat panels row -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;width:100%;border:1px solid var(--border-mag);">
+      <div class="stat-panel" style="border-right:1px solid var(--border-mag);">
+        <div class="stat-lbl">Waitlist</div>
+        <div class="stat-val glow-mag">2.4M</div>
+        <div class="stat-delta">+380K last 30 days</div>
+      </div>
+      <div class="stat-panel" style="border-right:1px solid var(--border-mag);">
+        <div class="stat-lbl">Beta Creators</div>
+        <div class="stat-val glow-cy">18K</div>
+        <div class="stat-delta">+9K in April alone</div>
+      </div>
+      <div class="stat-panel" style="border-right:1px solid var(--border-mag);">
+        <div class="stat-lbl">Concurrent Peak</div>
+        <div class="stat-val glow-pur">640K</div>
+        <div class="stat-delta">viewers · April 2026</div>
+      </div>
+      <div class="stat-panel" style="border-right:1px solid var(--border-mag);">
+        <div class="stat-lbl">Creator NPS</div>
+        <div class="stat-val glow-mag">84</div>
+        <div class="stat-delta">vs. Twitch 22 · YT 31</div>
+      </div>
+      <div class="stat-panel">
+        <div class="stat-lbl">Stream Hours</div>
+        <div class="stat-val glow-cy">8.2M</div>
+        <div class="stat-delta">Q2 2026 beta total</div>
+      </div>
+    </div>
+
+    <!-- Secondary metrics + quote -->
+    <div style="display:grid;grid-template-columns:3fr 2fr;gap:0;width:100%;border:1px solid var(--border-mag);border-top:none;">
+      <div style="padding:28px 32px;border-right:1px solid var(--border-mag);">
+        <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">[GROWTH INDICATORS]</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);">7-DAY CREATOR RETENTION</span>
+              <span class="glow-mag" style="font-family:var(--font-disp);font-weight:700;font-size:0.85rem;">78%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:78%;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);">VIEWER WATCH TIME vs. TWITCH</span>
+              <span class="glow-cy" style="font-family:var(--font-disp);font-weight:700;font-size:0.85rem;">+42%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill-cy" style="width:82%;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);">CLIPS SHARED TO SOCIAL (BETA)</span>
+              <span class="glow-pur" style="font-family:var(--font-disp);font-weight:700;font-size:0.85rem;">34%</span>
+            </div>
+            <div class="bar-track" style="border-color:var(--border-pur);">
+              <div style="height:100%;width:34%;background:linear-gradient(90deg,var(--purple),var(--magenta));box-shadow:0 0 10px rgba(180,79,255,0.6);"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);">CREATORS MONETIZING DAY 1</span>
+              <span class="glow-mag" style="font-family:var(--font-disp);font-weight:700;font-size:0.85rem;">61%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:61%;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:28px 32px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:0.82rem;color:var(--text-on);line-height:1.75;margin-bottom:12px;border-left:2px solid var(--magenta);padding-left:16px;box-shadow:inset -2px 0 0 rgba(255,46,151,0.1);">
+            "Neon District feels like what Twitch promised it would be in 2012. The latency is actually real-time. My chat is alive. My income tripled in 6 weeks."
+          </div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);">— KAIYA.EXE / 280K FOLLOWERS / BETA CREATOR</div>
+        </div>
+        <div style="margin-top:20px;">
+          <div style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;">[PRESS COVERAGE]</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-mid);border:1px solid var(--border-mag);padding:5px 10px;">"The Twitch Killer Has a Real Shot" — The Verge</div>
+            <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-mid);border:1px solid var(--border-cyan);padding:5px 10px;">"9ms and 70% — Neon District Rewrites Creator Math" — TechCrunch</div>
+            <div style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-mid);border:1px solid var(--border-pur);padding:5px 10px;">"We tested it. It's actually 9ms." — Digital Foundry</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — MARKET
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8" style="background: var(--void);">
+  <div class="slide-num">[ND//08]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag-cy">[MARKET_OPPORTUNITY]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);text-transform:uppercase;max-width:22ch;margin-bottom:4px;">
+      920 MILLION WATCHERS.<br /><span class="glow-cy">$48B MARKET.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px;">GAME CONTENT VIEWERSHIP MARKET — 2026–2032 PROJECTION</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;align-items:start;">
+      <div style="padding-right:48px;border-right:1px solid var(--border-cyan);">
+        <div class="orb glow-cy" style="font-size:clamp(64px,10vw,130px);letter-spacing:-0.04em;line-height:0.88;">$48B</div>
+        <div style="font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-mid);margin-top:8px;margin-bottom:24px;">2026 GLOBAL GAME-STREAMING MARKET // CAGR 23% // NEWZOO</div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border-cyan);margin-bottom:20px;">
+          <div style="padding:16px 18px;border-right:1px solid var(--border-cyan);">
+            <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;">TAM</div>
+            <div class="orb" style="font-size:1.4rem;color:var(--text-on);">$48B</div>
+          </div>
+          <div style="padding:16px 18px;border-right:1px solid var(--border-cyan);">
+            <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;">SAM</div>
+            <div class="orb" style="font-size:1.4rem;color:var(--text-on);">$9.2B</div>
+          </div>
+          <div style="padding:16px 18px;">
+            <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px;">SOM (5yr)</div>
+            <div class="orb glow-cy" style="font-size:1.4rem;">$1.4B</div>
+          </div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);line-height:1.75;">
+          SAM = creator-platform subscription + monetization infrastructure revenue across EN + JP + KR + DE + BR markets.<br /><br />
+          SOM = 15.2% of SAM by 2031 — <span style="color:var(--text-on);">achievable at $320M ARR</span> at current growth without additional capital efficiency gains.
+        </div>
+      </div>
+
+      <div style="padding-left:48px;">
+        <div style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">[REVENUE BREAKDOWN // GAME CONTENT 2026E]</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="border:1px solid var(--border-cyan);border-bottom:none;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);">SUBSCRIPTIONS &amp; PASSES</span>
+            <span class="orb glow-cy" style="font-size:1rem;">$18.6B</span>
+          </div>
+          <div style="border:1px solid var(--border-cyan);border-bottom:none;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);">VIRTUAL GOODS &amp; DROPS</span>
+            <span class="orb" style="font-size:1rem;color:var(--text-on);">$14.2B</span>
+          </div>
+          <div style="border:1px solid var(--border-cyan);border-bottom:none;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);">BRAND &amp; CONTEXTUAL ADS</span>
+            <span class="orb" style="font-size:1rem;color:var(--text-on);">$9.8B</span>
+          </div>
+          <div style="border:1px solid var(--border-cyan);padding:13px 16px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);">ESPORTS &amp; LIVE EVENTS</span>
+            <span class="orb" style="font-size:1rem;color:var(--text-on);">$5.4B</span>
+          </div>
+        </div>
+        <div style="margin-top:20px;border:1px solid var(--border-mag);padding:18px 20px;background:var(--magenta-dim);">
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);line-height:1.8;">
+            <span style="color:var(--magenta);font-weight:700;">[TAILWIND]</span> &nbsp; Gen Z streaming hours grew 38% YoY. Mobile-first creator tools — our primary go-to-market — represent the fastest-growing creator segment. 68% of new Neon District beta sign-ups are under 28.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — COMPETITIVE LANDSCAPE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="background: var(--void-2);">
+  <div class="slide-num">[ND//09]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[COMPETITIVE_LANDSCAPE]</span>
+    <h2 class="orb" style="font-size:clamp(28px,4vw,54px);color:var(--text-on);text-transform:uppercase;max-width:22ch;margin-bottom:4px;">
+      THE GRID IS OURS<br /><span class="glow-mag">TO TAKE.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-mid);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">HEAD-TO-HEAD ON WHAT CREATORS ACTUALLY CARE ABOUT</div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>CAPABILITY</th>
+          <th class="hl">[NEON DISTRICT]</th>
+          <th>TWITCH</th>
+          <th>YOUTUBE LIVE</th>
+          <th>KICK</th>
+          <th>TIKTOK LIVE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Stream Latency</td>
+          <td class="hl">9ms ✓</td>
+          <td>6,000–8,000ms</td>
+          <td>7,000–9,000ms</td>
+          <td>~2,000ms</td>
+          <td>~3,000ms</td>
+        </tr>
+        <tr>
+          <td>Creator Revenue Share</td>
+          <td class="hl"><span class="glow-mag">70% always</span></td>
+          <td>50% (Partners)</td>
+          <td>55% YPP</td>
+          <td>95% (VC-backed loss)</td>
+          <td>&lt;30% variable</td>
+        </tr>
+        <tr>
+          <td>AI Clip Auto-Publish</td>
+          <td class="hl"><span class="check">✓ BUILT-IN</span></td>
+          <td><span class="cross">✗ manual</span></td>
+          <td><span class="cross">✗ manual</span></td>
+          <td><span class="cross">✗ none</span></td>
+          <td>partial</td>
+        </tr>
+        <tr>
+          <td>Virtual Goods / Drops</td>
+          <td class="hl"><span class="check">✓ NATIVE</span></td>
+          <td>partial (Channel Points)</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>coins only</td>
+        </tr>
+        <tr>
+          <td>Mobile-First Creator Tools</td>
+          <td class="hl"><span class="check">✓ iOS &amp; Android</span></td>
+          <td>basic</td>
+          <td>basic</td>
+          <td>basic</td>
+          <td><span class="check">✓ strong</span></td>
+        </tr>
+        <tr>
+          <td>Creator NPS (2026)</td>
+          <td class="hl"><span class="glow-mag">84</span></td>
+          <td>22</td>
+          <td>31</td>
+          <td>41</td>
+          <td>28</td>
+        </tr>
+        <tr>
+          <td>Sub-$0 CAC via Clips</td>
+          <td class="hl"><span class="check">✓ 61% inbound</span></td>
+          <td><span class="cross">✗ paid channels</span></td>
+          <td><span class="cross">✗ algorithmic</span></td>
+          <td><span class="cross">✗</span></td>
+          <td>partial</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:14px;font-family:var(--font-mono);font-size:0.58rem;color:var(--text-dim);letter-spacing:0.08em;">
+      [LATENCY DATA: INDEPENDENT TESTS BY DIGITAL FOUNDRY Q2 2026 // REVENUE SHARE: PUBLIC CREATOR AGREEMENTS // NPS: CREATOR SURVEYS BY STREAMSCHEME.COM]
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CTA / CALL TO ACTION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(255,46,151,0.09) 0%, rgba(0,229,255,0.04) 50%, var(--void) 85%);">
+  <div class="slide-num">[ND//10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag-cy">[THE_ASK // SERIES_A]</span>
+
+    <!-- Giant raise ask -->
+    <div class="orb glow-mag" style="font-size:clamp(72px,14vw,180px);letter-spacing:-0.04em;line-height:0.88;text-transform:uppercase;">$35M</div>
+    <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--text-mid);letter-spacing:0.14em;text-transform:uppercase;margin-top:6px;margin-bottom:32px;">
+      SERIES A &nbsp;·&nbsp; $160M PRE-MONEY VALUATION &nbsp;·&nbsp; 21.9% EQUITY OFFERING
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;border:1px solid var(--border-mag);">
+      <div style="padding:32px 30px;border-right:1px solid var(--border-mag);">
+        <span class="tag" style="margin-bottom:18px;">[USE_OF_FUNDS]</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border-mag);margin-bottom:22px;">
+          <div style="padding:16px 18px;border-right:1px solid var(--border-mag);border-bottom:1px solid var(--border-mag);">
+            <div class="orb glow-mag" style="font-size:1.8rem;">35%</div>
+            <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Infra &amp; Edge PoPs</div>
+          </div>
+          <div style="padding:16px 18px;border-bottom:1px solid var(--border-mag);">
+            <div class="orb" style="font-size:1.8rem;color:var(--text-on);">30%</div>
+            <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Engineering Headcount</div>
+          </div>
+          <div style="padding:16px 18px;border-right:1px solid var(--border-mag);">
+            <div class="orb glow-cy" style="font-size:1.8rem;">25%</div>
+            <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Creator Growth &amp; GTM</div>
+          </div>
+          <div style="padding:16px 18px;">
+            <div class="orb" style="font-size:1.8rem;color:var(--text-mid);">10%</div>
+            <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);margin-top:4px;">Legal / Ops / G&amp;A</div>
+          </div>
+        </div>
+
+        <span class="tag" style="margin-bottom:14px;">[24-MONTH MILESTONES]</span>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;border:1px solid rgba(255,46,151,0.2);border-bottom:none;">
+            <div style="width:3px;background:var(--magenta);flex-shrink:0;box-shadow:0 0 8px rgba(255,46,151,0.6);"></div>
+            <div style="padding:11px 14px;">
+              <div style="font-family:var(--font-mono);font-size:0.68rem;font-weight:700;color:var(--text-on);">Public launch to 2.4M waitlist — Q3 2026</div>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);">Onboard top 5,000 partners. Activate clip flywheel.</div>
+            </div>
+          </div>
+          <div style="display:flex;border:1px solid rgba(0,229,255,0.2);border-bottom:none;">
+            <div style="width:3px;background:var(--cyan);flex-shrink:0;box-shadow:0 0 8px rgba(0,229,255,0.6);"></div>
+            <div style="padding:11px 14px;">
+              <div style="font-family:var(--font-mono);font-size:0.68rem;font-weight:700;color:var(--text-on);">$24M ARR — Q2 2027</div>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);">Driven by subs, drops, and brand sync expansion.</div>
+            </div>
+          </div>
+          <div style="display:flex;border:1px solid rgba(180,79,255,0.2);border-bottom:none;">
+            <div style="width:3px;background:var(--purple);flex-shrink:0;box-shadow:0 0 8px rgba(180,79,255,0.6);"></div>
+            <div style="padding:11px 14px;">
+              <div style="font-family:var(--font-mono);font-size:0.68rem;font-weight:700;color:var(--text-on);">JP + KR market expansion — Q3 2027</div>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);">Tokyo edge PoP live. Local payment rails integrated.</div>
+            </div>
+          </div>
+          <div style="display:flex;border:1px solid rgba(255,46,151,0.2);">
+            <div style="width:3px;background:var(--text-dim);flex-shrink:0;"></div>
+            <div style="padding:11px 14px;">
+              <div style="font-family:var(--font-mono);font-size:0.68rem;font-weight:700;color:var(--text-on);">Series B readiness — Q4 2027</div>
+              <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);">$50M ARR target. Category-defining market share.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:32px 30px;display:flex;flex-direction:column;gap:22px;">
+        <!-- Valuation block -->
+        <div class="signboard" style="width:100%;text-align:left;padding:22px 24px;">
+          <div class="orb glow-mag" style="font-size:clamp(32px,5vw,52px);margin-bottom:6px;">$160M</div>
+          <div style="font-family:var(--font-mono);font-size:0.64rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-bottom:14px;">PRE-MONEY VALUATION</div>
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-mid);line-height:1.8;">
+            6.7× forward ARR target ($24M) &nbsp;·&nbsp; Comparable to early Twitch raise.<br /><br />
+            Lead commitment: $22M (Tier-1 gaming &amp; media fund, NDA).<br />
+            Co-investor tranche: $13M — filling now.<br /><br />
+            Pro-rata rights for Series B reserved. Board seat to lead.
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div style="border:1px solid var(--border-cyan);padding:22px 24px;">
+          <span class="tag-cy" style="margin-bottom:14px;">[CONTACT]</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-mid);line-height:2.0;">
+            <div><i class="fa fa-envelope" style="color:var(--magenta);width:18px;"></i> &nbsp; founders@neondistrict.gg</div>
+            <div><i class="fa fa-globe" style="color:var(--cyan);width:18px;"></i> &nbsp; neondistrict.gg/deck</div>
+            <div><i class="fa fa-lock" style="color:var(--purple);width:18px;"></i> &nbsp; secure.neondistrict.gg/series-a-2026</div>
+            <div><i class="fa fa-map-marker-alt" style="color:var(--magenta);width:18px;"></i> &nbsp; Los Angeles &nbsp;·&nbsp; Tokyo &nbsp;·&nbsp; Amsterdam</div>
+          </div>
+        </div>
+
+        <!-- Katakana decoration / footer -->
+        <div style="border:1px solid rgba(255,46,151,0.12);border-top:none;border-right:none;border-bottom:none;padding:12px 18px;font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);line-height:1.8;letter-spacing:0.06em;">
+          [ND-SERIES-A-2026-V2.1 // STRICTLY CONFIDENTIAL // NOT FOR DISTRIBUTION]<br />
+          ネオン・ディストリクト &nbsp;·&nbsp; [FORWARD-LOOKING STATEMENTS SUBJECT TO MATERIAL RISKS]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

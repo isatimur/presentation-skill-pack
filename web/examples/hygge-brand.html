@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hygge — A Home for Slow Living</title>
+<meta name="description" content="Hygge brand story deck — Scandinavian-inspired home &amp; wellness goods pitched to retail and wholesale partners. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/hygge-brand" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#efe9df" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/hygge-brand" />
+<meta property="og:title" content="Hygge — A Home for Slow Living" />
+<meta property="og:description" content="Scandinavian-inspired home &amp; wellness goods. Wholesale &amp; retail partnership deck. Quiet, intentional, beautifully made." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Hygge — A Home for Slow Living" />
+<meta name="twitter:description" content="Wholesale &amp; retail partnership deck for Hygge — Scandinavian home &amp; wellness goods." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --linen:      #efe9df;
+    --linen-deep: #e6ddd1;
+    --linen-mid:  #f7f4ef;
+    --sage:       #9caf88;
+    --sage-light: #b8c9a8;
+    --sage-pale:  #dce8d4;
+    --terra:      #c9826b;
+    --terra-pale: #e8cfc6;
+    --warm-grey:  #a09890;
+    --warm-grey-light: #cdc7bf;
+    --ink:        #2b2926;
+    --ink-soft:   #4a4541;
+    --ink-muted:  #7a7470;
+    --ink-faint:  #a89e97;
+    --font-serif: 'Fraunces', 'Georgia', serif;
+    --font-sans:  'Work Sans', 'Helvetica Neue', sans-serif;
+    --rule:       #d6cec5;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--linen);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--linen);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(56px, 7vw, 100px) clamp(40px, 9vw, 130px);
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--ink-faint);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: rgba(239,233,223,0.88);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    padding: 6px 18px;
+  }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-num {
+    position: absolute;
+    top: 28px;
+    right: 40px;
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    z-index: 10;
+    font-weight: 400;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .serif { font-family: var(--font-serif); }
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .label-sage {
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .h-display {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 86px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  .h-mid {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(26px, 3.5vw, 48px);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .h-small {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(18px, 2.2vw, 28px);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+
+  .body-text {
+    font-family: var(--font-sans);
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.78;
+    max-width: 56ch;
+  }
+
+  .body-sm {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    line-height: 1.72;
+  }
+
+  /* ─── DECORATIVE RULES ─── */
+  .thin-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 28px 0;
+    width: 100%;
+  }
+
+  .thin-rule-short {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 20px 0;
+    width: 56px;
+  }
+
+  .v-rule {
+    width: 1px;
+    background: var(--rule);
+    align-self: stretch;
+    flex-shrink: 0;
+    margin: 0 40px;
+  }
+
+  /* ─── SAGE ACCENT BAR ─── */
+  .accent-bar {
+    width: 40px;
+    height: 2px;
+    background: var(--sage);
+    margin-bottom: 28px;
+    border-radius: 2px;
+  }
+
+  /* ─── TERRA ACCENT BAR ─── */
+  .terra-bar {
+    width: 40px;
+    height: 2px;
+    background: var(--terra);
+    margin-bottom: 28px;
+    border-radius: 2px;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--linen-mid);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 28px 30px;
+  }
+
+  .card-sage {
+    background: var(--sage-pale);
+    border: 1px solid var(--sage-light);
+    border-radius: 3px;
+    padding: 28px 30px;
+  }
+
+  .card-terra {
+    background: var(--terra-pale);
+    border: 1px solid #d9b3a8;
+    border-radius: 3px;
+    padding: 28px 30px;
+  }
+
+  /* ─── STAT DISPLAY ─── */
+  .stat-num {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(44px, 6vw, 72px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .stat-num.sage { color: var(--sage); }
+  .stat-num.terra { color: var(--terra); }
+
+  .stat-label {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 6px;
+  }
+
+  .stat-note {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── GRID HELPERS ─── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1080px;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+    width: 100%;
+    max-width: 1080px;
+  }
+
+  .four-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 1080px;
+  }
+
+  /* ─── ICON ─── */
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--sage-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: var(--sage);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .icon-circle.terra {
+    background: var(--terra-pale);
+    color: var(--terra);
+  }
+
+  /* ─── QUOTE ─── */
+  .pull-quote {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+
+  .quote-attr {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 14px;
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .progress-item {}
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .progress-label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  .progress-value {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .progress-track {
+    height: 3px;
+    background: var(--linen-deep);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--sage);
+  }
+
+  .progress-fill.terra { background: var(--terra); }
+
+  /* ─── RETAIL LIST ─── */
+  .retail-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .retail-pill {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    background: var(--linen-mid);
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    padding: 5px 14px;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+  }
+
+  /* ─── DECORATIVE LEAF ─── */
+  .deco-leaf {
+    position: absolute;
+    opacity: 0.06;
+    font-size: 220px;
+    color: var(--sage);
+    pointer-events: none;
+    line-height: 1;
+    user-select: none;
+    z-index: 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 640px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 24px;
+    padding: 0 0 28px 0;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--sage);
+    background: var(--linen);
+    flex-shrink: 0;
+    margin-top: 3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-dot.terra { border-color: var(--terra); }
+  .timeline-dot.filled { background: var(--sage); }
+
+  .timeline-content {}
+
+  .timeline-period {
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ or scroll &nbsp;·&nbsp; Hygge &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="background: var(--linen); justify-content: space-between; padding-top: clamp(60px, 8vw, 110px); padding-bottom: clamp(48px, 6vw, 80px);">
+  <div class="slide-num">01 / 10</div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 760px;">
+    <span class="label" style="margin-bottom: 20px;">Wholesale &amp; Retail Partnership Deck &nbsp;·&nbsp; 2026</span>
+    <div class="accent-bar"></div>
+    <h1 class="h-display" style="font-size: clamp(52px, 8vw, 108px); margin-bottom: 28px;">
+      Hygge
+    </h1>
+    <p class="body-text" style="font-size: clamp(1rem, 1.3vw, 1.2rem); max-width: 48ch; font-style: italic; font-family: var(--font-serif); font-weight: 300; color: var(--ink-soft);">
+      Home goods made for the unhurried life.<br />
+      Rooted in Scandinavian craft. Made to be touched, used, and loved.
+    </p>
+
+    <hr class="thin-rule" style="margin-top: 44px; margin-bottom: 32px; max-width: 500px;" />
+
+    <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: flex-start;">
+      <div>
+        <div class="stat-num" style="font-size: clamp(28px, 3.5vw, 42px);">€6.2M</div>
+        <div class="stat-label">Retail Revenue 2025</div>
+      </div>
+      <div>
+        <div class="stat-num" style="font-size: clamp(28px, 3.5vw, 42px);">142</div>
+        <div class="stat-label">Stockist Partners</div>
+      </div>
+      <div>
+        <div class="stat-num" style="font-size: clamp(28px, 3.5vw, 42px);">4.87</div>
+        <div class="stat-label">Avg Customer Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%; max-width: 1080px; margin-top: 24px;">
+    <div class="body-sm" style="color: var(--ink-faint);">
+      Founded Copenhagen, 2018 &nbsp;·&nbsp; Distributed across 12 countries
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--sage);"></div>
+      <span class="body-sm" style="color: var(--ink-faint);">hygge-living.co</span>
+    </div>
+  </div>
+
+  <!-- Decorative leaf -->
+  <span class="deco-leaf" style="right: -40px; top: 50%; transform: translateY(-50%); font-size: 320px;">
+    <i class="fa-solid fa-leaf"></i>
+  </span>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — THE PHILOSOPHY
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2" style="background: var(--linen-mid);">
+  <div class="slide-num">02 / 10</div>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">Our Philosophy</span>
+    <div class="accent-bar"></div>
+
+    <div class="two-col" style="gap: 72px; align-items: start;">
+      <div>
+        <h2 class="h-mid" style="margin-bottom: 28px; max-width: 18ch;">
+          Good things deserve to last.
+        </h2>
+        <p class="body-text" style="margin-bottom: 20px;">
+          Hygge is a Danish word without a direct translation. It is the feeling of a lit candle, a warm blanket, a meal shared without hurry. It is not a trend — it is a way of inhabiting your home.
+        </p>
+        <p class="body-text">
+          We build objects around that feeling. Each piece is designed to do less with more intention — fewer finishes, quieter shapes, materials that age well rather than degrade.
+        </p>
+        <hr class="thin-rule-short" style="margin-top: 28px;" />
+        <p class="body-sm" style="font-style: italic; font-family: var(--font-serif);">
+          "We didn't set out to design products. We set out to design moments."
+        </p>
+        <p class="body-sm" style="margin-top: 6px;">— Astrid Lund, Founder</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="card" style="border-left: 2px solid var(--sage);">
+          <div class="icon-circle"><i class="fa-solid fa-seedling"></i></div>
+          <div class="h-small" style="margin-bottom: 8px;">Slowness as a value</div>
+          <p class="body-sm">Every product undergoes a minimum 18-month development cycle. We don't do fast iterations. We do considered ones.</p>
+        </div>
+        <div class="card" style="border-left: 2px solid var(--terra);">
+          <div class="icon-circle terra"><i class="fa-solid fa-hands"></i></div>
+          <div class="h-small" style="margin-bottom: 8px;">Material honesty</div>
+          <p class="body-sm">We name every material and every maker on our packaging. Nothing hidden, nothing synthetic disguised as natural.</p>
+        </div>
+        <div class="card" style="border-left: 2px solid var(--sage);">
+          <div class="icon-circle"><i class="fa-solid fa-infinity"></i></div>
+          <div class="h-small" style="margin-bottom: 8px;">Designed to outlast</div>
+          <p class="body-sm">Lifetime repair programme, refillable formats, and a five-year material guarantee across all textile lines.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3" style="background: var(--linen);">
+  <div class="slide-num">03 / 10</div>
+
+  <span class="deco-leaf" style="left: -60px; bottom: -40px; font-size: 400px; opacity: 0.04; transform: rotate(-30deg);">
+    <i class="fa-solid fa-leaf"></i>
+  </span>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">The Problem with Modern Home Goods</span>
+    <div class="terra-bar"></div>
+
+    <h2 class="h-mid" style="margin-bottom: 40px; max-width: 26ch;">
+      The home goods market is loud, disposable, and anxious.
+    </h2>
+
+    <div class="three-col" style="gap: 32px;">
+      <div>
+        <div style="margin-bottom: 20px;">
+          <span style="font-family: var(--font-serif); font-size: clamp(48px, 6vw, 72px); font-weight: 300; color: var(--terra); line-height: 1;">78%</span>
+        </div>
+        <div class="h-small" style="margin-bottom: 10px; font-size: 1rem;">Trend-driven purchasing</div>
+        <p class="body-sm">
+          Of home goods sold in the EU are purchased primarily due to trend alignment rather than functional or emotional need, per GfK 2025 Consumer Sentiment survey.
+        </p>
+      </div>
+
+      <div>
+        <div style="margin-bottom: 20px;">
+          <span style="font-family: var(--font-serif); font-size: clamp(48px, 6vw, 72px); font-weight: 300; color: var(--terra); line-height: 1;">2.4 yrs</span>
+        </div>
+        <div class="h-small" style="margin-bottom: 10px; font-size: 1rem;">Average product lifespan</div>
+        <p class="body-sm">
+          The average soft-furnishing or decorative piece purchased from a mass-market retailer is replaced within 2.4 years, generating 34 million tonnes of textile waste in Europe annually.
+        </p>
+      </div>
+
+      <div>
+        <div style="margin-bottom: 20px;">
+          <span style="font-family: var(--font-serif); font-size: clamp(48px, 6vw, 72px); font-weight: 300; color: var(--terra); line-height: 1;">61%</span>
+        </div>
+        <div class="h-small" style="margin-bottom: 10px; font-size: 1rem;">Regret-buyers</div>
+        <p class="body-sm">
+          Of consumers aged 28–55 report buyer's remorse on home goods within 6 months, citing quality disappointment as the primary driver (Mintel 2025).
+        </p>
+      </div>
+    </div>
+
+    <hr class="thin-rule" style="max-width: 1080px; margin-top: 40px; margin-bottom: 32px;" />
+
+    <div class="card-sage" style="max-width: 680px;">
+      <div class="icon-circle" style="margin-bottom: 12px;"><i class="fa-solid fa-compass"></i></div>
+      <p class="body-text" style="font-style: italic; font-family: var(--font-serif); font-weight: 300; color: var(--ink-soft); max-width: 60ch;">
+        There is a growing, underserved segment of consumers who want fewer, better things — and retailers who want to stock them. We exist to serve that relationship.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — THE COLLECTION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4" style="background: var(--linen-mid);">
+  <div class="slide-num">04 / 10</div>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">The Collection</span>
+    <div class="accent-bar"></div>
+
+    <h2 class="h-mid" style="margin-bottom: 36px;">Four lines. One language.</h2>
+
+    <div class="two-col" style="gap: 24px; align-items: stretch;">
+      <div class="card" style="border-top: 2px solid var(--sage);">
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+          <div class="icon-circle" style="margin-bottom: 0;"><i class="fa-solid fa-fire-flame-simple"></i></div>
+          <div>
+            <div class="h-small" style="font-size: 1.1rem; margin-bottom: 2px;">Lys — Light</div>
+            <span class="label-sage" style="margin-bottom: 0;">Candles &amp; Scent</span>
+          </div>
+        </div>
+        <p class="body-sm" style="margin-bottom: 16px;">
+          Unscented beeswax pillars, natural soy-linen blends, and single-note reed diffusers. Hand-poured in Jutland, Denmark. Minimum 60-hour burn time guaranteed.
+        </p>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span class="body-sm">RRP €18 – €64</span>
+          <span class="body-sm" style="color: var(--sage);">28% wholesale margin</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 2px solid var(--sage);">
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+          <div class="icon-circle"><i class="fa-solid fa-mug-hot"></i></div>
+          <div>
+            <div class="h-small" style="font-size: 1.1rem; margin-bottom: 2px;">Ro — Rest</div>
+            <span class="label-sage" style="margin-bottom: 0;">Ceramics &amp; Tableware</span>
+          </div>
+        </div>
+        <p class="body-sm" style="margin-bottom: 16px;">
+          Stoneware mugs, linen-glaze serving bowls, and matte-finish carafes. Wheel-thrown in small batches by partner studios in Bornholm and Umeå. Each piece is unique.
+        </p>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span class="body-sm">RRP €24 – €148</span>
+          <span class="body-sm" style="color: var(--sage);">32% wholesale margin</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 2px solid var(--terra);">
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+          <div class="icon-circle terra" style="margin-bottom: 0;"><i class="fa-solid fa-blanket"></i></div>
+          <div>
+            <div class="h-small" style="font-size: 1.1rem; margin-bottom: 2px;">Varme — Warmth</div>
+            <span class="label" style="color: var(--terra); margin-bottom: 0;">Textiles &amp; Throws</span>
+          </div>
+        </div>
+        <p class="body-sm" style="margin-bottom: 16px;">
+          Woven wool-linen throws, undyed merino bed linens, and hand-tufted cotton rugs. Sourced from certified-regenerative farms in Iceland and Portugal.
+        </p>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span class="body-sm">RRP €68 – €320</span>
+          <span class="body-sm" style="color: var(--terra);">34% wholesale margin</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 2px solid var(--terra);">
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+          <div class="icon-circle terra" style="margin-bottom: 0;"><i class="fa-solid fa-spa"></i></div>
+          <div>
+            <div class="h-small" style="font-size: 1.1rem; margin-bottom: 2px;">Hud — Skin</div>
+            <span class="label" style="color: var(--terra); margin-bottom: 0;">Body &amp; Bathing</span>
+          </div>
+        </div>
+        <p class="body-sm" style="margin-bottom: 16px;">
+          Cold-pressed bath oils, unscented body butter, and hand-milled soap bars. Formulated by a pharmacist. COSMOS Natural certified. Zero synthetic fragrance, ever.
+        </p>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span class="body-sm">RRP €14 – €52</span>
+          <span class="body-sm" style="color: var(--terra);">30% wholesale margin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — CRAFT & MATERIALS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="background: var(--linen);">
+  <div class="slide-num">05 / 10</div>
+
+  <span class="deco-leaf" style="right: -80px; top: 10%; font-size: 480px; opacity: 0.045; transform: rotate(15deg);">
+    <i class="fa-solid fa-leaf"></i>
+  </span>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">Craft &amp; Materials</span>
+    <div class="accent-bar"></div>
+
+    <div class="two-col" style="gap: 80px; align-items: start;">
+      <div>
+        <h2 class="h-mid" style="margin-bottom: 28px; max-width: 22ch;">
+          We trace every material to its origin.
+        </h2>
+        <p class="body-text" style="margin-bottom: 24px;">
+          Our supply chain has four links, maximum. That is not a constraint — it is a choice. Fewer links means fewer unknowns, closer relationships, and greater accountability at every stage.
+        </p>
+        <p class="body-text">
+          We visit each partner studio twice yearly. We publish our manufacturer list in full. We believe the story behind an object is as important as the object itself.
+        </p>
+
+        <hr class="thin-rule" style="max-width: 480px;" />
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="icon-circle" style="width: 32px; height: 32px; font-size: 0.7rem; flex-shrink: 0; margin-bottom: 0;"><i class="fa-solid fa-tree"></i></div>
+            <div>
+              <div style="font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500; color: var(--ink-soft); margin-bottom: 2px;">Certified organic &amp; recycled fibers only</div>
+              <div class="body-sm">GOTS, OEKO-TEX, and COSMOS Natural certifications across all lines.</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="icon-circle" style="width: 32px; height: 32px; font-size: 0.7rem; flex-shrink: 0; margin-bottom: 0;"><i class="fa-solid fa-droplet"></i></div>
+            <div>
+              <div style="font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500; color: var(--ink-soft); margin-bottom: 2px;">Water-conscious dyeing</div>
+              <div class="body-sm">All wet processing uses closed-loop water systems. Net water use 94% below industry average.</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="icon-circle" style="width: 32px; height: 32px; font-size: 0.7rem; flex-shrink: 0; margin-bottom: 0;"><i class="fa-solid fa-recycle"></i></div>
+            <div>
+              <div style="font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500; color: var(--ink-soft); margin-bottom: 2px;">Packaging from recovered materials</div>
+              <div class="body-sm">All outer packaging uses post-consumer kraft. Inner wrap uses unbleached linen offcuts from our own weaving partners.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="card-sage">
+          <div style="font-family: var(--font-serif); font-size: 0.78rem; font-weight: 400; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;">Partner studios</div>
+          <div class="h-small" style="font-size: 1rem; margin-bottom: 6px;">Atelier Knudsen</div>
+          <p class="body-sm">Jutland, Denmark — beeswax candle pouring. Three generations of family craft. Our founding partner since 2018.</p>
+          <hr class="thin-rule" style="margin: 14px 0;" />
+          <div class="h-small" style="font-size: 1rem; margin-bottom: 6px;">Studio Bornholm Clay</div>
+          <p class="body-sm">Bornholm, Denmark — stoneware and linen-glaze ceramics. Eight potters producing 400–600 pieces per month.</p>
+          <hr class="thin-rule" style="margin: 14px 0;" />
+          <div class="h-small" style="font-size: 1rem; margin-bottom: 6px;">Valdís Wool Works</div>
+          <p class="body-sm">Akureyri, Iceland — regenerative Icelandic wool sorting, spinning, and natural dyeing. B Corp certified.</p>
+        </div>
+
+        <div style="background: var(--linen-deep); border: 1px solid var(--rule); border-radius: 3px; padding: 18px 20px; display: flex; align-items: center; gap: 16px;">
+          <i class="fa-regular fa-clock" style="color: var(--ink-faint); font-size: 1.2rem; flex-shrink: 0;"></i>
+          <p class="body-sm">
+            All new material sources pass a 90-day evaluation period including site visit, independent lab testing, and a pilot-run audit before any volume orders are placed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — TRACTION & RETAIL METRICS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6" style="background: var(--linen-mid);">
+  <div class="slide-num">06 / 10</div>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">Traction &amp; Retail Metrics</span>
+    <div class="accent-bar"></div>
+
+    <h2 class="h-mid" style="margin-bottom: 40px; max-width: 28ch;">
+      Quiet growth, sustained by word of mouth alone.
+    </h2>
+
+    <div class="four-col" style="margin-bottom: 40px;">
+      <div>
+        <div class="stat-num sage">€6.2M</div>
+        <div class="stat-label">Revenue 2025</div>
+        <div class="stat-note">↑ 38% vs 2024</div>
+      </div>
+      <div>
+        <div class="stat-num">142</div>
+        <div class="stat-label">Active Stockists</div>
+        <div class="stat-note">Across 12 countries</div>
+      </div>
+      <div>
+        <div class="stat-num terra">68%</div>
+        <div class="stat-label">Repeat Wholesale Rate</div>
+        <div class="stat-note">Avg reorder in 11 weeks</div>
+      </div>
+      <div>
+        <div class="stat-num">4.87</div>
+        <div class="stat-label">Customer Rating</div>
+        <div class="stat-note">18,400+ verified reviews</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="gap: 48px; align-items: start;">
+      <div>
+        <div class="label" style="margin-bottom: 16px;">Revenue by channel — 2025</div>
+        <div class="progress-row">
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Wholesale partners</span>
+              <span class="progress-value">52%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width: 52%;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Direct-to-consumer (web)</span>
+              <span class="progress-value">34%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width: 34%;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Own retail (Copenhagen)</span>
+              <span class="progress-value">8%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill terra" style="width: 8%;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header">
+              <span class="progress-label">Gifting &amp; corporate</span>
+              <span class="progress-value">6%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill terra" style="width: 6%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label" style="margin-bottom: 16px;">Selected existing partners</div>
+        <div class="retail-row">
+          <span class="retail-pill">Skandium (UK)</span>
+          <span class="retail-pill">Merci (FR)</span>
+          <span class="retail-pill">Hay House (DK)</span>
+          <span class="retail-pill">Poltrona (IT)</span>
+          <span class="retail-pill">Foyer (SE)</span>
+          <span class="retail-pill">Liberty (UK)</span>
+          <span class="retail-pill">De Bijenkorf (NL)</span>
+          <span class="retail-pill">Søstrene Grene (DE)</span>
+          <span class="retail-pill">+ 134 independents</span>
+        </div>
+
+        <hr class="thin-rule" style="max-width: 480px; margin-top: 24px;" />
+
+        <div class="pull-quote" style="font-size: 0.95rem; max-width: 42ch;">
+          "Hygge is the best-turning line in our home section. Customers ask for it by name and we reorder every six weeks without fail."
+        </div>
+        <div class="quote-attr">— Buyer, Liberty London</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — THE CUSTOMER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="background: var(--linen);">
+  <div class="slide-num">07 / 10</div>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">Who Buys Hygge</span>
+    <div class="accent-bar"></div>
+
+    <h2 class="h-mid" style="margin-bottom: 36px; max-width: 26ch;">A customer who has stopped buying for the sake of buying.</h2>
+
+    <div class="three-col" style="gap: 24px;">
+      <div class="card">
+        <div class="icon-circle"><i class="fa-solid fa-house"></i></div>
+        <div class="h-small" style="margin-bottom: 8px; font-size: 1rem;">The Nester</div>
+        <div class="body-sm" style="margin-bottom: 14px; color: var(--ink-soft);">Age 28–45 &nbsp;·&nbsp; Urban homeowner or long-term renter</div>
+        <p class="body-sm">
+          Conscious consumer, done with disposable. She invests in her home environment because she believes it shapes her days. She reads ingredients. She notices stitching. She tells her friends.
+        </p>
+        <hr class="thin-rule" style="margin: 14px 0;" />
+        <div style="display: flex; gap: 24px;">
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--sage);">€340</div>
+            <div class="stat-label" style="font-size: 0.58rem;">Avg basket</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--sage);">3.2×</div>
+            <div class="stat-label" style="font-size: 0.58rem;">Annual purchases</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon-circle terra"><i class="fa-solid fa-gift"></i></div>
+        <div class="h-small" style="margin-bottom: 8px; font-size: 1rem;">The Considered Giver</div>
+        <div class="body-sm" style="margin-bottom: 14px; color: var(--ink-soft);">Age 35–60 &nbsp;·&nbsp; Gifting for milestones &amp; seasons</div>
+        <p class="body-sm">
+          She wants to give something that says she paid attention — not expensive, but specific. Hygge provides high gift-perceived-value at accessible price points, with gift-ready packaging included.
+        </p>
+        <hr class="thin-rule" style="margin: 14px 0;" />
+        <div style="display: flex; gap: 24px;">
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--terra);">€92</div>
+            <div class="stat-label" style="font-size: 0.58rem;">Avg gift spend</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--terra);">Q4 heavy</div>
+            <div class="stat-label" style="font-size: 0.58rem;">Seasonal peak</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon-circle"><i class="fa-solid fa-hotel"></i></div>
+        <div class="h-small" style="margin-bottom: 8px; font-size: 1rem;">The Hospitality Buyer</div>
+        <div class="body-sm" style="margin-bottom: 14px; color: var(--ink-soft);">Boutique hotels, spas, and rental properties</div>
+        <p class="body-sm">
+          Buys in volume for the atmosphere a product creates, not just its function. Values the story he can share with guests. Currently 6% of revenue — our fastest growing segment at 94% YoY.
+        </p>
+        <hr class="thin-rule" style="margin: 14px 0;" />
+        <div style="display: flex; gap: 24px;">
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--sage);">€2,400</div>
+            <div class="stat-label" style="font-size: 0.58rem;">Avg order value</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--sage);">94%</div>
+            <div class="stat-label" style="font-size: 0.58rem;">YoY growth</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — PARTNERSHIP MODEL
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8" style="background: var(--linen-mid);">
+  <div class="slide-num">08 / 10</div>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">Partnership Model</span>
+    <div class="accent-bar"></div>
+
+    <h2 class="h-mid" style="margin-bottom: 40px; max-width: 24ch;">
+      We grow with our partners, not at their expense.
+    </h2>
+
+    <div class="two-col" style="gap: 48px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="card" style="border-left: 2px solid var(--sage);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <div class="icon-circle" style="width: 32px; height: 32px; font-size: 0.75rem; margin-bottom: 0;"><i class="fa-solid fa-shop"></i></div>
+            <div class="h-small" style="font-size: 1rem;">Curated Wholesale</div>
+          </div>
+          <p class="body-sm" style="margin-bottom: 12px;">Standard wholesale programme. Minimum opening order €1,200. Net-30 payment terms. Reorder minimum €400. Dedicated brand assets and a product story guide included at no cost.</p>
+          <div style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 500; color: var(--sage); letter-spacing: 0.08em;">28–34% margin depending on category</div>
+        </div>
+
+        <div class="card" style="border-left: 2px solid var(--sage);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <div class="icon-circle" style="width: 32px; height: 32px; font-size: 0.75rem; margin-bottom: 0;"><i class="fa-solid fa-star"></i></div>
+            <div class="h-small" style="font-size: 1rem;">Anchor Partner</div>
+          </div>
+          <p class="body-sm" style="margin-bottom: 12px;">For flagship retailers committing to a dedicated Hygge section of 4m² or more. Includes quarterly buy-in, seasonal VM pack, co-branded window support, and a named account manager.</p>
+          <div style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 500; color: var(--sage); letter-spacing: 0.08em;">Priority allocation on limited runs + seasonal exclusives</div>
+        </div>
+
+        <div class="card" style="border-left: 2px solid var(--terra);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <div class="icon-circle terra" style="width: 32px; height: 32px; font-size: 0.75rem; margin-bottom: 0;"><i class="fa-solid fa-boxes-stacked"></i></div>
+            <div class="h-small" style="font-size: 1rem;">Pop-Up &amp; Concession</div>
+          </div>
+          <p class="body-sm" style="margin-bottom: 12px;">For department stores and concept stores wanting to test Hygge in a lower-commitment format. Supplied on consignment for 60-day trial windows. VM kit and staff training supplied.</p>
+          <div style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 500; color: var(--terra); letter-spacing: 0.08em;">Typically converts to wholesale after one season</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label" style="margin-bottom: 20px;">What we provide to every partner</div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <i class="fa-solid fa-check" style="color: var(--sage); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem;"></i>
+            <p class="body-sm">Seasonal lookbook and product photography (hi-res, retail-ready, licensed for all channels)</p>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <i class="fa-solid fa-check" style="color: var(--sage); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem;"></i>
+            <p class="body-sm">Printed story cards per product line — the materials, the makers, the method</p>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <i class="fa-solid fa-check" style="color: var(--sage); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem;"></i>
+            <p class="body-sm">90-day sell-through support — unsold stock exchangeable for in-season credit</p>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <i class="fa-solid fa-check" style="color: var(--sage); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem;"></i>
+            <p class="body-sm">Staff training deck (digital) and live 45-min onboarding call for any partner floor team</p>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <i class="fa-solid fa-check" style="color: var(--sage); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem;"></i>
+            <p class="body-sm">Quarterly sales data summary to help you plan buy depth by category</p>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <i class="fa-solid fa-check" style="color: var(--sage); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem;"></i>
+            <p class="body-sm">A single account contact — never a ticketing system or call centre</p>
+          </div>
+        </div>
+
+        <hr class="thin-rule" style="max-width: 480px; margin-top: 28px;" />
+
+        <div class="card-sage" style="margin-top: 0;">
+          <p class="body-sm" style="font-style: italic; font-family: var(--font-serif); font-size: 0.9rem; color: var(--ink-soft);">
+            "We do not work with every partner that applies. We work with partners who value what we value — which means our products sell, and sell well."
+          </p>
+          <div class="quote-attr" style="margin-top: 10px;">— Søren Lindqvist, Head of Wholesale</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — WHAT WE'RE BUILDING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="background: var(--linen);">
+  <div class="slide-num">09 / 10</div>
+
+  <span class="deco-leaf" style="right: 0; top: 50%; transform: translateY(-50%); font-size: 360px; opacity: 0.05;">
+    <i class="fa-solid fa-leaf"></i>
+  </span>
+
+  <div style="width: 100%; max-width: 1080px;">
+    <span class="label">What We're Building in 2026–27</span>
+    <div class="accent-bar"></div>
+
+    <h2 class="h-mid" style="margin-bottom: 44px; max-width: 28ch;">
+      Measured expansion. Nothing rushed.
+    </h2>
+
+    <div class="two-col" style="gap: 80px; align-items: start;">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot filled"></div>
+          <div class="timeline-content">
+            <div class="timeline-period">Q1 2026 — Completed</div>
+            <div class="timeline-title">Second Copenhagen flagship</div>
+            <div class="timeline-desc">Vesterbro store opened February 2026. 120m². Partner pop-up space embedded. First-month revenue €48K.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot filled"></div>
+          <div class="timeline-content">
+            <div class="timeline-period">Q2 2026 — In progress</div>
+            <div class="timeline-title">Anchor partner expansion (UK + DE)</div>
+            <div class="timeline-desc">Eight new anchor partner agreements in negotiation across London, Berlin, Hamburg, and Manchester. Targeting launch September 2026.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot terra"></div>
+          <div class="timeline-content">
+            <div class="timeline-period">Q3 2026 — Planned</div>
+            <div class="timeline-title">Hud line US launch</div>
+            <div class="timeline-desc">Body and bathing line entering the US market via three anchor wholesale partners. FDA registration complete. Logistics hub in place.</div>
+          </div>
+        </div>
+        <div class="timeline-item" style="padding-bottom: 0;">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-period">2027</div>
+            <div class="timeline-title">Own label certified wool mill</div>
+            <div class="timeline-desc">Equity stake in a small regenerative mill in the Faroe Islands to secure long-term textile quality and reduce our wool sourcing supply risk.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label" style="margin-bottom: 16px;">2026 targets</div>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <div class="stat-num sage" style="font-size: clamp(32px, 4vw, 52px);">€8.6M</div>
+            <div class="stat-label">Revenue target</div>
+            <div class="stat-note">+39% on 2025</div>
+          </div>
+          <hr class="thin-rule" style="max-width: 320px;" />
+          <div>
+            <div class="stat-num" style="font-size: clamp(32px, 4vw, 52px);">200</div>
+            <div class="stat-label">Wholesale partners</div>
+            <div class="stat-note">+58 net new stockists</div>
+          </div>
+          <hr class="thin-rule" style="max-width: 320px;" />
+          <div>
+            <div class="stat-num terra" style="font-size: clamp(32px, 4vw, 52px);">12</div>
+            <div class="stat-label">Anchor partners</div>
+            <div class="stat-note">From 4 today</div>
+          </div>
+        </div>
+
+        <hr class="thin-rule" style="max-width: 400px; margin-top: 28px;" />
+
+        <div class="body-sm" style="max-width: 36ch;">
+          We are profitable. We have no outstanding debt. We are not raising. This expansion is funded entirely by operating cash flow — which means our wholesale partners are our growth engine.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CTA / CLOSING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="background: var(--ink); justify-content: center;">
+  <div class="slide-num" style="color: var(--warm-grey);">10 / 10</div>
+
+  <div style="width: 100%; max-width: 1080px; display: flex; flex-direction: column; align-items: flex-start;">
+    <div class="accent-bar"></div>
+
+    <h2 style="font-family: var(--font-serif); font-weight: 300; font-size: clamp(36px, 5.5vw, 76px); line-height: 1.1; letter-spacing: -0.015em; color: var(--linen); margin-bottom: 28px; max-width: 22ch;">
+      Let's build something slow and lasting, together.
+    </h2>
+
+    <p style="font-family: var(--font-sans); font-size: clamp(0.9rem, 1.1vw, 1.05rem); font-weight: 300; color: var(--warm-grey); line-height: 1.78; max-width: 52ch; margin-bottom: 44px;">
+      If you are selecting your next season's home goods range, planning a flagship redesign, or looking for a brand that will hold its value on your floor — we would love to talk.
+    </p>
+
+    <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 56px;">
+      <div>
+        <div style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 6px;">Opening orders from</div>
+        <div style="font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; color: var(--linen); line-height: 1;">€1,200</div>
+      </div>
+      <div style="width: 1px; background: #3d3834; align-self: stretch;"></div>
+      <div>
+        <div style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 6px;">Lead time</div>
+        <div style="font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; color: var(--linen); line-height: 1;">3–4 weeks</div>
+      </div>
+      <div style="width: 1px; background: #3d3834; align-self: stretch;"></div>
+      <div>
+        <div style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 6px;">Payment terms</div>
+        <div style="font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; color: var(--linen); line-height: 1;">Net-30</div>
+      </div>
+    </div>
+
+    <hr style="border: none; border-top: 1px solid #3d3834; width: 100%; max-width: 720px; margin-bottom: 32px;" />
+
+    <div style="display: flex; gap: 48px; flex-wrap: wrap; align-items: flex-start;">
+      <div>
+        <div style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 8px;">Wholesale enquiries</div>
+        <div style="font-family: var(--font-serif); font-size: 1rem; font-weight: 400; color: var(--sage-light);">wholesale@hygge-living.co</div>
+      </div>
+      <div>
+        <div style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 8px;">Trade catalogue + samples</div>
+        <div style="font-family: var(--font-serif); font-size: 1rem; font-weight: 400; color: var(--sage-light);">hygge-living.co/trade</div>
+      </div>
+      <div>
+        <div style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 8px;">Head of Wholesale</div>
+        <div style="font-family: var(--font-serif); font-size: 1rem; font-weight: 400; color: var(--linen-mid);">Søren Lindqvist</div>
+        <div style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 300; color: var(--warm-grey); margin-top: 2px;">+45 32 17 88 44</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 56px; font-family: var(--font-sans); font-size: 0.58rem; font-weight: 300; color: #5a5450; letter-spacing: 0.1em;">
+      Hygge ApS &nbsp;·&nbsp; Studiestræde 14, 1455 Copenhagen K &nbsp;·&nbsp; CVR 38 14 22 96 &nbsp;·&nbsp; Confidential partner materials — not for distribution
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── Arrow-key navigation ──
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const counter = document.getElementById('slide-counter');
+  let current = 0;
+
+  function goTo(n) {
+    if (n < 0 || n >= total) return;
+    slides[n].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowUp'   || e.key === 'PageUp')   { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    if (e.key === 'End')  { e.preventDefault(); goTo(total - 1); }
+  });
+
+  // ── IntersectionObserver slide counter ──
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        current = slides.indexOf(entry.target);
+        counter.textContent = String(current + 1).padStart(2, '0');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => io.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signalbox — State of Activation 2026</title>
+<meta name="description" content="The State of Activation 2026 — how 847 SaaS companies measure, lose, and recover new users. Industry benchmark report by Signalbox Research." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/signalbox-report" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#1a1a1a" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/signalbox-report" />
+<meta property="og:title" content="Signalbox — State of Activation 2026" />
+<meta property="og:description" content="How 847 SaaS companies measure, lose, and recover new users. Industry benchmark report by Signalbox Research." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Signalbox — State of Activation 2026" />
+<meta name="twitter:description" content="How 847 SaaS companies measure, lose, and recover new users. Industry benchmark report by Signalbox Research." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ─────────────────────────────────────────
+     DESIGN TOKENS
+  ───────────────────────────────────────── */
+  :root {
+    --white:   #ffffff;
+    --ink:     #1a1a1a;
+    --blue:    #2b6cb0;
+    --red:     #e63946;
+    --amber:   #f4a261;
+    --teal:    #2a9d8f;
+    --grey-1:  #f5f5f5;
+    --grey-2:  #e0e0e0;
+    --grey-3:  #9e9e9e;
+    --grey-4:  #616161;
+    --header-h: 40px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ink);
+    color: var(--ink);
+    height: 100%;
+  }
+
+  /* ─── FIXED HEADER ─── */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--white);
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    z-index: 1000;
+  }
+  .site-header .brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .site-header .brand span {
+    font-weight: 400;
+    color: var(--grey-4);
+    letter-spacing: 0.06em;
+    margin-left: 6px;
+    text-transform: none;
+  }
+  .site-header .slide-counter {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--grey-3);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  .nav-hint {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--grey-3);
+    background: rgba(255,255,255,0.92);
+    padding: 6px 16px;
+    border: 1px solid var(--grey-2);
+    z-index: 1000;
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── SLIDES ─── */
+  .slide {
+    scroll-snap-align: start;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    padding-top: var(--header-h);
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-inner {
+    width: 100%;
+    height: calc(100vh - var(--header-h));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3 {
+    font-family: 'Source Serif 4', serif;
+  }
+  .serif { font-family: 'Source Serif 4', serif; }
+  .sans  { font-family: 'Inter', sans-serif; }
+
+  /* ─── UTILITY ─── */
+  .rule-top-2  { border-top: 2px solid var(--ink); }
+  .rule-top-1  { border-top: 1px solid var(--grey-2); }
+  .rule-bot-2  { border-bottom: 2px solid var(--ink); }
+  .rule-bot-1  { border-bottom: 1px solid var(--grey-2); }
+
+  /* ─── SOURCE FOOTNOTE ─── */
+  .source-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--grey-3);
+    letter-spacing: 0.04em;
+    padding-top: 10px;
+    border-top: 1px solid var(--grey-2);
+    margin-top: auto;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 1 — COVER
+  ───────────────────────────────────────── */
+  #s1 .slide-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    flex-direction: unset;
+    height: calc(100vh - var(--header-h));
+  }
+
+  .cover-left {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 52px 56px 56px;
+    border-right: 2px solid var(--ink);
+  }
+  .cover-left .report-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cover-left h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(34px, 4vw, 64px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.08;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .cover-left .subhead {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: clamp(15px, 1.5vw, 20px);
+    font-weight: 400;
+    color: var(--grey-4);
+    line-height: 1.45;
+    margin-bottom: 44px;
+    max-width: 560px;
+  }
+  .cover-left .logo-mark {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 18px;
+    display: inline-block;
+  }
+  .cover-left .logo-mark .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--blue);
+    margin-right: 6px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+
+  .cover-right {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px 40px 56px;
+  }
+  .cover-right .facts-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--grey-3);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #333;
+  }
+  .key-facts-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .key-facts-table tr {
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .key-facts-table tr:last-child {
+    border-bottom: none;
+  }
+  .key-facts-table td {
+    padding: 13px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .key-facts-table td:first-child {
+    color: var(--grey-3);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    width: 55%;
+    vertical-align: top;
+    padding-top: 14px;
+  }
+  .key-facts-table td:last-child {
+    color: var(--white);
+    font-weight: 500;
+    text-align: right;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 2 — METRIC HERO
+  ───────────────────────────────────────── */
+  #s2 .slide-inner {
+    padding: 40px 56px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .s2-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--red);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  #s2 h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(20px, 2.4vw, 32px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    max-width: 800px;
+    margin-bottom: 28px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 20px;
+  }
+  .s2-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+  }
+  .s2-hero-number {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 48px 32px 0;
+    border-right: 2px solid var(--ink);
+  }
+  .s2-big-pct {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(96px, 14vw, 180px);
+    font-weight: 700;
+    color: var(--red);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+  .s2-big-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--grey-4);
+    line-height: 1.5;
+    max-width: 320px;
+  }
+  .s2-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 0 32px 48px;
+    gap: 0;
+  }
+  .s2-narrative {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(13px, 1.2vw, 16px);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .s2-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 2px solid var(--ink);
+  }
+  .s2-stat {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--grey-2);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .s2-stat:last-child {
+    border-bottom: none;
+  }
+  .s2-stat-num {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .s2-stat-num.teal { color: var(--teal); }
+  .s2-stat-num.amber { color: var(--amber); }
+  .s2-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grey-4);
+    line-height: 1.4;
+  }
+  .s2-source {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--grey-3);
+    letter-spacing: 0.03em;
+    padding-top: 10px;
+    border-top: 1px solid var(--grey-2);
+    margin-top: 8px;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 3 — BAR CHART
+  ───────────────────────────────────────── */
+  #s3 .slide-inner {
+    padding: 36px 56px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .chart-header {
+    margin-bottom: 28px;
+  }
+  .chart-header h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chart-header .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--grey-4);
+    line-height: 1.5;
+  }
+
+  /* axis container */
+  .bar-chart-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin-bottom: 16px;
+  }
+
+  /* x-axis tick row */
+  .axis-row {
+    display: flex;
+    align-items: center;
+    margin-left: 148px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .axis-tick-labels {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--grey-3);
+    letter-spacing: 0.04em;
+  }
+
+  /* gridlines */
+  .bars-area {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 0;
+  }
+  .gridlines {
+    position: absolute;
+    top: 0; left: 148px; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .gridline {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--grey-2);
+  }
+  .gridline.gl-0   { left: 0%; }
+  .gridline.gl-25  { left: 25%; }
+  .gridline.gl-50  { left: 50%; }
+  .gridline.gl-75  { left: 75%; }
+  .gridline.gl-100 { left: 100%; }
+
+  /* each bar row */
+  .bar-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 4px 0;
+  }
+  .bar-label {
+    width: 148px;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+    text-align: right;
+    padding-right: 14px;
+    line-height: 1.3;
+  }
+  .bar-track {
+    flex: 1;
+    position: relative;
+    height: 28px;
+    display: flex;
+    align-items: center;
+  }
+  .bar-fill {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .bar-fill.blue { background: var(--blue); }
+  .bar-fill.red  { background: var(--red); }
+  .bar-pct {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-left: 8px;
+    white-space: nowrap;
+    position: absolute;
+    left: 100%;
+    padding-left: 8px;
+  }
+
+  /* activation cliff annotation */
+  .cliff-annotation {
+    position: absolute;
+    left: -10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .cliff-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1px solid var(--red);
+    padding: 2px 6px;
+    background: #fff;
+  }
+  .cliff-line {
+    position: absolute;
+    left: 130px;
+    right: 0;
+    height: 2px;
+    background: var(--red);
+    opacity: 0.25;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 4 — LINE CHART
+  ───────────────────────────────────────── */
+  #s4 .slide-inner {
+    padding: 36px 56px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .s4-chart-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    justify-content: center;
+  }
+  .s4-legend {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 16px;
+    margin-left: 60px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--grey-4);
+  }
+  .legend-swatch {
+    width: 24px;
+    height: 3px;
+    flex-shrink: 0;
+  }
+  .legend-swatch.blue { background: var(--blue); }
+  .legend-swatch.teal { background: var(--teal); }
+
+  /* ─── PRINT SAFETY ─── */
+  @media print {
+    html {
+      scroll-snap-type: none;
+      overflow-y: auto;
+      height: auto;
+    }
+    body { background: white; height: auto; }
+    .site-header { position: static; }
+    .nav-hint { display: none; }
+    .slide {
+      height: auto;
+      min-height: 100vh;
+      page-break-after: always;
+      break-after: page;
+      overflow: visible;
+    }
+    .slide-inner {
+      height: auto;
+      overflow: visible;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── FIXED HEADER ─── -->
+<header class="site-header">
+  <div class="brand">
+    Signalbox <span>State of Activation 2026</span>
+  </div>
+  <div class="slide-counter" id="slide-counter">1 / 11</div>
+</header>
+
+<!-- ─── NAV HINT ─── -->
+<div class="nav-hint">↑ ↓ arrow keys to navigate</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 1 — COVER
+════════════════════════════════════════ -->
+<section class="slide" id="s1">
+  <div class="slide-inner">
+
+    <div class="cover-left">
+      <div class="report-label">Industry Benchmark Report</div>
+      <h1>The State of<br>Activation 2026</h1>
+      <p class="subhead">How 847 SaaS companies measure, lose, and recover new users</p>
+      <div class="logo-mark">
+        <span class="dot"></span>Signalbox
+      </div>
+    </div>
+
+    <div class="cover-right">
+      <div class="facts-label">Report Overview</div>
+      <table class="key-facts-table">
+        <tr>
+          <td>Companies surveyed</td>
+          <td>847</td>
+        </tr>
+        <tr>
+          <td>Data period</td>
+          <td>Jan 2024 – Mar 2026</td>
+        </tr>
+        <tr>
+          <td>Median company ARR</td>
+          <td>$8.4M</td>
+        </tr>
+        <tr>
+          <td>Published</td>
+          <td>June 2026</td>
+        </tr>
+        <tr>
+          <td>By</td>
+          <td>Signalbox Research</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 2 — KEY FINDING / METRIC HERO
+════════════════════════════════════════ -->
+<section class="slide" id="s2">
+  <div class="slide-inner">
+
+    <div class="s2-eyebrow">Key Finding</div>
+    <h2>63% of trial users churn before reaching their first 'aha moment'</h2>
+
+    <div class="s2-body">
+
+      <div class="s2-hero-number">
+        <div class="s2-big-pct">63%</div>
+        <div class="s2-big-label">of trial users never experience the core value their product promises</div>
+      </div>
+
+      <div class="s2-right">
+        <p class="s2-narrative">
+          Activation is the single highest-leverage metric in the SaaS growth funnel — yet most companies treat it as a post-acquisition afterthought. Our data across 847 products shows that the median SaaS company loses nearly two-thirds of trial users before those users ever complete a meaningful action. The problem is not awareness, pricing, or even product quality: it is the gap between signup and value. Companies in the top quartile have systematically closed that gap through instrumentation, behavioral triggers, and relentless funnel measurement. The companies at the bottom are flying blind — often unaware that churn begins on day one, not day thirty.
+        </p>
+
+        <div class="s2-stats">
+          <div class="s2-stat">
+            <span class="s2-stat-num">4.2<span style="font-size:0.55em;font-weight:600;color:var(--grey-3);"> days</span></span>
+            <span class="s2-stat-label">Median time-to-value across all companies surveyed</span>
+          </div>
+          <div class="s2-stat">
+            <span class="s2-stat-num teal">1.1<span style="font-size:0.55em;font-weight:600;color:var(--grey-3);"> days</span></span>
+            <span class="s2-stat-label">Top quartile time-to-value — nearly 4× faster than the median</span>
+          </div>
+          <div class="s2-stat">
+            <span class="s2-stat-num amber">4×</span>
+            <span class="s2-stat-label">Gap between activation leaders and laggards — and widening</span>
+          </div>
+        </div>
+
+        <div class="s2-source">
+          Source: Signalbox Activation Benchmark Study, n=847, Q1 2026
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 3 — BAR CHART
+════════════════════════════════════════ -->
+<section class="slide" id="s3">
+  <div class="slide-inner">
+
+    <div class="chart-header">
+      <h2>Where users drop off: The activation funnel</h2>
+      <div class="subtitle">Median dropout rates by onboarding step across 847 SaaS products — % of users who never complete each step</div>
+    </div>
+
+    <div class="bar-chart-wrap">
+
+      <!-- X-axis tick labels -->
+      <div class="axis-row">
+        <div class="axis-tick-labels">
+          <span>0%</span>
+          <span>25%</span>
+          <span>50%</span>
+          <span>75%</span>
+          <span>100%</span>
+        </div>
+      </div>
+
+      <!-- Bars area with gridlines -->
+      <div class="bars-area">
+
+        <!-- Gridlines -->
+        <div class="gridlines">
+          <div class="gridline gl-0"></div>
+          <div class="gridline gl-25"></div>
+          <div class="gridline gl-50"></div>
+          <div class="gridline gl-75"></div>
+          <div class="gridline gl-100"></div>
+        </div>
+
+        <!-- Step 1: Account creation 8% -->
+        <div class="bar-row">
+          <div class="bar-label">Account creation</div>
+          <div class="bar-track">
+            <div class="bar-fill blue" style="width: 8%;">
+              <span class="bar-pct">8%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Email verification 22% -->
+        <div class="bar-row">
+          <div class="bar-label">Email verification</div>
+          <div class="bar-track">
+            <div class="bar-fill blue" style="width: 22%;">
+              <span class="bar-pct">22%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Profile setup 41% -->
+        <div class="bar-row">
+          <div class="bar-label">Profile setup</div>
+          <div class="bar-track">
+            <div class="bar-fill blue" style="width: 41%;">
+              <span class="bar-pct">41%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: First core action 63% — ACTIVATION CLIFF -->
+        <div class="bar-row" style="position:relative;">
+          <div class="bar-label" style="color: var(--red); font-weight: 600;">First core action</div>
+          <div class="bar-track" style="position:relative;">
+            <div class="bar-fill red" style="width: 63%;">
+              <span class="bar-pct" style="font-weight:700; color: var(--red);">63%</span>
+            </div>
+            <!-- Activation cliff annotation -->
+            <div style="position:absolute; top:-26px; left: 63%; transform:translateX(-50%); white-space:nowrap; display:flex; flex-direction:column; align-items:center; pointer-events:none;">
+              <span style="font-family:'Inter',sans-serif; font-size:9px; font-weight:600; color:var(--red); letter-spacing:0.1em; text-transform:uppercase; border:1px solid var(--red); padding:2px 7px; background:white; white-space:nowrap;">Activation cliff</span>
+              <svg width="1" height="10" style="overflow:visible;"><line x1="0" y1="0" x2="0" y2="10" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="2,2"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Second core action 71% -->
+        <div class="bar-row">
+          <div class="bar-label" style="color: var(--red); font-weight: 600;">Second core action</div>
+          <div class="bar-track">
+            <div class="bar-fill red" style="width: 71%;">
+              <span class="bar-pct" style="color: var(--red);">71%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6: Invite a teammate 84% -->
+        <div class="bar-row">
+          <div class="bar-label" style="color: var(--red); font-weight: 600;">Invite a teammate</div>
+          <div class="bar-track">
+            <div class="bar-fill red" style="width: 84%;">
+              <span class="bar-pct" style="color: var(--red);">84%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 7: Connect an integration 89% -->
+        <div class="bar-row">
+          <div class="bar-label" style="color: var(--red); font-weight: 600;">Connect integration</div>
+          <div class="bar-track">
+            <div class="bar-fill red" style="width: 89%;">
+              <span class="bar-pct" style="color: var(--red);">89%</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /bars-area -->
+    </div><!-- /bar-chart-wrap -->
+
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. Dropout rate = % of users who never complete that step within a 30-day trial window.
+      <span style="margin-left:20px; color:var(--blue); font-weight:600;">&#9646; Steps 1–3</span>
+      <span style="margin-left:10px; color:var(--red); font-weight:600;">&#9646; Steps 4–7 (Activation cliff)</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 4 — LINE CHART
+════════════════════════════════════════ -->
+<section class="slide" id="s4">
+  <div class="slide-inner">
+
+    <div class="chart-header">
+      <h2>Activation rates have stalled since 2022</h2>
+      <div class="subtitle">Industry median 30-day activation rate, 2019–2025</div>
+    </div>
+
+    <div class="s4-chart-wrap">
+
+      <div class="s4-legend">
+        <div class="legend-item">
+          <div class="legend-swatch blue"></div>
+          Industry median
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch teal"></div>
+          Top quartile
+        </div>
+      </div>
+
+      <!-- SVG Line Chart -->
+      <svg
+        viewBox="0 0 700 300"
+        xmlns="http://www.w3.org/2000/svg"
+        style="width:100%; max-width:900px; height:auto; display:block; overflow:visible; margin-left:0;"
+        aria-label="Line chart: Industry median vs top quartile activation rate 2019–2025"
+      >
+        <!-- Y-axis gridlines and labels -->
+        <!-- Y range: 0–80%, chart area: y=20 to y=270, height=250. Each % = 250/80 = 3.125px -->
+        <!-- X range: 2019–2025 (7 years), chart area: x=60 to x=660, width=600. Step=100px -->
+
+        <!-- Gridline y=80% → svg y=20 -->
+        <line x1="60" y1="20" x2="660" y2="20" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="52" y="24" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">80%</text>
+
+        <!-- Gridline y=60% → svg y=20 + (80-60)*3.125 = 20+62.5 = 82.5 -->
+        <line x1="60" y1="82" x2="660" y2="82" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="52" y="86" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">60%</text>
+
+        <!-- Gridline y=40% → svg y=20+125=145 -->
+        <line x1="60" y1="145" x2="660" y2="145" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="52" y="149" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">40%</text>
+
+        <!-- Gridline y=20% → svg y=20+187.5=207.5 -->
+        <line x1="60" y1="208" x2="660" y2="208" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="52" y="212" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">20%</text>
+
+        <!-- Gridline y=0% → svg y=270 -->
+        <line x1="60" y1="270" x2="660" y2="270" stroke="#9e9e9e" stroke-width="1.5"/>
+        <text x="52" y="274" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">0%</text>
+
+        <!-- Y axis -->
+        <line x1="60" y1="20" x2="60" y2="270" stroke="#616161" stroke-width="1.5"/>
+
+        <!-- X axis labels: 2019–2025, x= 60, 160, 260, 360, 460, 560, 660 -->
+        <text x="60"  y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">2019</text>
+        <text x="160" y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">2020</text>
+        <text x="260" y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">2021</text>
+        <text x="360" y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">2022</text>
+        <text x="460" y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">2023</text>
+        <text x="560" y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">2024</text>
+        <text x="660" y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9e9e9e">2025</text>
+
+        <!--
+          Coordinate formula:
+          svg_y = 270 - (value_pct / 80) * 250
+          2019: y=270-(31/80)*250 = 270-96.875 = 173.125 ≈ 173
+          2020: y=270-(34/80)*250 = 270-106.25 = 163.75  ≈ 164
+          2021: y=270-(38/80)*250 = 270-118.75 = 151.25  ≈ 151
+          2022: y=270-(41/80)*250 = 270-128.125= 141.875 ≈ 142
+          2023: y=270-(40/80)*250 = 270-125    = 145
+          2024: y=270-(39/80)*250 = 270-121.875= 148.125 ≈ 148
+          2025: y=270-(38/80)*250 = 270-118.75 = 151.25  ≈ 151
+
+          Top quartile:
+          2019: y=270-(52/80)*250 = 270-162.5  = 107.5  ≈ 108
+          2020: y=270-(57/80)*250 = 270-178.125= 91.875 ≈ 92
+          2021: y=270-(64/80)*250 = 270-200    = 70
+          2022: y=270-(69/80)*250 = 270-215.625= 54.375 ≈ 54
+          2023: y=270-(71/80)*250 = 270-221.875= 48.125 ≈ 48
+          2024: y=270-(73/80)*250 = 270-228.125= 41.875 ≈ 42
+          2025: y=270-(75/80)*250 = 270-234.375= 35.625 ≈ 36
+        -->
+
+        <!-- Shaded band between the two lines (teal 8% opacity) -->
+        <polygon
+          points="
+            60,173  160,164  260,151  360,142  460,145  560,148  660,151
+            660,36   560,42   460,48   360,54   260,70   160,92   60,108
+          "
+          fill="#2a9d8f"
+          fill-opacity="0.08"
+        />
+
+        <!-- Line 1: Industry median (blue) -->
+        <polyline
+          points="60,173 160,164 260,151 360,142 460,145 560,148 660,151"
+          fill="none"
+          stroke="#2b6cb0"
+          stroke-width="2.5"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+        <!-- Data point dots — Industry median -->
+        <circle cx="60"  cy="173" r="4" fill="#2b6cb0"/>
+        <circle cx="160" cy="164" r="4" fill="#2b6cb0"/>
+        <circle cx="260" cy="151" r="4" fill="#2b6cb0"/>
+        <circle cx="360" cy="142" r="4" fill="#2b6cb0"/>
+        <circle cx="460" cy="145" r="4" fill="#2b6cb0"/>
+        <circle cx="560" cy="148" r="4" fill="#2b6cb0"/>
+        <circle cx="660" cy="151" r="4" fill="#2b6cb0"/>
+
+        <!-- Line 2: Top quartile (teal) -->
+        <polyline
+          points="60,108 160,92 260,70 360,54 460,48 560,42 660,36"
+          fill="none"
+          stroke="#2a9d8f"
+          stroke-width="2.5"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+        <!-- Data point dots — Top quartile -->
+        <circle cx="60"  cy="108" r="4" fill="#2a9d8f"/>
+        <circle cx="160" cy="92"  r="4" fill="#2a9d8f"/>
+        <circle cx="260" cy="70"  r="4" fill="#2a9d8f"/>
+        <circle cx="360" cy="54"  r="4" fill="#2a9d8f"/>
+        <circle cx="460" cy="48"  r="4" fill="#2a9d8f"/>
+        <circle cx="560" cy="42"  r="4" fill="#2a9d8f"/>
+        <circle cx="660" cy="36"  r="4" fill="#2a9d8f"/>
+
+        <!-- Endpoint labels -->
+        <text x="668" y="155" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#2b6cb0">38%</text>
+        <text x="668" y="169" font-family="Inter, sans-serif" font-size="10" fill="#9e9e9e">Median</text>
+
+        <text x="668" y="40" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#2a9d8f">75%</text>
+        <text x="668" y="54" font-family="Inter, sans-serif" font-size="10" fill="#9e9e9e">Top Q.</text>
+
+        <!-- Gap annotation arrow: from midpoint between lines at x=560 -->
+        <!-- midpoint between teal(42) and blue(148) at x=560: mid_y = (42+148)/2 = 95 -->
+        <!-- Arrow line vertical from y=50 to y=142 at x=590 -->
+        <line x1="590" y1="50" x2="590" y2="142" stroke="#616161" stroke-width="1" stroke-dasharray="3,2"/>
+        <!-- arrowheads -->
+        <polygon points="590,44 586,54 594,54" fill="#616161"/>
+        <polygon points="590,148 586,138 594,138" fill="#616161"/>
+        <!-- annotation label -->
+        <text x="596" y="94" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#616161">Gap widens</text>
+        <text x="596" y="107" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#616161">to 37pp</text>
+
+      </svg>
+    </div>
+
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. 30-day activation rate = % of signups who complete a predefined 'aha moment' action within 30 days of trial start.
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+  STYLES FOR SLIDES 5–11
+═══════════════════════════════════════════════════ -->
+<style>
+  /* ─────────────────────────────────────────
+     SLIDE 5 — SMALL MULTIPLES
+  ───────────────────────────────────────── */
+  #s5 .slide-inner { padding: 36px 56px 32px; display: flex; flex-direction: column; }
+  .small-mult-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--ink);
+    border-left: 1px solid var(--grey-2);
+    margin: 24px 0 16px;
+    min-height: 0;
+  }
+  .sm-cell {
+    border-right: 1px solid var(--grey-2);
+    border-bottom: 1px solid var(--grey-2);
+    padding: 18px 20px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .sm-cell .sm-cohort {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .sm-cell .sm-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: var(--grey-3);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+  }
+  .sm-cell svg { width: 100%; height: 90px; display: block; }
+  .sm-cell .sm-val {
+    font-family: 'Source Serif 4', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: auto;
+  }
+  .sm-cell .sm-val-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: var(--grey-4);
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 6 — DOT PLOT
+  ───────────────────────────────────────── */
+  #s6 .slide-inner { padding: 36px 56px 32px; display: flex; flex-direction: column; }
+  .dot-plot-wrap { flex: 1; display: flex; flex-direction: column; margin: 24px 0 16px; min-height: 0; }
+  .dp-scale {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--grey-3);
+    letter-spacing: 0.04em;
+    padding: 0 0 6px 200px;
+    border-bottom: 1px solid var(--grey-2);
+  }
+  .dp-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--grey-1);
+    height: 46px;
+  }
+  .dp-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--ink);
+    padding-right: 18px;
+  }
+  .dp-label .dp-meta { display: block; font-size: 9px; color: var(--grey-3); margin-top: 2px; letter-spacing: 0.03em; }
+  .dp-track { position: relative; height: 100%; }
+  /* faint gridlines */
+  .dp-track::before, .dp-track::after,
+  .dp-track .gl { content: ''; position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grey-1); }
+  .dp-track::before { left: 25%; }
+  .dp-track::after  { left: 75%; }
+  .dp-mid { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--grey-2); }
+  .dp-connector {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    background: var(--grey-2);
+    transform: translateY(-50%);
+  }
+  .dp-dot {
+    position: absolute;
+    top: 50%;
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--white);
+  }
+  .dp-dot.industry { background: var(--grey-4); }
+  .dp-dot.signalbox { background: var(--teal); }
+  .dp-legend {
+    display: flex;
+    gap: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--grey-4);
+    margin-top: 6px;
+  }
+  .dp-legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .dp-legend i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+
+  /* ─────────────────────────────────────────
+     SLIDE 7 — STACKED BARS (CHANNEL)
+  ───────────────────────────────────────── */
+  #s7 .slide-inner { padding: 36px 56px 32px; display: flex; flex-direction: column; }
+  .stack-wrap { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; margin: 20px 0 16px; min-height: 0; }
+  .stack-row { display: grid; grid-template-columns: 150px 1fr 64px; align-items: center; gap: 16px; }
+  .stack-row .sr-label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: var(--ink); }
+  .stack-row .sr-label small { display: block; font-size: 9px; color: var(--grey-3); font-weight: 400; margin-top: 1px; }
+  .stack-bar { display: flex; height: 30px; background: var(--grey-1); }
+  .stack-seg { height: 100%; display: flex; align-items: center; justify-content: center; }
+  .stack-seg span {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: var(--white);
+  }
+  .seg-activated { background: var(--teal); }
+  .seg-stalled   { background: var(--amber); }
+  .seg-churned   { background: var(--red); }
+  .stack-row .sr-n { font-family: 'Inter', sans-serif; font-size: 10px; color: var(--grey-3); text-align: right; }
+  .stack-legend { display: flex; gap: 26px; font-family: 'Inter', sans-serif; font-size: 11px; color: var(--grey-4); margin-top: 4px; padding-left: 166px; }
+  .stack-legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .stack-legend i { width: 12px; height: 12px; display: inline-block; }
+
+  /* ─────────────────────────────────────────
+     SLIDE 8 — COMPARISON TABLE
+  ───────────────────────────────────────── */
+  #s8 .slide-inner { padding: 36px 56px 32px; display: flex; flex-direction: column; }
+  .cmp-table { margin: 24px 0 16px; }
+  .cmp-table thead th {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--grey-4); padding: 0 16px 12px; border-bottom: 2px solid var(--ink);
+    vertical-align: bottom;
+  }
+  .cmp-table thead th.leaders { color: var(--teal); }
+  .cmp-table thead th.laggards { color: var(--red); }
+  .cmp-table tbody td {
+    font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink);
+    padding: 13px 16px; border-bottom: 1px solid var(--grey-2); vertical-align: middle;
+  }
+  .cmp-table tbody tr:nth-child(even) { background: var(--grey-1); }
+  .cmp-table td.metric { font-weight: 500; }
+  .cmp-table td.metric small { display: block; font-size: 10px; color: var(--grey-3); font-weight: 400; margin-top: 2px; }
+  .cmp-table td.num { font-family: 'Source Serif 4', serif; font-size: 17px; font-weight: 700; text-align: center; }
+  .cmp-table td.lead-num { color: var(--teal); }
+  .cmp-table td.lag-num  { color: var(--red); }
+  .cmp-table td.delta {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; text-align: center; color: var(--grey-4);
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 9 — ANNOTATED SCATTER / CALLOUT
+  ───────────────────────────────────────── */
+  #s9 .slide-inner { padding: 36px 56px 32px; display: flex; flex-direction: column; }
+  .scatter-body { flex: 1; display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px; margin: 24px 0 16px; min-height: 0; }
+  .scatter-chart { display: flex; flex-direction: column; }
+  .scatter-chart svg { width: 100%; height: 100%; display: block; }
+  .scatter-read { display: flex; flex-direction: column; justify-content: center; border-left: 2px solid var(--ink); padding-left: 36px; }
+  .scatter-read .sr-kicker {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: var(--blue);
+    letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .scatter-read h3 {
+    font-family: 'Source Serif 4', serif; font-size: clamp(18px, 1.8vw, 24px); font-weight: 700;
+    line-height: 1.25; color: var(--ink); margin-bottom: 18px;
+  }
+  .scatter-read p { font-family: 'Source Serif 4', serif; font-size: 14px; line-height: 1.65; color: var(--grey-4); margin-bottom: 16px; }
+  .scatter-read .pull-stat {
+    font-family: 'Source Serif 4', serif; font-size: 40px; font-weight: 700; color: var(--teal); line-height: 1;
+    border-top: 1px solid var(--grey-2); padding-top: 16px; margin-top: 4px;
+  }
+  .scatter-read .pull-stat small { display: block; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 400; color: var(--grey-3); margin-top: 6px; }
+
+  /* ─────────────────────────────────────────
+     SLIDE 10 — PLAYBOOK / RECOMMENDATIONS
+  ───────────────────────────────────────── */
+  #s10 .slide-inner { padding: 36px 56px 32px; display: flex; flex-direction: column; }
+  .play-grid {
+    flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border-top: 2px solid var(--ink); border-left: 1px solid var(--grey-2);
+    margin: 24px 0 16px; min-height: 0;
+  }
+  .play-cell {
+    border-right: 1px solid var(--grey-2); border-bottom: 1px solid var(--grey-2);
+    border-top: 4px solid var(--blue); padding: 22px 24px; display: flex; flex-direction: column;
+  }
+  .play-cell:nth-child(2) { border-top-color: var(--teal); }
+  .play-cell:nth-child(3) { border-top-color: var(--amber); }
+  .play-cell:nth-child(4) { border-top-color: var(--red); }
+  .play-cell:nth-child(5) { border-top-color: var(--blue); }
+  .play-cell:nth-child(6) { border-top-color: var(--teal); }
+  .play-cell .pc-num { font-family: 'Source Serif 4', serif; font-size: 34px; font-weight: 700; color: var(--grey-2); line-height: 1; margin-bottom: 12px; }
+  .play-cell h3 { font-family: 'Source Serif 4', serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.25; margin-bottom: 10px; }
+  .play-cell p { font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--grey-4); line-height: 1.55; flex: 1; }
+  .play-cell .pc-stat {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: var(--teal);
+    letter-spacing: 0.03em; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--grey-2);
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 11 — CLOSING / METHODOLOGY
+  ───────────────────────────────────────── */
+  #s11 .slide-inner { display: grid; grid-template-columns: 1.3fr 1fr; flex-direction: unset; height: calc(100vh - var(--header-h)); }
+  .close-left {
+    background: var(--ink); color: var(--white); padding: 52px 56px 56px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .close-left .cl-label {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: var(--amber);
+    letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .close-left h2 { font-family: 'Source Serif 4', serif; font-size: clamp(26px, 3vw, 46px); font-weight: 700; line-height: 1.12; margin-bottom: 22px; letter-spacing: -0.01em; }
+  .close-left p { font-family: 'Source Serif 4', serif; font-size: 15px; line-height: 1.65; color: var(--grey-2); max-width: 460px; margin-bottom: 28px; }
+  .close-left .cl-logo {
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+    color: var(--grey-3); border-top: 1px solid #333; padding-top: 20px;
+  }
+  .close-right { background: var(--white); padding: 52px 48px 56px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .close-right .cr-label {
+    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: var(--grey-4);
+    letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .method-table { border-top: 2px solid var(--ink); }
+  .method-table tr { border-bottom: 1px solid var(--grey-2); }
+  .method-table td:first-child {
+    font-family: 'Inter', sans-serif; font-size: 10px; color: var(--grey-3); letter-spacing: 0.1em;
+    text-transform: uppercase; width: 42%; padding: 12px 12px 12px 0; vertical-align: top;
+  }
+  .method-table td:last-child { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: var(--ink); padding: 12px 0; line-height: 1.5; }
+  .close-right .cr-foot {
+    font-family: 'Inter', sans-serif; font-size: 9px; color: var(--grey-3); letter-spacing: 0.06em;
+    line-height: 1.7; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--grey-2);
+  }
+
+  @media print {
+    .small-mult-grid, .play-grid, .stack-wrap, .scatter-body, .dot-plot-wrap { flex: none; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 5 — SMALL MULTIPLES
+═══════════════════════════════════════ -->
+<section class="slide" id="s5">
+  <div class="slide-inner">
+    <div class="chart-header">
+      <h2>Not all signups activate alike</h2>
+      <div class="subtitle">30-day activation rate by acquisition source — small multiples across the four largest channels, 2021–2025</div>
+    </div>
+    <div class="small-mult-grid">
+
+      <!-- Product-led / self-serve -->
+      <div class="sm-cell">
+        <div class="sm-cohort">Product-led / self-serve</div>
+        <div class="sm-sub">36% OF SIGNUPS</div>
+        <svg viewBox="0 0 160 90" preserveAspectRatio="none">
+          <line x1="0" y1="89" x2="160" y2="89" stroke="#e0e0e0" stroke-width="1"/>
+          <line x1="0" y1="45" x2="160" y2="45" stroke="#f5f5f5" stroke-width="1"/>
+          <!-- 2021:44 2022:48 2023:51 2024:53 2025:55 (of 80 max → y = 90 - v/80*90) -->
+          <polyline points="0,40.5 40,36 80,32.6 120,30.4 160,28.1" fill="none" stroke="#2a9d8f" stroke-width="2.5"/>
+          <circle cx="160" cy="28.1" r="3" fill="#2a9d8f"/>
+        </svg>
+        <div class="sm-val" style="color:var(--teal)">55%</div>
+        <div class="sm-val-label">2025 · highest of any channel</div>
+      </div>
+
+      <!-- Inbound marketing -->
+      <div class="sm-cell">
+        <div class="sm-cohort">Inbound marketing</div>
+        <div class="sm-sub">29% OF SIGNUPS</div>
+        <svg viewBox="0 0 160 90" preserveAspectRatio="none">
+          <line x1="0" y1="89" x2="160" y2="89" stroke="#e0e0e0" stroke-width="1"/>
+          <line x1="0" y1="45" x2="160" y2="45" stroke="#f5f5f5" stroke-width="1"/>
+          <!-- 2021:38 2022:40 2023:39 2024:38 2025:37 -->
+          <polyline points="0,47.3 40,45 80,46.1 120,47.3 160,48.4" fill="none" stroke="#2b6cb0" stroke-width="2.5"/>
+          <circle cx="160" cy="48.4" r="3" fill="#2b6cb0"/>
+        </svg>
+        <div class="sm-val" style="color:var(--blue)">37%</div>
+        <div class="sm-val-label">2025 · flat since 2022</div>
+      </div>
+
+      <!-- Outbound / sales-led -->
+      <div class="sm-cell">
+        <div class="sm-cohort">Outbound / sales-led</div>
+        <div class="sm-sub">21% OF SIGNUPS</div>
+        <svg viewBox="0 0 160 90" preserveAspectRatio="none">
+          <line x1="0" y1="89" x2="160" y2="89" stroke="#e0e0e0" stroke-width="1"/>
+          <line x1="0" y1="45" x2="160" y2="45" stroke="#f5f5f5" stroke-width="1"/>
+          <!-- 2021:33 2022:34 2023:33 2024:31 2025:29 -->
+          <polyline points="0,52.9 40,51.8 80,52.9 120,55.1 160,57.4" fill="none" stroke="#f4a261" stroke-width="2.5"/>
+          <circle cx="160" cy="57.4" r="3" fill="#f4a261"/>
+        </svg>
+        <div class="sm-val" style="color:var(--amber)">29%</div>
+        <div class="sm-val-label">2025 · declining trend</div>
+      </div>
+
+      <!-- Paid acquisition -->
+      <div class="sm-cell">
+        <div class="sm-cohort">Paid acquisition</div>
+        <div class="sm-sub">14% OF SIGNUPS</div>
+        <svg viewBox="0 0 160 90" preserveAspectRatio="none">
+          <line x1="0" y1="89" x2="160" y2="89" stroke="#e0e0e0" stroke-width="1"/>
+          <line x1="0" y1="45" x2="160" y2="45" stroke="#f5f5f5" stroke-width="1"/>
+          <!-- 2021:26 2022:24 2023:23 2024:21 2025:19 -->
+          <polyline points="0,60.8 40,63 80,64.1 120,66.4 160,68.6" fill="none" stroke="#e63946" stroke-width="2.5"/>
+          <circle cx="160" cy="68.6" r="3" fill="#e63946"/>
+        </svg>
+        <div class="sm-val" style="color:var(--red)">19%</div>
+        <div class="sm-val-label">2025 · lowest of any channel</div>
+      </div>
+
+    </div>
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. Each panel shares a common 0–80% vertical scale. Channel mix percentages reflect the median company. Paid-acquisition signups activate at roughly one-third the rate of self-serve signups.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 6 — DOT PLOT
+═══════════════════════════════════════ -->
+<section class="slide" id="s6">
+  <div class="slide-inner">
+    <div class="chart-header">
+      <h2>The single biggest lever: time-to-value</h2>
+      <div class="subtitle">Median 30-day activation rate by how fast users reach first value — industry baseline vs. Signalbox customers</div>
+    </div>
+    <div class="dot-plot-wrap">
+      <div class="dp-scale">
+        <span>0%</span><span>20%</span><span>40%</span><span>60%</span><span>80%</span>
+      </div>
+
+      <!-- Each row: scale 0–80% maps to 0–100% of track width → left = val/80*100 -->
+      <div class="dp-row">
+        <div class="dp-label">Under 1 hour<span class="dp-meta">"Instant" onboarding</span></div>
+        <div class="dp-track">
+          <div class="dp-mid"></div>
+          <!-- industry 61, signalbox 74 -->
+          <div class="dp-connector" style="left:76.25%; width:16.25%;"></div>
+          <div class="dp-dot industry" style="left:76.25%;"></div>
+          <div class="dp-dot signalbox" style="left:92.5%;"></div>
+        </div>
+      </div>
+      <div class="dp-row">
+        <div class="dp-label">Same day<span class="dp-meta">Under 24 hours</span></div>
+        <div class="dp-track">
+          <div class="dp-mid"></div>
+          <!-- industry 52, signalbox 66 -->
+          <div class="dp-connector" style="left:65%; width:17.5%;"></div>
+          <div class="dp-dot industry" style="left:65%;"></div>
+          <div class="dp-dot signalbox" style="left:82.5%;"></div>
+        </div>
+      </div>
+      <div class="dp-row">
+        <div class="dp-label">2–3 days<span class="dp-meta">Median cohort</span></div>
+        <div class="dp-track">
+          <div class="dp-mid"></div>
+          <!-- industry 39, signalbox 51 -->
+          <div class="dp-connector" style="left:48.75%; width:15%;"></div>
+          <div class="dp-dot industry" style="left:48.75%;"></div>
+          <div class="dp-dot signalbox" style="left:63.75%;"></div>
+        </div>
+      </div>
+      <div class="dp-row">
+        <div class="dp-label">4–7 days<span class="dp-meta">Slow start</span></div>
+        <div class="dp-track">
+          <div class="dp-mid"></div>
+          <!-- industry 27, signalbox 38 -->
+          <div class="dp-connector" style="left:33.75%; width:13.75%;"></div>
+          <div class="dp-dot industry" style="left:33.75%;"></div>
+          <div class="dp-dot signalbox" style="left:47.5%;"></div>
+        </div>
+      </div>
+      <div class="dp-row">
+        <div class="dp-label">Over 1 week<span class="dp-meta">Cold trail</span></div>
+        <div class="dp-track">
+          <div class="dp-mid"></div>
+          <!-- industry 14, signalbox 22 -->
+          <div class="dp-connector" style="left:17.5%; width:10%;"></div>
+          <div class="dp-dot industry" style="left:17.5%;"></div>
+          <div class="dp-dot signalbox" style="left:27.5%;"></div>
+        </div>
+      </div>
+
+      <div class="dp-legend">
+        <span><i style="background:var(--grey-4)"></i> Industry baseline</span>
+        <span><i style="background:var(--teal)"></i> Signalbox customers</span>
+        <span style="color:var(--grey-3)">Dashed midline = 40%</span>
+      </div>
+    </div>
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. Signalbox-customer subset: n=204 companies using guided activation flows. Every hour of delay to first value costs roughly 0.9 percentage points of 30-day activation.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 7 — STACKED BARS
+═══════════════════════════════════════ -->
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <div class="chart-header">
+      <h2>Where the funnel actually ends up</h2>
+      <div class="subtitle">Of every 100 trial signups, how the cohort resolves at day 30 — segmented by company go-to-market motion</div>
+    </div>
+    <div class="stack-wrap">
+
+      <div class="stack-row">
+        <div class="sr-label">Self-serve PLG<small>n=298 companies</small></div>
+        <div class="stack-bar">
+          <div class="stack-seg seg-activated" style="width:48%"><span>48</span></div>
+          <div class="stack-seg seg-stalled" style="width:23%"><span>23</span></div>
+          <div class="stack-seg seg-churned" style="width:29%"><span>29</span></div>
+        </div>
+        <div class="sr-n">per 100</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="sr-label">Hybrid PLG + sales<small>n=341 companies</small></div>
+        <div class="stack-bar">
+          <div class="stack-seg seg-activated" style="width:39%"><span>39</span></div>
+          <div class="stack-seg seg-stalled" style="width:25%"><span>25</span></div>
+          <div class="stack-seg seg-churned" style="width:36%"><span>36</span></div>
+        </div>
+        <div class="sr-n">per 100</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="sr-label">Sales-led<small>n=208 companies</small></div>
+        <div class="stack-bar">
+          <div class="stack-seg seg-activated" style="width:31%"><span>31</span></div>
+          <div class="stack-seg seg-stalled" style="width:24%"><span>24</span></div>
+          <div class="stack-seg seg-churned" style="width:45%"><span>45</span></div>
+        </div>
+        <div class="sr-n">per 100</div>
+      </div>
+
+      <div class="stack-legend">
+        <span><i style="background:var(--teal)"></i> Activated by day 30</span>
+        <span><i style="background:var(--amber)"></i> Stalled (signed up, never activated)</span>
+        <span><i style="background:var(--red)"></i> Churned / abandoned</span>
+      </div>
+    </div>
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. "Stalled" users completed signup but performed zero core actions; they represent the largest recoverable population — an estimated 23–25% of every cohort.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 8 — COMPARISON TABLE
+═══════════════════════════════════════ -->
+<section class="slide" id="s8">
+  <div class="slide-inner">
+    <div class="chart-header">
+      <h2>Leaders vs. laggards: what separates the top quartile</h2>
+      <div class="subtitle">Median values across seven activation practices, top-quartile vs. bottom-quartile companies by 30-day activation rate</div>
+    </div>
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th style="width:34%">Activation practice</th>
+          <th class="leaders" style="width:22%; text-align:center">Top quartile</th>
+          <th class="laggards" style="width:22%; text-align:center">Bottom quartile</th>
+          <th style="width:22%; text-align:center">Gap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="metric">Median time-to-value<small>Signup → first 'aha moment'</small></td>
+          <td class="num lead-num">1.1 days</td>
+          <td class="num lag-num">6.8 days</td>
+          <td class="delta">6.2× slower</td>
+        </tr>
+        <tr>
+          <td class="metric">30-day activation rate<small>Reached aha moment</small></td>
+          <td class="num lead-num">61%</td>
+          <td class="num lag-num">19%</td>
+          <td class="delta">+42 pp</td>
+        </tr>
+        <tr>
+          <td class="metric">Tracks a single "north-star" event<small>Of surveyed companies</small></td>
+          <td class="num lead-num">92%</td>
+          <td class="num lag-num">34%</td>
+          <td class="delta">+58 pp</td>
+        </tr>
+        <tr>
+          <td class="metric">Personalised onboarding paths<small>Role- or use-case-based</small></td>
+          <td class="num lead-num">78%</td>
+          <td class="num lag-num">21%</td>
+          <td class="delta">+57 pp</td>
+        </tr>
+        <tr>
+          <td class="metric">Lifecycle messaging within 24h<small>Triggered on inactivity</small></td>
+          <td class="num lead-num">84%</td>
+          <td class="num lag-num">37%</td>
+          <td class="delta">+47 pp</td>
+        </tr>
+        <tr>
+          <td class="metric">Median trial → paid conversion<small>14-day trial cohorts</small></td>
+          <td class="num lead-num">23%</td>
+          <td class="num lag-num">6%</td>
+          <td class="delta">3.8× higher</td>
+        </tr>
+        <tr>
+          <td class="metric">Annual net revenue retention<small>Existing accounts</small></td>
+          <td class="num lead-num">118%</td>
+          <td class="num lag-num">91%</td>
+          <td class="delta">+27 pp</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. Quartiles defined by 30-day activation rate. "pp" = percentage points. The clearest behavioural divide is a single, instrumented north-star event — present in 92% of leaders and only 34% of laggards.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 9 — ANNOTATED SCATTER + CALLOUT
+═══════════════════════════════════════ -->
+<section class="slide" id="s9">
+  <div class="slide-inner">
+    <div class="chart-header">
+      <h2>Activation predicts revenue retention</h2>
+      <div class="subtitle">Each dot is one company — 30-day activation rate (x) vs. annual net revenue retention (y), n=847</div>
+    </div>
+    <div class="scatter-body">
+      <div class="scatter-chart">
+        <svg viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet">
+          <!-- plot area: x 60→500 (440w), y 30→290 (260h). x: 0–80% activation; y: 70–130% NRR -->
+          <!-- gridlines + y labels (NRR 70,80,90,100,110,120,130) -->
+          <g font-family="Inter, sans-serif" font-size="10" fill="#9e9e9e">
+            <line x1="60" y1="290" x2="500" y2="290" stroke="#1a1a1a" stroke-width="1.5"/>
+            <line x1="60" y1="30"  x2="60"  y2="290" stroke="#1a1a1a" stroke-width="1.5"/>
+            <!-- y gridlines every 20pp: 70,90,110,130 → y = 290 - (v-70)/60*260 -->
+            <line x1="60" y1="290" x2="500" y2="290" stroke="#f5f5f5"/>
+            <line x1="60" y1="203.3" x2="500" y2="203.3" stroke="#f5f5f5"/>
+            <line x1="60" y1="116.7" x2="500" y2="116.7" stroke="#f5f5f5"/>
+            <line x1="60" y1="30" x2="500" y2="30" stroke="#f5f5f5"/>
+            <text x="52" y="293" text-anchor="end">70%</text>
+            <text x="52" y="206.6" text-anchor="end">90%</text>
+            <text x="52" y="120" text-anchor="end">110%</text>
+            <text x="52" y="33.5" text-anchor="end">130%</text>
+            <!-- x labels 0,20,40,60,80 → x = 60 + v/80*440 -->
+            <text x="60" y="306" text-anchor="middle">0%</text>
+            <text x="170" y="306" text-anchor="middle">20%</text>
+            <text x="280" y="306" text-anchor="middle">40%</text>
+            <text x="390" y="306" text-anchor="middle">60%</text>
+            <text x="500" y="306" text-anchor="middle">80%</text>
+          </g>
+          <!-- 100% NRR reference line -->
+          <line x1="60" y1="160" x2="500" y2="160" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="500" y="156" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#9e9e9e">100% NRR — break-even</text>
+
+          <!-- trend line (positive correlation) from (act 8%,NRR 84) to (act 70%,NRR 124) -->
+          <!-- x8% = 60+8/80*440=104; NRR84 → 290-(84-70)/60*260=229.3 -->
+          <!-- x70% = 60+70/80*440=445; NRR124 → 290-(124-70)/60*260=56 -->
+          <line x1="104" y1="229.3" x2="445" y2="56" stroke="#2b6cb0" stroke-width="2.5"/>
+
+          <!-- scattered company dots (semi-transparent teal/grey) -->
+          <g fill="#2a9d8f" fill-opacity="0.55">
+            <circle cx="120" cy="232" r="5"/>
+            <circle cx="150" cy="240" r="5"/>
+            <circle cx="178" cy="210" r="5"/>
+            <circle cx="200" cy="222" r="5"/>
+            <circle cx="215" cy="188" r="5"/>
+            <circle cx="245" cy="196" r="5"/>
+            <circle cx="262" cy="172" r="5"/>
+            <circle cx="288" cy="158" r="5"/>
+            <circle cx="300" cy="180" r="5"/>
+            <circle cx="318" cy="140" r="5"/>
+            <circle cx="340" cy="150" r="5"/>
+            <circle cx="360" cy="118" r="5"/>
+            <circle cx="378" cy="128" r="5"/>
+            <circle cx="400" cy="96" r="5"/>
+            <circle cx="420" cy="104" r="5"/>
+            <circle cx="438" cy="74" r="5"/>
+          </g>
+          <g fill="#9e9e9e" fill-opacity="0.5">
+            <circle cx="135" cy="252" r="5"/>
+            <circle cx="165" cy="225" r="5"/>
+            <circle cx="192" cy="245" r="5"/>
+            <circle cx="230" cy="212" r="5"/>
+            <circle cx="275" cy="205" r="5"/>
+            <circle cx="312" cy="190" r="5"/>
+            <circle cx="350" cy="172" r="5"/>
+            <circle cx="392" cy="150" r="5"/>
+          </g>
+          <!-- highlighted leader cluster -->
+          <circle cx="438" cy="74" r="7" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+          <line x1="438" y1="74" x2="470" y2="48" stroke="#1a1a1a" stroke-width="1"/>
+          <text x="472" y="46" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1a1a1a">Leaders:</text>
+          <text x="472" y="58" font-family="Inter, sans-serif" font-size="9" fill="#616161">61% act, 124% NRR</text>
+        </svg>
+      </div>
+      <div class="scatter-read">
+        <div class="sr-kicker">The correlation</div>
+        <h3>Companies above 40% activation almost never retain below 100%.</h3>
+        <p>Across all 847 companies, 30-day activation explains a striking share of the variance in net revenue retention. The relationship is not subtle: nearly every company sitting above the 40% activation mark also sits above the 100% retention break-even line.</p>
+        <div class="pull-stat">r = 0.71
+          <small>Correlation between 30-day activation rate and annual net revenue retention</small>
+        </div>
+      </div>
+    </div>
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. Pearson correlation; activation and retention are self-reported and validated against connected product data where available. Correlation is not causation, but the directional signal is consistent across every cohort we segmented.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 10 — PLAYBOOK
+═══════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="slide-inner">
+    <div class="chart-header">
+      <h2>What the leaders do differently: a six-part playbook</h2>
+      <div class="subtitle">The activation practices most strongly associated with top-quartile performance, ordered by observed lift</div>
+    </div>
+    <div class="play-grid">
+
+      <div class="play-cell">
+        <div class="pc-num">01</div>
+        <h3>Define one north-star activation event</h3>
+        <p>Pick the single action that best predicts retention and instrument it everywhere. Leaders measure one event; laggards measure dozens of vanity metrics and act on none.</p>
+        <div class="pc-stat">+58 pp adoption among leaders</div>
+      </div>
+
+      <div class="play-cell">
+        <div class="pc-num">02</div>
+        <h3>Compress time-to-value to under a day</h3>
+        <p>Strip every optional step out of the first session. Pre-fill, template, and defer configuration. The first hour decides the next twelve months.</p>
+        <div class="pc-stat">Same-day TTV → +13 pp activation</div>
+      </div>
+
+      <div class="play-cell">
+        <div class="pc-num">03</div>
+        <h3>Personalise the onboarding path</h3>
+        <p>Branch the flow by role or use case from the first screen. A generic tour activates 21% of users; a role-aware path activates 78% of the same population.</p>
+        <div class="pc-stat">3.7× higher completion</div>
+      </div>
+
+      <div class="play-cell">
+        <div class="pc-num">04</div>
+        <h3>Rescue stalled users within 24 hours</h3>
+        <p>The largest recoverable population is the 23–25% who sign up and stall. Trigger lifecycle messaging on inactivity, not on a fixed calendar schedule.</p>
+        <div class="pc-stat">~24% of every cohort recoverable</div>
+      </div>
+
+      <div class="play-cell">
+        <div class="pc-num">05</div>
+        <h3>Make activation a team-wide metric</h3>
+        <p>Leaders put activation on the same dashboard as revenue and review it weekly across product, growth, and success — not buried in an analyst's spreadsheet.</p>
+        <div class="pc-stat">Weekly cadence among 84% of leaders</div>
+      </div>
+
+      <div class="play-cell">
+        <div class="pc-num">06</div>
+        <h3>Close the loop with cohort retention</h3>
+        <p>Tie every onboarding change back to a retention cohort. The companies that experiment against retention — not clicks — compound a measurable advantage each quarter.</p>
+        <div class="pc-stat">118% median NRR for top quartile</div>
+      </div>
+
+    </div>
+    <div class="source-note">
+      Source: Signalbox Activation Benchmark Study, n=847, Q1 2026. Lift figures are associational, drawn from comparing top- and bottom-quartile companies; individual results depend on product, segment, and execution.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 11 — CLOSING / METHODOLOGY
+═══════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <div class="close-left">
+      <div class="cl-label">The bottom line</div>
+      <h2>Activation is the cheapest growth you are not buying.</h2>
+      <p>The median SaaS company loses 63% of its trial users before they ever reach value — then spends to acquire more. The top quartile proves the gap is closable: one north-star event, a sub-day time-to-value, and a disciplined rescue of stalled users move activation by tens of points. Every percentage point compounds into retention and revenue.</p>
+      <div class="cl-logo">SIGNALBOX · RESEARCH</div>
+    </div>
+    <div class="close-right">
+      <div class="cr-label">Methodology &amp; sources</div>
+      <table class="method-table">
+        <tbody>
+          <tr><td>Sample</td><td>847 SaaS companies, $0.5M–$120M ARR (median $8.4M)</td></tr>
+          <tr><td>Data period</td><td>January 2024 – March 2026</td></tr>
+          <tr><td>Method</td><td>Connected product telemetry (612 cos.) + structured survey (847 cos.)</td></tr>
+          <tr><td>Activation</td><td>% of signups completing a company-defined north-star event within 30 days</td></tr>
+          <tr><td>Quartiles</td><td>Ranked by 30-day activation rate; top/bottom 212 companies each</td></tr>
+          <tr><td>Margin of error</td><td>±2.1% at 95% confidence on aggregate activation figures</td></tr>
+          <tr><td>Published</td><td>June 2026 · Signalbox Research</td></tr>
+        </tbody>
+      </table>
+      <div class="cr-foot">
+        © 2026 Signalbox, Inc. The State of Activation 2026 · Figures are de-identified and aggregated; no single company is identifiable. Self-reported metrics are validated against connected telemetry where available. Citation: Signalbox Research, "The State of Activation 2026," June 2026. · signalbox.com/research
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Arrow-key navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  // IntersectionObserver slide counter
+  (function() {
+    var slides = document.querySelectorAll('.slide');
+    var total = slides.length;
+    var counter = document.getElementById('slide-counter');
+    if (counter) counter.textContent = '01 / ' + String(total).padStart(2, '0');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+          if (counter) counter.textContent = String(idx).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+        }
+      });
+    }, { threshold: 0.6 });
+    slides.forEach(function(s) { observer.observe(s); });
+  })();
+</script>
+</body>
+</html>

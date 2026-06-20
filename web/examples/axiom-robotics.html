@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Axiom Robotics — Series B</title>
+<meta name="description" content="Axiom Robotics Series B pitch deck — autonomous warehouse robots delivering 3.4M picks/day and −61% fulfillment cost. $22M raise." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/axiom-robotics" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a1d3a" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/axiom-robotics" />
+<meta property="og:title" content="Axiom Robotics — Series B" />
+<meta property="og:description" content="Autonomous warehouse robots: 3.4M picks/day, −61% fulfillment cost, $22M Series B. Blueprint engineering deck." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Axiom Robotics — Series B" />
+<meta name="twitter:description" content="Autonomous warehouse robots delivering 3.4M picks/day and −61% fulfillment cost." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── TOKENS ─── */
+  :root {
+    --navy:    #0a1d3a;
+    --navy-2:  #0d2347;
+    --navy-3:  #112a55;
+    --cyan:    #5ec8ff;
+    --cyan-dim:#2a7aaa;
+    --cyan-faint: rgba(94,200,255,0.08);
+    --white:   #f0f8ff;
+    --white-dim: rgba(240,248,255,0.55);
+    --white-ghost: rgba(240,248,255,0.12);
+    --orange:  #ff7a18;
+    --orange-dim: rgba(255,122,24,0.15);
+    --grid-line: rgba(94,200,255,0.10);
+    --dim-line:  rgba(94,200,255,0.25);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--navy);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Barlow', system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  /* ─── GRAPH PAPER BACKGROUND ─── */
+  .bp-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--navy);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(rgba(94,200,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94,200,255,0.04) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  }
+  .bp-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(10,29,58,0) 0%, rgba(10,29,58,0.7) 100%);
+  }
+
+  /* ─── SLIDES ─── */
+  .slide {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(48px, 6vw, 88px) clamp(36px, 8vw, 120px);
+    overflow: hidden;
+  }
+
+  /* ─── BLUEPRINT PANEL (replaces glass) ─── */
+  .bp-panel {
+    background: rgba(10,29,58,0.75);
+    border: 1px solid var(--dim-line);
+    position: relative;
+  }
+  .bp-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 16px 16px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bp-panel > * { position: relative; z-index: 1; }
+
+  /* ─── CORNER BRACKET DECORATION ─── */
+  .corner-bracket {
+    position: absolute;
+    width: 18px; height: 18px;
+    pointer-events: none;
+  }
+  .corner-bracket.tl { top: -1px; left: -1px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+  .corner-bracket.tr { top: -1px; right: -1px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+  .corner-bracket.bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+  .corner-bracket.br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+
+  /* ─── CROSSHAIR ─── */
+  .crosshair {
+    position: absolute;
+    pointer-events: none;
+  }
+  .crosshair::before, .crosshair::after {
+    content: '';
+    position: absolute;
+    background: var(--cyan-dim);
+  }
+  .crosshair::before {
+    width: 1px; height: 24px;
+    top: -12px; left: 0;
+  }
+  .crosshair::after {
+    width: 24px; height: 1px;
+    left: -12px; top: 0;
+  }
+  .crosshair-dot {
+    position: absolute;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--cyan);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  /* ─── DIMENSION LINE ─── */
+  .dim-line {
+    position: absolute;
+    background: var(--cyan-dim);
+    pointer-events: none;
+  }
+  .dim-line.h { height: 1px; }
+  .dim-line.v { width: 1px; }
+  .dim-line::before, .dim-line::after {
+    content: '';
+    position: absolute;
+    background: var(--cyan-dim);
+  }
+  .dim-line.h::before { width: 1px; height: 6px; top: -3px; left: 0; }
+  .dim-line.h::after  { width: 1px; height: 6px; top: -3px; right: 0; }
+  .dim-line.v::before { height: 1px; width: 6px; left: -3px; top: 0; }
+  .dim-line.v::after  { height: 1px; width: 6px; left: -3px; bottom: 0; }
+
+  /* ─── TITLE BLOCK (corner) ─── */
+  .title-block {
+    position: absolute;
+    bottom: 28px;
+    right: 36px;
+    width: 280px;
+    border: 1px solid var(--dim-line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--white-dim);
+    pointer-events: none;
+    z-index: 10;
+  }
+  .title-block-row {
+    display: flex;
+    border-bottom: 1px solid var(--dim-line);
+  }
+  .title-block-row:last-child { border-bottom: none; }
+  .tb-cell {
+    padding: 3px 6px;
+    border-right: 1px solid var(--dim-line);
+    flex: 1;
+  }
+  .tb-cell:last-child { border-right: none; }
+  .tb-label { color: rgba(94,200,255,0.4); font-size: 0.55rem; display: block; }
+  .tb-val   { color: var(--white-dim); font-size: 0.65rem; }
+
+  /* ─── PART NUMBER TAG ─── */
+  .part-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px 3px 6px;
+    border: 1px solid var(--cyan-dim);
+    background: rgba(94,200,255,0.06);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+    position: relative;
+  }
+  .part-tag::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+  }
+
+  /* ─── REVISION STAMP ─── */
+  .rev-stamp {
+    display: inline-block;
+    border: 1.5px solid var(--orange);
+    color: var(--orange);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 2px 7px;
+    transform: rotate(-2deg);
+    text-transform: uppercase;
+  }
+
+  /* ─── CALLOUT (exploded) ─── */
+  .callout {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .callout-box {
+    display: inline-block;
+    border: 1px solid var(--cyan-dim);
+    background: rgba(10,29,58,0.92);
+    padding: 4px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--cyan);
+    white-space: nowrap;
+    position: relative;
+  }
+  .callout-line {
+    position: absolute;
+    background: var(--cyan-dim);
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3, h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .muted { color: var(--white-dim); }
+  .cyan-text { color: var(--cyan); }
+  .orange-text { color: var(--orange); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(1.5); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+  @keyframes scan {
+    0%   { transform: translateY(0); opacity: 0.6; }
+    50%  { opacity: 1; }
+    100% { transform: translateY(40px); opacity: 0.6; }
+  }
+
+  .animate { animation: fadeUp 0.55s cubic-bezier(0.22,0.68,0,1.1) both; }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.2s; }
+  .d3 { animation-delay: 0.3s; }
+  .d4 { animation-delay: 0.4s; }
+  .d5 { animation-delay: 0.5s; }
+  .d6 { animation-delay: 0.6s; }
+
+  /* ─── NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(94,200,255,0.3);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* ─── SLIDE COUNTER ─── */
+  #slide-counter {
+    position: fixed;
+    top: 20px;
+    right: 28px;
+    z-index: 200;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(94,200,255,0.35);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+
+  /* ═══ SLIDE 1 — COVER ═══ */
+  .cover-company {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(72px, 11vw, 148px);
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .cover-company span { color: var(--cyan); }
+  .cover-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+    font-size: clamp(12px, 1.2vw, 15px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-top: 18px;
+  }
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(94,200,255,0.4);
+    background: rgba(94,200,255,0.06);
+    padding: 5px 14px 5px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--cyan);
+    margin-bottom: 28px;
+  }
+  .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    animation: pulse-dot 1.8s ease-in-out infinite;
+  }
+  .cover-stats {
+    display: flex;
+    gap: 0;
+    margin-top: 44px;
+    border: 1px solid var(--dim-line);
+  }
+  .cover-stat {
+    padding: 18px 28px;
+    border-right: 1px solid var(--dim-line);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .cover-stat:last-child { border-right: none; }
+  .cs-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.5vw, 30px);
+    color: var(--cyan);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .cs-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+  }
+
+  /* ═══ SLIDE 2 — PROBLEM / MANIFESTO ═══ */
+  .manifesto-stat {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(64px, 10vw, 130px);
+    letter-spacing: 0.02em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .manifesto-row {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 40px;
+    border: 1px solid var(--dim-line);
+  }
+  .manifesto-col {
+    padding: 32px 28px;
+    position: relative;
+  }
+  .manifesto-divider {
+    background: var(--dim-line);
+    align-self: stretch;
+  }
+  .mf-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(94,200,255,0.4);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .mf-stat {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(26px, 3.5vw, 44px);
+    color: var(--orange);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .mf-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: clamp(14px, 1.6vw, 18px);
+    color: var(--white);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .mf-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.82rem;
+    color: var(--white-dim);
+    margin-top: 8px;
+    line-height: 1.55;
+  }
+
+  /* ═══ SLIDE 3 — SOLUTION OVERVIEW ═══ */
+  .sol-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 32px;
+    align-items: start;
+  }
+  .sol-robot {
+    position: relative;
+    border: 1px solid var(--dim-line);
+    padding: 40px 36px 36px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: rgba(10,29,58,0.6);
+    overflow: hidden;
+  }
+  /* Stylized robot SVG placeholder in CSS */
+  .robot-art {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 160px; height: 180px;
+    opacity: 0.18;
+  }
+  .robot-art-body {
+    position: absolute;
+    bottom: 30px; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 90px;
+    border: 2px solid var(--cyan);
+  }
+  .robot-art-head {
+    position: absolute;
+    bottom: 120px; left: 50%; transform: translateX(-50%);
+    width: 56px; height: 48px;
+    border: 2px solid var(--cyan);
+  }
+  .robot-art-eye {
+    position: absolute;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--cyan);
+    top: 14px;
+  }
+  .robot-art-eye.l { left: 10px; }
+  .robot-art-eye.r { right: 10px; }
+  .robot-arm {
+    position: absolute;
+    width: 14px; height: 60px;
+    border: 2px solid var(--cyan);
+    bottom: 60px;
+  }
+  .robot-arm.la { left: calc(50% - 54px); transform: rotate(-8deg); transform-origin: top center; }
+  .robot-arm.ra { right: calc(50% - 54px); transform: rotate(8deg); transform-origin: top center; }
+  .robot-wheel {
+    position: absolute;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--cyan);
+    bottom: 8px;
+  }
+  .robot-wheel.lw { left: calc(50% - 50px); }
+  .robot-wheel.rw { right: calc(50% - 50px); }
+  /* scan line animation */
+  .scan-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    animation: scan 2.4s ease-in-out infinite;
+    top: 20%;
+    opacity: 0.7;
+  }
+  .sol-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .spec-row {
+    border: 1px solid var(--dim-line);
+    padding: 16px 20px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(10,29,58,0.4);
+  }
+  .spec-row::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--cyan);
+  }
+  .spec-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: rgba(94,200,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .spec-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(17px, 2vw, 24px);
+    color: var(--white);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .spec-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.78rem;
+    color: var(--white-dim);
+    margin-top: 3px;
+  }
+
+  /* ═══ SLIDE 4 — SYSTEM ARCHITECTURE ═══ */
+  .arch-wrap {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 28px;
+    border: 1px solid var(--dim-line);
+    padding: 32px 36px;
+    position: relative;
+    background: rgba(10,29,58,0.55);
+    overflow: hidden;
+  }
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  /* connector lines between arch boxes */
+  .arch-connector {
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    background: var(--cyan-dim);
+    pointer-events: none;
+  }
+  .arch-box {
+    border: 1px solid var(--dim-line);
+    padding: 20px 16px;
+    position: relative;
+    background: rgba(10,29,58,0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.3s;
+  }
+  .arch-box:hover { border-color: var(--cyan-dim); }
+  .arch-box-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    color: rgba(94,200,255,0.4);
+    letter-spacing: 0.1em;
+  }
+  .arch-box-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(13px, 1.5vw, 17px);
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+  }
+  .arch-box-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.76rem;
+    color: var(--white-dim);
+    line-height: 1.45;
+  }
+  .arch-box-icon {
+    font-size: 1.2rem;
+    color: var(--cyan);
+    margin-bottom: 2px;
+  }
+  .arch-flow-label {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--cyan-dim);
+    background: var(--navy);
+    padding: 0 6px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  /* Arrow between arch boxes */
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyan-dim);
+    font-size: 0.9rem;
+    padding-top: 24px;
+  }
+
+  /* ═══ SLIDE 5 — TRACTION ═══ */
+  .traction-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 36px;
+    border: 1px solid var(--dim-line);
+  }
+  .traction-cell {
+    padding: 28px 24px;
+    border-right: 1px solid var(--dim-line);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(10,29,58,0.4);
+  }
+  .traction-cell:last-child { border-right: none; }
+  .traction-cell::before {
+    content: attr(data-part);
+    position: absolute;
+    top: 6px; right: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.52rem;
+    color: rgba(94,200,255,0.25);
+    letter-spacing: 0.1em;
+  }
+  .tr-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 3.8vw, 50px);
+    color: var(--cyan);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  .tr-delta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--orange);
+    letter-spacing: 0.06em;
+  }
+  .tr-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    font-size: clamp(11px, 1.2vw, 14px);
+    color: var(--white-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+  .traction-chart-row {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 24px;
+    border: 1px solid var(--dim-line);
+    padding: 24px 28px;
+    background: rgba(10,29,58,0.4);
+  }
+  .chart-label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(94,200,255,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .bar-group {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 72px;
+  }
+  .bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .bar-fill-wrap {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 60px;
+  }
+  .bar-fill-item {
+    width: 80%;
+    background: linear-gradient(180deg, var(--cyan), rgba(94,200,255,0.3));
+    border-top: 1px solid var(--cyan);
+    position: relative;
+  }
+  .bar-col-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.5rem;
+    color: rgba(94,200,255,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══ SLIDE 6 — UNIT ECONOMICS TABLE ═══ */
+  .econ-table {
+    width: 100%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    margin-top: 30px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(11px, 1.1vw, 13px);
+  }
+  .econ-table thead tr {
+    background: rgba(94,200,255,0.08);
+    border-bottom: 1px solid var(--cyan-dim);
+  }
+  .econ-table th {
+    padding: 10px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-align: left;
+    border-right: 1px solid var(--dim-line);
+  }
+  .econ-table th:last-child { border-right: none; }
+  .econ-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(94,200,255,0.07);
+    border-right: 1px solid rgba(94,200,255,0.07);
+    color: var(--white-dim);
+    vertical-align: middle;
+  }
+  .econ-table td:last-child { border-right: none; }
+  .econ-table td:first-child { color: var(--white); font-weight: 500; }
+  .econ-table .ax-col { background: rgba(94,200,255,0.05); color: var(--cyan); font-weight: 600; }
+  .econ-table .highlight-row td { background: rgba(94,200,255,0.08); }
+  .econ-table thead th.ax-col {
+    background: rgba(94,200,255,0.14);
+    border-top: 2px solid var(--cyan);
+  }
+  .positive { color: #4ade80; }
+  .negative { color: var(--orange); }
+
+  /* ═══ SLIDE 7 — MARKET ═══ */
+  .market-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 30px;
+    align-items: start;
+  }
+  .market-big-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(72px, 10vw, 120px);
+    color: var(--cyan);
+    letter-spacing: 0.02em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  .market-cagr {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+  }
+  .tam-bars { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .tam-row { display: flex; flex-direction: column; gap: 5px; }
+  .tam-row-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tam-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .tam-val-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--cyan);
+    letter-spacing: 0.04em;
+  }
+  .tam-track {
+    height: 6px;
+    background: rgba(94,200,255,0.08);
+    border: 1px solid rgba(94,200,255,0.12);
+    overflow: hidden;
+    position: relative;
+  }
+  .tam-fill {
+    height: 100%;
+    background: var(--cyan);
+    opacity: 0.7;
+  }
+  .market-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .mb-box {
+    padding: 16px 18px;
+    border: 1px solid var(--dim-line);
+    background: rgba(10,29,58,0.5);
+    position: relative;
+  }
+  .mb-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+  }
+  .mb-box.tam-c::before { background: var(--cyan); }
+  .mb-box.sam-c::before { background: rgba(94,200,255,0.5); }
+  .mb-box.som-c::before { background: var(--orange); }
+  .mb-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; color: var(--white-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+  .mb-amount { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: clamp(20px, 2.5vw, 30px); margin-top: 4px; letter-spacing: 0.04em; }
+  .mb-sub { font-family: 'Barlow', sans-serif; font-size: 0.72rem; color: var(--white-dim); margin-top: 4px; }
+
+  /* ═══ SLIDE 8 — COMPETITIVE ═══ */
+  .comp-table {
+    width: 100%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    margin-top: 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(11px, 1.1vw, 13px);
+  }
+  .comp-table th {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--cyan-dim);
+    border-right: 1px solid var(--dim-line);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-align: center;
+    background: rgba(10,29,58,0.6);
+  }
+  .comp-table th:first-child { text-align: left; }
+  .comp-table th.ax-h {
+    color: var(--cyan);
+    background: rgba(94,200,255,0.1);
+    border-top: 2px solid var(--cyan);
+    border-left: 1px solid var(--cyan-dim);
+    border-right: 1px solid var(--cyan-dim);
+  }
+  .comp-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(94,200,255,0.07);
+    border-right: 1px solid rgba(94,200,255,0.07);
+    text-align: center;
+    color: var(--white-dim);
+    vertical-align: middle;
+  }
+  .comp-table td:first-child { text-align: left; color: var(--white); font-weight: 500; }
+  .comp-table td.ax-h {
+    background: rgba(94,200,255,0.05);
+    color: var(--cyan);
+    border-left: 1px solid rgba(94,200,255,0.2);
+    border-right: 1px solid rgba(94,200,255,0.2);
+    font-weight: 600;
+  }
+  .comp-table tr:last-child td.ax-h { border-bottom: 1px solid var(--cyan-dim); }
+  .chk { color: #4ade80; font-size: 0.9rem; }
+  .xmk { color: rgba(255,100,80,0.6); font-size: 0.85rem; }
+  .prt { color: #facc15; font-size: 0.75rem; font-family: 'IBM Plex Mono', monospace; }
+
+  /* ═══ SLIDE 9 — TEAM ═══ */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 32px;
+  }
+  .team-card {
+    border: 1px solid var(--dim-line);
+    padding: 28px 24px;
+    position: relative;
+    background: rgba(10,29,58,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .team-avatar {
+    width: 64px; height: 64px;
+    border: 1px solid var(--cyan-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--cyan);
+    margin-bottom: 16px;
+    position: relative;
+    background: rgba(94,200,255,0.06);
+  }
+  .team-name-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(16px, 1.8vw, 21px);
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .team-title-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--cyan);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .team-bio-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.8rem;
+    color: var(--white-dim);
+    line-height: 1.55;
+  }
+  .team-tag {
+    margin-top: 12px;
+    align-self: flex-start;
+  }
+
+  /* ═══ SLIDE 10 — DEPLOYMENT TIMELINE ═══ */
+  .timeline-wrap {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 32px;
+    position: relative;
+  }
+  .timeline-track {
+    position: relative;
+    border-left: 2px solid var(--cyan-dim);
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .timeline-phase {
+    position: relative;
+    padding: 20px 0 24px;
+    border-bottom: 1px solid var(--dim-line);
+  }
+  .timeline-phase:last-child { border-bottom: none; }
+  .tl-dot {
+    position: absolute;
+    left: -36px;
+    top: 24px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--cyan);
+    background: var(--navy);
+  }
+  .tl-dot.done { background: var(--cyan); }
+  .tl-dot.active { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 8px var(--orange); }
+  .tl-period {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--cyan);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tl-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(16px, 1.9vw, 22px);
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .tl-items {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .tl-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--white-dim);
+    border: 1px solid var(--dim-line);
+    padding: 3px 9px;
+    letter-spacing: 0.06em;
+  }
+  .tl-item.done { border-color: rgba(74,222,128,0.3); color: #4ade80; }
+  .tl-item.active { border-color: var(--orange); color: var(--orange); }
+
+  /* ═══ SLIDE 11 — THE ASK ═══ */
+  .ask-big {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(64px, 10vw, 130px);
+    color: var(--cyan);
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .ask-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 36px;
+    align-items: start;
+  }
+  .use-of-funds {
+    border: 1px solid var(--dim-line);
+  }
+  .uof-header {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--dim-line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(94,200,255,0.5);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(94,200,255,0.04);
+  }
+  .uof-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--dim-line);
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .uof-row:last-child { border-bottom: none; }
+  .uof-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: rgba(94,200,255,0.04);
+    z-index: 0;
+  }
+  .uof-row > * { position: relative; z-index: 1; }
+  .uof-pct {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--cyan);
+    letter-spacing: 0.04em;
+    min-width: 48px;
+  }
+  .uof-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    flex: 1;
+  }
+  .uof-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+  }
+  .milestones-col { display: flex; flex-direction: column; gap: 14px; }
+  .ms-box {
+    border: 1px solid var(--dim-line);
+    padding: 14px 18px;
+    position: relative;
+    background: rgba(10,29,58,0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ms-box::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--cyan);
+  }
+  .ms-quarter {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--cyan);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .ms-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(13px, 1.5vw, 16px);
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .ms-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    line-height: 1.4;
+  }
+
+  /* ═══ SLIDE FINAL — CLOSING ═══ */
+  .closing-big {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(44px, 7vw, 96px);
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    text-align: center;
+    max-width: 18ch;
+  }
+  .closing-big span { color: var(--cyan); }
+  .cta-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--cyan-dim);
+    padding: 14px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(14px, 1.6vw, 18px);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--cyan);
+    text-decoration: none;
+    margin-top: 36px;
+    position: relative;
+    background: rgba(94,200,255,0.05);
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .cta-box:hover {
+    background: rgba(94,200,255,0.10);
+    border-color: var(--cyan);
+  }
+  .contact-row {
+    display: flex;
+    gap: 0;
+    margin-top: 24px;
+    border: 1px solid var(--dim-line);
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    padding: 10px 20px;
+    border-right: 1px solid var(--dim-line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--white-dim);
+    letter-spacing: 0.06em;
+  }
+  .contact-item:last-child { border-right: none; }
+  .contact-item span { color: var(--cyan); }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    .bp-bg { display: none; }
+    #nav-hint, #slide-counter { display: none; }
+    .title-block { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    body { background: var(--navy); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Blueprint graph-paper background -->
+<div class="bp-bg"></div>
+
+<!-- Slide counter -->
+<div id="slide-counter">AX · <span id="current-slide">01</span> / 11</div>
+
+<!-- Nav hint -->
+<div id="nav-hint">↑ ↓ &nbsp;·&nbsp; AXIOM ROBOTICS &nbsp;·&nbsp; SERIES B &nbsp;·&nbsp; 11 SLIDES</div>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 1 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1">
+  <!-- Crosshair decorations -->
+  <div class="crosshair" style="top:12%;left:8%;"><div class="crosshair-dot"></div></div>
+  <div class="crosshair" style="top:15%;right:9%;"><div class="crosshair-dot"></div></div>
+  <div class="crosshair" style="bottom:22%;left:5%;"><div class="crosshair-dot"></div></div>
+  <div class="crosshair" style="bottom:18%;right:7%;"><div class="crosshair-dot"></div></div>
+
+  <!-- Dimension lines -->
+  <div class="dim-line h" style="top:10%;left:4%;width:92%;"></div>
+  <div class="dim-line h" style="bottom:14%;left:4%;width:92%;"></div>
+  <div class="dim-line v" style="left:4%;top:10%;height:76%;"></div>
+  <div class="dim-line v" style="right:4%;top:10%;height:76%;"></div>
+
+  <!-- Title block -->
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;">
+        <span class="tb-label">COMPANY</span>
+        <span class="tb-val">AXIOM ROBOTICS INC.</span>
+      </div>
+      <div class="tb-cell">
+        <span class="tb-label">DOC NO.</span>
+        <span class="tb-val">AX-001</span>
+      </div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell">
+        <span class="tb-label">SHEET</span>
+        <span class="tb-val">1 / 11</span>
+      </div>
+      <div class="tb-cell">
+        <span class="tb-label">REV</span>
+        <span class="tb-val">B</span>
+      </div>
+      <div class="tb-cell">
+        <span class="tb-label">DATE</span>
+        <span class="tb-val">2026-06</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;display:flex;flex-direction:column;align-items:flex-start;">
+    <div class="animate">
+      <div class="live-badge">
+        <div class="live-dot"></div>
+        Series B · $22M · Autonomous Logistics
+      </div>
+    </div>
+
+    <div class="animate d1">
+      <div class="cover-company">AXIOM<br /><span>ROBOTICS</span></div>
+    </div>
+
+    <div class="cover-sub animate d2">
+      Autonomous Warehouse Intelligence · Est. 2021 · San Jose, CA
+    </div>
+
+    <div class="cover-stats animate d3">
+      <div class="cover-stat">
+        <div class="cs-val">3.4M</div>
+        <div class="cs-label">Picks / Day</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cs-val">−61%</div>
+        <div class="cs-label">Fulfillment Cost</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cs-val">$22M</div>
+        <div class="cs-label">Series B Raise</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cs-val">99.7%</div>
+        <div class="cs-label">Pick Accuracy</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cs-val">18</div>
+        <div class="cs-label">Deployed Sites</div>
+      </div>
+    </div>
+
+    <div class="animate d4" style="margin-top:28px;display:flex;gap:12px;align-items:center;">
+      <div class="part-tag">AX-204-BOT · UNIT REV B</div>
+      <div class="rev-stamp">CONFIDENTIAL</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 2 — THE PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">PROBLEM ANALYSIS</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-002</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">2 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// SYSTEM FAILURE ANALYSIS · AX-002</span>
+      <h2 style="font-size:clamp(32px,5vw,60px);">Warehouse labor<br /><span style="color:var(--orange);">is broken.</span></h2>
+      <p style="font-family:'Barlow',sans-serif;font-size:0.9rem;color:var(--white-dim);margin-top:8px;max-width:60ch;line-height:1.6;">
+        Global e-commerce has grown 8× in a decade. Warehouse capacity has not.
+        The human picking model cannot scale — physically or economically.
+      </p>
+    </div>
+
+    <div class="manifesto-row animate d2">
+      <div class="manifesto-col">
+        <div class="mf-num">ERR-01</div>
+        <div class="mf-stat">$187B</div>
+        <div class="mf-label">Annual Labor Cost</div>
+        <div class="mf-desc">Warehouse labor in North America alone — growing at 9% YoY with no productivity offset.</div>
+        <div style="margin-top:14px;" class="part-tag">AX-ERR-01</div>
+      </div>
+      <div class="manifesto-divider"></div>
+      <div class="manifesto-col">
+        <div class="mf-num">ERR-02</div>
+        <div class="mf-stat">320%</div>
+        <div class="mf-label">Worker Turnover Rate</div>
+        <div class="mf-desc">Average warehouse employee tenure is 3.4 months. Retraining costs $4,200 per worker per cycle.</div>
+        <div style="margin-top:14px;" class="part-tag">AX-ERR-02</div>
+      </div>
+      <div class="manifesto-divider"></div>
+      <div class="manifesto-col">
+        <div class="mf-num">ERR-03</div>
+        <div class="mf-stat">400<span style="font-size:0.5em;">picks</span></div>
+        <div class="mf-label">Human Picks / Hour</div>
+        <div class="mf-desc">Peak human throughput hits a hard wall at ~400 picks/hour. Axiom AX-1 delivers 2,200 — consistently.</div>
+        <div style="margin-top:14px;" class="part-tag">AX-ERR-03</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 3 — THE SOLUTION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">SOLUTION — AX-1 SYSTEM</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-003</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">3 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// PRODUCT SPEC · AX-003 · UNIT AX-204</span>
+      <h2 style="font-size:clamp(28px,4.5vw,56px);">The AX-1 Autonomous<br /><span style="color:var(--cyan);">Pick &amp; Pack Robot</span></h2>
+    </div>
+
+    <div class="sol-grid animate d2">
+      <!-- Robot diagram panel -->
+      <div class="sol-robot">
+        <div class="corner-bracket tl"></div>
+        <div class="corner-bracket tr"></div>
+        <div class="corner-bracket bl"></div>
+        <div class="corner-bracket br"></div>
+        <!-- Crosshairs on robot panel -->
+        <div class="crosshair" style="top:20%;left:50%;"><div class="crosshair-dot"></div></div>
+        <div class="crosshair" style="bottom:30%;left:25%;"><div class="crosshair-dot"></div></div>
+        <div class="crosshair" style="bottom:30%;right:20%;"><div class="crosshair-dot"></div></div>
+
+        <!-- Robot CSS art -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:180px;height:210px;opacity:0.4;">
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:60px;height:52px;border:1.5px solid var(--cyan);"></div>
+          <div style="position:absolute;top:14px;left:calc(50% - 16px);width:10px;height:10px;border-radius:50%;background:var(--cyan);"></div>
+          <div style="position:absolute;top:14px;right:calc(50% - 16px);width:10px;height:10px;border-radius:50%;background:var(--cyan);"></div>
+          <div style="position:absolute;top:38px;left:50%;transform:translateX(-50%);width:4px;height:18px;background:var(--cyan-dim);"></div>
+          <div style="position:absolute;top:56px;left:50%;transform:translateX(-50%);width:86px;height:96px;border:1.5px solid var(--cyan);"></div>
+          <div style="position:absolute;top:64px;left:50%;transform:translateX(-50%);width:56px;height:2px;background:rgba(94,200,255,0.3);"></div>
+          <div style="position:absolute;top:72px;left:50%;transform:translateX(-50%);width:56px;height:2px;background:rgba(94,200,255,0.3);"></div>
+          <div style="position:absolute;top:56px;left:calc(50% - 54px);width:14px;height:64px;border:1.5px solid var(--cyan);transform:rotate(10deg);transform-origin:top center;"></div>
+          <div style="position:absolute;top:56px;right:calc(50% - 54px);width:14px;height:64px;border:1.5px solid var(--cyan);transform:rotate(-10deg);transform-origin:top center;"></div>
+          <div style="position:absolute;bottom:14px;left:calc(50% - 44px);width:22px;height:22px;border-radius:50%;border:1.5px solid var(--cyan);"></div>
+          <div style="position:absolute;bottom:14px;right:calc(50% - 44px);width:22px;height:22px;border-radius:50%;border:1.5px solid var(--cyan);"></div>
+        </div>
+        <div class="scan-line"></div>
+
+        <!-- Dimension labels -->
+        <div style="position:absolute;top:48%;left:8%;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:var(--cyan-dim);transform:rotate(-90deg);white-space:nowrap;letter-spacing:0.1em;">H: 1.42m</div>
+        <div style="position:absolute;bottom:8%;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:var(--cyan-dim);letter-spacing:0.1em;">W: 0.64m</div>
+        <div style="position:absolute;top:8%;right:12%;font-family:'IBM Plex Mono',monospace;font-size:0.55rem;color:var(--cyan-dim);letter-spacing:0.1em;">MASS: 68kg</div>
+
+        <div style="position:relative;z-index:2;">
+          <div class="part-tag">AX-204-UNIT · SERIES B PRODUCTION</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.06em;margin-top:10px;">AX-1 Autonomous Mobile Robot</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:0.8rem;color:var(--white-dim);margin-top:6px;line-height:1.5;">
+            Omnidirectional LIDAR + vision-fused navigation. Hot-swap battery, 22-hour uptime.
+          </div>
+        </div>
+      </div>
+
+      <!-- Spec list -->
+      <div class="sol-specs">
+        <div class="spec-row">
+          <div class="spec-label">PICK RATE // AX-SPEC-01</div>
+          <div class="spec-val">2,200 picks / hr</div>
+          <div class="spec-sub">5.5× human baseline · consistent across 22-hr shift</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">ACCURACY // AX-SPEC-02</div>
+          <div class="spec-val">99.7% pick accuracy</div>
+          <div class="spec-sub">Vision + weight verification on every pick event</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">NAVIGATION // AX-SPEC-03</div>
+          <div class="spec-val">Fleet-aware SLAM</div>
+          <div class="spec-sub">300-unit fleets, <2ms inter-robot collision avoidance</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">DEPLOYMENT // AX-SPEC-04</div>
+          <div class="spec-val">14-day site deploy</div>
+          <div class="spec-sub">No rack modification · WMS-agnostic API integration</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">PAYLOAD // AX-SPEC-05</div>
+          <div class="spec-val">32 kg max payload</div>
+          <div class="spec-sub">Servo gripper with adaptive pressure sensing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 4 — SYSTEM ARCHITECTURE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">SYSTEM ARCHITECTURE</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-004</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">4 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// ARCHITECTURE OVERVIEW · AX-004 · EXPLODED VIEW</span>
+      <h2 style="font-size:clamp(26px,4vw,52px);">Four-layer intelligence stack</h2>
+      <p style="font-family:'Barlow',sans-serif;font-size:0.85rem;color:var(--white-dim);margin-top:6px;">
+        Proprietary software layers — hardware-agnostic, built for warehouse-scale concurrency.
+      </p>
+    </div>
+
+    <div class="arch-wrap animate d2">
+      <div class="corner-bracket tl"></div>
+      <div class="corner-bracket tr"></div>
+      <div class="corner-bracket bl"></div>
+      <div class="corner-bracket br"></div>
+
+      <!-- Flow label above -->
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:rgba(94,200,255,0.4);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;text-align:center;">
+        DATA FLOW: WMS ORDER → FLEET BRAIN → MOTION PLANNER → ROBOT UNIT → VERIFY &amp; CONFIRM
+      </div>
+
+      <div class="arch-grid">
+        <div class="arch-box">
+          <div class="arch-box-num">01 // AX-SYS-BRAIN</div>
+          <div class="arch-box-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="arch-box-name">AxOS Fleet Brain</div>
+          <div class="arch-box-desc">Central orchestration kernel. Receives WMS order stream, dispatches pick tasks to optimal unit. 300-bot concurrency at &lt;5ms task latency.</div>
+        </div>
+
+        <div class="arch-box">
+          <div class="arch-box-num">02 // AX-SYS-NAV</div>
+          <div class="arch-box-icon"><i class="fa-solid fa-route"></i></div>
+          <div class="arch-box-name">Spatial Nav Engine</div>
+          <div class="arch-box-desc">Real-time 3D map fusion from LIDAR + stereo cameras. Dynamic re-routing around humans and obstacles. SLAM refresh: 40ms.</div>
+        </div>
+
+        <div class="arch-box">
+          <div class="arch-box-num">03 // AX-SYS-VISION</div>
+          <div class="arch-box-icon"><i class="fa-solid fa-eye"></i></div>
+          <div class="arch-box-name">Pick Vision System</div>
+          <div class="arch-box-desc">SKU recognition via custom CV model (AxVision-v3). Handles 240K+ SKU catalog with &lt;80ms inference time per pick event on-device.</div>
+        </div>
+
+        <div class="arch-box">
+          <div class="arch-box-num">04 // AX-SYS-VERIFY</div>
+          <div class="arch-box-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="arch-box-name">Verify &amp; Audit</div>
+          <div class="arch-box-desc">Weight + barcode dual-confirm before release. Error rate: 3 per 10,000 picks. Full audit trail to WMS within 200ms of pick completion.</div>
+        </div>
+      </div>
+
+      <!-- Connector arrows between boxes -->
+      <div style="display:flex;justify-content:space-around;padding:0 80px;margin-top:8px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--cyan-dim);">──────▶</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--cyan-dim);">──────▶</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--cyan-dim);">──────▶</div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;gap:16px;flex-wrap:wrap;">
+        <div class="part-tag">AX-201 · FLEET BRAIN MODULE</div>
+        <div class="part-tag">AX-202 · NAV ENGINE MODULE</div>
+        <div class="part-tag">AX-203 · VISION MODULE</div>
+        <div class="part-tag">AX-204 · VERIFY MODULE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 5 — TRACTION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">OPERATING METRICS</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-005</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">5 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// OPERATIONAL DATA · AX-005 · LIVE METRICS</span>
+      <h2 style="font-size:clamp(28px,4.5vw,54px);">Production numbers,<br /><span style="color:var(--cyan);">not projections.</span></h2>
+    </div>
+
+    <div class="traction-grid animate d2">
+      <div class="traction-cell" data-part="AX-M01">
+        <div class="tr-val">3.4M</div>
+        <div class="tr-delta">↑ +840K MoM</div>
+        <div class="tr-label">Daily Picks (Fleet)</div>
+      </div>
+      <div class="traction-cell" data-part="AX-M02">
+        <div class="tr-val">18</div>
+        <div class="tr-delta">↑ +6 sites in Q1'26</div>
+        <div class="tr-label">Deployed Sites</div>
+      </div>
+      <div class="traction-cell" data-part="AX-M03">
+        <div class="tr-val">$9.2M</div>
+        <div class="tr-delta">↑ 3.1× YoY ARR</div>
+        <div class="tr-label">Annual Recurring Rev</div>
+      </div>
+      <div class="traction-cell" data-part="AX-M04">
+        <div class="tr-val">99.1%</div>
+        <div class="tr-delta">22-hr avg uptime</div>
+        <div class="tr-label">Fleet Availability</div>
+      </div>
+    </div>
+
+    <!-- Deployment ramp chart -->
+    <div class="traction-chart-row animate d3">
+      <div class="chart-label-row">
+        <span>SITES DEPLOYED — MONTHLY RAMP</span>
+        <span>Q1 2024 → Q2 2026</span>
+      </div>
+      <div class="bar-group">
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:8%;"></div></div>
+          <div class="bar-col-label">Q1'24</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:14%;"></div></div>
+          <div class="bar-col-label">Q2'24</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:22%;"></div></div>
+          <div class="bar-col-label">Q3'24</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:30%;"></div></div>
+          <div class="bar-col-label">Q4'24</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:40%;"></div></div>
+          <div class="bar-col-label">Q1'25</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:50%;"></div></div>
+          <div class="bar-col-label">Q2'25</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:62%;"></div></div>
+          <div class="bar-col-label">Q3'25</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:72%;"></div></div>
+          <div class="bar-col-label">Q4'25</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:85%;"></div></div>
+          <div class="bar-col-label">Q1'26</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar-fill-wrap"><div class="bar-fill-item" style="height:100%;background:linear-gradient(180deg,var(--orange),rgba(255,122,24,0.3));border-top-color:var(--orange);"></div></div>
+          <div class="bar-col-label" style="color:var(--orange);">Q2'26</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 6 — UNIT ECONOMICS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">UNIT ECONOMICS ANALYSIS</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-006</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">6 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// COST STRUCTURE · AX-006 · PER-UNIT COMPARISON</span>
+      <h2 style="font-size:clamp(26px,4vw,52px);">AX-1 vs manual labor:<br /><span style="color:var(--cyan);">−61% fulfillment cost</span></h2>
+      <p style="font-family:'Barlow',sans-serif;font-size:0.85rem;color:var(--white-dim);margin-top:6px;">
+        50-bot deployment · 500,000 sq ft · per-pick cost comparison (USD)
+      </p>
+    </div>
+
+    <table class="econ-table animate d2">
+      <thead>
+        <tr>
+          <th>METRIC</th>
+          <th class="ax-col">AXIOM AX-1 FLEET</th>
+          <th>MANUAL LABOR</th>
+          <th>DELTA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cost per pick (fully loaded)</td>
+          <td class="ax-col">$0.042</td>
+          <td>$0.107</td>
+          <td class="positive">−61%</td>
+        </tr>
+        <tr>
+          <td>Daily pick throughput (50-unit site)</td>
+          <td class="ax-col">189,000 picks</td>
+          <td>42,000 picks</td>
+          <td class="positive">+350%</td>
+        </tr>
+        <tr>
+          <td>Picks per operational hour</td>
+          <td class="ax-col">2,200 / unit</td>
+          <td>400 / worker</td>
+          <td class="positive">+450%</td>
+        </tr>
+        <tr>
+          <td>Annual labor cost (50-unit equiv.)</td>
+          <td class="ax-col">$1.46M (lease)</td>
+          <td>$5.80M</td>
+          <td class="positive">−75%</td>
+        </tr>
+        <tr>
+          <td>Pick accuracy rate</td>
+          <td class="ax-col">99.7%</td>
+          <td>98.1%</td>
+          <td class="positive">+1.6pp</td>
+        </tr>
+        <tr>
+          <td>Shift coverage (hrs/day)</td>
+          <td class="ax-col">22 hrs (hot-swap)</td>
+          <td>16 hrs (3 shifts)</td>
+          <td class="positive">+6 hrs</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>Payback period</strong></td>
+          <td class="ax-col"><strong>14 months</strong></td>
+          <td>—</td>
+          <td class="positive">IRR 68%</td>
+        </tr>
+        <tr>
+          <td>Worker injury incidents (annual)</td>
+          <td class="ax-col">0</td>
+          <td>~22 per 100 FTEs</td>
+          <td class="positive">−100%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="animate d3" style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <div class="part-tag">AX-ECO-01 · VALIDATED AT 12 CUSTOMER SITES</div>
+      <div style="font-family:'Barlow',sans-serif;font-size:0.78rem;color:var(--white-dim);">Customer data; NDA on file. Available in data room.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 7 — MARKET OPPORTUNITY
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">MARKET OPPORTUNITY</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-007</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">7 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// MARKET ANALYSIS · AX-007</span>
+      <h2 style="font-size:clamp(26px,4vw,52px);">A $248B market entering<br /><span style="color:var(--cyan);">its automation decade.</span></h2>
+    </div>
+
+    <div class="market-two-col animate d2">
+      <div>
+        <div class="market-big-num">$248B</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(14px,1.6vw,20px);color:var(--white-dim);text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Global Warehouse<br />Automation Market, 2030</div>
+        <div class="market-cagr">↑ 23.4% CAGR · Source: Grand View Research 2025</div>
+
+        <div class="tam-bars" style="margin-top:28px;">
+          <div class="tam-row">
+            <div class="tam-row-head">
+              <span class="tam-label">TAM · Warehouse Automation</span>
+              <span class="tam-val-text">$248B</span>
+            </div>
+            <div class="tam-track"><div class="tam-fill" style="width:100%;"></div></div>
+          </div>
+          <div class="tam-row">
+            <div class="tam-row-head">
+              <span class="tam-label">SAM · Robotic Pick &amp; Pack</span>
+              <span class="tam-val-text">$64B</span>
+            </div>
+            <div class="tam-track"><div class="tam-fill" style="width:26%;opacity:0.6;"></div></div>
+          </div>
+          <div class="tam-row">
+            <div class="tam-row-head">
+              <span class="tam-label">SOM · Addressable 5-year</span>
+              <span class="tam-val-text">$2.8B</span>
+            </div>
+            <div class="tam-track"><div class="tam-fill" style="width:1.1%;background:var(--orange);opacity:1;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="market-breakdown">
+          <div class="mb-box tam-c" style="grid-column:1/-1;">
+            <div class="mb-label">TAM</div>
+            <div class="mb-amount" style="color:var(--cyan);">$248B</div>
+            <div class="mb-sub">All warehouse automation globally by 2030</div>
+          </div>
+          <div class="mb-box sam-c">
+            <div class="mb-label">SAM</div>
+            <div class="mb-amount" style="color:rgba(94,200,255,0.7);">$64B</div>
+            <div class="mb-sub">AMR pick-and-pack segment</div>
+          </div>
+          <div class="mb-box som-c">
+            <div class="mb-label">SOM</div>
+            <div class="mb-amount" style="color:var(--orange);">$2.8B</div>
+            <div class="mb-sub">5-yr capture at 45%/yr site growth</div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;border:1px solid var(--dim-line);padding:16px 18px;background:rgba(10,29,58,0.4);">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(94,200,255,0.45);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;">GROWTH DRIVERS</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="font-family:'Barlow',sans-serif;font-size:0.8rem;color:var(--white-dim);"><span style="color:var(--cyan);">→</span> Same-day delivery mandates from Amazon, Walmart</div>
+            <div style="font-family:'Barlow',sans-serif;font-size:0.8rem;color:var(--white-dim);"><span style="color:var(--cyan);">→</span> Minimum wage legislation: 12 US states ≥$18/hr by 2027</div>
+            <div style="font-family:'Barlow',sans-serif;font-size:0.8rem;color:var(--white-dim);"><span style="color:var(--cyan);">→</span> Post-COVID labor shortage: 340K open warehouse roles</div>
+            <div style="font-family:'Barlow',sans-serif;font-size:0.8rem;color:var(--white-dim);"><span style="color:var(--cyan);">→</span> 3PL consolidation accelerating capex deployment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 8 — COMPETITIVE LANDSCAPE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">COMPETITIVE ANALYSIS</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-008</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">8 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// COMPETITIVE MATRIX · AX-008</span>
+      <h2 style="font-size:clamp(26px,4vw,52px);">Why Axiom wins on<br /><span style="color:var(--cyan);">every critical dimension</span></h2>
+    </div>
+
+    <div class="animate d2">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>CAPABILITY</th>
+            <th class="ax-h">AXIOM AX-1</th>
+            <th>Symbotic</th>
+            <th>Berkshire Grey</th>
+            <th>6 River Sys.</th>
+            <th>Manual Labor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pick rate &gt;2,000/hr per unit</td>
+            <td class="ax-h"><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="xmk">✗</span></td>
+          </tr>
+          <tr>
+            <td>14-day site deployment</td>
+            <td class="ax-h"><span class="chk">✓</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="prt">6–18 mo</span></td>
+            <td><span class="chk">✓</span></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>No facility modification</td>
+            <td class="ax-h"><span class="chk">✓</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+          </tr>
+          <tr>
+            <td>240K+ SKU catalog support</td>
+            <td class="ax-h"><span class="chk">✓</span></td>
+            <td><span class="prt">Partial</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="chk">✓</span></td>
+          </tr>
+          <tr>
+            <td>RaaS / lease model available</td>
+            <td class="ax-h"><span class="chk">✓</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="prt">Partial</span></td>
+            <td><span class="chk">✓</span></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Cost per pick &lt; $0.05</td>
+            <td class="ax-h"><span class="chk">✓</span></td>
+            <td><span class="prt">$0.06</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="xmk">✗</span></td>
+          </tr>
+          <tr>
+            <td>Proven at 300-bot fleet scale</td>
+            <td class="ax-h"><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="xmk">✗</span></td>
+            <td><span class="chk">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="animate d3" style="margin-top:16px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+      <div class="part-tag">AX-COMP-01 · MATRIX REV B</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--white-dim);letter-spacing:0.06em;">
+        <span style="color:#4ade80;">✓</span> = fully supported &nbsp; <span style="color:#facc15;">partial</span> = limited / add-on &nbsp; <span style="color:rgba(255,100,80,0.7);">✗</span> = not available
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 9 — TEAM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">TEAM ROSTER</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-009</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">9 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// PERSONNEL · AX-009 · CORE TEAM</span>
+      <h2 style="font-size:clamp(26px,4vw,52px);">Built by robotics insiders<br /><span style="color:var(--cyan);">who've done it before.</span></h2>
+    </div>
+
+    <div class="team-grid animate d2">
+      <div class="team-card">
+        <div class="corner-bracket tl"></div>
+        <div class="corner-bracket tr"></div>
+        <div class="team-avatar">DR</div>
+        <div class="team-name-text">Dr. Riya Desai</div>
+        <div class="team-title-text">Co-Founder &amp; CEO</div>
+        <div class="team-bio-text">
+          Former VP Robotics at Amazon (Kiva reintegration, 200-site rollout).
+          PhD Robotics, Carnegie Mellon. Filed 14 patents in mobile AMR systems.
+          Built and exited Moto3D (acquired Fetch Robotics, $131M, 2022).
+        </div>
+        <div class="team-tag part-tag">AX-TEAM-01</div>
+      </div>
+
+      <div class="team-card">
+        <div class="corner-bracket tl"></div>
+        <div class="corner-bracket tr"></div>
+        <div class="team-avatar">MO</div>
+        <div class="team-name-text">Marcus Olsen</div>
+        <div class="team-title-text">Co-Founder &amp; CTO</div>
+        <div class="team-bio-text">
+          Principal Engineer, Boston Dynamics (Spot locomotion stack).
+          Led perception &amp; SLAM at Nuro (autonomous delivery). MS EECS, MIT.
+          AxVision CV architecture &amp; AxOS fleet kernel are his original work.
+        </div>
+        <div class="team-tag part-tag">AX-TEAM-02</div>
+      </div>
+
+      <div class="team-card">
+        <div class="corner-bracket tl"></div>
+        <div class="corner-bracket tr"></div>
+        <div class="team-avatar">JC</div>
+        <div class="team-name-text">Jana Calloway</div>
+        <div class="team-title-text">Chief Revenue Officer</div>
+        <div class="team-bio-text">
+          Former SVP Enterprise Sales, Locus Robotics ($0→$100M ARR in 4 years).
+          Closed DHL, FedEx, and Target as strategic robotics partners.
+          Scaled a 40-person enterprise sales org from the ground up.
+        </div>
+        <div class="team-tag part-tag">AX-TEAM-03</div>
+      </div>
+    </div>
+
+    <div class="animate d3" style="margin-top:20px;border:1px solid var(--dim-line);padding:14px 20px;background:rgba(10,29,58,0.4);display:flex;gap:24px;flex-wrap:wrap;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--white-dim);letter-spacing:0.06em;">
+        <span style="color:var(--cyan);">TEAM SIZE:</span> 48 FTEs · 34 engineering
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--white-dim);letter-spacing:0.06em;">
+        <span style="color:var(--cyan);">IP:</span> 22 patents filed, 9 granted
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--white-dim);letter-spacing:0.06em;">
+        <span style="color:var(--cyan);">ADVISORS:</span> Ken Washington (Ford CTO), Pieter Abbeel (UC Berkeley Robotics)
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — DEPLOYMENT TIMELINE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10">
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">DEPLOYMENT TIMELINE</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-010</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">10 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <div class="animate">
+      <span class="eyebrow">// DEPLOYMENT PLAN · AX-010 · POST SERIES B</span>
+      <h2 style="font-size:clamp(26px,4vw,52px);">$22M buys 18 months<br /><span style="color:var(--cyan);">to Series C inflection.</span></h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:28px;width:100%;">
+      <div class="animate d2">
+        <div class="timeline-wrap">
+          <div class="timeline-track">
+            <div class="timeline-phase">
+              <div class="tl-dot done"></div>
+              <div class="tl-period">Q3 2026 · MONTHS 1–3</div>
+              <div class="tl-title">Capital Deploy &amp; Team Scale</div>
+              <div class="tl-items">
+                <div class="tl-item done">+12 engineers hired</div>
+                <div class="tl-item done">AX-1 Rev C hardware freeze</div>
+                <div class="tl-item done">3 new sites contracted</div>
+              </div>
+            </div>
+            <div class="timeline-phase">
+              <div class="tl-dot active"></div>
+              <div class="tl-period">Q4 2026 · MONTHS 4–6</div>
+              <div class="tl-title">Fleet Expansion</div>
+              <div class="tl-items">
+                <div class="tl-item active">28 sites live</div>
+                <div class="tl-item active">$14M ARR milestone</div>
+                <div class="tl-item">Enterprise tier launch</div>
+              </div>
+            </div>
+            <div class="timeline-phase">
+              <div class="tl-dot"></div>
+              <div class="tl-period">Q1–Q2 2027 · MONTHS 7–12</div>
+              <div class="tl-title">International Expansion</div>
+              <div class="tl-items">
+                <div class="tl-item">Canada + UK market entry</div>
+                <div class="tl-item">50 sites deployed</div>
+                <div class="tl-item">$22M ARR target</div>
+              </div>
+            </div>
+            <div class="timeline-phase">
+              <div class="tl-dot"></div>
+              <div class="tl-period">Q3 2027 · MONTH 18</div>
+              <div class="tl-title">Series C Readiness</div>
+              <div class="tl-items">
+                <div class="tl-item">$30M+ ARR</div>
+                <div class="tl-item">Path to profitability</div>
+                <div class="tl-item">Series C at $300M val.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Use of $22M -->
+      <div class="animate d3" style="display:flex;flex-direction:column;gap:16px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:rgba(94,200,255,0.5);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px;">USE OF $22M</div>
+
+        <div class="use-of-funds">
+          <div class="uof-header">ALLOCATION — SERIES B CAPITAL</div>
+          <div class="uof-row">
+            <div class="uof-fill" style="width:40%;"></div>
+            <div class="uof-pct">40%</div>
+            <div class="uof-label">Hardware Manufacturing</div>
+            <div class="uof-amount">$8.8M</div>
+          </div>
+          <div class="uof-row">
+            <div class="uof-fill" style="width:28%;"></div>
+            <div class="uof-pct">28%</div>
+            <div class="uof-label">Engineering &amp; R&amp;D</div>
+            <div class="uof-amount">$6.2M</div>
+          </div>
+          <div class="uof-row">
+            <div class="uof-fill" style="width:18%;"></div>
+            <div class="uof-pct">18%</div>
+            <div class="uof-label">Sales &amp; Go-to-Market</div>
+            <div class="uof-amount">$3.9M</div>
+          </div>
+          <div class="uof-row">
+            <div class="uof-fill" style="width:9%;"></div>
+            <div class="uof-pct">9%</div>
+            <div class="uof-label">Operations &amp; Field</div>
+            <div class="uof-amount">$2.0M</div>
+          </div>
+          <div class="uof-row">
+            <div class="uof-fill" style="width:5%;"></div>
+            <div class="uof-pct">5%</div>
+            <div class="uof-label">Legal &amp; G&amp;A</div>
+            <div class="uof-amount">$1.1M</div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--dim-line);padding:14px 18px;background:rgba(10,29,58,0.4);">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(94,200,255,0.45);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;">ROUND STRUCTURE</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="font-family:'Barlow',sans-serif;font-size:0.82rem;color:var(--white-dim);">
+              <span style="color:var(--cyan);font-family:'IBM Plex Mono',monospace;font-size:0.7rem;">LEAD</span>  &nbsp; Tier-1 VC · $12M committed
+            </div>
+            <div style="font-family:'Barlow',sans-serif;font-size:0.82rem;color:var(--white-dim);">
+              <span style="color:var(--cyan);font-family:'IBM Plex Mono',monospace;font-size:0.7rem;">CO-INV</span> &nbsp; Strategic industrials · $7M filling
+            </div>
+            <div style="font-family:'Barlow',sans-serif;font-size:0.82rem;color:var(--white-dim);">
+              <span style="color:var(--cyan);font-family:'IBM Plex Mono',monospace;font-size:0.7rem;">OPEN</span>  &nbsp; $3M remaining · close Q3'26
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SLIDE 11 — CLOSING / CTA
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-11" style="align-items:center;text-align:center;">
+  <!-- Crosshairs decorative -->
+  <div class="crosshair" style="top:10%;left:6%;"><div class="crosshair-dot"></div></div>
+  <div class="crosshair" style="top:10%;right:6%;"><div class="crosshair-dot"></div></div>
+  <div class="crosshair" style="bottom:12%;left:6%;"><div class="crosshair-dot"></div></div>
+  <div class="crosshair" style="bottom:12%;right:6%;"><div class="crosshair-dot"></div></div>
+  <div class="dim-line h" style="top:8%;left:4%;width:92%;"></div>
+  <div class="dim-line h" style="bottom:10%;left:4%;width:92%;"></div>
+
+  <div class="title-block">
+    <div class="title-block-row">
+      <div class="tb-cell" style="flex:2;"><span class="tb-label">TITLE</span><span class="tb-val">INVESTMENT OPPORTUNITY</span></div>
+      <div class="tb-cell"><span class="tb-label">DOC NO.</span><span class="tb-val">AX-011</span></div>
+    </div>
+    <div class="title-block-row">
+      <div class="tb-cell"><span class="tb-label">SHEET</span><span class="tb-val">11 / 11</span></div>
+      <div class="tb-cell"><span class="tb-label">REV</span><span class="tb-val">B</span></div>
+      <div class="tb-cell"><span class="tb-label">DATE</span><span class="tb-val">2026-06</span></div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;align-items:center;max-width:900px;">
+    <div class="animate">
+      <div class="live-badge" style="margin:0 auto;">
+        <div class="live-dot" style="background:var(--orange);box-shadow:0 0 6px var(--orange);"></div>
+        $3M REMAINING · CLOSE Q3 2026
+      </div>
+    </div>
+
+    <div class="closing-big animate d1" style="margin-top:24px;">
+      The warehouse floor<br />belongs to <span>machines.</span>
+    </div>
+
+    <p class="animate d2" style="font-family:'Barlow',sans-serif;font-weight:300;font-size:clamp(14px,1.5vw,18px);color:var(--white-dim);margin-top:24px;max-width:52ch;line-height:1.7;text-align:center;">
+      Axiom Robotics is shipping 3.4 million picks per day today.
+      With Series B capital we reach 50 sites, $30M ARR, and
+      the clearest path in logistics robotics to Series C.
+    </p>
+
+    <div class="animate d3" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:32px;">
+      <a class="cta-box" href="mailto:investors@axiomrobotics.com">
+        <i class="fa-solid fa-envelope"></i>
+        Request Data Room
+      </a>
+      <a class="cta-box" href="mailto:investors@axiomrobotics.com" style="border-color:var(--orange);color:var(--orange);background:rgba(255,122,24,0.05);">
+        <i class="fa-solid fa-calendar"></i>
+        Schedule Site Visit
+      </a>
+    </div>
+
+    <div class="contact-row animate d4">
+      <div class="contact-item"><span>investors@axiomrobotics.com</span></div>
+      <div class="contact-item"><span>axiomrobotics.com</span></div>
+      <div class="contact-item">San Jose, CA</div>
+      <div class="contact-item">ISO 13849 · CE · UL Listed</div>
+    </div>
+
+    <div class="animate d5" style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <div class="part-tag">AX-001 THROUGH AX-011 · SERIES B PACKAGE · REV B</div>
+      <div class="rev-stamp">INVESTOR COPY</div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  /* ─── Arrow key / PageUp/Down navigation ─── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* ─── IntersectionObserver slide counter ─── */
+  (function() {
+    var counter = document.getElementById('current-slide');
+    var slides = document.querySelectorAll('.slide');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+          counter.textContent = (idx < 10 ? '0' : '') + idx;
+        }
+      });
+    }, { threshold: 0.5 });
+    slides.forEach(function(slide) { observer.observe(slide); });
+  })();
+</script>
+</body>
+</html>

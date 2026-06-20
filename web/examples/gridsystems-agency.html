@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid Systems — Brand &amp; Design Studio</title>
+<meta name="description" content="Grid Systems agency credentials deck — Swiss typographic rigour applied to brand strategy, identity systems, and conversion-driven design." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/gridsystems-agency" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#ffffff" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/gridsystems-agency" />
+<meta property="og:title" content="Grid Systems — Brand &amp; Design Studio" />
+<meta property="og:description" content="Swiss typographic rigour applied to brand strategy, identity systems, and conversion-driven design." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Grid Systems — Brand &amp; Design Studio" />
+<meta name="twitter:description" content="Agency credentials deck — 47 brand systems shipped." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  :root {
+    --white: #ffffff;
+    --black: #0a0a0a;
+    --red: #e2231a;
+    --grey-05: #f5f5f5;
+    --grey-10: #ebebeb;
+    --grey-20: #d4d4d4;
+    --grey-40: #9a9a9a;
+    --grey-60: #636363;
+    --header-h: 40px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--black);
+    color: var(--black);
+    height: 100%;
+  }
+
+  /* ─── FIXED HEADER ─── */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 1000;
+    border-bottom: 2px solid var(--black);
+  }
+  .site-header .brand {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .site-header .brand span {
+    color: var(--red);
+  }
+  .site-header .meta {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-60);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .slide-counter {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--black);
+    letter-spacing: 0.1em;
+    min-width: 48px;
+    text-align: right;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--grey-40);
+    background: var(--white);
+    padding: 6px 16px;
+    border: 1px solid var(--grey-20);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    z-index: 1000;
+    white-space: nowrap;
+  }
+
+  /* ─── SLIDES ─── */
+  .slide {
+    scroll-snap-align: start;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    padding-top: var(--header-h);
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .slide-inner {
+    width: 100%;
+    height: calc(100vh - var(--header-h));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── PAGE NUMBER ─── */
+  .pg {
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--grey-20);
+    letter-spacing: 0.08em;
+    z-index: 10;
+  }
+
+  /* ─── HAIRLINE RULES ─── */
+  .rule-2  { border-top: 2px solid var(--black); }
+  .rule-1  { border-top: 1px solid var(--grey-20); }
+  .rule-b2 { border-bottom: 2px solid var(--black); }
+  .rule-b1 { border-bottom: 1px solid var(--grey-20); }
+
+  /* ─── RED DIAGONAL ACCENT ─── */
+  .red-accent {
+    position: absolute;
+    background: var(--red);
+    transform: skewY(-4deg);
+    z-index: 0;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 01 — COVER
+  ════════════════════════════════════════ */
+  #s1 { background: var(--white); }
+  #s1 .slide-inner {
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    flex-direction: unset;
+  }
+  .cover-left {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 52px 44px 40px;
+    position: relative;
+    overflow: hidden;
+    border-right: 2px solid var(--black);
+  }
+  .cover-left-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--red);
+  }
+  .cover-left .wordmark {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+  .cover-left .wordmark span { color: var(--red); }
+  .cover-left .big-stat {
+    margin-top: auto;
+  }
+  .cover-left .big-stat .num {
+    font-size: clamp(64px, 8vw, 110px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    display: block;
+  }
+  .cover-left .big-stat .num-red { color: var(--red); }
+  .cover-left .big-stat .stat-label {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 14px;
+    display: block;
+  }
+  .cover-left .est {
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--grey-60);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+  }
+  .cover-right {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 52px 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-right .red-stripe {
+    position: absolute;
+    top: 56px; right: 0;
+    width: 180px;
+    height: 320px;
+    background: var(--red);
+    clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 0;
+  }
+  .cover-right-content { position: relative; z-index: 1; }
+  .cover-right .deck-type {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--grey-40);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cover-right h1 {
+    font-size: clamp(36px, 4.8vw, 72px);
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+  .cover-right h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+  .cover-meta-table {
+    border-top: 2px solid var(--black);
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+  }
+  .cover-meta-table tr {
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .cover-meta-table td {
+    padding: 10px 0;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .cover-meta-table td:first-child {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--grey-40);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    width: 36%;
+  }
+  .cover-meta-table td:last-child {
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 02 — PROBLEM
+  ════════════════════════════════════════ */
+  #s2 .slide-inner { flex-direction: row; }
+  .problem-left {
+    background: var(--black);
+    width: 44%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+    border-right: 2px solid var(--black);
+  }
+  .problem-left .red-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 8px;
+    background: var(--red);
+  }
+  .problem-left .slide-label {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--grey-60);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .problem-left h2 {
+    font-size: clamp(32px, 3.6vw, 56px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    flex: 1;
+  }
+  .problem-left h2 em {
+    font-style: normal;
+    color: var(--red);
+    display: block;
+  }
+  .problem-left .pull-stat {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid #222;
+  }
+  .pull-stat .ps-num {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .pull-stat .ps-copy {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+  .problem-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 48px;
+    justify-content: center;
+    background: var(--white);
+  }
+  .problem-items { list-style: none; margin-top: 0; }
+  .problem-items li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .problem-items li:first-child { border-top: 2px solid var(--black); }
+  .problem-items .pi-num {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--grey-20);
+    letter-spacing: 0.08em;
+    padding-top: 3px;
+  }
+  .problem-items .pi-body {}
+  .problem-items .pi-head {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 5px;
+    letter-spacing: -0.01em;
+  }
+  .problem-items .pi-desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--grey-60);
+    line-height: 1.65;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 03 — ABOUT / CREDENTIALS
+  ════════════════════════════════════════ */
+  #s3 .slide-inner { padding: 0; flex-direction: row; }
+  .about-col {
+    border-right: 1px solid var(--grey-10);
+    display: flex;
+    flex-direction: column;
+    padding: 48px 40px;
+  }
+  .about-col:last-child { border-right: none; }
+  .about-col.wide { flex: 2; }
+  .about-col.narrow { flex: 1; background: var(--grey-05); }
+  .about-section-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--red);
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--black);
+  }
+  .about-main-copy {
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+  .about-main-copy strong {
+    font-weight: 800;
+    color: var(--black);
+  }
+  .cred-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 40px;
+    border-top: 2px solid var(--black);
+  }
+  .cred-stat {
+    padding: 20px 0 20px;
+    border-right: 1px solid var(--grey-10);
+    padding-right: 24px;
+    margin-right: 24px;
+  }
+  .cred-stat:nth-child(even) {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+  }
+  .cred-stat .cs-num {
+    font-size: clamp(36px, 3.6vw, 52px);
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .cred-stat .cs-num span { color: var(--red); }
+  .cred-stat .cs-label {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--grey-60);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+  .sidebar-items { list-style: none; }
+  .sidebar-items li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .sidebar-items li:first-child { border-top: none; }
+  .si-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-40);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .si-val {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.4;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 04 — THE PROBLEM (MARKET)
+  ════════════════════════════════════════ */
+  #s4 .slide-inner { padding: 48px 52px; }
+  .section-eyebrow {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--red);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .section-eyebrow .pg-tag {
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.12em;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    flex: 1;
+    border-top: 2px solid var(--black);
+    border-left: 2px solid var(--black);
+  }
+  .two-col-cell {
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+  }
+  .cell-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-40);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cell-headline {
+    font-size: clamp(22px, 2.4vw, 34px);
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .cell-headline em { font-style: normal; color: var(--red); }
+  .cell-body {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-60);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .cell-stat-row {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--grey-10);
+    display: flex;
+    gap: 28px;
+  }
+  .cell-stat {}
+  .cell-stat .csn {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .cell-stat .csn em { font-style: normal; color: var(--red); }
+  .cell-stat .csl {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-60);
+    letter-spacing: 0.04em;
+    margin-top: 3px;
+  }
+  .inversion-cell {
+    background: var(--black);
+    color: var(--white);
+  }
+  .inversion-cell .cell-label { color: #444; }
+  .inversion-cell .cell-headline { color: var(--white); }
+  .inversion-cell .cell-body { color: #888; }
+  .inversion-cell .cell-stat-row { border-top-color: #222; }
+  .inversion-cell .csn { color: var(--white); }
+  .inversion-cell .csl { color: #666; }
+
+  /* ════════════════════════════════════════
+     SLIDE 05 — THE SOLUTION (METHOD)
+  ════════════════════════════════════════ */
+  #s5 .slide-inner { padding: 48px 52px; }
+  .method-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0;
+  }
+  .method-header h2 {
+    font-size: clamp(24px, 2.6vw, 38px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--black);
+  }
+  .method-sub {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .method-steps {
+    margin-top: 32px;
+    border-top: 2px solid var(--black);
+    border-left: 2px solid var(--black);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    flex: 1;
+  }
+  .method-step {
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    padding: 28px 26px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .method-step:nth-child(odd) { background: var(--white); }
+  .method-step:nth-child(even) { background: var(--grey-05); }
+  .method-step .step-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .method-step .step-num {
+    font-size: clamp(48px, 5vw, 72px);
+    font-weight: 900;
+    color: var(--grey-10);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .method-step .step-icon {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .method-step .step-icon i {
+    font-size: 12px;
+    color: var(--black);
+  }
+  .method-step .step-name {
+    font-size: clamp(13px, 1.3vw, 16px);
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .method-step .step-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--grey-60);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .method-step .step-output {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--grey-20);
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-40);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .method-step .step-output span {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--black);
+    letter-spacing: 0;
+    margin-top: 3px;
+    text-transform: none;
+  }
+  .method-step.red-step {
+    background: var(--red);
+  }
+  .method-step.red-step .step-num { color: rgba(255,255,255,0.2); }
+  .method-step.red-step .step-name { color: var(--white); }
+  .method-step.red-step .step-desc { color: rgba(255,255,255,0.75); }
+  .method-step.red-step .step-icon { border-color: rgba(255,255,255,0.5); }
+  .method-step.red-step .step-icon i { color: var(--white); }
+  .method-step.red-step .step-output { border-top-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
+  .method-step.red-step .step-output span { color: var(--white); }
+
+  /* ════════════════════════════════════════
+     SLIDE 06 — CLIENT WORK (CASE STUDIES)
+  ════════════════════════════════════════ */
+  #s6 .slide-inner { padding: 48px 52px; }
+  .clients-grid {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    flex: 1;
+    border-top: 2px solid var(--black);
+    border-left: 2px solid var(--black);
+  }
+  .client-card {
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .client-card-header {
+    padding: 24px 28px 18px;
+    border-bottom: 1px solid var(--grey-10);
+    position: relative;
+  }
+  .client-card-header .cc-industry {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-40);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .client-card-header .cc-name {
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .client-card-header .cc-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--red);
+  }
+  .client-card-body {
+    padding: 20px 28px;
+    flex: 1;
+  }
+  .client-card-body .cc-scope-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-40);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .client-card-body .cc-scope {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.65;
+  }
+  .client-card-footer {
+    padding: 16px 28px;
+    background: var(--grey-05);
+    border-top: 1px solid var(--grey-10);
+    display: flex;
+    gap: 24px;
+  }
+  .cc-metric {}
+  .cc-metric .ccm-num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .cc-metric .ccm-num em { font-style: normal; color: var(--red); }
+  .cc-metric .ccm-label {
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--grey-60);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 07 — PROOF / RESULTS
+  ════════════════════════════════════════ */
+  #s7 .slide-inner { flex-direction: row; }
+  .proof-left {
+    background: var(--black);
+    width: 38%;
+    flex-shrink: 0;
+    padding: 48px 44px;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .proof-left::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -40px;
+    width: 240px;
+    height: 240px;
+    border: 40px solid var(--red);
+    opacity: 0.15;
+    transform: rotate(12deg);
+  }
+  .proof-left .slide-label {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--grey-60);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .proof-left h2 {
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    flex: 1;
+  }
+  .proof-left h2 em { font-style: normal; color: var(--red); }
+  .proof-quote {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid #222;
+  }
+  .proof-quote blockquote {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--grey-40);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .proof-quote .q-attr {
+    margin-top: 12px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--grey-60);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+  .proof-right {
+    flex: 1;
+    padding: 48px 48px;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+  }
+  .proof-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--red);
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--black);
+  }
+  .proof-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: none;
+    border-left: 2px solid var(--black);
+    flex: 1;
+  }
+  .proof-metric {
+    padding: 28px 28px;
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    display: flex;
+    flex-direction: column;
+  }
+  .proof-metric .pm-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-40);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .proof-metric .pm-num {
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .proof-metric .pm-num em { font-style: normal; color: var(--red); }
+  .proof-metric .pm-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--grey-60);
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 08 — CAPABILITIES
+  ════════════════════════════════════════ */
+  #s8 .slide-inner { padding: 48px 52px; }
+  .cap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 32px;
+  }
+  .cap-header h2 {
+    font-size: clamp(22px, 2.4vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .cap-header .cap-sub {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-left: 2px solid var(--black);
+    flex: 1;
+  }
+  .cap-col {
+    border-right: 2px solid var(--black);
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid var(--black);
+  }
+  .cap-col-head {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--grey-10);
+    background: var(--black);
+  }
+  .cap-col-head .cap-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .cap-col-head .cap-icon i {
+    font-size: 11px;
+    color: var(--white);
+  }
+  .cap-col-head .cap-title {
+    font-size: clamp(13px, 1.3vw, 16px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .cap-col-body {
+    flex: 1;
+    padding: 16px 22px;
+  }
+  .cap-col-body ul { list-style: none; }
+  .cap-col-body ul li {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--black);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--grey-10);
+    line-height: 1.5;
+    display: flex;
+    gap: 8px;
+  }
+  .cap-col-body ul li:last-child { border-bottom: none; }
+  .cap-col-body ul li::before {
+    content: '—';
+    color: var(--red);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 09 — PRICING & ENGAGEMENT
+  ════════════════════════════════════════ */
+  #s9 .slide-inner { padding: 48px 52px; }
+  .pricing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 0;
+  }
+  .pricing-header h2 {
+    font-size: clamp(22px, 2.4vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .pricing-note {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.08em;
+  }
+  .pricing-tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-left: 2px solid var(--black);
+    margin-top: 24px;
+    flex: 1;
+  }
+  .pricing-tier {
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    border-top: 2px solid var(--black);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-tier.featured {
+    background: var(--black);
+  }
+  .pricing-tier-top {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .pricing-tier.featured .pricing-tier-top {
+    background: var(--red);
+    border-bottom-color: transparent;
+  }
+  .tier-badge {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-40);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .pricing-tier.featured .tier-badge { color: rgba(255,255,255,0.7); }
+  .tier-name {
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .pricing-tier.featured .tier-name { color: var(--white); }
+  .tier-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--grey-60);
+    line-height: 1.5;
+  }
+  .pricing-tier.featured .tier-desc { color: rgba(255,255,255,0.65); }
+  .tier-price-block {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .pricing-tier.featured .tier-price-block { border-bottom-color: #222; }
+  .tier-price-label {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--grey-40);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .pricing-tier.featured .tier-price-label { color: #555; }
+  .tier-price-big {
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .pricing-tier.featured .tier-price-big { color: var(--white); }
+  .tier-price-detail {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-60);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+  .pricing-tier.featured .tier-price-detail { color: #555; }
+  .tier-features-list {
+    padding: 16px 28px;
+    flex: 1;
+  }
+  .tier-features-list ul { list-style: none; }
+  .tier-features-list ul li {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--black);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--grey-10);
+    display: flex;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .pricing-tier.featured .tier-features-list ul li { color: #aaa; border-bottom-color: #1a1a1a; }
+  .tier-features-list ul li:last-child { border-bottom: none; }
+  .tier-features-list ul li::before {
+    content: '—';
+    color: var(--red);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .pricing-tier.featured .tier-features-list ul li::before { color: var(--red); }
+  .most-popular-tag {
+    position: absolute;
+    top: 0; left: 0;
+    background: var(--white);
+    color: var(--black);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+  .pricing-footer-note {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--grey-10);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 10 — PROCESS TIMELINE
+  ════════════════════════════════════════ */
+  #s10 .slide-inner { padding: 48px 52px; }
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--black);
+    margin-bottom: 32px;
+  }
+  .timeline-header h2 {
+    font-size: clamp(22px, 2.4vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .timeline-header .tl-sub {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-40);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .timeline-table thead tr {
+    background: var(--black);
+  }
+  .timeline-table thead th {
+    font-size: 9px;
+    font-weight: 800;
+    color: #555;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    text-align: left;
+    border-right: 1px solid #1a1a1a;
+  }
+  .timeline-table thead th:last-child { border-right: none; }
+  .timeline-table tbody tr {
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .timeline-table tbody tr:nth-child(even) { background: var(--grey-05); }
+  .timeline-table tbody td {
+    padding: 16px 20px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--black);
+    border-right: 1px solid var(--grey-10);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .timeline-table tbody td:last-child { border-right: none; }
+  .tl-phase-num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--grey-10);
+    width: 52px;
+    letter-spacing: -0.03em;
+  }
+  .tl-phase-name {
+    font-weight: 800;
+    color: var(--black);
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    width: 160px;
+  }
+  .tl-desc {
+    font-weight: 300;
+    color: var(--grey-60);
+    font-size: 12px;
+  }
+  .tl-week {
+    font-weight: 800;
+    color: var(--black);
+    font-size: 12px;
+    width: 100px;
+  }
+  .tl-deliverable {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--grey-60);
+    width: 200px;
+  }
+  .tl-badge {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1.5px solid currentColor;
+    white-space: nowrap;
+    width: 90px;
+    text-align: center;
+  }
+  .tl-badge.red { color: var(--red); }
+  .tl-badge.blk { color: var(--black); }
+  .tl-footnote {
+    margin-top: 20px;
+    padding: 12px 16px;
+    border-left: 3px solid var(--red);
+    background: var(--grey-05);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--grey-60);
+    line-height: 1.7;
+  }
+  .tl-footnote strong {
+    font-weight: 800;
+    color: var(--black);
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 11 — CLOSING CTA
+  ════════════════════════════════════════ */
+  #s11 { background: var(--black); }
+  #s11 .slide-inner {
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    flex-direction: unset;
+  }
+  .cta-left {
+    padding: 52px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #1a1a1a;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-left::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 400px;
+    height: 400px;
+    border: 60px solid var(--red);
+    opacity: 0.06;
+    transform: rotate(20deg);
+  }
+  .cta-wordmark {
+    font-size: 11px;
+    font-weight: 800;
+    color: #333;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .cta-wordmark em { font-style: normal; color: var(--red); }
+  .cta-main { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .cta-pre {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--grey-60);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cta-headline {
+    font-size: clamp(44px, 5.5vw, 84px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 32px;
+  }
+  .cta-headline em { font-style: normal; color: var(--red); }
+  .cta-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--grey-40);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+  .cta-contact-bar {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 28px;
+    position: relative;
+  }
+  .cta-contact-item {
+    padding-right: 36px;
+    margin-right: 36px;
+    border-right: 1px solid #222;
+  }
+  .cta-contact-item:last-child {
+    border-right: none;
+    margin-right: 0;
+  }
+  .cta-contact-item .ci-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--grey-60);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .cta-contact-item .ci-val {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .cta-right {
+    padding: 52px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #0f0f0f;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-right::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 160px 160px;
+    border-color: transparent transparent var(--red) transparent;
+    opacity: 0.8;
+  }
+  .cta-steps-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #333;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .cta-steps { list-style: none; flex: 1; }
+  .cta-steps li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .cta-steps li:last-child { border-bottom: none; }
+  .cta-steps .cs-num {
+    font-size: 18px;
+    font-weight: 900;
+    color: #222;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 24px;
+  }
+  .cta-steps .cs-text {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--grey-60);
+    line-height: 1.6;
+  }
+  .cta-steps .cs-text strong {
+    display: block;
+    font-weight: 800;
+    color: var(--white);
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  .cta-bottom {
+    padding-top: 28px;
+    border-top: 1px solid #1a1a1a;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-tagline {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--grey-60);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+
+  /* ─── ATTRIBUTION ─── */
+  .attribution {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0 20px;
+    scroll-snap-align: none;
+  }
+  .attribution a {
+    font-size: 10px;
+    font-weight: 300;
+    color: #333;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .attribution a:hover { color: var(--grey-60); }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint, .site-header { display: none; }
+    .slide {
+      height: auto;
+      min-height: 100vh;
+      page-break-after: always;
+      padding-top: 0;
+    }
+    .slide-inner { height: auto; overflow: visible; }
+    #s1 .slide-inner,
+    #s2 .slide-inner,
+    #s7 .slide-inner,
+    #s11 .slide-inner { flex-direction: row; }
+    .method-steps, .clients-grid, .cap-grid,
+    .pricing-tiers, .two-col { flex: none; }
+    .pg { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── FIXED SITE HEADER ─── -->
+<header class="site-header">
+  <span class="brand">Grid<span>·</span>Systems</span>
+  <span class="meta">Agency Credentials · New Business · 2026</span>
+  <span class="slide-counter" id="slide-counter">01 / 11</span>
+</header>
+
+<!-- ─── FIXED NAV HINT ─── -->
+<div id="nav-hint">↑ ↓ keys or scroll &nbsp;·&nbsp; Grid Systems &nbsp;·&nbsp; 11 slides</div>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 01 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="s1">
+  <div class="slide-inner">
+    <div class="cover-left">
+      <div class="cover-left-accent"></div>
+      <div class="wordmark">Grid<span>·</span>Systems</div>
+      <div class="big-stat">
+        <span class="num">47<span class="num-red">.</span></span>
+        <span class="stat-label">Brand systems shipped since 2018</span>
+      </div>
+      <div class="est">Est. 2018 · Zürich &amp; New York · gridsystems.co</div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-right-content">
+        <div class="red-stripe"></div>
+        <div class="deck-type">Agency Credentials / New Business Proposal</div>
+        <h1>Design is<br>a <em>system,</em><br>not a style.</h1>
+        <table class="cover-meta-table">
+          <tbody>
+            <tr>
+              <td>Date</td>
+              <td>June 2026</td>
+            </tr>
+            <tr>
+              <td>Prepared by</td>
+              <td>Lars Becker, Founding Partner</td>
+            </tr>
+            <tr>
+              <td>Contact</td>
+              <td>lars@gridsystems.co</td>
+            </tr>
+            <tr>
+              <td>Validity</td>
+              <td>45 days from issue</td>
+            </tr>
+            <tr>
+              <td>Deck</td>
+              <td>11 slides · Confidential</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="pg">01 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 02 — THE PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="s2">
+  <div class="slide-inner">
+    <div class="problem-left">
+      <div class="slide-label">01 — The Problem</div>
+      <h2>Brands fail before<br>they launch.
+        <em>Design is the reason.</em>
+      </h2>
+      <div class="pull-stat">
+        <div class="ps-num">68%</div>
+        <div class="ps-copy">of funded startups rebrand within 24 months<br>at an average cost of $380,000 — avoidable with a proper system from day one.</div>
+      </div>
+      <div class="red-bar"></div>
+    </div>
+    <div class="problem-right">
+      <ul class="problem-items">
+        <li>
+          <div class="pi-num">01</div>
+          <div class="pi-body">
+            <div class="pi-head">Inconsistent brand expression</div>
+            <div class="pi-desc">Marketing, product, and sales each apply the brand differently. The result is a fragmented identity that erodes trust and commands lower prices.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pi-num">02</div>
+          <div class="pi-body">
+            <div class="pi-head">Design debt accumulates silently</div>
+            <div class="pi-desc">Without a system, every new hire and contractor makes ad-hoc decisions. By year two, the codebase of visual assets is unmaintainable — and expensive to untangle.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pi-num">03</div>
+          <div class="pi-body">
+            <div class="pi-head">Conversion left on the table</div>
+            <div class="pi-desc">A disorganised visual hierarchy confuses users at key decision points. Companies with cohesive brand systems convert at 2.3× the rate of those without. That gap is measurable and preventable.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pi-num">04</div>
+          <div class="pi-body">
+            <div class="pi-head">Speed to market suffers</div>
+            <div class="pi-desc">When no design system exists, every campaign and product release requires rebuilding primitives from scratch — adding 4–6 weeks per release cycle.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="pg">02 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 03 — ABOUT / CREDENTIALS
+═══════════════════════════════════════ -->
+<section class="slide" id="s3">
+  <div class="slide-inner">
+    <div class="about-col wide">
+      <div class="about-section-label">Who We Are</div>
+      <p class="about-main-copy">Grid Systems is a brand and design studio built on the conviction that <strong>rigorous systems produce better outcomes</strong> than intuitive aesthetics.<br><br>We combine Swiss typographic discipline with conversion-driven strategy — designing identities that perform under the dual pressures of <strong>market scrutiny and digital scale</strong>.<br><br>Every engagement begins with structure. Every deliverable ships as a living system your team can operate indefinitely.</p>
+      <div class="cred-stats">
+        <div class="cred-stat">
+          <div class="cs-num">47<span>+</span></div>
+          <div class="cs-label">Brand systems shipped across B2B SaaS, fintech, health, and consumer categories</div>
+        </div>
+        <div class="cred-stat">
+          <div class="cs-num">2<span>.</span>3<span>×</span></div>
+          <div class="cs-label">Average conversion lift measured 90 days post-launch across portfolio</div>
+        </div>
+        <div class="cred-stat">
+          <div class="cs-num">8<span></span></div>
+          <div class="cs-label">Years of practice — studio founded 2018 in Zürich</div>
+        </div>
+        <div class="cred-stat">
+          <div class="cs-num">0<span>.</span>0</div>
+          <div class="cs-label">Failed launches among clients who completed our full 5-step method</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-col narrow">
+      <div class="about-section-label">Studio Profile</div>
+      <ul class="sidebar-items">
+        <li>
+          <div class="si-label">Founded</div>
+          <div class="si-val">2018, Zürich</div>
+        </li>
+        <li>
+          <div class="si-label">Second office</div>
+          <div class="si-val">New York City, 2022</div>
+        </li>
+        <li>
+          <div class="si-label">Team size</div>
+          <div class="si-val">12 full-time + specialist network</div>
+        </li>
+        <li>
+          <div class="si-label">Disciplines</div>
+          <div class="si-val">Brand strategy, identity, design systems, motion, digital product</div>
+        </li>
+        <li>
+          <div class="si-label">Industries</div>
+          <div class="si-val">B2B SaaS · Fintech · Health · Consumer</div>
+        </li>
+        <li>
+          <div class="si-label">Languages</div>
+          <div class="si-val">English · German · French</div>
+        </li>
+        <li>
+          <div class="si-label">Avg. engagement</div>
+          <div class="si-val">8–14 weeks from brief to handoff</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="pg">03 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 04 — MARKET CONTEXT
+═══════════════════════════════════════ -->
+<section class="slide" id="s4">
+  <div class="slide-inner" style="padding: 48px 52px;">
+    <div class="section-eyebrow">
+      <span>02 — Market Context</span>
+      <span class="pg-tag">04 / 11</span>
+    </div>
+    <div class="two-col">
+      <div class="two-col-cell">
+        <div class="cell-label">The Opportunity</div>
+        <div class="cell-headline">Brand investment yields<br><em>measurable</em> returns.</div>
+        <p class="cell-body">Companies that maintain consistent brand presentation across all channels see revenue increases of 10–20%. Yet 77% of brand managers report their identity assets are inconsistently applied across their own teams. The gap between what organisations know they should do and what they actually execute is vast — and exploitable.</p>
+        <div class="cell-stat-row">
+          <div class="cell-stat">
+            <div class="csn">10<em>–</em>20<em>%</em></div>
+            <div class="csl">Revenue uplift from<br>consistent brand presence</div>
+          </div>
+          <div class="cell-stat">
+            <div class="csn">77<em>%</em></div>
+            <div class="csl">Brand managers report<br>inconsistent application</div>
+          </div>
+        </div>
+      </div>
+      <div class="two-col-cell inversion-cell">
+        <div class="cell-label">The Cost of Doing Nothing</div>
+        <div class="cell-headline">Inaction has<br><em>compound</em> interest.</div>
+        <p class="cell-body">Design debt compounds. The longer a brand operates without a system, the more expensive remediation becomes. We have audited legacy brand estates where five years of undocumented decisions required a 22-week rebuild — versus 10 weeks for a greenfield brand from scratch. Time is not neutral in design.</p>
+        <div class="cell-stat-row">
+          <div class="cell-stat">
+            <div class="csn" style="color: var(--white);">$380<em>k</em></div>
+            <div class="csl">Avg. rebrand cost<br>for post-Series A companies</div>
+          </div>
+          <div class="cell-stat">
+            <div class="csn" style="color: var(--white);">22<em>wk</em></div>
+            <div class="csl">Rebuild time for<br>unmanaged brand estates</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">04 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 05 — THE METHOD
+═══════════════════════════════════════ -->
+<section class="slide" id="s5">
+  <div class="slide-inner" style="padding: 48px 52px;">
+    <div class="section-eyebrow">
+      <span>03 — The Method</span>
+      <span class="pg-tag">05 / 11</span>
+    </div>
+    <div class="method-header" style="margin-top: 12px;">
+      <h2>Five steps. One system. Zero ambiguity.</h2>
+      <span class="method-sub">8–14 weeks end-to-end</span>
+    </div>
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="step-top">
+          <div class="step-num">01</div>
+          <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        </div>
+        <div class="step-name">Discovery &amp;<br>Audit</div>
+        <div class="step-desc">Stakeholder interviews, competitive landscape mapping, and a full audit of existing brand assets. We document what works, what conflicts, and what is missing before any creative work begins.</div>
+        <div class="step-output">Output <span>Brand Audit Report + Competitive Matrix</span></div>
+      </div>
+      <div class="method-step">
+        <div class="step-top">
+          <div class="step-num">02</div>
+          <div class="step-icon"><i class="fa-solid fa-crosshairs"></i></div>
+        </div>
+        <div class="step-name">Strategy &amp;<br>Positioning</div>
+        <div class="step-desc">Define brand positioning, differentiation axis, audience segmentation, and messaging architecture. The strategic layer that drives every design decision downstream — and keeps the work grounded in business outcomes.</div>
+        <div class="step-output">Output <span>Brand Strategy Document + Voice Guidelines</span></div>
+      </div>
+      <div class="method-step red-step">
+        <div class="step-top">
+          <div class="step-num">03</div>
+          <div class="step-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+        </div>
+        <div class="step-name">Identity<br>Design</div>
+        <div class="step-desc">Visual identity creation: logotype, colour system, typographic scale, grid, iconography, and motion principles. Designed as a cohesive, extensible system — not a collection of isolated assets.</div>
+        <div class="step-output">Output <span>Visual Identity System (Figma + exports)</span></div>
+      </div>
+      <div class="method-step">
+        <div class="step-top">
+          <div class="step-num">04</div>
+          <div class="step-icon"><i class="fa-solid fa-layer-group"></i></div>
+        </div>
+        <div class="step-name">System<br>Build</div>
+        <div class="step-desc">Translation of identity into a living design system: component library, documentation, usage rules, do/don't guidelines, and template library covering the 20 most common production contexts.</div>
+        <div class="step-output">Output <span>Design System + Component Library</span></div>
+      </div>
+      <div class="method-step">
+        <div class="step-top">
+          <div class="step-num">05</div>
+          <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
+        </div>
+        <div class="step-name">Activation &amp;<br>Handoff</div>
+        <div class="step-desc">Launch support, team training sessions, brand governance documentation, and a 90-day post-launch review to measure consistency, adoption, and conversion impact against defined baseline metrics.</div>
+        <div class="step-output">Output <span>Brand Portal + Governance Guide + Metrics Review</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">05 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 06 — CLIENT WORK
+═══════════════════════════════════════ -->
+<section class="slide" id="s6">
+  <div class="slide-inner" style="padding: 48px 52px;">
+    <div class="section-eyebrow">
+      <span>04 — Selected Client Work</span>
+      <span class="pg-tag">06 / 11</span>
+    </div>
+    <div class="clients-grid">
+      <div class="client-card">
+        <div class="client-card-header">
+          <div class="cc-accent"></div>
+          <div class="cc-industry">B2B SaaS · Series B</div>
+          <div class="cc-name">Vestral<br>Technologies</div>
+        </div>
+        <div class="client-card-body">
+          <div class="cc-scope-label">Scope</div>
+          <div class="cc-scope">Full brand system rebrand following $40M Series B. Replaced a 4-year-old wordmark and inconsistent colour palette with a rigorous identity built for enterprise sales collateral, product UI, and conference presence across 12 markets.</div>
+        </div>
+        <div class="client-card-footer">
+          <div class="cc-metric">
+            <div class="ccm-num">2<em>.</em>8<em>×</em></div>
+            <div class="ccm-label">Conversion lift<br>at 90 days</div>
+          </div>
+          <div class="cc-metric">
+            <div class="ccm-num">11<em>wk</em></div>
+            <div class="ccm-label">Brief to<br>launch</div>
+          </div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-card-header">
+          <div class="cc-accent"></div>
+          <div class="cc-industry">Fintech · Seed → Series A</div>
+          <div class="cc-name">Cairn<br>Finance</div>
+        </div>
+        <div class="client-card-body">
+          <div class="cc-scope-label">Scope</div>
+          <div class="cc-scope">Greenfield brand system for a regulated payments infrastructure company entering the European market. Required compliance-ready documentation, localisation across six languages, and a design system that non-designers on the growth team could operate independently.</div>
+        </div>
+        <div class="client-card-footer">
+          <div class="cc-metric">
+            <div class="ccm-num">1<em>.</em>9<em>×</em></div>
+            <div class="ccm-label">Conversion lift<br>at 90 days</div>
+          </div>
+          <div class="cc-metric">
+            <div class="ccm-num">8<em>wk</em></div>
+            <div class="ccm-label">Brief to<br>launch</div>
+          </div>
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="client-card-header">
+          <div class="cc-accent"></div>
+          <div class="cc-industry">Health &amp; Wellness · D2C</div>
+          <div class="cc-name">Solace<br>Health</div>
+        </div>
+        <div class="client-card-body">
+          <div class="cc-scope-label">Scope</div>
+          <div class="cc-scope">Brand system and packaging design for a mental wellness platform launching across DTC and retail channels simultaneously. The system needed to perform across digital product, physical packaging, clinical partner co-branding, and media at scale.</div>
+        </div>
+        <div class="client-card-footer">
+          <div class="cc-metric">
+            <div class="ccm-num">3<em>.</em>1<em>×</em></div>
+            <div class="ccm-label">Conversion lift<br>at 90 days</div>
+          </div>
+          <div class="cc-metric">
+            <div class="ccm-num">14<em>wk</em></div>
+            <div class="ccm-label">Brief to<br>launch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">06 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 07 — PROOF / RESULTS
+═══════════════════════════════════════ -->
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <div class="proof-left">
+      <div class="slide-label">05 — Results</div>
+      <h2>Numbers that<br>hold up to<br><em>scrutiny.</em></h2>
+      <div class="proof-quote">
+        <blockquote>"Grid Systems didn't just design our brand — they gave us the infrastructure to grow without design becoming a bottleneck. Eighteen months post-launch, we haven't needed to brief an agency once."</blockquote>
+        <div class="q-attr">— Mia Fontaine, CPO, Vestral Technologies</div>
+      </div>
+    </div>
+    <div class="proof-right">
+      <div class="proof-label">Portfolio Metrics · 90-Day Post-Launch Average</div>
+      <div class="proof-metrics">
+        <div class="proof-metric">
+          <div class="pm-label">Avg. conversion lift</div>
+          <div class="pm-num">2<em>.</em>3<em>×</em></div>
+          <div class="pm-desc">Measured against pre-engagement baseline across 34 engagements with comparable pre/post data.</div>
+        </div>
+        <div class="proof-metric">
+          <div class="pm-label">Brand systems shipped</div>
+          <div class="pm-num">47</div>
+          <div class="pm-desc">Full end-to-end engagements from brand audit through system handoff and activation.</div>
+        </div>
+        <div class="proof-metric">
+          <div class="pm-label">Design system adoption rate</div>
+          <div class="pm-num">94<em>%</em></div>
+          <div class="pm-desc">Percentage of client teams still operating our systems 12 months post-handoff without external design support.</div>
+        </div>
+        <div class="proof-metric">
+          <div class="pm-label">Avg. time to launch</div>
+          <div class="pm-num">11<em>wk</em></div>
+          <div class="pm-desc">From signed brief to full brand system live in market, including all client feedback cycles and approvals.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">07 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 08 — CAPABILITIES
+═══════════════════════════════════════ -->
+<section class="slide" id="s8">
+  <div class="slide-inner" style="padding: 48px 52px;">
+    <div class="cap-header">
+      <h2>Full-Spectrum Capabilities</h2>
+      <span class="cap-sub">06 — What We Do · 08 / 11</span>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-col">
+        <div class="cap-col-head">
+          <div class="cap-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="cap-title">Brand Strategy</div>
+        </div>
+        <div class="cap-col-body">
+          <ul>
+            <li>Positioning &amp; differentiation workshops</li>
+            <li>Audience segmentation &amp; persona mapping</li>
+            <li>Competitive landscape analysis</li>
+            <li>Messaging architecture &amp; hierarchy</li>
+            <li>Brand naming and nomenclature</li>
+            <li>Category narrative development</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cap-col">
+        <div class="cap-col-head">
+          <div class="cap-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <div class="cap-title">Visual Identity</div>
+        </div>
+        <div class="cap-col-body">
+          <ul>
+            <li>Logotype &amp; symbol design</li>
+            <li>Colour system &amp; palette specification</li>
+            <li>Typographic scale &amp; pairing</li>
+            <li>Baseline grid &amp; layout principles</li>
+            <li>Iconography &amp; illustration style</li>
+            <li>Photography &amp; art direction</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cap-col">
+        <div class="cap-col-head">
+          <div class="cap-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="cap-title">Design Systems</div>
+        </div>
+        <div class="cap-col-body">
+          <ul>
+            <li>Figma component library build</li>
+            <li>Token-based design system architecture</li>
+            <li>Documentation &amp; usage guidelines</li>
+            <li>Template library (20+ contexts)</li>
+            <li>Governance framework &amp; ownership model</li>
+            <li>Developer handoff specifications</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cap-col">
+        <div class="cap-col-head">
+          <div class="cap-icon"><i class="fa-solid fa-display"></i></div>
+          <div class="cap-title">Digital &amp; Motion</div>
+        </div>
+        <div class="cap-col-body">
+          <ul>
+            <li>Web &amp; landing page design</li>
+            <li>Digital product UI systems</li>
+            <li>Motion principles &amp; animation</li>
+            <li>Social media template systems</li>
+            <li>Email &amp; campaign design</li>
+            <li>Accessibility &amp; WCAG compliance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">08 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 09 — PRICING & ENGAGEMENT
+═══════════════════════════════════════ -->
+<section class="slide" id="s9">
+  <div class="slide-inner" style="padding: 48px 52px;">
+    <div class="pricing-header">
+      <h2>Engagement &amp; Pricing</h2>
+      <span class="pricing-note">07 — Investment · All fees in USD · 09 / 11</span>
+    </div>
+    <div class="pricing-tiers">
+      <div class="pricing-tier">
+        <div class="pricing-tier-top">
+          <div class="tier-badge">Foundation</div>
+          <div class="tier-name">Identity Sprint</div>
+          <div class="tier-desc">For seed-stage companies that need a credible brand fast, without a multi-month engagement.</div>
+        </div>
+        <div class="tier-price-block">
+          <div class="tier-price-label">Fixed project fee</div>
+          <div class="tier-price-big">$28,000</div>
+          <div class="tier-price-detail">6–8 weeks · Single discipline</div>
+        </div>
+        <div class="tier-features-list">
+          <ul>
+            <li>Brand strategy workshop (1 day)</li>
+            <li>Logotype + mark design</li>
+            <li>Primary colour &amp; type system</li>
+            <li>Core Figma component library</li>
+            <li>Brand guidelines PDF (40+ pages)</li>
+            <li>2 feedback rounds included</li>
+            <li>Handoff call + asset export</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-tier featured">
+        <div class="most-popular-tag">Most Selected</div>
+        <div class="pricing-tier-top">
+          <div class="tier-badge">Full System</div>
+          <div class="tier-name">Brand System</div>
+          <div class="tier-desc">The complete Grid Systems method — from audit and strategy through living design system and activation.</div>
+        </div>
+        <div class="tier-price-block">
+          <div class="tier-price-label">Fixed project fee</div>
+          <div class="tier-price-big">$68,000</div>
+          <div class="tier-price-detail">10–14 weeks · All 5 phases</div>
+        </div>
+        <div class="tier-features-list">
+          <ul>
+            <li>Full brand audit &amp; competitive analysis</li>
+            <li>Brand strategy + positioning document</li>
+            <li>Complete visual identity system</li>
+            <li>Figma design system (200+ components)</li>
+            <li>Template library (20+ contexts)</li>
+            <li>Team training sessions (3 × 2hrs)</li>
+            <li>Brand governance framework</li>
+            <li>90-day post-launch metrics review</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-tier">
+        <div class="pricing-tier-top">
+          <div class="tier-badge">Enterprise</div>
+          <div class="tier-name">Portfolio System</div>
+          <div class="tier-desc">For established companies with multiple product lines, sub-brands, or operating in 3+ markets.</div>
+        </div>
+        <div class="tier-price-block">
+          <div class="tier-price-label">Starting from</div>
+          <div class="tier-price-big">$120,000</div>
+          <div class="tier-price-detail">14–22 weeks · Scoped to brief</div>
+        </div>
+        <div class="tier-features-list">
+          <ul>
+            <li>All Brand System deliverables</li>
+            <li>Multi-brand architecture design</li>
+            <li>Localisation for up to 8 markets</li>
+            <li>Product design system integration</li>
+            <li>Embedded designer option (on-site)</li>
+            <li>Annual brand health review (Year 1)</li>
+            <li>Retainer pricing available post-project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pricing-footer-note">All projects are fixed-fee. No hourly billing, no scope creep surprises. &nbsp;·&nbsp; 50% on project kick-off, 50% on final delivery. &nbsp;·&nbsp; Projects subject to availability — we take 4 engagements per quarter maximum.</div>
+  </div>
+  <div class="pg">09 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 10 — PROCESS TIMELINE
+═══════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="slide-inner" style="padding: 48px 52px;">
+    <div class="timeline-header">
+      <h2>How We Work Together</h2>
+      <span class="tl-sub">08 — Timeline · Brand System Engagement · 10 / 11</span>
+    </div>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th style="width:52px">#</th>
+          <th style="width:160px">Phase</th>
+          <th>What Happens</th>
+          <th style="width:110px">Duration</th>
+          <th style="width:200px">Your Deliverable</th>
+          <th style="width:100px">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tl-phase-num">01</td>
+          <td class="tl-phase-name">Discovery &amp; Audit</td>
+          <td class="tl-desc">Stakeholder interviews, asset audit, competitive review, and briefing alignment. We map your existing brand estate and identify every inconsistency before designing anything new.</td>
+          <td class="tl-week">Wks 1–2</td>
+          <td class="tl-deliverable">Brand audit review call; feedback on draft competitive matrix</td>
+          <td><span class="tl-badge red">Weeks 1–2</span></td>
+        </tr>
+        <tr>
+          <td class="tl-phase-num">02</td>
+          <td class="tl-phase-name">Strategy</td>
+          <td class="tl-desc">Full-day positioning workshop with your leadership team. We synthesise findings into brand platform, differentiation framework, and message architecture. Strategic approval gates creative.</td>
+          <td class="tl-week">Wks 3–4</td>
+          <td class="tl-deliverable">Workshop attendance; strategy document approval</td>
+          <td><span class="tl-badge blk">Weeks 3–4</span></td>
+        </tr>
+        <tr>
+          <td class="tl-phase-num">03</td>
+          <td class="tl-phase-name">Identity Design</td>
+          <td class="tl-desc">Two rounds of visual identity concepts. Each direction includes logotype, colour, type, and one brand expression example. You choose, refine, and approve. We iterate until it's right — no more than 2 rounds.</td>
+          <td class="tl-week">Wks 5–8</td>
+          <td class="tl-deliverable">Concept review (2 rounds); final identity approval</td>
+          <td><span class="tl-badge red">4 Weeks</span></td>
+        </tr>
+        <tr>
+          <td class="tl-phase-num">04</td>
+          <td class="tl-phase-name">System Build</td>
+          <td class="tl-desc">Figma component library, documentation, template library, and governance framework. Concurrent build means system ships one week after identity approval — not four weeks after.</td>
+          <td class="tl-week">Wks 9–12</td>
+          <td class="tl-deliverable">QA testing of component library; documentation review</td>
+          <td><span class="tl-badge blk">4 Weeks</span></td>
+        </tr>
+        <tr>
+          <td class="tl-phase-num">05</td>
+          <td class="tl-phase-name">Activation</td>
+          <td class="tl-desc">Three training sessions for your team. Brand portal setup. Go-live support. 90-day check-in with conversion and consistency metrics report. Your brand is live and measurable.</td>
+          <td class="tl-week">Wks 13–14</td>
+          <td class="tl-deliverable">Team training attendance; 90-day metrics baseline</td>
+          <td><span class="tl-badge red">2 Weeks</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tl-footnote">Timelines assume <strong>48-hour feedback turnaround</strong> on review rounds. Each delayed round extends the project by one week. Our record: a complete Brand System in <strong>8 weeks</strong> — with a client who responded same-day, every time.</div>
+  </div>
+  <div class="pg">10 / 11</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  SLIDE 11 — CLOSING CTA
+═══════════════════════════════════════ -->
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <div class="cta-left">
+      <div class="cta-wordmark">Grid<em>·</em>Systems</div>
+      <div class="cta-main">
+        <div class="cta-pre">09 — Next Steps</div>
+        <div class="cta-headline">Let's build<br>your <em>system.</em></div>
+        <p class="cta-body">Every brand system we ship starts with a single conversation. No spec required, no RFP, no pitch theatre. Tell us where your brand is breaking down — and we'll tell you, honestly, whether we can fix it and what that looks like.</p>
+      </div>
+      <div class="cta-contact-bar">
+        <div class="cta-contact-item">
+          <div class="ci-label">Direct</div>
+          <div class="ci-val">lars@gridsystems.co</div>
+        </div>
+        <div class="cta-contact-item">
+          <div class="ci-label">Calendar</div>
+          <div class="ci-val">cal.gridsystems.co</div>
+        </div>
+        <div class="cta-contact-item">
+          <div class="ci-label">Studio</div>
+          <div class="ci-val">gridsystems.co</div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-steps-label">How We Start</div>
+      <ul class="cta-steps">
+        <li>
+          <div class="cs-num">01</div>
+          <div class="cs-text">
+            <strong>30-minute discovery call</strong>
+            We ask 6 questions. You ask whatever you want. No presentation from us — this call is for diagnosis, not theatre.
+          </div>
+        </li>
+        <li>
+          <div class="cs-num">02</div>
+          <div class="cs-text">
+            <strong>Brief &amp; scope document</strong>
+            Within 3 business days we send a written scope, fee, and timeline. Fixed. No hidden costs.
+          </div>
+        </li>
+        <li>
+          <div class="cs-num">03</div>
+          <div class="cs-text">
+            <strong>Kick-off &amp; contract</strong>
+            Sign, pay 50%, book kick-off. Discovery starts within 5 business days of contract execution.
+          </div>
+        </li>
+        <li>
+          <div class="cs-num">04</div>
+          <div class="cs-text">
+            <strong>Deliver. Measure. Done.</strong>
+            You receive a brand system you own entirely. We measure results at 90 days. That's the engagement — no retainer required.
+          </div>
+        </li>
+      </ul>
+      <div class="cta-bottom">
+        <div class="cta-tagline">Grid Systems · Zürich &amp; New York · Since 2018<br>47 brands shipped · 2.3× average conversion lift</div>
+      </div>
+    </div>
+  </div>
+  <div class="pg" style="color: #222;">11 / 11</div>
+</section>
+
+<!-- ─── ATTRIBUTION ─── -->
+<div class="attribution">
+  <a href="https://presentation-skill-pack.vercel.app" target="_blank" rel="noopener">Built with presentation-skill-pack</a>
+</div>
+
+<script>
+  // ─── Arrow-key navigation ───────────────────────
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function goTo(index) {
+    const idx = Math.max(0, Math.min(slides.length - 1, index));
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      goTo(current + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goTo(current - 1);
+    }
+  });
+
+  // ─── IntersectionObserver slide counter ─────────
+  const counter = document.getElementById('slide-counter');
+  const total = slides.length;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        if (idx !== -1) {
+          current = idx;
+          const num = String(idx + 1).padStart(2, '0');
+          const tot = String(total).padStart(2, '0');
+          counter.textContent = `${num} / ${tot}`;
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(slide => observer.observe(slide));
+</script>
+</body>
+</html>

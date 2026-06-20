@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MONOLITH — Series A</title>
+<meta name="description" content="MONOLITH Series A pitch deck — bare-metal infrastructure compute, $4.2M ARR, 94% gross margin. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/monolith-seriesa" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#1c1c1c" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/monolith-seriesa" />
+<meta property="og:title" content="MONOLITH — Series A" />
+<meta property="og:description" content="Bare-metal infrastructure compute. $4.2M ARR. 94% gross margin. Raising $18M at $90M." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MONOLITH — Series A" />
+<meta name="twitter:description" content="Bare-metal infrastructure compute. $4.2M ARR. 94% gross margin." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --concrete:   #1c1c1c;
+    --concrete-2: #2a2a2a;
+    --concrete-3: #333333;
+    --off-white:  #e8e6e1;
+    --acid:       #d6ff00;
+    --border:     #404040;
+    --border-thick: 3px solid #404040;
+    --text-muted: #888;
+    --text-dim:   #555;
+    --font-mono:  'Space Mono', 'JetBrains Mono', monospace;
+    --font-disp:  'Barlow Condensed', 'Impact', sans-serif;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--concrete);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--concrete);
+    color: var(--off-white);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 5vw, 72px) clamp(32px, 7vw, 100px);
+    overflow: hidden;
+    border-bottom: 3px solid var(--border);
+  }
+
+  /* ─── STRUCTURAL GRID LINES ─── */
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ─── TYPOGRAPHY ─── */
+  .disp {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+  .mono {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+  .tag-acid {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    background: var(--acid);
+    padding: 3px 8px;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+  .acid { color: var(--acid); }
+  .off-white { color: var(--off-white); }
+  .muted { color: var(--text-muted); }
+
+  /* ─── THICK BORDERS / BLOCKS ─── */
+  .block {
+    border: var(--border-thick);
+    border-color: var(--border);
+    background: var(--concrete-2);
+    padding: 24px 28px;
+  }
+  .block-acid {
+    border: 3px solid var(--acid);
+    background: var(--concrete-2);
+    padding: 24px 28px;
+  }
+  .block-dark {
+    border: var(--border-thick);
+    background: var(--concrete);
+    padding: 24px 28px;
+  }
+  .h-rule {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 24px 0;
+  }
+  .v-line {
+    width: 3px;
+    background: var(--border);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+  .v-line-acid {
+    width: 4px;
+    background: var(--acid);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  /* ─── METADATA STRIP ─── */
+  .meta-strip {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .meta-strip span { color: var(--text-muted); }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-num {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    z-index: 10;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: var(--concrete);
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 1 — COVER
+  ═══════════════════════════════════════ */
+  .cover-wordmark {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(80px, 14vw, 200px);
+    letter-spacing: -0.03em;
+    line-height: 0.88;
+    text-transform: uppercase;
+    color: var(--off-white);
+  }
+  .cover-wordmark .acid-stroke {
+    -webkit-text-stroke: 3px var(--acid);
+    color: transparent;
+  }
+  .cover-tagline {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.1vw, 14px);
+    color: var(--text-muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 20px;
+    max-width: 60ch;
+    line-height: 1.7;
+  }
+  .cover-chips {
+    display: flex;
+    gap: 0;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .cover-chip {
+    border: 2px solid var(--border);
+    border-right-width: 0;
+    padding: 14px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cover-chip:last-child { border-right: 2px solid var(--border); }
+  .cover-chip .val {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(20px, 2.5vw, 32px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--acid);
+  }
+  .cover-chip .lbl {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .version-block {
+    position: absolute;
+    bottom: 36px;
+    right: clamp(32px, 7vw, 100px);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 2 — PROBLEM
+  ═══════════════════════════════════════ */
+  .problem-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 1100px;
+  }
+  .problem-panel {
+    border: 2px solid var(--border);
+    border-right-width: 0;
+    padding: 32px 28px;
+    position: relative;
+  }
+  .problem-panel:last-child { border-right: 2px solid var(--border); }
+  .problem-num {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(60px, 8vw, 100px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--concrete-3);
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+  }
+  .problem-head {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(22px, 2.8vw, 38px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--off-white);
+    margin-bottom: 12px;
+  }
+  .problem-stat {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1;
+    color: var(--acid);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .problem-body {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 36ch;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 3 — SOLUTION
+  ═══════════════════════════════════════ */
+  .solution-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "main s1" "main s2";
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2px solid var(--border);
+    margin-top: 32px;
+  }
+  .sol-main {
+    grid-area: main;
+    padding: 44px 40px;
+    border-right: 2px solid var(--border);
+  }
+  .sol-s1 {
+    grid-area: s1;
+    padding: 28px 24px;
+    border-bottom: 2px solid var(--border);
+  }
+  .sol-s2 {
+    grid-area: s2;
+    padding: 28px 24px;
+  }
+  .sol-head {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 48px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.96;
+    margin-bottom: 16px;
+  }
+  .sol-body {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 44ch;
+    margin-bottom: 24px;
+  }
+  .sol-sub-head {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(16px, 2vw, 24px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .sol-sub-body {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 4 — PROOF / METRICS HERO
+  ═══════════════════════════════════════ */
+  .metric-hero {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(100px, 18vw, 240px);
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    color: var(--acid);
+    display: block;
+  }
+  .metric-label {
+    font-family: var(--font-mono);
+    font-size: clamp(10px, 1vw, 13px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+  .metric-hero-row {
+    display: flex;
+    gap: 0;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1100px;
+    border: 2px solid var(--border);
+  }
+  .metric-cell {
+    flex: 1;
+    padding: 28px 24px;
+    border-right: 2px solid var(--border);
+  }
+  .metric-cell:last-child { border-right: none; }
+  .metric-val {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 52px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--acid);
+    margin-bottom: 4px;
+  }
+  .metric-desc {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .metric-delta {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--acid);
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 5 — TRACTION
+  ═══════════════════════════════════════ */
+  .traction-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2px solid var(--border);
+    margin-top: 32px;
+  }
+  .traction-cell {
+    padding: 28px 24px;
+    border-right: 2px solid var(--border);
+  }
+  .traction-cell:last-child { border-right: none; }
+  .traction-val {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 46px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--off-white);
+    margin-bottom: 6px;
+  }
+  .traction-val.acid { color: var(--acid); }
+  .traction-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .traction-delta {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--acid);
+    letter-spacing: 0.06em;
+  }
+  .traction-body {
+    margin-top: 32px;
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 2px solid var(--border);
+    border-top: none;
+  }
+  .traction-quote {
+    padding: 28px 32px;
+    border-right: 2px solid var(--border);
+  }
+  .traction-quote-text {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--off-white);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .traction-quote-attr {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .traction-logos {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+  .logo-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .logo-pill {
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 6 — VS HYPERSCALERS
+  ═══════════════════════════════════════ */
+  .compare-table {
+    width: 100%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    margin-top: 28px;
+    font-family: var(--font-mono);
+    font-size: clamp(10px, 1.1vw, 13px);
+  }
+  .compare-table th {
+    padding: 14px 18px;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--concrete-2);
+    border: 1px solid var(--border);
+    text-align: left;
+    font-weight: 700;
+  }
+  .compare-table th.hl {
+    background: var(--acid);
+    color: var(--concrete);
+    border-color: var(--acid);
+  }
+  .compare-table td {
+    padding: 13px 18px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: middle;
+  }
+  .compare-table td:first-child {
+    color: var(--off-white);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .compare-table td.hl {
+    background: rgba(214,255,0,0.07);
+    color: var(--acid);
+    border-color: rgba(214,255,0,0.25);
+    font-weight: 700;
+  }
+  .check { color: var(--acid); font-weight: 700; }
+  .cross { color: #666; }
+
+  /* ═══════════════════════════════════════
+     SLIDE 7 — BUSINESS MODEL
+  ═══════════════════════════════════════ */
+  .biz-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2px solid var(--border);
+    margin-top: 32px;
+  }
+  .biz-left {
+    padding: 36px 32px;
+    border-right: 2px solid var(--border);
+  }
+  .biz-right {
+    padding: 36px 32px;
+  }
+  .tier-row {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--border);
+    margin-bottom: -1px;
+  }
+  .tier-row.acid-row {
+    border-color: var(--acid);
+    background: rgba(214,255,0,0.04);
+  }
+  .tier-badge {
+    width: 4px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .tier-badge.acid { background: var(--acid); }
+  .tier-content {
+    flex: 1;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .tier-name {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--off-white);
+  }
+  .tier-name.acid { color: var(--acid); }
+  .tier-desc {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .tier-price {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--off-white);
+    white-space: nowrap;
+  }
+  .tier-price.acid { color: var(--acid); }
+  .margin-stat {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(56px, 8vw, 100px);
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    color: var(--acid);
+    margin-bottom: 8px;
+  }
+  .margin-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .margin-note {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 8 — MARKET
+  ═══════════════════════════════════════ */
+  .market-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 32px;
+    align-items: start;
+  }
+  .market-left {
+    padding-right: 48px;
+    border-right: 2px solid var(--border);
+    padding-bottom: 4px;
+  }
+  .market-right { padding-left: 48px; }
+  .market-num {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(64px, 10vw, 130px);
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    color: var(--acid);
+  }
+  .market-num-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+    margin-bottom: 28px;
+  }
+  .bar-list { display: flex; flex-direction: column; gap: 0; }
+  .bar-item {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--border);
+    margin-bottom: -1px;
+    overflow: hidden;
+  }
+  .bar-fill-left {
+    background: rgba(214,255,0,0.08);
+    flex-shrink: 0;
+    transition: width 0s;
+  }
+  .bar-text {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .bar-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .bar-amount {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
+    color: var(--off-white);
+  }
+  .tam-som {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 2px solid var(--border);
+    margin-top: 24px;
+  }
+  .tam-cell {
+    padding: 18px 20px;
+    border-right: 2px solid var(--border);
+  }
+  .tam-cell:last-child { border-right: none; }
+  .tam-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .tam-val {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--off-white);
+  }
+  .tam-val.acid { color: var(--acid); }
+
+  /* ═══════════════════════════════════════
+     SLIDE 9 — TEAM
+  ═══════════════════════════════════════ */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2px solid var(--border);
+    margin-top: 32px;
+  }
+  .team-card {
+    padding: 32px 28px;
+    border-right: 2px solid var(--border);
+  }
+  .team-card:last-child { border-right: none; }
+  .team-initials {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 3rem;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--acid);
+    margin-bottom: 16px;
+  }
+  .team-name {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--off-white);
+    margin-bottom: 4px;
+  }
+  .team-title {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .team-bio {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .team-bio strong {
+    color: var(--off-white);
+    font-weight: 700;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 10 — ROADMAP
+  ═══════════════════════════════════════ */
+  .roadmap-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2px solid var(--border);
+    margin-top: 32px;
+  }
+  .roadmap-col {
+    border-right: 2px solid var(--border);
+    padding: 28px 22px;
+  }
+  .roadmap-col:last-child { border-right: none; }
+  .roadmap-period {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+  }
+  .roadmap-period.acid { color: var(--acid); border-bottom-color: var(--acid); }
+  .roadmap-items { display: flex; flex-direction: column; gap: 14px; }
+  .roadmap-item {
+    padding: 10px 12px;
+    background: var(--concrete-2);
+    border-left: 3px solid var(--border);
+  }
+  .roadmap-item.acid-item { border-left-color: var(--acid); }
+  .roadmap-item-tag {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .roadmap-item-tag.acid { color: var(--acid); }
+  .roadmap-item-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--off-white);
+    line-height: 1.3;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 11 — THE ASK
+  ═══════════════════════════════════════ */
+  .ask-amount {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(72px, 12vw, 160px);
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    color: var(--acid);
+  }
+  .ask-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2px solid var(--border);
+    margin-top: 32px;
+  }
+  .ask-left {
+    padding: 32px 28px;
+    border-right: 2px solid var(--border);
+  }
+  .ask-right { padding: 32px 28px; }
+  .ask-funds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 2px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .fund-tile {
+    padding: 18px 20px;
+    border-right: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+  }
+  .fund-tile:nth-child(2) { border-right: none; }
+  .fund-tile:nth-child(3) { border-right: 2px solid var(--border); border-bottom: none; }
+  .fund-tile:nth-child(4) { border-right: none; border-bottom: none; }
+  .fund-pct {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--off-white);
+    margin-bottom: 4px;
+  }
+  .fund-pct.acid { color: var(--acid); }
+  .fund-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .ask-milestone {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--border);
+    margin-bottom: -1px;
+  }
+  .ask-ms-badge {
+    width: 4px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .ask-ms-badge.acid { background: var(--acid); }
+  .ask-ms-content { padding: 12px 16px; }
+  .ask-ms-title {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+  .ask-ms-detail {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .valuation-block {
+    border: 2px solid var(--acid);
+    padding: 24px 22px;
+    background: rgba(214,255,0,0.03);
+    text-align: center;
+  }
+  .val-num {
+    font-family: var(--font-disp);
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--acid);
+    margin-bottom: 8px;
+  }
+  .val-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .val-note {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 12 (closing) reuse ask-layout spacing, declared inline
+  ═══════════════════════════════════════ */
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    .slide::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; MONOLITH &nbsp;·&nbsp; <span id="slide-counter">01</span> / 11</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="background:var(--concrete);">
+  <div class="slide-num">[SLIDE//01]</div>
+
+  <div class="meta-strip">
+    <span>DOC: MONOLITH-SA-2026-V3.2</span>
+    <span>TIMESTAMP: 2026-06-18T00:00:00Z</span>
+    <span>CLASSIFICATION: CONFIDENTIAL</span>
+    <span>STATUS: SERIES-A-RAISE</span>
+  </div>
+
+  <div class="cover-wordmark">MONO<br /><span class="acid-stroke">LITH</span></div>
+
+  <div class="cover-tagline">
+    Bare-metal compute infrastructure for the next decade of<br />
+    AI workloads. No abstraction layers. No hyperscaler tax. No excuses.
+  </div>
+
+  <div class="cover-chips">
+    <div class="cover-chip">
+      <span class="val">$4.2M</span>
+      <span class="lbl">ARR</span>
+    </div>
+    <div class="cover-chip">
+      <span class="val">94%</span>
+      <span class="lbl">Gross Margin</span>
+    </div>
+    <div class="cover-chip">
+      <span class="val">11ms</span>
+      <span class="lbl">p99 Latency</span>
+    </div>
+    <div class="cover-chip">
+      <span class="val">3×</span>
+      <span class="lbl">YoY Growth</span>
+    </div>
+    <div class="cover-chip">
+      <span class="val">$18M</span>
+      <span class="lbl">Raise Target</span>
+    </div>
+  </div>
+
+  <div class="version-block">
+    MONOLITH TECHNOLOGIES INC.<br />
+    SAN FRANCISCO / AUSTIN / AMSTERDAM<br />
+    V3.2 // SERIES A // JUNE 2026
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2" style="background:var(--concrete-2);">
+  <div class="slide-num">[SLIDE//02]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[PROBLEM_STATEMENT]</span>
+    <h2 class="disp" style="font-size:clamp(36px,5vw,64px);color:var(--off-white);max-width:18ch;margin-bottom:8px;">
+      HYPERSCALERS OWN YOUR<br /><span class="acid">INFRASTRUCTURE.</span>
+    </h2>
+    <div class="mono" style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0;letter-spacing:0.08em;">
+      THREE STRUCTURAL PROBLEMS BLOCKING THE NEXT WAVE OF COMPUTE.
+    </div>
+
+    <div class="problem-layout">
+      <div class="problem-panel">
+        <div class="problem-num">01</div>
+        <div class="problem-head">COST CAPTURE</div>
+        <div class="problem-stat">72%</div>
+        <div class="problem-body">
+          Of cloud compute spend is captured by AWS, Azure, and GCP at
+          margins that leave operators paying 4–6× bare-metal cost equivalents.
+          For AI inference workloads, the effective markup exceeds 9×.
+        </div>
+      </div>
+      <div class="problem-panel">
+        <div class="problem-num">02</div>
+        <div class="problem-head">PERFORMANCE CEILING</div>
+        <div class="problem-stat">180ms</div>
+        <div class="problem-body">
+          Median p99 on managed GPU inference across hyperscalers. Virtualization
+          overhead, shared tenancy, and cold-start penalties destroy the latency
+          profile that real-time AI products demand. MONOLITH delivers 11ms.
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-layout" style="margin-top:0;border-top:none;">
+      <div class="problem-panel" style="border-top:none;">
+        <div class="problem-num">03</div>
+        <div class="problem-head">LOCK-IN PENALTY</div>
+        <div class="problem-stat">$240K</div>
+        <div class="problem-body">
+          Average egress and migration cost when an enterprise tries to move off
+          a hyperscaler. Data gravity, proprietary APIs, and punitive egress
+          pricing trap customers in perpetual contracts at captive rates.
+        </div>
+      </div>
+      <div class="problem-panel" style="border-top:none;background:rgba(214,255,0,0.03);border-color:var(--acid);">
+        <div class="problem-head" style="color:var(--acid);">THE WINDOW</div>
+        <div class="problem-body" style="font-size:0.82rem;margin-top:8px;">
+          AI inference demand is growing 400% YoY. Hyperscalers are supply-constrained.
+          Lead times for H100 clusters exceed 9 months on AWS. The gap between
+          demand and affordable supply is the largest infrastructure opportunity in a decade.
+          <br /><br />
+          <span style="color:var(--off-white);font-weight:700;">MONOLITH is the wedge.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — SOLUTION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3" style="background:var(--concrete);">
+  <div class="slide-num">[SLIDE//03]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag-acid">[SOLUTION]</span>
+    <h2 class="disp" style="font-size:clamp(32px,4.5vw,60px);color:var(--off-white);max-width:22ch;">
+      BARE METAL. ZERO<br />HYPERSCALER TAX.
+    </h2>
+
+    <div class="solution-grid">
+      <div class="sol-main">
+        <div class="tag" style="margin-bottom:14px;">[CORE_PLATFORM]</div>
+        <div class="sol-head" style="color:var(--acid);">MONOLITH<br />COMPUTE FABRIC</div>
+        <div class="sol-body">
+          Owned, collocated bare-metal GPU clusters across 8 Tier-3 data centers.
+          Zero-overhead scheduling via our open-source <span style="color:var(--off-white);font-weight:700;">Slab</span> runtime — no
+          hypervisor, no shared tenancy, no abstraction tax. Customers get the
+          full silicon, billed per GPU-second at 70% below hyperscaler list price.
+        </div>
+        <div class="tag" style="margin-bottom:10px;">[KEY_DIFFERENTIATORS]</div>
+        <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);">
+          <div style="padding:8px 14px;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">
+            <span style="color:var(--acid);margin-right:10px;">→</span>11ms p99 guaranteed by SLA or credits issued automatically
+          </div>
+          <div style="padding:8px 14px;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">
+            <span style="color:var(--acid);margin-right:10px;">→</span>99.995% availability across cross-DC redundant pairs
+          </div>
+          <div style="padding:8px 14px;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">
+            <span style="color:var(--acid);margin-right:10px;">→</span>NVIDIA H100/H200 + custom InfiniBand topology — 3.2 Tbps inter-node
+          </div>
+          <div style="padding:8px 14px;font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">
+            <span style="color:var(--acid);margin-right:10px;">→</span>Full data sovereignty — no telemetry, no co-mingling, HIPAA + SOC 2 Type II
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sol-s1">
+          <div class="tag" style="margin-bottom:10px;">[SLAB_RUNTIME]</div>
+          <div class="sol-sub-head">OPEN-SOURCE<br />KERNEL SCHEDULER</div>
+          <div class="sol-sub-body">
+            Slab bypasses the Linux scheduler for GPU workloads, achieving
+            near-zero context-switch overhead. 14K GitHub stars. 60+ contributors.
+            Adopted by 3 of the top 10 AI labs.
+          </div>
+        </div>
+
+        <div class="sol-s2">
+          <div class="tag" style="margin-bottom:10px;">[NETWORKING]</div>
+          <div class="sol-sub-head">PRIVATE BACKBONE<br />INTERCONNECT</div>
+          <div class="sol-sub-body">
+            Dedicated dark-fiber routes between all 8 DCs. Customers transfer
+            model weights and training checkpoints at 100Gbps with zero egress fees.
+            No AWS PrivateLink required.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — METRIC HERO / PROOF
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4" style="background:var(--concrete-2);">
+  <div class="slide-num">[SLIDE//04]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[PROOF_OF_PERFORMANCE]</span>
+
+    <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+      <div>
+        <span class="metric-hero">11ms</span>
+        <div class="metric-label">P99 INFERENCE LATENCY — PRODUCTION MEDIAN // ALL CUSTOMERS // Q1 2026</div>
+      </div>
+      <div style="padding-left:24px;border-left:3px solid var(--border);padding-bottom:16px;">
+        <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);line-height:1.8;max-width:30ch;">
+          vs. <span style="color:#e55;">180ms</span> AWS SageMaker median<br />
+          vs. <span style="color:#e55;">220ms</span> GCP Vertex AI median<br />
+          vs. <span style="color:#e55;">195ms</span> Azure ML median<br /><br />
+          <span style="color:var(--acid);font-weight:700;">MONOLITH: 16× faster at p99.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-hero-row">
+      <div class="metric-cell">
+        <div class="metric-val">$4.2M</div>
+        <div class="metric-desc">Annual Recurring<br />Revenue</div>
+        <div class="metric-delta">↑ 312% YoY</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-val">94%</div>
+        <div class="metric-desc">Gross Margin<br />Q1 2026</div>
+        <div class="metric-delta">↑ from 88% in 2025</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-val">148%</div>
+        <div class="metric-desc">Net Revenue<br />Retention</div>
+        <div class="metric-delta">↑ expansion MRR</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-val">6mo</div>
+        <div class="metric-desc">CAC Payback<br />Period</div>
+        <div class="metric-delta">↓ from 14mo in 2024</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-val">99.996%</div>
+        <div class="metric-desc">Uptime TTM<br />Across all DCs</div>
+        <div class="metric-delta">21 min downtime total</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — TRACTION
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="background:var(--concrete);">
+  <div class="slide-num">[SLIDE//05]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[TRACTION_2026]</span>
+    <h2 class="disp" style="font-size:clamp(32px,4.5vw,58px);color:var(--off-white);margin-bottom:4px;">
+      NUMBERS DON'T LIE.
+    </h2>
+    <div class="mono" style="font-size:0.72rem;color:var(--text-muted);letter-spacing:0.1em;margin-bottom:0;">ZERO PAID ACQUISITION // ENTIRELY INBOUND + DEVELOPER COMMUNITY</div>
+
+    <div class="traction-row">
+      <div class="traction-cell">
+        <div class="traction-val acid">87</div>
+        <div class="traction-lbl">Enterprise Customers</div>
+        <div class="traction-delta">+52 in last 6 months</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-val">$48K</div>
+        <div class="traction-lbl">Avg Contract ACV</div>
+        <div class="traction-delta">↑ from $28K (YoY)</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-val">14K</div>
+        <div class="traction-lbl">Slab GitHub Stars</div>
+        <div class="traction-delta">+8K in 90 days</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-val acid">$1.8M</div>
+        <div class="traction-lbl">Pipeline — Signed</div>
+        <div class="traction-delta">3 LOIs pending close</div>
+      </div>
+    </div>
+
+    <div class="traction-body">
+      <div class="traction-quote">
+        <div class="traction-quote-text">
+          "We moved our entire 400-GPU training cluster to MONOLITH in 72 hours.
+          Our monthly bill dropped 61%. Latency improved so dramatically we
+          rewrote our SLA commitments to end users."
+        </div>
+        <div class="traction-quote-attr">— VP Platform Engineering, Series-C AI Safety Co. [NDA]</div>
+      </div>
+      <div class="traction-logos">
+        <div class="mono" style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">[CUSTOMER_LOGOS // PARTIAL LIST]</div>
+        <div class="logo-row">
+          <div class="logo-pill">INFERENCE-CO</div>
+          <div class="logo-pill">FOUNDRY AI</div>
+          <div class="logo-pill">ARKEN LABS</div>
+          <div class="logo-pill">PELION HEALTH</div>
+        </div>
+        <div class="logo-row">
+          <div class="logo-pill">VECTORA</div>
+          <div class="logo-pill">AXIOM ROBOTICS</div>
+          <div class="logo-pill">CREST FINANCIAL</div>
+          <div class="logo-pill">+80 MORE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — VS HYPERSCALERS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6" style="background:var(--concrete-2);">
+  <div class="slide-num">[SLIDE//06]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[COMPETITIVE_ANALYSIS]</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,54px);color:var(--off-white);margin-bottom:4px;">
+      WHY WE WIN<br /><span class="acid">EVERY TIME.</span>
+    </h2>
+    <div class="mono" style="font-size:0.7rem;color:var(--text-muted);letter-spacing:0.1em;margin-bottom:0;">DIRECT COMPARISON ON WHAT ACTUALLY MATTERS TO OPERATORS</div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>CAPABILITY</th>
+          <th class="hl">[MONOLITH]</th>
+          <th>AWS SAGEMAKER</th>
+          <th>GCP VERTEX AI</th>
+          <th>AZURE ML</th>
+          <th>COREWEAVE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P99 Latency — Inference</td>
+          <td class="hl">11ms ✓</td>
+          <td>180ms</td>
+          <td>220ms</td>
+          <td>195ms</td>
+          <td>~80ms</td>
+        </tr>
+        <tr>
+          <td>Bare-metal GPU (no virt.)</td>
+          <td class="hl"><span class="check">✓ OWNED</span></td>
+          <td><span class="cross">✗ virtualized</span></td>
+          <td><span class="cross">✗ virtualized</span></td>
+          <td><span class="cross">✗ virtualized</span></td>
+          <td><span class="check">✓ bare</span></td>
+        </tr>
+        <tr>
+          <td>Zero egress fees</td>
+          <td class="hl"><span class="check">✓ ZERO</span></td>
+          <td><span class="cross">✗ $0.09/GB</span></td>
+          <td><span class="cross">✗ $0.12/GB</span></td>
+          <td><span class="cross">✗ $0.08/GB</span></td>
+          <td>partial</td>
+        </tr>
+        <tr>
+          <td>Gross margin (infra layer)</td>
+          <td class="hl">94%</td>
+          <td>~65% est.</td>
+          <td>~60% est.</td>
+          <td>~62% est.</td>
+          <td>~72% est.</td>
+        </tr>
+        <tr>
+          <td>SLA-backed latency credits</td>
+          <td class="hl"><span class="check">✓ AUTO</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>No lock-in APIs</td>
+          <td class="hl"><span class="check">✓ OPEN</span></td>
+          <td><span class="cross">✗ proprietary</span></td>
+          <td><span class="cross">✗ proprietary</span></td>
+          <td><span class="cross">✗ proprietary</span></td>
+          <td>partial</td>
+        </tr>
+        <tr>
+          <td>Cost vs. AWS equivalent</td>
+          <td class="hl">BASELINE</td>
+          <td>+310%</td>
+          <td>+380%</td>
+          <td>+290%</td>
+          <td>+140%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:16px;font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);letter-spacing:0.08em;">
+      [SOURCE: INTERNAL BENCHMARKS Q1 2026 // THIRD-PARTY AUDIT AVAILABLE IN DATA ROOM // HYPERSCALER PRICING FROM PUBLIC RATE CARDS]
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — BUSINESS MODEL
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="background:var(--concrete);">
+  <div class="slide-num">[SLIDE//07]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[BUSINESS_MODEL]</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,54px);color:var(--off-white);margin-bottom:4px;">
+      94% GROSS MARGIN.<br /><span class="acid">WE OWN THE HARDWARE.</span>
+    </h2>
+
+    <div class="biz-layout">
+      <div class="biz-left">
+        <div class="tag" style="margin-bottom:14px;">[PRICING_TIERS]</div>
+        <div>
+          <div class="tier-row">
+            <div class="tier-badge"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name">DEV</div>
+                <div class="tier-desc">Up to 8 GPUs / month-to-month</div>
+              </div>
+              <div class="tier-price">$2.20<span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">/GPU-hr</span></div>
+            </div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-badge"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name">TEAM</div>
+                <div class="tier-desc">Up to 64 GPUs / committed term</div>
+              </div>
+              <div class="tier-price">$1.85<span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">/GPU-hr</span></div>
+            </div>
+          </div>
+          <div class="tier-row acid-row">
+            <div class="tier-badge acid"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name acid">ENTERPRISE</div>
+                <div class="tier-desc">Unlimited / custom SLA / dedicated cluster</div>
+              </div>
+              <div class="tier-price acid">Custom</div>
+            </div>
+          </div>
+          <div class="tier-row" style="border-top:none;">
+            <div class="tier-badge" style="background:var(--text-dim);"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name" style="color:var(--text-muted);">SPOT</div>
+                <div class="tier-desc">Preemptible / training bursts</div>
+              </div>
+              <div class="tier-price" style="color:var(--text-muted);">$0.75<span style="font-size:0.7rem;">/GPU-hr</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-rule"></div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);line-height:1.75;">
+          <span style="color:var(--off-white);font-weight:700;">Revenue mix:</span> 68% Enterprise // 22% Team // 10% Dev+Spot<br />
+          <span style="color:var(--off-white);font-weight:700;">Enterprise avg ACV:</span> $48K / yr<br />
+          <span style="color:var(--off-white);font-weight:700;">Gross margin expansion:</span> +600bps YoY as HW depreciated
+        </div>
+      </div>
+
+      <div class="biz-right">
+        <div class="tag" style="margin-bottom:14px;">[UNIT_ECONOMICS]</div>
+        <div class="margin-stat">94%</div>
+        <div class="margin-label">GROSS MARGIN — Q1 2026</div>
+        <div class="margin-note">
+          Hardware is owned and fully depreciated over 5-year schedules.
+          After year 3, incremental GPU-hours approach 98% margin.<br /><br />
+          Colocation contracts locked through 2031 at below-market rates.
+          Power PPA signed at $0.042/kWh — 60% below US commercial average.<br /><br />
+          <span style="color:var(--acid);font-weight:700;">
+            LTV/CAC = 18× at current NRR of 148%.
+          </span>
+        </div>
+        <div class="h-rule"></div>
+        <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);line-height:1.7;">
+          [COGS = POWER + COLO + NETWORK + SUPPORT]<br />
+          [EXCLUDES: D&amp;A, OPEX, HEADCOUNT]<br />
+          [AUDITED BY KPMG — FULL REPORT IN DATA ROOM]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — MARKET
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8" style="background:var(--concrete-2);">
+  <div class="slide-num">[SLIDE//08]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[MARKET_OPPORTUNITY]</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,54px);color:var(--off-white);margin-bottom:4px;">
+      THE LARGEST INFRASTRUCTURE<br /><span class="acid">SHIFT IN A DECADE.</span>
+    </h2>
+
+    <div class="market-layout">
+      <div class="market-left">
+        <div class="market-num">$420B</div>
+        <div class="market-num-lbl">GLOBAL AI COMPUTE MARKET BY 2030 // CAGR 44% // IDC + GARTNER CONSENSUS</div>
+
+        <div class="tam-som">
+          <div class="tam-cell">
+            <div class="tam-lbl">TAM</div>
+            <div class="tam-val">$420B</div>
+          </div>
+          <div class="tam-cell">
+            <div class="tam-lbl">SAM</div>
+            <div class="tam-val">$62B</div>
+          </div>
+          <div class="tam-cell" style="border-right:none;">
+            <div class="tam-lbl">SOM (5yr)</div>
+            <div class="tam-val acid">$4.8B</div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);line-height:1.7;">
+          SAM = bare-metal GPU cloud + dedicated AI infra.<br />
+          SOM = 1.15% of SAM — achievable at $420M ARR by 2030<br />
+          at current growth trajectory without further capital efficiency gains.
+        </div>
+      </div>
+
+      <div class="market-right">
+        <div class="mono" style="font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">[COMPUTE SPEND BREAKDOWN 2026E]</div>
+        <div class="bar-list">
+          <div class="bar-item">
+            <div class="bar-fill-left" style="width:100%;"></div>
+            <div class="bar-text">
+              <span class="bar-label">AI TRAINING COMPUTE</span>
+              <span class="bar-amount" style="color:var(--acid);">$28.4B</span>
+            </div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-fill-left" style="width:75%;"></div>
+            <div class="bar-text">
+              <span class="bar-label">AI INFERENCE SERVING</span>
+              <span class="bar-amount" style="color:var(--off-white);">$21.3B</span>
+            </div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-fill-left" style="width:52%;"></div>
+            <div class="bar-text">
+              <span class="bar-label">GPU-BACKED DATA PROCESSING</span>
+              <span class="bar-amount" style="color:var(--off-white);">$14.8B</span>
+            </div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-fill-left" style="width:28%;"></div>
+            <div class="bar-text">
+              <span class="bar-label">FINE-TUNING + RLHF</span>
+              <span class="bar-amount" style="color:var(--off-white);">$7.9B</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;border:2px solid var(--acid);padding:18px 20px;background:rgba(214,255,0,0.03);">
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);line-height:1.7;">
+            <span style="color:var(--acid);font-weight:700;">[TAILWIND]</span> H100/H200 cluster availability from
+            hyperscalers is &gt;9 months backlog. MONOLITH has
+            <span style="color:var(--off-white);font-weight:700;">2,400 GPUs available today</span> with
+            expansion capacity signed under LOI for 6,000 additional units by Q4 2026.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — TEAM
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="background:var(--concrete);">
+  <div class="slide-num">[SLIDE//09]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[FOUNDING_TEAM]</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,54px);color:var(--off-white);margin-bottom:4px;">
+      BUILT BY PEOPLE WHO<br /><span class="acid">RAN THE INFRASTRUCTURE.</span>
+    </h2>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-initials">EK</div>
+        <div class="team-name">ELENA KOSS</div>
+        <div class="team-title">CO-FOUNDER &amp; CEO</div>
+        <div class="team-bio">
+          Former Director of Infrastructure at <strong>Stripe</strong> — oversaw
+          $2.4B in annual compute spend. Negotiated Stripe's first colocation
+          contracts at scale, cutting cloud costs 44% in 18 months. <br /><br />
+          Prior: <strong>Google SRE</strong> (Search infra, 5yr).
+          Stanford MS CS. Two US patents in distributed scheduling.
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-initials">MV</div>
+        <div class="team-name">MARCO VIDAL</div>
+        <div class="team-title">CO-FOUNDER &amp; CTO</div>
+        <div class="team-bio">
+          Creator of <strong>Slab</strong> — the open-source GPU scheduler
+          with 14K stars adopted by xAI, Mistral, and Cohere for production inference.
+          Former Principal Engineer at <strong>Meta AI</strong> (PyTorch infra team). <br /><br />
+          MS from ETH Zürich. Speaks at NeurIPS / SC annually.
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-initials">PC</div>
+        <div class="team-name">PRIYA CHANDA</div>
+        <div class="team-title">CO-FOUNDER &amp; CFO</div>
+        <div class="team-bio">
+          Former VP Finance at <strong>Equinix</strong> — structured $4B in
+          data-center financing across 3 continents. Architected colocation
+          contract structures that became industry templates. <br /><br />
+          CPA, Wharton MBA. Ex-Goldman Sachs TMT banking.
+          Closed MONOLITH's first 3 data center leases before we had customers.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:0;border:2px solid var(--border);border-top:none;padding:18px 28px;display:flex;gap:40px;flex-wrap:wrap;">
+      <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);">
+        <span style="color:var(--off-white);font-weight:700;">[TEAM]</span> 34 FTEs — 22 Eng // 6 Sales // 4 Ops // 2 G&amp;A
+      </div>
+      <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);">
+        <span style="color:var(--off-white);font-weight:700;">[ADVISORS]</span> Ex-CTO Rackspace // Former VP Eng Cloudflare // NVIDIA Academic Partner
+      </div>
+      <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);">
+        <span style="color:var(--off-white);font-weight:700;">[BACKERS]</span> Conviction Capital (Seed) // Asymmetric (Seed+) // 12 angels
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — ROADMAP
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="background:var(--concrete-2);">
+  <div class="slide-num">[SLIDE//10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[ROADMAP_2026_2027]</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,54px);color:var(--off-white);margin-bottom:4px;">
+      24 MONTHS TO<br /><span class="acid">CATEGORY DOMINANCE.</span>
+    </h2>
+
+    <div class="roadmap-timeline">
+      <div class="roadmap-col">
+        <div class="roadmap-period acid">Q3 2026</div>
+        <div class="roadmap-items">
+          <div class="roadmap-item acid-item">
+            <div class="roadmap-item-tag acid">[PLATFORM]</div>
+            <div class="roadmap-item-text">Launch Slab v2.0 — multi-tenant isolation + hot-swap GPU allocation</div>
+          </div>
+          <div class="roadmap-item acid-item">
+            <div class="roadmap-item-tag acid">[EXPANSION]</div>
+            <div class="roadmap-item-text">DC #5 live — Frankfurt. 800 H100 units. EU data residency unlocked.</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-item-tag">[MILESTONE]</div>
+            <div class="roadmap-item-text">$7M ARR target. 120 customers.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap-col">
+        <div class="roadmap-period" style="color:var(--off-white);">Q4 2026</div>
+        <div class="roadmap-items">
+          <div class="roadmap-item">
+            <div class="roadmap-item-tag">[PRODUCT]</div>
+            <div class="roadmap-item-text">MONOLITH Managed Training — full fine-tuning pipeline on bare metal</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-item-tag">[GTM]</div>
+            <div class="roadmap-item-text">AWS Marketplace listing live. 2,200 prospects in procurement pipeline.</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-item-tag">[TEAM]</div>
+            <div class="roadmap-item-text">+12 engineers hired. Platform, infra, and ML systems.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap-col">
+        <div class="roadmap-period" style="color:var(--off-white);">Q1 2027</div>
+        <div class="roadmap-items">
+          <div class="roadmap-item">
+            <div class="roadmap-item-tag">[COMPLIANCE]</div>
+            <div class="roadmap-item-text">FedRAMP Moderate authorized. Unlocks US federal + DoD pipeline.</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-item-tag">[PRODUCT]</div>
+            <div class="roadmap-item-text">Dedicated private cluster offering — single-tenant, air-gapped. Target $250K+ ACV.</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-item-tag">[MILESTONE]</div>
+            <div class="roadmap-item-text">$12M ARR target. Positive free cash flow.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap-col">
+        <div class="roadmap-period" style="color:var(--acid);">Q2 2027</div>
+        <div class="roadmap-items">
+          <div class="roadmap-item acid-item">
+            <div class="roadmap-item-tag acid">[RAISE]</div>
+            <div class="roadmap-item-text">Series B — $60M target at $300M+ valuation. 8× revenue multiple.</div>
+          </div>
+          <div class="roadmap-item acid-item">
+            <div class="roadmap-item-tag acid">[SCALE]</div>
+            <div class="roadmap-item-text">8,000+ GPUs across 10 DCs. Asia-Pacific expansion (Tokyo, Singapore).</div>
+          </div>
+          <div class="roadmap-item acid-item">
+            <div class="roadmap-item-tag acid">[MILESTONE]</div>
+            <div class="roadmap-item-text">250 enterprise customers. $18M ARR. Category defined.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 11 — THE ASK
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-11" style="background:var(--concrete);">
+  <div class="slide-num">[SLIDE//11]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="tag">[THE_ASK]</span>
+
+    <div class="ask-amount">$18M</div>
+    <div class="mono" style="font-size:0.8rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:6px;margin-bottom:0;">
+      SERIES A &nbsp;·&nbsp; $90M PRE-MONEY VALUATION &nbsp;·&nbsp; 20% EQUITY OFFERING
+    </div>
+
+    <div class="ask-layout">
+      <div class="ask-left">
+        <div class="tag" style="margin-bottom:14px;">[USE_OF_FUNDS]</div>
+        <div class="ask-funds">
+          <div class="fund-tile">
+            <div class="fund-pct acid">40%</div>
+            <div class="fund-lbl">Hardware Expansion</div>
+          </div>
+          <div class="fund-tile">
+            <div class="fund-pct">28%</div>
+            <div class="fund-lbl">Engineering Headcount</div>
+          </div>
+          <div class="fund-tile">
+            <div class="fund-pct">20%</div>
+            <div class="fund-lbl">Go-to-Market</div>
+          </div>
+          <div class="fund-tile">
+            <div class="fund-pct" style="color:var(--text-muted);">12%</div>
+            <div class="fund-lbl">Ops / Legal / G&amp;A</div>
+          </div>
+        </div>
+
+        <div class="tag" style="margin-bottom:10px;">[24-MONTH_MILESTONES]</div>
+        <div>
+          <div class="ask-milestone">
+            <div class="ask-ms-badge acid"></div>
+            <div class="ask-ms-content">
+              <div class="ask-ms-title">6,000 GPUs deployed across 8 DCs by Q1 2027</div>
+              <div class="ask-ms-detail">Adds $9M ARR capacity. Fully contracted colo sites.</div>
+            </div>
+          </div>
+          <div class="ask-milestone">
+            <div class="ask-ms-badge acid"></div>
+            <div class="ask-ms-content">
+              <div class="ask-ms-title">$18M ARR by Q2 2027 (Series B readiness)</div>
+              <div class="ask-ms-detail">At current NRR of 148%, expansion covers &gt;60% of target.</div>
+            </div>
+          </div>
+          <div class="ask-milestone">
+            <div class="ask-ms-badge"></div>
+            <div class="ask-ms-content">
+              <div class="ask-ms-title">FedRAMP Moderate — Q1 2027</div>
+              <div class="ask-ms-detail">Unlocks $40M+ Federal pipeline already in qualification.</div>
+            </div>
+          </div>
+          <div class="ask-milestone">
+            <div class="ask-ms-badge"></div>
+            <div class="ask-ms-content">
+              <div class="ask-ms-title">Positive FCF by Q3 2027</div>
+              <div class="ask-ms-detail">Hardware depreciation + expanding margins = self-funding inflection.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ask-right">
+        <div class="tag" style="margin-bottom:14px;">[TERMS_OVERVIEW]</div>
+        <div class="valuation-block">
+          <div class="val-num">$90M</div>
+          <div class="val-label">PRE-MONEY VALUATION</div>
+          <div class="val-note">
+            21× trailing ARR ($4.2M) &nbsp;·&nbsp; 5× forward ARR ($18M target)<br /><br />
+            Lead commitment: $12M (Tier-1 fund, NDA).<br />
+            Co-investor tranche: $6M — filling now.<br /><br />
+            Pro-rata rights for Series B reserved for Series A participants.
+            Board seat offered to lead investor.
+          </div>
+        </div>
+
+        <div style="margin-top:20px;border:2px solid var(--border);padding:20px 22px;">
+          <div class="tag" style="margin-bottom:10px;">[CONTACT]</div>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);line-height:1.9;">
+            <i class="fa fa-envelope" style="color:var(--acid);width:16px;"></i>
+            &nbsp; investors@monolith.compute<br />
+            <i class="fa fa-globe" style="color:var(--acid);width:16px;"></i>
+            &nbsp; monolith.compute/deck<br />
+            <i class="fa fa-lock" style="color:var(--acid);width:16px;"></i>
+            &nbsp; Data room: secure.monolith.compute/sa-2026<br />
+            <i class="fa fa-map-marker-alt" style="color:var(--acid);width:16px;"></i>
+            &nbsp; San Francisco · Austin · Amsterdam
+          </div>
+        </div>
+
+        <div style="margin-top:0;border:2px solid var(--border);border-top:none;padding:14px 22px;font-family:var(--font-mono);font-size:0.58rem;color:var(--text-dim);line-height:1.7;">
+          [MONOLITH-SA-2026-V3.2 // CONFIDENTIAL // NOT FOR DISTRIBUTION]<br />
+          [PAST PERFORMANCE DOES NOT GUARANTEE FUTURE RESULTS]<br />
+          [FORWARD-LOOKING STATEMENTS SUBJECT TO MATERIAL RISKS]
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+  var total = slides.length;
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

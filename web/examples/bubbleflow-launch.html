@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BubbleFlow — Real-Time Collaboration, Reimagined</title>
+<meta name="description" content="BubbleFlow product launch deck — infinite whiteboard for teams that actually think together. Real-time multiplayer, AI-assisted ideation, beautiful by default. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/bubbleflow-launch" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#38bdf8" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/bubbleflow-launch" />
+<meta property="og:title" content="BubbleFlow — Real-Time Collaboration, Reimagined" />
+<meta property="og:description" content="Infinite whiteboard for teams that actually think together. Real-time multiplayer, AI-assisted ideation, beautiful by default." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BubbleFlow — Real-Time Collaboration, Reimagined" />
+<meta name="twitter:description" content="Infinite whiteboard for teams that actually think together." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --sky:        #e0f7ff;
+    --sky-mid:    #bae6fd;
+    --sky-blue:   #38bdf8;
+    --sky-deep:   #0ea5e9;
+    --lime:       #a3e635;
+    --lime-bright:#84cc16;
+    --white:      #ffffff;
+    --cloud:      #f0faff;
+    --glass:      rgba(255,255,255,0.55);
+    --glass-edge: rgba(255,255,255,0.85);
+    --text-dark:  #0c4a6e;
+    --text-mid:   #0369a1;
+    --text-soft:  #7dd3fc;
+    --text-muted: #64c5eb;
+    --font-round: 'Nunito', 'Nunito Sans', system-ui, sans-serif;
+    --shadow-bubble: 0 8px 32px rgba(56,189,248,0.28), 0 2px 8px rgba(56,189,248,0.15);
+    --shadow-orb:    0 12px 40px rgba(56,189,248,0.35), inset 0 1px 0 rgba(255,255,255,0.9);
+    --bevel:         inset 0 2px 0 rgba(255,255,255,0.9), inset 0 -2px 0 rgba(14,165,233,0.18);
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--sky);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: transparent;
+    color: var(--text-dark);
+    font-family: var(--font-round);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(48px, 6vw, 80px) clamp(36px, 7vw, 100px);
+    overflow: hidden;
+  }
+
+  .slide > * { position: relative; z-index: 2; }
+
+  /* ─── CLOUD BACKGROUND DECORATION ─── */
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 80% 110%, rgba(163,230,53,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 700px 400px at 10% -10%, rgba(255,255,255,0.6) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── WATER DROPLET / ORB DECORATIONS ─── */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .orb-lg {
+    width: 320px; height: 320px;
+    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.85) 0%, rgba(186,230,253,0.5) 45%, rgba(56,189,248,0.25) 80%, transparent 100%);
+    box-shadow: var(--shadow-orb);
+  }
+  .orb-md {
+    width: 180px; height: 180px;
+    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9) 0%, rgba(163,230,53,0.3) 55%, rgba(132,204,22,0.15) 80%, transparent 100%);
+    box-shadow: 0 8px 28px rgba(163,230,53,0.25), inset 0 1px 0 rgba(255,255,255,0.95);
+  }
+  .orb-sm {
+    width: 90px; height: 90px;
+    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95) 0%, rgba(186,230,253,0.6) 60%, transparent 100%);
+    box-shadow: 0 4px 16px rgba(56,189,248,0.2), inset 0 1px 0 rgba(255,255,255,1);
+  }
+
+  /* ─── GLASS PANEL ─── */
+  .glass-panel {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1.5px solid var(--glass-edge);
+    box-shadow: var(--shadow-bubble), var(--bevel);
+    padding: 32px 36px;
+  }
+  .glass-panel-sm {
+    background: rgba(255,255,255,0.62);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 18px;
+    border: 1.5px solid rgba(255,255,255,0.9);
+    box-shadow: 0 4px 20px rgba(56,189,248,0.18), inset 0 1px 0 rgba(255,255,255,0.95);
+    padding: 22px 26px;
+  }
+
+  /* ─── GLOSSY BUTTON ─── */
+  .gloss-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-family: var(--font-round);
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--white);
+    background: linear-gradient(180deg, #5bd5ff 0%, #0ea5e9 45%, #0284c7 100%);
+    box-shadow: 0 6px 20px rgba(14,165,233,0.4), inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.12);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .gloss-btn-lime {
+    background: linear-gradient(180deg, #c8f56a 0%, #84cc16 45%, #65a30d 100%);
+    box-shadow: 0 6px 20px rgba(132,204,22,0.4), inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.12);
+    color: #1a2e00;
+  }
+
+  /* ─── STAT BUBBLE ─── */
+  .stat-bubble {
+    background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(186,230,253,0.7) 50%, rgba(56,189,248,0.3) 100%);
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.9);
+    box-shadow: 0 8px 28px rgba(56,189,248,0.3), inset 0 1px 0 rgba(255,255,255,1), inset 0 -2px 4px rgba(14,165,233,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    aspect-ratio: 1;
+  }
+  .stat-bubble-lime {
+    background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(217,249,157,0.75) 50%, rgba(163,230,53,0.35) 100%);
+    border: 2px solid rgba(255,255,255,0.9);
+    box-shadow: 0 8px 28px rgba(132,204,22,0.3), inset 0 1px 0 rgba(255,255,255,1);
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .h-display {
+    font-family: var(--font-round);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .h-sub {
+    font-family: var(--font-round);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.75);
+    border: 1.5px solid rgba(56,189,248,0.35);
+    border-radius: 999px;
+    padding: 5px 14px;
+    font-family: var(--font-round);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    box-shadow: 0 2px 8px rgba(56,189,248,0.12);
+    margin-bottom: 18px;
+  }
+  .badge-lime {
+    background: rgba(240,255,220,0.85);
+    border-color: rgba(132,204,22,0.4);
+    color: #365314;
+  }
+  .highlight-sky  { color: var(--sky-deep); }
+  .highlight-lime { color: var(--lime-bright); }
+
+  /* ─── LENS FLARE ACCENT ─── */
+  .flare {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 30%, transparent 70%);
+  }
+
+  /* ─── FEATURE CARD ─── */
+  .feat-card {
+    background: rgba(255,255,255,0.68);
+    border-radius: 20px;
+    border: 1.5px solid rgba(255,255,255,0.92);
+    box-shadow: 0 4px 20px rgba(56,189,248,0.15), inset 0 1px 0 rgba(255,255,255,0.95);
+    padding: 28px 26px;
+    position: relative;
+    overflow: hidden;
+  }
+  .feat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, transparent 100%);
+    border-radius: 20px 20px 0 0;
+    pointer-events: none;
+  }
+  .feat-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(56,189,248,0.25), inset 0 1px 0 rgba(255,255,255,0.85);
+  }
+  .icon-sky  { background: linear-gradient(135deg, #7de8ff 0%, #38bdf8 100%); color: #fff; }
+  .icon-lime { background: linear-gradient(135deg, #d9f99d 0%, #84cc16 100%); color: #1a2e00; }
+  .icon-mint { background: linear-gradient(135deg, #a7f3d0 0%, #10b981 100%); color: #fff; }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-num {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--font-round);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(14,165,233,0.5);
+    letter-spacing: 0.08em;
+    z-index: 10;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-round);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    letter-spacing: 0.06em;
+    pointer-events: none;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.82);
+    border: 1.5px solid rgba(56,189,248,0.4);
+    border-radius: 999px;
+    padding: 6px 20px;
+    box-shadow: 0 4px 16px rgba(56,189,248,0.2), inset 0 1px 0 rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* ─── GRADIENT BACKGROUNDS PER SLIDE ─── */
+  .bg-sky-1  { background: linear-gradient(145deg, #e0f7ff 0%, #bae6fd 50%, #d4f5e2 100%); }
+  .bg-sky-2  { background: linear-gradient(145deg, #f0faff 0%, #e0f7ff 60%, #f0fff0 100%); }
+  .bg-sky-3  { background: linear-gradient(155deg, #e0f7ff 0%, #f5fffb 50%, #e8f5e9 100%); }
+  .bg-sky-4  { background: linear-gradient(135deg, #f0faff 0%, #dbeafe 50%, #e0f7ff 100%); }
+  .bg-sky-5  { background: linear-gradient(150deg, #f0fff4 0%, #e0f7ff 60%, #f5fffb 100%); }
+
+  /* ─── PRICING TABLE ─── */
+  .price-card {
+    background: rgba(255,255,255,0.72);
+    border-radius: 22px;
+    border: 2px solid rgba(255,255,255,0.9);
+    box-shadow: 0 6px 24px rgba(56,189,248,0.15), inset 0 1px 0 rgba(255,255,255,0.95);
+    padding: 30px 26px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 38%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 100%);
+    border-radius: 22px 22px 0 0;
+    pointer-events: none;
+  }
+  .price-card.featured {
+    background: linear-gradient(160deg, rgba(186,230,253,0.9) 0%, rgba(125,211,252,0.7) 50%, rgba(56,189,248,0.55) 100%);
+    border-color: rgba(255,255,255,0.95);
+    box-shadow: 0 12px 40px rgba(14,165,233,0.35), inset 0 1px 0 rgba(255,255,255,0.95);
+    transform: scale(1.04);
+  }
+  .price-amount {
+    font-family: var(--font-round);
+    font-weight: 900;
+    font-size: clamp(36px, 4.5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--text-dark);
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .quote-bubble {
+    background: rgba(255,255,255,0.75);
+    border-radius: 20px 20px 20px 6px;
+    border: 1.5px solid rgba(255,255,255,0.92);
+    box-shadow: 0 4px 18px rgba(56,189,248,0.15), inset 0 1px 0 rgba(255,255,255,0.95);
+    padding: 22px 26px;
+    position: relative;
+  }
+
+  /* ─── PROGRESS / METRIC BARS ─── */
+  .metric-bar-track {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(186,230,253,0.4);
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .metric-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7dd3fc 0%, #0ea5e9 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+  .metric-bar-fill-lime {
+    background: linear-gradient(90deg, #bef264 0%, #84cc16 100%);
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    .slide::before { display: none; }
+    .orb, .flare { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; BubbleFlow &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — COVER / TITLE
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-1" id="slide-1">
+  <div class="slide-num">01 / 10</div>
+
+  <!-- Decorative orbs -->
+  <div class="orb orb-lg" style="right:-60px;top:-80px;opacity:0.7;"></div>
+  <div class="orb orb-md" style="left:8%;bottom:12%;opacity:0.6;"></div>
+  <div class="orb orb-sm" style="right:22%;bottom:28%;opacity:0.5;"></div>
+  <div class="flare" style="width:120px;height:120px;top:8%;right:28%;opacity:0.6;"></div>
+  <div class="flare" style="width:60px;height:60px;bottom:32%;left:18%;opacity:0.4;"></div>
+
+  <div style="max-width:900px;">
+    <div class="badge" style="margin-bottom:24px;">
+      <i class="fa-solid fa-circle" style="color:var(--sky-blue);font-size:0.5rem;"></i>
+      Launching June 2026
+    </div>
+
+    <div class="h-display" style="font-size:clamp(56px,9vw,120px);color:var(--text-dark);margin-bottom:8px;">
+      Bubble<span class="highlight-sky">Flow</span>
+    </div>
+
+    <div class="h-sub" style="font-size:clamp(18px,2.4vw,30px);color:var(--text-mid);margin-bottom:28px;max-width:580px;">
+      The infinite whiteboard where ideas flow — real-time, beautiful, <span class="highlight-lime">effortless</span>.
+    </div>
+
+    <p style="font-size:clamp(14px,1.3vw,17px);color:#0369a1;line-height:1.7;max-width:500px;margin-bottom:36px;font-weight:600;">
+      BubbleFlow brings your team's thinking onto one magical canvas. Multiplayer cursors, AI idea bubbles, and glass-smooth interactions — all in your browser, zero install.
+    </p>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+      <span class="gloss-btn">
+        <i class="fa-solid fa-play"></i> Start for Free
+      </span>
+      <span class="gloss-btn gloss-btn-lime">
+        <i class="fa-solid fa-bolt"></i> See it Live
+      </span>
+    </div>
+
+    <div style="display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;">
+      <div>
+        <div class="h-display" style="font-size:clamp(28px,4vw,44px);color:var(--sky-deep);">48K+</div>
+        <div style="font-size:0.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Beta Signups</div>
+      </div>
+      <div>
+        <div class="h-display" style="font-size:clamp(28px,4vw,44px);color:var(--lime-bright);">4.9★</div>
+        <div style="font-size:0.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Beta Rating</div>
+      </div>
+      <div>
+        <div class="h-display" style="font-size:clamp(28px,4vw,44px);color:var(--sky-deep);">3ms</div>
+        <div style="font-size:0.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Sync Latency</div>
+      </div>
+      <div>
+        <div class="h-display" style="font-size:clamp(28px,4vw,44px);color:var(--lime-bright);">Free</div>
+        <div style="font-size:0.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">To get started</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — THE PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-2" id="slide-2">
+  <div class="slide-num">02 / 10</div>
+
+  <div class="orb orb-lg" style="left:-100px;bottom:-80px;opacity:0.5;"></div>
+  <div class="orb orb-sm" style="right:12%;top:14%;opacity:0.55;"></div>
+  <div class="flare" style="width:80px;height:80px;top:22%;left:30%;opacity:0.35;"></div>
+
+  <div style="max-width:1100px;width:100%;">
+    <div class="badge" style="color:#7c3aed;border-color:rgba(167,139,250,0.4);background:rgba(245,240,255,0.8);">
+      <i class="fa-solid fa-triangle-exclamation" style="color:#a78bfa;"></i>
+      The Problem
+    </div>
+    <div class="h-display" style="font-size:clamp(30px,4.5vw,58px);color:var(--text-dark);margin-bottom:8px;max-width:20ch;">
+      Collaboration tools feel like <span class="highlight-sky">homework</span>.
+    </div>
+    <p style="font-size:1rem;color:var(--text-mid);margin-bottom:36px;max-width:55ch;font-weight:600;line-height:1.7;">
+      Today's whiteboards are slow, ugly, and built for solo thinkers. Remote teams end up in a chaos of sticky notes, screenshot dumps, and "let me share my screen again."
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;width:100%;">
+      <div class="glass-panel-sm">
+        <div style="font-size:2rem;margin-bottom:10px;">😩</div>
+        <div class="h-sub" style="font-size:1.05rem;color:var(--text-dark);margin-bottom:8px;">Lag kills the vibe</div>
+        <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.65;font-weight:600;">Existing tools have 200–800ms sync delays. By the time your teammate sees your idea, the moment is gone. Real creativity needs real time.</p>
+        <div style="margin-top:14px;">
+          <div style="font-size:0.75rem;font-weight:800;color:var(--text-mid);margin-bottom:4px;">Typical sync lag</div>
+          <div class="metric-bar-track"><div class="metric-bar-fill" style="width:82%;background:linear-gradient(90deg,#fca5a5,#ef4444);"></div></div>
+          <div style="font-size:0.72rem;color:#ef4444;font-weight:700;margin-top:4px;">~600ms average — painful</div>
+        </div>
+      </div>
+
+      <div class="glass-panel-sm">
+        <div style="font-size:2rem;margin-bottom:10px;">🗂️</div>
+        <div class="h-sub" style="font-size:1.05rem;color:var(--text-dark);margin-bottom:8px;">Infinite scroll, zero context</div>
+        <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.65;font-weight:600;">Teams lose ideas in Notion pages, Figma comments, and Slack threads. Nobody can find what was decided last Tuesday — and it costs 4.1 hours/week per person.</p>
+        <div style="margin-top:14px;">
+          <div style="font-size:0.75rem;font-weight:800;color:var(--text-mid);margin-bottom:4px;">Hours lost per employee/week</div>
+          <div class="metric-bar-track"><div class="metric-bar-fill" style="width:68%;background:linear-gradient(90deg,#fbbf24,#f59e0b);"></div></div>
+          <div style="font-size:0.72rem;color:#d97706;font-weight:700;margin-top:4px;">4.1 hrs — $3,800/yr per seat</div>
+        </div>
+      </div>
+
+      <div class="glass-panel-sm">
+        <div style="font-size:2rem;margin-bottom:10px;">🎨</div>
+        <div class="h-sub" style="font-size:1.05rem;color:var(--text-dark);margin-bottom:8px;">Ugly tools, bad ideas</div>
+        <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.65;font-weight:600;">When the canvas looks like a 2003 app, thinking shrinks to match. 74% of creatives say they feel less inspired in low-quality collaboration tools.</p>
+        <div style="margin-top:14px;">
+          <div style="font-size:0.75rem;font-weight:800;color:var(--text-mid);margin-bottom:4px;">Inspiration score in ugly tools</div>
+          <div class="metric-bar-track"><div class="metric-bar-fill" style="width:26%;background:linear-gradient(90deg,#fca5a5,#ef4444);"></div></div>
+          <div style="font-size:0.72rem;color:#ef4444;font-weight:700;margin-top:4px;">Only 26% feel inspired</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE MAGIC MOMENT
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-3" id="slide-3">
+  <div class="slide-num">03 / 10</div>
+
+  <div class="orb orb-lg" style="right:-80px;top:10%;opacity:0.65;"></div>
+  <div class="orb orb-md" style="left:5%;top:8%;opacity:0.5;"></div>
+  <div class="orb orb-sm" style="right:30%;bottom:15%;opacity:0.6;"></div>
+  <div class="flare" style="width:160px;height:160px;right:18%;top:12%;opacity:0.5;"></div>
+
+  <div style="max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+    <div>
+      <div class="badge badge-lime">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color:var(--lime-bright);"></i>
+        The Magic Moment
+      </div>
+      <div class="h-display" style="font-size:clamp(30px,4.2vw,54px);color:var(--text-dark);margin-bottom:16px;max-width:18ch;">
+        Open tab. See your team. Start thinking <span class="highlight-lime">together</span>.
+      </div>
+      <p style="font-size:1rem;color:var(--text-mid);line-height:1.75;font-weight:600;margin-bottom:24px;max-width:44ch;">
+        In under 4 seconds from invite link to shared canvas. No downloads, no accounts for guests, no "waiting for host" purgatory. Just a gorgeous infinite space that syncs at the speed of thought.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7de8ff,#38bdf8);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(56,189,248,0.3);flex-shrink:0;">
+            <i class="fa-solid fa-check" style="color:#fff;font-size:0.85rem;"></i>
+          </div>
+          <span style="font-weight:700;color:var(--text-dark);font-size:0.95rem;">3ms cursor sync — smoother than a whiteboard in real life</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#d9f99d,#84cc16);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(132,204,22,0.3);flex-shrink:0;">
+            <i class="fa-solid fa-check" style="color:#1a2e00;font-size:0.85rem;"></i>
+          </div>
+          <span style="font-weight:700;color:var(--text-dark);font-size:0.95rem;">AI BubbleAssist™ turns your rough sketch into structured ideas</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#a7f3d0,#10b981);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(16,185,129,0.3);flex-shrink:0;">
+            <i class="fa-solid fa-check" style="color:#fff;font-size:0.85rem;"></i>
+          </div>
+          <span style="font-weight:700;color:var(--text-dark);font-size:0.95rem;">Auto-saved, auto-organized — your canvas never forgets</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fake canvas mockup -->
+    <div class="glass-panel" style="min-height:380px;position:relative;overflow:hidden;">
+      <!-- Simulated canvas bubbles -->
+      <div style="position:absolute;top:18px;left:20px;right:20px;">
+        <div style="font-size:0.7rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">Live Canvas Preview</div>
+      </div>
+
+      <div style="position:absolute;top:52px;left:28px;background:linear-gradient(135deg,rgba(125,211,252,0.7),rgba(56,189,248,0.5));border-radius:16px;padding:12px 16px;border:1.5px solid rgba(255,255,255,0.85);box-shadow:0 4px 14px rgba(56,189,248,0.2);">
+        <div style="font-size:0.78rem;font-weight:800;color:var(--text-dark);">🚀 Q3 Launch Goals</div>
+        <div style="font-size:0.7rem;color:var(--text-mid);margin-top:4px;font-weight:600;">10K paying teams</div>
+      </div>
+
+      <div style="position:absolute;top:140px;left:55px;background:linear-gradient(135deg,rgba(217,249,157,0.7),rgba(163,230,53,0.5));border-radius:16px;padding:12px 16px;border:1.5px solid rgba(255,255,255,0.85);box-shadow:0 4px 14px rgba(132,204,22,0.2);">
+        <div style="font-size:0.78rem;font-weight:800;color:#1a4000;">💡 AI idea cluster</div>
+        <div style="font-size:0.7rem;color:#365314;margin-top:4px;font-weight:600;">12 suggestions ready</div>
+      </div>
+
+      <div style="position:absolute;top:80px;right:24px;background:rgba(255,255,255,0.82);border-radius:16px;padding:12px 16px;border:1.5px solid rgba(255,255,255,0.9);box-shadow:0 4px 14px rgba(56,189,248,0.15);">
+        <div style="font-size:0.78rem;font-weight:800;color:var(--text-dark);">📋 Sprint Retro</div>
+        <div style="display:flex;gap:4px;margin-top:6px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#38bdf8;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#84cc16;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#f472b6;"></div>
+          <div style="font-size:0.65rem;color:var(--text-muted);font-weight:700;margin-left:4px;">3 online</div>
+        </div>
+      </div>
+
+      <div style="position:absolute;bottom:60px;left:24px;right:24px;background:rgba(255,255,255,0.7);border-radius:14px;padding:10px 14px;border:1.5px solid rgba(255,255,255,0.9);box-shadow:0 3px 12px rgba(56,189,248,0.12);">
+        <div style="font-size:0.7rem;font-weight:800;color:var(--text-mid);margin-bottom:6px;">✨ BubbleAssist suggested:</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:rgba(186,230,253,0.7);border-radius:999px;padding:3px 10px;font-size:0.65rem;font-weight:700;color:var(--text-dark);">Add user research</span>
+          <span style="background:rgba(217,249,157,0.7);border-radius:999px;padding:3px 10px;font-size:0.65rem;font-weight:700;color:#1a4000;">Group by theme</span>
+          <span style="background:rgba(255,255,255,0.9);border-radius:999px;padding:3px 10px;font-size:0.65rem;font-weight:700;color:var(--text-mid);">Export to Notion</span>
+        </div>
+      </div>
+
+      <div style="position:absolute;bottom:18px;right:20px;font-size:0.65rem;font-weight:700;color:rgba(14,165,233,0.5);letter-spacing:0.06em;">bubbleflow.app/canvas/xyz-42</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — FEATURE: REAL-TIME SYNC
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-4" id="slide-4">
+  <div class="slide-num">04 / 10</div>
+
+  <div class="orb orb-md" style="right:6%;top:10%;opacity:0.55;"></div>
+  <div class="orb orb-sm" style="left:10%;bottom:20%;opacity:0.5;"></div>
+  <div class="flare" style="width:100px;height:100px;right:20%;bottom:30%;opacity:0.4;"></div>
+
+  <div style="max-width:1100px;width:100%;">
+    <div class="badge">
+      <i class="fa-solid fa-bolt" style="color:var(--sky-blue);"></i>
+      Feature 01 — Real-Time Sync Engine
+    </div>
+    <div class="h-display" style="font-size:clamp(28px,4vw,52px);color:var(--text-dark);margin-bottom:8px;max-width:20ch;">
+      3ms sync. You won't believe it's not local.
+    </div>
+    <p style="font-size:1rem;color:var(--text-mid);margin-bottom:32px;max-width:52ch;font-weight:600;line-height:1.7;">
+      BubbleFlow's FlowSync™ protocol uses a custom CRDT layer on WebSockets, delivering sub-5ms cursor sync and sub-20ms content propagation globally. No operational transforms, no conflicts, no awkward "who went first?" merges.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div class="feat-card">
+        <div class="feat-icon icon-sky"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <div class="h-sub" style="font-size:1rem;color:var(--text-dark);margin-bottom:6px;">3ms Cursor Sync</div>
+        <p style="font-size:0.83rem;color:var(--text-mid);line-height:1.6;font-weight:600;">See every teammate's cursor move in real time. Presence feels physical — not digital.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon icon-lime"><i class="fa-solid fa-globe"></i></div>
+        <div class="h-sub" style="font-size:1rem;color:var(--text-dark);margin-bottom:6px;">Global Edge Nodes</div>
+        <p style="font-size:0.83rem;color:var(--text-mid);line-height:1.6;font-weight:600;">18 edge PoPs on 5 continents. Whether you're in Tokyo or Toronto, latency stays under 8ms.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon icon-mint"><i class="fa-solid fa-code-merge"></i></div>
+        <div class="h-sub" style="font-size:1rem;color:var(--text-dark);margin-bottom:6px;">Conflict-Free CRDTs</div>
+        <p style="font-size:0.83rem;color:var(--text-mid);line-height:1.6;font-weight:600;">No merge hell. Our CRDT engine resolves all concurrent edits automatically and losslessly.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon icon-sky"><i class="fa-solid fa-wifi"></i></div>
+        <div class="h-sub" style="font-size:1rem;color:var(--text-dark);margin-bottom:6px;">Offline-First</div>
+        <p style="font-size:0.83rem;color:var(--text-mid);line-height:1.6;font-weight:600;">Work on a train, reconnect in a café. Your edits sync the moment you're back — no lost work, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — FEATURE: AI BUBBLEASSIST
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-5" id="slide-5">
+  <div class="slide-num">05 / 10</div>
+
+  <div class="orb orb-lg" style="left:-80px;top:-60px;opacity:0.45;"></div>
+  <div class="orb orb-sm" style="right:10%;bottom:22%;opacity:0.55;"></div>
+  <div class="flare" style="width:140px;height:140px;left:38%;top:8%;opacity:0.35;"></div>
+
+  <div style="max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;">
+    <div>
+      <div class="badge badge-lime">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color:var(--lime-bright);"></i>
+        Feature 02 — BubbleAssist™ AI
+      </div>
+      <div class="h-display" style="font-size:clamp(26px,3.8vw,48px);color:var(--text-dark);margin-bottom:14px;max-width:18ch;">
+        AI that reads the room — then helps <span class="highlight-lime">fill it</span>.
+      </div>
+      <p style="font-size:0.95rem;color:var(--text-mid);line-height:1.75;font-weight:600;margin-bottom:22px;max-width:44ch;">
+        BubbleAssist™ watches your canvas in real time, understands the theme of your session, and proactively surfaces related ideas, clusters similar bubbles, and drafts action items — all without interrupting your flow.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="glass-panel-sm" style="padding:14px 18px;">
+          <div style="font-size:0.8rem;font-weight:800;color:var(--text-dark);margin-bottom:3px;">🧠 Smart Clustering</div>
+          <div style="font-size:0.78rem;color:var(--text-mid);font-weight:600;">Groups similar ideas automatically as the canvas grows.</div>
+        </div>
+        <div class="glass-panel-sm" style="padding:14px 18px;">
+          <div style="font-size:0.8rem;font-weight:800;color:var(--text-dark);margin-bottom:3px;">✍️ Auto-Summary</div>
+          <div style="font-size:0.78rem;color:var(--text-mid);font-weight:600;">One click → shareable summary doc. Ready for Slack or Notion.</div>
+        </div>
+        <div class="glass-panel-sm" style="padding:14px 18px;">
+          <div style="font-size:0.8rem;font-weight:800;color:var(--text-dark);margin-bottom:3px;">🎯 Action Extractor</div>
+          <div style="font-size:0.78rem;color:var(--text-mid);font-weight:600;">Pulls decisions and next steps from your session — tagged and assigned.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI feature illustration -->
+    <div class="glass-panel" style="position:relative;min-height:400px;overflow:hidden;">
+      <div style="font-size:0.7rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:20px;">BubbleAssist™ in action</div>
+
+      <!-- Suggestion pill row -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:0.72rem;font-weight:700;color:var(--text-mid);margin-bottom:8px;">💡 Suggested ideas for "Product Roadmap Q3":</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="background:rgba(186,230,253,0.6);border-radius:12px;padding:8px 14px;border:1.5px solid rgba(255,255,255,0.9);font-size:0.8rem;font-weight:700;color:var(--text-dark);">Add mobile accessibility audit</div>
+          <div style="background:rgba(217,249,157,0.6);border-radius:12px;padding:8px 14px;border:1.5px solid rgba(255,255,255,0.9);font-size:0.8rem;font-weight:700;color:#1a4000;">User testing session before dev</div>
+          <div style="background:rgba(255,255,255,0.75);border-radius:12px;padding:8px 14px;border:1.5px solid rgba(255,255,255,0.9);font-size:0.8rem;font-weight:700;color:var(--text-dark);">Define success metrics for launch</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.55);border-radius:14px;padding:14px 16px;border:1.5px solid rgba(255,255,255,0.85);margin-bottom:12px;">
+        <div style="font-size:0.72rem;font-weight:800;color:var(--text-mid);margin-bottom:8px;">📋 Auto-generated action items:</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;color:var(--text-dark);">
+            <span style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#7de8ff,#38bdf8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-check" style="color:#fff;font-size:0.5rem;"></i></span>
+            @maya — finalize design specs by Fri
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;color:var(--text-dark);">
+            <span style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#d9f99d,#84cc16);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-check" style="color:#1a2e00;font-size:0.5rem;"></i></span>
+            @alex — schedule user testing (3 slots)
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;color:var(--text-dark);">
+            <span style="width:18px;height:18px;border-radius:50%;background:rgba(186,230,253,0.7);border:1.5px solid rgba(56,189,248,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.5rem;color:var(--sky-deep);">○</span>
+            @team — review metrics doc next Monday
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;position:absolute;bottom:20px;right:20px;">
+        <span style="background:rgba(255,255,255,0.8);border-radius:999px;padding:5px 12px;font-size:0.65rem;font-weight:800;color:var(--text-mid);border:1.5px solid rgba(56,189,248,0.3);">Export to Notion</span>
+        <span style="background:linear-gradient(135deg,rgba(125,211,252,0.8),rgba(56,189,248,0.6));border-radius:999px;padding:5px 12px;font-size:0.65rem;font-weight:800;color:#fff;border:1.5px solid rgba(255,255,255,0.8);">Share Summary</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — FEATURE: BEAUTIFUL CANVAS
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-1" id="slide-6">
+  <div class="slide-num">06 / 10</div>
+
+  <div class="orb orb-md" style="right:4%;top:6%;opacity:0.5;"></div>
+  <div class="orb orb-sm" style="left:12%;bottom:18%;opacity:0.45;"></div>
+
+  <div style="max-width:1100px;width:100%;">
+    <div class="badge">
+      <i class="fa-solid fa-palette" style="color:var(--sky-blue);"></i>
+      Feature 03 — Infinite Canvas
+    </div>
+    <div class="h-display" style="font-size:clamp(28px,4vw,52px);color:var(--text-dark);margin-bottom:8px;max-width:22ch;">
+      A canvas so beautiful, <span class="highlight-sky">great ideas rise to the surface</span>.
+    </div>
+    <p style="font-size:0.98rem;color:var(--text-mid);margin-bottom:30px;max-width:54ch;font-weight:600;line-height:1.7;">
+      BubbleFlow's canvas is infinite in every direction, buttery smooth at 60fps even with 200+ simultaneous collaborators, and gorgeous enough to screenshot straight into your deck.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;">
+      <div class="feat-card">
+        <div class="feat-icon icon-sky"><i class="fa-solid fa-expand"></i></div>
+        <div class="h-sub" style="font-size:0.95rem;color:var(--text-dark);margin-bottom:6px;">Infinite Space</div>
+        <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.6;font-weight:600;">No more "move to a new slide." Every idea has room to breathe. Zoom from macro overview to micro detail in one pinch.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon icon-lime"><i class="fa-solid fa-droplet"></i></div>
+        <div class="h-sub" style="font-size:0.95rem;color:var(--text-dark);margin-bottom:6px;">50+ Bubble Styles</div>
+        <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.6;font-weight:600;">From pastel watercolor to glossy glass bubbles to bold sticky cards — your canvas, your aesthetic. Templates ship with every plan.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon icon-mint"><i class="fa-solid fa-link"></i></div>
+        <div class="h-sub" style="font-size:0.95rem;color:var(--text-dark);margin-bottom:6px;">Smart Connectors</div>
+        <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.6;font-weight:600;">Drag an arrow between any two bubbles and BubbleFlow picks the prettiest path. Label connections with relationship types.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+      <div class="glass-panel-sm" style="padding:14px 16px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:900;color:var(--sky-deep);">60fps</div>
+        <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Always smooth</div>
+      </div>
+      <div class="glass-panel-sm" style="padding:14px 16px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:900;color:var(--lime-bright);">200+</div>
+        <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Simultaneous users</div>
+      </div>
+      <div class="glass-panel-sm" style="padding:14px 16px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:900;color:var(--sky-deep);">∞</div>
+        <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Canvas size</div>
+      </div>
+      <div class="glass-panel-sm" style="padding:14px 16px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:900;color:var(--lime-bright);">50+</div>
+        <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">Bubble styles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — TRACTION / STATS
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-2" id="slide-7">
+  <div class="slide-num">07 / 10</div>
+
+  <div class="orb orb-lg" style="right:-90px;bottom:-70px;opacity:0.55;"></div>
+  <div class="orb orb-sm" style="left:8%;top:12%;opacity:0.5;"></div>
+  <div class="flare" style="width:110px;height:110px;left:32%;bottom:28%;opacity:0.4;"></div>
+
+  <div style="max-width:1100px;width:100%;">
+    <div class="badge">
+      <i class="fa-solid fa-chart-line" style="color:var(--sky-blue);"></i>
+      Traction — Beta Numbers
+    </div>
+    <div class="h-display" style="font-size:clamp(28px,4vw,52px);color:var(--text-dark);margin-bottom:8px;max-width:22ch;">
+      The numbers are <span class="highlight-lime">speaking up</span>.
+    </div>
+    <p style="font-size:0.98rem;color:var(--text-mid);margin-bottom:32px;max-width:52ch;font-weight:600;line-height:1.7;">
+      We launched private beta in January 2026. 8 weeks later, teams were sharing canvases with their clients — unprompted. Here's what happened.
+    </p>
+
+    <!-- Stat bubbles row -->
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-start;margin-bottom:28px;">
+      <div class="stat-bubble" style="width:160px;height:160px;">
+        <div style="font-size:2.2rem;font-weight:900;color:var(--sky-deep);line-height:1;">48K</div>
+        <div style="font-size:0.68rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;">Beta Signups</div>
+        <div style="font-size:0.62rem;font-weight:700;color:var(--lime-bright);margin-top:2px;">+1,200/week</div>
+      </div>
+      <div class="stat-bubble stat-bubble-lime" style="width:140px;height:140px;margin-top:20px;">
+        <div style="font-size:2rem;font-weight:900;color:#365314;line-height:1;">78%</div>
+        <div style="font-size:0.65rem;font-weight:800;color:#4a7c23;text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">Day-14 Retention</div>
+      </div>
+      <div class="stat-bubble" style="width:180px;height:180px;margin-top:-10px;">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--sky-deep);line-height:1;">4.9★</div>
+        <div style="font-size:0.68rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;">App Store Rating</div>
+        <div style="font-size:0.62rem;font-weight:700;color:var(--text-mid);margin-top:2px;">1,840 reviews</div>
+      </div>
+      <div class="stat-bubble stat-bubble-lime" style="width:150px;height:150px;margin-top:16px;">
+        <div style="font-size:2rem;font-weight:900;color:#365314;line-height:1;">3.2×</div>
+        <div style="font-size:0.65rem;font-weight:800;color:#4a7c23;text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">Viral Coefficient</div>
+      </div>
+      <div class="stat-bubble" style="width:130px;height:130px;margin-top:24px;">
+        <div style="font-size:1.8rem;font-weight:900;color:var(--sky-deep);line-height:1;">$0</div>
+        <div style="font-size:0.65rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">Paid Acquisition</div>
+      </div>
+    </div>
+
+    <!-- Testimonials row -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div class="quote-bubble">
+        <div style="font-size:1.2rem;margin-bottom:8px;">💬</div>
+        <p style="font-size:0.88rem;color:var(--text-dark);font-weight:700;line-height:1.65;margin-bottom:10px;">"Switched from Miro in our second session. BubbleFlow is the first tool that feels like thinking out loud — together. The AI suggestions are genuinely spooky-good."</p>
+        <div style="font-size:0.72rem;font-weight:800;color:var(--text-muted);">— Priya M., Head of Design, Series-B SaaS co.</div>
+      </div>
+      <div class="quote-bubble">
+        <div style="font-size:1.2rem;margin-bottom:8px;">💬</div>
+        <p style="font-size:0.88rem;color:var(--text-dark);font-weight:700;line-height:1.65;margin-bottom:10px;">"We ran our entire product sprint in BubbleFlow. The auto-summary saved us 90 minutes of notes. My team of 14 was fully in sync — first time ever for a remote session."</p>
+        <div style="font-size:0.72rem;font-weight:800;color:var(--text-muted);">— Tobias L., VP Product, fintech startup (YC W25)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — INTEGRATIONS
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-3" id="slide-8">
+  <div class="slide-num">08 / 10</div>
+
+  <div class="orb orb-md" style="left:5%;bottom:10%;opacity:0.45;"></div>
+  <div class="orb orb-sm" style="right:14%;top:16%;opacity:0.5;"></div>
+
+  <div style="max-width:1100px;width:100%;">
+    <div class="badge">
+      <i class="fa-solid fa-plug" style="color:var(--sky-blue);"></i>
+      Plays well with others
+    </div>
+    <div class="h-display" style="font-size:clamp(26px,3.8vw,50px);color:var(--text-dark);margin-bottom:10px;max-width:24ch;">
+      BubbleFlow fits into the tools your team already <span class="highlight-sky">loves</span>.
+    </div>
+    <p style="font-size:0.95rem;color:var(--text-mid);margin-bottom:32px;max-width:52ch;font-weight:600;line-height:1.7;">
+      One-click sync with the tools your workflow already runs on. No switching, no copying — just flow.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:28px;">
+      <div class="feat-card" style="text-align:center;padding:20px 16px;">
+        <div style="font-size:2rem;margin-bottom:8px;">📋</div>
+        <div style="font-weight:800;color:var(--text-dark);font-size:0.9rem;">Notion</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);font-weight:600;margin-top:4px;">Export summaries & action items</div>
+      </div>
+      <div class="feat-card" style="text-align:center;padding:20px 16px;">
+        <div style="font-size:2rem;margin-bottom:8px;">💬</div>
+        <div style="font-weight:800;color:var(--text-dark);font-size:0.9rem;">Slack</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);font-weight:600;margin-top:4px;">Post canvas links & summaries</div>
+      </div>
+      <div class="feat-card" style="text-align:center;padding:20px 16px;">
+        <div style="font-size:2rem;margin-bottom:8px;">🎨</div>
+        <div style="font-weight:800;color:var(--text-dark);font-size:0.9rem;">Figma</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);font-weight:600;margin-top:4px;">Embed frames directly in canvas</div>
+      </div>
+      <div class="feat-card" style="text-align:center;padding:20px 16px;">
+        <div style="font-size:2rem;margin-bottom:8px;">✅</div>
+        <div style="font-weight:800;color:var(--text-dark);font-size:0.9rem;">Linear</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);font-weight:600;margin-top:4px;">Turn action items into issues</div>
+      </div>
+      <div class="feat-card" style="text-align:center;padding:20px 16px;">
+        <div style="font-size:2rem;margin-bottom:8px;">📊</div>
+        <div style="font-weight:800;color:var(--text-dark);font-size:0.9rem;">Google Slides</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);font-weight:600;margin-top:4px;">Export canvas as presentation</div>
+      </div>
+      <div class="feat-card" style="text-align:center;padding:20px 16px;">
+        <div style="font-size:2rem;margin-bottom:8px;">🔌</div>
+        <div style="font-weight:800;color:var(--text-dark);font-size:0.9rem;">API + Zapier</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);font-weight:600;margin-top:4px;">Connect anything via REST & webhooks</div>
+      </div>
+    </div>
+
+    <div class="glass-panel-sm" style="padding:20px 28px;">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <i class="fa-solid fa-shield-check" style="font-size:2rem;color:var(--sky-blue);flex-shrink:0;"></i>
+        <div>
+          <div style="font-weight:800;color:var(--text-dark);font-size:0.95rem;margin-bottom:4px;">Enterprise-grade security included on every plan</div>
+          <div style="font-size:0.83rem;color:var(--text-mid);font-weight:600;">SOC 2 Type II · GDPR Compliant · SSO/SAML · End-to-end encryption · 99.9% SLA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — PRICING
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-4" id="slide-9">
+  <div class="slide-num">09 / 10</div>
+
+  <div class="orb orb-lg" style="right:-100px;top:-80px;opacity:0.5;"></div>
+  <div class="orb orb-sm" style="left:6%;bottom:22%;opacity:0.45;"></div>
+
+  <div style="max-width:1100px;width:100%;">
+    <div class="badge badge-lime">
+      <i class="fa-solid fa-tag" style="color:var(--lime-bright);"></i>
+      Pricing &amp; Availability
+    </div>
+    <div class="h-display" style="font-size:clamp(26px,3.8vw,50px);color:var(--text-dark);margin-bottom:8px;max-width:22ch;">
+      Simple pricing. No surprises. <span class="highlight-lime">Start free forever</span>.
+    </div>
+    <p style="font-size:0.95rem;color:var(--text-mid);margin-bottom:30px;max-width:50ch;font-weight:600;line-height:1.7;">
+      BubbleFlow launches publicly on July 15, 2026. Free for individuals and small teams — paid plans unlock more AI, more collaborators, and priority sync.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;">
+      <div class="price-card">
+        <div style="font-size:0.75rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">Starter</div>
+        <div class="price-amount" style="margin-bottom:4px;">Free</div>
+        <div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);margin-bottom:18px;">forever</div>
+        <div style="height:1px;background:rgba(56,189,248,0.15);margin-bottom:16px;"></div>
+        <div style="display:flex;flex-direction:column;gap:8px;text-align:left;">
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> Up to 5 collaborators</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> 3 canvases</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> BubbleAssist™ (10/mo)</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> Core integrations</div>
+        </div>
+        <div style="margin-top:18px;"><span class="gloss-btn" style="font-size:0.85rem;padding:10px 20px;width:100%;justify-content:center;">Start Free</span></div>
+      </div>
+
+      <div class="price-card featured">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#c8f56a,#84cc16);border-radius:0 0 12px 12px;padding:4px 16px;font-size:0.65rem;font-weight:900;color:#1a2e00;text-transform:uppercase;letter-spacing:0.1em;z-index:3;">Most Popular</div>
+        <div style="font-size:0.75rem;font-weight:800;color:rgba(14,165,233,0.8);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;margin-top:14px;">Team</div>
+        <div class="price-amount" style="color:var(--text-dark);margin-bottom:2px;">$14</div>
+        <div style="font-size:0.78rem;font-weight:700;color:rgba(14,165,233,0.7);margin-bottom:18px;">per seat / month, billed annually</div>
+        <div style="height:1px;background:rgba(255,255,255,0.5);margin-bottom:16px;"></div>
+        <div style="display:flex;flex-direction:column;gap:8px;text-align:left;">
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:#1a4000;width:14px;"></i> Unlimited collaborators</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:#1a4000;width:14px;"></i> Unlimited canvases</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:#1a4000;width:14px;"></i> BubbleAssist™ unlimited</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:#1a4000;width:14px;"></i> All integrations + API</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:#1a4000;width:14px;"></i> Priority edge routing</div>
+        </div>
+        <div style="margin-top:18px;"><span class="gloss-btn gloss-btn-lime" style="font-size:0.85rem;padding:10px 20px;width:100%;justify-content:center;">Start Team Trial</span></div>
+      </div>
+
+      <div class="price-card">
+        <div style="font-size:0.75rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">Enterprise</div>
+        <div class="price-amount" style="margin-bottom:4px;">Custom</div>
+        <div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);margin-bottom:18px;">volume + SLA + SSO</div>
+        <div style="height:1px;background:rgba(56,189,248,0.15);margin-bottom:16px;"></div>
+        <div style="display:flex;flex-direction:column;gap:8px;text-align:left;">
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> Everything in Team</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> SSO / SAML / SCIM</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> Dedicated support SLA</div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-dark);display:flex;gap:8px;align-items:center;"><i class="fa-solid fa-check" style="color:var(--sky-blue);width:14px;"></i> On-premise option</div>
+        </div>
+        <div style="margin-top:18px;"><span class="gloss-btn" style="font-size:0.85rem;padding:10px 20px;width:100%;justify-content:center;">Talk to Sales</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CTA / CLOSING
+═══════════════════════════════════════ -->
+<section class="slide bg-sky-1" id="slide-10">
+  <div class="slide-num">10 / 10</div>
+
+  <div class="orb orb-lg" style="right:-60px;top:-70px;opacity:0.65;"></div>
+  <div class="orb orb-lg" style="left:-100px;bottom:-80px;opacity:0.45;width:240px;height:240px;"></div>
+  <div class="orb orb-sm" style="right:28%;top:22%;opacity:0.55;"></div>
+  <div class="orb orb-sm" style="left:22%;bottom:30%;opacity:0.45;"></div>
+  <div class="flare" style="width:200px;height:200px;right:14%;top:8%;opacity:0.5;"></div>
+  <div class="flare" style="width:80px;height:80px;left:42%;bottom:36%;opacity:0.4;"></div>
+
+  <div style="max-width:800px;text-align:left;">
+    <div class="badge badge-lime" style="margin-bottom:20px;">
+      <i class="fa-solid fa-rocket" style="color:var(--lime-bright);"></i>
+      Available July 15, 2026
+    </div>
+
+    <div class="h-display" style="font-size:clamp(40px,7vw,90px);color:var(--text-dark);margin-bottom:16px;line-height:1.04;">
+      Let your team<br /><span class="highlight-sky">flow</span>.
+    </div>
+
+    <p style="font-size:clamp(14px,1.4vw,18px);color:var(--text-mid);line-height:1.75;max-width:46ch;margin-bottom:36px;font-weight:600;">
+      BubbleFlow is now open for early access. Join 48,000+ teams who've already discovered what real-time thinking looks like when the tool gets out of the way.
+    </p>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:40px;">
+      <span class="gloss-btn" style="font-size:1.05rem;padding:16px 36px;">
+        <i class="fa-solid fa-circle-check"></i> Claim Your Free Workspace
+      </span>
+      <span class="gloss-btn gloss-btn-lime" style="font-size:1.05rem;padding:16px 36px;">
+        <i class="fa-solid fa-calendar-check"></i> Request a Demo
+      </span>
+    </div>
+
+    <div class="glass-panel" style="max-width:560px;padding:24px 28px;">
+      <div style="font-size:0.72rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Get in touch</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;font-weight:700;color:var(--text-dark);">
+          <i class="fa-solid fa-envelope" style="color:var(--sky-blue);width:18px;text-align:center;"></i>
+          hello@bubbleflow.app
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;font-weight:700;color:var(--text-dark);">
+          <i class="fa-solid fa-globe" style="color:var(--sky-blue);width:18px;text-align:center;"></i>
+          bubbleflow.app
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;font-weight:700;color:var(--text-dark);">
+          <i class="fa-brands fa-twitter" style="color:var(--sky-blue);width:18px;text-align:center;"></i>
+          @bubbleflowapp
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;font-weight:700;color:var(--text-dark);">
+          <i class="fa-solid fa-map-marker-alt" style="color:var(--sky-blue);width:18px;text-align:center;"></i>
+          San Francisco, CA &nbsp;·&nbsp; Remote-first team
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;font-size:0.68rem;font-weight:700;color:rgba(14,165,233,0.45);letter-spacing:0.06em;">
+      BubbleFlow Inc. · San Francisco · June 2026 · bubbleflow.app · Built with love &amp; lots of coffee ☁️
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

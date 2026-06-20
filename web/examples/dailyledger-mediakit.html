@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Daily Ledger — Advertising Media Kit</title>
+<meta name="description" content="The Daily Ledger advertising media kit — audience demographics, rate card, ad placements, and case studies for one of America's most trusted broadsheets." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/dailyledger-mediakit" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#1a1208" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/dailyledger-mediakit" />
+<meta property="og:title" content="The Daily Ledger — Advertising Media Kit" />
+<meta property="og:description" content="Reach 2.4 million discerning readers daily. Advertise in America's paper of record for commerce and culture since 1887." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Daily Ledger — Advertising Media Kit" />
+<meta name="twitter:description" content="Reach 2.4 million discerning readers daily. Advertise in America's broadsheet of record since 1887." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ─── ROOT TOKENS ─── */
+:root {
+  --newsprint:    #f2ece0;
+  --newsprint-dk: #e8dfc8;
+  --newsprint-md: #ede5cf;
+  --ink:          #1a1208;
+  --ink-2:        #2c2010;
+  --ink-3:        #3e3018;
+  --ink-faded:    #5c4d38;
+  --ink-light:    #8a7560;
+  --ink-ghost:    #b8a898;
+  --rule:         #1a1208;
+  --rule-thin:    rgba(26,18,8,0.25);
+  --rule-mid:     rgba(26,18,8,0.55);
+  --font-masthead: 'Pirata One', 'UnifrakturCook', serif;
+  --font-head:     'Playfair Display', 'Georgia', serif;
+  --font-body:     'Lora', 'Georgia', serif;
+}
+
+/* ─── SCROLL SNAP ─── */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background: var(--newsprint-dk);
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--newsprint);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ─── SLIDE BASE ─── */
+.slide {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(28px, 4vw, 60px) clamp(28px, 6vw, 88px) clamp(28px, 4vw, 60px);
+  overflow: hidden;
+  border-bottom: 3px double var(--rule);
+  background: var(--newsprint);
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+/* ─── FOLIO LINE ─── */
+.folio {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 4px 0;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ─── MASTHEAD (slide 1 only) ─── */
+.masthead-title {
+  font-family: var(--font-masthead);
+  font-size: clamp(52px, 9vw, 130px);
+  line-height: 0.92;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  text-align: center;
+  display: block;
+}
+.masthead-rule-triple {
+  border: none;
+  border-top: 5px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin: 4px 0 0;
+  padding-top: 3px;
+}
+.masthead-rule-triple::after {
+  content: '';
+  display: block;
+  border-top: 1px solid var(--ink);
+  margin-top: 3px;
+}
+
+/* ─── DROP CAP ─── */
+.drop-cap::first-letter {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 4.2em;
+  line-height: 0.8;
+  float: left;
+  margin-right: 6px;
+  margin-top: 4px;
+  color: var(--ink);
+}
+
+/* ─── KICKER ─── */
+.kicker {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* ─── HEADLINES ─── */
+.hed-xl {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: clamp(32px, 5.5vw, 76px);
+  line-height: 1.02;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.hed-lg {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(22px, 3.5vw, 46px);
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.hed-md {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(16px, 2.2vw, 28px);
+  line-height: 1.1;
+  color: var(--ink);
+}
+.hed-sm {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(13px, 1.5vw, 18px);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.deck {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(13px, 1.4vw, 17px);
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin-top: 6px;
+  max-width: 70ch;
+}
+.body-copy {
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1.1vw, 13.5px);
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+/* ─── ORNAMENTAL DIVIDERS ─── */
+.ornament {
+  text-align: center;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  color: var(--ink-light);
+  letter-spacing: 0.3em;
+  margin: 6px 0;
+  user-select: none;
+}
+.rule-single {
+  border: none;
+  border-top: 1px solid var(--rule-mid);
+  margin: 10px 0;
+}
+.rule-double {
+  border: none;
+  border-top: 3px double var(--rule);
+  margin: 10px 0;
+}
+.rule-thick {
+  border: none;
+  border-top: 3px solid var(--rule);
+  margin: 10px 0;
+}
+
+/* ─── COLUMN LAYOUTS ─── */
+.col-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  column-rule: 1px solid var(--rule-mid);
+}
+.col-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.col-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0;
+}
+.col-pad { padding: 0 22px; }
+.col-pad:first-child { padding-left: 0; }
+.col-pad:last-child { padding-right: 0; }
+.col-divider {
+  border-left: 1px solid var(--rule-mid);
+}
+
+/* ─── STAT BOX ─── */
+.stat-box {
+  border: 1px solid var(--rule);
+  padding: 16px 18px;
+  background: var(--newsprint-md);
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ─── TABLE ─── */
+.broadsheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: clamp(10px, 1.1vw, 13px);
+}
+.broadsheet-table th {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 10px;
+  text-align: left;
+  background: var(--newsprint-md);
+}
+.broadsheet-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rule-thin);
+  color: var(--ink-2);
+  vertical-align: top;
+}
+.broadsheet-table tr:last-child td {
+  border-bottom: 2px solid var(--rule);
+}
+.broadsheet-table td:first-child {
+  font-family: var(--font-head);
+  font-weight: 600;
+  color: var(--ink);
+}
+.broadsheet-table .rate {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--ink);
+}
+.broadsheet-table tr.hl-row { background: var(--newsprint-dk); }
+
+/* ─── BOX AD ─── */
+.box-border {
+  border: 2px solid var(--ink);
+  padding: 18px 20px;
+  position: relative;
+}
+.box-border-inner {
+  border: 1px solid var(--ink);
+  padding: 14px 16px;
+  position: relative;
+}
+.box-double {
+  border: 3px double var(--ink);
+  padding: 16px 18px;
+}
+
+/* ─── FIXED NAV HINT ─── */
+#nav-hint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-style: italic;
+  color: var(--ink-faded);
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  white-space: nowrap;
+  background: var(--newsprint);
+  border: 1px solid var(--rule-mid);
+  padding: 5px 14px;
+}
+
+/* ─── SLIDE NUM ─── */
+.slide-num {
+  position: absolute;
+  top: 20px;
+  right: clamp(28px, 6vw, 88px);
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-style: italic;
+  color: var(--ink-ghost);
+  letter-spacing: 0.08em;
+  z-index: 10;
+}
+
+/* ─── BYLINE ─── */
+.byline {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  border-top: 1px solid var(--rule-thin);
+  border-bottom: 1px solid var(--rule-thin);
+  padding: 4px 0;
+  margin: 8px 0;
+}
+
+/* ─── PULL QUOTE ─── */
+.pull-quote {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 14px 0;
+  margin: 16px 0;
+  text-align: center;
+}
+.pull-quote p {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-size: clamp(14px, 1.8vw, 20px);
+  line-height: 1.3;
+  color: var(--ink);
+}
+.pull-quote cite {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  display: block;
+  margin-top: 6px;
+}
+
+/* ─── SECTION BANNER ─── */
+.section-banner {
+  background: var(--ink);
+  color: var(--newsprint);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(11px, 1.3vw, 15px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 6px 12px;
+  margin: 10px 0;
+}
+
+/* ─── PRINT ─── */
+@media print {
+  html { scroll-snap-type: none; }
+  #nav-hint { display: none; }
+  .slide {
+    page-break-after: always;
+    break-after: page;
+    min-height: 100vh;
+    height: 100vh;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="nav-hint">↑ ↓ keys or scroll &nbsp;·&nbsp; The Daily Ledger &nbsp;·&nbsp; Slide <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — MASTHEAD / COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="justify-content:center;">
+  <div class="slide-num">Pg. I</div>
+
+  <div class="folio">
+    <span>Vol. MMXXVI &nbsp;·&nbsp; No. 412</span>
+    <span>Founded 1887 &nbsp;·&nbsp; New York, N.Y.</span>
+    <span>Price One Cent</span>
+    <span>Advertising Media Kit — A.D. 2026</span>
+  </div>
+
+  <div style="text-align:center;margin-bottom:6px;">
+    <span class="kicker">Est. 1887 &nbsp;—&nbsp; America's Broadsheet of Record</span>
+  </div>
+
+  <div class="masthead-title">The Daily Ledger</div>
+  <div class="masthead-rule-triple"></div>
+
+  <div class="ornament" style="margin:8px 0;">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <div style="text-align:center;max-width:680px;margin:0 auto;">
+    <p class="deck" style="text-align:center;font-size:clamp(14px,1.6vw,19px);">
+      For the Merchant, the Manufacturer, and the Man of Affairs —<br />
+      Two Million Four Hundred Thousand Readers Each Morning.
+    </p>
+  </div>
+
+  <div class="rule-double" style="margin:18px 0 14px;"></div>
+
+  <div class="col-4" style="border:1px solid var(--rule);margin-bottom:14px;">
+    <div class="stat-box" style="border-right:1px solid var(--rule);">
+      <div class="stat-num">2.4M</div>
+      <div class="stat-label">Daily Print<br />Circulation</div>
+    </div>
+    <div class="stat-box" style="border-right:1px solid var(--rule);">
+      <div class="stat-num">8.1M</div>
+      <div class="stat-label">Monthly Digital<br />Unique Visitors</div>
+    </div>
+    <div class="stat-box" style="border-right:1px solid var(--rule);">
+      <div class="stat-num">$148K</div>
+      <div class="stat-label">Median Reader<br />Household Income</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">139</div>
+      <div class="stat-label">Years of<br />Continuous Publication</div>
+    </div>
+  </div>
+
+  <div class="rule-single"></div>
+
+  <div class="col-3" style="margin-top:10px;">
+    <div class="col-pad">
+      <span class="kicker">Publication</span>
+      <div class="hed-sm" style="margin-top:3px;">The Daily Ledger</div>
+      <div class="body-copy" style="margin-top:4px;">New York · Chicago · Boston · Philadelphia. Delivered six mornings per week to subscribers in 48 states and the District of Columbia.</div>
+    </div>
+    <div class="col-pad col-divider">
+      <span class="kicker">Advertising Inquiries</span>
+      <div class="hed-sm" style="margin-top:3px;">Advertising Department</div>
+      <div class="body-copy" style="margin-top:4px;">advertising@dailyledger.com<br />Telephone: (212) 555-0180<br />44 Broadsheet Row, New York, N.Y. 10007</div>
+    </div>
+    <div class="col-pad col-divider">
+      <span class="kicker">Rate Year</span>
+      <div class="hed-sm" style="margin-top:3px;">January – December 2026</div>
+      <div class="body-copy" style="margin-top:4px;">All rates quoted herein are net. Frequency discounts available. Agency commission: 15%. This Kit supersedes all prior schedules.</div>
+    </div>
+  </div>
+
+  <div class="ornament" style="margin-top:16px;">— ✦ —</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — OUR READERSHIP
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2">
+  <div class="slide-num">Pg. II</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section I: Our Readership</span>
+    <span>Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div class="section-banner">Section The First — The Readership of The Daily Ledger</div>
+
+  <div class="col-2" style="margin-top:14px;gap:0;">
+    <div style="padding-right:24px;">
+      <span class="kicker">Portrait of a Reader</span>
+      <div class="hed-lg" style="margin-top:4px;margin-bottom:6px;">The Informed,<br />the Influential,<br />&amp; the Affluent</div>
+      <div class="rule-single"></div>
+      <div class="body-copy drop-cap" style="margin-top:8px;">
+        Since the days when newsboys cried our edition from the corners of Wall and Broad, The Daily Ledger has counted among its readers the decision-makers of commerce, law, medicine, and public life. Ours is a readership distinguished not merely by number but by quality of engagement: sixty-three per cent read every printed page; forty-one per cent clip and retain articles of commercial import. No other American broadsheet commands so attentive an audience.
+      </div>
+      <div class="body-copy" style="margin-top:10px;">
+        Advertising in The Daily Ledger places your message beside editorial of the highest standard — reported by a staff of 340 journalists across eleven bureaux. Readers trust our pages; that trust extends, demonstrably, to those who advertise within them.
+      </div>
+
+      <div class="pull-quote" style="margin-top:18px;">
+        <p>"The Daily Ledger reader is our most valuable customer. When we ran our full-page in the Wednesday Commerce section, telephone enquiries tripled before noon."</p>
+        <cite>— Cornelius Hargreave, Director of Sales, Hargreave &amp; Sons Mercantile, Chicago</cite>
+      </div>
+    </div>
+
+    <div class="col-divider" style="padding-left:24px;">
+      <span class="kicker">Key Audience Metrics — Print Edition</span>
+      <div class="rule-single" style="margin-top:5px;"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:8px;border:1px solid var(--rule);">
+        <div class="stat-box" style="border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+          <div class="stat-num" style="font-size:clamp(22px,3vw,36px);">2,412,000</div>
+          <div class="stat-label">Average Daily<br />Net Paid Circulation</div>
+        </div>
+        <div class="stat-box" style="border-bottom:1px solid var(--rule);">
+          <div class="stat-num" style="font-size:clamp(22px,3vw,36px);">4.7×</div>
+          <div class="stat-label">Readers Per<br />Copy (Pass-Along)</div>
+        </div>
+        <div class="stat-box" style="border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+          <div class="stat-num" style="font-size:clamp(22px,3vw,36px);">63%</div>
+          <div class="stat-label">Read Every<br />Issue Cover to Cover</div>
+        </div>
+        <div class="stat-box" style="border-bottom:1px solid var(--rule);">
+          <div class="stat-num" style="font-size:clamp(22px,3vw,36px);">48 min</div>
+          <div class="stat-label">Average Daily<br />Reading Time</div>
+        </div>
+        <div class="stat-box" style="border-right:1px solid var(--rule);">
+          <div class="stat-num" style="font-size:clamp(22px,3vw,36px);">87%</div>
+          <div class="stat-label">Subscribe<br />More than 5 Years</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="font-size:clamp(22px,3vw,36px);">11.3M</div>
+          <div class="stat-label">Total Daily<br />Reach (Print + Digital)</div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <span class="kicker">Geographic Distribution — Print</span>
+        <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+        <table class="broadsheet-table">
+          <thead><tr><th>Metropolitan Market</th><th>Paid Copies</th><th>% of Total</th></tr></thead>
+          <tbody>
+            <tr><td>New York Metropolitan Area</td><td>684,000</td><td>28.4%</td></tr>
+            <tr><td>Chicago &amp; Great Lakes Region</td><td>421,000</td><td>17.5%</td></tr>
+            <tr><td>Boston &amp; New England</td><td>318,000</td><td>13.2%</td></tr>
+            <tr><td>Philadelphia &amp; Mid-Atlantic</td><td>295,000</td><td>12.2%</td></tr>
+            <tr><td>Washington, D.C. Metro</td><td>244,000</td><td>10.1%</td></tr>
+            <tr><td>All Other Markets</td><td>450,000</td><td>18.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — AUDIENCE DEMOGRAPHICS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3">
+  <div class="slide-num">Pg. III</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section II: Audience Demographics</span>
+    <span>Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div class="section-banner">Section The Second — Audience Demographics &amp; Psychographics</div>
+
+  <div style="margin-top:12px;">
+    <div class="ornament">— ✦ Statistical Tables of the Ledger Readership ✦ —</div>
+  </div>
+
+  <div class="col-3" style="margin-top:12px;gap:0;border:1px solid var(--rule);">
+    <div style="padding:16px 18px;border-right:1px solid var(--rule);">
+      <span class="kicker">Age Distribution</span>
+      <div class="rule-single" style="margin-top:5px;"></div>
+      <table class="broadsheet-table" style="margin-top:6px;">
+        <thead><tr><th>Age Group</th><th>% Readers</th></tr></thead>
+        <tbody>
+          <tr><td>25–34 years</td><td>14%</td></tr>
+          <tr><td>35–44 years</td><td>22%</td></tr>
+          <tr class="hl-row"><td><strong>45–54 years</strong></td><td><strong>28%</strong></td></tr>
+          <tr class="hl-row"><td><strong>55–64 years</strong></td><td><strong>21%</strong></td></tr>
+          <tr><td>65 &amp; over</td><td>15%</td></tr>
+        </tbody>
+      </table>
+      <div class="body-copy" style="margin-top:8px;font-size:0.62rem;color:var(--ink-faded);font-style:italic;">Core demographic 45–64: 49% of readership; highest purchasing authority of any age cohort.</div>
+    </div>
+
+    <div style="padding:16px 18px;border-right:1px solid var(--rule);">
+      <span class="kicker">Education &amp; Occupation</span>
+      <div class="rule-single" style="margin-top:5px;"></div>
+      <table class="broadsheet-table" style="margin-top:6px;">
+        <thead><tr><th>Category</th><th>% Readers</th></tr></thead>
+        <tbody>
+          <tr><td>Post-graduate degree</td><td>44%</td></tr>
+          <tr><td>University graduate</td><td>38%</td></tr>
+          <tr><td>Business Owners / Partners</td><td>31%</td></tr>
+          <tr><td>C-Suite &amp; Senior Executives</td><td>24%</td></tr>
+          <tr><td>Professionals (Law/Medicine)</td><td>19%</td></tr>
+          <tr><td>Finance &amp; Investment</td><td>18%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="padding:16px 18px;">
+      <span class="kicker">Wealth &amp; Spending</span>
+      <div class="rule-single" style="margin-top:5px;"></div>
+      <table class="broadsheet-table" style="margin-top:6px;">
+        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Median HHI</td><td class="rate">$148,000</td></tr>
+          <tr><td>Median Net Worth</td><td class="rate">$820,000</td></tr>
+          <tr><td>Own Primary Residence</td><td class="rate">78%</td></tr>
+          <tr><td>Investable Assets $500K+</td><td class="rate">41%</td></tr>
+          <tr><td>Annual Travel Spend</td><td class="rate">$14,200</td></tr>
+          <tr><td>Annual Luxury Goods Spend</td><td class="rate">$8,400</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-2" style="margin-top:14px;gap:0;">
+    <div style="padding-right:24px;">
+      <span class="kicker">Purchasing Behaviour &amp; Brand Engagement</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <table class="broadsheet-table">
+        <thead><tr><th>Behaviour</th><th>Ledger Readers</th><th>US Adult Avg.</th></tr></thead>
+        <tbody>
+          <tr><td>Made major purchase after seeing print ad</td><td class="rate">62%</td><td>34%</td></tr>
+          <tr><td>Sought out advertiser following editorial adjacency</td><td class="rate">48%</td><td>21%</td></tr>
+          <tr><td>Considered brand "more trustworthy" due to Ledger ad</td><td class="rate">71%</td><td>39%</td></tr>
+          <tr><td>Responded to digital banner from same campaign</td><td class="rate">54%</td><td>28%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-divider" style="padding-left:24px;">
+      <span class="kicker">Reader Psychographic Profile</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <div class="body-copy">
+        The Ledger reader is, above all, <em>a person of commerce</em>. He or she maintains active investment portfolios, holds seats on civic and charitable boards, travels internationally for business no fewer than three times per year, and makes consequential purchasing decisions — for both household and enterprise — with deliberation and discernment.
+      </div>
+      <div class="body-copy" style="margin-top:8px;">
+        They do not respond to ephemeral digital novelty. They respond to <em>authority, longevity, and the imprimatur of association with quality</em>. An advertisement in The Daily Ledger is, in their estimation, a form of credentials.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — SECTIONS & REACH
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4">
+  <div class="slide-num">Pg. IV</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section III: Editorial Sections &amp; Reach</span>
+    <span>Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div class="section-banner">Section The Third — The Editorial Sections of The Daily Ledger</div>
+
+  <div class="col-2" style="margin-top:12px;gap:0;">
+    <div style="padding-right:24px;">
+      <span class="kicker">Daily Sections — Print Edition</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <table class="broadsheet-table">
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Publish Days</th>
+            <th>Avg. Readers</th>
+            <th>Primary Demo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hl-row">
+            <td><strong>Front Page &amp; National Affairs</strong></td>
+            <td>Mon–Sat</td>
+            <td class="rate">2,412,000</td>
+            <td>All readers</td>
+          </tr>
+          <tr>
+            <td>Commerce &amp; Finance</td>
+            <td>Mon–Fri</td>
+            <td class="rate">1,840,000</td>
+            <td>Business, Finance</td>
+          </tr>
+          <tr>
+            <td>Law &amp; The Courts</td>
+            <td>Tue, Thu</td>
+            <td class="rate">980,000</td>
+            <td>Legal, C-Suite</td>
+          </tr>
+          <tr>
+            <td>Science &amp; Industry</td>
+            <td>Wed, Fri</td>
+            <td class="rate">1,120,000</td>
+            <td>Mfg., Tech, Med.</td>
+          </tr>
+          <tr>
+            <td>Letters, Arts &amp; Culture</td>
+            <td>Fri</td>
+            <td class="rate">1,560,000</td>
+            <td>All; skews 45+</td>
+          </tr>
+          <tr class="hl-row">
+            <td><strong>The Weekend Ledger</strong></td>
+            <td>Saturday</td>
+            <td class="rate">2,180,000</td>
+            <td>HHI $120K+</td>
+          </tr>
+          <tr>
+            <td>Real Estate &amp; Property</td>
+            <td>Wednesday</td>
+            <td class="rate">1,320,000</td>
+            <td>Owners, Investors</td>
+          </tr>
+          <tr>
+            <td>Travel &amp; Foreign Correspondence</td>
+            <td>Saturday</td>
+            <td class="rate">1,640,000</td>
+            <td>HHI $150K+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ornament" style="margin:12px 0;">— ✦ —</div>
+
+      <span class="kicker">Digital Properties</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <table class="broadsheet-table">
+        <thead>
+          <tr><th>Digital Property</th><th>Monthly Uniques</th><th>Avg. Session</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>DailyLedger.com</td><td class="rate">8,140,000</td><td>7 min 22 sec</td></tr>
+          <tr><td>Mobile App (iOS + Android)</td><td class="rate">3,280,000</td><td>11 min 04 sec</td></tr>
+          <tr><td>Morning Dispatch Newsletter</td><td class="rate">1,920,000</td><td>Open rate: 44%</td></tr>
+          <tr><td>Markets &amp; Finance Newsletter</td><td class="rate">840,000</td><td>Open rate: 51%</td></tr>
+          <tr><td>Podcast — "The Ledger Hour"</td><td class="rate">620,000</td><td>38 min avg.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-divider" style="padding-left:24px;">
+      <span class="kicker">Editorial Calendar — Selected Advertiser Opportunities</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <table class="broadsheet-table">
+        <thead>
+          <tr><th>Date</th><th>Special Edition</th><th>Theme / Opportunity</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hl-row"><td>Feb. 14</td><td>Valentine Commerce Issue</td><td>Luxury goods, jewellery, travel</td></tr>
+          <tr><td>Mar. 15</td><td>The Annual Industries Survey</td><td>Manufacturing, finance, exports</td></tr>
+          <tr><td>Apr. 3</td><td>Spring Real Estate Supplement</td><td>Property, mortgages, furnishings</td></tr>
+          <tr class="hl-row"><td>May 8</td><td>The Law &amp; Commerce Issue</td><td>Legal, consulting, professional services</td></tr>
+          <tr><td>Jun. 21</td><td>Summer Travel Number</td><td>Hotels, rail, ocean lines, insurance</td></tr>
+          <tr><td>Sep. 6</td><td>The Autumn Markets Survey</td><td>Investment, banking, commodities</td></tr>
+          <tr class="hl-row"><td>Oct. 18</td><td>Technology &amp; Industry Edition</td><td>Machinery, communications, innovation</td></tr>
+          <tr><td>Dec. 6</td><td>The Year-End Commerce Review</td><td>Retail, gifts, spirits, charitable appeal</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box-border" style="margin-top:16px;">
+        <span class="kicker">Advertising Advantage</span>
+        <div class="hed-sm" style="margin-top:4px;">Position Your Brand<br />Beside Our Finest Editorial</div>
+        <div class="body-copy" style="margin-top:8px;">Special editions command premium reader attention — newsstand sales increase 34% on special issue days. Advertising space in these numbers sells out as much as twelve weeks in advance. Early commitment is strongly encouraged.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — AD PLACEMENTS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5">
+  <div class="slide-num">Pg. V</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section IV: Advertising Specifications</span>
+    <span>Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div class="section-banner">Section The Fourth — Specifications for Print &amp; Digital Advertisements</div>
+
+  <div class="col-2" style="margin-top:14px;gap:0;">
+    <div style="padding-right:24px;">
+      <span class="kicker">Print — Advertisement Specifications</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <div class="body-copy" style="margin-bottom:10px;">The Daily Ledger prints on broadsheet stock measuring 15 × 22¾ inches. All advertisements must be submitted as high-resolution PDF/X-1a files at minimum 300 d.p.i. Colour: black ink only for Standard; CMYK for Colour positions.</div>
+      <table class="broadsheet-table">
+        <thead>
+          <tr><th>Format</th><th>Dimensions (col × in.)</th><th>Bleed</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hl-row"><td><strong>Full Page</strong></td><td>6 col × 21 in.</td><td>Available</td></tr>
+          <tr><td>Half Page Horizontal</td><td>6 col × 10.5 in.</td><td>No</td></tr>
+          <tr><td>Half Page Vertical</td><td>3 col × 21 in.</td><td>No</td></tr>
+          <tr><td>Quarter Page</td><td>3 col × 10.5 in.</td><td>No</td></tr>
+          <tr><td>Double Truck (Spread)</td><td>12 col × 21 in.</td><td>Available</td></tr>
+          <tr><td>Three-Column Strip</td><td>3 col × 4 in.</td><td>No</td></tr>
+          <tr><td>Column Notice</td><td>1 col × 3 in.</td><td>No</td></tr>
+          <tr><td>Classified (per word)</td><td>—</td><td>No</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:14px;">
+        <span class="kicker">Preferred Positions — Print</span>
+        <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+        <div class="body-copy">
+          <strong>Page One Below Fold</strong> — The most coveted position in American print. Reserved for established advertisers; 12-month minimum commitment.<br /><br />
+          <strong>Commerce Section Front</strong> — Visible to every reader of the financial pages. Six-colour CMYK permitted.<br /><br />
+          <strong>Back Page (Full Colour)</strong> — High-contrast, newsstand-visible. Sells twelve weeks in advance on average.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-divider" style="padding-left:24px;">
+      <span class="kicker">Digital — Advertisement Specifications</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <table class="broadsheet-table">
+        <thead>
+          <tr><th>Digital Format</th><th>Dimensions</th><th>File Type</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hl-row"><td><strong>Homepage Takeover</strong></td><td>1920 × 1080 px</td><td>HTML5 / JPEG</td></tr>
+          <tr><td>Leaderboard</td><td>728 × 90 px</td><td>GIF / JPEG</td></tr>
+          <tr><td>Medium Rectangle</td><td>300 × 250 px</td><td>GIF / JPEG</td></tr>
+          <tr><td>Half-Page Digital</td><td>300 × 600 px</td><td>HTML5 / JPEG</td></tr>
+          <tr><td>Article In-Line</td><td>640 × 480 px</td><td>JPEG</td></tr>
+          <tr><td>Newsletter Sponsorship</td><td>600 × 200 px</td><td>JPEG</td></tr>
+          <tr><td>Podcast Mid-Roll (60 sec)</td><td>Audio</td><td>WAV / MP3</td></tr>
+          <tr><td>App Interstitial</td><td>375 × 812 px</td><td>JPEG / HTML5</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box-double" style="margin-top:16px;">
+        <span class="kicker">Print + Digital Bundle</span>
+        <div class="hed-sm" style="margin-top:4px;">"The Full Broadsheet" Package</div>
+        <div class="rule-single" style="margin-top:6px;"></div>
+        <div class="body-copy" style="margin-top:6px;">
+          Combines full-page print placement (Commerce section, Wednesdays) with homepage leaderboard (M–F, same week), newsletter banner sponsorship, and one in-article unit. Reach 11.3M unique contacts weekly. Packages from $28,000 per week. Ask your representative for custom proposals.
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <span class="kicker">Copy Deadline Schedule</span>
+        <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+        <table class="broadsheet-table">
+          <thead><tr><th>Publication</th><th>Space Reservation</th><th>Ad Copy Due</th></tr></thead>
+          <tbody>
+            <tr><td>Monday edition</td><td>Prior Thursday noon</td><td>Prior Friday noon</td></tr>
+            <tr><td>Wednesday edition</td><td>Prior Monday noon</td><td>Prior Tuesday noon</td></tr>
+            <tr><td>Saturday edition</td><td>Prior Wednesday noon</td><td>Prior Thursday noon</td></tr>
+            <tr class="hl-row"><td>Special editions</td><td>10 weeks prior</td><td>8 weeks prior</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — RATE CARD
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6">
+  <div class="slide-num">Pg. VI</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section V: Rate Card — Schedule No. 48</span>
+    <span>Effective January 1, 2026</span>
+  </div>
+
+  <div class="section-banner">Section The Fifth — Official Rate Card &amp; Frequency Schedule No. 48</div>
+
+  <div class="ornament" style="margin:8px 0 12px;">— ✦ All Rates Are Net, Per Insertion ✦ —</div>
+
+  <div class="col-2" style="gap:0;margin-top:0;">
+    <div style="padding-right:24px;">
+      <span class="kicker">Print Advertisement Rates — Black &amp; White</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <table class="broadsheet-table">
+        <thead>
+          <tr><th>Format</th><th>1× Rate</th><th>13× Rate</th><th>52× Rate</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hl-row">
+            <td><strong>Full Page</strong></td>
+            <td class="rate">$48,500</td>
+            <td class="rate">$43,200</td>
+            <td class="rate">$38,400</td>
+          </tr>
+          <tr>
+            <td>Half Page (H or V)</td>
+            <td class="rate">$26,400</td>
+            <td class="rate">$23,800</td>
+            <td class="rate">$21,100</td>
+          </tr>
+          <tr>
+            <td>Quarter Page</td>
+            <td class="rate">$14,200</td>
+            <td class="rate">$12,800</td>
+            <td class="rate">$11,400</td>
+          </tr>
+          <tr class="hl-row">
+            <td><strong>Double Truck</strong></td>
+            <td class="rate">$88,000</td>
+            <td class="rate">$79,200</td>
+            <td class="rate">$70,400</td>
+          </tr>
+          <tr>
+            <td>Three-Col. Strip</td>
+            <td class="rate">$8,200</td>
+            <td class="rate">$7,400</td>
+            <td class="rate">$6,600</td>
+          </tr>
+          <tr>
+            <td>Column Notice</td>
+            <td class="rate">$2,800</td>
+            <td class="rate">$2,520</td>
+            <td class="rate">$2,240</td>
+          </tr>
+          <tr>
+            <td>Classified (per word)</td>
+            <td class="rate">$18</td>
+            <td class="rate">$16</td>
+            <td class="rate">$14</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:12px;">
+        <span class="kicker">Colour Premiums (add to B&amp;W rate)</span>
+        <div class="rule-single" style="margin-top:5px;margin-bottom:6px;"></div>
+        <table class="broadsheet-table">
+          <thead><tr><th>Colour Type</th><th>Premium</th></tr></thead>
+          <tbody>
+            <tr><td>Spot Colour (1 PMS)</td><td class="rate">+22%</td></tr>
+            <tr><td>Full Colour (4-colour CMYK)</td><td class="rate">+45%</td></tr>
+            <tr class="hl-row"><td>Back Page, Full Colour</td><td class="rate">+80%</td></tr>
+            <tr><td>Page One Below Fold (exclusive)</td><td class="rate">+100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-divider" style="padding-left:24px;">
+      <span class="kicker">Digital Advertisement Rates — Per Month</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <table class="broadsheet-table">
+        <thead>
+          <tr><th>Digital Unit</th><th>CPM / Flat Rate</th><th>Monthly Est.</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hl-row">
+            <td><strong>Homepage Takeover (Daily)</strong></td>
+            <td class="rate">$9,800 / day</td>
+            <td class="rate">—</td>
+          </tr>
+          <tr>
+            <td>Leaderboard (Run of Site)</td>
+            <td class="rate">$22 CPM</td>
+            <td class="rate">~$12,400</td>
+          </tr>
+          <tr>
+            <td>Medium Rectangle (ROS)</td>
+            <td class="rate">$18 CPM</td>
+            <td class="rate">~$9,800</td>
+          </tr>
+          <tr>
+            <td>Half-Page Digital</td>
+            <td class="rate">$28 CPM</td>
+            <td class="rate">~$7,200</td>
+          </tr>
+          <tr>
+            <td>Newsletter Sponsorship</td>
+            <td class="rate">$4,200 / send</td>
+            <td class="rate">—</td>
+          </tr>
+          <tr class="hl-row">
+            <td><strong>Newsletter (Excl. Sponsor)</strong></td>
+            <td class="rate">$8,400 / send</td>
+            <td class="rate">—</td>
+          </tr>
+          <tr>
+            <td>Podcast Mid-Roll (60 sec)</td>
+            <td class="rate">$38 CPM</td>
+            <td class="rate">~$3,400</td>
+          </tr>
+          <tr>
+            <td>App Interstitial</td>
+            <td class="rate">$24 CPM</td>
+            <td class="rate">~$4,800</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:12px;">
+        <span class="kicker">Multi-Platform Packages</span>
+        <div class="rule-single" style="margin-top:5px;margin-bottom:6px;"></div>
+        <table class="broadsheet-table">
+          <thead><tr><th>Package Name</th><th>Inclusions</th><th>Weekly Rate</th></tr></thead>
+          <tbody>
+            <tr><td>The Standard</td><td>QP print + 1 digital unit</td><td class="rate">$18,000</td></tr>
+            <tr><td>The Commerce</td><td>HP print (Commerce) + leaderboard + newsletter</td><td class="rate">$32,000</td></tr>
+            <tr class="hl-row"><td><strong>The Full Broadsheet</strong></td><td>FP print + all digital + podcast</td><td class="rate">$58,000</td></tr>
+            <tr><td>The Annual Partnership</td><td>52× FP + all channels + editorial adjacency</td><td class="rate">Custom</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body-copy" style="margin-top:10px;font-size:0.6rem;color:var(--ink-faded);font-style:italic;">
+        * All rates net. Agency commission 15% of gross. Government and charitable rates available upon application. All insertions subject to the Ledger's published Standards of Advertising Acceptance. This schedule supersedes Rate Card No. 47 dated January 1, 2025.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — CASE STUDY I
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7">
+  <div class="slide-num">Pg. VII</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section VI: Case Studies in Effective Advertising</span>
+    <span>Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div class="section-banner">Section The Sixth — Case Studies in Effective Advertising</div>
+
+  <div class="col-2" style="margin-top:14px;gap:0;">
+    <div style="padding-right:24px;">
+      <div class="box-border">
+        <span class="kicker">Case Study — I</span>
+        <div class="hed-md" style="margin-top:4px;">Hartwell &amp; Briggs Private Banking</div>
+        <div class="byline" style="margin-top:6px;">New York, N.Y. &nbsp;·&nbsp; Commerce Section Campaign, 2025</div>
+
+        <div class="body-copy" style="margin-top:8px;">
+          Hartwell &amp; Briggs, a private bank serving clients with investable assets exceeding $2 million, sought to expand its trust and estate planning practice among New York's professional class. The firm had previously relied upon referrals and club introductions exclusively.
+        </div>
+        <div class="rule-single" style="margin-top:10px;"></div>
+        <span class="kicker" style="margin-top:6px;display:block;">The Campaign</span>
+        <div class="body-copy" style="margin-top:4px;">
+          A 13-insertion schedule was contracted: full-page, black-and-white, Commerce section front position, Wednesdays and Fridays. Copy was written in the house style of The Daily Ledger itself — formal, authoritative, set in Bodoni. No illustration; no photography.
+        </div>
+        <div class="rule-single" style="margin-top:10px;"></div>
+        <span class="kicker" style="margin-top:6px;display:block;">Results Reported</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">+340%</div>
+            <div class="stat-label">New trust account enquiries vs. prior 13-wk period</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">$4.2M</div>
+            <div class="stat-label">New AUM attributed to campaign in first quarter</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">18:1</div>
+            <div class="stat-label">Return on advertising spend (Year 1)</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">62%</div>
+            <div class="stat-label">New clients cited Ledger ad as reason for first contact</div>
+          </div>
+        </div>
+        <div class="pull-quote" style="margin-top:14px;">
+          <p>"We were sceptical that print could still move the needle. We were wrong. The Ledger reader is exactly our client."</p>
+          <cite>— F. B. Hartwell III, Managing Partner, Hartwell &amp; Briggs</cite>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-divider" style="padding-left:24px;">
+      <div class="box-border">
+        <span class="kicker">Case Study — II</span>
+        <div class="hed-md" style="margin-top:4px;">Crane &amp; Fosse Solicitors</div>
+        <div class="byline" style="margin-top:6px;">Boston, Mass. &nbsp;·&nbsp; Law &amp; Courts Section, 2025</div>
+
+        <div class="body-copy" style="margin-top:8px;">
+          Crane &amp; Fosse, a Boston firm specialising in commercial litigation and mergers &amp; acquisitions, sought national recognition for its practice among corporations conducting business in the Northeast. They had not previously advertised in any daily newspaper.
+        </div>
+        <div class="rule-single" style="margin-top:10px;"></div>
+        <span class="kicker" style="margin-top:6px;display:block;">The Campaign</span>
+        <div class="body-copy" style="margin-top:4px;">
+          The firm purchased the Tuesday and Thursday "Law &amp; The Courts" section, half-page vertical, over 26 consecutive weeks, combined with the Monday Morning Dispatch newsletter sponsorship. Total investment: $412,000 net.
+        </div>
+        <div class="rule-single" style="margin-top:10px;"></div>
+        <span class="kicker" style="margin-top:6px;display:block;">Results Reported</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">+28</div>
+            <div class="stat-label">New client engagements directly cited campaign</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">$6.1M</div>
+            <div class="stat-label">New billings attributable to campaign clients</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">14.8:1</div>
+            <div class="stat-label">Return on advertising spend, first engagement only</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(20px,2.5vw,32px);">71%</div>
+            <div class="stat-label">Of prospects named Ledger as source of awareness</div>
+          </div>
+        </div>
+        <div class="pull-quote" style="margin-top:14px;">
+          <p>"The authority of The Daily Ledger transfers to every page. Our clients feel we advertise with gravitas."</p>
+          <cite>— E. M. Crane, Senior Partner, Crane &amp; Fosse</cite>
+        </div>
+      </div>
+
+      <div class="ornament" style="margin-top:14px;">— ✦ Additional case studies furnished upon request ✦ —</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — CASE STUDY II / DIGITAL
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8">
+  <div class="slide-num">Pg. VIII</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section VI, Continued: Digital &amp; Multi-Platform Results</span>
+    <span>Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div style="margin-top:6px;">
+    <div class="section-banner" style="max-width:100%;">Section The Sixth, Continued — Digital &amp; Multi-Platform Campaign Results</div>
+  </div>
+
+  <div class="col-2" style="margin-top:14px;gap:0;">
+    <div style="padding-right:24px;">
+      <div class="box-border">
+        <span class="kicker">Case Study — III</span>
+        <div class="hed-md" style="margin-top:4px;">Pemberton Instrument Works</div>
+        <div class="byline" style="margin-top:6px;">Philadelphia, Pa. &nbsp;·&nbsp; Full Broadsheet Package, Q3–Q4 2025</div>
+        <div class="body-copy" style="margin-top:8px;">
+          A manufacturer of precision scientific instruments sought to reach procurement managers and research directors at universities, hospitals, and federal agencies across the Eastern seaboard. Their prior advertising had been confined to trade catalogues.
+        </div>
+        <div class="rule-single" style="margin-top:10px;"></div>
+        <span class="kicker" style="margin-top:6px;display:block;">The Campaign</span>
+        <div class="body-copy" style="margin-top:4px;">
+          "The Full Broadsheet" package was engaged for 26 weeks: full-page print (Science &amp; Industry, Wednesdays); leaderboard and article in-line units across DailyLedger.com; sponsorship of the Morning Dispatch newsletter; and three podcast mid-roll placements monthly on "The Ledger Hour."
+        </div>
+        <div class="rule-single" style="margin-top:10px;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;">
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(18px,2.2vw,28px);">+520%</div>
+            <div class="stat-label">Website enquiries YoY during campaign</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(18px,2.2vw,28px);">$2.8M</div>
+            <div class="stat-label">New orders from campaign-attributed leads</div>
+          </div>
+          <div class="stat-box" style="border:1px solid var(--rule-mid);">
+            <div class="stat-num" style="font-size:clamp(18px,2.2vw,28px);">21:1</div>
+            <div class="stat-label">ROAS across all campaign channels combined</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <span class="kicker">Aggregate Digital Performance — 2025</span>
+        <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+        <table class="broadsheet-table">
+          <thead>
+            <tr><th>Metric</th><th>Average</th><th>Top Quartile</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Display CTR (Leaderboard)</td><td>0.38%</td><td class="rate">0.72%</td></tr>
+            <tr><td>Display CTR (Half-Page)</td><td>0.54%</td><td class="rate">1.1%</td></tr>
+            <tr><td>Newsletter Click Rate</td><td>6.2%</td><td class="rate">11.8%</td></tr>
+            <tr><td>Podcast Recall Rate</td><td>68%</td><td class="rate">81%</td></tr>
+            <tr class="hl-row"><td><strong>Brand Lift (multi-channel)</strong></td><td><strong>+34%</strong></td><td class="rate">+52%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-divider" style="padding-left:24px;">
+      <span class="kicker">Advertiser Testimonials</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+
+      <div class="pull-quote">
+        <p>"In 22 years of marketing, no single medium has delivered quality leads at this cost efficiency. The Daily Ledger reader is our buyer."</p>
+        <cite>— Director of Marketing, Pemberton Instrument Works</cite>
+      </div>
+
+      <div class="pull-quote">
+        <p>"Our competitors asked how we became 'the establishment firm.' The answer was twelve months in the Commerce section."</p>
+        <cite>— Managing Director, Blackmoor Capital Partners, New York</cite>
+      </div>
+
+      <div class="pull-quote">
+        <p>"The newsletter sponsorship alone generated 14 qualified leads in its first fortnight. We have renewed without hesitation."</p>
+        <cite>— Vice President, Business Development, Aldersgate Medical Group</cite>
+      </div>
+
+      <div style="margin-top:14px;">
+        <span class="kicker">Audience Verification &amp; Audit</span>
+        <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+        <div class="body-copy">
+          All circulation figures are audited annually by the Alliance for Audited Media (AAM). Digital analytics are verified by Nielsen Digital Ad Ratings. Readership studies are conducted by Ipsos MediaCT on a quarterly basis. Copies of all audit reports are available to prospective advertisers upon execution of a non-disclosure agreement.
+        </div>
+        <div class="body-copy" style="margin-top:8px;">
+          The Daily Ledger is a member in good standing of the American Newspaper Publishers Association, the Audit Bureau of Circulations, and the Interactive Advertising Bureau.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — SUBSCRIBE / ADVERTISE CTA
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="justify-content:center;">
+  <div class="slide-num">Pg. IX</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Section VII: Begin Your Campaign</span>
+    <span>Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div class="section-banner">Section The Seventh — Commence Your Advertising Engagement</div>
+
+  <div class="ornament" style="margin:14px 0 10px;">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <div style="text-align:center;max-width:720px;margin:0 auto 18px;">
+    <div class="masthead-title" style="font-size:clamp(36px,6vw,80px);line-height:1;">The Daily Ledger</div>
+    <div class="rule-thick" style="margin:8px 0;"></div>
+    <p class="deck" style="text-align:center;font-size:clamp(15px,1.8vw,22px);margin-top:8px;">
+      Place your enterprise before two million four hundred thousand<br />of the most consequential minds in American commerce.
+    </p>
+  </div>
+
+  <div class="col-3" style="border:2px solid var(--ink);margin-bottom:16px;">
+    <div style="padding:20px 22px;border-right:1px solid var(--rule);">
+      <span class="kicker">Step The First</span>
+      <div class="hed-sm" style="margin-top:6px;">Contact Your<br />Representative</div>
+      <div class="rule-single" style="margin-top:8px;"></div>
+      <div class="body-copy" style="margin-top:8px;">
+        Speak with one of our experienced advertising counsellors, who will assess your objectives and propose a programme tailored to your requirements and budget.
+      </div>
+      <div style="margin-top:12px;font-family:var(--font-body);font-size:0.72rem;color:var(--ink-2);">
+        <i class="fa fa-phone" style="width:16px;color:var(--ink-faded);"></i> &nbsp; (212) 555-0180<br />
+        <i class="fa fa-envelope" style="width:16px;color:var(--ink-faded);"></i> &nbsp; advertising@dailyledger.com
+      </div>
+    </div>
+    <div style="padding:20px 22px;border-right:1px solid var(--rule);">
+      <span class="kicker">Step The Second</span>
+      <div class="hed-sm" style="margin-top:6px;">Reserve Your<br />Position</div>
+      <div class="rule-single" style="margin-top:8px;"></div>
+      <div class="body-copy" style="margin-top:8px;">
+        Preferred positions — particularly the Commerce section front, the Back Page, and the Weekend Ledger — are reserved on a first-come basis. Early commitment is essential for special editorial numbers.
+      </div>
+      <div style="margin-top:12px;font-family:var(--font-body);font-size:0.72rem;color:var(--ink-2);">
+        <i class="fa fa-globe" style="width:16px;color:var(--ink-faded);"></i> &nbsp; dailyledger.com/advertise<br />
+        <i class="fa fa-file-alt" style="width:16px;color:var(--ink-faded);"></i> &nbsp; Online insertion order available
+      </div>
+    </div>
+    <div style="padding:20px 22px;">
+      <span class="kicker">Step The Third</span>
+      <div class="hed-sm" style="margin-top:6px;">Submit Your<br />Materials</div>
+      <div class="rule-single" style="margin-top:8px;"></div>
+      <div class="body-copy" style="margin-top:8px;">
+        Our production department will review your submission for technical compliance. A complimentary pre-flight proof is furnished for all insertions of a half page or larger. Creative direction is available for an additional production fee.
+      </div>
+      <div style="margin-top:12px;font-family:var(--font-body);font-size:0.72rem;color:var(--ink-2);">
+        <i class="fa fa-upload" style="width:16px;color:var(--ink-faded);"></i> &nbsp; adportal.dailyledger.com<br />
+        <i class="fa fa-phone" style="width:16px;color:var(--ink-faded);"></i> &nbsp; Production: (212) 555-0199
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2" style="gap:0;border:1px solid var(--rule);margin-bottom:10px;">
+    <div style="padding:16px 20px;border-right:1px solid var(--rule);">
+      <span class="kicker">Offices of The Daily Ledger</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <div class="body-copy" style="line-height:2;">
+        <strong>New York (Principal Office)</strong> &nbsp;·&nbsp; 44 Broadsheet Row, New York, N.Y. 10007<br />
+        <strong>Chicago Bureau</strong> &nbsp;·&nbsp; 212 Commerce Exchange, Chicago, Ill. 60601<br />
+        <strong>Boston Bureau</strong> &nbsp;·&nbsp; 88 State Street, Boston, Mass. 02109<br />
+        <strong>Washington, D.C.</strong> &nbsp;·&nbsp; 1400 Pennsylvania Row, Washington, D.C. 20004
+      </div>
+    </div>
+    <div style="padding:16px 20px;">
+      <span class="kicker">Subscription &amp; Circulation</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <div class="body-copy" style="line-height:2;">
+        Subscriber Enquiries: (800) 555-0140<br />
+        Bulk &amp; Corporate Subscriptions: corporatesubs@dailyledger.com<br />
+        Newsstand distribution: Nationwide via Hudson Group &amp; independents<br />
+        International subscriptions: +1 (212) 555-0185
+      </div>
+    </div>
+  </div>
+
+  <div class="ornament" style="margin-top:4px;">— ✦ The Daily Ledger · Established 1887 · New York · "Fiat Lux" ✦ —</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CLOSING / TERMS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="justify-content:center;">
+  <div class="slide-num">Pg. X</div>
+
+  <div class="folio">
+    <span>The Daily Ledger &nbsp;·&nbsp; Media Kit 2026</span>
+    <span>Terms, Conditions &amp; Standards of Advertising Acceptance</span>
+    <span>Rate Card No. 48 &nbsp;·&nbsp; Vol. MMXXVI No. 412</span>
+  </div>
+
+  <div style="text-align:center;margin-bottom:10px;">
+    <div class="masthead-title" style="font-size:clamp(44px,7.5vw,100px);line-height:0.95;">The Daily Ledger</div>
+    <div class="masthead-rule-triple"></div>
+    <div class="ornament" style="margin:10px 0;">— ✦ &nbsp; Standards of Advertising Acceptance &nbsp; ✦ —</div>
+  </div>
+
+  <div class="col-3" style="gap:0;margin-bottom:16px;">
+    <div style="padding:0 18px 0 0;">
+      <span class="kicker">General Conditions</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <div class="body-copy" style="font-size:0.65rem;line-height:1.7;">
+        All advertising accepted by The Daily Ledger is subject to the approval of the Publisher. The Ledger reserves the right to decline, cancel, or alter any advertisement at any time without liability. Advertisers and agencies assume responsibility for all content submitted.
+        <br /><br />
+        Insertions orders are binding contracts. Cancellations received fewer than ten (10) business days prior to publication are subject to full insertion charges. Short-rate adjustments apply to unfulfilled frequency commitments.
+        <br /><br />
+        The Daily Ledger does not accept advertising for: tobacco products; lottery schemes; claims of cure for named diseases; political notices without required disclosures; or any content determined by the Publisher to be contrary to the public interest or the dignity of this publication.
+      </div>
+    </div>
+    <div class="col-divider" style="padding:0 18px;">
+      <span class="kicker">Payment Terms</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <div class="body-copy" style="font-size:0.65rem;line-height:1.7;">
+        Recognised advertising agencies receive 15% commission on gross billing. All other advertisers pay net rates as published herein. Payment is due net thirty (30) days from invoice date.
+        <br /><br />
+        New advertisers are required to remit full payment with first insertion order. Credit accounts may be established upon satisfactory completion of a credit application and approval by the Ledger's credit department.
+        <br /><br />
+        Accounts in arrears of sixty (60) days or more shall forfeit agency commission and scheduled position rights until the account is made current. Interest at 1.5% per month applies to overdue balances.
+      </div>
+    </div>
+    <div class="col-divider" style="padding:0 0 0 18px;">
+      <span class="kicker">Errors &amp; Omissions</span>
+      <div class="rule-single" style="margin-top:5px;margin-bottom:8px;"></div>
+      <div class="body-copy" style="font-size:0.65rem;line-height:1.7;">
+        The Daily Ledger's liability for error in publication is limited to the cost of the space occupied by the erroneous advertisement in the edition(s) in which the error occurred. No liability is assumed for errors in key numbers, telephone numbers, URLs, or similar details.
+        <br /><br />
+        Advertiser must notify the Ledger of errors within five (5) business days of publication. Claims not made within this period shall be deemed waived. The Ledger is not responsible for errors in advertisements submitted after the established copy deadlines.
+        <br /><br />
+        Digital advertising: impression discrepancies of less than 10% are considered within industry-accepted variance and do not constitute grounds for make-good or credit.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-double"></div>
+
+  <div class="col-2" style="gap:0;margin-top:12px;">
+    <div style="padding-right:24px;">
+      <div class="box-double">
+        <span class="kicker">A Note from the Publisher</span>
+        <div class="hed-sm" style="margin-top:4px;margin-bottom:8px;">On the Honour of Association</div>
+        <div class="body-copy" style="font-style:italic;">
+          Since the autumn of 1887, The Daily Ledger has maintained a covenant with its readers: that every word printed in these pages — editorial and commercial alike — shall be worthy of their trust and their time. We extend this covenant to those who advertise with us. An advertisement in The Daily Ledger is not merely a commercial transaction. It is an association with 139 years of credibility.
+        </div>
+        <div class="byline" style="margin-top:10px;">— Archibald W. Pennington IV, Publisher</div>
+      </div>
+    </div>
+    <div class="col-divider" style="padding-left:24px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="text-align:center;">
+        <div class="masthead-title" style="font-size:clamp(28px,4vw,54px);line-height:1;margin-bottom:6px;">The Daily Ledger</div>
+        <div class="rule-single"></div>
+        <div class="body-copy" style="text-align:center;margin-top:8px;font-size:0.68rem;color:var(--ink-faded);">
+          44 Broadsheet Row · New York, N.Y. 10007<br />
+          advertising@dailyledger.com · (212) 555-0180<br />
+          dailyledger.com/advertise
+        </div>
+        <div class="ornament" style="margin:10px 0;">✦ &nbsp; ✦ &nbsp; ✦</div>
+        <div class="body-copy" style="text-align:center;font-size:0.6rem;color:var(--ink-ghost);font-style:italic;">
+          Rate Card No. 48 · Effective January 1, 2026<br />
+          Published by The Daily Ledger Publishing Co.<br />
+          "Fiat Lux" — Est. 1887
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

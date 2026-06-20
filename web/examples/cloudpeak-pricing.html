@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CloudPeak — Pricing & Plans</title>
+<meta name="description" content="CloudPeak pricing & plans deck — transparent, developer-first cloud infrastructure with Starter, Pro, and Enterprise tiers. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/cloudpeak-pricing" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#f0f4ff" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/cloudpeak-pricing" />
+<meta property="og:title" content="CloudPeak — Pricing & Plans" />
+<meta property="og:description" content="Transparent developer-first cloud infrastructure. Three tiers. Zero surprise bills. Deploy in 90 seconds." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CloudPeak — Pricing & Plans" />
+<meta name="twitter:description" content="Transparent developer-first cloud infrastructure. Three tiers. Zero surprise bills." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --bg-base:      #f8f9ff;
+    --bg-alt:       #f0f3fd;
+    --glass-white:  rgba(255,255,255,0.72);
+    --glass-white2: rgba(255,255,255,0.55);
+    --glass-border: rgba(255,255,255,0.85);
+    --glass-border2: rgba(200,210,255,0.4);
+    --text-dark:    #0f1333;
+    --text-body:    #2d3358;
+    --text-muted:   #7880a4;
+    --text-dim:     #b0b8d4;
+    --grad-a:       #5b6af5;
+    --grad-b:       #22d3ee;
+    --grad-violet:  #8b5cf6;
+    --grad-pink:    #ec4899;
+    --accent:       #5b6af5;
+    --accent-light: rgba(91,106,245,0.12);
+    --accent-glow:  rgba(91,106,245,0.22);
+    --pro-accent:   #7c3aed;
+    --success:      #10b981;
+    --warn:         #f59e0b;
+    --font-sans:    'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    --font-body:    'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --radius-lg:    20px;
+    --radius-md:    14px;
+    --radius-sm:    8px;
+    --shadow-card:  0 8px 32px rgba(91,106,245,0.10), 0 1px 4px rgba(91,106,245,0.06);
+    --shadow-float: 0 20px 60px rgba(91,106,245,0.14), 0 4px 16px rgba(91,106,245,0.08);
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--bg-base);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--bg-base);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 5vw, 72px) clamp(32px, 7vw, 100px);
+    overflow: hidden;
+  }
+
+  /* ─── MESH GRADIENT BACKGROUND ─── */
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 20%, rgba(91,106,245,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 60% at 85% 80%, rgba(34,211,238,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 60% 10%, rgba(139,92,246,0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide-alt::before {
+    background:
+      radial-gradient(ellipse 60% 50% at 90% 15%, rgba(91,106,245,0.09) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 60% at 10% 85%, rgba(34,211,238,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(139,92,246,0.05) 0%, transparent 45%);
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ─── GLASS CARD ─── */
+  .glass {
+    background: var(--glass-white);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-subtle {
+    background: rgba(255,255,255,0.50);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(200,210,255,0.45);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 16px rgba(91,106,245,0.06);
+  }
+
+  /* ─── GRADIENT TEXT ─── */
+  .grad-text {
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .grad-text-violet {
+    background: linear-gradient(135deg, var(--grad-violet), var(--grad-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--text-dark);
+  }
+
+  .heading {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-dark);
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .body-text {
+    font-family: var(--font-body);
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+
+  .muted { color: var(--text-muted); }
+  .dim   { color: var(--text-dim); }
+
+  /* ─── PILL / BADGE ─── */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid rgba(91,106,245,0.2);
+  }
+
+  .pill-violet {
+    background: rgba(124,58,237,0.10);
+    color: var(--pro-accent);
+    border-color: rgba(124,58,237,0.2);
+  }
+
+  .pill-cyan {
+    background: rgba(34,211,238,0.10);
+    color: #0891b2;
+    border-color: rgba(34,211,238,0.25);
+  }
+
+  .pill-green {
+    background: rgba(16,185,129,0.10);
+    color: var(--success);
+    border-color: rgba(16,185,129,0.22);
+  }
+
+  /* ─── GRADIENT BUTTON ─── */
+  .btn-grad {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    box-shadow: 0 4px 20px rgba(91,106,245,0.35);
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 26px;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--accent);
+    background: transparent;
+    border: 1.5px solid rgba(91,106,245,0.35);
+    cursor: pointer;
+  }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-num {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    z-index: 10;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    pointer-events: none;
+    white-space: nowrap;
+    background: var(--glass-white);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    padding: 7px 20px;
+    box-shadow: 0 4px 20px rgba(91,106,245,0.10);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(91,106,245,0.2), transparent);
+    margin: 24px 0;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 1 — COVER / TITLE
+  ═══════════════════════════════════════ */
+  .cover-logo {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(14px, 1.5vw, 18px);
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 56px;
+  }
+
+  .cover-logo-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .cover-headline {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(48px, 7.5vw, 108px);
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    color: var(--text-dark);
+    max-width: 16ch;
+    margin-bottom: 28px;
+  }
+
+  .cover-sub {
+    font-family: var(--font-body);
+    font-size: clamp(14px, 1.3vw, 18px);
+    color: var(--text-muted);
+    max-width: 52ch;
+    line-height: 1.65;
+    margin-bottom: 44px;
+  }
+
+  .cover-chips {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .cover-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+    min-width: 140px;
+  }
+
+  .cover-chip-val {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(22px, 2.5vw, 32px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-chip-lbl {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .cover-bg-blob {
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,106,245,0.12) 0%, rgba(34,211,238,0.06) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 2 — VALUE PROP
+  ═══════════════════════════════════════ */
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 36px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .value-card {
+    padding: 32px 28px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .value-icon-a { background: linear-gradient(135deg, #ede9fe, #c4b5fd); color: #7c3aed; }
+  .value-icon-b { background: linear-gradient(135deg, #e0f2fe, #bae6fd); color: #0891b2; }
+  .value-icon-c { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #059669; }
+
+  .value-title {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(16px, 1.5vw, 20px);
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .value-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 3 — THE PROBLEM WITH PRICING
+  ═══════════════════════════════════════ */
+  .problem-glass-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 36px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .problem-card {
+    padding: 32px 30px;
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(200,210,255,0.5);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .problem-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .problem-num-bg {
+    position: absolute;
+    bottom: -16px;
+    right: 16px;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 120px;
+    letter-spacing: -0.06em;
+    line-height: 1;
+    color: rgba(91,106,245,0.05);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .problem-stat {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(36px, 4.5vw, 58px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .problem-head {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(15px, 1.5vw, 19px);
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .problem-body {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 38ch;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 4 — PRICING TIERS
+  ═══════════════════════════════════════ */
+  .pricing-row {
+    display: grid;
+    grid-template-columns: 1fr 1.12fr 1fr;
+    gap: 20px;
+    margin-top: 36px;
+    width: 100%;
+    max-width: 1100px;
+    align-items: start;
+  }
+
+  .plan-card {
+    padding: 36px 30px 32px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+
+  .plan-card-pro {
+    background: rgba(255,255,255,0.82);
+    border: 1.5px solid rgba(124,58,237,0.25);
+    box-shadow: 0 12px 48px rgba(124,58,237,0.14), 0 2px 8px rgba(124,58,237,0.08), var(--shadow-card);
+    transform: translateY(-6px);
+  }
+
+  .plan-popular {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 18px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--grad-violet), var(--grad-pink));
+    color: #fff;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.30);
+  }
+
+  .plan-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .plan-icon-starter { background: linear-gradient(135deg, #e0f2fe, #bae6fd); color: #0891b2; }
+  .plan-icon-pro     { background: linear-gradient(135deg, #ede9fe, #c4b5fd); color: #7c3aed; }
+  .plan-icon-ent     { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #b45309; }
+
+  .plan-name {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .plan-tagline {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .plan-price {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(34px, 3.5vw, 48px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+
+  .plan-price-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .plan-divider {
+    height: 1px;
+    background: rgba(91,106,245,0.12);
+    margin: 20px 0;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .plan-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.83rem;
+    color: var(--text-body);
+    line-height: 1.45;
+  }
+
+  .plan-feature-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    margin-top: 1px;
+  }
+
+  .fi-blue   { background: rgba(91,106,245,0.12); color: var(--accent); }
+  .fi-violet { background: rgba(124,58,237,0.12); color: var(--pro-accent); }
+  .fi-amber  { background: rgba(245,158,11,0.12); color: var(--warn); }
+
+  .plan-btn {
+    display: block;
+    text-align: center;
+    padding: 13px 20px;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+  }
+
+  .plan-btn-starter {
+    background: rgba(91,106,245,0.08);
+    color: var(--accent);
+    border: 1.5px solid rgba(91,106,245,0.22);
+  }
+
+  .plan-btn-pro {
+    background: linear-gradient(135deg, var(--grad-violet), var(--grad-pink));
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(124,58,237,0.28);
+  }
+
+  .plan-btn-ent {
+    background: rgba(245,158,11,0.08);
+    color: #b45309;
+    border: 1.5px solid rgba(245,158,11,0.25);
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 5 — FEATURE COMPARISON TABLE
+  ═══════════════════════════════════════ */
+  .compare-wrap {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 32px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+
+  .compare-table thead tr {
+    background: rgba(91,106,245,0.05);
+    border-bottom: 1px solid rgba(91,106,245,0.10);
+  }
+
+  .compare-table th {
+    padding: 16px 20px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+  }
+
+  .compare-table th.col-hl {
+    background: rgba(124,58,237,0.06);
+    color: var(--pro-accent);
+    border-left: 1px solid rgba(124,58,237,0.12);
+    border-right: 1px solid rgba(124,58,237,0.12);
+  }
+
+  .compare-table td {
+    padding: 13px 20px;
+    border-bottom: 1px solid rgba(91,106,245,0.07);
+    color: var(--text-body);
+    vertical-align: middle;
+  }
+
+  .compare-table td:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.82rem;
+  }
+
+  .compare-table td.col-hl {
+    background: rgba(124,58,237,0.04);
+    border-left: 1px solid rgba(124,58,237,0.10);
+    border-right: 1px solid rgba(124,58,237,0.10);
+  }
+
+  .compare-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .compare-table tbody tr:hover td {
+    background: rgba(91,106,245,0.025);
+  }
+
+  .check { color: var(--success); font-weight: 700; }
+  .cross { color: var(--text-dim); }
+  .partial { color: var(--warn); font-weight: 600; }
+
+  /* ═══════════════════════════════════════
+     SLIDE 6 — ROI / PROOF STATS
+  ═══════════════════════════════════════ */
+  .roi-hero-num {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(80px, 14vw, 160px);
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .roi-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .roi-stat-card {
+    padding: 24px 22px;
+    border-radius: var(--radius-md);
+    background: var(--glass-white);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .roi-stat-val {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(22px, 2.8vw, 36px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+
+  .roi-stat-lbl {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .roi-stat-delta {
+    font-size: 0.68rem;
+    color: var(--success);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  .roi-quote {
+    margin-top: 28px;
+    padding: 28px 32px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+    max-width: 1100px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .roi-quote-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .roi-quote-text {
+    font-size: 0.95rem;
+    color: var(--text-body);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .roi-quote-attr {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 7 — CUSTOMER LOGOS / SOCIAL PROOF
+  ═══════════════════════════════════════ */
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .logo-glass {
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    background: var(--glass-white);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 16px rgba(91,106,245,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-name {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 8 — FAQ / TRUST
+  ═══════════════════════════════════════ */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .faq-card {
+    padding: 28px 26px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-white);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .faq-q {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(14px, 1.2vw, 17px);
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .faq-q-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    margin-top: 1px;
+  }
+
+  .faq-a {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 32px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 9 — CTA / CLOSING
+  ═══════════════════════════════════════ */
+  .cta-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-glass-box {
+    padding: 60px 56px;
+    border-radius: 28px;
+    background: var(--glass-white);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-float);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-glass-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--grad-a), var(--grad-b), var(--grad-violet));
+    border-radius: 28px 28px 0 0;
+  }
+
+  .cta-headline {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 58px);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--text-dark);
+    max-width: 18ch;
+  }
+
+  .cta-sub {
+    font-size: clamp(14px, 1.2vw, 17px);
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 48ch;
+  }
+
+  .cta-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cta-trust {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .trust-icon { color: var(--success); }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    .slide::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; CloudPeak &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — COVER
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="background: linear-gradient(155deg, #f8f9ff 0%, #eef1fd 50%, #f0faff 100%);">
+  <div class="slide-num">01 / 10</div>
+  <div class="cover-bg-blob"></div>
+
+  <div class="cover-logo">
+    <div class="cover-logo-icon"><i class="fa-solid fa-cloud"></i></div>
+    CloudPeak
+  </div>
+
+  <div class="cover-headline">
+    Pricing that grows<br />
+    <span class="grad-text">with your team.</span>
+  </div>
+
+  <p class="cover-sub">
+    CloudPeak is developer-first cloud infrastructure built for scale. No surprise bills. No lock-in. Deploy globally in 90 seconds — then pick the plan that fits.
+  </p>
+
+  <div class="cover-chips">
+    <div class="cover-chip">
+      <span class="cover-chip-val">$0</span>
+      <span class="cover-chip-lbl">to start</span>
+    </div>
+    <div class="cover-chip">
+      <span class="cover-chip-val">14</span>
+      <span class="cover-chip-lbl">regions worldwide</span>
+    </div>
+    <div class="cover-chip">
+      <span class="cover-chip-val">99.99%</span>
+      <span class="cover-chip-lbl">SLA uptime</span>
+    </div>
+    <div class="cover-chip">
+      <span class="cover-chip-val">4,800+</span>
+      <span class="cover-chip-lbl">companies on CloudPeak</span>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <span class="pill"><i class="fa-solid fa-shield-halved"></i>&nbsp;SOC 2 Type II</span>
+    <span class="pill-cyan pill"><i class="fa-solid fa-globe"></i>&nbsp;GDPR Ready</span>
+    <span class="pill-green pill"><i class="fa-solid fa-leaf"></i>&nbsp;Carbon-Neutral Infra</span>
+  </div>
+
+  <div style="position:absolute;bottom:36px;right:clamp(32px,7vw,100px);font-size:0.62rem;font-weight:600;color:var(--text-dim);letter-spacing:0.08em;text-align:right;line-height:1.8;">
+    CLOUDPEAK INC. · SAN FRANCISCO, CA<br />
+    PRICING OVERVIEW · JUNE 2026
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — VALUE PROP
+═══════════════════════════════════════ -->
+<section class="slide slide-alt" id="slide-2" style="background: linear-gradient(140deg, #f0f3fd 0%, #f8f9ff 60%, #edfcff 100%);">
+  <div class="slide-num">02 / 10</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="eyebrow">Why CloudPeak</span>
+    <h2 class="heading" style="font-size:clamp(28px,4vw,52px);max-width:22ch;margin-bottom:8px;">
+      Infrastructure that just <span class="grad-text">works</span> — at any scale
+    </h2>
+    <p class="body-text" style="font-size:0.9rem;max-width:60ch;margin-bottom:0;" >
+      We built CloudPeak for teams who are tired of juggling three dashboards, deciphering 38-item invoices, and getting rate-limited by their own cloud provider.
+    </p>
+
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon value-icon-a">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <div class="value-title">Deploy in 90 seconds</div>
+        <p class="value-desc">From git push to globally distributed — our CLI + automated edge routing means zero devops ceremony. Works with any language or framework.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon value-icon-b">
+          <i class="fa-solid fa-receipt"></i>
+        </div>
+        <div class="value-title">Predictable billing</div>
+        <p class="value-desc">Every plan comes with a hard spend cap and real-time cost analytics. No egress fees. No multi-tier data transfer pricing. One clean line-item per month.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon value-icon-c">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div class="value-title">Enterprise-grade, day one</div>
+        <p class="value-desc">SOC 2 Type II, GDPR, HIPAA-eligible, and ISO 27001 across every plan — not locked behind an enterprise upgrade wall. Your compliance team will love it.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+      <div class="glass-subtle" style="padding:14px 20px;display:flex;gap:16px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-sans);font-weight:800;font-size:1.5rem;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">4,800+</div>
+          <div style="font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-dim);">Companies</div>
+        </div>
+        <div style="width:1px;background:rgba(91,106,245,0.12);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-sans);font-weight:800;font-size:1.5rem;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">14</div>
+          <div style="font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-dim);">Regions</div>
+        </div>
+        <div style="width:1px;background:rgba(91,106,245,0.12);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-sans);font-weight:800;font-size:1.5rem;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">99.99%</div>
+          <div style="font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-dim);">Uptime SLA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE PROBLEM WITH CLOUD PRICING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3" style="background:linear-gradient(155deg,#f8f9ff 0%,#eef1fd 55%,#f5f0ff 100%);">
+  <div class="slide-num">03 / 10</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="eyebrow">The Problem</span>
+    <h2 class="heading" style="font-size:clamp(28px,4vw,52px);max-width:22ch;margin-bottom:8px;">
+      Cloud bills have become <span class="grad-text-violet">a guessing game</span>
+    </h2>
+    <p class="body-text" style="font-size:0.88rem;max-width:60ch;margin-bottom:0;">
+      Modern cloud pricing is opaque, unpredictable, and punishes growth. Here's what dev teams actually tell us.
+    </p>
+
+    <div class="problem-glass-grid">
+      <div class="problem-card">
+        <div class="problem-num-bg">01</div>
+        <span class="pill pill-violet" style="margin-bottom:16px;">Unpredictability</span>
+        <div class="problem-stat">67%</div>
+        <div class="problem-head">of teams overspent their cloud budget last quarter</div>
+        <p class="problem-body">Egress fees, data-transfer surcharges, and reserved-instance penalties routinely 2×–4× developer estimates. Finance teams hate it. Engineering teams hate it more.</p>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num-bg">02</div>
+        <span class="pill" style="margin-bottom:16px;">Complexity</span>
+        <div class="problem-stat">38</div>
+        <div class="problem-head">line items on an average enterprise cloud invoice</div>
+        <p class="problem-body">Compute, networking tiers, storage classes, API call volumes, support plans — pricing complexity has become a full-time job. Engineers shouldn't need a spreadsheet to estimate a feature.</p>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num-bg">03</div>
+        <span class="pill pill-cyan" style="margin-bottom:16px;">Lock-In</span>
+        <div class="problem-stat">$180K</div>
+        <div class="problem-head">average migration cost when leaving a hyperscaler</div>
+        <p class="problem-body">Proprietary APIs, native databases, and punitive egress pricing trap teams in contracts they regret. Real portability shouldn't require a six-month project.</p>
+      </div>
+
+      <div class="problem-card" style="border-top:3px solid rgba(91,106,245,0.25);">
+        <div class="problem-num-bg">04</div>
+        <span class="pill pill-green" style="margin-bottom:16px;">Our Answer</span>
+        <div class="problem-head" style="font-size:clamp(18px,2vw,26px);margin-bottom:12px;background:linear-gradient(135deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">CloudPeak: three plans, one invoice, no surprises.</div>
+        <p class="problem-body" style="font-size:0.88rem;">Flat monthly tiers. Spend caps by default. Open APIs. Zero egress on inter-region traffic. Switch plans or leave anytime — we export your data in 48 hours, free.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — PRICING TIERS
+═══════════════════════════════════════ -->
+<section class="slide slide-alt" id="slide-4" style="background:linear-gradient(140deg,#eef1fd 0%,#f8f9ff 55%,#edfcff 100%);">
+  <div class="slide-num">04 / 10</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="eyebrow">Pricing Plans</span>
+    <h2 class="heading" style="font-size:clamp(26px,3.8vw,50px);max-width:22ch;margin-bottom:6px;">
+      Simple tiers. <span class="grad-text">Real value.</span>
+    </h2>
+    <p class="body-text" style="font-size:0.85rem;max-width:55ch;">All plans include global CDN, DDoS protection, SSL, and compliance docs. No hidden fees.</p>
+
+    <div class="pricing-row">
+
+      <!-- STARTER -->
+      <div class="plan-card">
+        <div class="plan-icon plan-icon-starter"><i class="fa-solid fa-seedling"></i></div>
+        <div class="plan-name">Starter</div>
+        <div class="plan-tagline">Perfect for side projects & early-stage teams</div>
+        <div class="plan-price"><span style="font-size:0.5em;font-weight:600;letter-spacing:0;vertical-align:top;line-height:2;">$</span>49</div>
+        <div class="plan-price-sub">per month · billed monthly</div>
+
+        <div class="plan-divider"></div>
+
+        <ul class="plan-features">
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-blue"><i class="fa-solid fa-check"></i></span>
+            <span>3 projects / 2 team members</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-blue"><i class="fa-solid fa-check"></i></span>
+            <span>100 GB storage, 500 GB bandwidth/mo</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-blue"><i class="fa-solid fa-check"></i></span>
+            <span>Shared compute · 2 vCPU, 4 GB RAM</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-blue"><i class="fa-solid fa-check"></i></span>
+            <span>3 deploy regions (US, EU, APAC)</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-blue"><i class="fa-solid fa-check"></i></span>
+            <span>Community support + docs</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-blue"><i class="fa-solid fa-check"></i></span>
+            <span>SOC 2 compliance docs</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-blue" style="background:rgba(91,106,245,0.05);color:var(--text-dim);"><i class="fa-solid fa-minus"></i></span>
+            <span style="color:var(--text-dim);">No custom domains (upgrade to Pro)</span>
+          </li>
+        </ul>
+
+        <button class="plan-btn plan-btn-starter">Get Started Free →</button>
+      </div>
+
+      <!-- PRO (MOST POPULAR) -->
+      <div class="plan-card plan-card-pro">
+        <div class="plan-popular">Most Popular</div>
+        <div class="plan-icon plan-icon-pro"><i class="fa-solid fa-rocket"></i></div>
+        <div class="plan-name" style="background:linear-gradient(135deg,var(--grad-violet),var(--grad-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pro</div>
+        <div class="plan-tagline">Built for growing product teams</div>
+        <div class="plan-price" style="background:linear-gradient(135deg,var(--grad-violet),var(--grad-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><span style="font-size:0.5em;font-weight:600;letter-spacing:0;vertical-align:top;line-height:2;">$</span>249</div>
+        <div class="plan-price-sub">per month · save 20% annual</div>
+
+        <div class="plan-divider" style="background:rgba(124,58,237,0.15);"></div>
+
+        <ul class="plan-features">
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-violet"><i class="fa-solid fa-check"></i></span>
+            <span><strong>Unlimited</strong> projects · 15 team members</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-violet"><i class="fa-solid fa-check"></i></span>
+            <span>1 TB storage, 5 TB bandwidth/mo</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-violet"><i class="fa-solid fa-check"></i></span>
+            <span>Dedicated compute · 8 vCPU, 16 GB RAM</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-violet"><i class="fa-solid fa-check"></i></span>
+            <span>All 14 global regions</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-violet"><i class="fa-solid fa-check"></i></span>
+            <span>Priority email + Slack support (4hr SLA)</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-violet"><i class="fa-solid fa-check"></i></span>
+            <span>Custom domains + wildcard SSL</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-violet"><i class="fa-solid fa-check"></i></span>
+            <span>Advanced analytics + spend alerts</span>
+          </li>
+        </ul>
+
+        <button class="plan-btn plan-btn-pro">Start Pro Trial →</button>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="plan-card">
+        <div class="plan-icon plan-icon-ent"><i class="fa-solid fa-building"></i></div>
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-tagline">For regulated industries & large-scale operations</div>
+        <div class="plan-price" style="font-size:clamp(28px,3vw,40px);">Custom</div>
+        <div class="plan-price-sub">annual contract · volume pricing</div>
+
+        <div class="plan-divider"></div>
+
+        <ul class="plan-features">
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-amber"><i class="fa-solid fa-check"></i></span>
+            <span>Unlimited everything — seats, projects, storage</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-amber"><i class="fa-solid fa-check"></i></span>
+            <span>Dedicated private cluster (single-tenant)</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-amber"><i class="fa-solid fa-check"></i></span>
+            <span>Custom SLA up to 99.999% uptime</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-amber"><i class="fa-solid fa-check"></i></span>
+            <span>24/7 dedicated CSM + phone support</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-amber"><i class="fa-solid fa-check"></i></span>
+            <span>HIPAA BAA, GDPR DPA, FedRAMP-eligible</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-amber"><i class="fa-solid fa-check"></i></span>
+            <span>SSO/SAML, SCIM provisioning, audit logs</span>
+          </li>
+          <li class="plan-feature">
+            <span class="plan-feature-icon fi-amber"><i class="fa-solid fa-check"></i></span>
+            <span>Custom data residency + private link VPN</span>
+          </li>
+        </ul>
+
+        <button class="plan-btn plan-btn-ent">Talk to Sales →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — FEATURE COMPARISON TABLE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="background:linear-gradient(155deg,#f8f9ff 0%,#f0f3fd 55%,#edfcff 100%);">
+  <div class="slide-num">05 / 10</div>
+
+  <div style="width:100%;max-width:1000px;">
+    <span class="eyebrow">Feature Comparison</span>
+    <h2 class="heading" style="font-size:clamp(24px,3.5vw,44px);margin-bottom:6px;">
+      Everything side by side — <span class="grad-text">no fine print</span>
+    </h2>
+    <p class="body-text" style="font-size:0.84rem;max-width:55ch;">Pick any plan. Every feature listed here is exactly what you get. No asterisks.</p>
+
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width:34%;">Feature</th>
+            <th>Starter <span style="font-weight:500;opacity:.6;">$49/mo</span></th>
+            <th class="col-hl">Pro <span style="font-weight:500;opacity:.7;">$249/mo</span></th>
+            <th>Enterprise <span style="font-weight:500;opacity:.6;">Custom</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Projects</td>
+            <td>3</td>
+            <td class="col-hl"><span class="check">Unlimited</span></td>
+            <td><span class="check">Unlimited</span></td>
+          </tr>
+          <tr>
+            <td>Team Members</td>
+            <td>2</td>
+            <td class="col-hl">15</td>
+            <td><span class="check">Unlimited</span></td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>100 GB</td>
+            <td class="col-hl">1 TB</td>
+            <td><span class="check">Custom</span></td>
+          </tr>
+          <tr>
+            <td>Bandwidth / month</td>
+            <td>500 GB</td>
+            <td class="col-hl">5 TB</td>
+            <td><span class="check">Custom</span></td>
+          </tr>
+          <tr>
+            <td>Global Regions</td>
+            <td>3 (US, EU, APAC)</td>
+            <td class="col-hl"><span class="check">All 14 regions</span></td>
+            <td><span class="check">All 14 + private</span></td>
+          </tr>
+          <tr>
+            <td>Dedicated Compute</td>
+            <td><span class="cross">Shared only</span></td>
+            <td class="col-hl"><span class="check">8 vCPU / 16 GB</span></td>
+            <td><span class="check">Custom cluster</span></td>
+          </tr>
+          <tr>
+            <td>Custom Domains + SSL</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-hl"><span class="check">✓ Wildcard SSL</span></td>
+            <td><span class="check">✓ + private link</span></td>
+          </tr>
+          <tr>
+            <td>SSO / SAML</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-hl"><span class="partial">Add-on $49/mo</span></td>
+            <td><span class="check">✓ Included</span></td>
+          </tr>
+          <tr>
+            <td>Uptime SLA</td>
+            <td>99.9%</td>
+            <td class="col-hl"><span class="check">99.99%</span></td>
+            <td><span class="check">Up to 99.999%</span></td>
+          </tr>
+          <tr>
+            <td>Support Channel</td>
+            <td>Community + Docs</td>
+            <td class="col-hl">Email + Slack (4hr)</td>
+            <td><span class="check">24/7 CSM + Phone</span></td>
+          </tr>
+          <tr>
+            <td>HIPAA / GDPR / SOC 2</td>
+            <td><span class="partial">SOC 2 docs only</span></td>
+            <td class="col-hl"><span class="check">SOC 2 + GDPR DPA</span></td>
+            <td><span class="check">Full compliance suite</span></td>
+          </tr>
+          <tr>
+            <td>Audit Logs</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-hl"><span class="partial">90-day retention</span></td>
+            <td><span class="check">Unlimited retention</span></td>
+          </tr>
+          <tr>
+            <td>Spend Cap / Alerts</td>
+            <td><span class="check">✓ Hard cap</span></td>
+            <td class="col-hl"><span class="check">✓ Real-time alerts</span></td>
+            <td><span class="check">✓ FinOps dashboard</span></td>
+          </tr>
+          <tr>
+            <td>Egress Fees</td>
+            <td><span class="check">Zero</span></td>
+            <td class="col-hl"><span class="check">Zero</span></td>
+            <td><span class="check">Zero</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:14px;font-size:0.68rem;color:var(--text-dim);font-weight:500;">
+      All plans include: global CDN, DDoS protection, automated backups, GitHub/GitLab CI integration, CLI + REST API, and carbon-neutral infrastructure.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — ROI / PROOF STATS
+═══════════════════════════════════════ -->
+<section class="slide slide-alt" id="slide-6" style="background:linear-gradient(140deg,#eef1fd 0%,#f8f9ff 60%,#f5f0ff 100%);">
+  <div class="slide-num">06 / 10</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="eyebrow">Real-World Impact</span>
+    <div style="display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:0;">
+      <div>
+        <div class="roi-hero-num">3.8×</div>
+        <p style="font-family:var(--font-body);font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;">
+          Average ROI in the first year · across 4,800+ CloudPeak customers
+        </p>
+      </div>
+      <div style="padding-left:28px;border-left:1.5px solid rgba(91,106,245,0.15);padding-bottom:12px;max-width:30ch;">
+        <p style="font-size:0.84rem;color:var(--text-muted);line-height:1.7;">
+          Teams that migrate to CloudPeak typically cut DevOps overhead by 40%, reduce monthly cloud spend by 52%, and ship features 2× faster thanks to zero-config deployments.
+        </p>
+      </div>
+    </div>
+
+    <div class="roi-stats-row">
+      <div class="roi-stat-card">
+        <div class="roi-stat-val">52%</div>
+        <div class="roi-stat-lbl">Avg. cloud cost reduction vs. previous provider</div>
+        <div class="roi-stat-delta">↑ vs. AWS/GCP/Azure benchmarks</div>
+      </div>
+      <div class="roi-stat-card">
+        <div class="roi-stat-val">90 sec</div>
+        <div class="roi-stat-lbl">Median time from git push to global deploy</div>
+        <div class="roi-stat-delta">↓ from 18 min industry average</div>
+      </div>
+      <div class="roi-stat-card">
+        <div class="roi-stat-val">148%</div>
+        <div class="roi-stat-lbl">Net revenue retention — customers expand, not churn</div>
+        <div class="roi-stat-delta">↑ from 112% in 2024</div>
+      </div>
+      <div class="roi-stat-card">
+        <div class="roi-stat-val">4.9/5</div>
+        <div class="roi-stat-lbl">Average G2 review score (638 verified reviews)</div>
+        <div class="roi-stat-delta">#1 in Cloud Infrastructure (SMB)</div>
+      </div>
+    </div>
+
+    <div class="roi-quote">
+      <div class="roi-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+      <div>
+        <p class="roi-quote-text">"We migrated 14 microservices to CloudPeak Pro in a single sprint. Our AWS bill went from $22K/month to $8K/month. The CloudPeak CLI is genuinely the most pleasant deployment experience I've used in 12 years of backend engineering."</p>
+        <div class="roi-quote-attr">— Mara Lindqvist, VP Engineering · Tessera Health (Series B)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — CUSTOMER LOGOS / SOCIAL PROOF
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="background:linear-gradient(155deg,#f8f9ff 0%,#eef1fd 55%,#edfcff 100%);">
+  <div class="slide-num">07 / 10</div>
+
+  <div style="width:100%;max-width:1000px;">
+    <span class="eyebrow">Trusted By</span>
+    <h2 class="heading" style="font-size:clamp(26px,3.8vw,48px);max-width:22ch;margin-bottom:8px;">
+      4,800+ teams already <span class="grad-text">on CloudPeak</span>
+    </h2>
+    <p class="body-text" style="font-size:0.88rem;max-width:55ch;">From solo developers on Starter to regulated enterprises on custom contracts — CloudPeak scales across every stage.</p>
+
+    <div class="logos-grid">
+      <div class="logo-glass"><div class="logo-name">Tessera Health</div></div>
+      <div class="logo-glass"><div class="logo-name">Orbis Finance</div></div>
+      <div class="logo-glass"><div class="logo-name">Verdant Energy</div></div>
+      <div class="logo-glass"><div class="logo-name">Kairos Logistics</div></div>
+      <div class="logo-glass"><div class="logo-name">Nymeria AI</div></div>
+      <div class="logo-glass"><div class="logo-name">Pulsar Security</div></div>
+      <div class="logo-glass"><div class="logo-name">Drift Commerce</div></div>
+      <div class="logo-glass"><div class="logo-name">Solace Robotics</div></div>
+      <div class="logo-glass"><div class="logo-name">Fieldstone Labs</div></div>
+    </div>
+
+    <div style="margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;">
+      <div class="glass-subtle" style="padding:20px 22px;">
+        <div style="font-family:var(--font-sans);font-weight:800;font-size:1.6rem;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">Starter</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);">2,900+ teams · side projects, MVPs, freelancers</div>
+      </div>
+      <div class="glass-subtle" style="padding:20px 22px;border-color:rgba(124,58,237,0.22);">
+        <div style="font-family:var(--font-sans);font-weight:800;font-size:1.6rem;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--grad-violet),var(--grad-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">Pro</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);">1,600+ product teams · Series A-C companies</div>
+      </div>
+      <div class="glass-subtle" style="padding:20px 22px;border-color:rgba(245,158,11,0.22);">
+        <div style="font-family:var(--font-sans);font-weight:800;font-size:1.6rem;letter-spacing:-0.03em;color:#b45309;margin-bottom:4px;">Enterprise</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);">300+ enterprise contracts · fintech, health, gov</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — FAQ / TRUST
+═══════════════════════════════════════ -->
+<section class="slide slide-alt" id="slide-8" style="background:linear-gradient(140deg,#f0f3fd 0%,#f8f9ff 55%,#f5f0ff 100%);">
+  <div class="slide-num">08 / 10</div>
+
+  <div style="width:100%;max-width:1000px;">
+    <span class="eyebrow">Common Questions</span>
+    <h2 class="heading" style="font-size:clamp(24px,3.5vw,44px);max-width:22ch;margin-bottom:6px;">
+      Questions we hear <span class="grad-text">every day</span>
+    </h2>
+    <p class="body-text" style="font-size:0.84rem;max-width:55ch;">Honest answers — no sales-speak.</p>
+
+    <div class="faq-grid">
+      <div class="faq-card">
+        <div class="faq-q">
+          <span class="faq-q-icon"><i class="fa-solid fa-question"></i></span>
+          Can I change plans mid-month?
+        </div>
+        <p class="faq-a">Yes. Plan upgrades take effect immediately (prorated to the day). Downgrades take effect at your next billing cycle. No cancellation fees — ever.</p>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-q">
+          <span class="faq-q-icon"><i class="fa-solid fa-question"></i></span>
+          What happens if I go over my bandwidth limit?
+        </div>
+        <p class="faq-a">By default we hard-cap usage at your plan limit and send you a warning at 80%. You can opt-in to overage at $0.02/GB — still well below AWS/GCP rates — or we can automatically upgrade your plan.</p>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-q">
+          <span class="faq-q-icon"><i class="fa-solid fa-question"></i></span>
+          Are there egress or inter-region transfer fees?
+        </div>
+        <p class="faq-a">No. Zero egress fees across all 14 regions for all plans. Traffic between your CloudPeak services is always free. One of the most common reasons teams switch to us.</p>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-q">
+          <span class="faq-q-icon"><i class="fa-solid fa-question"></i></span>
+          How does Enterprise pricing work?
+        </div>
+        <p class="faq-a">Enterprise is a custom annual contract based on compute, storage, and compliance requirements. Average contract size is $84K/year. We typically scope and sign within 2 weeks.</p>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-q">
+          <span class="faq-q-icon"><i class="fa-solid fa-question"></i></span>
+          Is my data locked in?
+        </div>
+        <p class="faq-a">Never. Cancel any time, and we'll export everything — databases, files, configs — in standard formats within 48 hours, at no cost. We also provide migration tooling to common alternatives.</p>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-q">
+          <span class="faq-q-icon"><i class="fa-solid fa-question"></i></span>
+          Do you offer a free trial?
+        </div>
+        <p class="faq-a">Starter is free to try for 30 days. Pro includes a 14-day trial with full access — no credit card required. Enterprise pilots include a 60-day proof-of-concept engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — CTA / CLOSING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="background:linear-gradient(155deg,#f8f9ff 0%,#eef1fd 50%,#edfcff 100%);">
+  <div class="slide-num">09 / 10</div>
+  <div class="cover-bg-blob" style="top:auto;bottom:-100px;left:-80px;right:auto;"></div>
+
+  <div style="width:100%;max-width:860px;margin:0 auto;">
+    <div class="cta-glass-box">
+      <span class="eyebrow" style="margin-bottom:0;">Get Started Today</span>
+      <h2 class="cta-headline">
+        Your first deploy is <span class="grad-text">free.</span>
+      </h2>
+      <p class="cta-sub">
+        Sign up in 60 seconds — no credit card needed. Deploy your first project, kick the tires on Pro features, and see the cost savings for yourself.
+      </p>
+
+      <div class="cta-btns">
+        <button class="btn-grad"><i class="fa-solid fa-cloud-arrow-up"></i>&nbsp; Start Free on Starter</button>
+        <button class="btn-outline"><i class="fa-solid fa-calendar-check"></i>&nbsp; Book a Pro Demo</button>
+      </div>
+
+      <div class="divider" style="width:100%;"></div>
+
+      <div class="cta-trust">
+        <div class="trust-item"><i class="fa-solid fa-check trust-icon"></i> No credit card to start</div>
+        <div class="trust-item"><i class="fa-solid fa-check trust-icon"></i> Cancel anytime</div>
+        <div class="trust-item"><i class="fa-solid fa-check trust-icon"></i> Data export in 48 hrs</div>
+        <div class="trust-item"><i class="fa-solid fa-check trust-icon"></i> SOC 2 Type II certified</div>
+        <div class="trust-item"><i class="fa-solid fa-check trust-icon"></i> 99.99% uptime SLA</div>
+      </div>
+
+      <div style="margin-top:8px;font-size:0.78rem;color:var(--text-muted);">
+        <i class="fa-brands fa-github" style="color:var(--text-dim);"></i>&nbsp; github.com/cloudpeak &nbsp;·&nbsp;
+        <i class="fa-solid fa-envelope" style="color:var(--text-dim);"></i>&nbsp; hello@cloudpeak.io &nbsp;·&nbsp;
+        <i class="fa-solid fa-globe" style="color:var(--text-dim);"></i>&nbsp; cloudpeak.io/pricing
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — THANK YOU / CONTACT
+═══════════════════════════════════════ -->
+<section class="slide slide-alt" id="slide-10" style="background:linear-gradient(140deg,#eef1fd 0%,#f8f9ff 60%,#f5f0ff 100%);">
+  <div class="slide-num">10 / 10</div>
+
+  <div style="width:100%;max-width:1000px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;">
+    <div>
+      <div class="cover-logo" style="margin-bottom:28px;">
+        <div class="cover-logo-icon"><i class="fa-solid fa-cloud"></i></div>
+        CloudPeak
+      </div>
+      <h2 class="heading" style="font-size:clamp(28px,4vw,52px);margin-bottom:16px;">
+        Ready when<br />you are. <span class="grad-text">Let's build.</span>
+      </h2>
+      <p class="body-text" style="font-size:0.9rem;max-width:44ch;margin-bottom:28px;">
+        Our team is happy to walk you through any plan, answer compliance questions, or scope an Enterprise contract. We typically respond within 2 business hours.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:0.85rem;color:var(--text-body);">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="width:32px;height:32px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:13px;flex-shrink:0;"><i class="fa-solid fa-envelope"></i></span>
+          hello@cloudpeak.io
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="width:32px;height:32px;border-radius:50%;background:rgba(34,211,238,0.10);display:flex;align-items:center;justify-content:center;color:#0891b2;font-size:13px;flex-shrink:0;"><i class="fa-solid fa-globe"></i></span>
+          cloudpeak.io/pricing
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="width:32px;height:32px;border-radius:50%;background:rgba(16,185,129,0.10);display:flex;align-items:center;justify-content:center;color:var(--success);font-size:13px;flex-shrink:0;"><i class="fa-brands fa-slack"></i></span>
+          Join Slack community (3,200 members)
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="width:32px;height:32px;border-radius:50%;background:rgba(15,19,51,0.06);display:flex;align-items:center;justify-content:center;color:var(--text-dark);font-size:13px;flex-shrink:0;"><i class="fa-brands fa-github"></i></span>
+          github.com/cloudpeak
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="glass-subtle" style="padding:28px 26px;">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">Quick Start Summary</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(91,106,245,0.08);">
+            <span style="font-weight:600;font-size:0.85rem;color:var(--text-dark);">Starter</span>
+            <span style="font-family:var(--font-sans);font-weight:800;background:linear-gradient(135deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$49 / mo</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(91,106,245,0.08);">
+            <span style="font-weight:600;font-size:0.85rem;color:var(--text-dark);">Pro <span style="color:var(--pro-accent);">★</span></span>
+            <span style="font-family:var(--font-sans);font-weight:800;background:linear-gradient(135deg,var(--grad-violet),var(--grad-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$249 / mo</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:600;font-size:0.85rem;color:var(--text-dark);">Enterprise</span>
+            <span style="font-family:var(--font-sans);font-weight:700;color:#b45309;">Custom</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-subtle" style="padding:22px 26px;display:flex;align-items:center;gap:14px;border-color:rgba(16,185,129,0.25);">
+        <span style="width:40px;height:40px;border-radius:50%;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;color:var(--success);font-size:16px;flex-shrink:0;"><i class="fa-solid fa-shield-halved"></i></span>
+        <div>
+          <div style="font-weight:700;font-size:0.85rem;color:var(--text-dark);margin-bottom:3px;">30-day money-back guarantee</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);">Not happy? We'll refund your first month, no questions asked.</div>
+        </div>
+      </div>
+
+      <div style="font-size:0.65rem;font-weight:500;color:var(--text-dim);line-height:1.6;padding:0 4px;">
+        CloudPeak Inc. · San Francisco, CA &nbsp;·&nbsp; SOC 2 Type II · ISO 27001 · GDPR · HIPAA-eligible<br />
+        Prices shown in USD. Annual billing available at 20% discount. Enterprise contracts are billed annually.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+  var total = slides.length;
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

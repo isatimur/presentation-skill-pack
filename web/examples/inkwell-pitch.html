@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inkwell — Seed Pitch</title>
+<meta name="description" content="Inkwell seed pitch deck — indie writing and newsletter publishing tool for independent writers. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/inkwell-pitch" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#f3ecdd" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/inkwell-pitch" />
+<meta property="og:title" content="Inkwell — Seed Pitch" />
+<meta property="og:description" content="Indie writing & newsletter publishing for independent writers. Raising $1.2M seed." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Inkwell — Seed Pitch" />
+<meta name="twitter:description" content="Indie writing & newsletter publishing for independent writers." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Archivo+Black&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS — RISO ZINE PALETTE ─── */
+  :root {
+    --paper:      #f3ecdd;
+    --paper-dark: #e8dfc8;
+    --coral:      #ff4f4f;
+    --blue:       #2b3aff;
+    --ink-black:  #1a1209;
+    --ink-mid:    #4a3c28;
+    --ink-light:  #7a6a52;
+    --ink-dim:    #a89878;
+    --font-mono:  'Space Mono', 'Courier New', monospace;
+    --font-disp:  'Archivo Black', 'Impact', sans-serif;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--paper);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink-black);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ─── RISO HALFTONE GRAIN TEXTURE ─── */
+  /* Applied as a pseudo-element on slides */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 5vw, 72px) clamp(32px, 7vw, 100px);
+    overflow: hidden;
+  }
+
+  /* Halftone dot grain pattern — blue channel */
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(43,58,255,0.10) 1.5px, transparent 1.5px),
+      radial-gradient(circle, rgba(43,58,255,0.06) 1px, transparent 1px);
+    background-size: 12px 12px, 6px 6px;
+    background-position: 0 0, 3px 3px;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: multiply;
+  }
+
+  /* Halftone dot grain — coral channel */
+  .slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255,79,79,0.07) 1px, transparent 1px);
+    background-size: 8px 8px;
+    background-position: 4px 4px;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: multiply;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* Paper variant backgrounds */
+  .paper-1 { background: var(--paper); }
+  .paper-2 { background: var(--paper-dark); }
+
+  /* ─── RISO OVERPRINT HELPERS ─── */
+  .riso-coral { color: var(--coral); }
+  .riso-blue  { color: var(--blue); }
+
+  /* Overprint block — two colors multiply */
+  .overprint {
+    position: relative;
+    display: inline-block;
+  }
+  .overprint-shadow {
+    /* misregistration: blue offset behind coral text */
+    text-shadow: 3px 4px 0 rgba(43,58,255,0.45), -1px -1px 0 rgba(43,58,255,0.2);
+  }
+  .overprint-shadow-coral {
+    text-shadow: -2px 3px 0 rgba(255,79,79,0.4), 2px -2px 0 rgba(255,79,79,0.18);
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .disp {
+    font-family: var(--font-disp);
+    line-height: 0.93;
+  }
+  .mono { font-family: var(--font-mono); }
+
+  .label-stamp {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-black);
+    border: 2px solid var(--ink-black);
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 18px;
+    background: transparent;
+  }
+  .label-coral {
+    background: var(--coral);
+    color: #fff;
+    border-color: var(--coral);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+  .label-blue {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  /* ─── SLIDE NUMBER ─── */
+  .slide-num {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: var(--ink-mid);
+    letter-spacing: 0.12em;
+    z-index: 10;
+    border: 1.5px solid var(--ink-mid);
+    padding: 2px 7px;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: var(--ink-black);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: var(--paper);
+    border: 2px solid var(--ink-black);
+    padding: 5px 14px;
+  }
+
+  /* ─── RISO BLOCK / CARD ─── */
+  .riso-box {
+    border: 2.5px solid var(--ink-black);
+    background: transparent;
+    padding: 24px 28px;
+  }
+  .riso-box-coral {
+    border: 2.5px solid var(--coral);
+    background: rgba(255,79,79,0.06);
+    mix-blend-mode: multiply;
+    padding: 24px 28px;
+  }
+  .riso-box-blue {
+    border: 2.5px solid var(--blue);
+    background: rgba(43,58,255,0.06);
+    mix-blend-mode: multiply;
+    padding: 24px 28px;
+  }
+
+  /* ─── H-RULE ZINE ─── */
+  .h-rule-zine {
+    border: none;
+    border-top: 3px solid var(--ink-black);
+    margin: 22px 0;
+  }
+  .h-rule-coral {
+    border: none;
+    border-top: 3px solid var(--coral);
+    margin: 22px 0;
+  }
+
+  /* ─── BODY TEXT ─── */
+  .body-text {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+  .body-text strong { color: var(--ink-black); font-weight: 700; }
+  .muted { color: var(--ink-dim); }
+
+  /* ═══════════════════════════════════════
+     SLIDE 1 — ZINE COVER
+  ═══════════════════════════════════════ */
+  .cover-masthead {
+    font-family: var(--font-disp);
+    font-size: clamp(72px, 14vw, 180px);
+    line-height: 0.88;
+    color: var(--coral);
+    text-shadow: 4px 5px 0 rgba(43,58,255,0.35), -2px -2px 0 rgba(43,58,255,0.15);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .cover-issue {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    border-top: 3px solid var(--ink-black);
+    border-bottom: 3px solid var(--ink-black);
+    padding: 6px 0;
+    margin: 20px 0;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .cover-kicker {
+    font-family: var(--font-disp);
+    font-size: clamp(20px, 3vw, 36px);
+    color: var(--blue);
+    text-shadow: -2px 3px 0 rgba(255,79,79,0.3);
+    line-height: 1.1;
+    max-width: 20ch;
+    margin-bottom: 28px;
+  }
+  .cover-chips {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .cover-chip {
+    border: 2.5px solid var(--ink-black);
+    border-right-width: 0;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .cover-chip:last-child { border-right: 2.5px solid var(--ink-black); }
+  .cover-chip .val {
+    font-family: var(--font-disp);
+    font-size: clamp(18px, 2.2vw, 28px);
+    color: var(--coral);
+    text-shadow: 2px 2px 0 rgba(43,58,255,0.3);
+    line-height: 1;
+  }
+  .cover-chip .lbl {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+  .cover-corner {
+    position: absolute;
+    bottom: 36px;
+    right: clamp(32px, 7vw, 100px);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    color: var(--ink-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.9;
+    border-right: 3px solid var(--coral);
+    padding-right: 12px;
+  }
+
+  /* ─── ZINE DECORATIVE MARKS ─── */
+  .zine-x {
+    font-family: var(--font-disp);
+    font-size: clamp(120px, 22vw, 320px);
+    color: rgba(43,58,255,0.07);
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    mix-blend-mode: multiply;
+    z-index: 0;
+  }
+  .zine-circle {
+    width: clamp(140px, 20vw, 260px);
+    height: clamp(140px, 20vw, 260px);
+    border-radius: 50%;
+    border: 4px solid var(--coral);
+    position: absolute;
+    right: clamp(60px, 8vw, 120px);
+    top: 50%;
+    transform: translateY(-50%);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .zine-circle-inner {
+    font-family: var(--font-disp);
+    font-size: clamp(11px, 1.2vw, 14px);
+    color: var(--coral);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    mix-blend-mode: multiply;
+    padding: 16px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 2 — THE PROBLEM
+  ═══════════════════════════════════════ */
+  .problem-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 28px;
+    width: 100%;
+    max-width: 1100px;
+    border: 2.5px solid var(--ink-black);
+  }
+  .prob-panel {
+    padding: 32px 28px;
+    border-right: 2.5px solid var(--ink-black);
+    position: relative;
+    overflow: hidden;
+  }
+  .prob-panel:last-child { border-right: none; }
+  .prob-big-num {
+    font-family: var(--font-disp);
+    font-size: clamp(70px, 11vw, 140px);
+    line-height: 0.88;
+    color: rgba(255,79,79,0.12);
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    user-select: none;
+  }
+  .prob-head {
+    font-family: var(--font-disp);
+    font-size: clamp(20px, 2.5vw, 32px);
+    color: var(--ink-black);
+    line-height: 1.05;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 rgba(43,58,255,0.2);
+  }
+  .prob-stat {
+    font-family: var(--font-disp);
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--coral);
+    line-height: 1;
+    text-shadow: 3px 3px 0 rgba(43,58,255,0.25);
+    margin-bottom: 10px;
+  }
+  .prob-body {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 36ch;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 3 — THE VISION
+  ═══════════════════════════════════════ */
+  .vision-layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 28px;
+  }
+  .vision-left {
+    padding-right: 48px;
+    border-right: 3px solid var(--ink-black);
+  }
+  .vision-right { padding-left: 40px; }
+  .vision-manifesto {
+    font-family: var(--font-disp);
+    font-size: clamp(20px, 2.8vw, 36px);
+    color: var(--ink-black);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .vision-manifesto .coral { color: var(--coral); text-shadow: 2px 3px 0 rgba(43,58,255,0.25); }
+  .vision-manifesto .blue  { color: var(--blue); text-shadow: -2px 2px 0 rgba(255,79,79,0.2); }
+  .principle-list { display: flex; flex-direction: column; gap: 0; }
+  .principle-item {
+    padding: 12px 0 12px 16px;
+    border-left: 4px solid var(--coral);
+    margin-bottom: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .principle-item strong { color: var(--ink-black); }
+  .vision-quote {
+    font-family: var(--font-mono);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    padding: 20px;
+    border: 2.5px solid var(--blue);
+    background: rgba(43,58,255,0.04);
+    mix-blend-mode: multiply;
+    margin-bottom: 20px;
+  }
+  .vision-quote-attr {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-top: 8px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 4 — PRODUCT: THE EDITOR
+  ═══════════════════════════════════════ */
+  .feat-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 28px;
+    border: 2.5px solid var(--ink-black);
+  }
+  .feat-main {
+    padding: 36px 32px;
+    border-right: 2.5px solid var(--ink-black);
+  }
+  .feat-aside { display: flex; flex-direction: column; }
+  .feat-aside-block {
+    padding: 24px 22px;
+    flex: 1;
+    border-bottom: 2.5px solid var(--ink-black);
+  }
+  .feat-aside-block:last-child { border-bottom: none; }
+  .feat-head {
+    font-family: var(--font-disp);
+    font-size: clamp(26px, 3.5vw, 46px);
+    color: var(--blue);
+    line-height: 0.96;
+    text-shadow: -3px 3px 0 rgba(255,79,79,0.25);
+    margin-bottom: 14px;
+  }
+  .feat-body {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    max-width: 44ch;
+    margin-bottom: 20px;
+  }
+  .feat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1.5px solid var(--ink-mid);
+  }
+  .feat-list-item {
+    padding: 8px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-mid);
+    border-bottom: 1px solid var(--ink-dim);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.4;
+  }
+  .feat-list-item:last-child { border-bottom: none; }
+  .feat-list-item .arrow {
+    color: var(--coral);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .feat-aside-head {
+    font-family: var(--font-disp);
+    font-size: clamp(15px, 1.8vw, 22px);
+    color: var(--coral);
+    text-shadow: 2px 2px 0 rgba(43,58,255,0.2);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .feat-aside-body {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 5 — PRODUCT: PUBLISHING & REVENUE
+  ═══════════════════════════════════════ */
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 28px;
+    border: 2.5px solid var(--ink-black);
+  }
+  .pub-card {
+    padding: 28px 24px;
+    border-right: 2.5px solid var(--ink-black);
+    position: relative;
+    overflow: hidden;
+  }
+  .pub-card:last-child { border-right: none; }
+  .pub-icon {
+    font-size: 1.6rem;
+    color: var(--blue);
+    margin-bottom: 14px;
+    text-shadow: 2px 2px 0 rgba(255,79,79,0.3);
+  }
+  .pub-card-head {
+    font-family: var(--font-disp);
+    font-size: clamp(18px, 2vw, 26px);
+    color: var(--ink-black);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .pub-card-body {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+  .pub-card-accent {
+    background: var(--coral);
+    mix-blend-mode: multiply;
+  }
+  .pub-compare {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 0;
+    border: 2.5px solid var(--ink-black);
+    border-top: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .pub-cmp-cell {
+    padding: 14px 20px;
+    border-right: 2.5px solid var(--ink-black);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    line-height: 1.55;
+  }
+  .pub-cmp-cell:last-child { border-right: none; }
+  .pub-cmp-lbl {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 4px;
+  }
+  .pub-cmp-val {
+    font-family: var(--font-disp);
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 6 — PRODUCT: COMMUNITY & DISCOVERY
+  ═══════════════════════════════════════ */
+  .comm-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 28px;
+  }
+  .comm-left { padding-right: 40px; border-right: 3px solid var(--coral); }
+  .comm-right { padding-left: 40px; }
+  .comm-head {
+    font-family: var(--font-disp);
+    font-size: clamp(24px, 3vw, 40px);
+    color: var(--coral);
+    text-shadow: 3px 3px 0 rgba(43,58,255,0.25);
+    line-height: 0.96;
+    margin-bottom: 16px;
+  }
+  .comm-body {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    max-width: 40ch;
+  }
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .tag-pill {
+    border: 2px solid var(--blue);
+    padding: 4px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(43,58,255,0.05);
+    mix-blend-mode: multiply;
+  }
+  .comm-sub-head {
+    font-family: var(--font-disp);
+    font-size: clamp(18px, 2vw, 26px);
+    color: var(--blue);
+    text-shadow: -2px 2px 0 rgba(255,79,79,0.2);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 7 — TRACTION & METRICS
+  ═══════════════════════════════════════ */
+  .traction-hero {
+    font-family: var(--font-disp);
+    font-size: clamp(90px, 16vw, 210px);
+    color: var(--blue);
+    line-height: 0.88;
+    text-shadow: 5px 6px 0 rgba(255,79,79,0.3), -2px -2px 0 rgba(255,79,79,0.12);
+    letter-spacing: -0.03em;
+  }
+  .traction-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 28px;
+    border: 2.5px solid var(--ink-black);
+  }
+  .traction-cell {
+    padding: 24px 20px;
+    border-right: 2.5px solid var(--ink-black);
+  }
+  .traction-cell:last-child { border-right: none; }
+  .traction-val {
+    font-family: var(--font-disp);
+    font-size: clamp(26px, 3.5vw, 44px);
+    line-height: 1;
+    color: var(--ink-black);
+    margin-bottom: 5px;
+  }
+  .traction-val.coral {
+    color: var(--coral);
+    text-shadow: 2px 2px 0 rgba(43,58,255,0.2);
+  }
+  .traction-val.blue {
+    color: var(--blue);
+    text-shadow: 2px 2px 0 rgba(255,79,79,0.2);
+  }
+  .traction-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 3px;
+  }
+  .traction-delta {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--coral);
+    font-weight: 700;
+  }
+  .traction-quotes {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 2.5px solid var(--ink-black);
+    border-top: none;
+  }
+  .traction-quote-cell {
+    padding: 22px 26px;
+    border-right: 2.5px solid var(--ink-black);
+  }
+  .traction-quote-cell:last-child { border-right: none; }
+  .traction-quote-text {
+    font-family: var(--font-mono);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .traction-quote-attr {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 8 — BUSINESS MODEL
+  ═══════════════════════════════════════ */
+  .biz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 28px;
+    border: 2.5px solid var(--ink-black);
+  }
+  .biz-left { padding: 32px 28px; border-right: 2.5px solid var(--ink-black); }
+  .biz-right { padding: 32px 28px; }
+  .tier-row {
+    display: flex;
+    align-items: stretch;
+    border: 1.5px solid var(--ink-black);
+    margin-bottom: -1px;
+  }
+  .tier-bar { width: 5px; flex-shrink: 0; background: var(--ink-dim); }
+  .tier-bar.coral { background: var(--coral); }
+  .tier-bar.blue  { background: var(--blue); }
+  .tier-content {
+    flex: 1;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .tier-name {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-black);
+  }
+  .tier-name.coral { color: var(--coral); }
+  .tier-name.blue  { color: var(--blue); }
+  .tier-desc {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--ink-dim);
+    margin-top: 2px;
+  }
+  .tier-price {
+    font-family: var(--font-disp);
+    font-size: 1rem;
+    color: var(--ink-black);
+    white-space: nowrap;
+  }
+  .tier-price.coral { color: var(--coral); }
+  .unit-econ-big {
+    font-family: var(--font-disp);
+    font-size: clamp(56px, 8vw, 100px);
+    line-height: 0.9;
+    color: var(--coral);
+    text-shadow: 3px 4px 0 rgba(43,58,255,0.28);
+    margin-bottom: 6px;
+  }
+  .unit-econ-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    margin-bottom: 16px;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 9 — THE ASK
+  ═══════════════════════════════════════ */
+  .ask-amount {
+    font-family: var(--font-disp);
+    font-size: clamp(72px, 13vw, 170px);
+    line-height: 0.88;
+    color: var(--blue);
+    text-shadow: 5px 6px 0 rgba(255,79,79,0.32), -2px -2px 0 rgba(255,79,79,0.14);
+    letter-spacing: -0.03em;
+  }
+  .ask-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2.5px solid var(--ink-black);
+    margin-top: 28px;
+  }
+  .ask-left { padding: 28px 26px; border-right: 2.5px solid var(--ink-black); }
+  .ask-right { padding: 28px 26px; }
+  .funds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 2.5px solid var(--ink-black);
+    margin-bottom: 20px;
+  }
+  .fund-tile {
+    padding: 16px 18px;
+    border-right: 2.5px solid var(--ink-black);
+    border-bottom: 2.5px solid var(--ink-black);
+  }
+  .fund-tile:nth-child(2) { border-right: none; }
+  .fund-tile:nth-child(3) { border-right: 2.5px solid var(--ink-black); border-bottom: none; }
+  .fund-tile:nth-child(4) { border-right: none; border-bottom: none; }
+  .fund-pct {
+    font-family: var(--font-disp);
+    font-size: 1.8rem;
+    line-height: 1;
+    margin-bottom: 3px;
+    color: var(--ink-black);
+  }
+  .fund-pct.coral { color: var(--coral); text-shadow: 2px 2px 0 rgba(43,58,255,0.22); }
+  .fund-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .milestone-item {
+    display: flex;
+    align-items: stretch;
+    border: 1.5px solid var(--ink-black);
+    margin-bottom: -1px;
+  }
+  .milestone-bar { width: 5px; flex-shrink: 0; background: var(--ink-dim); }
+  .milestone-bar.coral { background: var(--coral); }
+  .milestone-bar.blue  { background: var(--blue); }
+  .milestone-content { padding: 10px 14px; }
+  .milestone-title {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--ink-black);
+    margin-bottom: 2px;
+  }
+  .milestone-detail {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--ink-dim);
+  }
+  .val-block {
+    border: 2.5px solid var(--coral);
+    padding: 22px 20px;
+    background: rgba(255,79,79,0.05);
+    mix-blend-mode: multiply;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .val-num {
+    font-family: var(--font-disp);
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1;
+    color: var(--coral);
+    text-shadow: 3px 3px 0 rgba(43,58,255,0.22);
+    margin-bottom: 6px;
+  }
+  .val-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    margin-bottom: 12px;
+  }
+  .val-note {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════
+     SLIDE 10 — CTA / CLOSING
+  ═══════════════════════════════════════ */
+  .cta-head {
+    font-family: var(--font-disp);
+    font-size: clamp(42px, 8vw, 100px);
+    line-height: 0.92;
+    color: var(--ink-black);
+    text-shadow: 4px 5px 0 rgba(255,79,79,0.25), -2px -2px 0 rgba(43,58,255,0.2);
+    max-width: 14ch;
+    margin-bottom: 24px;
+  }
+  .cta-head .coral { color: var(--coral); text-shadow: 3px 4px 0 rgba(43,58,255,0.3); }
+  .cta-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1100px;
+    border: 2.5px solid var(--ink-black);
+    margin-top: 28px;
+  }
+  .cta-left { padding: 32px 28px; border-right: 2.5px solid var(--ink-black); }
+  .cta-right { padding: 32px 28px; }
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+  }
+  .contact-item i {
+    color: var(--coral);
+    width: 18px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .cta-disclaimer {
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    color: var(--ink-dim);
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    margin-top: 18px;
+    border-top: 1.5px solid var(--ink-dim);
+    padding-top: 12px;
+  }
+  .backers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .backer-pill {
+    border: 2px solid var(--ink-mid);
+    padding: 8px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    .slide::before, .slide::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; INKWELL &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — ZINE COVER
+═══════════════════════════════════════ -->
+<section class="slide paper-1" id="slide-1">
+  <div class="slide-num">[01/10]</div>
+
+  <!-- decorative misregistered circle -->
+  <div class="zine-circle" style="z-index:1;">
+    <div class="zine-circle-inner">
+      SEED<br />ROUND<br />2026<br />—<br />$1.2M
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:960px;">
+    <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px;">
+      ISSUE NO.01 &nbsp;·&nbsp; JUNE 2026 &nbsp;·&nbsp; FOR INDEPENDENT WRITERS
+    </div>
+
+    <div class="cover-masthead">INKWELL</div>
+
+    <div class="cover-issue">
+      <span>The writer's press.</span>
+      <span>Own your words.</span>
+      <span>Keep your readers.</span>
+    </div>
+
+    <div class="cover-kicker">
+      A publishing tool built for writers who refuse to rent their audience from someone else.
+    </div>
+
+    <div class="cover-chips">
+      <div class="cover-chip">
+        <span class="val">4,200</span>
+        <span class="lbl">Beta Writers</span>
+      </div>
+      <div class="cover-chip">
+        <span class="val">$38K</span>
+        <span class="lbl">MRR (beta)</span>
+      </div>
+      <div class="cover-chip">
+        <span class="val">91%</span>
+        <span class="lbl">30-day retention</span>
+      </div>
+      <div class="cover-chip">
+        <span class="val">0%</span>
+        <span class="lbl">Revenue cut taken</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-corner">
+    INKWELL PRESS, INC. &nbsp;·&nbsp; BROOKLYN, NY<br />
+    SEED PITCH &nbsp;·&nbsp; V1.4 &nbsp;·&nbsp; JUNE 2026<br />
+    CONFIDENTIAL
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — THE PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide paper-2" id="slide-2">
+  <div class="slide-num">[02/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-stamp">The Problem</span>
+    <h2 class="disp overprint-shadow" style="font-size:clamp(34px,5vw,62px);color:var(--ink-black);max-width:18ch;margin-bottom:6px;line-height:0.95;">
+      WRITING PLATFORMS ARE<br /><span style="color:var(--coral);text-shadow:3px 4px 0 rgba(43,58,255,0.3);">EXTRACTIVE BY DESIGN.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-mid);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0;">
+      Three structural failures bleeding independent writers dry.
+    </div>
+
+    <div class="problem-split">
+      <div class="prob-panel">
+        <div class="prob-big-num">01</div>
+        <div class="prob-head">THE PLATFORM TAX</div>
+        <div class="prob-stat">10–30%</div>
+        <div class="prob-body">
+          Substack, Ghost, Beehiiv — every platform levies a revenue cut on paid subscriptions. A writer earning $5K/month loses up to $1,500 before paying a single cent toward their own infrastructure. At scale, this compounds catastrophically.
+        </div>
+      </div>
+      <div class="prob-panel" style="background:rgba(255,79,79,0.04);mix-blend-mode:multiply;">
+        <div class="prob-big-num" style="color:rgba(43,58,255,0.10);">02</div>
+        <div class="prob-head" style="color:var(--blue);text-shadow:-2px 2px 0 rgba(255,79,79,0.2);">RENTED AUDIENCES</div>
+        <div class="prob-stat" style="color:var(--blue);text-shadow:3px 3px 0 rgba(255,79,79,0.22);">0 emails</div>
+        <div class="prob-body">
+          Writers don't own their subscriber lists on most social platforms. When Medium, Twitter, or a newsletter platform folds — or changes its terms — the writer loses everything. Your audience should live in your hands, not theirs.
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-split" style="margin-top:0;border-top:none;">
+      <div class="prob-panel" style="border-top:none;">
+        <div class="prob-big-num">03</div>
+        <div class="prob-head">BLOAT &amp; DISTRACTION</div>
+        <div class="prob-stat">47 tabs</div>
+        <div class="prob-body">
+          The average independent writer uses 6+ separate tools: a writing app, an email platform, a payment processor, an analytics dashboard, a link-in-bio page, and a social scheduler. Cobbled stacks eat time writers don't have.
+        </div>
+      </div>
+      <div class="prob-panel" style="border-top:none;border-color:var(--blue);background:rgba(43,58,255,0.04);mix-blend-mode:multiply;">
+        <div class="prob-head" style="color:var(--coral);text-shadow:2px 3px 0 rgba(43,58,255,0.22);">THE OPENING</div>
+        <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--ink-mid);line-height:1.7;margin-top:8px;">
+          52M people identify as independent writers. Only 2.3M earn any revenue from their work. The gap isn't talent — it's tools. Existing platforms were built to extract, not to empower.<br /><br />
+          <strong style="color:var(--ink-black);">Inkwell closes that gap.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE VISION
+═══════════════════════════════════════ -->
+<section class="slide paper-1" id="slide-3">
+  <div class="slide-num">[03/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-blue">Our Vision</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink-black);margin-bottom:24px;line-height:0.96;max-width:20ch;text-shadow:3px 3px 0 rgba(43,58,255,0.1);">
+      THE WRITER'S PRESS —<br /><span style="color:var(--blue);text-shadow:-2px 3px 0 rgba(255,79,79,0.25);">IN YOUR HANDS.</span>
+    </h2>
+
+    <div class="vision-layout">
+      <div class="vision-left">
+        <div class="vision-manifesto">
+          We believe every writer deserves a <span class="coral">printing press</span> they actually own. Not a platform's guest column. Not a rented megaphone. A real <span class="blue">independent press</span> — with your name on it.
+        </div>
+
+        <div class="body-text" style="margin-bottom:24px;max-width:46ch;">
+          Inkwell is the first writing tool built around the principle of <strong>full ownership</strong>: your words, your subscribers, your revenue, your brand — permanently yours, portable anywhere, extractable at any time.
+        </div>
+
+        <div class="principle-list">
+          <div class="principle-item">
+            <strong>Zero revenue cut.</strong> Flat subscription pricing only. Writers keep 100% of what they earn from their readers.
+          </div>
+          <div class="principle-item">
+            <strong>Portable by design.</strong> One-click export of your full subscriber list, archive, and analytics — always. No lock-in penalty.
+          </div>
+          <div class="principle-item">
+            <strong>Distraction-free tools.</strong> Writing, publishing, monetizing, and growing — unified in one focused environment.
+          </div>
+          <div class="principle-item">
+            <strong>Writer-first business model.</strong> We grow when writers grow. Our incentives are perfectly aligned.
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-right">
+        <div class="vision-quote">
+          "The best writing platforms of the next decade won't be social networks pretending to be publishers. They'll be presses pretending to be tools."<br />
+          <div class="vision-quote-attr">— Inkwell internal memo, Jan 2026</div>
+        </div>
+
+        <div style="border:2.5px solid var(--ink-black);padding:22px 20px;">
+          <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px;">[WE ARE NOT]</div>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-mid);line-height:1.8;">
+            <span style="color:var(--coral);font-weight:700;">✗</span>&nbsp; Another Substack clone<br />
+            <span style="color:var(--coral);font-weight:700;">✗</span>&nbsp; A social platform with "newsletters"<br />
+            <span style="color:var(--coral);font-weight:700;">✗</span>&nbsp; A CMS for teams and brands<br />
+            <span style="color:var(--coral);font-weight:700;">✗</span>&nbsp; A platform that takes your cut<br />
+            <span style="color:var(--coral);font-weight:700;">✗</span>&nbsp; Built for brands, agencies, media cos
+          </div>
+          <div class="h-rule-coral"></div>
+          <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px;">[WE ARE]</div>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-mid);line-height:1.8;">
+            <span style="color:var(--blue);font-weight:700;">✓</span>&nbsp; The press for independent writers<br />
+            <span style="color:var(--blue);font-weight:700;">✓</span>&nbsp; 100% writer-revenue retention<br />
+            <span style="color:var(--blue);font-weight:700;">✓</span>&nbsp; Full data portability, always
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — PRODUCT: THE EDITOR
+═══════════════════════════════════════ -->
+<section class="slide paper-2" id="slide-4">
+  <div class="slide-num">[04/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-stamp">Product · 01/03</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink-black);max-width:20ch;margin-bottom:4px;line-height:0.96;">
+      THE EDITOR —<br /><span style="color:var(--blue);text-shadow:-2px 3px 0 rgba(255,79,79,0.22);">WHERE WRITING LIVES.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-mid);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0;">
+      Built from scratch. No Quill.js hacks. No blocky content editors.
+    </div>
+
+    <div class="feat-layout">
+      <div class="feat-main">
+        <div class="feat-head">CANVAS</div>
+        <div class="feat-body">
+          Inkwell Canvas is a distraction-free long-form editor that respects the shape of a writer's thought. No blocks. No formatting sidebars erupting mid-sentence. Just writing — with formatting that appears only when summoned.
+        </div>
+        <div class="feat-list">
+          <div class="feat-list-item">
+            <span class="arrow">→</span>
+            <span>Inline formatting with keyboard-first shortcuts — no toolbar interruptions</span>
+          </div>
+          <div class="feat-list-item">
+            <span class="arrow">→</span>
+            <span>Focus mode: single paragraph highlight, ambient noise, word-count pacing</span>
+          </div>
+          <div class="feat-list-item">
+            <span class="arrow">→</span>
+            <span>Version snapshots with prose diff — see exactly what changed between drafts</span>
+          </div>
+          <div class="feat-list-item">
+            <span class="arrow">→</span>
+            <span>Offline-first with background sync — write on a plane, publish when you land</span>
+          </div>
+          <div class="feat-list-item">
+            <span class="arrow">→</span>
+            <span>Smart footnotes, pull quotes, embedded asides — all rendered beautifully in email <em>and</em> web</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-aside">
+        <div class="feat-aside-block">
+          <div class="feat-aside-head">DUAL RENDER</div>
+          <div class="feat-aside-body">
+            Write once — Inkwell renders to both beautiful email HTML and a canonical web archive. No copy-paste. No reformatting. One draft, two perfect outputs.
+          </div>
+        </div>
+        <div class="feat-aside-block" style="background:rgba(255,79,79,0.05);mix-blend-mode:multiply;">
+          <div class="feat-aside-head" style="color:var(--blue);text-shadow:-2px 2px 0 rgba(255,79,79,0.18);">IMPORT ANYWHERE</div>
+          <div class="feat-aside-body">
+            Full migration from Substack, Ghost, Mailchimp, ConvertKit — subscribers, archives, custom domains — in under 10 minutes. We've tested every edge case.
+          </div>
+        </div>
+        <div class="feat-aside-block" style="border-bottom:none;">
+          <div class="feat-aside-head">AI ASSIST</div>
+          <div class="feat-aside-body">
+            Opt-in AI tools: headline variants, readability scoring, subject line A/B suggestions. Always in service of the writer — never generating content on their behalf.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — PRODUCT: PUBLISHING & REVENUE
+═══════════════════════════════════════ -->
+<section class="slide paper-1" id="slide-5">
+  <div class="slide-num">[05/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-coral">Product · 02/03</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink-black);max-width:22ch;margin-bottom:4px;line-height:0.96;">
+      PUBLISH &amp; MONETIZE —<br /><span style="color:var(--coral);text-shadow:3px 4px 0 rgba(43,58,255,0.28);">YOUR TERMS.</span>
+    </h2>
+    <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-mid);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0;">
+      Paid newsletters, gated archives, tip jars, one-time sales — all native.
+    </div>
+
+    <div class="pub-grid">
+      <div class="pub-card">
+        <div class="pub-icon"><i class="fa fa-envelope-open-text"></i></div>
+        <div class="pub-card-head">NEWSLETTER ENGINE</div>
+        <div class="pub-card-body">
+          Send to 100 or 100,000 subscribers. Custom domain sending, DKIM/SPF configured automatically. Deliverability dashboard. Bounce management. Unsub flows that feel human, not punitive.
+        </div>
+      </div>
+      <div class="pub-card" style="background:rgba(255,79,79,0.05);mix-blend-mode:multiply;">
+        <div class="pub-icon" style="color:var(--coral);"><i class="fa fa-lock"></i></div>
+        <div class="pub-card-head" style="color:var(--coral);">GATED CONTENT</div>
+        <div class="pub-card-body">
+          Paid tiers, founding member offers, single-issue sales. Paywall logic built into every post without plugins. Stripe connected in 90 seconds — we never touch your money.
+        </div>
+      </div>
+      <div class="pub-card" style="border-right:none;background:rgba(43,58,255,0.05);mix-blend-mode:multiply;">
+        <div class="pub-icon" style="color:var(--blue);"><i class="fa fa-chart-line"></i></div>
+        <div class="pub-card-head" style="color:var(--blue);">ANALYTICS</div>
+        <div class="pub-card-body">
+          Open rates, click maps, subscriber growth curves, revenue per post, churn prediction, cohort retention. Every metric a writer needs — nothing a brand-marketer invented.
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-compare">
+      <div class="pub-cmp-cell">
+        <div class="pub-cmp-lbl">Inkwell</div>
+        <div class="pub-cmp-val" style="color:var(--blue);text-shadow:2px 2px 0 rgba(255,79,79,0.2);">$0</div>
+        <div style="font-family:var(--font-mono);font-size:0.64rem;color:var(--ink-mid);">revenue cut taken by Inkwell — ever</div>
+      </div>
+      <div class="pub-cmp-cell" style="border-color:var(--ink-mid);">
+        <div class="pub-cmp-lbl">Substack</div>
+        <div class="pub-cmp-val" style="color:var(--ink-dim);">10%</div>
+        <div style="font-family:var(--font-mono);font-size:0.64rem;color:var(--ink-dim);">+ Stripe fees (2.9%+30¢ per txn)</div>
+      </div>
+      <div class="pub-cmp-cell" style="border-right:none;border-color:var(--ink-mid);">
+        <div class="pub-cmp-lbl">Beehiiv Pro</div>
+        <div class="pub-cmp-val" style="color:var(--ink-dim);">$99/mo</div>
+        <div style="font-family:var(--font-mono);font-size:0.64rem;color:var(--ink-dim);">+ 0% cut only above $99/mo plan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — PRODUCT: COMMUNITY & DISCOVERY
+═══════════════════════════════════════ -->
+<section class="slide paper-2" id="slide-6">
+  <div class="slide-num">[06/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-blue">Product · 03/03</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink-black);max-width:22ch;margin-bottom:24px;line-height:0.96;text-shadow:3px 3px 0 rgba(255,79,79,0.12);">
+      GROW WITHOUT<br /><span style="color:var(--coral);text-shadow:3px 4px 0 rgba(43,58,255,0.28);">BEGGING THE ALGORITHM.</span>
+    </h2>
+
+    <div class="comm-layout">
+      <div class="comm-left">
+        <div class="comm-head">THE INKWELL DIRECTORY</div>
+        <div class="comm-body">
+          A curated, writer-powered discovery network. Readers who love one Inkwell publication browse a human-curated directory of related writers — filtered by genre, style, cadence. No ad auction. No engagement bait. Reader-native discovery.
+        </div>
+
+        <div style="font-family:var(--font-mono);font-size:0.64rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px;">[DIRECTORY CATEGORIES]</div>
+        <div class="tag-cloud">
+          <div class="tag-pill">Long-form essays</div>
+          <div class="tag-pill">Fiction serials</div>
+          <div class="tag-pill">Criticism &amp; culture</div>
+          <div class="tag-pill">Tech &amp; science</div>
+          <div class="tag-pill">Local journalism</div>
+          <div class="tag-pill">Poetry</div>
+          <div class="tag-pill">Personal narrative</div>
+          <div class="tag-pill">Business &amp; money</div>
+          <div class="tag-pill">Sports &amp; outdoors</div>
+          <div class="tag-pill">Food &amp; craft</div>
+        </div>
+
+        <div style="border:2.5px solid var(--coral);padding:18px 20px;background:rgba(255,79,79,0.05);mix-blend-mode:multiply;">
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-mid);line-height:1.7;">
+            <strong style="color:var(--coral);">Cross-recommendation engine:</strong> writers opt-in to recommend each other's work at the end of issues. When a reader subscribes via a cross-rec, <strong style="color:var(--ink-black);">both writers get 3 months free</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="comm-right">
+        <div class="comm-sub-head">READER CLUBS</div>
+        <div class="comm-body" style="max-width:100%;">
+          Premium subscribers can unlock threaded comment sections, private community boards, and monthly live reading events via embedded audio/video — all without leaving Inkwell. Writers keep the community. We keep the infra.
+        </div>
+
+        <div class="comm-sub-head" style="color:var(--coral);text-shadow:2px 2px 0 rgba(43,58,255,0.2);">GIFT SUBSCRIPTIONS</div>
+        <div class="comm-body" style="max-width:100%;">
+          One-click gifting of any Inkwell publication. Physical "press card" printed and mailed on request ($4 COGS, $18 price). Readers who gift convert at 3.4× vs. organic free-to-paid. Massive viral loop with zero ad spend.
+        </div>
+
+        <div style="border:2.5px solid var(--blue);padding:16px 18px;background:rgba(43,58,255,0.05);mix-blend-mode:multiply;margin-top:0;">
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-mid);line-height:1.7;">
+            <strong style="color:var(--blue);">Directory referral stat (beta):</strong> writers who participate in the Directory average <strong style="color:var(--ink-black);">+340 new subscribers per month</strong> from cross-recs. Zero ad spend.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — TRACTION & METRICS
+═══════════════════════════════════════ -->
+<section class="slide paper-1" id="slide-7">
+  <div class="slide-num">[07/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-stamp">Traction</span>
+
+    <div style="display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;">
+      <div>
+        <div class="traction-hero">4.2K</div>
+        <div style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);margin-top:6px;">
+          WRITERS IN PRIVATE BETA &nbsp;·&nbsp; LAUNCHED FEB 2026 &nbsp;·&nbsp; ZERO PAID ACQUISITION
+        </div>
+      </div>
+      <div style="padding-left:28px;border-left:4px solid var(--coral);padding-bottom:12px;">
+        <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--ink-mid);line-height:1.8;max-width:28ch;">
+          Waitlist: <strong style="color:var(--ink-black);">18,400 writers</strong><br />
+          Beta admission rate: <strong style="color:var(--coral);">23%</strong><br />
+          Beta-to-paid conversion: <strong style="color:var(--blue);">31%</strong><br />
+          NPS score: <strong style="color:var(--ink-black);">72</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="traction-row">
+      <div class="traction-cell">
+        <div class="traction-val coral">$38K</div>
+        <div class="traction-lbl">Monthly Recurring Revenue</div>
+        <div class="traction-delta">↑ from $0 in Jan '26</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-val blue">91%</div>
+        <div class="traction-lbl">30-Day Writer Retention</div>
+        <div class="traction-delta">vs. 62% industry avg</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-val">$9.10</div>
+        <div class="traction-lbl">ARPU / Month</div>
+        <div class="traction-delta">↑ expanding as writers grow</div>
+      </div>
+      <div class="traction-cell">
+        <div class="traction-val coral">2.4M</div>
+        <div class="traction-lbl">Reader subscribers served</div>
+        <div class="traction-delta">across 4,200 publications</div>
+      </div>
+    </div>
+
+    <div class="traction-quotes">
+      <div class="traction-quote-cell">
+        <div class="traction-quote-text">
+          "I moved from Substack two months ago. My open rates went from 28% to 41%. I kept my subscribers, kept my revenue, and the editor actually helps me write better. I'm never going back."
+        </div>
+        <div class="traction-quote-attr">— Mara S., culture writer &amp; essayist, 12K subscribers</div>
+      </div>
+      <div class="traction-quote-cell" style="border-right:none;background:rgba(43,58,255,0.04);mix-blend-mode:multiply;">
+        <div class="traction-quote-text">
+          "I wrote a 9,000-word serialized fiction piece, split it into six parts with paywalled endings, and my founding-member revenue tripled in 30 days. Inkwell made something I didn't think was possible feel inevitable."
+        </div>
+        <div class="traction-quote-attr">— David A., fiction writer &amp; serialist, 4.1K subscribers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — BUSINESS MODEL
+═══════════════════════════════════════ -->
+<section class="slide paper-2" id="slide-8">
+  <div class="slide-num">[08/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-coral">Business Model</span>
+    <h2 class="disp" style="font-size:clamp(28px,4vw,52px);color:var(--ink-black);max-width:20ch;margin-bottom:4px;line-height:0.96;">
+      FLAT SUBSCRIPTION.<br /><span style="color:var(--coral);text-shadow:3px 4px 0 rgba(43,58,255,0.26);">ZERO REVENUE CUTS.</span>
+    </h2>
+
+    <div class="biz-grid">
+      <div class="biz-left">
+        <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;">[PRICING TIERS]</div>
+        <div>
+          <div class="tier-row">
+            <div class="tier-bar"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name">PRESS</div>
+                <div class="tier-desc">Up to 1K subscribers / free newsletter only</div>
+              </div>
+              <div class="tier-price">$0<span style="font-size:0.7rem;color:var(--ink-dim);">/mo</span></div>
+            </div>
+          </div>
+          <div class="tier-row" style="background:rgba(255,79,79,0.04);mix-blend-mode:multiply;">
+            <div class="tier-bar coral"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name coral">STUDIO</div>
+                <div class="tier-desc">Up to 10K subscribers / paid tiers / analytics</div>
+              </div>
+              <div class="tier-price coral">$12<span style="font-size:0.7rem;color:var(--ink-dim);">/mo</span></div>
+            </div>
+          </div>
+          <div class="tier-row" style="background:rgba(43,58,255,0.04);mix-blend-mode:multiply;">
+            <div class="tier-bar blue"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name blue">HOUSE</div>
+                <div class="tier-desc">Unlimited subscribers / Reader Clubs / gifting</div>
+              </div>
+              <div class="tier-price" style="color:var(--blue);">$28<span style="font-size:0.7rem;color:var(--ink-dim);">/mo</span></div>
+            </div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-bar" style="background:var(--ink-dim);"></div>
+            <div class="tier-content">
+              <div>
+                <div class="tier-name" style="color:var(--ink-dim);">COLLECTIVE</div>
+                <div class="tier-desc">Multi-writer publications / white-label domain</div>
+              </div>
+              <div class="tier-price" style="color:var(--ink-dim);">$79<span style="font-size:0.7rem;color:var(--ink-dim);">/mo</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-rule-zine"></div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-mid);line-height:1.8;">
+          <strong style="color:var(--ink-black);">Revenue mix (beta):</strong> 58% Studio // 31% House // 11% Collective<br />
+          <strong style="color:var(--ink-black);">Avg paid plan:</strong> $18.40/mo blended<br />
+          <strong style="color:var(--ink-black);">Upgrade trigger:</strong> writers upgrade at 800 subscribers on avg
+        </div>
+      </div>
+
+      <div class="biz-right">
+        <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;">[UNIT ECONOMICS]</div>
+        <div class="unit-econ-big">82%</div>
+        <div class="unit-econ-lbl">GROSS MARGIN — beta cohort (infra-adjusted)</div>
+
+        <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--ink-mid);line-height:1.8;margin-bottom:16px;">
+          COGS: email delivery (Postmark), hosting (fly.io), Stripe fees. No GPU. No large-scale storage until scale. Very lean.<br /><br />
+          <strong style="color:var(--coral);">LTV estimate: $340</strong> (18-month avg retention × $18.40 ARPU)<br />
+          <strong style="color:var(--blue);">CAC (organic): $0</strong> — 100% inbound via writer word-of-mouth<br /><br />
+          At steady state, CAC via paid acquisition budget: &lt;$22 per writer.
+        </div>
+
+        <div style="border:2.5px solid var(--coral);padding:16px 18px;background:rgba(255,79,79,0.05);mix-blend-mode:multiply;">
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-mid);line-height:1.7;">
+            <strong style="color:var(--coral);">Additional revenue streams:</strong> press cards ($18 each, $4 COGS), Directory placement for sponsored indie publishers (ethical, curated only), future API for enterprise publications. Not modeled in current projections.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — THE ASK
+═══════════════════════════════════════ -->
+<section class="slide paper-1" id="slide-9">
+  <div class="slide-num">[09/10]</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-stamp">The Ask</span>
+
+    <div class="ask-amount">$1.2M</div>
+    <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--ink-mid);letter-spacing:0.12em;text-transform:uppercase;margin-top:6px;margin-bottom:0;">
+      SEED ROUND &nbsp;·&nbsp; $6M PRE-MONEY VALUATION &nbsp;·&nbsp; SAFE / 20% DISCOUNT
+    </div>
+
+    <div class="ask-grid">
+      <div class="ask-left">
+        <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;">[USE OF FUNDS]</div>
+        <div class="funds-grid">
+          <div class="fund-tile">
+            <div class="fund-pct coral">45%</div>
+            <div class="fund-lbl">Product &amp; Engineering</div>
+          </div>
+          <div class="fund-tile">
+            <div class="fund-pct">30%</div>
+            <div class="fund-lbl">Growth &amp; Marketing</div>
+          </div>
+          <div class="fund-tile">
+            <div class="fund-pct">15%</div>
+            <div class="fund-lbl">Writer Partnerships</div>
+          </div>
+          <div class="fund-tile">
+            <div class="fund-pct" style="color:var(--ink-dim);">10%</div>
+            <div class="fund-lbl">Ops / Legal / G&amp;A</div>
+          </div>
+        </div>
+
+        <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px;">[18-MONTH MILESTONES]</div>
+        <div>
+          <div class="milestone-item">
+            <div class="milestone-bar coral"></div>
+            <div class="milestone-content">
+              <div class="milestone-title">Public launch — Q3 2026</div>
+              <div class="milestone-detail">Open waitlist of 18K. Target: 20K writers onboarded in 90 days.</div>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-bar coral"></div>
+            <div class="milestone-content">
+              <div class="milestone-title">$250K MRR — Q1 2027</div>
+              <div class="milestone-detail">~27K paid writers at blended $9.30 ARPU. Series A ready.</div>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-bar blue"></div>
+            <div class="milestone-content">
+              <div class="milestone-title">Reader Clubs + Directory — Q4 2026</div>
+              <div class="milestone-detail">New retention driver. Tested in beta with 93% satisfaction rate.</div>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-bar"></div>
+            <div class="milestone-content">
+              <div class="milestone-title">iOS / Android apps — Q2 2027</div>
+              <div class="milestone-detail">Mobile draft + read experience. #1 request from beta writers.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ask-right">
+        <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;">[TERMS OVERVIEW]</div>
+        <div class="val-block">
+          <div class="val-num">$6M</div>
+          <div class="val-lbl">PRE-MONEY VALUATION</div>
+          <div class="val-note">
+            SAFE instrument · 20% discount · $12M cap<br /><br />
+            Lead commitment: $500K (angel syndicate, signed).<br />
+            Filling remaining $700K — close target: Aug 2026.<br /><br />
+            Pro-rata rights for Series A reserved for seed participants.
+          </div>
+        </div>
+
+        <div style="border:2.5px solid var(--ink-black);padding:18px 20px;margin-bottom:0;">
+          <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px;">[TEAM]</div>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-mid);line-height:1.8;">
+            <strong style="color:var(--ink-black);">Lena Park</strong> · CEO &amp; Co-founder<br />
+            <span style="color:var(--ink-dim);font-size:0.62rem;">Ex-Substack product team (2019–23). Built subscriber growth tools used by 80K writers. BA in Literature, MIT. Published essayist.</span><br /><br />
+            <strong style="color:var(--ink-black);">Tobi Eze</strong> · CTO &amp; Co-founder<br />
+            <span style="color:var(--ink-dim);font-size:0.62rem;">Ex-Fastmail, built high-deliverability email infra at scale. Open-source contributor to Delta Chat. MSc Computer Science, UCL.</span><br /><br />
+            <strong style="color:var(--ink-black);">3 FTEs</strong> + 2 contractors · 100% remote
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CTA / CLOSING
+═══════════════════════════════════════ -->
+<section class="slide paper-2" id="slide-10">
+  <div class="slide-num">[10/10]</div>
+
+  <!-- decorative oversized riso deco -->
+  <div style="font-family:var(--font-disp);font-size:clamp(160px,30vw,440px);color:rgba(255,79,79,0.07);position:absolute;right:-80px;bottom:-60px;line-height:1;pointer-events:none;user-select:none;mix-blend-mode:multiply;z-index:0;">✦</div>
+
+  <div style="width:100%;max-width:1100px;">
+    <span class="label-stamp">Get in touch</span>
+
+    <h2 class="cta-head">
+      LET'S PRINT<br />SOMETHING<br /><span class="coral">BEAUTIFUL.</span>
+    </h2>
+
+    <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--ink-mid);letter-spacing:0.08em;max-width:50ch;line-height:1.75;margin-bottom:4px;">
+      We're raising $1.2M to bring Inkwell to 20,000 independent writers by end of 2026. Join us in building the press that belongs to the writer — not the platform.
+    </div>
+
+    <div class="cta-contact-grid">
+      <div class="cta-left">
+        <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:16px;">[CONTACT]</div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <i class="fa fa-envelope"></i>
+            <span>hello@inkwellpress.co</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa fa-globe"></i>
+            <span>inkwellpress.co/deck</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa fa-folder-open"></i>
+            <span>Data room: inkwellpress.co/investors</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa fa-map-marker-alt"></i>
+            <span>Brooklyn, NY · Remote-first</span>
+          </div>
+        </div>
+        <div class="cta-disclaimer">
+          [INKWELL-SEED-2026-V1.4 // CONFIDENTIAL // NOT FOR DISTRIBUTION]<br />
+          [FORWARD-LOOKING STATEMENTS SUBJECT TO MATERIAL RISKS]<br />
+          [PAST PERFORMANCE DOES NOT GUARANTEE FUTURE RESULTS]
+        </div>
+      </div>
+
+      <div class="cta-right">
+        <div style="font-family:var(--font-mono);font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px;">[BACKED BY]</div>
+        <div class="backers-list">
+          <div class="backer-pill">
+            <span>Slowboat Ventures</span>
+            <span style="color:var(--coral);">Lead angel, $200K</span>
+          </div>
+          <div class="backer-pill">
+            <span>Margin Notes Syndicate</span>
+            <span style="color:var(--coral);">$300K committed</span>
+          </div>
+          <div class="backer-pill" style="border-color:var(--blue);color:var(--blue);">
+            <span>Filling $700K more</span>
+            <span style="color:var(--coral);">→ Close: Aug 2026</span>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;border:2.5px solid var(--coral);padding:18px 20px;background:rgba(255,79,79,0.05);mix-blend-mode:multiply;">
+          <div style="font-family:var(--font-disp);font-size:clamp(16px,2vw,22px);color:var(--coral);text-shadow:2px 2px 0 rgba(43,58,255,0.22);margin-bottom:8px;">
+            "Every great writer deserves a press."
+          </div>
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-mid);line-height:1.7;">
+            Join 18,400 writers on the waitlist — or join the round. Either way, we'd love to hear from you.
+          </div>
+        </div>
+
+        <div style="margin-top:16px;display:flex;align-items:center;gap:12px;">
+          <div style="flex:1;height:3px;background:var(--ink-black);"></div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-mid);white-space:nowrap;">INKWELL PRESS, INC. · EST. 2025</div>
+          <div style="flex:1;height:3px;background:var(--ink-black);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulse Wrapped 2026 — Your Year in Motion</title>
+<meta name="description" content="Pulse Wrapped 2026 — your personal year-in-review for the fitness + music app. Biggest workouts, wildest streaks, and the numbers that prove you showed up. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/pulse-wrapped" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#c8ff00" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/pulse-wrapped" />
+<meta property="og:title" content="Pulse Wrapped 2026 — Your Year in Motion" />
+<meta property="og:description" content="287 workouts. 14,892 minutes moved. Top 3% globally. Your 2026, Wrapped." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pulse Wrapped 2026 — Your Year in Motion" />
+<meta name="twitter:description" content="287 workouts. 14,892 minutes moved. Top 3% globally." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --font-black: 'Archivo Black', 'Impact', sans-serif;
+    --font-body:  'Inter', sans-serif;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: clamp(48px, 7vw, 96px) clamp(40px, 8vw, 120px);
+    overflow: hidden;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    border-radius: 100px;
+    padding: 6px 18px;
+    backdrop-filter: blur(8px);
+  }
+
+  /* ─── SHARED TYPOGRAPHY ─── */
+  .big-label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: clamp(14px, 2vw, 24px);
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 100px;
+  }
+
+  .mega-num {
+    font-family: var(--font-black);
+    font-size: clamp(120px, 26vw, 320px);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    display: block;
+  }
+
+  .mega-title {
+    font-family: var(--font-black);
+    font-size: clamp(52px, 10vw, 140px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  .slide-caption {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(14px, 2vw, 22px);
+    line-height: 1.35;
+    margin-top: clamp(16px, 2.5vw, 32px);
+    max-width: 24ch;
+  }
+
+  .slide-sub {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(13px, 1.4vw, 17px);
+    line-height: 1.6;
+    margin-top: 10px;
+    max-width: 32ch;
+    opacity: 0.75;
+  }
+
+  .slide-num-badge {
+    position: absolute;
+    top: 28px;
+    right: clamp(28px, 5vw, 64px);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    z-index: 10;
+  }
+
+  /* ─── DECO BLOB ─── */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── STAT ROW ─── */
+  .stat-row {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-top: clamp(24px, 3.5vw, 48px);
+  }
+  .stat-cell {
+    padding: clamp(16px, 2.5vw, 32px) clamp(20px, 3vw, 40px);
+    border: 3px solid currentColor;
+    border-right-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-cell:last-child { border-right-width: 3px; }
+  .stat-val {
+    font-family: var(--font-black);
+    font-size: clamp(24px, 4vw, 52px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .stat-lbl {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(10px, 1vw, 13px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* ─── BAR STACK ─── */
+  .bar-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: clamp(24px, 3vw, 48px);
+    width: 100%;
+    max-width: 640px;
+  }
+  .bar-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .bar-rank {
+    font-family: var(--font-black);
+    font-size: clamp(32px, 5vw, 60px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    width: 60px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .bar-fill-wrap {
+    flex: 1;
+    height: clamp(40px, 6vw, 72px);
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.12);
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(11px, 1.2vw, 15px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── PERCENTILE DIAL ─── */
+  .pct-wrap {
+    margin-top: clamp(24px, 3vw, 48px);
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(24px, 4vw, 60px);
+    flex-wrap: wrap;
+  }
+  .pct-ring {
+    width: clamp(160px, 28vw, 280px);
+    height: clamp(160px, 28vw, 280px);
+    border-radius: 50%;
+    border: clamp(10px, 2vw, 20px) solid currentColor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .pct-num {
+    font-family: var(--font-black);
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .pct-label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(9px, 1vw, 13px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 6px;
+  }
+  .pct-desc {
+    max-width: 22ch;
+  }
+
+  /* ─── STREAK DISPLAY ─── */
+  .streak-boxes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: clamp(20px, 3vw, 40px);
+    max-width: 580px;
+  }
+  .streak-box {
+    width: clamp(28px, 4vw, 44px);
+    height: clamp(28px, 4vw, 44px);
+    border-radius: 6px;
+    background: currentColor;
+    opacity: 0.9;
+  }
+  .streak-box.dim { opacity: 0.15; }
+  .streak-box.mid { opacity: 0.45; }
+
+  /* ─── COMMUNITY METER ─── */
+  .community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: clamp(24px, 3vw, 48px);
+    max-width: 680px;
+  }
+  .c-card {
+    border-radius: 16px;
+    padding: clamp(20px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .c-num {
+    font-family: var(--font-black);
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+  .c-lbl {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(10px, 1.1vw, 13px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* ─── SHARE CTA ─── */
+  .share-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: clamp(14px, 2vw, 22px) clamp(28px, 4vw, 52px);
+    border-radius: 100px;
+    font-family: var(--font-black);
+    font-size: clamp(14px, 2vw, 22px);
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    border: none;
+    margin-top: clamp(24px, 3.5vw, 48px);
+    text-decoration: none;
+    display: inline-flex;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑ ↓ keys / scroll &nbsp;·&nbsp; PULSE WRAPPED &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — COVER / TITLE
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-1" style="background:#c8ff00; color:#0a0a0a;">
+  <div class="slide-num-badge">01 / 10</div>
+
+  <!-- Deco blobs -->
+  <div class="blob" style="width:600px;height:600px;background:#ffea00;top:-200px;right:-200px;"></div>
+  <div class="blob" style="width:400px;height:400px;background:#00e5ff;bottom:-150px;left:-100px;"></div>
+
+  <span class="big-label" style="background:#0a0a0a; color:#c8ff00;">Pulse · 2026</span>
+  <h1 class="mega-title" style="color:#0a0a0a;">YOUR<br />2026,<br />WRAPPED.</h1>
+  <p class="slide-caption" style="color:#0a0a0a;">
+    Every beat. Every drop of sweat.<br />Every "one more rep."<br />
+    Here's what you actually did this year.
+  </p>
+  <p class="slide-sub" style="color:#0a0a0a;">Scroll to see your year →</p>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — TOTAL WORKOUTS
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-2" style="background:#0d0d0d; color:#c8ff00;">
+  <div class="slide-num-badge" style="color:#c8ff00;">02 / 10</div>
+
+  <div class="blob" style="width:700px;height:700px;background:#c8ff00;top:-300px;right:-300px;opacity:0.08;"></div>
+
+  <span class="big-label" style="background:#c8ff00; color:#0d0d0d;">Workouts</span>
+  <span class="mega-num" style="color:#c8ff00;">287</span>
+  <p class="slide-caption" style="color:#ffffff; max-width:28ch;">
+    You worked out 287 times this year.<br />That's basically every single day,<br />plus a spare.
+  </p>
+  <p class="slide-sub" style="color:#888;">Jan 1 → Dec 31, 2026 · All activity types counted</p>
+
+  <div class="stat-row" style="color:#c8ff00; margin-top:clamp(28px,4vw,56px);">
+    <div class="stat-cell" style="border-color:#c8ff00; color:#c8ff00;">
+      <span class="stat-val">5.5×</span>
+      <span class="stat-lbl" style="color:#fff;">per week avg</span>
+    </div>
+    <div class="stat-cell" style="border-color:#c8ff00; color:#c8ff00;">
+      <span class="stat-val">63</span>
+      <span class="stat-lbl" style="color:#fff;">rest days total</span>
+    </div>
+    <div class="stat-cell" style="border-color:#c8ff00; color:#c8ff00;">
+      <span class="stat-val">+34%</span>
+      <span class="stat-lbl" style="color:#fff;">vs 2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — TOP ACTIVITY
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-3" style="background:#cc00ff; color:#ffffff;">
+  <div class="slide-num-badge" style="color:rgba(255,255,255,0.5);">03 / 10</div>
+
+  <div class="blob" style="width:500px;height:500px;background:#ff00cc;top:-100px;left:-200px;opacity:0.4;"></div>
+  <div class="blob" style="width:400px;height:400px;background:#5500ff;bottom:-150px;right:-100px;opacity:0.5;"></div>
+
+  <span class="big-label" style="background:#ffffff; color:#cc00ff;">Top Activity</span>
+  <h2 class="mega-title" style="color:#ffffff; font-size:clamp(48px,9vw,128px);">RUNNING<br />IS YOUR<br />THING.</h2>
+
+  <div class="bar-stack" style="max-width:580px;">
+    <div class="bar-item">
+      <span class="bar-rank" style="color:#ffffff;">01</span>
+      <div class="bar-fill-wrap">
+        <div class="bar-fill" style="width:88%; background:#ffffff; color:#cc00ff;">Running · 142 sessions</div>
+      </div>
+    </div>
+    <div class="bar-item">
+      <span class="bar-rank" style="color:rgba(255,255,255,0.5);">02</span>
+      <div class="bar-fill-wrap">
+        <div class="bar-fill" style="width:58%; background:rgba(255,255,255,0.3); color:#fff;">Strength · 94 sessions</div>
+      </div>
+    </div>
+    <div class="bar-item">
+      <span class="bar-rank" style="color:rgba(255,255,255,0.3);">03</span>
+      <div class="bar-fill-wrap">
+        <div class="bar-fill" style="width:34%; background:rgba(255,255,255,0.15); color:#fff;">HIIT · 51 sessions</div>
+      </div>
+    </div>
+  </div>
+  <p class="slide-sub" style="color:rgba(255,255,255,0.6); margin-top:20px;">You ran a combined 1,847 km this year. That's London → Istanbul.</p>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — MINUTES MOVED
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-4" style="background:#ff4d00; color:#ffff00;">
+  <div class="slide-num-badge" style="color:rgba(255,255,0,0.5);">04 / 10</div>
+
+  <div class="blob" style="width:600px;height:600px;background:#ff8800;top:-250px;right:-200px;opacity:0.45;"></div>
+  <div class="blob" style="width:350px;height:350px;background:#cc0000;bottom:-120px;left:-80px;opacity:0.4;"></div>
+
+  <span class="big-label" style="background:#ffff00; color:#ff4d00;">Minutes Moved</span>
+  <span class="mega-num" style="color:#ffff00; font-size:clamp(88px,20vw,260px);">14,892</span>
+  <p class="slide-caption" style="color:#fff; max-width:30ch;">
+    You spent 14,892 minutes moving in 2026.<br />
+    That's 248 hours. 10 full days of pure motion.
+  </p>
+  <div class="stat-row" style="color:#ffff00;">
+    <div class="stat-cell" style="border-color:#ffff00; color:#ffff00;">
+      <span class="stat-val" style="color:#ffff00;">52 min</span>
+      <span class="stat-lbl" style="color:#fff;">avg session</span>
+    </div>
+    <div class="stat-cell" style="border-color:#ffff00; color:#ffff00;">
+      <span class="stat-val" style="color:#ffff00;">248 hrs</span>
+      <span class="stat-lbl" style="color:#fff;">total hours</span>
+    </div>
+    <div class="stat-cell" style="border-color:#ffff00; color:#ffff00;">
+      <span class="stat-val" style="color:#ffff00;">41 min</span>
+      <span class="stat-lbl" style="color:#fff;">daily average</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — PERCENTILE RANKING
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-5" style="background:#00e5ff; color:#001a33;">
+  <div class="slide-num-badge" style="color:rgba(0,26,51,0.4);">05 / 10</div>
+
+  <div class="blob" style="width:500px;height:500px;background:#00aaff;top:-200px;right:-150px;opacity:0.35;"></div>
+  <div class="blob" style="width:300px;height:300px;background:#0055cc;bottom:-100px;left:50px;opacity:0.3;"></div>
+
+  <span class="big-label" style="background:#001a33; color:#00e5ff;">Global Ranking</span>
+  <h2 class="mega-title" style="color:#001a33; font-size:clamp(44px,8vw,110px);">TOP<br />3%.</h2>
+
+  <div class="pct-wrap">
+    <div class="pct-ring" style="border-color:#001a33;">
+      <span class="pct-num" style="color:#001a33;">3%</span>
+      <span class="pct-label" style="color:#001a33;">globally</span>
+    </div>
+    <div class="pct-desc">
+      <p class="slide-caption" style="color:#001a33; max-width:26ch;">
+        Out of 4.8 million Pulse users worldwide, you outworked 97% of them.
+      </p>
+      <p class="slide-sub" style="color:rgba(0,26,51,0.65); margin-top:12px;">
+        In your city, you ranked #14 overall. In your age group, you're in the top 1%.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — STREAK
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6" style="background:#1a001a; color:#ff00aa;">
+  <div class="slide-num-badge" style="color:rgba(255,0,170,0.4);">06 / 10</div>
+
+  <div class="blob" style="width:550px;height:550px;background:#ff00aa;top:-220px;right:-220px;opacity:0.12;"></div>
+  <div class="blob" style="width:350px;height:350px;background:#cc0055;bottom:-100px;left:-80px;opacity:0.18;"></div>
+
+  <span class="big-label" style="background:#ff00aa; color:#1a001a;">Best Streak</span>
+  <span class="mega-num" style="color:#ff00aa;">47</span>
+  <p class="slide-caption" style="color:#ffffff;">
+    47 days straight. No excuses, no skips.<br />Your longest streak ever.
+  </p>
+  <p class="slide-sub" style="color:rgba(255,255,255,0.5);">March 3 → April 18 · The streak that changed everything</p>
+
+  <!-- Visual streak grid — 47 filled + 13 dim -->
+  <div class="streak-boxes" style="color:#ff00aa;">
+    <!-- 47 active boxes -->
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div><div class="streak-box"></div>
+    <div class="streak-box"></div><div class="streak-box"></div>
+    <!-- 13 dim boxes = rest of row to 60 -->
+    <div class="streak-box dim"></div><div class="streak-box dim"></div><div class="streak-box dim"></div><div class="streak-box dim"></div><div class="streak-box dim"></div>
+    <div class="streak-box dim"></div><div class="streak-box dim"></div><div class="streak-box dim"></div><div class="streak-box dim"></div><div class="streak-box dim"></div>
+    <div class="streak-box dim"></div><div class="streak-box dim"></div><div class="streak-box dim"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — MUSIC VIBES
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-7" style="background:#0a2200; color:#c8ff00;">
+  <div class="slide-num-badge" style="color:rgba(200,255,0,0.35);">07 / 10</div>
+
+  <div class="blob" style="width:500px;height:500px;background:#44ff00;top:-200px;left:-200px;opacity:0.1;"></div>
+  <div class="blob" style="width:400px;height:400px;background:#007700;bottom:-150px;right:-100px;opacity:0.25;"></div>
+
+  <span class="big-label" style="background:#c8ff00; color:#0a2200;">Soundtrack</span>
+  <h2 class="mega-title" style="color:#c8ff00; font-size:clamp(40px,7.5vw,100px);">YOU PLAYED<br />6,204<br />TRACKS.</h2>
+  <p class="slide-caption" style="color:#ffffff; max-width:30ch;">
+    Your most-played genre: <strong style="color:#c8ff00;">Electronic.</strong><br />
+    Your power song: <strong style="color:#c8ff00;">"All In" by ODESZA.</strong><br />
+    Played 94 times during workouts.
+  </p>
+
+  <div class="stat-row" style="color:#c8ff00; margin-top:clamp(20px,3vw,40px);">
+    <div class="stat-cell" style="border-color:#c8ff00;">
+      <span class="stat-val" style="color:#c8ff00;">6,204</span>
+      <span class="stat-lbl" style="color:rgba(255,255,255,0.6);">tracks played</span>
+    </div>
+    <div class="stat-cell" style="border-color:#c8ff00;">
+      <span class="stat-val" style="color:#c8ff00;">311 hrs</span>
+      <span class="stat-lbl" style="color:rgba(255,255,255,0.6);">music listened</span>
+    </div>
+    <div class="stat-cell" style="border-color:#c8ff00;">
+      <span class="stat-val" style="color:#c8ff00;">142 BPM</span>
+      <span class="stat-lbl" style="color:rgba(255,255,255,0.6);">your sweet spot</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — COMMUNITY
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-8" style="background:#ffcc00; color:#1a0066;">
+  <div class="slide-num-badge" style="color:rgba(26,0,102,0.35);">08 / 10</div>
+
+  <div class="blob" style="width:450px;height:450px;background:#ff8800;top:-150px;right:-150px;opacity:0.3;"></div>
+  <div class="blob" style="width:300px;height:300px;background:#ee0066;bottom:-100px;left:-60px;opacity:0.2;"></div>
+
+  <span class="big-label" style="background:#1a0066; color:#ffcc00;">Community</span>
+  <h2 class="mega-title" style="color:#1a0066; font-size:clamp(44px,8vw,110px);">YOU'RE<br />NOT ALONE<br />IN THIS.</h2>
+
+  <div class="community-grid">
+    <div class="c-card" style="background:#1a0066; color:#ffcc00;">
+      <span class="c-num">382</span>
+      <span class="c-lbl" style="color:rgba(255,204,0,0.7);">friends on Pulse</span>
+    </div>
+    <div class="c-card" style="background:#1a0066; color:#ff4488;">
+      <span class="c-num">28</span>
+      <span class="c-lbl" style="color:rgba(255,68,136,0.7);">group challenges won</span>
+    </div>
+    <div class="c-card" style="background:#1a0066; color:#00ffcc;">
+      <span class="c-num">1,047</span>
+      <span class="c-lbl" style="color:rgba(0,255,204,0.7);">high-fives given</span>
+    </div>
+    <div class="c-card" style="background:#1a0066; color:#ffcc00;">
+      <span class="c-num">4.9M</span>
+      <span class="c-lbl" style="color:rgba(255,204,0,0.7);">collective mins moved</span>
+    </div>
+  </div>
+  <p class="slide-sub" style="color:rgba(26,0,102,0.65); margin-top:18px;">Your squad collectively moved 4.9 million minutes together. That's a small nation getting fit.</p>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — BIGGEST MONTH
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9" style="background:#001133; color:#ff6600;">
+  <div class="slide-num-badge" style="color:rgba(255,102,0,0.4);">09 / 10</div>
+
+  <div class="blob" style="width:600px;height:600px;background:#ff6600;top:-280px;right:-280px;opacity:0.1;"></div>
+  <div class="blob" style="width:350px;height:350px;background:#ff3300;bottom:-120px;left:-80px;opacity:0.15;"></div>
+
+  <span class="big-label" style="background:#ff6600; color:#001133;">Peak Month</span>
+  <h2 class="mega-title" style="color:#ff6600; font-size:clamp(48px,9vw,120px);">OCTOBER<br />WAS YOUR<br />MONTH.</h2>
+  <p class="slide-caption" style="color:#ffffff; max-width:28ch;">
+    You crushed 34 workouts in October alone.<br />That's every single day — plus 3 doubles.
+  </p>
+  <div class="stat-row" style="color:#ff6600; margin-top:clamp(20px,3vw,40px);">
+    <div class="stat-cell" style="border-color:#ff6600;">
+      <span class="stat-val" style="color:#ff6600;">34</span>
+      <span class="stat-lbl" style="color:rgba(255,255,255,0.6);">workouts in Oct</span>
+    </div>
+    <div class="stat-cell" style="border-color:#ff6600;">
+      <span class="stat-val" style="color:#ff6600;">1,842</span>
+      <span class="stat-lbl" style="color:rgba(255,255,255,0.6);">minutes in Oct</span>
+    </div>
+    <div class="stat-cell" style="border-color:#ff6600;">
+      <span class="stat-val" style="color:#ff6600;">3</span>
+      <span class="stat-lbl" style="color:rgba(255,255,255,0.6);">personal records</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — SHARE CTA
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-10" style="background:#c8ff00; color:#0a0a0a;">
+  <div class="slide-num-badge" style="color:rgba(10,10,10,0.35);">10 / 10</div>
+
+  <div class="blob" style="width:500px;height:500px;background:#ffffff;top:-200px;right:-150px;opacity:0.25;"></div>
+  <div class="blob" style="width:400px;height:400px;background:#ffff00;bottom:-120px;left:-80px;opacity:0.3;"></div>
+
+  <span class="big-label" style="background:#0a0a0a; color:#c8ff00;">Share Your Wrapped</span>
+  <h2 class="mega-title" style="color:#0a0a0a; font-size:clamp(44px,8vw,110px);">LET THE<br />WORLD<br />KNOW.</h2>
+  <p class="slide-caption" style="color:#0a0a0a; max-width:28ch;">
+    You moved 14,892 minutes.<br />You hit top 3% globally.<br />You earned this flex.
+  </p>
+  <p class="slide-sub" style="color:rgba(10,10,10,0.6); max-width:32ch;">
+    Share your Pulse Wrapped and inspire someone to start their own 2027.
+  </p>
+
+  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:clamp(24px,3.5vw,48px);">
+    <a class="share-pill" href="#" style="background:#0a0a0a; color:#c8ff00;">
+      <i class="fab fa-instagram"></i> Share on Instagram
+    </a>
+    <a class="share-pill" href="#" style="background:rgba(10,10,10,0.12); color:#0a0a0a; border:3px solid #0a0a0a;">
+      <i class="fab fa-twitter"></i> Post to X
+    </a>
+  </div>
+
+  <p style="margin-top:clamp(28px,4vw,56px); font-family:var(--font-body); font-size:0.72rem; color:rgba(10,10,10,0.4); letter-spacing:0.1em; text-transform:uppercase;">
+    Pulse · Your 2026 in Motion · <a href="https://presentation-skill-pack.vercel.app" style="color:rgba(10,10,10,0.4); text-decoration:underline;">Made with presentation-skill-pack</a>
+  </p>
+</section>
+
+<script>
+  // ─── ARROW-KEY NAVIGATION ───
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('slide-counter');
+  let currentSlide = 0;
+
+  function goToSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    slides[index].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      goToSlide(currentSlide + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goToSlide(currentSlide - 1);
+    }
+  });
+
+  // ─── INTERSECTION OBSERVER SLIDE COUNTER ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = slides.indexOf(entry.target);
+        if (idx !== -1) {
+          currentSlide = idx;
+          counter.textContent = String(idx + 1).padStart(2, '0');
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(slide => observer.observe(slide));
+</script>
+</body>
+</html>

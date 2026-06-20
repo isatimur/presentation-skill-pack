@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mallsoft — Ambient Audio for the Modern Mall Wanderer</title>
+<meta name="description" content="Mallsoft is the ambient music discovery app built around the nostalgic sound of empty malls, lo-fi corridors, and dreamy retail echoes. A showcase deck generated with presentation-skill-pack." />
+<link rel="canonical" href="https://presentation-skill-pack.vercel.app/examples/mallsoft-launch" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#ff6ad5" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="presentation-skill-pack" />
+<meta property="og:url" content="https://presentation-skill-pack.vercel.app/examples/mallsoft-launch" />
+<meta property="og:title" content="Mallsoft™ — Ambient Audio for the Modern Mall Wanderer" />
+<meta property="og:description" content="Music discovery rooted in the nostalgic sound of empty malls, lo-fi corridors, and pastel sunsets. 210K listeners. Launching now." />
+<meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Mallsoft™ — Ambient Audio Discovery" />
+<meta name="twitter:description" content="Music discovery rooted in the nostalgic sound of empty malls, lo-fi corridors, and pastel sunsets." />
+<meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=VT323&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── ROOT TOKENS ─── */
+  :root {
+    --hot-pink:    #ff6ad5;
+    --purple:      #8a5cff;
+    --cyan:        #5ce1ff;
+    --deep-purple: #1a0533;
+    --mid-purple:  #2d1060;
+    --soft-pink:   #ffb3ec;
+    --soft-cyan:   #b3f0ff;
+    --lavender:    #c4a8ff;
+    --peach:       #ffcba4;
+    --cream:       #fff0f9;
+    --text-dim:    rgba(255,255,255,0.35);
+    --text-muted:  rgba(255,255,255,0.55);
+    --font-disp:   'Monoton', 'Impact', cursive;
+    --font-vt:     'VT323', 'Courier New', monospace;
+    --font-mono:   'Space Mono', 'Courier New', monospace;
+  }
+
+  /* ─── SCROLL SNAP ─── */
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: var(--deep-purple);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--deep-purple);
+    color: var(--cream);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ─── SLIDE BASE ─── */
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 5vw, 72px) clamp(32px, 7vw, 96px);
+    overflow: hidden;
+  }
+
+  .slide > * { position: relative; z-index: 2; }
+
+  /* ─── VHS SCANLINES ─── */
+  .slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0,0,0,0.06) 3px,
+      rgba(0,0,0,0.06) 4px
+    );
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* ─── PERSPECTIVE GRID FLOOR ─── */
+  .grid-floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .grid-floor::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(92,225,255,0.18) 0px,
+        rgba(92,225,255,0.18) 1px,
+        transparent 1px,
+        transparent 80px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(138,92,255,0.22) 0px,
+        rgba(138,92,255,0.22) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+    transform: perspective(400px) rotateX(60deg);
+    transform-origin: top center;
+  }
+  .grid-floor::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--deep-purple) 0%, transparent 100%);
+  }
+
+  /* ─── RETRO SUN ─── */
+  .retro-sun {
+    position: absolute;
+    width: clamp(180px, 22vw, 320px);
+    height: clamp(90px, 11vw, 160px);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    background: linear-gradient(to bottom, #ffe566 0%, #ff9f43 25%, #ff6ad5 55%, #8a5cff 100%);
+    overflow: hidden;
+    box-shadow:
+      0 0 40px rgba(255,106,213,0.5),
+      0 0 80px rgba(255,106,213,0.25);
+  }
+  .retro-sun::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 12px,
+      var(--deep-purple) 12px,
+      var(--deep-purple) 14px
+    );
+    opacity: 0.9;
+  }
+
+  /* ─── CHROME TEXT (layered shadows) ─── */
+  .chrome {
+    text-shadow:
+      0 1px 0 #c8a0ff,
+      0 2px 0 #a076e8,
+      0 3px 0 #7c52cc,
+      0 4px 0 #5e3eb0,
+      0 6px 12px rgba(138,92,255,0.6),
+      0 0 30px rgba(255,106,213,0.4),
+      0 0 60px rgba(92,225,255,0.2);
+    color: #f0d0ff;
+  }
+
+  .chrome-pink {
+    text-shadow:
+      0 1px 0 #ffb3ec,
+      0 2px 0 #e87ec6,
+      0 3px 0 #cc52a0,
+      0 4px 0 #b02880,
+      0 6px 12px rgba(255,106,213,0.7),
+      0 0 30px rgba(255,106,213,0.5),
+      0 0 60px rgba(138,92,255,0.3);
+    color: #ffe0f6;
+  }
+
+  .chrome-cyan {
+    text-shadow:
+      0 1px 0 #b3f0ff,
+      0 2px 0 #7ecfe8,
+      0 3px 0 #40b0cc,
+      0 4px 0 #1888a0,
+      0 5px 10px rgba(92,225,255,0.7),
+      0 0 24px rgba(92,225,255,0.4);
+    color: #d0f5ff;
+  }
+
+  /* ─── GLOSS PANEL ─── */
+  .gloss {
+    background: linear-gradient(135deg,
+      rgba(255,255,255,0.08) 0%,
+      rgba(255,255,255,0.02) 50%,
+      rgba(138,92,255,0.06) 100%
+    );
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(2px);
+  }
+
+  .gloss-pink {
+    background: linear-gradient(135deg,
+      rgba(255,106,213,0.12) 0%,
+      rgba(255,106,213,0.04) 100%
+    );
+    border: 1px solid rgba(255,106,213,0.3);
+  }
+
+  .gloss-cyan {
+    background: linear-gradient(135deg,
+      rgba(92,225,255,0.12) 0%,
+      rgba(92,225,255,0.04) 100%
+    );
+    border: 1px solid rgba(92,225,255,0.3);
+  }
+
+  .gloss-purple {
+    background: linear-gradient(135deg,
+      rgba(138,92,255,0.15) 0%,
+      rgba(138,92,255,0.05) 100%
+    );
+    border: 1px solid rgba(138,92,255,0.35);
+  }
+
+  /* ─── NEON BORDER ─── */
+  .neon-border-pink {
+    border: 1px solid rgba(255,106,213,0.5);
+    box-shadow: 0 0 8px rgba(255,106,213,0.25), inset 0 0 8px rgba(255,106,213,0.05);
+  }
+  .neon-border-cyan {
+    border: 1px solid rgba(92,225,255,0.5);
+    box-shadow: 0 0 8px rgba(92,225,255,0.25), inset 0 0 8px rgba(92,225,255,0.05);
+  }
+  .neon-border-purple {
+    border: 1px solid rgba(138,92,255,0.5);
+    box-shadow: 0 0 8px rgba(138,92,255,0.25), inset 0 0 8px rgba(138,92,255,0.05);
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .disp {
+    font-family: var(--font-disp);
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+  .vt {
+    font-family: var(--font-vt);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+  }
+  .mono { font-family: var(--font-mono); }
+
+  .label-tag {
+    font-family: var(--font-vt);
+    font-size: clamp(14px, 1.4vw, 18px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 14px;
+    display: block;
+    text-shadow: 0 0 12px rgba(92,225,255,0.6);
+  }
+
+  .jp {
+    font-family: var(--font-vt);
+    color: rgba(255,255,255,0.15);
+    font-size: clamp(48px, 8vw, 120px);
+    position: absolute;
+    pointer-events: none;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── SUNSET GRADIENT BG ─── */
+  .bg-sunset {
+    background: linear-gradient(to bottom,
+      #0d0120 0%,
+      #1a0533 20%,
+      #2d0d4e 40%,
+      #4a1a6e 60%,
+      #6e2a8a 75%,
+      #9a3faa 88%,
+      #c055c0 100%
+    );
+  }
+  .bg-deep {
+    background: linear-gradient(to bottom, #0a001a 0%, #140035 100%);
+  }
+  .bg-mid {
+    background: linear-gradient(to bottom, #120028 0%, #1e0045 100%);
+  }
+  .bg-glow-pink {
+    background: radial-gradient(ellipse at 30% 20%, rgba(255,106,213,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 70%, rgba(138,92,255,0.1) 0%, transparent 60%),
+                linear-gradient(to bottom, #0d0120 0%, #180030 100%);
+  }
+  .bg-glow-cyan {
+    background: radial-gradient(ellipse at 70% 20%, rgba(92,225,255,0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 70%, rgba(138,92,255,0.12) 0%, transparent 60%),
+                linear-gradient(to bottom, #0a0020 0%, #150030 100%);
+  }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-num {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--font-vt);
+    font-size: 1rem;
+    color: var(--text-dim);
+    letter-spacing: 0.16em;
+    z-index: 10;
+  }
+
+  /* ─── FIXED NAV HINT ─── */
+  #nav-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    font-family: var(--font-vt);
+    font-size: 1.1rem;
+    color: var(--hot-pink);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    background: rgba(26,5,51,0.85);
+    border: 1px solid rgba(255,106,213,0.35);
+    padding: 6px 18px;
+    text-shadow: 0 0 10px rgba(255,106,213,0.6);
+    box-shadow: 0 0 16px rgba(255,106,213,0.15);
+    backdrop-filter: blur(4px);
+  }
+
+  /* ─── STAT PANEL ─── */
+  .stat-panel {
+    padding: 24px 28px;
+    border-radius: 0;
+  }
+  .stat-val {
+    font-family: var(--font-vt);
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .stat-val.pink { color: var(--hot-pink); text-shadow: 0 0 20px rgba(255,106,213,0.5); }
+  .stat-val.cyan { color: var(--cyan); text-shadow: 0 0 20px rgba(92,225,255,0.5); }
+  .stat-val.purple { color: var(--lavender); text-shadow: 0 0 20px rgba(196,168,255,0.5); }
+  .stat-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .stat-delta {
+    font-family: var(--font-vt);
+    font-size: 0.95rem;
+    color: var(--soft-pink);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── FEATURE CARD ─── */
+  .feat-card {
+    padding: 28px 26px;
+  }
+  .feat-icon {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .feat-title {
+    font-family: var(--font-vt);
+    font-size: clamp(20px, 2.5vw, 30px);
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 12px rgba(255,106,213,0.3);
+  }
+  .feat-body {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+  .feat-body strong { color: var(--soft-pink); font-weight: 700; }
+
+  /* ─── PRICING CARD ─── */
+  .price-card {
+    padding: 32px 28px;
+    text-align: center;
+    position: relative;
+  }
+  .price-name {
+    font-family: var(--font-vt);
+    font-size: clamp(20px, 2.8vw, 32px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .price-amount {
+    font-family: var(--font-disp);
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .price-period {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .price-features {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .price-features li {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .price-features li::before {
+    content: '▸';
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .price-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-vt);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    padding: 3px 14px;
+    white-space: nowrap;
+  }
+
+  /* ─── DIVIDER LINE ─── */
+  .h-rule-neon {
+    border: none;
+    border-top: 1px solid rgba(255,106,213,0.25);
+    margin: 20px 0;
+    box-shadow: 0 0 6px rgba(255,106,213,0.1);
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .testimonial {
+    padding: 24px 28px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '\201C';
+    font-family: Georgia, serif;
+    font-size: 5rem;
+    color: rgba(255,106,213,0.15);
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--cream);
+    line-height: 1.8;
+    padding-left: 12px;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .testimonial-attr {
+    font-family: var(--font-vt);
+    font-size: 1rem;
+    color: var(--hot-pink);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    html { scroll-snap-type: none; }
+    #nav-hint { display: none; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    .slide::after { display: none; }
+    .grid-floor { display: none; }
+    .retro-sun { display: none; }
+    .jp { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Fixed nav hint -->
+<div id="nav-hint">↑↓ SCROLL &nbsp;·&nbsp; MALLSOFT™ &nbsp;·&nbsp; <span id="slide-counter">01</span> / 10</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 01 — CHROME TITLE
+═══════════════════════════════════════ -->
+<section class="slide bg-sunset" id="slide-1">
+  <div class="slide-num">[01/10]</div>
+
+  <!-- Retro sun centered -->
+  <div style="position:absolute;bottom:38%;left:50%;transform:translateX(-50%);z-index:1;">
+    <div class="retro-sun"></div>
+  </div>
+
+  <!-- Perspective grid floor -->
+  <div class="grid-floor"></div>
+
+  <!-- Japanese ambient text -->
+  <span class="jp" style="right:-20px;top:10%;opacity:0.08;">マ ル</span>
+  <span class="jp" style="left:-10px;bottom:30%;opacity:0.06;font-size:clamp(30px,5vw,80px);">ソフト</span>
+
+  <!-- Content -->
+  <div style="max-width:900px;">
+    <span class="label-tag">▸ NEW ARRIVAL ™ &nbsp; 2026 &nbsp; ▸</span>
+
+    <h1 class="disp chrome" style="font-size:clamp(48px,10vw,140px);line-height:0.9;margin-bottom:24px;">
+      MALL<br />SOFT
+    </h1>
+
+    <div style="font-family:var(--font-vt);font-size:clamp(18px,2.5vw,32px);color:var(--soft-pink);letter-spacing:0.14em;margin-bottom:8px;text-shadow:0 0 16px rgba(255,106,213,0.5);">
+      AMBIENT AUDIO DISCOVERY
+    </div>
+    <div style="font-family:var(--font-mono);font-size:clamp(11px,1.1vw,14px);color:var(--text-muted);letter-spacing:0.08em;max-width:52ch;line-height:1.8;margin-bottom:36px;">
+      The music discovery app for people who remember when malls had fountains,
+      food courts smelled like Auntie Anne's, and the Muzak never stopped playing.
+    </div>
+
+    <div style="display:flex;gap:0;flex-wrap:wrap;">
+      <div style="padding:14px 22px;border:1px solid rgba(255,106,213,0.35);border-right:none;background:rgba(255,106,213,0.06);">
+        <div style="font-family:var(--font-vt);font-size:clamp(22px,3vw,40px);color:var(--hot-pink);text-shadow:0 0 16px rgba(255,106,213,0.6);">210K</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Active Listeners</div>
+      </div>
+      <div style="padding:14px 22px;border:1px solid rgba(92,225,255,0.35);border-right:none;background:rgba(92,225,255,0.06);">
+        <div style="font-family:var(--font-vt);font-size:clamp(22px,3vw,40px);color:var(--cyan);text-shadow:0 0 16px rgba(92,225,255,0.6);">4.2h</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Daily Session Avg</div>
+      </div>
+      <div style="padding:14px 22px;border:1px solid rgba(196,168,255,0.35);border-right:none;background:rgba(138,92,255,0.06);">
+        <div style="font-family:var(--font-vt);font-size:clamp(22px,3vw,40px);color:var(--lavender);text-shadow:0 0 16px rgba(196,168,255,0.6);">38K</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Tracks Catalogued</div>
+      </div>
+      <div style="padding:14px 22px;border:1px solid rgba(255,203,164,0.35);background:rgba(255,203,164,0.05);">
+        <div style="font-family:var(--font-vt);font-size:clamp(22px,3vw,40px);color:var(--peach);text-shadow:0 0 16px rgba(255,203,164,0.5);">$2.1M</div>
+        <div style="font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">ARR at Launch</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:28px;right:clamp(32px,7vw,96px);font-family:var(--font-vt);font-size:1rem;color:var(--text-dim);letter-spacing:0.14em;text-align:right;line-height:1.9;z-index:5;">
+    MALLSOFT CORP. ™<br />
+    LOS ANGELES / TOKYO / MIAMI<br />
+    VER. 1.0 // JUNE 2026
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 02 — THE VIBE / PROBLEM
+═══════════════════════════════════════ -->
+<section class="slide bg-deep" id="slide-2">
+  <div class="slide-num">[02/10]</div>
+
+  <div class="grid-floor" style="height:35%;opacity:0.6;"></div>
+
+  <span class="jp" style="right:0;top:5%;font-size:clamp(60px,12vw,180px);opacity:0.05;">消費</span>
+
+  <div style="max-width:1000px;">
+    <span class="label-tag">▸ THE VIBE PROBLEM ™</span>
+
+    <h2 class="disp chrome-pink" style="font-size:clamp(32px,5.5vw,76px);margin-bottom:24px;line-height:0.95;">
+      STREAMING KILLED<br />THE MALL CORRIDOR.
+    </h2>
+
+    <div style="font-family:var(--font-mono);font-size:0.82rem;color:var(--text-muted);max-width:56ch;line-height:1.85;margin-bottom:36px;">
+      Spotify gave us algorithms. Algorithms gave us content. Content stripped away the
+      <strong style="color:var(--soft-pink);">feeling</strong> — that liminal, slightly-too-cold, echo-soaked drift through
+      a half-empty mall on a Tuesday afternoon. Nobody is building music discovery
+      for <em style="color:var(--lavender);">atmosphere</em>. Everybody is building it for engagement metrics.
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,106,213,0.1);border:1px solid rgba(255,106,213,0.15);max-width:860px;">
+      <div style="padding:24px 20px;background:rgba(10,0,30,0.8);">
+        <div style="font-family:var(--font-vt);font-size:clamp(28px,4vw,52px);color:var(--hot-pink);text-shadow:0 0 16px rgba(255,106,213,0.5);line-height:1;margin-bottom:6px;">94%</div>
+        <div style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);line-height:1.6;">
+          of ambient listeners say mainstream streaming platforms "don't understand" their listening mood
+        </div>
+      </div>
+      <div style="padding:24px 20px;background:rgba(10,0,30,0.8);">
+        <div style="font-family:var(--font-vt);font-size:clamp(28px,4vw,52px);color:var(--cyan);text-shadow:0 0 16px rgba(92,225,255,0.5);line-height:1;margin-bottom:6px;">$4.8B</div>
+        <div style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);line-height:1.6;">
+          ambient / lo-fi / vaporwave audio market by 2028 — growing 31% YoY across all platforms
+        </div>
+      </div>
+      <div style="padding:24px 20px;background:rgba(10,0,30,0.8);">
+        <div style="font-family:var(--font-vt);font-size:clamp(28px,4vw,52px);color:var(--lavender);text-shadow:0 0 16px rgba(196,168,255,0.5);line-height:1;margin-bottom:6px;">0</div>
+        <div style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);line-height:1.6;">
+          dedicated discovery platforms exist for nostalgia-coded ambient and atmospheric audio. The shelf is empty.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;padding:18px 22px;border-left:3px solid var(--hot-pink);background:rgba(255,106,213,0.05);max-width:600px;">
+      <div style="font-family:var(--font-vt);font-size:1.1rem;color:var(--soft-pink);letter-spacing:0.1em;margin-bottom:4px;">WHAT PEOPLE ACTUALLY WANT</div>
+      <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);line-height:1.75;">
+        Music that <strong style="color:var(--cream);">feels like a place</strong>, not a playlist. Sound that dissolves into your afternoon
+        like steam off a fountain. A radio station that never plays what you expect but always plays what you need.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 03 — THE PRODUCT
+═══════════════════════════════════════ -->
+<section class="slide bg-glow-pink" id="slide-3">
+  <div class="slide-num">[03/10]</div>
+
+  <span class="jp" style="right:-30px;bottom:10%;font-size:clamp(80px,14vw,220px);opacity:0.04;">発見</span>
+
+  <div style="max-width:1040px;width:100%;">
+    <span class="label-tag">▸ THE PRODUCT ™ &nbsp; MALLSOFT v1.0</span>
+
+    <h2 class="disp chrome" style="font-size:clamp(28px,4.5vw,64px);margin-bottom:28px;line-height:0.95;">
+      AMBIENT RADIO<br />FOR THE NOSTALGIC EAR.
+    </h2>
+
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start;">
+      <div>
+        <div class="gloss-pink" style="padding:28px 26px;margin-bottom:16px;">
+          <div style="font-family:var(--font-vt);font-size:clamp(20px,2.5vw,30px);color:var(--soft-pink);letter-spacing:0.1em;margin-bottom:14px;">WHAT IS MALLSOFT?</div>
+          <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);line-height:1.85;">
+            Mallsoft is a <strong style="color:var(--cream);">mood-first music discovery app</strong> built around
+            atmosphere and place — not genre tags or popularity charts. You pick a
+            <strong style="color:var(--soft-pink);">scene</strong> (Food Court, Empty Carousel, Late Night Parking Lot,
+            Hotel Lobby 1993), and Mallsoft's curation engine surfaces audio that
+            dissolves you into that space. Fully licensed, fully discoverable.
+          </div>
+        </div>
+        <div class="gloss-cyan" style="padding:22px 26px;">
+          <div style="font-family:var(--font-vt);font-size:1rem;color:var(--cyan);letter-spacing:0.12em;margin-bottom:10px;">DISCOVERY ENGINE — SCENESYNC™</div>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);line-height:1.75;">
+            Our proprietary <strong style="color:var(--soft-cyan);">SceneSync™</strong> model was trained on 38,000 hand-tagged ambient tracks,
+            environmental metadata (reverb signature, BPM variance, tonal warmth index),
+            and 6 million listener listening-context signals. It finds the sound you didn't know you needed.
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="padding:18px 20px;border-left:2px solid var(--hot-pink);background:rgba(255,106,213,0.05);">
+          <div style="font-family:var(--font-vt);font-size:1rem;color:var(--hot-pink);letter-spacing:0.1em;margin-bottom:4px;">SCENES</div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);line-height:1.65;">
+            220+ hand-curated sonic environments. Updated weekly by our editorial team of atmospheric archivists.
+          </div>
+        </div>
+        <div style="padding:18px 20px;border-left:2px solid var(--cyan);background:rgba(92,225,255,0.05);">
+          <div style="font-family:var(--font-vt);font-size:1rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:4px;">RADIO MODE</div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);line-height:1.65;">
+            Continuous ambient stream. No algorithm interruptions. No "your daily mix is ready." Just the drift.
+          </div>
+        </div>
+        <div style="padding:18px 20px;border-left:2px solid var(--lavender);background:rgba(138,92,255,0.05);">
+          <div style="font-family:var(--font-vt);font-size:1rem;color:var(--lavender);letter-spacing:0.1em;margin-bottom:4px;">TAPE DECKS</div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);line-height:1.65;">
+            Shareable mixtape objects with VHS-aesthetic covers. 84K tapes created in beta alone.
+          </div>
+        </div>
+        <div style="padding:18px 20px;border-left:2px solid var(--peach);background:rgba(255,203,164,0.05);">
+          <div style="font-family:var(--font-vt);font-size:1rem;color:var(--peach);letter-spacing:0.1em;margin-bottom:4px;">ARTIST PORTAL</div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);line-height:1.65;">
+            Direct upload + scene tagging for indie ambient producers. 2,200 artists on waiting list.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 04 — FEATURE: SCENESYNC
+═══════════════════════════════════════ -->
+<section class="slide bg-mid" id="slide-4">
+  <div class="slide-num">[04/10]</div>
+
+  <div class="grid-floor" style="height:28%;opacity:0.4;"></div>
+  <span class="jp" style="right:2%;top:12%;font-size:clamp(50px,9vw,150px);opacity:0.05;">空間</span>
+
+  <div style="max-width:1040px;width:100%;">
+    <span class="label-tag">▸ FEATURE 01 — SCENESYNC™ ENGINE</span>
+
+    <h2 class="disp chrome-cyan" style="font-size:clamp(26px,4vw,58px);margin-bottom:30px;line-height:0.95;">
+      THE ROOM PICKS<br />THE MUSIC FOR YOU.
+    </h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(92,225,255,0.08);max-width:960px;">
+      <div class="feat-card gloss-cyan">
+        <span class="feat-icon" style="color:var(--cyan);">◈</span>
+        <div class="feat-title" style="color:var(--soft-cyan);">ATMOSPHERIC TAGGING</div>
+        <div class="feat-body">
+          Every track is tagged across 14 atmospheric dimensions — reverb depth, warmth index,
+          nostalgia coefficient, tempo drift. <strong>Not genre. Feeling.</strong>
+          SceneSync maps where you are to what you need.
+        </div>
+      </div>
+      <div class="feat-card gloss-purple">
+        <span class="feat-icon" style="color:var(--lavender);">◈</span>
+        <div class="feat-title" style="color:var(--lavender);">CONTEXT SENSING</div>
+        <div class="feat-body">
+          Time of day, ambient sound (with permission), motion state, local weather.
+          <strong style="color:var(--lavender);">Mallsoft knows</strong> you're at a mall versus
+          your kitchen versus a 3AM drive, and adjusts the sonic palette accordingly.
+        </div>
+      </div>
+      <div class="feat-card gloss-pink">
+        <span class="feat-icon" style="color:var(--hot-pink);">◈</span>
+        <div class="feat-title" style="color:var(--soft-pink);">DISCOVERY DRIFT</div>
+        <div class="feat-body">
+          Unlike recommendation loops, SceneSync slowly <strong>mutates your soundscape</strong>
+          across a session — introducing unexpected textures while maintaining
+          the emotional thread. Surprise without disruption.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="padding:16px 20px;border:1px solid rgba(92,225,255,0.2);background:rgba(92,225,255,0.04);flex:1;min-width:200px;">
+        <div style="font-family:var(--font-vt);font-size:1.8rem;color:var(--cyan);line-height:1;">38K</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Licensed Tracks in Corpus</div>
+      </div>
+      <div style="padding:16px 20px;border:1px solid rgba(255,106,213,0.2);background:rgba(255,106,213,0.04);flex:1;min-width:200px;">
+        <div style="font-family:var(--font-vt);font-size:1.8rem;color:var(--hot-pink);line-height:1;">220+</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Curated Scenes</div>
+      </div>
+      <div style="padding:16px 20px;border:1px solid rgba(196,168,255,0.2);background:rgba(138,92,255,0.04);flex:1;min-width:200px;">
+        <div style="font-family:var(--font-vt);font-size:1.8rem;color:var(--lavender);line-height:1;">14</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Atmospheric Dimensions</div>
+      </div>
+      <div style="padding:16px 20px;border:1px solid rgba(255,203,164,0.2);background:rgba(255,203,164,0.04);flex:1;min-width:200px;">
+        <div style="font-family:var(--font-vt);font-size:1.8rem;color:var(--peach);line-height:1;">6M+</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Training Context Signals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 05 — FEATURE: TAPE DECKS
+═══════════════════════════════════════ -->
+<section class="slide bg-glow-cyan" id="slide-5">
+  <div class="slide-num">[05/10]</div>
+
+  <span class="jp" style="left:-20px;top:5%;font-size:clamp(60px,11vw,180px);opacity:0.05;">共有</span>
+
+  <div style="max-width:1040px;width:100%;">
+    <span class="label-tag">▸ FEATURE 02 — TAPE DECKS™</span>
+
+    <h2 class="disp chrome" style="font-size:clamp(26px,4vw,58px);margin-bottom:28px;line-height:0.95;">
+      MIXTAPES FOR THE<br />DIGITAL WANDERER.
+    </h2>
+
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start;">
+      <div>
+        <div class="gloss" style="padding:26px 24px;margin-bottom:16px;border-color:rgba(255,255,255,0.1);">
+          <div style="font-family:var(--font-vt);font-size:clamp(16px,2vw,24px);color:var(--cream);letter-spacing:0.1em;margin-bottom:12px;">THE PHYSICAL METAPHOR</div>
+          <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);line-height:1.85;margin-bottom:16px;">
+            Tape Decks are shareable objects — generated with a VHS-cassette visual aesthetic,
+            a hand-written label, and a B-side flip. You share the vibe, not a Spotify link.
+            Recipients experience the tape in sequence, the way mix tapes were meant to be heard.
+          </div>
+          <hr class="h-rule-neon" />
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+            <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:10px;">
+              <span style="color:var(--cyan);">▸</span> Generative VHS cover art via on-device diffusion
+            </div>
+            <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:10px;">
+              <span style="color:var(--cyan);">▸</span> A-side + B-side structure (max 45 min each)
+            </div>
+            <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:10px;">
+              <span style="color:var(--cyan);">▸</span> Embeddable in any website — no Mallsoft account required to play
+            </div>
+            <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:10px;">
+              <span style="color:var(--cyan);">▸</span> Expiring tapes — community ritual around tape drops
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial gloss-pink">
+          <div class="testimonial-text">
+            "Received a Mallsoft tape from a stranger on Tumblr.
+            Listened to it for three hours. Felt like being 14 again in a mall I never actually visited."
+          </div>
+          <div class="testimonial-attr">— @vaporghost_77 (Beta User)</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="padding:24px 22px;background:rgba(92,225,255,0.06);border:1px solid rgba(92,225,255,0.2);text-align:center;">
+          <div style="font-family:var(--font-vt);font-size:clamp(40px,6vw,80px);color:var(--cyan);text-shadow:0 0 20px rgba(92,225,255,0.6);line-height:1;margin-bottom:4px;">84K</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Tapes Created in Beta</div>
+          <div style="font-family:var(--font-vt);font-size:0.9rem;color:var(--soft-cyan);margin-top:4px;">+12K/week</div>
+        </div>
+        <div style="padding:24px 22px;background:rgba(255,106,213,0.06);border:1px solid rgba(255,106,213,0.2);text-align:center;">
+          <div style="font-family:var(--font-vt);font-size:clamp(40px,6vw,80px);color:var(--hot-pink);text-shadow:0 0 20px rgba(255,106,213,0.6);line-height:1;margin-bottom:4px;">3.2×</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Viral K-Factor (Tape Shares)</div>
+          <div style="font-family:var(--font-vt);font-size:0.9rem;color:var(--soft-pink);margin-top:4px;">Word-of-mouth only</div>
+        </div>
+        <div style="padding:24px 22px;background:rgba(138,92,255,0.06);border:1px solid rgba(138,92,255,0.2);text-align:center;">
+          <div style="font-family:var(--font-vt);font-size:clamp(40px,6vw,80px);color:var(--lavender);text-shadow:0 0 20px rgba(196,168,255,0.6);line-height:1;margin-bottom:4px;">62%</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">New Signups from Tape Shares</div>
+          <div style="font-family:var(--font-vt);font-size:0.9rem;color:var(--lavender);margin-top:4px;">Zero paid acquisition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 06 — FEATURE: ARTIST PORTAL
+═══════════════════════════════════════ -->
+<section class="slide bg-deep" id="slide-6">
+  <div class="slide-num">[06/10]</div>
+
+  <div class="grid-floor" style="height:32%;opacity:0.5;"></div>
+  <span class="jp" style="right:0;bottom:20%;font-size:clamp(60px,10vw,160px);opacity:0.05;">音楽家</span>
+
+  <div style="max-width:1040px;width:100%;">
+    <span class="label-tag">▸ FEATURE 03 — ARTIST PORTAL™</span>
+
+    <h2 class="disp chrome-pink" style="font-size:clamp(26px,4vw,58px);margin-bottom:28px;line-height:0.95;">
+      THE ATMOSPHERIC<br />MUSICIAN FINALLY<br />HAS A HOME.
+    </h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-bottom:20px;">
+          Vaporwave, mallsoft, lo-fi, hauntology, ambient pop — these artists are
+          generating millions of streams on YouTube and SoundCloud but earning fractions of
+          a cent. <strong style="color:var(--cream);">Mallsoft's Artist Portal</strong> gives them
+          a curated home, direct licensing deals, and fan-to-artist tape commissions.
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="padding:14px 16px;border:1px solid rgba(255,106,213,0.2);border-bottom:none;background:rgba(255,106,213,0.04);">
+            <div style="font-family:var(--font-vt);font-size:1rem;color:var(--hot-pink);letter-spacing:0.1em;margin-bottom:2px;">DIRECT UPLOAD</div>
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);">Scene-tag your own work. No label required. Reviewed within 72h.</div>
+          </div>
+          <div style="padding:14px 16px;border:1px solid rgba(92,225,255,0.2);border-bottom:none;background:rgba(92,225,255,0.04);">
+            <div style="font-family:var(--font-vt);font-size:1rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:2px;">SCENE PLACEMENTS</div>
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);">Revenue share every time your track plays inside a curated Scene.</div>
+          </div>
+          <div style="padding:14px 16px;border:1px solid rgba(196,168,255,0.2);border-bottom:none;background:rgba(138,92,255,0.04);">
+            <div style="font-family:var(--font-vt);font-size:1rem;color:var(--lavender);letter-spacing:0.1em;margin-bottom:2px;">TAPE COMMISSIONS</div>
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);">Fans commission custom tapes directly from artists. 70% to creator.</div>
+          </div>
+          <div style="padding:14px 16px;border:1px solid rgba(255,203,164,0.2);background:rgba(255,203,164,0.04);">
+            <div style="font-family:var(--font-vt);font-size:1rem;color:var(--peach);letter-spacing:0.1em;margin-bottom:2px;">ANALYTICS</div>
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);">Scene mood analytics, listening context heatmaps, tape share lineage.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="padding:20px;border:1px solid rgba(255,106,213,0.25);background:rgba(255,106,213,0.05);">
+          <div style="font-family:var(--font-vt);font-size:clamp(28px,4vw,52px);color:var(--hot-pink);text-shadow:0 0 16px rgba(255,106,213,0.5);line-height:1;margin-bottom:4px;">2,200</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Artists on Waitlist</div>
+          <div style="font-family:var(--font-vt);font-size:0.85rem;color:var(--soft-pink);margin-top:4px;">Portal opens July 2026</div>
+        </div>
+        <div style="padding:20px;border:1px solid rgba(92,225,255,0.25);background:rgba(92,225,255,0.05);">
+          <div style="font-family:var(--font-vt);font-size:clamp(28px,4vw,52px);color:var(--cyan);text-shadow:0 0 16px rgba(92,225,255,0.5);line-height:1;margin-bottom:4px;">$0.004</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Per-Stream Rate (3× Spotify)</div>
+        </div>
+        <div style="padding:20px;border:1px solid rgba(196,168,255,0.25);background:rgba(138,92,255,0.05);">
+          <div style="font-family:var(--font-vt);font-size:clamp(28px,4vw,52px);color:var(--lavender);text-shadow:0 0 16px rgba(196,168,255,0.5);line-height:1;margin-bottom:4px;">70%</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Revenue Share to Creators</div>
+          <div style="font-family:var(--font-vt);font-size:0.85rem;color:var(--lavender);margin-top:4px;">(vs 30% industry norm)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 07 — TRACTION STATS
+═══════════════════════════════════════ -->
+<section class="slide bg-glow-pink" id="slide-7">
+  <div class="slide-num">[07/10]</div>
+
+  <div class="grid-floor" style="height:30%;opacity:0.45;"></div>
+
+  <div style="max-width:1040px;width:100%;">
+    <span class="label-tag">▸ TRACTION ™ &nbsp; JUNE 2026</span>
+
+    <h2 class="disp chrome" style="font-size:clamp(26px,4vw,58px);margin-bottom:32px;line-height:0.95;">
+      THE NUMBERS<br />FEEL LIKE NOSTALGIA.
+    </h2>
+
+    <!-- Big stat grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,106,213,0.1);margin-bottom:1px;max-width:960px;">
+      <div class="stat-panel gloss-pink">
+        <div class="stat-val pink">210K</div>
+        <div class="stat-lbl">Monthly Active Listeners</div>
+        <div class="stat-delta">↑ 340% YoY</div>
+      </div>
+      <div class="stat-panel gloss-cyan">
+        <div class="stat-val cyan">4.2h</div>
+        <div class="stat-lbl">Avg Daily Session Length</div>
+        <div class="stat-delta">vs 31min Spotify avg</div>
+      </div>
+      <div class="stat-panel gloss-purple">
+        <div class="stat-val purple">$2.1M</div>
+        <div class="stat-lbl">Annual Recurring Revenue</div>
+        <div class="stat-delta">↑ from $0 · 11 months</div>
+      </div>
+      <div class="stat-panel" style="background:rgba(255,203,164,0.06);border:1px solid rgba(255,203,164,0.2);">
+        <div class="stat-val" style="color:var(--peach);text-shadow:0 0 16px rgba(255,203,164,0.4);">87%</div>
+        <div class="stat-lbl">30-Day Retention</div>
+        <div class="stat-delta">vs 40% streaming avg</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,106,213,0.1);max-width:960px;margin-bottom:24px;">
+      <div class="stat-panel" style="background:rgba(10,0,30,0.6);border:1px solid rgba(255,255,255,0.06);">
+        <div class="stat-val" style="color:var(--cream);font-size:clamp(28px,3.5vw,52px);">84K</div>
+        <div class="stat-lbl">Tape Decks Created (Beta)</div>
+        <div class="stat-delta">+12K per week</div>
+      </div>
+      <div class="stat-panel" style="background:rgba(10,0,30,0.6);border:1px solid rgba(255,255,255,0.06);">
+        <div class="stat-val" style="color:var(--cream);font-size:clamp(28px,3.5vw,52px);">$0</div>
+        <div class="stat-lbl">Paid User Acquisition</div>
+        <div class="stat-delta">100% organic</div>
+      </div>
+      <div class="stat-panel" style="background:rgba(10,0,30,0.6);border:1px solid rgba(255,255,255,0.06);">
+        <div class="stat-val" style="color:var(--cream);font-size:clamp(28px,3.5vw,52px);">4.9★</div>
+        <div class="stat-lbl">App Store Rating</div>
+        <div class="stat-delta">12,400 reviews</div>
+      </div>
+      <div class="stat-panel" style="background:rgba(10,0,30,0.6);border:1px solid rgba(255,255,255,0.06);">
+        <div class="stat-val" style="color:var(--cream);font-size:clamp(28px,3.5vw,52px);">3.2×</div>
+        <div class="stat-lbl">Viral K-Factor</div>
+        <div class="stat-delta">via Tape sharing</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;">
+      <div class="testimonial gloss-pink">
+        <div class="testimonial-text">
+          "I put on the 'Sunken Food Court' scene and worked for six hours without noticing.
+          Mallsoft is the first app that made me forget I was listening to an app."
+        </div>
+        <div class="testimonial-attr">— @moonsickness (42K followers, TikTok)</div>
+      </div>
+      <div class="testimonial gloss-cyan">
+        <div class="testimonial-text">
+          "I use Mallsoft to write. It's the only music app that doesn't eventually
+          become a task I need to manage. It just... plays."
+        </div>
+        <div class="testimonial-attr">— @lo_wren_writer (Substack, 88K subs)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 08 — PRICING
+═══════════════════════════════════════ -->
+<section class="slide bg-mid" id="slide-8">
+  <div class="slide-num">[08/10]</div>
+
+  <div class="grid-floor" style="height:30%;opacity:0.4;"></div>
+  <span class="jp" style="right:-10px;top:8%;font-size:clamp(50px,9vw,150px);opacity:0.05;">価格</span>
+
+  <div style="max-width:1040px;width:100%;">
+    <span class="label-tag">▸ PRICING ™ &nbsp; SELECT YOUR SCENE</span>
+
+    <h2 class="disp chrome-pink" style="font-size:clamp(26px,4vw,56px);margin-bottom:32px;line-height:0.95;">
+      THREE FLOORS.<br />ALL VIBES INCLUDED.
+    </h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(255,106,213,0.08);border:1px solid rgba(255,106,213,0.15);max-width:900px;">
+      <!-- FREE -->
+      <div class="price-card gloss" style="border-right:1px solid rgba(255,255,255,0.08);border-color:transparent;">
+        <div class="price-name" style="color:var(--text-muted);">FREE &nbsp; ™</div>
+        <div class="price-amount chrome" style="font-size:clamp(36px,5vw,56px);">$0</div>
+        <div class="price-period">Forever Free</div>
+        <ul class="price-features">
+          <li style="color:var(--text-muted);">50 Scenes (rotating)</li>
+          <li style="color:var(--text-muted);">Radio Mode (ad-supported)</li>
+          <li style="color:var(--text-muted);">Create 3 Tape Decks/month</li>
+          <li style="color:var(--text-muted);">Standard audio quality</li>
+        </ul>
+      </div>
+
+      <!-- WANDERER -->
+      <div class="price-card gloss-pink" style="border-right:1px solid rgba(255,106,213,0.2);position:relative;">
+        <div class="price-badge" style="background:var(--hot-pink);color:var(--deep-purple);top:-13px;">
+          ✦ MOST POPULAR ✦
+        </div>
+        <div class="price-name" style="color:var(--hot-pink);">WANDERER ™</div>
+        <div class="price-amount chrome-pink" style="font-size:clamp(36px,5vw,56px);">$8</div>
+        <div class="price-period">per month</div>
+        <ul class="price-features">
+          <li>All 220+ Scenes, always</li>
+          <li>Ad-free Radio Mode</li>
+          <li>Unlimited Tape Decks</li>
+          <li>Hi-Fi lossless audio</li>
+          <li>Tape Deck expiry control</li>
+          <li style="color:var(--soft-pink);">Early access to new Scenes</li>
+        </ul>
+      </div>
+
+      <!-- ARCHIVISTE -->
+      <div class="price-card gloss-purple">
+        <div class="price-name" style="color:var(--lavender);">ARCHIVISTE ™</div>
+        <div class="price-amount chrome-cyan" style="font-size:clamp(36px,5vw,56px);">$18</div>
+        <div class="price-period">per month</div>
+        <ul class="price-features">
+          <li>Everything in Wanderer</li>
+          <li>Artist Portal access</li>
+          <li>Commission custom Tapes</li>
+          <li>Unlimited offline caching</li>
+          <li>Scene creation tools (beta)</li>
+          <li style="color:var(--lavender);">Quarterly vinyl reward drops</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:20px;flex-wrap:wrap;max-width:900px;">
+      <div style="padding:14px 18px;border:1px solid rgba(255,106,213,0.2);background:rgba(255,106,213,0.04);flex:1;min-width:160px;">
+        <div style="font-family:var(--font-vt);font-size:1.5rem;color:var(--hot-pink);">68%</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);">Free → Paid Conversion (Beta)</div>
+      </div>
+      <div style="padding:14px 18px;border:1px solid rgba(92,225,255,0.2);background:rgba(92,225,255,0.04);flex:1;min-width:160px;">
+        <div style="font-family:var(--font-vt);font-size:1.5rem;color:var(--cyan);">$9.20</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);">Avg Monthly Revenue / Paid User</div>
+      </div>
+      <div style="padding:14px 18px;border:1px solid rgba(196,168,255,0.2);background:rgba(138,92,255,0.04);flex:1;min-width:160px;">
+        <div style="font-family:var(--font-vt);font-size:1.5rem;color:var(--lavender);">22mo</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);">Avg Subscriber Lifetime (projected)</div>
+      </div>
+      <div style="padding:14px 18px;border:1px solid rgba(255,203,164,0.2);background:rgba(255,203,164,0.04);flex:1;min-width:160px;">
+        <div style="font-family:var(--font-vt);font-size:1.5rem;color:var(--peach);">$2.10</div>
+        <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);">Licensing Cost per Subscriber / mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 09 — THE ASK / CTA
+═══════════════════════════════════════ -->
+<section class="slide bg-sunset" id="slide-9">
+  <div class="slide-num">[09/10]</div>
+
+  <!-- Retro sun -->
+  <div style="position:absolute;bottom:42%;left:50%;transform:translateX(-50%);z-index:1;">
+    <div class="retro-sun" style="width:clamp(140px,18vw,260px);height:clamp(70px,9vw,130px);"></div>
+  </div>
+
+  <div class="grid-floor" style="height:38%;opacity:0.7;"></div>
+
+  <span class="jp" style="right:2%;top:5%;font-size:clamp(50px,8vw,130px);opacity:0.06;">投資</span>
+
+  <div style="max-width:1040px;width:100%;">
+    <span class="label-tag">▸ RAISE ™ &nbsp; SEED EXTENSION</span>
+
+    <div class="disp chrome-pink" style="font-size:clamp(52px,9vw,120px);line-height:0.9;margin-bottom:20px;">
+      $3.8M
+    </div>
+    <div style="font-family:var(--font-vt);font-size:clamp(16px,2vw,26px);color:var(--lavender);letter-spacing:0.14em;margin-bottom:6px;">
+      SEED EXTENSION &nbsp;·&nbsp; $18M PRE-MONEY &nbsp;·&nbsp; JUNE 2026
+    </div>
+    <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:32px;">
+      $2.2M committed from existing angels. $1.6M open. Co-investors welcome.
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;">
+      <div>
+        <div class="gloss-pink" style="padding:24px 22px;margin-bottom:14px;">
+          <div style="font-family:var(--font-vt);font-size:1.1rem;color:var(--hot-pink);letter-spacing:0.1em;margin-bottom:12px;">USE OF FUNDS</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">Artist Portal + Licensing</div>
+              <div style="font-family:var(--font-vt);font-size:1.1rem;color:var(--hot-pink);">40%</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">Engineering (iOS, Android, API)</div>
+              <div style="font-family:var(--font-vt);font-size:1.1rem;color:var(--cyan);">30%</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">Growth &amp; Creator Partnerships</div>
+              <div style="font-family:var(--font-vt);font-size:1.1rem;color:var(--lavender);">20%</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">Ops / Legal / Infrastructure</div>
+              <div style="font-family:var(--font-vt);font-size:1.1rem;color:var(--text-muted);">10%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gloss-cyan" style="padding:20px 22px;">
+          <div style="font-family:var(--font-vt);font-size:1rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:10px;">18-MONTH TARGETS</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;">
+              <span style="color:var(--cyan);flex-shrink:0;">▸</span>1M MAU — organic + creator flywheel
+            </div>
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;">
+              <span style="color:var(--cyan);flex-shrink:0;">▸</span>$9M ARR — paid conversion at scale
+            </div>
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;">
+              <span style="color:var(--cyan);flex-shrink:0;">▸</span>5,000 active artists on Portal
+            </div>
+            <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start;">
+              <span style="color:var(--cyan);flex-shrink:0;">▸</span>Series A raise at $60M+ valuation
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="padding:28px 24px;border:1px solid rgba(255,106,213,0.35);background:rgba(255,106,213,0.06);margin-bottom:14px;text-align:center;box-shadow:0 0 30px rgba(255,106,213,0.1);">
+          <div style="font-family:var(--font-vt);font-size:clamp(28px,4vw,52px);color:var(--hot-pink);text-shadow:0 0 20px rgba(255,106,213,0.6);line-height:1;margin-bottom:6px;">$18M</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Pre-Money Valuation</div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);line-height:1.75;">
+            8.6× trailing ARR ($2.1M) &nbsp;·&nbsp; 2× forward ARR<br /><br />
+            Safe note · MFN clause · 20% discount<br />
+            Pro-rata rights for Series A reserved
+          </div>
+        </div>
+
+        <div style="padding:20px 22px;border:1px solid rgba(255,255,255,0.1);background:rgba(10,0,30,0.6);">
+          <div style="font-family:var(--font-vt);font-size:1rem;color:var(--cream);letter-spacing:0.1em;margin-bottom:12px;">CONTACT ™</div>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);line-height:2;">
+            <i class="fa fa-envelope" style="color:var(--hot-pink);width:18px;"></i>
+            &nbsp; invest@mallsoft.fm<br />
+            <i class="fa fa-globe" style="color:var(--cyan);width:18px;"></i>
+            &nbsp; mallsoft.fm/deck<br />
+            <i class="fa fa-headphones" style="color:var(--lavender);width:18px;"></i>
+            &nbsp; app.mallsoft.fm (beta access)<br />
+            <i class="fa fa-map-marker-alt" style="color:var(--peach);width:18px;"></i>
+            &nbsp; Los Angeles · Tokyo · Miami
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — CLOSING
+═══════════════════════════════════════ -->
+<section class="slide bg-sunset" id="slide-10">
+  <div class="slide-num">[10/10]</div>
+
+  <!-- Retro sun large -->
+  <div style="position:absolute;bottom:35%;left:50%;transform:translateX(-50%);z-index:1;">
+    <div class="retro-sun" style="width:clamp(220px,28vw,420px);height:clamp(110px,14vw,210px);"></div>
+  </div>
+
+  <div class="grid-floor" style="height:42%;opacity:0.8;"></div>
+
+  <span class="jp" style="right:5%;bottom:35%;font-size:clamp(60px,10vw,180px);opacity:0.07;">さ よ な ら</span>
+
+  <div style="max-width:800px;text-align:center;margin:0 auto;">
+    <span class="label-tag" style="text-align:center;display:block;">▸ MALLSOFT ™ &nbsp; 2026 &nbsp; ▸</span>
+
+    <h2 class="disp chrome" style="font-size:clamp(36px,7vw,100px);line-height:0.9;margin-bottom:20px;">
+      HEAR YOU<br />ON THE OTHER<br />SIDE.
+    </h2>
+
+    <div style="font-family:var(--font-vt);font-size:clamp(16px,2.2vw,28px);color:var(--soft-pink);letter-spacing:0.18em;margin-bottom:8px;text-shadow:0 0 16px rgba(255,106,213,0.5);">
+      MALLSOFT.FM &nbsp;·&nbsp; AMBIENT FOR EVERYONE ™
+    </div>
+
+    <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);letter-spacing:0.1em;margin-bottom:36px;line-height:1.9;">
+      Available on iOS &nbsp;·&nbsp; Android &nbsp;·&nbsp; Web<br />
+      Beta invite: <span style="color:var(--cyan);">app.mallsoft.fm/enter</span>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+      <div style="padding:10px 20px;border:1px solid rgba(255,106,213,0.3);background:rgba(255,106,213,0.06);font-family:var(--font-vt);font-size:1rem;color:var(--hot-pink);letter-spacing:0.12em;text-shadow:0 0 10px rgba(255,106,213,0.4);">
+        ♫ FOOD COURT 1993
+      </div>
+      <div style="padding:10px 20px;border:1px solid rgba(92,225,255,0.3);background:rgba(92,225,255,0.06);font-family:var(--font-vt);font-size:1rem;color:var(--cyan);letter-spacing:0.12em;text-shadow:0 0 10px rgba(92,225,255,0.4);">
+        ♫ EMPTY ESCALATOR
+      </div>
+      <div style="padding:10px 20px;border:1px solid rgba(196,168,255,0.3);background:rgba(138,92,255,0.06);font-family:var(--font-vt);font-size:1rem;color:var(--lavender);letter-spacing:0.12em;text-shadow:0 0 10px rgba(196,168,255,0.4);">
+        ♫ LATE NIGHT PARKING LOT
+      </div>
+    </div>
+
+    <div style="margin-top:48px;font-family:var(--font-mono);font-size:0.58rem;color:var(--text-dim);letter-spacing:0.1em;line-height:2;">
+      [MALLSOFT CORP. ™ // LOS ANGELES // CONFIDENTIAL // JUNE 2026]<br />
+      [FORWARD-LOOKING STATEMENTS SUBJECT TO CHANGE // NOT FOR DISTRIBUTION]
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  /* Arrow key / Page key navigation */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+  });
+
+  /* IntersectionObserver — slide counter */
+  var slides = document.querySelectorAll('.slide');
+  var counter = document.getElementById('slide-counter');
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(slides, entry.target) + 1;
+        counter.textContent = (idx < 10 ? '0' : '') + idx;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(function(s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>
