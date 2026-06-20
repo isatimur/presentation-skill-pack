@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>presentation-skill-pack vs Marp — Markdown-to-slides converter</title>
+  <meta name="description" content="How presentation-skill-pack compares to Marp — AI-generated Deck JSON vs hand-written Markdown slides." />
+  <link rel="canonical" href="https://presentation-skill-pack.vercel.app/vs/marp" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2A2622" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="presentation-skill-pack" />
+  <meta property="og:url" content="https://presentation-skill-pack.vercel.app/vs/marp" />
+  <meta property="og:title" content="presentation-skill-pack vs Marp — Markdown-to-slides converter" />
+  <meta property="og:description" content="How presentation-skill-pack compares to Marp — AI-generated Deck JSON vs hand-written Markdown slides." />
+  <meta property="og:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+  <meta property="og:image:alt" content="presentation-skill-pack vs Marp — Markdown-to-slides converter" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@isatimur" />
+  <meta name="twitter:creator" content="@isatimur" />
+  <meta name="twitter:title" content="presentation-skill-pack vs Marp — Markdown-to-slides converter" />
+  <meta name="twitter:description" content="How presentation-skill-pack compares to Marp — AI-generated Deck JSON vs hand-written Markdown slides." />
+  <meta name="twitter:image" content="https://presentation-skill-pack.vercel.app/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "presentation-skill-pack vs Marp — Markdown-to-slides converter",
+    "description": "How presentation-skill-pack compares to Marp — AI-generated Deck JSON vs hand-written Markdown slides.",
+    "author": {"@type": "Person", "name": "Timur Isachenko", "url": "https://github.com/isatimur/presentation-skill-pack"},
+    "datePublished": "2026-06-20",
+    "dateModified": "2026-06-20",
+    "url": "https://presentation-skill-pack.vercel.app/vs/marp",
+    "publisher": {"@type": "Organization", "name": "presentation-skill-pack", "url": "https://presentation-skill-pack.vercel.app"}
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--paper:#F4EDE0;--ink:#2A2622;--ink-light:#6B6259;--rule:rgba(42,38,34,.12);--accent:#7C3AED;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
+    html{scroll-behavior:smooth}
+    body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65}
+    a{color:var(--accent)}
+    .container{max-width:820px;margin:0 auto;padding:0 24px}
+    header{background:var(--ink);color:#fff;padding:64px 0 72px}
+    header .eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:14px}
+    header h1{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px}
+    header h1 em{font-style:normal;color:#c084fc}
+    header p{font-size:1.05rem;color:rgba(255,255,255,.65);max-width:600px}
+    .back-link{font-size:.82rem;color:rgba(255,255,255,.45);text-decoration:none;display:inline-block;margin-bottom:28px}
+    section{padding:52px 0;border-bottom:1px solid var(--rule)}
+    section:last-of-type{border-bottom:none}
+    h2{font-size:1.4rem;font-weight:700;margin-bottom:20px;letter-spacing:-.02em}
+    .compare-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.95rem}
+    .compare-table th{text-align:left;padding:10px 14px;background:var(--ink);color:#fff;font-weight:600;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase}
+    .compare-table td{padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+    .compare-table tr:last-child td{border-bottom:none}
+    .compare-table .col-us{background:rgba(124,58,237,.04)}
+    .check{color:#16a34a;font-weight:700}
+    .cross{color:#dc2626;font-weight:700}
+    .verdict{background:rgba(124,58,237,.07);border-left:3px solid var(--accent);padding:20px 24px;border-radius:0 8px 8px 0;margin-top:8px;font-size:.97rem}
+    .cta{display:inline-block;margin-top:20px;padding:12px 26px;background:var(--accent);color:#fff;text-decoration:none;border-radius:8px;font-weight:600}
+    pre{background:var(--ink);color:#f4ede0;padding:18px 22px;border-radius:8px;font-family:var(--mono);font-size:.85rem;overflow-x:auto;margin-top:16px}
+    footer{padding:32px 0;color:var(--ink-light);font-size:.85rem}
+    footer a{color:var(--ink-light)}
+    ul{padding-left:20px;margin-top:6px}
+    li{margin-bottom:5px}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <a href="/" class="back-link">← presentation-skill-pack</a>
+    <span class="eyebrow">Comparison</span>
+    <h1>presentation-skill-pack<br>vs <em>Marp</em></h1>
+    <p>Marp converts your Markdown. presentation-skill-pack gets your agent to write it.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2>Side-by-side</h2>
+    <table class="compare-table">
+      <thead><tr><th style="width:34%">Criterion</th><th style="width:33%">presentation-skill-pack</th><th style="width:33%">Marp</th></tr></thead>
+      <tbody>
+        <tr><td>Where it runs</td><td class="col-us">Inside your AI agent (Claude Code, Cursor, Copilot, Codex, Gemini CLI)</td><td>Markdown-to-slides converter</td></tr>
+        <tr><td>Output format</td><td class="col-us">Single self-contained HTML file — you own it</td><td>Platform-hosted or exported file</td></tr>
+        <tr><td>Price</td><td class="col-us"><span class="check">✓</span> Free, MIT licensed, no account</td><td>Freemium or subscription</td></tr>
+        <tr><td>LLM schema</td><td class="col-us"><span class="check">✓</span> Typed Deck JSON spec — consistent, validatable</td><td><span class="cross">✗</span> Freeform generation</td></tr>
+        <tr><td>MCP support</td><td class="col-us"><span class="check">✓</span> 5 typed MCP tools</td><td><span class="cross">✗</span> No MCP integration</td></tr>
+        <tr><td>Offline / no login</td><td class="col-us"><span class="check">✓</span> Works fully offline after install</td><td><span class="cross">✗</span> Requires internet + account</td></tr>
+        <tr><td>Theming</td><td class="col-us">Swappable npm theme packages</td><td>Built-in styles only</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Where Marp is stronger</h2>
+    <ul><li>Simple Markdown syntax</li><li>VS Code extension available</li><li>PDF and HTML export</li><li>Good for simple presentations</li></ul>
+    <h2 style="margin-top:36px">Where presentation-skill-pack is stronger</h2>
+    <ul><li>Structured Deck JSON spec that LLMs can fill reliably</li><li>MCP server for direct agent tool calls</li><li>Self-contained HTML — no export step</li><li>Works in any MCP-compatible agent</li></ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Verdict</h2>
+    <div class="verdict">Marp is a solid lightweight tool for devs who like writing Markdown slides by hand. presentation-skill-pack is the better fit when you want an AI agent to do the authoring — it gives the agent a schema to target instead of freeform Markdown.</div>
+    <br>
+    <p>Try presentation-skill-pack in one command:</p>
+    <pre>npx @presentation-skill-pack/install claude-code</pre>
+    <a href="/" class="cta">See the gallery →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <a href="/">presentation-skill-pack</a> · MIT License ·
+    <a href="https://github.com/isatimur/presentation-skill-pack" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://www.npmjs.com/package/@presentation-skill-pack/install" target="_blank" rel="noopener">npm</a>
+  </div>
+</footer>
+</body>
+</html>
