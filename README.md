@@ -2,10 +2,13 @@
 
 [![npm version](https://img.shields.io/npm/v/@presentation-skill-pack/core)](https://www.npmjs.com/package/@presentation-skill-pack/core)
 [![PyPI](https://img.shields.io/pypi/v/presentation-skill-pack-render)](https://pypi.org/project/presentation-skill-pack-render/)
-[![CI](https://github.com/your-org/presentation-skill-pack/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/presentation-skill-pack/actions/workflows/ci.yml)
+[![CI](https://github.com/isatimur/presentation-skill-pack/actions/workflows/ci.yml/badge.svg)](https://github.com/isatimur/presentation-skill-pack/actions/workflows/ci.yml)
+[![Gallery](https://img.shields.io/badge/gallery-25%20decks-7C3AED)](https://presentation-skill-pack.vercel.app/#gallery)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **Turn rough notes into a polished slide deck — for any AI agent.**
+
+🌐 **[presentation-skill-pack.vercel.app](https://presentation-skill-pack.vercel.app)** — live gallery of 25 showcase decks
 
 ---
 
@@ -58,11 +61,12 @@ presentation-skill-pack is a universal skill layer that gives AI coding agents (
 
 | Adapter | Description | Install |
 |---|---|---|
-| `claude-code` | Registers MCP server in `~/.claude/mcp.json` + copies skill file | `npx @presentation-skill-pack/install claude-code` |
-| `cursor` | Adds MCP server entry to `.cursor/mcp.json` | `npx @presentation-skill-pack/install cursor` |
-| `codex` | Adds MCP server to `~/.codex/config.json` | `npx @presentation-skill-pack/install codex` |
-| `gemini-cli` | Registers tool server in `~/.gemini/config.json` | `npx @presentation-skill-pack/install gemini-cli` |
-| `cli` | Standalone — renders decks directly via the `presentation-skill-pack-render` CLI, no MCP | `npx @presentation-skill-pack/install cli` |
+| `claude-code` | Copies skill to `~/.claude/skills/` + registers MCP server in `~/.claude/mcp.json` | `npx @presentation-skill-pack/install claude-code` |
+| `cursor` | Adds `.mdc` rule to `~/.cursor/rules/` + MCP server entry | `npx @presentation-skill-pack/install cursor` |
+| `copilot` | Writes to `.github/copilot-instructions.md` + `.vscode/mcp.json` (run from project root) | `npx @presentation-skill-pack/install copilot` |
+| `codex` | Adds skill to `~/.codex/instructions.md` + MCP server | `npx @presentation-skill-pack/install codex` |
+| `gemini-cli` | Writes GEMINI.md skill to `~/.gemini/instructions/` + MCP server | `npx @presentation-skill-pack/install gemini-cli` |
+| `cli` | Standalone — renders decks via the `presentation-skill-pack-render` CLI, no MCP | `npx @presentation-skill-pack/install cli` |
 
 ---
 
@@ -136,7 +140,7 @@ presentation-skill-pack is a universal skill layer that gives AI coding agents (
     {
       "layout": "closing",
       "heading": "Questions?",
-      "subheading": "deck source at github.com/your-org/presentation-skill-pack"
+      "subheading": "deck source at github.com/isatimur/presentation-skill-pack"
     }
   ]
 }
@@ -148,11 +152,11 @@ presentation-skill-pack is a universal skill layer that gives AI coding agents (
 
 | Tool | Purpose |
 |---|---|
-| `generate_deck_prompt` | Build a system prompt containing the active theme palette and deck schema reference, ready to paste into an agent context |
 | `render_deck` | Render a Deck JSON string to a self-contained HTML file |
-| `audit_deck` | Validate a Deck JSON against the schema and return structured issues |
-| `apply_theme` | Swap the theme in a deck's `meta` block while leaving all slide content untouched |
 | `list_themes` | Enumerate all available themes (bundled + installed npm packages) with name, version, and vibe |
+| `get_theme` | Return the full theme JSON for a given theme name |
+| `validate_deck` | Validate a Deck JSON against the schema and return structured issues with severity |
+| `create_deck` | Create a new deck JSON spec from a text prompt or structured brief |
 
 ---
 
