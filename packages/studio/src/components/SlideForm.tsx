@@ -162,6 +162,7 @@ function DataTableFields({ slide, set }: { slide: Slide; set: (patch: Partial<Sl
 
   return (
     <>
+      <TextInput label="Eyebrow" value={slide.eyebrow} onChange={(v) => set({ eyebrow: v })} />
       <TextInput label="Heading" value={slide.heading} onChange={(v) => set({ heading: v })} />
       <div className="list-editor">
         <div className="list-editor-head">

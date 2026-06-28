@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import type { DeckJson } from "@presentation-skill-pack/export";
 import { listThemeNames } from "../render/themes.js";
-import { downloadHtml, downloadPptx, downloadJson, parseDeckJson } from "../export/downloads.js";
+import { downloadHtml, downloadPptx, downloadJson, parseDeckFile } from "../export/downloads.js";
 
 export function Toolbar({
   deck,
@@ -19,16 +19,18 @@ export function Toolbar({
   const themeNames = listThemeNames();
   const theme = deck.meta?.theme ?? "default-tech";
 
-  const setTheme = (t: string) => onChange({ ...deck, meta: { ...deck.meta, theme: t } });
-  const setTitle = (t: string) => onChange({ ...deck, meta: { ...deck.meta, title: t } });
+  const setMeta = (patch: Record<string, string>) =>
+    onChange({ ...deck, meta: { ...deck.meta, ...patch } });
+  const setTheme = (t: string) => setMeta({ theme: t });
+  const setTitle = (t: string) => setMeta({ title: t });
 
-  const onImport = async (file: File) => {
+  const onOpen = async (file: File) => {
     try {
-      const deck = parseDeckJson(await file.text());
-      onChange(deck);
-      setStatus(`Loaded ${file.name}`);
+      const opened = parseDeckFile(file.name, await file.text());
+      onChange(opened);
+      setStatus(`Opened ${file.name}`);
     } catch (err) {
-      setStatus(`Import failed: ${(err as Error).message}`);
+      setStatus(`Open failed: ${(err as Error).message}`);
     }
   };
 
@@ -68,10 +70,28 @@ export function Toolbar({
         </select>
       </label>
 
+      <details className="deck-details">
+        <summary className="btn btn-sm">Details</summary>
+        <div className="deck-details-body">
+          <input
+            className="text-input"
+            value={deck.meta?.company ?? ""}
+            placeholder="Company"
+            onChange={(e) => setMeta({ company: e.target.value })}
+          />
+          <input
+            className="text-input"
+            value={deck.meta?.description ?? ""}
+            placeholder="Description"
+            onChange={(e) => setMeta({ description: e.target.value })}
+          />
+        </div>
+      </details>
+
       <div className="spacer" />
 
       <button className="btn" onClick={onLoadExample}>Example</button>
-      <button className="btn" onClick={() => fileRef.current?.click()}>Import JSON</button>
+      <button className="btn" onClick={() => fileRef.current?.click()} title="Open a deck .html or .json">Open</button>
       <button className="btn" onClick={() => downloadJson(deck)}>JSON</button>
       <button className="btn" onClick={() => downloadHtml(deck)}>HTML</button>
       <button className="btn btn-primary" disabled={busy} onClick={exportPptx}>
@@ -81,11 +101,11 @@ export function Toolbar({
       <input
         ref={fileRef}
         type="file"
-        accept="application/json,.json"
+        accept=".html,.htm,.json,application/json,text/html"
         hidden
         onChange={(e) => {
           const f = e.target.files?.[0];
-          if (f) void onImport(f);
+          if (f) void onOpen(f);
           e.target.value = "";
         }}
       />
