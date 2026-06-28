@@ -75,6 +75,12 @@ export interface RenderOptions {
    * the rendered deck. Defaults to `true`. Set to `false` to omit it.
    */
   attribution?: boolean;
+  /**
+   * Embed the source Deck JSON in the output as
+   * `<script type="application/json" id="psp-deck">` so the deck can be reopened
+   * and edited (e.g. in the studio). Defaults to `true`.
+   */
+  embedSource?: boolean;
 }
 
 const ATTRIBUTION_URL = "https://presentation-skill-pack.vercel.app/?ref=deck";
@@ -221,6 +227,16 @@ async function renderSlide(slide: SlideData, layoutsDir: string): Promise<string
   return Mustache.render(template, data);
 }
 
+/**
+ * Embed the source deck as a JSON script tag so the rendered HTML is
+ * self-describing and can be reopened for editing. `<` is escaped to prevent a
+ * `</script>` breakout; `JSON.parse` reads `<` transparently.
+ */
+function embedDeckScript(deck: DeckJson): string {
+  const json = JSON.stringify(deck).replace(/</g, "\\u003c");
+  return `<script type="application/json" id="psp-deck">${json}</script>`;
+}
+
 export async function renderDeck(deckJson: string, opts?: RenderOptions): Promise<string> {
   const validation = safeValidateDeckJson(deckJson);
   if (!validation.valid) {
@@ -281,12 +297,15 @@ export async function renderDeck(deckJson: string, opts?: RenderOptions): Promis
   const title = deck.meta?.title ?? deck.meta?.company ?? "Presentation";
   const description = deck.meta?.description ?? "";
 
+  const deckData = opts?.embedSource === false ? "" : embedDeckScript(deck);
+
   const html = Mustache.render(documentTemplate, {
     title,
     description,
     styles: fullCss,
     slides: slidesHtml,
     attribution: attributionEnabled ? ATTRIBUTION_HTML : "",
+    deckData,
   });
 
   return html;
