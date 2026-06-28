@@ -4,9 +4,9 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  // Relative asset paths so the same build works whether served at `/` (its own
-  // Vercel project) or under the gallery at `/studio/`.
-  base: "./",
+  // Default base `/` suits dev and a standalone deploy. The gallery build passes
+  // an absolute `--base=/studio/` (see `build:web`) so assets resolve when served
+  // at `/studio` — a relative base breaks there under cleanUrls (no trailing slash).
   // The deck themes and shared layout templates live outside this package; allow
   // Vite's dev server to read them from the monorepo root.
   server: { fs: { allow: [".."] } },
