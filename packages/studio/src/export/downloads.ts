@@ -1,4 +1,3 @@
-import { deckToPptxBlob } from "@presentation-skill-pack/export";
 import type { DeckJson } from "@presentation-skill-pack/export";
 import { resolveTheme } from "../render/themes.js";
 import { renderDeckHtml } from "../render/renderDeck.js";
@@ -33,6 +32,9 @@ export interface PptxDownloadResult {
 export async function downloadPptx(deck: DeckJson): Promise<PptxDownloadResult> {
   const warnings: string[] = [];
   const theme = resolveTheme(themeName(deck));
+  // Lazy-load the exporter (pptxgenjs) so it's a separate chunk fetched only on
+  // first export — keeps the studio's initial bundle small.
+  const { deckToPptxBlob } = await import("@presentation-skill-pack/export");
   const blob = await deckToPptxBlob(deck, theme, { onWarn: (m) => warnings.push(m) });
   triggerDownload(blob, safeName(deck, "pptx"));
   return { warnings };
