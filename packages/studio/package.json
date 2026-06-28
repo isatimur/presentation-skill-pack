@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "build:web": "vite build --outDir ../../web/studio --emptyOutDir",
+    "build:web": "vite build --base=/studio/ --outDir ../../web/studio --emptyOutDir",
     "preview": "vite preview",
     "test": "vitest run",
     "test:e2e": "playwright test",
