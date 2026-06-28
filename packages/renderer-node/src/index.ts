@@ -8,6 +8,7 @@ import {
   loadTheme,
 } from "@presentation-skill-pack/core";
 import type { ValidationResult } from "@presentation-skill-pack/core";
+import { deckToPptxBuffer, type DeckJson as ExportDeckJson } from "@presentation-skill-pack/export";
 
 export { validateDeckJson } from "@presentation-skill-pack/core";
 
@@ -249,4 +250,39 @@ export async function renderDeck(deckJson: string, opts?: RenderOptions): Promis
   });
 
   return html;
+}
+
+export interface PptxRenderOptions {
+  themesDir?: string;
+  /** Append the attribution note to the final slide. Defaults to `true`. */
+  attribution?: boolean;
+  /** Called for content that couldn't be mapped exactly (e.g. remote images). */
+  onWarn?: (msg: string) => void;
+}
+
+/**
+ * Render a deck JSON spec to a native, editable PowerPoint (.pptx) Buffer.
+ * Shares validation and theme resolution with {@link renderDeck}. The resulting
+ * file opens directly in PowerPoint and Keynote, and imports into Google Slides.
+ */
+export async function renderDeckPptx(
+  deckJson: string,
+  opts?: PptxRenderOptions
+): Promise<Buffer> {
+  const validation = safeValidateDeckJson(deckJson);
+  if (!validation.valid) {
+    throw new Error(
+      `Deck JSON is invalid:\n${validation.errors.map((e) => `  - ${e}`).join("\n")}`
+    );
+  }
+
+  const deck = JSON.parse(deckJson) as DeckJson;
+  const themeName = deck.meta?.theme ?? "default-tech";
+  const themesDir = opts?.themesDir ?? getBundledThemesDir();
+  const theme = await loadTheme(themeName, { themesDir });
+
+  return deckToPptxBuffer(deck as unknown as ExportDeckJson, theme, {
+    attribution: opts?.attribution,
+    onWarn: opts?.onWarn,
+  });
 }

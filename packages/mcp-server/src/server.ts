@@ -6,6 +6,7 @@ import {
   ListToolsRequestSchema
 } from "@modelcontextprotocol/sdk/types.js";
 import { renderDeckTool } from "./tools/render-deck.js";
+import { exportDeckTool } from "./tools/export-deck.js";
 import { listThemesTool } from "./tools/list-themes.js";
 import { applyThemeTool } from "./tools/apply-theme.js";
 import { auditDeckTool } from "./tools/audit-deck.js";
@@ -20,6 +21,7 @@ export interface ToolDefinition {
 
 const TOOLS: ToolDefinition[] = [
   renderDeckTool,
+  exportDeckTool,
   listThemesTool,
   applyThemeTool,
   auditDeckTool,

@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@presentation-skill-pack/core": "workspace:*",
+    "@presentation-skill-pack/export": "workspace:*",
     "commander": "^12.0.0",
     "mustache": "^4.2.0"
   },
