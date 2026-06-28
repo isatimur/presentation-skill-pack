@@ -27,6 +27,39 @@ function buildGoogleFontsUrl(families: string[]): string {
   return `https://fonts.googleapis.com/css2?family=${families.join("&family=")}&display=swap`;
 }
 
+const SAFE_LINK_SCHEMES = new Set(["http", "https", "mailto", "tel"]);
+
+/** Drop C0/C1 control characters (used to obfuscate schemes like `java\tscript:`). */
+function stripControls(s: string): string {
+  let out = "";
+  for (const ch of s) {
+    const c = ch.charCodeAt(0);
+    if (c > 0x1f && c !== 0x7f) out += ch;
+  }
+  return out;
+}
+
+function schemeOf(url: string): string | undefined {
+  return url.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):/)?.[1]?.toLowerCase();
+}
+
+/** Strip dangerous URL schemes (javascript:, vbscript:, data:…) from link hrefs. */
+function sanitizeLink(url: unknown): string | undefined {
+  if (typeof url !== "string") return undefined;
+  const cleaned = stripControls(url).trim();
+  const s = schemeOf(cleaned);
+  return s && !SAFE_LINK_SCHEMES.has(s) ? "#" : cleaned;
+}
+
+/** Allow http(s) and inline images; drop anything else (e.g. javascript:). */
+function sanitizeImage(url: unknown): string | undefined {
+  if (typeof url !== "string") return undefined;
+  const cleaned = stripControls(url).trim();
+  if (/^data:image\//i.test(cleaned)) return cleaned;
+  const s = schemeOf(cleaned);
+  return s && s !== "http" && s !== "https" ? "" : cleaned;
+}
+
 function normalizeSlideData(slide: Slide): Record<string, unknown> {
   const out: Record<string, unknown> = { ...slide };
   if (slide.layout === "data-table" && Array.isArray(slide.rows)) {
@@ -35,6 +68,12 @@ function normalizeSlideData(slide: Slide): Record<string, unknown> {
   if (slide.layout === "feature-grid") {
     if (typeof slide.columns === "number") out["columns"] = slide.columns;
     else if (!slide.columns) out["columns"] = 3;
+  }
+  if (slide.cta?.href !== undefined) {
+    out["cta"] = { ...slide.cta, href: sanitizeLink(slide.cta.href) };
+  }
+  if (slide.image !== undefined) {
+    out["image"] = sanitizeImage(slide.image);
   }
   return out;
 }

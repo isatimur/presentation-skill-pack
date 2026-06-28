@@ -36,6 +36,34 @@ describe("browser renderDeckHtml", () => {
     expect(html).toContain("<!doctype html>");
   });
 
+  it("neutralizes javascript: in cta.href and image (XSS defense in depth)", () => {
+    const html = renderDeckHtml(
+      {
+        type: "deck",
+        slides: [
+          { layout: "closing", heading: "Hi", cta: { label: "Go", href: "javascript:alert(1)" } },
+          { layout: "two-column", heading: "Img", image: "javascript:alert(2)", imageAlt: "x" },
+        ],
+      },
+      resolveTheme("default-tech")
+    );
+    expect(html).not.toContain("javascript:alert");
+    expect(html).toContain('href="#"');
+  });
+
+  it("preserves safe links and inline images", () => {
+    const html = renderDeckHtml(
+      {
+        type: "deck",
+        slides: [{ layout: "closing", heading: "Hi", cta: { label: "Go", href: "https://acme.com/x" } }],
+      },
+      resolveTheme("default-tech")
+    );
+    // Mustache escapes "/" → &#x2F;, so assert on the host and that it wasn't blocked to "#".
+    expect(html).toContain("acme.com");
+    expect(html).not.toContain('href="#"');
+  });
+
   it("renders an unknown layout without throwing", () => {
     const html = renderDeckHtml(
       { type: "deck", slides: [{ layout: "mystery", heading: "X" }] },
