@@ -45,6 +45,29 @@ describe("renderDeck", () => {
     expect(html).toContain("--accent");
   });
 
+  it("neutralizes javascript: URLs in cta.href and image (XSS defense in depth)", async () => {
+    const deck = JSON.stringify({
+      type: "deck",
+      slides: [
+        { layout: "closing", heading: "Hi", cta: { label: "Go", href: "javascript:alert(1)" } },
+        { layout: "two-column", heading: "Img", image: "javascript:alert(2)", imageAlt: "x" },
+      ],
+    });
+    const html = await renderDeck(deck);
+    expect(html).not.toContain("javascript:alert");
+    expect(html).toContain('href="#"');
+  });
+
+  it("preserves safe https links", async () => {
+    const deck = JSON.stringify({
+      type: "deck",
+      slides: [{ layout: "closing", heading: "Hi", cta: { label: "Go", href: "https://acme.com/x" } }],
+    });
+    const html = await renderDeck(deck);
+    expect(html).toContain("acme.com");
+    expect(html).not.toContain('href="#"');
+  });
+
   it("renders title layout without throwing", async () => {
     const deck = JSON.stringify({
       type: "deck",

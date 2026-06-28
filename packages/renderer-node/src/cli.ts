@@ -4,7 +4,7 @@ import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 import { Command } from "commander";
-import { renderDeck, getBundledThemesDir } from "./index.js";
+import { renderDeck, renderDeckPptx, getBundledThemesDir } from "./index.js";
 import { discoverInstalledThemes } from "@presentation-skill-pack/core";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,12 +35,14 @@ program
   .description("Render a deck JSON spec to a self-contained HTML slide deck.")
   .version(version)
   .argument("[deck.json]", "path to deck JSON file (reads stdin if omitted)")
-  .option("-o, --output <path>", "output .html file", "deck.html")
+  .option("-o, --output <path>", "output file (default: deck.html or deck.pptx)")
+  .option("-f, --format <fmt>", "output format: html | pptx", "html")
   .option("-t, --theme <name>", "theme name (overrides deck meta.theme)")
   .option("--list-themes", "list available themes and exit")
   .option("--validate", "validate only, do not render")
   .action(async (inputPath: string | undefined, options: {
-    output: string;
+    output?: string;
+    format: string;
     theme?: string;
     listThemes?: boolean;
     validate?: boolean;
@@ -78,23 +80,36 @@ program
       }
     }
 
-    const renderOpts: Parameters<typeof renderDeck>[1] = {};
     if (options.theme) {
       const parsed = JSON.parse(deckJson) as { meta?: { theme?: string } };
       parsed.meta = { ...parsed.meta, theme: options.theme };
       deckJson = JSON.stringify(parsed);
     }
 
-    let html: string;
+    const format = options.format.toLowerCase();
+    if (format !== "html" && format !== "pptx") {
+      process.stderr.write(`Error: unknown format "${options.format}" (expected html | pptx)\n`);
+      process.exit(1);
+    }
+
+    const defaultOutput = format === "pptx" ? "deck.pptx" : "deck.html";
+    const outputPath = resolve(process.cwd(), options.output ?? defaultOutput);
+
     try {
-      html = await renderDeck(deckJson, renderOpts);
+      if (format === "pptx") {
+        const buffer = await renderDeckPptx(deckJson, {
+          onWarn: (msg) => process.stderr.write(`  warning: ${msg}\n`),
+        });
+        await writeFile(outputPath, buffer);
+      } else {
+        const html = await renderDeck(deckJson, {});
+        await writeFile(outputPath, html, "utf-8");
+      }
     } catch (err) {
       process.stderr.write(`Error: ${(err as Error).message}\n`);
       process.exit(1);
     }
 
-    const outputPath = resolve(process.cwd(), options.output);
-    await writeFile(outputPath, html, "utf-8");
     process.stdout.write(`Rendered → ${outputPath}\n`);
   });
 

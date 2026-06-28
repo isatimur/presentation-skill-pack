@@ -34,6 +34,8 @@ presentation-skill-pack is a universal skill layer that gives AI coding agents (
 |---|---|
 | [`@presentation-skill-pack/core`](packages/core) | Deck + theme schemas, theme loader, validator, and bundled default-tech theme |
 | [`@presentation-skill-pack/render`](packages/renderer-node) | Node.js renderer — CLI (`presentation-skill-pack-render`) + programmatic API |
+| [`@presentation-skill-pack/export`](packages/export) | Deck → native, editable PowerPoint (`.pptx`) — opens in PowerPoint & Keynote, imports into Google Slides |
+| [`@presentation-skill-pack/studio`](packages/studio) | Browser editor studio: edit, live-preview, and export decks (Vite SPA) |
 | [`@presentation-skill-pack/mcp-server`](packages/mcp-server) | MCP server exposing all tools to any MCP-compatible agent (`presentation-skill-pack-mcp`) |
 | [`@presentation-skill-pack/install`](packages/install) | One-command installer that wires the skill + MCP server into your agent (`presentation-skill-pack-install`) |
 | [`@presentation-skill-pack/create-theme`](packages/create-theme) | Scaffold a new publishable theme package (`create-presentation-theme`) |
@@ -148,11 +150,48 @@ presentation-skill-pack is a universal skill layer that gives AI coding agents (
 
 ---
 
+## Export to PowerPoint, Keynote & Google Slides
+
+Because a deck is *structured* data (not free-form HTML), every slide maps cleanly to native
+slide shapes. One exporter covers all three apps:
+
+```bash
+# CLI
+presentation-skill-pack-render deck.json --format pptx -o deck.pptx
+```
+
+```ts
+// Programmatic (Node)
+import { renderDeckPptx } from "@presentation-skill-pack/render";
+await writeFile("deck.pptx", await renderDeckPptx(deckJson));
+```
+
+The result is a **native, editable** `.pptx`:
+
+- **PowerPoint** — opens directly.
+- **Keynote** — File → Open (Keynote has no portable native format; `.pptx` is the bridge).
+- **Google Slides** — File → Import slides / upload to Drive → opens as an editable Slides deck.
+
+Agents can call the `export_deck` MCP tool. Fidelity notes (fonts, colors, images) live in
+[`packages/export/references/pptx-fidelity.md`](packages/export/references/pptx-fidelity.md).
+
+## Studio
+
+[`@presentation-skill-pack/studio`](packages/studio) is a browser editor: edit a deck through
+schema-driven forms, see a live preview, and download HTML or `.pptx`. It's a fully static Vite SPA
+(client-side render + export, no backend).
+
+```bash
+pnpm --filter @presentation-skill-pack/studio dev      # local editor
+pnpm --filter @presentation-skill-pack/studio build    # static build → dist/ (deploy to Vercel)
+```
+
 ## MCP tools
 
 | Tool | Purpose |
 |---|---|
 | `render_deck` | Render a Deck JSON string to a self-contained HTML file |
+| `export_deck` | Export a Deck JSON to a native, editable PowerPoint (`.pptx`) — or html |
 | `list_themes` | Enumerate all available themes (bundled + installed npm packages) with name, version, and vibe |
 | `get_theme` | Return the full theme JSON for a given theme name |
 | `validate_deck` | Validate a Deck JSON against the schema and return structured issues with severity |

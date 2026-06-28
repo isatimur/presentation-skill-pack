@@ -8,6 +8,7 @@ import {
   loadTheme,
 } from "@presentation-skill-pack/core";
 import type { ValidationResult } from "@presentation-skill-pack/core";
+import { deckToPptxBuffer, type DeckJson as ExportDeckJson } from "@presentation-skill-pack/export";
 
 export { validateDeckJson } from "@presentation-skill-pack/core";
 
@@ -154,6 +155,39 @@ interface DeckJson {
   slides: SlideData[];
 }
 
+const SAFE_LINK_SCHEMES = new Set(["http", "https", "mailto", "tel"]);
+
+/** Drop C0/C1 control characters (used to obfuscate schemes like `java\tscript:`). */
+function stripControls(s: string): string {
+  let out = "";
+  for (const ch of s) {
+    const c = ch.charCodeAt(0);
+    if (c > 0x1f && c !== 0x7f) out += ch;
+  }
+  return out;
+}
+
+function schemeOf(url: string): string | undefined {
+  return url.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):/)?.[1]?.toLowerCase();
+}
+
+/** Strip dangerous URL schemes (javascript:, vbscript:, data:…) from link hrefs. */
+function sanitizeLink(url: unknown): string | undefined {
+  if (typeof url !== "string") return undefined;
+  const cleaned = stripControls(url).trim();
+  const s = schemeOf(cleaned);
+  return s && !SAFE_LINK_SCHEMES.has(s) ? "#" : cleaned;
+}
+
+/** Allow http(s) and inline images; drop anything else (e.g. javascript:). */
+function sanitizeImage(url: unknown): string | undefined {
+  if (typeof url !== "string") return undefined;
+  const cleaned = stripControls(url).trim();
+  if (/^data:image\//i.test(cleaned)) return cleaned;
+  const s = schemeOf(cleaned);
+  return s && s !== "http" && s !== "https" ? "" : cleaned;
+}
+
 function normalizeSlideData(slide: SlideData): Record<string, unknown> {
   const out: Record<string, unknown> = { ...slide };
 
@@ -167,6 +201,13 @@ function normalizeSlideData(slide: SlideData): Record<string, unknown> {
     } else if (!slide.columns) {
       out["columns"] = 3;
     }
+  }
+
+  if (slide.cta?.href !== undefined) {
+    out["cta"] = { ...slide.cta, href: sanitizeLink(slide.cta.href) };
+  }
+  if (slide.image !== undefined) {
+    out["image"] = sanitizeImage(slide.image);
   }
 
   return out;
@@ -249,4 +290,39 @@ export async function renderDeck(deckJson: string, opts?: RenderOptions): Promis
   });
 
   return html;
+}
+
+export interface PptxRenderOptions {
+  themesDir?: string;
+  /** Append the attribution note to the final slide. Defaults to `true`. */
+  attribution?: boolean;
+  /** Called for content that couldn't be mapped exactly (e.g. remote images). */
+  onWarn?: (msg: string) => void;
+}
+
+/**
+ * Render a deck JSON spec to a native, editable PowerPoint (.pptx) Buffer.
+ * Shares validation and theme resolution with {@link renderDeck}. The resulting
+ * file opens directly in PowerPoint and Keynote, and imports into Google Slides.
+ */
+export async function renderDeckPptx(
+  deckJson: string,
+  opts?: PptxRenderOptions
+): Promise<Buffer> {
+  const validation = safeValidateDeckJson(deckJson);
+  if (!validation.valid) {
+    throw new Error(
+      `Deck JSON is invalid:\n${validation.errors.map((e) => `  - ${e}`).join("\n")}`
+    );
+  }
+
+  const deck = JSON.parse(deckJson) as DeckJson;
+  const themeName = deck.meta?.theme ?? "default-tech";
+  const themesDir = opts?.themesDir ?? getBundledThemesDir();
+  const theme = await loadTheme(themeName, { themesDir });
+
+  return deckToPptxBuffer(deck as unknown as ExportDeckJson, theme, {
+    attribution: opts?.attribution,
+    onWarn: opts?.onWarn,
+  });
 }
