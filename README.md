@@ -6,9 +6,9 @@
 [![Gallery](https://img.shields.io/badge/gallery-25%20decks-7C3AED)](https://presentation-skill-pack.vercel.app/#gallery)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Turn rough notes into a polished slide deck — for any AI agent.**
+**Turn rough notes into a polished slide deck — in any AI agent. Then export it to PowerPoint, Keynote, or Google Slides.**
 
-🌐 **[presentation-skill-pack.vercel.app](https://presentation-skill-pack.vercel.app)** — live gallery of 25 showcase decks
+🌐 **[presentation-skill-pack.vercel.app](https://presentation-skill-pack.vercel.app)** — live gallery of 25 showcase decks · **[Studio](https://presentation-skill-pack.vercel.app/studio)** — edit decks in the browser
 
 ---
 
@@ -18,13 +18,13 @@
 npx @presentation-skill-pack/install claude-code
 ```
 
-That single command installs the skill file and registers the MCP server for your agent. Restart your agent and ask it to "create a presentation about…" — it will produce a validated deck JSON and render it to a self-contained HTML file you can open in any browser.
+That single command installs the skill file and registers the MCP server for your agent. Restart your agent and ask it to "create a presentation about…" — it produces a validated deck JSON and renders a self-contained HTML file you can open in any browser, or export to native, editable **PowerPoint** (which opens in Keynote and imports into Google Slides).
 
 ---
 
 ## What it is
 
-presentation-skill-pack is a universal skill layer that gives AI coding agents (Claude Code, Cursor, Codex, Gemini CLI, and plain CLI) a structured, schema-validated way to author slide decks. The agent writes a Deck JSON spec; the renderer turns that spec into a single self-contained HTML file — no build tool, no slide hosting service required. Themes are swappable, publishable npm packages, and the MCP server exposes the full workflow as five typed tools.
+presentation-skill-pack is a universal skill layer that gives AI coding agents (Claude Code, Cursor, Codex, Gemini CLI, Copilot, and plain CLI) a structured, schema-validated way to author slide decks. The agent writes a Deck JSON spec; the renderer turns it into a single self-contained HTML file — no build tool, no slide host. The same deck exports to native, editable **PowerPoint** (which opens in **Keynote** and imports into **Google Slides**), and a browser **studio** lets you open a created deck and edit it with live preview. Themes are swappable, publishable npm packages, and the MCP server exposes the whole workflow as typed tools.
 
 ---
 
