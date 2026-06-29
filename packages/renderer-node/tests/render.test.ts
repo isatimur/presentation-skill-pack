@@ -54,7 +54,10 @@ describe("renderDeck", () => {
       ],
     });
     const html = await renderDeck(deck);
-    expect(html).not.toContain("javascript:alert");
+    // Neutralized in the rendered markup (href/src attributes). The embedded
+    // source JSON may still hold the original string as inert, non-executable data.
+    expect(html).not.toContain('href="javascript');
+    expect(html).not.toContain('src="javascript');
     expect(html).toContain('href="#"');
   });
 
@@ -66,6 +69,25 @@ describe("renderDeck", () => {
     const html = await renderDeck(deck);
     expect(html).toContain("acme.com");
     expect(html).not.toContain('href="#"');
+  });
+
+  it("embeds the source deck and round-trips it", async () => {
+    const deck = {
+      type: "deck",
+      meta: { title: "RT", company: "Acme", theme: "default-tech" },
+      slides: [
+        { layout: "data-table", eyebrow: "KPIs", heading: "H", columns: ["A", "B"], rows: [["1", "2"]] },
+      ],
+    };
+    const html = await renderDeck(JSON.stringify(deck));
+    const m = html.match(/<script[^>]*id="psp-deck"[^>]*>([\s\S]*?)<\/script>/);
+    expect(m).toBeTruthy();
+    expect(JSON.parse(m![1]!)).toEqual(deck);
+  });
+
+  it("omits the embedded source when embedSource is false", async () => {
+    const html = await renderDeck(MINIMAL_DECK, { embedSource: false });
+    expect(html).not.toContain("psp-deck");
   });
 
   it("renders title layout without throwing", async () => {

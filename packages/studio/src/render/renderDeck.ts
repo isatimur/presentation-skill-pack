@@ -83,9 +83,36 @@ const ATTRIBUTION_HTML =
   `<a href="https://presentation-skill-pack.vercel.app/?ref=studio" target="_blank" rel="noopener">presentation-skill-pack</a>` +
   `</footer>`;
 
+// Kept identical to the canonical renderer (packages/renderer-node) so the
+// studio preview matches a deck downloaded/rendered anywhere else.
 const ATTRIBUTION_CSS = `
-.psp-attribution { font-family: var(--body-font); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); opacity: 0.6; text-align: center; padding: 4px 0 16px; }
-.psp-attribution a { color: var(--muted); text-decoration: none; }`;
+/* presentation-skill-pack attribution footer */
+.psp-attribution {
+  font-family: var(--body-font);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  opacity: 0.6;
+  text-align: center;
+  padding: 4px 0 16px;
+}
+.psp-attribution a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.psp-attribution a:hover { color: var(--accent); border-color: var(--accent); }
+@media print { .psp-attribution { opacity: 0.5; } }`;
+
+/**
+ * Embed the source deck as a JSON script tag so a deck downloaded from the studio
+ * round-trips back into it. Mirrors `embedDeckScript` in the Node renderer.
+ */
+function embedDeckScript(deck: DeckJson): string {
+  const json = JSON.stringify(deck).replace(/</g, "\\u003c");
+  return `<script type="application/json" id="psp-deck">${json}</script>`;
+}
 
 export function renderDeckHtml(deck: DeckJson, theme: ResolvedTheme): string {
   const tokenView: Record<string, string> = {
@@ -128,5 +155,6 @@ export function renderDeckHtml(deck: DeckJson, theme: ResolvedTheme): string {
     styles: fullCss,
     slides,
     attribution: ATTRIBUTION_HTML,
+    deckData: embedDeckScript(deck),
   });
 }
