@@ -1,6 +1,6 @@
 {
   "name": "@presentation-skill-pack/studio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser-based editor studio for presentation-skill-pack decks: edit, live-preview, and export to HTML or PowerPoint (.pptx).",
   "license": "MIT",
   "private": true,

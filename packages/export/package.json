@@ -1,6 +1,6 @@
 {
   "name": "@presentation-skill-pack/export",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Export a presentation-skill-pack deck JSON spec to native, editable PowerPoint (.pptx) — also opens in Keynote and imports into Google Slides.",
   "license": "MIT",
   "type": "module",
