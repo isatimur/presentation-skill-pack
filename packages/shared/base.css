@@ -13,8 +13,8 @@
   --border: {{border}};
   --radius: {{radius}};
   --slide-w: {{slideW}};
-  --heading-font: {{headingFont}};
-  --body-font: {{bodyFont}};
+  --heading-font: {{{headingFont}}};
+  --body-font: {{{bodyFont}}};
   --heading-weight: {{headingWeight}};
 }
 

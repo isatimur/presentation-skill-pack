@@ -63,7 +63,7 @@ export function blankSlide(layout: LayoutType): Slide {
 
 export const EXAMPLE_DECK: DeckJson = {
   type: "deck",
-  meta: { title: "Acme Q3", company: "Acme", theme: "default-tech" },
+  meta: { title: "Acme Q3", company: "Acme", theme: "claude" },
   slides: [
     { layout: "title", eyebrow: "Q3 2026", heading: "Acme All-Hands", lead: "Momentum, metrics, and what's next." },
     { layout: "section", number: "01", eyebrow: "Part one", heading: "Where we are" },
