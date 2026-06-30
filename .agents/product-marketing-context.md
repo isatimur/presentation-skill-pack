@@ -1,12 +1,12 @@
 # Product Marketing Context
 
-*Last updated: 2026-06-18*
+*Last updated: 2026-06-29*
 
 > **V1 auto-drafted from the repo (README, website, package metadata).** Sections marked _[needs your input]_ are guesses or gaps — correct them. Customer-language and proof-point sections are placeholders until there's real usage data.
 
 ## Product Overview
 **One-liner:** Turn rough notes into a polished slide deck — for any AI agent.
-**What it does:** A universal skill layer that gives AI coding agents (Claude Code, Cursor, Codex, Gemini CLI, Copilot) a structured, schema-validated way to author slide decks. The agent writes a Deck JSON spec; a renderer turns it into a single self-contained HTML file — no build tool, no slide host. Themes are swappable, publishable npm packages, and an MCP server exposes the whole workflow as typed tools.
+**What it does:** A universal skill layer that gives AI coding agents (Claude Code, Cursor, Codex, Gemini CLI, Copilot) a structured, schema-validated way to author slide decks. The agent writes a Deck JSON spec; a renderer turns it into a single self-contained HTML file — no build tool, no slide host. The same deck **exports to native, editable PowerPoint (`.pptx`)** — which opens in Keynote and imports into Google Slides — and can be edited in a **browser studio** (live preview + export). Themes are swappable, publishable npm packages, and an MCP server exposes the whole workflow as typed tools.
 **Product category:** AI agent skill / MCP server for presentation generation (the "shelf": developer tools + MCP servers + AI presentation tools).
 **Product type:** Open-source developer tooling (npm + PyPI packages, MCP server, CLI). Not a hosted SaaS.
 **Business model:** Free, MIT-licensed, open source. No paid tier today. _[needs your input: is monetization planned — paid themes, hosted service, enterprise support? This decides whether marketing optimizes for adoption or revenue.]_
@@ -19,6 +19,8 @@
 - Turn unstructured notes / a transcript / a spec / a README into a presentable deck without opening a design tool.
 - Produce an on-brand deck programmatically inside an agent workflow or pipeline.
 - Ship a single shareable HTML file (no hosting, no export dance).
+- Take the generated deck into the tool they actually present from — PowerPoint, Keynote, or Google Slides — as a native, editable file.
+- Hand-tweak a generated deck in a visual editor without leaving the browser.
 **Use cases:**
 - Startup pitch deck, investor update, sales proposal, product demo, internal review, conference talk.
 - Agent/pipeline-driven deck generation (CI, batch, MCP tool call).
@@ -50,6 +52,8 @@
 - **Agent-native + universal** — one install works across Claude Code, Cursor, Codex, Gemini CLI, and Copilot (not locked to one agent).
 - **Schema-validated Deck JSON** — the LLM targets a typed spec, so output is consistent and machine-checkable.
 - **Self-contained HTML output** — one file, no build, no hosting, opens anywhere; also a shareable artifact (see growth loop).
+- **Exports to PowerPoint / Keynote / Google Slides** — one structured-deck → native, *editable* `.pptx` (not an image dump). The competitors' big lock-in (platform-trapped output) is exactly what this removes.
+- **Browser editor studio** — open a created deck, edit via schema-driven forms with live preview, re-export. Created decks embed their own source, so any `.pptx`/HTML round-trips back into the editor.
 - **Themes as publishable npm packages** — swappable, versioned, community-extensible, with a scaffold CLI.
 - **MCP server with typed tools** — drops into any MCP-compatible agent.
 **How we do it differently:** Separate the *spec* (Deck JSON the agent writes) from the *render* (theme + renderer), so authoring is agent-friendly and styling is reusable.
@@ -101,8 +105,10 @@ _[Placeholder — fill as traction appears.]_
 **Value themes:**
 | Theme | Proof |
 |-------|-------|
-| Output actually looks good | 5 distinct gallery decks at presentation-skill-pack.vercel.app |
+| Output actually looks good | 25 distinct gallery decks at presentation-skill-pack.vercel.app |
 | Truly universal | Adapters for Claude Code, Cursor, Codex, Gemini CLI, Copilot |
+| Not platform-locked | Exports to native editable PowerPoint / Keynote / Google Slides |
+| Editable, not just generated | Browser studio at /studio — open, edit, re-export any created deck |
 | Zero friction | Single `npx` install command |
 
 ## Goals

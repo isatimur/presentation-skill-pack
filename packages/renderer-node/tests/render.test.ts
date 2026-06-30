@@ -45,6 +45,13 @@ describe("renderDeck", () => {
     expect(html).toContain("--accent");
   });
 
+  it("injects font-family tokens unescaped so the CSS stays valid", async () => {
+    const html = await renderDeck(DEFAULT_TECH_DECK);
+    // Quotes in font names must not be HTML-escaped (&#39;) — that breaks font-family.
+    expect(html).toContain("--heading-font: '");
+    expect(html).not.toContain("--heading-font: &#39;");
+  });
+
   it("neutralizes javascript: URLs in cta.href and image (XSS defense in depth)", async () => {
     const deck = JSON.stringify({
       type: "deck",

@@ -11,7 +11,8 @@
     "./skill": "./SKILL.md",
     "./deck-schema": "./deck.schema.json",
     "./theme-schema": "./theme.schema.json",
-    "./themes/default-tech": "./themes/default-tech/theme.json"
+    "./themes/default-tech": "./themes/default-tech/theme.json",
+    "./themes/claude": "./themes/claude/theme.json"
   },
   "files": [
     "dist",
@@ -19,7 +20,8 @@
     "references",
     "deck.schema.json",
     "theme.schema.json",
-    "themes/default-tech"
+    "themes/default-tech",
+    "themes/claude"
   ],
   "bin": {
     "validate-theme": "./dist/validate-theme-cli.js"
