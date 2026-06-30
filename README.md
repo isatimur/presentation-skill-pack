@@ -1,14 +1,18 @@
 # presentation-skill-pack
 
+**Turn rough notes into a polished slide deck — in any AI agent. Then export it to PowerPoint, Keynote, or Google Slides.**
+
 [![npm version](https://img.shields.io/npm/v/@presentation-skill-pack/core)](https://www.npmjs.com/package/@presentation-skill-pack/core)
 [![PyPI](https://img.shields.io/pypi/v/presentation-skill-pack-render)](https://pypi.org/project/presentation-skill-pack-render/)
 [![CI](https://github.com/isatimur/presentation-skill-pack/actions/workflows/ci.yml/badge.svg)](https://github.com/isatimur/presentation-skill-pack/actions/workflows/ci.yml)
 [![Gallery](https://img.shields.io/badge/gallery-25%20decks-7C3AED)](https://presentation-skill-pack.vercel.app/#gallery)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Turn rough notes into a polished slide deck — in any AI agent. Then export it to PowerPoint, Keynote, or Google Slides.**
+<!-- TODO: hero GIF — notes → rendered slide. Pull the single best deck from the 25-deck gallery and embed an animated preview here. -->
 
 🌐 **[presentation-skill-pack.vercel.app](https://presentation-skill-pack.vercel.app)** — live gallery of 25 showcase decks · **[Studio](https://presentation-skill-pack.vercel.app/studio)** — edit decks in the browser
+
+> ⭐ If this turned your notes into a deck you'd actually present, star the repo.
 
 ---
 
@@ -19,6 +23,15 @@ npx @presentation-skill-pack/install claude-code
 ```
 
 That single command installs the skill file and registers the MCP server for your agent. Restart your agent and ask it to "create a presentation about…" — it produces a validated deck JSON and renders a self-contained HTML file you can open in any browser, or export to native, editable **PowerPoint** (which opens in Keynote and imports into Google Slides).
+
+---
+
+## Why this vs. Gamma / Slidev / Marp
+
+- **Structured JSON your agent edits, not opaque slides.** Every deck is a schema-validated Deck JSON spec — the agent reads it, diffs it, and rewrites a single slide on request, instead of regenerating a black-box layout.
+- **Native, editable PPTX / Keynote / Google Slides export.** Because slides are structured data, each one maps to real native shapes — one exporter produces a `.pptx` that opens in PowerPoint, opens in Keynote, and imports into Google Slides. No screenshots, no lock-in.
+- **Works in any agent, not one app.** Claude Code, Cursor, Codex, Gemini CLI, Copilot, or plain CLI — one `npx` install wires the skill + MCP server into whatever you already use.
+- **25-deck proof gallery, live.** See the output before you install: [25 showcase decks](https://presentation-skill-pack.vercel.app/#gallery) rendered by the pack, editable in the browser [Studio](https://presentation-skill-pack.vercel.app/studio).
 
 ---
 
@@ -34,8 +47,8 @@ presentation-skill-pack is a universal skill layer that gives AI coding agents (
 |---|---|
 | [`@presentation-skill-pack/core`](packages/core) | Deck + theme schemas, theme loader, validator, and bundled default-tech theme |
 | [`@presentation-skill-pack/render`](packages/renderer-node) | Node.js renderer — CLI (`presentation-skill-pack-render`) + programmatic API |
-| [`@presentation-skill-pack/export`](packages/export) | Deck → native, editable PowerPoint (`.pptx`) — opens in PowerPoint & Keynote, imports into Google Slides |
-| [`@presentation-skill-pack/studio`](packages/studio) | Browser editor studio: edit, live-preview, and export decks (Vite SPA) |
+| [`@presentation-skill-pack/export`](packages/export) 🚧 _coming soon (not yet published)_ | Deck → native, editable PowerPoint (`.pptx`) — opens in PowerPoint & Keynote, imports into Google Slides |
+| [`@presentation-skill-pack/studio`](packages/studio) 🚧 _coming soon (not yet published)_ | Browser editor studio: edit, live-preview, and export decks (Vite SPA) |
 | [`@presentation-skill-pack/mcp-server`](packages/mcp-server) | MCP server exposing all tools to any MCP-compatible agent (`presentation-skill-pack-mcp`) |
 | [`@presentation-skill-pack/install`](packages/install) | One-command installer that wires the skill + MCP server into your agent (`presentation-skill-pack-install`) |
 | [`@presentation-skill-pack/create-theme`](packages/create-theme) | Scaffold a new publishable theme package (`create-presentation-theme`) |
